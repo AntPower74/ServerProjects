@@ -1,0 +1,10 @@
+[Unit]
+Description=Timer per TPL Piemonte Telegram Bot (ogni 30 min dalle 06:00 alle 22:00)
+
+[Timer]
+# Esegue ogni 30 minuti tra le 06:00 e le 21:30 (stop alle 22:00)
+OnCalendar=*-*-* 06..21:00,30:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "Estrai per Prezzly",
+  "version": "1.1.0",
+  "description": "Manda automaticamente a Prezzly i risultati di Google Lens, Subito, Vinted e Marketplace, senza click manuali.",
+  "icons": {
+    "192": "icon-192.png",
+    "512": "icon-512.png"
+  },
+  "permissions": ["storage", "tabs"],
+  "host_permissions": [
+    "https://prezzly.cupto.it/*",
+    "https://lens.google.com/*",
+    "https://www.subito.it/*",
+    "https://www.vinted.it/*",
+    "https://www.facebook.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://prezzly.cupto.it/*"],
+      "js": ["content-prezzly.js"],
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "https://lens.google.com/*",
+        "https://www.subito.it/*",
+        "https://www.vinted.it/*",
+        "https://www.facebook.com/marketplace/*"
+      ],
+      "js": ["content-estrattore.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

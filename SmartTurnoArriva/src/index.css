@@ -1,0 +1,701 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --bg-dark: #121214;
+  --bg-card: #1c1c1f;
+  --bg-card-hover: #232328;
+  --border-color: #2e2e34;
+  --text-main: #f0f0f2;
+  --text-muted: #9e9ea6;
+  
+  --accent-cyan: #06b6d4;
+  --accent-cyan-glow: rgba(6, 182, 212, 0.2);
+  --accent-purple: #a855f7;
+  --accent-green: #10b981;
+  --accent-red: #ef4444;
+  /* Stesso arancione della pagina iniziale (SmartTurnoHome), riusato come
+     tocco di continuita' visiva nel resto dell'app (es. tab attiva). */
+  --accent-orange: #f5a623;
+
+  /* Alias usati altrove nel foglio di stile: prima non erano definiti e
+     ricadevano silenziosamente su un default del browser. */
+  --text-light: var(--text-main);
+  --bg-lighter: var(--bg-card-hover);
+  --btn-bg: var(--bg-card);
+
+  --nav-bg: rgba(28, 28, 31, 0.9);
+  --nav-border: rgba(255, 255, 255, 0.08);
+
+  /* Anello "oggi" attenuato in scuro (sfondo scuro rende il bordo pieno
+     troppo pesante alla vista), pieno in chiaro. */
+  --today-border: rgba(37, 99, 235, 0.5);
+}
+
+:root[data-theme="light"] {
+  --bg-dark: #f4f6f8;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f1f5f9;
+  --border-color: #e2e8f0;
+  --btn-bg: #f1f5f9;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+
+  --accent-cyan: #0284c7;
+  --accent-cyan-glow: rgba(2, 132, 199, 0.15);
+  --accent-purple: #9333ea;
+  --accent-green: #10b981;
+  --accent-red: #ef4444;
+  --accent-orange: #f59e0b;
+
+  --nav-bg: rgba(255, 255, 255, 0.95);
+  --nav-border: #e2e8f0;
+
+  --today-border: #2563eb;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.theme-toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: var(--btn-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  /* Ancorato in alto a destra rispetto a .header (position:relative),
+     indipendente dal flex layout interno che cambia per tab. */
+  position: absolute;
+  top: env(safe-area-inset-top, 0px);
+  right: 0;
+  z-index: 20;
+}
+
+.theme-toggle-btn:hover {
+  background: var(--bg-card-hover);
+}
+
+.notif-toggle-btn {
+  right: 44px;
+}
+
+.notif-toggle-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.notif-toggle-btn.is-active {
+  background: var(--accent-cyan-glow);
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+}
+
+#root {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* App Layout */
+@keyframes app-fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  padding-top: calc(2rem + env(safe-area-inset-top, 0px));
+}
+
+/* Wrapper interno (esclude la <nav> fissa): un transform/opacity animati
+   sull'app-container renderebbero la nav "fixed" relativa a questo
+   contenitore invece che al viewport, spostandola dalla sua posizione. */
+.app-fade-in {
+  animation: app-fade-in 0.5s ease both;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.header-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.header-icon {
+  color: var(--accent-cyan);
+}
+
+.dashboard-stats {
+  display: flex;
+  gap: 1rem;
+}
+
+.stat-badge {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  padding: 0.5rem 1rem;
+  border-radius: 99px;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+}
+
+.stat-value.green { color: var(--accent-green); }
+.stat-value.cyan { color: var(--accent-cyan); }
+.stat-value.purple { color: var(--accent-purple); }
+.stat-value.red { color: var(--accent-red); }
+
+/* Table / Timeline */
+.timeline-container {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  margin-bottom: 2rem;
+}
+
+.timeline-header {
+  border-bottom: 1px solid var(--border-color);
+  background: rgba(255,255,255,0.02);
+}
+
+.timeline-row {
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  transition: background 0.2s ease;
+  align-items: center;
+}
+.timeline-row:hover {
+  background: var(--bg-card-hover);
+}
+
+.timeline-cell {
+  flex: 1;
+  padding: 0.2rem 0.4rem;
+  font-size: 0.75rem;
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+}
+
+.timeline-cell:first-child {
+  flex: 0 0 100px;
+  color: var(--text-muted);
+  font-weight: 500;
+  border-right: 2px solid var(--border-color);
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  padding: 0.2rem 0.4rem;
+}
+
+.header-cell {
+  justify-content: center;
+  text-align: center;
+  font-weight: 700;
+  color: var(--text-main) !important;
+}
+
+.date-text {
+  font-weight: 500;
+  color: var(--text-main);
+}
+
+/* Shift Badges */
+.shift-block {
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.15rem;
+  min-width: 80px;
+  background-color: var(--bg-lighter);
+}
+
+.shift-time {
+  font-size: 0.65rem;
+  opacity: 0.9;
+}
+
+.shift-cyan {
+  background: rgba(6, 182, 212, 0.08);
+  color: var(--accent-cyan);
+  border: 1px solid rgba(6, 182, 212, 0.18);
+}
+
+.shift-purple {
+  background: rgba(168, 85, 247, 0.08);
+  color: var(--accent-purple);
+  border: 1px solid rgba(168, 85, 247, 0.18);
+}
+
+.shift-rest {
+  background: var(--bg-card-hover);
+  color: var(--text-muted);
+  border: 1px dashed var(--border-color);
+}
+
+.shift-disp {
+  background: rgba(245, 158, 11, 0.12);
+  color: var(--accent-orange);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.error-badge {
+  display: inline-flex;
+  background: rgba(239, 68, 68, 0.15);
+  color: var(--accent-red);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  align-items: center;
+  gap: 0.35rem;
+  font-weight: 500;
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  font-size: 1.25rem;
+  color: var(--accent-cyan);
+  font-weight: 500;
+  gap: 0.5rem;
+}
+
+.header-title-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  gap: 0.75rem;
+}
+
+.header-logo-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 12px var(--accent-cyan-glow), 0 0 2px rgba(6, 182, 212, 0.6);
+  flex-shrink: 0;
+}
+
+.driver-selector {
+  display: flex;
+  align-items: center;
+  background: var(--bg-card);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+.driver-select-dropdown {
+  background: transparent;
+  color: var(--text-main);
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+}
+
+.timeline-cell.date-sat {
+  color: #3b82f6; /* Blue */
+  font-weight: bold;
+}
+
+.timeline-cell.date-sun {
+  color: #ef4444; /* Red */
+  font-weight: bold;
+}
+
+.timeline-row.is-today {
+  border: 2px solid var(--today-border);
+  background-color: rgba(37, 99, 235, 0.1);
+  box-shadow: 0 0 12px rgba(37, 99, 235, 0.3);
+  position: relative;
+  z-index: 2;
+  border-radius: 8px;
+}
+.timeline-row.is-today .date-text {
+  color: var(--today-border);
+  font-weight: 800;
+}
+.timeline-row.is-today::before {
+  content: "OGGI";
+  position: absolute;
+  top: -10px;
+  right: 15px;
+  background-color: #2563eb;
+  color: #ffffff;
+  font-size: 0.65rem;
+  font-weight: bold;
+  padding: 2px 8px;
+  border-radius: 12px;
+  letter-spacing: 0.5px;
+}
+
+.timeline-header, .timeline-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.5fr;
+}
+.autocomplete-wrapper {
+  position: relative;
+  width: 250px;
+}
+
+.autocomplete-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+}
+
+.autocomplete-chevron {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.driver-input,
+.driver-select {
+  width: 100%;
+  padding: 0.5rem 2rem 0.5rem 2.2rem;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-main);
+  font-size: 1rem;
+  font-weight: bold;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  outline: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  appearance: none;
+}
+
+@media (max-width: 600px) {
+  .driver-input,
+  .driver-select {
+    padding: 0.5rem 0.75rem 0.5rem 2.2rem;
+    font-size: 0.85rem;
+  }
+}
+
+.driver-input:focus,
+.driver-select:focus {
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.2);
+}
+
+.autocomplete-dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  max-height: 250px;
+  overflow-y: auto;
+  z-index: 100;
+  list-style: none;
+  padding: 0.5rem 0;
+  margin: 0;
+}
+
+.autocomplete-dropdown li {
+  padding: 0.75rem 1.25rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  color: var(--text-main);
+  font-weight: 500;
+}
+
+.autocomplete-dropdown li:hover {
+  background-color: var(--bg-card-hover);
+}
+
+.autocomplete-dropdown li.selected {
+  background-color: rgba(6, 182, 212, 0.15);
+  color: var(--accent-cyan);
+  font-weight: bold;
+}
+
+.autocomplete-dropdown li.no-results {
+  color: var(--text-muted);
+  text-align: center;
+  cursor: default;
+}
+.autocomplete-dropdown li.no-results:hover {
+  background-color: transparent;
+}
+
+@media (max-width: 768px) {
+  .app-container {
+    padding: 0.75rem;
+    padding-top: calc(0.75rem + env(safe-area-inset-top, 0px));
+    padding-bottom: 90px;
+  }
+  
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .header-title-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    width: 100%;
+  }
+
+  .header-logo {
+    font-size: 1.3rem;
+  }
+  
+  .filters-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem !important;
+    width: 100%;
+  }
+
+  .view-toggle-container {
+    display: flex;
+    width: 100%;
+    gap: 0.5rem;
+  }
+
+  .view-toggle-btn {
+    flex: 1 !important;
+    max-width: none !important;
+    font-size: 0.85rem !important;
+    padding: 0.6rem 0.2rem !important;
+  }
+
+  .autocomplete-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: 1 !important;
+  }
+  
+  .driver-selector {
+    width: 100%;
+    margin-bottom: 0 !important;
+  }
+
+  .date-filters-wrapper {
+    display: flex;
+    width: 100%;
+    gap: 0.5rem;
+  }
+  
+  .date-filters-wrapper > .autocomplete-wrapper {
+    flex: 1 !important;
+    width: auto !important;
+  }
+
+  .dashboard-stats {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.5rem;
+  }
+  
+  .stat-badge {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .timeline-header, .timeline-row {
+    grid-template-columns: 85px 1fr 1fr;
+  }
+  
+  .timeline-cell {
+    padding: 0.6rem 0.25rem;
+    font-size: 0.75rem !important;
+  }
+
+  .timeline-cell:first-child {
+    flex: 0 0 85px;
+    font-size: 0.65rem !important;
+  }
+
+  .shift-block {
+    min-width: 60px;
+    font-size: 0.75rem !important;
+    padding: 0.2rem;
+  }
+}
+
+
+.fingerprint-glow-ring {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.18) 0%, transparent 70%);
+  animation: fingerprint-pulse 2.2s ease-in-out infinite;
+}
+
+.fingerprint-glow-icon {
+  color: var(--accent-cyan);
+  filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.9));
+}
+
+@keyframes fingerprint-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.35);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 0 14px rgba(56, 189, 248, 0);
+    transform: scale(1.06);
+  }
+}
+
+.loading-dots {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.loading-dots span {
+  width: 10px;
+  height: 10px;
+  background-color: var(--accent-cyan);
+  border-radius: 50%;
+  animation: bounce 1.4s infinite ease-in-out both;
+}
+
+.loading-dots span:nth-child(1) { animation-delay: -0.32s; }
+.loading-dots span:nth-child(2) { animation-delay: -0.16s; }
+.loading-dots span:nth-child(3) { animation-delay: 0s; }
+
+@keyframes bounce {
+  0%, 80%, 100% { transform: scale(0); }
+  40% { transform: scale(1); }
+}
+
+/* input[type=date] su sfondo scuro: l'icona calendario del browser è nera di
+   default e diventa invisibile - la rendiamo chiara e più facile da toccare. */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.85);
+  cursor: pointer;
+  padding: 4px;
+}
+input[type="date"] {
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] input[type="date"] {
+  color-scheme: light;
+}
+:root[data-theme="light"] input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: none;
+}
+
+/* Esportazione anteprima turni in PDF: stampa solo l'area .print-area
+   (usato da SchedulePreview), nasconde tutto il resto dell'interfaccia. */
+@page {
+  size: A4 landscape;
+  margin: 10mm;
+}
+
+/* La rotazione settimanale (fino a ~6 mesi) usa un foglio A4 verticale a se'
+   stante - vedi .print-weekly più sotto, che le assegna questa pagina. */
+@page weekly {
+  size: A4 portrait;
+  margin: 8mm;
+}
+
+@media print {
+  body * { visibility: hidden; }
+  .print-area, .print-area * { visibility: visible; }
+  .print-area {
+    position: absolute; top: 0; left: 0; width: 100%;
+    background: #fff; color: #000;
+  }
+  /* la griglia a schermo ha un'altezza massima con scroll interno - in stampa
+     va rimossa, altrimenti solo le righe visibili a schermo finiscono nel PDF. */
+  .print-area div { max-height: none !important; overflow: visible !important; }
+  /* Font/celle più grandi e leggibili di quelle a schermo: pensato per un
+     periodo breve (es. una settimana) dove c'e' spazio per stare comodi;
+     per depositi con molti autisti e periodi lunghi il foglio si allunga
+     su piu' pagine invece di rimpicciolire il testo. */
+  .print-area table { font-size: 13px; border-collapse: collapse; }
+  .print-area th, .print-area td { padding: 5px 6px !important; }
+  .print-area th { color: #000 !important; background: #fff !important; border-color: #999 !important; }
+  /* le celle turno hanno una larghezza fissa pensata per lo schermo - in
+     stampa, col font piu' grande, le allarghiamo quanto serve al contenuto. */
+  .print-area td span { width: auto !important; min-width: 46px; font-size: 13px !important; padding: 5px 8px !important; }
+  .print-area .driver-header { height: 70px !important; font-size: 12px !important; }
+  .print-title { display: block !important; font-size: 16px; font-weight: 700; margin-bottom: 10px; color: #000; }
+
+  /* Vista settimanale: molte colonne strette (fino a ~30 settimane) su A4
+     verticale - font e celle molto più compatti della regola generica sopra. */
+  .print-weekly { page: weekly; }
+  .print-weekly table { font-size: 7px; table-layout: auto; }
+  .print-weekly th, .print-weekly td { padding: 1px !important; font-size: 7px !important; width: auto !important; }
+  .print-weekly td span {
+    min-width: 0 !important; width: 100% !important; font-size: 7px !important;
+    padding: 1px 1px !important; border: none !important; border-radius: 1px !important;
+  }
+  .print-weekly .rowLabel, .print-weekly td:first-child { font-size: 7px !important; padding: 1px 3px !important; max-width: 60px; overflow: hidden; }
+  .print-weekly .print-title { font-size: 12px; margin-bottom: 4px; }
+}

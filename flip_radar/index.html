@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>FlipRadar - Assistente Flipping & Valutatore Affari</title>
+  
+  <!-- PWA Meta Tags -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0f172a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="FlipRadar">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <link rel="icon" type="image/png" href="icon-192.png">
+
+  <!-- Fonts & Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- App Container -->
+  <div class="app-shell">
+    
+    <!-- Top Header -->
+    <header class="top-header">
+      <div class="brand-group">
+        <div class="logo-icon">⚡</div>
+        <div>
+          <h1 class="app-title">FlipRadar</h1>
+          <p class="app-tagline">Assistente Valutazione & Trattativa Elettronica</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button id="btnInstallPwa" class="btn btn-secondary btn-sm install-btn" style="display: none;">
+          📲 Installa App
+        </button>
+        <div class="city-badge">
+          <span class="pulse-dot"></span>
+          <span class="city-name" id="currentCityBadge">Torino & Dintorni</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- iOS PWA Install Helper Notice (hidden by default) -->
+    <div id="iosInstallBanner" class="ios-banner" style="display: none;">
+      <span>📱 Per installare su iPhone: tocca <b>Condividi ⬆️</b> e poi <b>"Aggiungi a Home"</b></span>
+      <button class="btn-close-banner" id="btnCloseIosBanner">✕</button>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <nav class="nav-tabs" role="tablist">
+      <button class="tab-btn active" data-tab="analyzer-tab" role="tab" id="tabBtnAnalyzer">
+        <span class="tab-icon">🎯</span>
+        <span>Analizzatore</span>
+      </button>
+      <button class="tab-btn" data-tab="database-tab" role="tab" id="tabBtnDatabase">
+        <span class="tab-icon">📊</span>
+        <span>Prezzario Usato</span>
+      </button>
+      <button class="tab-btn" data-tab="tracker-tab" role="tab" id="tabBtnTracker">
+        <span class="tab-icon">💰</span>
+        <span>Miei Affari (<span id="activeDealsCount">0</span>)</span>
+      </button>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      
+      <!-- TAB 1: ANALYZER -->
+      <section id="analyzer-tab" class="tab-panel active">
+        
+        <!-- Smart Input Box -->
+        <div class="card search-card">
+          <div class="card-header">
+            <span class="card-badge">⚡ Inserimento Rapido</span>
+            <h2>Analizza Annuncio</h2>
+            <p class="card-desc">Incolla il testo dell'annuncio o scrivi modello e prezzo (es. <em>"iPhone 12 mini 128gb bianco 220euro"</em>)</p>
+          </div>
+
+          <div class="input-form">
+            <div class="textarea-wrapper">
+              <textarea 
+                id="rawAdInput" 
+                placeholder="Es: iPhone 12 mini 128gb bianco 220euro con scatola batteria 85% a Torino..." 
+                rows="3"></textarea>
+              <button type="button" class="btn-clear" id="btnClearInput" title="Cancella">✕</button>
+            </div>
+
+            <!-- Quick Presets -->
+            <div class="quick-examples">
+              <span class="examples-label">Esempi rapidi:</span>
+              <button type="button" class="chip-btn" data-example="iPhone 12 mini 128gb bianco 220euro">iPhone 12 Mini 220€</button>
+              <button type="button" class="chip-btn" data-example="Nintendo Switch OLED con 2 giochi 180 euro Torino">Switch OLED 180€</button>
+              <button type="button" class="chip-btn" data-example="PlayStation 5 versione disco 320 euro">PS5 Disco 320€</button>
+              <button type="button" class="chip-btn" data-example="AirPods Pro 2 con custodia 100 euro">AirPods Pro 2 100€</button>
+            </div>
+
+            <div class="action-row">
+              <button id="btnAnalyze" class="btn btn-primary btn-large">
+                <span>🚀 Analizza Affare Istantaneamente</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Result Container (Hidden until analysis) -->
+        <div id="resultContainer" class="result-container" style="display: none;">
+          
+          <!-- Verdict Banner -->
+          <div class="verdict-banner" id="verdictBanner">
+            <div class="verdict-icon-box" id="verdictIcon">🔥</div>
+            <div class="verdict-info">
+              <div class="verdict-header-row">
+                <span class="verdict-badge" id="verdictBadge">OTTIMO AFFARE</span>
+                <span class="score-badge" id="scoreBadge">Punteggio: 8.5/10</span>
+              </div>
+              <h3 class="verdict-title" id="verdictTitle">Margine Alto: Offri Subito</h3>
+              <p class="verdict-desc" id="verdictDescription">Comprare al prezzo target garantisce un profitto rapido.</p>
+            </div>
+          </div>
+
+          <!-- Numbers Grid -->
+          <div class="numbers-grid">
+            
+            <div class="metric-card asking-card">
+              <span class="metric-label">Prezzo Richiesto</span>
+              <span class="metric-value" id="resAskingPrice">220 €</span>
+              <span class="metric-sub" id="resAskingSub">Prezzo nell'annuncio</span>
+            </div>
+
+            <div class="metric-card offer-card">
+              <span class="metric-label">Offerta da Inviare</span>
+              <span class="metric-value highlight" id="resTargetOffer">160 €</span>
+              <span class="metric-sub">Sconto consigliato: <b id="resDiscountPct">-27%</b></span>
+            </div>
+
+            <div class="metric-card resale-card">
+              <span class="metric-label">Valore Reale Vendita</span>
+              <span class="metric-value" id="resResaleValue">260 €</span>
+              <span class="metric-sub">Media mercato a Torino</span>
+            </div>
+
+            <div class="metric-card profit-card">
+              <span class="metric-label">Profitto Netto Stimato</span>
+              <span class="metric-value profit-color" id="resEstimatedProfit">+100 €</span>
+              <span class="metric-sub">ROI stimato: <b id="resRoiPct">+62%</b></span>
+            </div>
+
+          </div>
+
+          <!-- Price Range & Strategy Bar -->
+          <div class="card price-strategy-card">
+            <h3>🎯 Finestra di Negoziazione Consigliata</h3>
+            <div class="negotiation-bar-wrapper">
+              <div class="bar-step low">
+                <span class="step-label">1. Prima Offerta (Lowball)</span>
+                <span class="step-val" id="strategyLowOffer">150 €</span>
+              </div>
+              <div class="bar-step target">
+                <span class="step-label">2. Target Ottimale</span>
+                <span class="step-val" id="strategyTargetOffer">160 € - 175 €</span>
+              </div>
+              <div class="bar-step max">
+                <span class="step-label">3. Tetto Massimo (Non superare)</span>
+                <span class="step-val" id="strategyMaxOffer">185 €</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Scripts Generator Card -->
+          <div class="card scripts-card">
+            <div class="card-header">
+              <span class="card-badge">💬 1-Click Trattativa</span>
+              <h3>Messaggi Pronti da Copiare</h3>
+              <p class="card-desc">Clicca per copiare il messaggio e incollalo subito su Subito, WhatsApp o Marketplace</p>
+            </div>
+
+            <div class="script-tabs">
+              <button class="script-tab-btn active" data-script="subito">Subito / Marketplace</button>
+              <button class="script-tab-btn" data-script="whatsapp">WhatsApp Veloce</button>
+              <button class="script-tab-btn" data-script="counter">Controproposta (Se rifiuta)</button>
+              <button class="script-tab-btn" data-script="questions">Domande di Verifica</button>
+            </div>
+
+            <div class="script-box">
+              <div class="script-content" id="scriptContentText">
+                Caricamento messaggio...
+              </div>
+              <div class="script-actions">
+                <button class="btn btn-copy" id="btnCopyScript">
+                  <span class="copy-icon">📋</span>
+                  <span id="copyBtnText">Copia Messaggio</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Device-Specific Inspection Checklist -->
+          <div class="card checklist-card">
+            <div class="card-header">
+              <span class="card-badge">🛡️ Test Anti-Fregatura</span>
+              <h3>Controlli da fare al Ritiro dal Vivo</h3>
+              <p class="card-desc">Spunta i punti durante l'incontro prima di consegnare i contanti</p>
+            </div>
+
+            <div class="checklist-items" id="checklistItemsContainer">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+
+          <!-- Save Deal Button -->
+          <div class="save-deal-row">
+            <button class="btn btn-save" id="btnSaveDeal">
+              <span>💾 Salva nei Miei Affari in Trattativa</span>
+            </button>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- TAB 2: DATABASE USATO -->
+      <section id="database-tab" class="tab-panel">
+        <div class="card">
+          <div class="card-header">
+            <span class="card-badge">📊 Listino di Mercato</span>
+            <h2>Prezzi Medi Usato Elettronica (Italia / Torino)</h2>
+            <p class="card-desc">Consulta i prezzi reali di acquisto consigliato e rivendita aggiornati</p>
+          </div>
+
+          <div class="db-filter-bar">
+            <input type="text" id="dbSearchInput" placeholder="Cerca dispositivo (es. iPhone 12, Switch, PS5...)" class="input-text">
+            <div class="category-chips" id="dbCategoryChips">
+              <button class="cat-chip active" data-cat="all">Tutti</button>
+              <button class="cat-chip" data-cat="iphone">iPhone</button>
+              <button class="cat-chip" data-cat="apple">Apple Altro</button>
+              <button class="cat-chip" data-cat="gaming">Gaming & Console</button>
+              <button class="cat-chip" data-cat="samsung">Samsung</button>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="pricing-table">
+              <thead>
+                <tr>
+                  <th>Dispositivo / Modello</th>
+                  <th>Compra Sotto A (Target)</th>
+                  <th>Prezzo Rivendita Medio</th>
+                  <th>Profitto Netto</th>
+                  <th>Azione</th>
+                </tr>
+              </thead>
+              <tbody id="dbTableBody">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 3: TRACKER MIEI AFFARI -->
+      <section id="tracker-tab" class="tab-panel">
+        
+        <!-- Summary Stats -->
+        <div class="tracker-summary-grid">
+          <div class="tracker-stat-card">
+            <span class="stat-title">Profitto Totale Realizzato</span>
+            <span class="stat-number profit-color" id="statTotalProfit">0 €</span>
+          </div>
+          <div class="tracker-stat-card">
+            <span class="stat-title">Affari Chiusi</span>
+            <span class="stat-number" id="statDealsClosed">0</span>
+          </div>
+          <div class="tracker-stat-card">
+            <span class="stat-title">In Trattativa</span>
+            <span class="stat-number" id="statDealsPending">0</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header space-between">
+            <div>
+              <h2>Registro Affari</h2>
+              <p class="card-desc">Tieni traccia degli oggetti acquistati, in trattativa o rivenduti</p>
+            </div>
+            <button class="btn btn-secondary btn-sm" id="btnExportDeals">Esporta Dati</button>
+          </div>
+
+          <div class="deals-list" id="dealsListContainer">
+            <div class="empty-state" id="emptyDealsState">
+              <div class="empty-icon">📦</div>
+              <p>Nessun affare salvato finora.</p>
+              <small>Usa l'Analizzatore per valutare un annuncio e salvarlo qui!</small>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+    </main>
+
+    <!-- Toast Notification -->
+    <div id="toastNotification" class="toast">
+      <span id="toastMessage">Testo copiato!</span>
+    </div>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

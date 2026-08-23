@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Estensione Estrai per Prezzly</title>
+
+<style>
+  :root {
+    --bg: #f3f5fb;
+    --surface: #ffffff;
+    --surface-2: #e9edf7;
+    --border: #d7deee;
+    --text: #131a2c;
+    --text-dim: #5b6684;
+    --accent: #059669;
+    --accent-ink: #ffffff;
+    --accent-2: #4f46e5;
+    --code-bg: #eef1f9;
+    --code-text: #1f2a44;
+    --warn-bg: #fef3c7;
+    --warn-border: #fbbf24;
+    --warn-text: #78350f;
+    --shadow: 0 1px 2px rgba(19, 26, 44, 0.06), 0 8px 24px rgba(19, 26, 44, 0.06);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0a0f1c;
+      --surface: #121a2b;
+      --surface-2: #1a2338;
+      --border: #263252;
+      --text: #e8edf9;
+      --text-dim: #8b98bd;
+      --accent: #34d399;
+      --accent-ink: #062018;
+      --accent-2: #818cf8;
+      --code-bg: #0d1424;
+      --code-text: #cfe0ff;
+      --warn-bg: #2a2007;
+      --warn-border: #92650a;
+      --warn-text: #fbd589;
+      --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 12px 32px rgba(0, 0, 0, 0.35);
+    }
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: ui-sans-serif, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 48px 20px 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+  }
+
+  .mono {
+    font-family: ui-monospace, "SF Mono", "Cascadia Code", "JetBrains Mono", Consolas, monospace;
+  }
+
+  .eyebrow {
+    font: 600 11px/1 ui-monospace, "SF Mono", "Cascadia Code", Consolas, monospace;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 12px;
+  }
+
+  h1 {
+    font-size: clamp(26px, 4vw, 34px);
+    line-height: 1.15;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 0 0 12px;
+    text-wrap: balance;
+  }
+
+  .lede {
+    color: var(--text-dim);
+    font-size: 16px;
+    max-width: 62ch;
+    margin: 0;
+  }
+
+  .lede strong { color: var(--text); font-weight: 600; }
+
+  .warn {
+    display: flex;
+    gap: 10px;
+    background: var(--warn-bg);
+    border: 1px solid var(--warn-border);
+    color: var(--warn-text);
+    border-radius: 12px;
+    padding: 14px 16px;
+    font-size: 13.5px;
+  }
+
+  .warn b { display: block; margin-bottom: 2px; }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    padding: 22px;
+  }
+
+  h2 {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 0 16px;
+    letter-spacing: -0.005em;
+  }
+
+  .download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    border-radius: 10px;
+    background: var(--accent);
+    color: var(--accent-ink);
+    font-weight: 600;
+    font-size: 14.5px;
+    text-decoration: none;
+    box-shadow: 0 2px 10px rgba(5, 150, 105, 0.3);
+  }
+
+  .download-btn:hover { filter: brightness(1.05); }
+
+  ol.steps {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    counter-reset: step;
+  }
+
+  ol.steps li {
+    counter-increment: step;
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 12px;
+    align-items: baseline;
+  }
+
+  ol.steps li::before {
+    content: counter(step);
+    font: 700 13px/28px ui-monospace, "SF Mono", Consolas, monospace;
+    width: 28px;
+    height: 28px;
+    text-align: center;
+    border-radius: 50%;
+    background: var(--surface-2);
+    color: var(--accent);
+    border: 1px solid var(--border);
+  }
+
+  ol.steps p { margin: 0; color: var(--text); }
+  ol.steps span.sub { display: block; color: var(--text-dim); font-size: 13.5px; margin-top: 2px; }
+
+  .note {
+    font-size: 13.5px;
+    color: var(--text-dim);
+    border-left: 2px solid var(--border);
+    padding-left: 14px;
+  }
+
+  footer {
+    font-size: 12.5px;
+    color: var(--text-dim);
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
+  }
+
+  .back-link {
+    display: inline-block;
+    font-size: 13.5px;
+    color: var(--text-dim);
+    text-decoration: none;
+  }
+
+  .back-link:hover { color: var(--accent-2); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back-link" href="/">← Torna a Prezzly</a>
+
+  <div>
+    <p class="eyebrow">strumento per Prezzly</p>
+    <h1>Zero click: l'estensione fa tutto da sola</h1>
+    <p class="lede">
+      Con l'estensione installata non serve più cliccare nessun segnalibro: appena apri
+      Google Lens da Prezzly, l'estrazione parte <strong>da sola</strong>. E quando premi
+      "Vedi prezzi di mercato", l'estensione cerca <strong>anche su Subito, Vinted e
+      Facebook Marketplace</strong> in schede invisibili in background, ed unisce tutto
+      alla stessa lista di risultati — senza che tu debba aprire nulla a mano.
+    </p>
+  </div>
+
+  <div class="warn">
+    <span>⚠️</span>
+    <div>
+      <b>Solo su computer (Chrome o Edge)</b>
+      Le estensioni non esistono su Chrome per Android/iPhone: da cellulare resta il
+      <a href="/bookmarklet.html">bookmarklet con un click</a>.
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>1. Scarica l'estensione</h2>
+    <p style="margin: 0 0 16px; color: var(--text-dim); font-size: 14px;">
+      Un piccolo file .zip, nessun account, nessun negozio online: la installi manualmente
+      in modalità sviluppatore, come qualsiasi estensione non pubblicata.
+    </p>
+    <a class="download-btn" href="/estensione.zip" download>⬇ Scarica estensione.zip</a>
+  </div>
+
+  <div class="card">
+    <h2>2. Installala in Chrome o Edge</h2>
+    <ol class="steps">
+      <li><p>Estrai lo zip scaricato in una cartella qualsiasi del computer (e lasciala lì: Chrome la legge sempre da quel punto).</p></li>
+      <li><p>Vai su <span class="mono">chrome://extensions</span> (su Edge: <span class="mono">edge://extensions</span>).
+        <span class="sub">Incollalo nella barra degli indirizzi.</span></p></li>
+      <li><p>Attiva <b>Modalità sviluppatore</b> (interruttore in alto a destra).</p></li>
+      <li><p>Clicca <b>Carica estensione non pacchettizzata</b> e seleziona la cartella estratta.</p></li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h2>3. Usala</h2>
+    <ol class="steps">
+      <li><p>Su Prezzly, carica una foto e clicca "Apri Google Lens" come sempre.
+        <span class="sub">Si apre Google Lens: non toccare nulla, l'estensione estrae i risultati da sola.</span></p></li>
+      <li><p>Oppure scrivi nome/marca e clicca "Vedi prezzi di mercato".
+        <span class="sub">Oltre a eBay, l'estensione apre in background (schede che non vedi mai) anche
+        Subito, Vinted e Marketplace, estrae i risultati e te li aggiunge alla stessa lista.</span></p></li>
+      <li><p>La scheda di Prezzly resta quella che stai già guardando: i risultati si aggiungono da soli,
+        di solito nel giro di qualche secondo.</p></li>
+    </ol>
+  </div>
+
+  <p class="note">
+    Come funziona: quando premi "Apri Google Lens" o "Vedi prezzi di mercato" su Prezzly,
+    l'estensione lo registra (solo in questo browser, nulla lascia il tuo computer). Per Lens
+    aspetta che tu apra la pagina; per Subito/Vinted/Marketplace le apre lei stessa in schede
+    non attive. In entrambi i casi, quando la pagina finisce di caricare il content script
+    controlla quella registrazione, prende l'HTML dei risultati e lo passa a Prezzly — poi,
+    per le schede in background, le richiude da sole. Se non hai appena avviato una ricerca da
+    Prezzly, l'estensione non fa nulla su questi siti — nessuna estrazione a sorpresa durante
+    la normale navigazione. Codice sorgente incluso nello zip, leggibile e senza offuscamenti.
+  </p>
+
+  <footer>Estensione non pubblicata sul Chrome Web Store: è per uso personale, installata manualmente.</footer>
+
+</div>
+</body>
+</html>

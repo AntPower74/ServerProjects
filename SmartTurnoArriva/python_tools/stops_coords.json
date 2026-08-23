@@ -1,0 +1,670 @@
+{
+    "GRUGLIASCO - via Libert\u00e0": {
+        "lat": 45.0444164,
+        "lng": 7.5886594
+    },
+    "BUSSOLENO": {
+        "lat": 45.1392706,
+        "lng": 7.1477166
+    },
+    "NICHELINO - Municipio": {
+        "lat": 44.9950785,
+        "lng": 7.6474531
+    },
+    "PINEROLO - via Saluzzo (ENEL)": {
+        "lat": 44.8873086,
+        "lng": 7.3319454
+    },
+    "CERONE - Bivio": {
+        "lat": 45.3991764,
+        "lng": 7.894143
+    },
+    "FORESTO": {
+        "lat": 44.7305959,
+        "lng": 7.7315678
+    },
+    "OULX - p.zza Garambois": {
+        "lat": 45.0311637,
+        "lng": 6.8325555
+    },
+    "VIGONE": {
+        "lat": 44.8430668,
+        "lng": 7.494438
+    },
+    "TORRE PELLICE": {
+        "lat": 44.8214685,
+        "lng": 7.2031685
+    },
+    "PISCINA - v. Umberto I ang. V. Airasca": {
+        "lat": 44.9194418,
+        "lng": 7.4262115
+    },
+    "RODALLO - Stazione FS": {
+        "lat": 45.2785176,
+        "lng": 7.8779724
+    },
+    "TROSSIERI": {
+        "lat": 44.9344724,
+        "lng": 7.1315201
+    },
+    "BIBIANA": {
+        "lat": 44.789116,
+        "lng": 7.2961651
+    },
+    "CASELLE T.SE - str.Aerop. (fronte n\u00b0 36)": {
+        "lat": 45.17674,
+        "lng": 7.65031
+    },
+    "BOBBIO PELLICE": {
+        "lat": 44.8079522,
+        "lng": 7.1167645
+    },
+    "SESTRIERE": {
+        "lat": 44.9584528,
+        "lng": 6.8786855
+    },
+    "CALUSO - Stazione FS": {
+        "lat": 45.2785176,
+        "lng": 7.8779724
+    },
+    "CHIOMONTE": {
+        "lat": 45.119542,
+        "lng": 6.985306
+    },
+    "CHABRIOLS": {
+        "lat": 44.8117406,
+        "lng": 7.1811041
+    },
+    "PINEROLO": {
+        "lat": 44.8873086,
+        "lng": 7.3319454
+    },
+    "TORINO Autostazione": {
+        "lat": 45.072144,
+        "lng": 7.6672439
+    },
+    "GRAVERE": {
+        "lat": 45.1061354,
+        "lng": 7.0274329
+    },
+    "PINEROLO - via Martiri XXI": {
+        "lat": 44.8873086,
+        "lng": 7.3319454
+    },
+    "PINEROLO - piazza Cavour": {
+        "lat": 44.8873086,
+        "lng": 7.3319454
+    },
+    "MONTALTO DORA": {
+        "lat": 45.490759,
+        "lng": 7.862818
+    },
+    "CASELLE T.SE - via Torino, 99": {
+        "lat": 45.17441,
+        "lng": 7.64887
+    },
+    "DUBBIONE - via Nazionale": {
+        "lat": 44.9403966,
+        "lng": 7.2327668
+    },
+    "STUPINIGI - Palazzina di Caccia": {
+        "lat": 44.9965748,
+        "lng": 7.606001
+    },
+    "BURIASCO": {
+        "lat": 44.8738576,
+        "lng": 7.4121922
+    },
+    "PIOBESI T.SE - c.so Italia 50d": {
+        "lat": 44.9348,
+        "lng": 7.61877
+    },
+    "BRUZOLO": {
+        "lat": 45.1422257,
+        "lng": 7.195648
+    },
+    "PINASCA": {
+        "lat": 44.94264,
+        "lng": 7.229115
+    },
+    "SAUZE DI CESANA": {
+        "lat": 44.9404829,
+        "lng": 6.858975
+    },
+    "CAPPELLA MORERI": {
+        "lat": 44.8377516,
+        "lng": 7.3019017
+    },
+    "S. MARGHERITA": {
+        "lat": 44.7966863,
+        "lng": 8.1633493
+    },
+    "CALUSO - via De Brissac": {
+        "lat": 45.304955,
+        "lng": 7.895722
+    },
+    "CASCINE VICA": {
+        "lat": 45.0721716,
+        "lng": 7.5441722
+    },
+    "PRALI GHIGO": {
+        "lat": 44.8890012,
+        "lng": 7.0467185
+    },
+    "SAN MARCO": {
+        "lat": 45.0220884,
+        "lng": 6.8372267
+    },
+    "AIRASCA - Stazione FS": {
+        "lat": 44.917042,
+        "lng": 7.484321
+    },
+    "SUSA": {
+        "lat": 45.1383808,
+        "lng": 7.0493387
+    },
+    "OULX FS": {
+        "lat": 45.0386958,
+        "lng": 6.8318335
+    },
+    "PINEROLO - Ist. Immacolata": {
+        "lat": 44.8873086,
+        "lng": 7.3319454
+    },
+    "PINEROLO - Centro Studi": {
+        "lat": 44.8873086,
+        "lng": 7.3319454
+    },
+    "EXILLES": {
+        "lat": 45.0973834,
+        "lng": 6.9290646
+    },
+    "CLAVIERE": {
+        "lat": 44.9387991,
+        "lng": 6.7502942
+    },
+    "CALUSO - Bivio Carolina (TEMP. SOPPRESSA)": {
+        "lat": 45.304955,
+        "lng": 7.895722
+    },
+    "SUSA - Stazione FS": {
+        "lat": 45.1383808,
+        "lng": 7.0493387
+    },
+    "SANT'ANTONINO - Stazione FS": {
+        "lat": 45.2517326,
+        "lng": 8.0476567
+    },
+    "GARINO": {
+        "lat": 44.9765146,
+        "lng": 7.6231299
+    },
+    "OULX - Liceo": {
+        "lat": 45.0330519,
+        "lng": 6.83251
+    },
+    "VINOVO - Tetti Rosa": {
+        "lat": 44.9594614,
+        "lng": 7.6243403
+    },
+    "CANTALUPA": {
+        "lat": 44.9531783,
+        "lng": 7.3363711
+    },
+    "PINEROLO Poste - via Bignone": {
+        "lat": 44.8866674,
+        "lng": 7.3461481
+    },
+    "LUSERNA - piazza Partigiani": {
+        "lat": 44.815437,
+        "lng": 7.251318
+    },
+    "PONTE RABBIOSO": {
+        "lat": 44.9416813,
+        "lng": 7.1015005
+    },
+    "VINOVO - v. S. Desiderio": {
+        "lat": 44.9482927,
+        "lng": 7.6338469
+    },
+    "S. GERMANO CHISONE": {
+        "lat": 44.89855,
+        "lng": 7.2411746
+    },
+    "APPENDINI": {
+        "lat": 44.8891417,
+        "lng": 7.8372111
+    },
+    "VINOVO - Ippodromo -Mondo Juve": {
+        "lat": 44.9482927,
+        "lng": 7.6338469
+    },
+    "PANCALIERI - via Re Umberto 106": {
+        "lat": 44.833441,
+        "lng": 7.585924
+    },
+    "ABBADIA ALPINA": {
+        "lat": 44.8857535,
+        "lng": 7.3080551
+    },
+    "CANDIA - p.zza VII Martiri": {
+        "lat": 45.327755,
+        "lng": 7.885121
+    },
+    "TORINO - strada del Drosso": {
+        "lat": 45.0138681,
+        "lng": 7.6205963
+    },
+    "MERCENASCO - via Nazionale": {
+        "lat": 45.3687309,
+        "lng": 7.8766232
+    },
+    "STELLA": {
+        "lat": 44.6326845,
+        "lng": 7.4964416
+    },
+    "SANGONE - Stazione FS": {
+        "lat": 45.0350787,
+        "lng": 7.4345899
+    },
+    "PIOBESI T.SE - Municipio": {
+        "lat": 44.9348,
+        "lng": 7.61877
+    },
+    "CHIVASSO - Bivio Boschetto (TEMP. SOPPRESSA)": {
+        "lat": 45.1898322,
+        "lng": 7.8860277
+    },
+    "TORINO - c.so Umbria/via Livorno": {
+        "lat": 45.08413,
+        "lng": 7.66849
+    },
+    "FRAZIONE RONCAGLIA": {
+        "lat": 45.0503199,
+        "lng": 8.4457609
+    },
+    "BRICHERASIO": {
+        "lat": 44.8234086,
+        "lng": 7.3052956
+    },
+    "NONE - via Roma": {
+        "lat": 44.933143,
+        "lng": 7.540121
+    },
+    "S. MARTINO": {
+        "lat": 45.1008236,
+        "lng": 7.7979174
+    },
+    "TO - Autostazione c.so Bolzano": {
+        "lat": 45.07166,
+        "lng": 7.66635
+    },
+    "PERRERO": {
+        "lat": 44.9382635,
+        "lng": 7.1146439
+    },
+    "TORINO - Piazza Carducci": {
+        "lat": 45.0677551,
+        "lng": 7.6824892
+    },
+    "SAUZE D'OULX": {
+        "lat": 45.0270271,
+        "lng": 6.8583464
+    },
+    "PINEROLO - Osp. Cottolengo": {
+        "lat": 44.8873086,
+        "lng": 7.3319454
+    },
+    "TO - Str Aeroporto (Ferm.\"VERONESE\")": {
+        "lat": 45.11243,
+        "lng": 7.66311
+    },
+    "PORTE": {
+        "lat": 44.8872933,
+        "lng": 7.2679711
+    },
+    "BAUDENASCA": {
+        "lat": 44.856791,
+        "lng": 7.3821216
+    },
+    "FENILS": {
+        "lat": 44.9812711,
+        "lng": 6.7980642
+    },
+    "CESANA": {
+        "lat": 44.9524431,
+        "lng": 6.7906727
+    },
+    "TORINO - via Nizza -Lingotto Fiere": {
+        "lat": 45.0677551,
+        "lng": 7.6824892
+    },
+    "IVREA - Porta Aosta": {
+        "lat": 45.4681238,
+        "lng": 7.8714734
+    },
+    "CERCENASCO": {
+        "lat": 44.861721,
+        "lng": 7.498657
+    },
+    "IVREA - Porta Vercelli": {
+        "lat": 45.3250081,
+        "lng": 8.4060743
+    },
+    "AMAZAS": {
+        "lat": 45.0103675,
+        "lng": 6.8230663
+    },
+    "FROSSASCO Bivio": {
+        "lat": 44.9251706,
+        "lng": 7.367429
+    },
+    "STRAMBINO - c.so Torino": {
+        "lat": 45.3824591,
+        "lng": 7.8850052
+    },
+    "TORINO - Porta Susa": {
+        "lat": 45.07166,
+        "lng": 7.66635
+    },
+    "OSASIO - piazza Castello": {
+        "lat": 44.871442,
+        "lng": 7.608024
+    },
+    "TORINO - c.so G. Cesare": {
+        "lat": 45.0677551,
+        "lng": 7.6824892
+    },
+    "ROLETTO": {
+        "lat": 44.9270247,
+        "lng": 7.3254812
+    },
+    "AIRASCA": {
+        "lat": 44.917042,
+        "lng": 7.484321
+    },
+    "VILLAR PELLICE": {
+        "lat": 44.8079035,
+        "lng": 7.1575796
+    },
+    "TORINO - Aeroporto (Caselle)": {
+        "lat": 45.1919,
+        "lng": 7.64271
+    },
+    "CALUSO - Liceo": {
+        "lat": 45.304955,
+        "lng": 7.895722
+    },
+    "VILLA DI PRALI": {
+        "lat": 44.904516,
+        "lng": 7.0556637
+    },
+    "OULX - piazza Garambois": {
+        "lat": 45.0307147,
+        "lng": 6.83278
+    },
+    "CHIVASSO - Bivio Mosche": {
+        "lat": 45.2194333,
+        "lng": 7.8905894
+    },
+    "CESANA TORINESE": {
+        "lat": 44.9524431,
+        "lng": 6.7906727
+    },
+    "CANDIOLO - Stazione FS": {
+        "lat": 44.959244,
+        "lng": 7.601722
+    },
+    "SEGGIOVIE": {
+        "lat": 45.7682817,
+        "lng": 8.0894018
+    },
+    "TO \u2013 via Stradella": {
+        "lat": 45.10197,
+        "lng": 7.66677
+    },
+    "AVIGLIANA - Stazione FS": {
+        "lat": 45.0779435,
+        "lng": 7.3983904
+    },
+    "TORINO - c.soUnione Soviet.-PoveriVecchi": {
+        "lat": 45.0677551,
+        "lng": 7.6824892
+    },
+    "VINOVO - Bivio Torrette": {
+        "lat": 44.9482927,
+        "lng": 7.6338469
+    },
+    "TORINO - c.so G.Cesare (SPAZIO CONAD)": {
+        "lat": 45.0677551,
+        "lng": 7.6824892
+    },
+    "TO - Via Stampini": {
+        "lat": 45.11,
+        "lng": 7.66342
+    },
+    "SETTIMO VITTONE": {
+        "lat": 45.54976,
+        "lng": 7.832216
+    },
+    "VALLO - Bivio (TEMP. SOPPRESSA)": {
+        "lat": 45.2247447,
+        "lng": 7.4955659
+    },
+    "CHIVASSO - Staz. FS Movicentro": {
+        "lat": 45.1898322,
+        "lng": 7.8860277
+    },
+    "TORINO - c.so Giulio Cesare": {
+        "lat": 45.1133701,
+        "lng": 7.7073543
+    },
+    "LUTHER KING - TEKFOR": {
+        "lat": 45.0662364,
+        "lng": 7.5648862
+    },
+    "TORINO - c.so G.Cesare (IVECO)": {
+        "lat": 45.0677551,
+        "lng": 7.6824892
+    },
+    "CHIVASSO - p.le Alfa-Lancia": {
+        "lat": 45.1898322,
+        "lng": 7.8860277
+    },
+    "IVREA - via Di Vittorio": {
+        "lat": 45.4606074,
+        "lng": 7.87308
+    },
+    "SAN BERNARDO - via Torino": {
+        "lat": 45.4386311,
+        "lng": 7.8785186
+    },
+    "TAVAGNASCO - Stazione FS": {
+        "lat": 45.5439654,
+        "lng": 7.8220415
+    },
+    "QUINCINETTO - largo Europa": {
+        "lat": 45.56296,
+        "lng": 7.807315
+    },
+    "PINEROLO - c.so Torino-MACUMBA": {
+        "lat": 44.8873086,
+        "lng": 7.3319454
+    },
+    "PINEROLO - p.za S. Croce": {
+        "lat": 44.8853744,
+        "lng": 7.3254476
+    },
+    "NICHELINO - Stazione FS": {
+        "lat": 44.9955182,
+        "lng": 7.6466179
+    },
+    "TORINO - Porta Nuova": {
+        "lat": 45.0620336,
+        "lng": 7.6783943
+    },
+    "STRAMBINO - Stazione FS": {
+        "lat": 45.381457,
+        "lng": 7.88572
+    },
+    "PRAGELATO": {
+        "lat": 44.9814858,
+        "lng": 6.9391604
+    },
+    "Bivio VILLAR FOCCHIARDO": {
+        "lat": 45.112641,
+        "lng": 7.2467984
+    },
+    "S.AMBROGIO": {
+        "lat": 45.1011329,
+        "lng": 7.3609493
+    },
+    "TORINO - p.za Bengasi": {
+        "lat": 45.0183018,
+        "lng": 7.6640495
+    },
+    "IVREA - Stazione FS": {
+        "lat": 45.4614431,
+        "lng": 7.8758412
+    },
+    "CAREMA - via Torino": {
+        "lat": 45.5829392,
+        "lng": 7.8078837
+    },
+    "Bivio MONCALIERI": {
+        "lat": 45.0161744,
+        "lng": 7.7412719
+    },
+    "CASELLE T.SE - via Torino (fronte n\u00b0 99)": {
+        "lat": 45.17441,
+        "lng": 7.64887
+    },
+    "VIRLE PIEMONTE - via Carignano": {
+        "lat": 44.864541,
+        "lng": 7.570123
+    },
+    "MERCENASCO - Stazione FS": {
+        "lat": 45.3571822,
+        "lng": 7.8823593
+    },
+    "MACELLO": {
+        "lat": 44.851139,
+        "lng": 7.39802
+    },
+    "PINEROLO - Stazione Olimpica": {
+        "lat": 44.8873086,
+        "lng": 7.3319454
+    },
+    "BRANDIZZO - casello A4": {
+        "lat": 45.1810546,
+        "lng": 7.8280918
+    },
+    "POMARETTO OSPEDALE": {
+        "lat": 44.9564888,
+        "lng": 7.1825635
+    },
+    "PANCALIERI - via P. Amedeo 62": {
+        "lat": 44.833441,
+        "lng": 7.585924
+    },
+    "MONTESTRUTTO": {
+        "lat": 45.5388577,
+        "lng": 7.837426
+    },
+    "PINEROLO - Stazione FS": {
+        "lat": 44.8873086,
+        "lng": 7.3319454
+    },
+    "VILLAR PEROSA - via Nazionale": {
+        "lat": 44.9190563,
+        "lng": 7.2502858
+    },
+    "VALLO - Chiesa": {
+        "lat": 45.2665145,
+        "lng": 7.8779311
+    },
+    "CHIOTTI": {
+        "lat": 44.3959263,
+        "lng": 7.1910776
+    },
+    "OULX - Stazione FS": {
+        "lat": 45.0386398,
+        "lng": 6.8318332
+    },
+    "BORGOFRANCO - Stazione FS": {
+        "lat": 45.5162562,
+        "lng": 7.8623579
+    },
+    "CANDIOLO - via Pinerolo 61/B": {
+        "lat": 44.959244,
+        "lng": 7.601722
+    },
+    "TORINO - c.so Unione Sov. 409 (p.zza Caio Mario)": {
+        "lat": 45.0677551,
+        "lng": 7.6824892
+    },
+    "CASELLE T.SE - str. Aeroporto, 44": {
+        "lat": 45.17674,
+        "lng": 7.65031
+    },
+    "FENESTRELLE - via Nazionale": {
+        "lat": 45.0360951,
+        "lng": 7.0495615
+    },
+    "IVREA - loc Banchette": {
+        "lat": 45.451803,
+        "lng": 7.8932496
+    },
+    "RIVA di Pinerolo": {
+        "lat": 44.8972641,
+        "lng": 7.406012
+    },
+    "BORGARO T.SE - via Lanzo ang via Martiri": {
+        "lat": 45.1515,
+        "lng": 7.65493
+    },
+    "Borgaro T.Se - Via Lanzo 159": {
+        "lat": 45.15238,
+        "lng": 7.65471
+    },
+    "Caselle T.Se- Str.Aeroporto 23": {
+        "lat": 45.17547,
+        "lng": 7.65064
+    },
+    "To - piazza carlo felice": {
+        "lat": 45.0620336,
+        "lng": 7.6783943
+    },
+    "TO - Via Stradella (Ferm.\"MAD.CAMPAGNA\")": {
+        "lat": 45.10197,
+        "lng": 7.66677
+    },
+    "TO - Via Stampini (Ferm.\"VERONESE\")": {
+        "lat": 45.11,
+        "lng": 7.66342
+    },
+    "Caselle Aeroporto": {
+        "lat": 45.1919,
+        "lng": 7.64271
+    },
+    "Caselle T.Se - Via Torino 99": {
+        "lat": 45.17441,
+        "lng": 7.64887
+    },
+    "Caselle T.Se- Str.Aeroporto 44": {
+        "lat": 45.17674,
+        "lng": 7.65031
+    },
+    "TO c.so Bolzano - stallo 13 (Porta Susa)": {
+        "lat": 45.07229,
+        "lng": 7.66714
+    },
+    "To - C.So Bolzano 42 (P. Susa)": {
+        "lat": 45.07166,
+        "lng": 7.66635
+    },
+    "Torino - C.So Umbria/Livorno": {
+        "lat": 45.08413,
+        "lng": 7.66849
+    }
+}

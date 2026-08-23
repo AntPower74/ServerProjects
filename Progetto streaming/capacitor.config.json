@@ -1,0 +1,14 @@
+{
+  "appId": "com.streampro.app",
+  "appName": "StreamPRO",
+  "webDir": "dist",
+  "overrideUserAgent": "IPTVSmartersPro",
+  "server": {
+    "cleartext": true
+  },
+  "plugins": {
+    "CapacitorHttp": {
+      "enabled": true
+    }
+  }
+}

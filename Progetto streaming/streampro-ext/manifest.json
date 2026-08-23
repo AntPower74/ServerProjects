@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "StreamPRO",
+  "version": "1.0",
+  "description": "App IPTV Nativa - Bypass Blocchi Server",
+  "action": {
+    "default_title": "Apri StreamPRO"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": [
+    "declarativeNetRequest",
+    "declarativeNetRequestFeedback",
+    "storage"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "ruleset_1",
+        "enabled": true,
+        "path": "rules.json"
+      }
+    ]
+  }
+}

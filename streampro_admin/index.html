@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8" />
+<title>StreamPRO — Pannello accessi</title>
+<style>
+  :root {
+    --bg: #0b2e1f;
+    --panel: rgba(255,255,255,0.06);
+    --border: rgba(255,255,255,0.15);
+    --text: #f8fafc;
+    --muted: #bfe8d4;
+    --accent: #22c55e;
+    --danger: #ef4444;
+    --highlight: #fbbf24;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    /* Il pannello si aggiorna già da solo ogni 20 secondi (vedi refreshAll):
+       il "tira giù per aggiornare" del browser su telefono ricaricherebbe
+       l'intera pagina, cancellando un modulo a metà compilazione. Disattivato
+       apposta, non serve più. */
+    overscroll-behavior-y: contain;
+  }
+  body {
+    margin: 0;
+    font-family: -apple-system, Segoe UI, Roboto, sans-serif;
+    background: radial-gradient(circle at 50% 95%, #0db53a 0%, #0d7e37 45%, #145b52 100%);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 24px;
+  }
+  h1 { font-size: 20px; margin-bottom: 4px; }
+  .sub { color: var(--muted); font-size: 13px; margin-bottom: 20px; }
+  .card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px;
+    max-width: 820px;
+    margin: 0 auto 20px;
+  }
+  .card h2 { font-size: 15px; }
+  .card .hint { font-size: 12px; color: var(--muted); margin-bottom: 14px; }
+  label { display: block; font-size: 12px; color: var(--muted); margin-bottom: 4px; margin-top: 10px; }
+  input[type=text], input[type=password], input[type=date] {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,0.08);
+    color: var(--text);
+    font-size: 14px;
+    color-scheme: dark;
+  }
+  input[type=file] { font-size: 12px; color: var(--muted); }
+  .row { display: flex; gap: 12px; }
+  .row > div { flex: 1; }
+  button {
+    cursor: pointer;
+    border: none;
+    border-radius: 999px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    background: var(--accent);
+    color: #06210f;
+  }
+  button.secondary { background: rgba(255,255,255,0.1); color: var(--text); }
+  button.danger { background: var(--danger); color: #fff; }
+  button.small { padding: 6px 12px; font-size: 12px; }
+  .actions { margin-top: 16px; display: flex; gap: 10px; }
+  table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+  th, td { text-align: left; padding: 8px 6px; font-size: 13px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; font-size: 11px; text-transform: uppercase; }
+  .code-cell { font-family: monospace; font-weight: 700; }
+  .badge { display: inline-block; padding: 3px 8px; border-radius: 999px; font-size: 11px; font-weight: 700; margin-right: 4px; margin-bottom: 4px; }
+  .badge.on { background: rgba(34,197,94,0.25); color: var(--accent); }
+  .badge.off { background: rgba(239,68,68,0.25); color: #fca5a5; }
+  .badge.pre { background: rgba(251,191,36,0.2); color: var(--highlight); }
+  .badge.expired { background: rgba(239,68,68,0.25); color: #fca5a5; }
+  .badge.device { background: rgba(96,165,250,0.2); color: #93c5fd; }
+  .badge.special { background: rgba(96,165,250,0.25); color: #93c5fd; }
+  .meta-line { font-size: 11px; color: var(--muted); margin-top: 2px; }
+  .status { font-size: 13px; color: var(--muted); margin-top: 10px; min-height: 18px; }
+  .status.error { color: #fca5a5; }
+  .status.ok { color: var(--accent); }
+  .btn-group { display: flex; flex-wrap: wrap; gap: 4px; }
+  .checkbox-row { display: flex !important; align-items: center; gap: 8px; margin-top: 14px; color: var(--text); font-size: 13px; }
+  .checkbox-row input { width: auto; }
+  .tabs { display: flex; gap: 6px; margin-bottom: 4px; flex-wrap: wrap; }
+  .tab-btn { background: rgba(255,255,255,0.06); color: var(--muted); font-size: 12px; padding: 6px 14px; }
+  .tab-btn.active { background: var(--accent); color: #06210f; }
+  .auto-refresh-note { text-align: center; font-size: 11px; color: var(--muted); margin-top: -10px; margin-bottom: 16px; }
+
+  .collapse-header { display: flex; justify-content: space-between; align-items: center; cursor: pointer; user-select: none; }
+  .chevron { color: var(--muted); font-size: 12px; transition: transform 0.15s; }
+  .chevron.open { transform: rotate(90deg); }
+  .collapse-body { display: none; margin-top: 10px; }
+  .collapse-body.open { display: block; }
+
+  .playlist-tabs { margin-top: 10px; }
+  .playlist-mode { display: none; }
+  .playlist-mode.active { display: block; }
+
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    padding: 20px;
+  }
+  .modal-overlay.active { display: flex; }
+  .modal-card {
+    background: #103826;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px;
+    width: min(440px, 100%);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .modal-card h3 { font-size: 15px; }
+  .modal-actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 6px; }
+</style>
+</head>
+<body>
+
+  <h1>StreamPRO — Pannello accessi</h1>
+  <p class="sub">Crea, abilita/disabilita ed elimina i codici di accesso. Questa pagina è locale: apri e chiudi liberamente, non serve un server.</p>
+  <p class="auto-refresh-note" id="auto-refresh-note">Aggiornamento automatico attivo</p>
+
+  <div class="card">
+    <h2>Richieste di prova</h2>
+    <p class="hint">Arrivano da sole quando qualcuno tocca "Richiedi accesso di prova" nell'app. Scegli la durata e attiva: si sblocca da sola sul suo telefono, senza bisogno di darle un codice. Niente viene mai cancellato automaticamente: scadute e rifiutate restano visibili nelle rispettive schede.</p>
+    <div class="tabs" id="trial-tabs">
+      <button class="tab-btn active" data-filter="pending">In attesa</button>
+      <button class="tab-btn" data-filter="active">Attive</button>
+      <button class="tab-btn" data-filter="expired">Scadute</button>
+      <button class="tab-btn" data-filter="rejected">Rifiutate</button>
+    </div>
+    <div id="trials-wrap">
+      <table>
+        <thead>
+          <tr><th>Nome</th><th>Richiesta</th><th>Stato</th><th></th></tr>
+        </thead>
+        <tbody id="trials-tbody"></tbody>
+      </table>
+    </div>
+    <div class="status" id="trials-status"></div>
+  </div>
+
+  <div class="card">
+    <div class="collapse-header" id="create-toggle">
+      <h2>Nuovo codice</h2>
+      <span class="chevron" id="create-chevron">▸</span>
+    </div>
+
+    <div class="collapse-body" id="create-body">
+      <p class="hint">Il codice si lega automaticamente al primo telefono su cui viene usato (Android non permette di leggere il vero indirizzo MAC da un'app, questo è l'equivalente pratico: non riutilizzabile su un secondo telefono finché non lo sblocchi da qui).</p>
+      <div class="row">
+        <div>
+          <label>Codice</label>
+          <input type="text" id="new-code" placeholder="Generato automaticamente se lasci vuoto" />
+        </div>
+        <div>
+          <label>Nome cliente</label>
+          <input type="text" id="new-label" placeholder="Es. Mario" />
+        </div>
+        <div>
+          <label>Scadenza (facoltativa)</label>
+          <input type="date" id="new-expiry" />
+        </div>
+      </div>
+
+      <label class="checkbox-row"><input type="checkbox" id="new-special" /> Codice speciale (chi lo usa vede in app un tasto per aprire questo pannello dal telefono)</label>
+
+      <label style="margin-top:16px;">Playlist preattiva (facoltativa — se compilata, l'utente la vedrà pronta all'uso senza vedere le credenziali)</label>
+      <div class="tabs playlist-tabs" id="new-playlist-tabs">
+        <button type="button" class="tab-btn active" data-mode="xtream">Utente Xtream</button>
+        <button type="button" class="tab-btn" data-mode="url">Link diretto</button>
+        <button type="button" class="tab-btn" data-mode="file">File</button>
+      </div>
+      <div class="playlist-mode active" id="new-playlist-xtream">
+        <div class="row">
+          <div>
+            <label>Server (host)</label>
+            <input type="text" id="new-host" placeholder="http://server.com:8080" />
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            <label>Utente</label>
+            <input type="text" id="new-user" />
+          </div>
+          <div>
+            <label>Password</label>
+            <input type="text" id="new-pass" />
+          </div>
+        </div>
+      </div>
+      <div class="playlist-mode" id="new-playlist-url">
+        <label>Link alla playlist (.m3u/.m3u8)</label>
+        <input type="text" id="new-playlist-url-input" placeholder="https://.../playlist.m3u8" />
+      </div>
+      <div class="playlist-mode" id="new-playlist-file">
+        <label>File playlist (.m3u/.m3u8)</label>
+        <input type="file" id="new-playlist-file-input" accept=".m3u,.m3u8,text/plain" />
+        <p class="hint" id="new-playlist-file-status" style="margin-top:6px;"></p>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button id="create-btn">Crea codice</button>
+    </div>
+    <div class="status" id="create-status"></div>
+  </div>
+
+  <div class="card">
+    <h2>Codici esistenti</h2>
+    <p class="hint">Nessun codice viene mai eliminato: "Disabilita" lo sospende senza perderlo, così a un rinnovo puoi riattivare (o allungare la scadenza del) lo stesso codice invece di crearne uno nuovo.</p>
+    <div class="tabs" id="codes-tabs">
+      <button class="tab-btn active" data-filter="active">Attivi</button>
+      <button class="tab-btn" data-filter="expired">Scaduti</button>
+    </div>
+    <div id="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Codice</th><th>Cliente</th><th>Stato</th><th></th></tr>
+        </thead>
+        <tbody id="codes-tbody"></tbody>
+      </table>
+    </div>
+    <div class="status" id="list-status"></div>
+  </div>
+
+  <!-- position:fixed a coordinate reali (non fuori schermo): su desktop il
+       calendario nativo si apre come popup ancorato alla posizione di questo
+       input, quindi se fosse fuori schermo (es. left:-9999px) il popup si
+       aprirebbe lì, invisibile — su mobile invece è un overlay indipendente
+       dalla posizione, ecco perché lì "funzionava" comunque. -->
+  <input type="date" id="expiry-picker" style="position:fixed; top:0; left:0; width:1px; height:1px; opacity:0; pointer-events:none;" />
+
+  <div id="playlist-modal" class="modal-overlay">
+    <div class="modal-card">
+      <h3>Playlist per <span id="playlist-modal-code"></span></h3>
+      <div class="tabs" id="edit-playlist-tabs">
+        <button type="button" class="tab-btn active" data-mode="url">Link diretto</button>
+        <button type="button" class="tab-btn" data-mode="file">File</button>
+      </div>
+      <div class="playlist-mode active" id="edit-playlist-url">
+        <input type="text" id="edit-playlist-url-input" placeholder="https://.../playlist.m3u8" />
+      </div>
+      <div class="playlist-mode" id="edit-playlist-file">
+        <input type="file" id="edit-playlist-file-input" accept=".m3u,.m3u8,text/plain" />
+        <p class="hint" id="edit-playlist-file-status" style="margin-top:6px;"></p>
+      </div>
+      <div class="modal-actions">
+        <button class="secondary" id="playlist-modal-remove">Rimuovi playlist</button>
+        <button class="secondary" id="playlist-modal-cancel">Annulla</button>
+        <button id="playlist-modal-save">Salva</button>
+      </div>
+    </div>
+  </div>
+
+<script>
+  // Le richieste di prova arrivano da chiunque, senza autenticazione
+  // (submitTrialRequest lato app): un nome tipo "<img src=x onerror=...>"
+  // eseguirebbe JS in questa pagina admin se inserito senza escape.
+  function escapeHtml(str) {
+    return String(str ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  }
+
+  const ACCESS_CODES_URL = 'https://streampro.cupto.it/api/access-blob';
+
+  async function fetchBlob() {
+    const res = await fetch(ACCESS_CODES_URL, { cache: 'no-store' });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const data = await res.json();
+    return { codes: (data && data.codes) || {}, devices: (data && data.devices) || {} };
+  }
+
+  async function saveBlob(blob) {
+    const res = await fetch(ACCESS_CODES_URL, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(blob)
+    });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+  }
+
+  // Compatibilità con il resto dello script sotto, che lavora solo su "codes"
+  async function fetchCodes() {
+    return (await fetchBlob()).codes;
+  }
+  async function saveCodes(codes) {
+    const blob = await fetchBlob();
+    blob.codes = codes;
+    await saveBlob(blob);
+  }
+
+  // Formato più complesso di prima (XXXX-XXXX-XXXX, alfabeto senza caratteri
+  // ambigui tipo 0/O o 1/I/L) per rendere i codici più difficili da indovinare
+  // o digitare a caso.
+  function randomCode() {
+    const chars = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789';
+    const group = () => {
+      let s = '';
+      for (let i = 0; i < 4; i++) s += chars[Math.floor(Math.random() * chars.length)];
+      return s;
+    };
+    return `${group()}-${group()}-${group()}`;
+  }
+
+  function setStatus(el, msg, cls) {
+    el.textContent = msg;
+    el.className = 'status' + (cls ? ' ' + cls : '');
+  }
+
+  function formatDate(iso) {
+    if (!iso) return '';
+    const d = new Date(iso);
+    return d.toLocaleDateString('it-IT');
+  }
+
+  function formatDateTime(iso) {
+    if (!iso) return '';
+    return new Date(iso).toLocaleString('it-IT');
+  }
+
+  function isExpired(entry) {
+    return !!(entry.expiresAt && new Date(entry.expiresAt).getTime() < Date.now());
+  }
+
+  // jsonblob (piano gratuito) ha un limite di 10 KB per l'intero archivio
+  // codici+richieste: una playlist intera non ci starebbe mai. Per questo un
+  // file caricato qui non viene salvato per intero, ma prima messo su
+  // tmpfiles.org (stesso servizio già usato per distribuire gli APK) e nel
+  // codice si salva solo il link diretto risultante, poche decine di byte.
+  async function uploadPlaylistFile(file) {
+    // tmpfiles.org rifiuta ("Invalid file name.") qualunque nome con un solo
+    // carattere prima dell'estensione (es. "9.m3u", "x.m3u") — scoperto solo
+    // provando con curl, non è documentato. Per non far ripiombare l'admin in
+    // un errore criptico, si allunga qui il nome se troppo corto, prima di
+    // caricare.
+    const dot = file.name.lastIndexOf('.');
+    const base = dot > 0 ? file.name.slice(0, dot) : file.name;
+    const ext = dot > 0 ? file.name.slice(dot) : '';
+    const safeName = base.length < 2 ? `playlist-${base}${ext}` : file.name;
+    const safeFile = safeName === file.name ? file : new File([file], safeName, { type: file.type });
+
+    const form = new FormData();
+    form.append('file', safeFile);
+    const uploadRes = await fetch('https://tmpfiles.org/api/v1/upload', { method: 'POST', body: form });
+    const uploadData = await uploadRes.json();
+    if (!uploadData || uploadData.status !== 'success') throw new Error('Caricamento fallito');
+    const landingUrl = uploadData.data.url;
+    // La pagina di destinazione di tmpfiles.org non manda header CORS, quindi
+    // il browser non può leggerla direttamente per estrarne il link binario
+    // vero. Lo fa il nostro backend (resolve-tmpfiles), lato server dove il
+    // CORS del browser non si applica — prima usava un proxy di terze parti
+    // (allorigins.win) che ha smesso di mandare i propri header CORS.
+    const resolveRes = await fetch(`https://streampro.cupto.it/api/resolve-tmpfiles?url=${encodeURIComponent(landingUrl)}`);
+    const resolveData = await resolveRes.json();
+    if (!resolveRes.ok || !resolveData.url) throw new Error(resolveData.error || 'Link diretto non trovato');
+    return resolveData.url;
+  }
+
+  // ---------- Codice esistenti ----------
+
+  let codesFilter = 'active';
+
+  function codeCategory(entry) {
+    return isExpired(entry) ? 'expired' : 'active';
+  }
+
+  async function renderTable() {
+    const tbody = document.getElementById('codes-tbody');
+    const statusEl = document.getElementById('list-status');
+    setStatus(statusEl, 'Caricamento...', '');
+    try {
+      const codes = await fetchCodes();
+      const entries = Object.entries(codes)
+        .filter(([, entry]) => codeCategory(entry) === codesFilter)
+        .sort((a, b) => (b[1].createdAt || '').localeCompare(a[1].createdAt || ''));
+      tbody.innerHTML = '';
+      if (entries.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="4" style="color:var(--muted)">Nessun codice in questa scheda</td></tr>';
+      }
+      entries.forEach(([code, entry]) => {
+        const tr = document.createElement('tr');
+        const hasPlaylist = (entry.host && entry.username && entry.password) || entry.playlistUrl;
+        const expired = isExpired(entry);
+        const badges = [];
+        badges.push(`<span class="badge ${entry.enabled ? 'on' : 'off'}">${entry.enabled ? 'Abilitato' : 'Disabilitato'}</span>`);
+        if (expired) badges.push('<span class="badge expired">Scaduto</span>');
+        if (hasPlaylist) badges.push('<span class="badge pre">playlist</span>');
+        if (entry.special) badges.push('<span class="badge special">speciale</span>');
+        if (entry.deviceId) badges.push('<span class="badge device">dispositivo agganciato</span>');
+
+        const metaLines = [];
+        if (entry.expiresAt) metaLines.push(`Scade: ${formatDate(entry.expiresAt)}`);
+        metaLines.push(entry.deviceId ? 'Dispositivo: agganciato' : 'Dispositivo: libero (non ancora usato)');
+
+        tr.innerHTML = `
+          <td class="code-cell">${escapeHtml(code)}</td>
+          <td>${escapeHtml(entry.label) || ''}<div class="meta-line">${metaLines.join(' · ')}</div></td>
+          <td>${badges.join('')}</td>
+          <td>
+            <div class="btn-group">
+              <button class="small secondary toggle-btn">${entry.enabled ? 'Disabilita' : 'Abilita'}</button>
+              <button class="small secondary expiry-btn">Scadenza</button>
+              <button class="small secondary playlist-btn">Playlist</button>
+              <button class="small secondary special-btn">${entry.special ? 'Togli speciale' : 'Rendi speciale'}</button>
+              <button class="small secondary device-btn" ${entry.deviceId ? '' : 'disabled'}>Sblocca dispositivo</button>
+              <button class="small secondary copy-btn">Copia</button>
+              <button class="small secondary share-btn">Condividi</button>
+            </div>
+          </td>
+        `;
+        tr.querySelector('.toggle-btn').addEventListener('click', async () => {
+          const c = await fetchCodes();
+          c[code].enabled = !c[code].enabled;
+          await saveCodes(c);
+          renderTable();
+        });
+        tr.querySelector('.expiry-btn').addEventListener('click', () => openExpiryPicker(code, entry.expiresAt));
+        tr.querySelector('.playlist-btn').addEventListener('click', () => openPlaylistModal(code, entry));
+        tr.querySelector('.special-btn').addEventListener('click', async () => {
+          const c = await fetchCodes();
+          c[code].special = !c[code].special;
+          await saveCodes(c);
+          renderTable();
+        });
+        tr.querySelector('.device-btn').addEventListener('click', async () => {
+          if (!confirm(`Sbloccare "${code}" dal dispositivo attuale? Potrà essere riattivato su un telefono diverso.`)) return;
+          const c = await fetchCodes();
+          delete c[code].deviceId;
+          await saveCodes(c);
+          renderTable();
+        });
+        tr.querySelector('.copy-btn').addEventListener('click', () => {
+          navigator.clipboard.writeText(code).catch(() => {});
+        });
+        tr.querySelector('.share-btn').addEventListener('click', () => shareCode(code));
+        tbody.appendChild(tr);
+      });
+      setStatus(statusEl, '', '');
+    } catch (err) {
+      setStatus(statusEl, 'Errore di caricamento: ' + err.message, 'error');
+    }
+  }
+
+  document.getElementById('codes-tabs').addEventListener('click', (e) => {
+    const btn = e.target.closest('.tab-btn');
+    if (!btn) return;
+    codesFilter = btn.dataset.filter;
+    document.querySelectorAll('#codes-tabs .tab-btn').forEach(b => b.classList.toggle('active', b === btn));
+    renderTable();
+  });
+
+  // Calendario nativo al posto del prompt testuale: un unico input date
+  // nascosto, riusato per ogni riga, così non serve crearne uno per codice.
+  // showPicker() su alcuni browser lancia un'eccezione silenziosa quando
+  // l'input è posizionato fuori schermo (come qui) invece di aprire il
+  // calendario: senza gestirla il tasto sembra semplicemente rotto. Prova
+  // showPicker(), poi click(), e come ultima spiaggia un prompt testuale
+  // così il tasto fa comunque qualcosa in ogni browser.
+  const expiryPicker = document.getElementById('expiry-picker');
+  let expiryPickerTargetCode = null;
+  async function applyExpiryValue(code, dateStr) {
+    const c = await fetchCodes();
+    if (dateStr) {
+      c[code].expiresAt = new Date(dateStr + 'T23:59:59').toISOString();
+    } else {
+      delete c[code].expiresAt;
+    }
+    await saveCodes(c);
+    renderTable();
+  }
+  function openExpiryPicker(code, currentIso) {
+    expiryPickerTargetCode = code;
+    expiryPicker.value = currentIso ? currentIso.slice(0, 10) : '';
+    try {
+      if (expiryPicker.showPicker) {
+        expiryPicker.showPicker();
+        return;
+      }
+    } catch (e) {
+      console.warn('showPicker() fallito, provo il fallback:', e);
+    }
+    try {
+      expiryPicker.focus();
+      expiryPicker.click();
+    } catch (e) {
+      console.warn('click() fallback fallito, uso il prompt testuale:', e);
+      const input = prompt('Scadenza (AAAA-MM-GG, vuoto per nessuna scadenza):', currentIso ? currentIso.slice(0, 10) : '');
+      if (input === null) return;
+      const trimmed = input.trim();
+      if (trimmed && !/^\d{4}-\d{2}-\d{2}$/.test(trimmed)) {
+        alert('Formato non valido, usa AAAA-MM-GG.');
+        return;
+      }
+      applyExpiryValue(code, trimmed || null);
+    }
+  }
+  expiryPicker.addEventListener('change', async () => {
+    if (!expiryPickerTargetCode) return;
+    await applyExpiryValue(expiryPickerTargetCode, expiryPicker.value || null);
+  });
+
+  // ---------- Modale "Playlist" per un codice già esistente ----------
+
+  const playlistModal = document.getElementById('playlist-modal');
+  const playlistModalCodeEl = document.getElementById('playlist-modal-code');
+  const editPlaylistTabs = document.getElementById('edit-playlist-tabs');
+  const editPlaylistUrlInput = document.getElementById('edit-playlist-url-input');
+  const editPlaylistFileInput = document.getElementById('edit-playlist-file-input');
+  const editPlaylistFileStatus = document.getElementById('edit-playlist-file-status');
+  let editPlaylistMode = 'url';
+  let editPlaylistTargetCode = null;
+  let editPlaylistUploadedUrl = null;
+
+  function openPlaylistModal(code, entry) {
+    editPlaylistTargetCode = code;
+    editPlaylistUploadedUrl = null;
+    playlistModalCodeEl.textContent = code;
+    editPlaylistUrlInput.value = entry.playlistUrl || '';
+    editPlaylistFileInput.value = '';
+    editPlaylistFileStatus.textContent = '';
+    editPlaylistMode = 'url';
+    editPlaylistTabs.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.mode === 'url'));
+    document.getElementById('edit-playlist-url').classList.add('active');
+    document.getElementById('edit-playlist-file').classList.remove('active');
+    playlistModal.classList.add('active');
+  }
+  editPlaylistTabs.addEventListener('click', (e) => {
+    const btn = e.target.closest('.tab-btn');
+    if (!btn) return;
+    editPlaylistMode = btn.dataset.mode;
+    editPlaylistTabs.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b === btn));
+    document.getElementById('edit-playlist-url').classList.toggle('active', editPlaylistMode === 'url');
+    document.getElementById('edit-playlist-file').classList.toggle('active', editPlaylistMode === 'file');
+  });
+  editPlaylistFileInput.addEventListener('change', async () => {
+    const file = editPlaylistFileInput.files[0];
+    if (!file) return;
+    editPlaylistFileStatus.textContent = 'Caricamento...';
+    try {
+      editPlaylistUploadedUrl = await uploadPlaylistFile(file);
+      editPlaylistFileStatus.textContent = `Caricato: ${file.name}`;
+    } catch (err) {
+      editPlaylistFileStatus.textContent = 'Errore: ' + err.message;
+      editPlaylistUploadedUrl = null;
+    }
+  });
+  document.getElementById('playlist-modal-cancel').addEventListener('click', () => playlistModal.classList.remove('active'));
+  document.getElementById('playlist-modal-remove').addEventListener('click', async () => {
+    if (!editPlaylistTargetCode) return;
+    const c = await fetchCodes();
+    delete c[editPlaylistTargetCode].playlistUrl;
+    delete c[editPlaylistTargetCode].host;
+    delete c[editPlaylistTargetCode].username;
+    delete c[editPlaylistTargetCode].password;
+    await saveCodes(c);
+    playlistModal.classList.remove('active');
+    renderTable();
+  });
+  document.getElementById('playlist-modal-save').addEventListener('click', async () => {
+    if (!editPlaylistTargetCode) return;
+    const url = editPlaylistMode === 'file' ? editPlaylistUploadedUrl : editPlaylistUrlInput.value.trim();
+    if (!url) {
+      alert(editPlaylistMode === 'file' ? 'Carica prima un file' : 'Inserisci un link');
+      return;
+    }
+    const c = await fetchCodes();
+    c[editPlaylistTargetCode].playlistUrl = url;
+    // Un codice ha una sola playlist attiva alla volta: impostando un link
+    // diretto si tolgono eventuali credenziali Xtream lasciate da prima.
+    delete c[editPlaylistTargetCode].host;
+    delete c[editPlaylistTargetCode].username;
+    delete c[editPlaylistTargetCode].password;
+    await saveCodes(c);
+    playlistModal.classList.remove('active');
+    renderTable();
+  });
+
+  // ---------- Richieste di prova ----------
+
+  // Categoria effettiva di una richiesta: 'pending' e 'rejected' sono valori
+  // salvati (status), 'expired' invece è calcolato al volo confrontando
+  // expiresAt con adesso — così una voce "attiva" scaduta finisce da sola
+  // nella scheda giusta senza bisogno di un altro stato da tenere aggiornato.
+  function trialCategory(entry) {
+    if (entry.status === 'rejected') return 'rejected';
+    if (entry.status === 'active') return isExpired(entry) ? 'expired' : 'active';
+    return 'pending';
+  }
+
+  let trialFilter = 'pending';
+
+  async function renderTrials() {
+    const tbody = document.getElementById('trials-tbody');
+    const statusEl = document.getElementById('trials-status');
+    setStatus(statusEl, 'Caricamento...', '');
+    try {
+      const blob = await fetchBlob();
+      const entries = Object.entries(blob.devices)
+        .filter(([, entry]) => trialCategory(entry) === trialFilter)
+        .sort((a, b) => (b[1].requestedAt || '').localeCompare(a[1].requestedAt || ''));
+      tbody.innerHTML = '';
+      if (entries.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="4" style="color:var(--muted)">Nessuna richiesta in questa scheda</td></tr>';
+        setStatus(statusEl, '', '');
+        return;
+      }
+      entries.forEach(([deviceId, entry]) => {
+        const tr = document.createElement('tr');
+        const category = trialCategory(entry);
+        const badgeByCategory = {
+          pending: '<span class="badge off">In attesa</span>',
+          active: '<span class="badge on">Attiva</span>',
+          expired: '<span class="badge expired">Scaduta</span>',
+          rejected: '<span class="badge expired">Rifiutata</span>'
+        };
+        const expiryLine = entry.expiresAt ? `<div class="meta-line">Scade: ${formatDate(entry.expiresAt)}</div>` : '';
+
+        let actionsHtml;
+        if (category === 'pending') {
+          actionsHtml = `
+            <select class="small duration-select">
+              <option value="1">1 giorno</option>
+              <option value="3">3 giorni</option>
+              <option value="7" selected>7 giorni</option>
+              <option value="14">14 giorni</option>
+              <option value="30">30 giorni</option>
+              <option value="0">Senza scadenza</option>
+            </select>
+            <button class="small activate-btn">Attiva</button>
+            <button class="small danger reject-btn">Rifiuta</button>
+          `;
+        } else if (category === 'active') {
+          actionsHtml = `
+            <select class="small duration-select">
+              <option value="1">1 giorno</option>
+              <option value="3">3 giorni</option>
+              <option value="7" selected>7 giorni</option>
+              <option value="14">14 giorni</option>
+              <option value="30">30 giorni</option>
+              <option value="0">Senza scadenza</option>
+            </select>
+            <button class="small activate-btn">Rinnova</button>
+            <button class="small danger reject-btn">Disabilita</button>
+          `;
+        } else {
+          actionsHtml = `<button class="small secondary reactivate-btn">Riporta in attesa</button>`;
+        }
+
+        tr.innerHTML = `
+          <td>${escapeHtml(entry.label) || '(senza nome)'}<div class="meta-line">${deviceId.slice(0, 8)}…</div></td>
+          <td>${formatDateTime(entry.requestedAt)}${expiryLine}</td>
+          <td>${badgeByCategory[category]}</td>
+          <td><div class="btn-group">${actionsHtml}</div></td>
+        `;
+        const activateBtn = tr.querySelector('.activate-btn');
+        if (activateBtn) activateBtn.addEventListener('click', async () => {
+          const days = parseInt(tr.querySelector('.duration-select').value, 10);
+          const blob2 = await fetchBlob();
+          const target = blob2.devices[deviceId] || {};
+          target.status = 'active';
+          target.activatedAt = new Date().toISOString();
+          if (days > 0) {
+            target.expiresAt = new Date(Date.now() + days * 86400000).toISOString();
+          } else {
+            delete target.expiresAt;
+          }
+          blob2.devices[deviceId] = target;
+          await saveBlob(blob2);
+          renderTrials();
+        });
+        const rejectBtn = tr.querySelector('.reject-btn');
+        if (rejectBtn) rejectBtn.addEventListener('click', async () => {
+          const blob2 = await fetchBlob();
+          const target = blob2.devices[deviceId] || {};
+          target.status = 'rejected';
+          target.rejectedAt = new Date().toISOString();
+          blob2.devices[deviceId] = target;
+          await saveBlob(blob2);
+          renderTrials();
+        });
+        const reactivateBtn = tr.querySelector('.reactivate-btn');
+        if (reactivateBtn) reactivateBtn.addEventListener('click', async () => {
+          const blob2 = await fetchBlob();
+          const target = blob2.devices[deviceId] || {};
+          target.status = 'pending';
+          delete target.expiresAt;
+          blob2.devices[deviceId] = target;
+          await saveBlob(blob2);
+          renderTrials();
+        });
+        tbody.appendChild(tr);
+      });
+      setStatus(statusEl, '', '');
+    } catch (err) {
+      setStatus(statusEl, 'Errore di caricamento: ' + err.message, 'error');
+    }
+  }
+
+  document.getElementById('trial-tabs').addEventListener('click', (e) => {
+    const btn = e.target.closest('.tab-btn');
+    if (!btn) return;
+    trialFilter = btn.dataset.filter;
+    document.querySelectorAll('#trial-tabs .tab-btn').forEach(b => b.classList.toggle('active', b === btn));
+    renderTrials();
+  });
+
+  // ---------- Nuovo codice (sezione a comparsa) ----------
+
+  const createToggle = document.getElementById('create-toggle');
+  const createBody = document.getElementById('create-body');
+  const createChevron = document.getElementById('create-chevron');
+  createToggle.addEventListener('click', () => {
+    createBody.classList.toggle('open');
+    createChevron.classList.toggle('open');
+  });
+
+  let newPlaylistMode = 'xtream';
+  let newPlaylistUploadedUrl = null;
+  document.getElementById('new-playlist-tabs').addEventListener('click', (e) => {
+    const btn = e.target.closest('.tab-btn');
+    if (!btn) return;
+    newPlaylistMode = btn.dataset.mode;
+    document.querySelectorAll('#new-playlist-tabs .tab-btn').forEach(b => b.classList.toggle('active', b === btn));
+    document.getElementById('new-playlist-xtream').classList.toggle('active', newPlaylistMode === 'xtream');
+    document.getElementById('new-playlist-url').classList.toggle('active', newPlaylistMode === 'url');
+    document.getElementById('new-playlist-file').classList.toggle('active', newPlaylistMode === 'file');
+  });
+  const newPlaylistFileInput = document.getElementById('new-playlist-file-input');
+  const newPlaylistFileStatus = document.getElementById('new-playlist-file-status');
+  newPlaylistFileInput.addEventListener('change', async () => {
+    const file = newPlaylistFileInput.files[0];
+    if (!file) return;
+    newPlaylistFileStatus.textContent = 'Caricamento...';
+    try {
+      newPlaylistUploadedUrl = await uploadPlaylistFile(file);
+      newPlaylistFileStatus.textContent = `Caricato: ${file.name}`;
+    } catch (err) {
+      newPlaylistFileStatus.textContent = 'Errore: ' + err.message;
+      newPlaylistUploadedUrl = null;
+    }
+  });
+
+  document.getElementById('create-btn').addEventListener('click', async () => {
+    // Se il modulo è ancora chiuso al primo click, lo apre e basta: evita di
+    // creare per sbaglio un codice vuoto senza che l'admin l'abbia notato.
+    if (!createBody.classList.contains('open')) {
+      createBody.classList.add('open');
+      createChevron.classList.add('open');
+      return;
+    }
+
+    const statusEl = document.getElementById('create-status');
+    const codeInput = document.getElementById('new-code');
+    const labelInput = document.getElementById('new-label');
+    const expiryInput = document.getElementById('new-expiry');
+    const hostInput = document.getElementById('new-host');
+    const userInput = document.getElementById('new-user');
+    const passInput = document.getElementById('new-pass');
+    const specialInput = document.getElementById('new-special');
+    const urlInput = document.getElementById('new-playlist-url-input');
+
+    const code = (codeInput.value.trim() || randomCode()).toUpperCase();
+    const label = labelInput.value.trim();
+    const expiry = expiryInput.value;
+    const special = specialInput.checked;
+
+    setStatus(statusEl, 'Salvataggio...', '');
+    try {
+      const codes = await fetchCodes();
+      codes[code] = {
+        enabled: true,
+        label,
+        createdAt: new Date().toISOString()
+      };
+      if (expiry) {
+        codes[code].expiresAt = new Date(expiry + 'T23:59:59').toISOString();
+      }
+      if (special) {
+        codes[code].special = true;
+      }
+      if (newPlaylistMode === 'xtream') {
+        const host = hostInput.value.trim();
+        const username = userInput.value.trim();
+        const password = passInput.value.trim();
+        if (host && username && password) {
+          codes[code].host = host;
+          codes[code].username = username;
+          codes[code].password = password;
+        }
+      } else if (newPlaylistMode === 'url') {
+        const url = urlInput.value.trim();
+        if (url) codes[code].playlistUrl = url;
+      } else if (newPlaylistMode === 'file') {
+        if (!newPlaylistUploadedUrl) {
+          setStatus(statusEl, 'Carica prima il file playlist, o cambia scheda.', 'error');
+          return;
+        }
+        codes[code].playlistUrl = newPlaylistUploadedUrl;
+      }
+      await saveCodes(codes);
+      setStatus(statusEl, `Codice "${code}" creato.`, 'ok');
+      codeInput.value = '';
+      labelInput.value = '';
+      expiryInput.value = '';
+      hostInput.value = '';
+      userInput.value = '';
+      passInput.value = '';
+      urlInput.value = '';
+      newPlaylistFileInput.value = '';
+      newPlaylistFileStatus.textContent = '';
+      newPlaylistUploadedUrl = null;
+      specialInput.checked = false;
+      renderTable();
+      shareCode(code);
+    } catch (err) {
+      setStatus(statusEl, 'Errore: ' + err.message, 'error');
+    }
+  });
+
+  // Condivisione immediata via social (WhatsApp, ecc.) tramite la Web Share
+  // API nativa del telefono/browser; se non è disponibile (es. desktop
+  // senza supporto) copia il codice negli appunti come ripiego.
+  async function shareCode(code) {
+    const text = `Il tuo codice di accesso StreamPRO: ${code}`;
+    if (navigator.share) {
+      try {
+        await navigator.share({ title: 'Codice StreamPRO', text });
+        return;
+      } catch (e) {
+        // utente ha annullato la condivisione o non è supportata: ripiega sotto
+      }
+    }
+    try {
+      await navigator.clipboard.writeText(text);
+      alert('Condivisione non disponibile: codice copiato negli appunti.');
+    } catch (e) {
+      alert(text);
+    }
+  }
+
+  async function refreshAll() {
+    await Promise.all([renderTable(), renderTrials()]);
+    const note = document.getElementById('auto-refresh-note');
+    note.textContent = `Aggiornamento automatico attivo — ultimo alle ${new Date().toLocaleTimeString('it-IT')}`;
+  }
+
+  refreshAll();
+  // Aggiorna da solo ogni 20 secondi, così le nuove richieste di prova
+  // compaiono senza dover ricaricare manualmente la pagina.
+  setInterval(refreshAll, 20000);
+</script>
+</body>
+</html>

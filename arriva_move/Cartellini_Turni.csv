@@ -1,0 +1,622 @@
+Codice_Turno,Nome_Turno,Deposito,Giorno,Turno_Ora_Inizio,Turno_Ora_Fine,Corsa_Linea,Corsa_Da,Corsa_A,Corsa_Ora_Partenza,Corsa_Ora_Arrivo
+,,Torino - Deposito,Giovedì,03:41,08:59,121,To - lungo dora firenze,TO - via Accademia Albert,04:21,04:35
+,,Torino - Deposito,Giovedì,03:41,08:59,277,TO - via Accademia Albert,Fca-Mopar (L.Go Sen. Agnelli),04:35,05:25
+,,Torino - Deposito,Giovedì,03:41,08:59,121,Fca-Mopar (L.Go Sen. Agnelli),PAUSA 06:25 -,05:25,07:06
+,,Torino - Deposito,Giovedì,03:41,08:59,275,Pinerolo - Movicentro,TORINO - Autostazione c.s,07:16,08:19
+,,Torino - Deposito,Giovedì,03:45,09:08,119,To - Corso Vercelli-Via C,To - corso Belgio,04:30,04:52
+,,Torino - Deposito,Giovedì,03:45,09:08,277,To - corso Belgio,Pinerolo - Movicentro,04:52,06:10
+,,Torino - Deposito,Giovedì,03:45,09:08,275,Pinerolo - Movicentro,Perosa Arg.-Pzza Terzo Alpini,06:18,06:50
+,,Torino - Deposito,Giovedì,03:45,09:08,275,Perosa Arg.-Pzza Terzo Al,Pin - Via Giustetto-Via P,07:00,07:23
+,,Torino - Deposito,Giovedì,03:45,09:08,275,Pin - Via Giustetto-Via P,TORINO - Autostazione c.s,07:25,08:28
+,,Torino - Deposito,Giovedì,14:15,21:15,L60,To-C.So V.Eman. Ii-Porta,PAUSA 17:05 -,14:55,18:22
+,,Torino - Deposito,Giovedì,14:15,21:15,L60,Aosta - Autostazione,Torino - Deposito,18:30,21:05
+,,Torino - Deposito,Giovedì,17:01,00:24,275,TORINO - Autostazione c.s,Pinerolo - Movicentro,17:41,18:44
+,,Torino - Deposito,Giovedì,17:01,00:24,275,Pinerolo - Movicentro,Perosa Arg.-Pzza Terzo Al,18:48,19:20
+,,Torino - Deposito,Giovedì,17:01,00:24,275,Perosa Arg.-Pzza Terzo Al,PAUSA 19:50 -,19:20,21:10
+,,Torino - Deposito,Giovedì,17:01,00:24,275,Fenestrelle - Via Naziona,Airasca - stabilimento skf,21:10,22:11
+,,Torino - Deposito,Giovedì,17:01,00:24,277,Airasca - stabilimento sk,To - Cso Vittorio 168-Via,22:30,23:14
+,,Torino - Deposito,Giovedì,17:01,00:24,119,To - Cso Vittorio 168-Via,To - viale dei mughetti,23:14,23:44
+,,Torino - Deposito,Giovedì,15:01,20:05,275,TORINO - Autostazione c.s,PAUSA 16:59 -,15:41,17:30
+,,Torino - Deposito,Giovedì,15:01,20:05,277,Airasca - stabilimento sk,To - cso ferrucci-via cav,17:30,18:41
+,,Torino - Deposito,Giovedì,15:01,20:05,119,To - cso ferrucci-via cav,Torino - Deposito,18:41,19:55
+,,Torino - Deposito,Giovedì,15:51,00:18,121,MOPAR FCA - Via Primo Mag,Fca-Mopar (L.Go Sen. Agnelli),22:15,22:35
+,,Torino - Deposito,Giovedì,15:51,00:18,277,Torino - Deposito ................................1...6..:..0..1..... F..c..a..-.M....o..p..a..r. .(.L....G...o.. .S..e..n.... .A..g..n..e..l.l.i.),TORINO - Autostazione c.so Bolzano ..1..6...:.3...1.... .V..i.a.. .A..c..c..a..d..e..m...i.a.. .A..l.b..e..r.t..i.n..a,22:35,23:25
+,,Torino - Deposito,Giovedì,15:51,00:18,275,TORINO - Autostazione c.s .................1..6...:.3...1.... .V..i.a.. .A..c..c..a..d..e..m...i.a.. .A..l.b..e..r..t.i.n..a,Pinerolo - Movicentro ........................1..7...:.4...4.... .T..o.. .-.. l.u..n...g.o... .d..o..r.a.. .f.i.r..e..n..z.e,23:25,23:38
+,,Torino - Deposito,Giovedì,15:51,00:18,282,Pinerolo - Movicentro ........................1..7...:.4...6.... .T..o.. .-.. l.u..n...g.o... .d..o..r.a.. .f.i.r..e..n..z.e,TORINO - Autostazione c.so Bolzano,23:38,18:57
+,,Torino - Deposito,Giovedì,15:51,00:18,282,TORINO - Autostazione c.s,PAUSA 20:34 -,19:18,21:30
+,,Torino - Deposito,Giovedì,16:23,00:35,282,TORINO - Autostazione c.s,Pinerolo - Movicentro,17:03,18:14
+,,Torino - Deposito,Giovedì,16:23,00:35,275,Pinerolo - Movicentro,To - corso toscana-via borgaro,18:16,19:39
+,,Torino - Deposito,Giovedì,16:23,00:35,119,To - corso toscana-via bo,To - Corso Francia-Via Po,20:38,20:50
+,,Torino - Deposito,Giovedì,16:23,00:35,277,To - Corso Francia-Via Po,Airasca - stabilimento sk,20:50,22:00
+,,Torino - Deposito,Giovedì,16:23,00:35,277,Airasca - stabilimento sk,To - via napione - corso,22:30,23:33
+,,Torino - Deposito,Giovedì,16:23,00:35,119,To - via napione - corso,To - Corso Vercelli,23:33,23:55
+,,Torino - Deposito,Giovedì,13:35,23:19,268,To - piazza carlo felice,Caselle Aeroporto,21:00,21:37
+,,Torino - Deposito,Giovedì,13:35,23:19,268,Caselle Aeroporto ..............................1...5...:.0..7..... .C..a..s.e..l.l.e.. .A...e.r..o..p..o..r..t.o,To - piazza carlo felice,22:00,22:39
+,,Torino - Deposito,Giovedì,13:35,23:19,268,To - piazza carlo felice ........................1..6...:.1...5.... .T..o.. .-. .p..i.a..z..z.a.. .c..a..r.l.o.. .f..e..l.i.c.e,PAUSA 16:19 -,22:39,17:16
+,,Torino - Deposito,Giovedì,13:35,23:19,265,TORINO - Autostazione c.s,Ivrea - Loc Banchette,17:16,18:17
+,,Torino - Deposito,Giovedì,13:35,23:19,265,Ivrea - Loc Banchette,Ivrea - Porta Vercelli,18:19,18:24
+,,Torino - Deposito,Giovedì,13:35,23:19,265,Ivrea - Porta Vercelli,Ivrea - Loc Banchette,18:30,18:39
+,,Torino - Deposito,Giovedì,13:35,23:19,265,Ivrea - Loc Banchette,TORINO - Autostazione c.s,18:41,19:36
+,,Torino - Deposito,Giovedì,04:10,13:55,119,Col - Cso Francia - Via C .....................0...4...:.5..0..... .T..o.. .-. .p..i.a..z.z..a.. .c..a..r.l.o.. .f.e..l.i.c..e,TO - cso Francia/via Riet ....................0...5..:..0..0.... .C...a.s..e..l.l.e.. .A..e..r..o..p..o..r.t..o,11:15,12:00
+,,Torino - Deposito,Giovedì,04:10,13:55,277,TO - cso Francia/via Riet ....................0...5..:..0..0.... .C...a.s..e..l.l.e.. .A..e..r..o..p..o..r.t..o,PAUSA 05:55 -,12:15,06:30
+,,Torino - Deposito,Giovedì,04:10,13:55,277,Airasca - stabilimento sk ....................0...6..:.3...0.... .T..o..r..i.n..o.. .-. .D...e..p..o..s.i.t..o,To - Corso Francia-Via Po,13:45,07:31
+,,Torino - Deposito,Giovedì,04:10,13:55,119,To - Corso Francia-Via Po,PAUSA 08:21 -,07:31,10:40
+,,Torino - Deposito,Giovedì,04:45,16:05,119,To - viale dei mughetti,To - Cso Vittorio 169-Via,12:30,12:59
+,,Torino - Deposito,Giovedì,04:45,16:05,277,Torino - Deposito ................................0...4..:..5..5..... T..o... .-. .C..s..o.. .V..i.t.t.o...r.i.o.. .1..6..9..-..V..i.a,Beinasco (banca sanpaolo) .................0...5..:..1..0.... .A...i.r.a..s..c.a.. .-. .s..t.a..b..i.l.i.m...e..n..t..o.. .s.k,12:59,13:55
+,,Torino - Deposito,Giovedì,04:45,16:05,277,Beinasco (banca sanpaolo),PAUSA 06:10 - 07:06 Collegnocorso Francia Ang,05:10,15:40
+,,Torino - Deposito,Giovedì,04:45,16:05,275,Pinerolo Bivio Sede Sapav ..................0..7...:.1...3.... .T..o..r.i.n..o.. .-.. .D..e..p..o..s..i.t.o,PAUSA 08:39 -,15:55,11:55
+,,Torino - Deposito,Giovedì,05:43,14:55,268,,,,
+,,Torino - Deposito,Giovedì,05:43,14:55,265,TORINO - Autostazione c.s .................0..6...:.2...3.... .C..a..s..e..l.l.e.. .A..e..r.o..p...o..r.t.o,Ivrea - C.So Vercelli,13:07,07:32
+,,Torino - Deposito,Giovedì,05:43,14:55,268,Vuoto Caselle Aeroporto,To - piazza carlo felice,13:30,14:15
+,,Torino - Deposito,Giovedì,05:43,14:55,265,Ivrea - Porta Vercelli,Ivrea - Loc Banchette,07:40,07:51
+,,Torino - Deposito,Giovedì,05:43,14:55,265,Ivrea - Loc Banchette .........................0...7...:.5..3..... .T..o..r.i.n..o.. .-.. D...e..p..o..s..i.t.o,To - piazza carlo felice,14:45,12:30
+,,Torino - Deposito,Giovedì,05:55,17:04,119,To - via cravero ...................................0..6...:.3...5.... .T..o.. .-. .p..i.a..z..z.a.. .c..a..r.l.o.. .f..e..l.ic..e,To - cso ferrucci-via cia,14:45,06:59
+,,Torino - Deposito,Giovedì,05:55,17:04,268,,,,
+,,Torino - Deposito,Giovedì,05:55,17:04,277,To - cso ferrucci-via cia ......................0...6..:..5..9..... C...a..s.e..l.l.e.. .A..e..r..o..p..o..r..t.o,Airasca - stabilimento sk,15:30,08:10
+,,Torino - Deposito,Giovedì,05:55,17:04,268,,,,
+,,Torino - Deposito,Giovedì,05:55,17:04,284,Airasca - stabilimento sk ....................0...8..:.1...5.... .T..o.. .-.. p...i.a.z..z..a.. .c.a..r..l.o.. .f.e..l.i.c..e,Pinerolo - Movicentro,16:24,08:37
+,,Torino - Deposito,Giovedì,05:55,17:04,282,Pinerolo - Movicentro,PAUSA 10:27 -,08:46,14:10
+,,Torino - Deposito,Giovedì,06:15,15:38,277,Airasca - stabilimento sk,Torino - C.So Maroncelli 34 ................0...6..:..5..5.... .T..o...r.i.n..o.. .-. .D...e..p..o..s..i.t.o,14:30,15:28
+,,Torino - Deposito,Giovedì,06:15,15:38,266,Torino - C.So Maroncelli,Rondissone - P.Za Roma,06:55,07:59
+,,Torino - Deposito,Giovedì,06:15,15:38,266,Rondissone - P.Za Roma,PAUSA 08:52 -,08:01,12:45
+,,Torino - Deposito,Giovedì,06:15,15:38,277,Beinasco (banca sanpaolo),PAUSA 13:55 -,13:05,14:30
+,,Torino - Deposito,Giovedì,14:56,23:56,265,TORINO - Autostazione c.s .................1..5...:.3...6.... .P..e..r..o..s.a.. .-. .D...e..p..o..s..i.t.o,Ivrea - Loc Banchette .........................1...6...:.3..7..... .A..i.r.a..s..c..a.. -.. .s.t..a..b..i.li.m....e..n..t.o.. .s..k..f,21:50,22:30
+,,Torino - Deposito,Giovedì,14:56,23:56,265,Ivrea - Loc Banchette .........................1...6...:.3..9..... .A..i.r.a..s..c..a.. -.. .s.t..a..b..i.li.m....e..n..t.o.. .s..k,Ivrea - Porta Vercelli ...........................1..6...:.4...4.... .T..o.. .-. .C....S..o.. .F..r..a..n..c.i.a../..V..i.a.. .P..a..s,22:30,23:15
+,,Torino - Deposito,Giovedì,14:56,23:56,265,Ivrea - Porta Vercelli ...........................1..6...:.5...5.... .T..o.. .-. .C....S..o.. .F..r..a..n..c.i.a../..V..i.a.. .P..a..s,PAUSA 18:06 -,23:15,19:41
+,,Torino - Deposito,Giovedì,14:56,23:56,275,TORINO - Autostazione c.s,Pinerolo - Piazza Cavour,19:41,20:50
+,,Torino - Deposito,Giovedì,14:56,23:56,275,Pinerolo - Piazza Cavour,Perosa Arg.-Pzza Terzo Al,20:50,21:20
+,,Torino - Deposito,Giovedì,11:31,19:05,121,To - lungo dora firenze,Rondissone - P.Zza Roma,12:11,17:21
+,,Torino - Deposito,Giovedì,11:31,19:05,277,TO - via Accademia Albert,TO - via Accademia Albert,12:25,12:25
+,,Torino - Deposito,Giovedì,11:31,19:05,121,Fca-Mopar (L.Go Sen. Agnelli),MOPAR FCA - Via Primo Maggio C,13:25,13:46
+,,Torino - Deposito,Giovedì,11:31,19:05,121,MOPAR FCA - Via Primo Mag,Fca-Mopar (L.Go Sen. Agnelli),14:15,14:35
+,,Torino - Deposito,Giovedì,11:31,19:05,277,Fca-Mopar (L.Go Sen. Agnelli),Via Accademia Albertina,14:35,15:35
+,,Torino - Deposito,Giovedì,11:31,19:05,121,Via Accademia Albertina,To - lungo dora firenze,15:35,15:48
+,,Torino - Deposito,Giovedì,04:00,09:20,119,To - viale dei mughetti,To - Cso Vittorio 169-Via,04:40,05:09
+,,Torino - Deposito,Giovedì,04:00,09:20,277,To - Cso Vittorio 169-Via,PAUSA 05:50 -,05:09,06:30
+,,Torino - Deposito,Giovedì,04:00,09:20,277,Airasca - stabilimento sk,To - via napione - corso,06:30,07:19
+,,Torino - Deposito,Giovedì,04:00,09:20,119,To - via napione - corso,TO - M.D'Azeglio Cap,07:19,07:59
+,,Torino - Deposito,Giovedì,04:00,09:20,105,TO - M.D'Azeglio Cap,Torino - Deposito,08:20,09:10
+,,Torino - Deposito,Giovedì,06:07,16:30,277,Airasca - stabilimento sk,To - Cso Vittorio 168-Via,14:30,15:20
+,,Torino - Deposito,Giovedì,06:07,16:30,119,Via Oxilia-Cso Giulio Ces,To - viale dei mughetti,06:47,15:50
+,,Torino - Deposito,Giovedì,06:07,16:30,277,To - via de sanctis-via c,PAUSA 08:45 -,07:10,12:10
+,,Torino - Deposito,Giovedì,06:07,16:30,119,Col - Cso Francia - Via C,TO - cso Francia/via Riet,12:45,13:01
+,,Torino - Deposito,Giovedì,06:07,16:30,277,TO - cso Francia/via Riet,Airasca - stabilimento sk,13:01,13:55
+,,Torino - Deposito,Giovedì,14:23,23:33,119,Torino - Deposito ................................1...4..:..3..3..... T..o... .-. .v..i.a. .b...o..t.t.i.c..e..l.l.i.-.p..i.a..z..z,TORINO - Autostazione c.so Bolzano ..1..5...:.0...3.... .T..o.. .-. .c..o..r.s..o.. .B..e..l.g..i.o,20:45,21:00
+,,Torino - Deposito,Giovedì,14:23,23:33,282,TORINO - Autostazione c.s .................1..5...:.0...3.... .T..o.. .-. .c..o..r..s.o.. .B...e..lg..i.o,Pinerolo - Piazza Cavour,21:00,16:20
+,,Torino - Deposito,Giovedì,14:23,23:33,277,Vuoto Airasca - stabilimento sk,Torino - Deposito,22:30,23:23
+,,Torino - Deposito,Giovedì,14:23,23:33,277,Airasca - stabilimento sk,To - via de sanctis-via c,17:30,18:21
+,,Torino - Deposito,Giovedì,14:23,23:33,119,To - via de sanctis-via c,PAUSA 19:15 -,18:21,20:10
+,,Torino - Deposito,Giovedì,13:50,22:59,277,Airasca - stabilimento sk ....................1...4..:.3...0.... .P..e..r..o..s.a.. .A...r.g....-.P..z..z..a. .T..e..r..z.o... A...l,Pinerolo - Movicentro,20:40,21:12
+,,Torino - Deposito,Giovedì,13:50,22:59,119,To - Corso Vercelli ..............................1...6..:..1..0.... .P..i.n..e..r..o..l.o.. .-. .M....o..v..i.c.e..n..t..r.o,PAUSA 16:40 - 18:03 Torino - Deposito,21:16,22:49
+,,Torino - Deposito,Giovedì,13:50,22:59,282,TORINO - Autostazione c.s,Pinerolo - Movicentro,18:03,19:14
+,,Torino - Deposito,Giovedì,13:50,22:59,282,Pinerolo - Movicentro,PAUSA 19:55 -,19:18,20:30
+,,Torino - Deposito,Giovedì,04:50,13:00,aMalpensa,TORINO - Autostazione c.s,Malpensa ovest (term 1),05:30,10:00
+,,Torino - Deposito,Giovedì,04:50,13:00,aMalpensa,Malpensa ovest (term 1),Torino - Deposito,10:00,12:50
+,,Torino - Deposito,Giovedì,06:20,14:02,aMalpensa,TORINO - Autostazione c.s,Malpensa ovest (term 1),07:00,11:00
+,,Torino - Deposito,Giovedì,06:20,14:02,aMalpensa,Malpensa ovest (term 1),Torino - Deposito,11:00,13:52
+,,Torino - Deposito,Giovedì,07:20,15:02,aMalpensa,TORINO - Autostazione c.s,Malpensa ovest (term 1),08:00,12:00
+,,Torino - Deposito,Giovedì,07:20,15:02,aMalpensa,Malpensa ovest (term 1),Torino - Deposito,12:00,14:52
+,,Torino - Deposito,Giovedì,08:20,16:00,aMalpensa,TORINO - Autostazione c.s,Malpensa ovest (term 1),09:00,13:00
+,,Torino - Deposito,Giovedì,08:20,16:00,aMalpensa,Malpensa ovest (term 1),Torino - Deposito,13:00,15:50
+,,Torino - Deposito,Giovedì,06:29,18:00,aMalpensa,Torino - Deposito ................................0...6..:..4..4..... M....a..l.p..e..n..s..a.. o...v..e.s..t. .(..t.e..r.m.... 1...),Piobesi T.Se-V.Torino 41-Capol ..........0...7...:.1..4..... .T..O..R..I.N...O... .-. .A..u..t..o..s.t..a..z.i.o..n...e. .c....s,15:15,17:15
+,,Torino - Deposito,Giovedì,06:29,18:00,267,Torino - P.Zza Caio Mario ...................0..7...:.5...5.... .T..o..r.i.n..o... -.. .D..e..p..o..s..i.t.o,TORINO - Autostazione c.so Bolzano,17:45,10:00
+,,Torino - Deposito,Giovedì,06:29,18:00,aMalpensa,TORINO - Autostazione c.s,PAUSA 12:05 -,10:00,15:10
+,,Torino - Deposito,Giovedì,11:40,20:10,aMalpensa,TORINO - Autostazione c.s,Malpensa ovest (term 1),13:00,17:30
+,,Torino - Deposito,Giovedì,11:40,20:10,aMalpensa,Malpensa ovest (term 1),Torino - Deposito,17:30,20:00
+,,Torino - Deposito,Giovedì,12:42,21:10,aMalpensa,TORINO - Autostazione c.s,Malpensa ovest (term 1),14:00,18:30
+,,Torino - Deposito,Giovedì,12:42,21:10,aMalpensa,Malpensa ovest (term 1),Torino - Deposito,18:30,21:00
+,,Torino - Deposito,Giovedì,13:42,22:10,aMalpensa,TORINO - Autostazione c.s,Malpensa ovest (term 1),15:00,19:30
+,,Torino - Deposito,Giovedì,13:42,22:10,aMalpensa,Malpensa ovest (term 1),Torino - Deposito,19:30,22:00
+,,Torino - Deposito,Giovedì,14:40,23:20,aMalpensa,TORINO - Autostazione c.s,Malpensa ovest (term 1),16:00,20:40
+,,Torino - Deposito,Giovedì,14:40,23:20,aMalpensa,Malpensa ovest (term 1),Torino - Deposito,20:40,23:10
+,,Torino - Deposito,Giovedì,04:05,11:34,268,To - piazza carlo felice,PAUSA 05:30 -,04:45,06:10
+,,Torino - Deposito,Giovedì,04:05,11:34,268,Caselle Aeroporto,To - piazza carlo felice,06:10,06:55
+,,Torino - Deposito,Giovedì,04:05,11:34,268,To - piazza carlo felice,Caselle Aeroporto,07:15,08:00
+,,Torino - Deposito,Giovedì,04:05,11:34,268,Caselle Aeroporto,To - piazza carlo felice,08:15,09:00
+,,Torino - Deposito,Giovedì,04:05,11:34,268,To - piazza carlo felice,Caselle Aeroporto,09:15,10:00
+,,Torino - Deposito,Giovedì,04:05,11:34,268,Caselle Aeroporto,Caselle - Parcheggio P,10:15,11:24
+,,Torino - Deposito,Giovedì,04:35,11:55,268,To - piazza carlo felice,Caselle Aeroporto,05:15,06:00
+,,Torino - Deposito,Giovedì,04:35,11:55,268,Caselle Aeroporto,To - piazza carlo felice,06:30,07:15
+,,Torino - Deposito,Giovedì,04:35,11:55,268,To - piazza carlo felice,Caselle Aeroporto,07:30,08:07
+,,Torino - Deposito,Giovedì,04:35,11:55,268,Caselle Aeroporto,To - piazza carlo felice,08:30,09:15
+,,Torino - Deposito,Giovedì,04:35,11:55,268,To - piazza carlo felice,Caselle Aeroporto,09:30,10:07
+,,Torino - Deposito,Giovedì,04:35,11:55,268,Caselle Aeroporto,Torino - Deposito,10:30,11:45
+,,Torino - Deposito,Giovedì,05:05,12:40,268,To - piazza carlo felice,Caselle Aeroporto,05:45,06:30
+,,Torino - Deposito,Giovedì,05:05,12:40,268,Caselle Aeroporto,To - piazza carlo felice,07:00,07:45
+,,Torino - Deposito,Giovedì,05:05,12:40,268,To - piazza carlo felice,Caselle Aeroporto,08:00,08:37
+,,Torino - Deposito,Giovedì,05:05,12:40,268,Caselle Aeroporto,To - piazza carlo felice,09:00,09:45
+,,Torino - Deposito,Giovedì,05:05,12:40,268,To - piazza carlo felice,Caselle Aeroporto,10:00,10:37
+,,Torino - Deposito,Giovedì,05:05,12:40,268,Caselle Aeroporto,Torino - Deposito,11:00,12:30
+,,Torino - Deposito,Giovedì,05:50,14:10,268,To - piazza carlo felice,Caselle Aeroporto,06:30,07:15
+,,Torino - Deposito,Giovedì,05:50,14:10,268,Caselle Aeroporto,PAUSA 08:10 -,07:25,09:00
+,,Torino - Deposito,Giovedì,05:50,14:10,268,To - piazza carlo felice,Caselle Aeroporto,09:00,09:37
+,,Torino - Deposito,Giovedì,05:50,14:10,268,Caselle Aeroporto,PAUSA 10:45 -,10:00,11:30
+,,Torino - Deposito,Giovedì,05:50,14:10,268,To - piazza carlo felice,Caselle Aeroporto,11:30,12:07
+,,Torino - Deposito,Giovedì,05:50,14:10,268,Caselle Aeroporto,To - piazza carlo felice,12:30,13:15
+,,Torino - Deposito,Giovedì,06:05,14:34,268,To - piazza carlo felice,Caselle Aeroporto,12:15,13:00
+,,Torino - Deposito,Giovedì,06:05,14:34,268,Torino - Deposito ................................0...6..:..1..5..... C...a..s.e..l.l.e.. .A..e..r..o..p..o..r..t.o,To - piazza carlo felice .........................0..6...:.4...5.... .T..o.. .-. .p..i.a..z..z.a.. .c..a..r.l.o.. .f..e..l.ic..e,13:15,13:54
+,,Torino - Deposito,Giovedì,06:05,14:34,268,To - piazza carlo felice ........................0..6...:.4...5.... .T..o.. .-. .p..i.a..z..z.a.. .c..a..r.l.o.. .f..e..l.i.c.e,Caselle Aeroporto ..............................0...7...:.3..0..... .T..o..r.i.n..o.. .-.. D...e..p..o..s..i.t.o,13:54,14:24
+,,Torino - Deposito,Giovedì,06:05,14:34,268,Caselle Aeroporto,To - piazza carlo felice,07:45,09:45
+,,Torino - Deposito,Giovedì,06:05,14:34,268,To - piazza carlo felice,Caselle Aeroporto,09:45,10:30
+,,Torino - Deposito,Giovedì,06:05,14:34,268,Caselle Aeroporto,PAUSA 11:24 -,10:45,12:15
+,,Torino - Deposito,Giovedì,06:20,15:04,268,Caselle Aeroporto,To - piazza carlo felice .........................0..7...:.0...0.... .T..o..r.i.n..o... .-. .D..e..p..o...s.i.t.o,13:45,14:54
+,,Torino - Deposito,Giovedì,06:20,15:04,268,To - piazza carlo felice,Caselle Aeroporto,07:00,07:37
+,,Torino - Deposito,Giovedì,06:20,15:04,268,Caselle Aeroporto,To - piazza carlo felice,08:00,11:00
+,,Torino - Deposito,Giovedì,06:20,15:04,268,To - piazza carlo felice,Caselle Aeroporto,11:00,11:37
+,,Torino - Deposito,Giovedì,06:20,15:04,268,Caselle Aeroporto,To - piazza carlo felice,12:00,12:45
+,,Torino - Deposito,Giovedì,06:20,15:04,268,To - piazza carlo felice,Caselle Aeroporto,13:00,13:37
+,,Torino - Deposito,Giovedì,11:20,18:25,268,To - piazza carlo felice,Caselle Aeroporto,12:00,12:37
+,,Torino - Deposito,Giovedì,11:20,18:25,268,Caselle Aeroporto,To - piazza carlo felice,13:00,13:45
+,,Torino - Deposito,Giovedì,11:20,18:25,268,To - piazza carlo felice,Caselle Aeroporto,14:00,14:37
+,,Torino - Deposito,Giovedì,11:20,18:25,268,Caselle Aeroporto,To - piazza carlo felice,15:00,15:45
+,,Torino - Deposito,Giovedì,11:20,18:25,268,To - piazza carlo felice,Caselle Aeroporto,16:00,16:37
+,,Torino - Deposito,Giovedì,11:20,18:25,268,Caselle Aeroporto,Caselle - Parcheggio P,17:00,18:15
+,,Torino - Deposito,Giovedì,12:50,19:55,268,To - piazza carlo felice,Caselle Aeroporto,13:30,14:15
+,,Torino - Deposito,Giovedì,12:50,19:55,268,Caselle Aeroporto,To - piazza carlo felice,14:30,15:15
+,,Torino - Deposito,Giovedì,12:50,19:55,268,To - piazza carlo felice,Caselle Aeroporto,15:30,16:07
+,,Torino - Deposito,Giovedì,12:50,19:55,268,Caselle Aeroporto,To - piazza carlo felice,16:30,17:15
+,,Torino - Deposito,Giovedì,12:50,19:55,268,To - piazza carlo felice,Caselle Aeroporto,17:30,18:15
+,,Torino - Deposito,Giovedì,12:50,19:55,268,Caselle Aeroporto,Torino - Deposito,18:30,19:45
+,,Torino - Deposito,Giovedì,16:35,01:25,268,To - piazza carlo felice,Caselle Aeroporto,17:15,18:00
+,,Torino - Deposito,Giovedì,16:35,01:25,268,Caselle Aeroporto,To - piazza carlo felice,18:15,18:54
+,,Torino - Deposito,Giovedì,16:35,01:25,268,To - piazza carlo felice,PAUSA 20:05 -,19:20,21:30
+,,Torino - Deposito,Giovedì,16:35,01:25,268,Caselle Aeroporto,PAUSA 22:15 -,21:30,23:00
+,,Torino - Deposito,Giovedì,16:35,01:25,268,To - piazza carlo felice,Caselle Aeroporto,23:00,23:37
+,,Torino - Deposito,Giovedì,16:35,01:25,268,Caselle Aeroporto,To - piazza carlo felice,00:00,00:45
+,,Torino - Deposito,Giovedì,16:05,00:55,268,To - piazza carlo felice,Caselle Aeroporto,16:45,17:30
+,,Torino - Deposito,Giovedì,16:05,00:55,268,Caselle Aeroporto,To - piazza carlo felice,17:45,18:24
+,,Torino - Deposito,Giovedì,16:05,00:55,268,To - piazza carlo felice,Caselle Aeroporto,18:45,19:30
+,,Torino - Deposito,Giovedì,16:05,00:55,268,Caselle Aeroporto,PAUSA 20:39 -,20:00,22:30
+,,Torino - Deposito,Giovedì,16:05,00:55,268,To - piazza carlo felice,Caselle Aeroporto,22:30,23:15
+,,Torino - Deposito,Giovedì,16:05,00:55,268,Caselle Aeroporto,Torino - Deposito,23:30,00:45
+,,Torino - Deposito,Giovedì,15:35,00:19,268,To - piazza carlo felice,Caselle Aeroporto,16:15,17:00
+,,Torino - Deposito,Giovedì,15:35,00:19,268,Caselle Aeroporto,To - piazza carlo felice,17:30,18:15
+,,Torino - Deposito,Giovedì,15:35,00:19,268,To - piazza carlo felice,PAUSA 19:15 -,18:30,20:30
+,,Torino - Deposito,Giovedì,15:35,00:19,268,Caselle Aeroporto,To - piazza carlo felice,20:30,21:15
+,,Torino - Deposito,Giovedì,15:35,00:19,268,To - piazza carlo felice,PAUSA 22:15 -,21:30,23:00
+,,Torino - Deposito,Giovedì,15:35,00:19,268,Caselle Aeroporto,To - piazza carlo felice,23:00,23:39
+,,Torino - Deposito,Giovedì,12:45,23:21,105,TO-Quarello - Navetta Uni,TO-Quarello - Navetta Università .......1...3..:..1..0.... .T..o..r..i.n..o.. .-. .D...e..p..o..s..i.t.o,18:15,19:15
+,,Torino - Deposito,Giovedì,12:45,23:21,105,TO-Quarello - Navetta Uni,Torino - Deposito,13:10,21:55
+,,Torino - Deposito,Giovedì,12:45,23:21,105,TO - M.D'Azeglio Cap,Airasca - stabilimento skf,13:42,17:00
+,,Torino - Deposito,Giovedì,12:45,23:21,119,Airasca - stabilimento sk,TO-Quarello - Navetta Università,17:00,17:51
+,,Torino - Deposito,Giovedì,05:35,12:55,268,To - piazza carlo felice,Caselle Aeroporto,06:15,07:00
+,,Torino - Deposito,Giovedì,05:35,12:55,268,Caselle Aeroporto,PAUSA 07:55 -,07:10,08:30
+,,Torino - Deposito,Giovedì,05:35,12:55,268,To - piazza carlo felice,Caselle Aeroporto,08:30,09:07
+,,Torino - Deposito,Giovedì,05:35,12:55,268,Caselle Aeroporto,To - piazza carlo felice,09:30,10:15
+,,Torino - Deposito,Giovedì,05:35,12:55,268,To - piazza carlo felice,Caselle Aeroporto,10:30,11:07
+,,Torino - Deposito,Giovedì,05:35,12:55,268,Caselle Aeroporto,Torino - Deposito,11:30,12:45
+,,Torino - Deposito,Giovedì,12:35,21:05,268,To - piazza carlo felice,Caselle Aeroporto,13:15,14:00
+,,Torino - Deposito,Giovedì,12:35,21:05,268,Caselle Aeroporto,To - piazza carlo felice,14:15,14:54
+,,Torino - Deposito,Giovedì,12:35,21:05,268,To - piazza carlo felice,Caselle Aeroporto,15:15,16:00
+,,Torino - Deposito,Giovedì,12:35,21:05,268,Caselle Aeroporto,PAUSA 16:54 -,16:15,18:00
+,,Torino - Deposito,Giovedì,12:35,21:05,268,To - piazza carlo felice,PAUSA 18:45 -,18:00,19:40
+,,Torino - Deposito,Giovedì,12:35,21:05,268,Caselle Aeroporto,To - piazza carlo felice,19:40,20:25
+,,Perosa - Deposito,Giovedì,05:45,13:53,282,Perosa Arg.-Pzza Terzo Al,Pinerolo - Movicentro,06:00,06:32
+,,Perosa - Deposito,Giovedì,05:45,13:53,275,Ingresso deposito Per - Via Nazionale 6(Terminal Sapav),Pinerolo - Deposito,08:19,06:37
+,,Perosa - Deposito,Giovedì,05:45,13:53,275,PAUSA 06:37 - 07:08 Perosa Arg.-Pzza Terzo Al,Sestriere - Parcheggio,08:20,09:30
+,,Perosa - Deposito,Giovedì,05:45,13:53,285,,,,
+,,Perosa - Deposito,Giovedì,05:45,13:53,275,Pinerolo - Movicentro ......................0..7...:.1...8.... .S..e..s..t.r.i.e..r..e.. -.. .P..a..r.c..h..e..g..g..i.o,Perosa - Deposito ..............................0..7...:.5...5.... .P..e..r. .-. .V...i.a.. .N..a..z..i.o..n..a..l.e.. .6..(.T..e..r.m....i.n..a..l. .S.a..p...a.v..),12:30,13:42
+,,Perosa - Deposito,Giovedì,15:08,23:30,275,Per - Via Nazionale 6(Terminal Sapav1) 5 .:..1..9.... .P...e..r.r.e..r..o,Perosa Arg.-Pzza Terzo Al ................1...5..:..2..0.... .P...e..r.o..s..a.. .A..r.g....-.P...z.z..a.. .T..e..r.z..o.. .A..l,21:20,21:35
+,,Perosa - Deposito,Giovedì,15:08,23:30,275,Perosa Arg.-Pzza Terzo Al ................1...5..:..2..0.... .P...e..r.o..s..a.. .A..r.g....-.P...z.z..a.. .T..e..r.z..o.. .A..l,Sestriere - Parcheggio ......................1...6..:.3...0.... .V...il.l.a..r.. .P..e..r.o..s..a.. .S..t.a..b..i.l.i.m...e..n..t,21:35,21:55
+,,Perosa - Deposito,Giovedì,15:08,23:30,275,Villar Perosa Stabiliment,Villar Perosa Stabiliment,22:25,22:25
+,,Perosa - Deposito,Giovedì,15:08,23:30,285,Sestriere - Parcheggio,Perosa Arg.-Pzza Terzo Al,17:30,22:45
+,,Perosa - Deposito,Giovedì,15:08,23:30,285,Oulx - Stazione Fs,Perrero,18:45,23:00
+,,Perosa - Deposito,Giovedì,15:08,23:30,275,Sestriere - Parcheggio,Fenestrelle - Via Naziona,19:30,20:10
+,,Perosa - Deposito,Giovedì,15:08,23:30,275,Fenestrelle - Via Naziona,Perosa - Deposito,20:10,20:41
+,,Perosa - Deposito,Giovedì,13:31,22:57,275,Per - Via Nazionale 6(Terminal Sapav1) 3 .:..4..2.... .P...e..r.o..s..a.. .A..r.g....-.P...z.z..a.. .T..e..r.z..o.. .A..l,Pinerolo - Piazza Cavour,18:40,19:10
+,,Perosa - Deposito,Giovedì,13:31,22:57,275,Pinerolo Bivio Sede Sapav ...............1...4..:..2..3..... .P..i.n..e..r.o..l.o.. .-.. .P..i.a..z.z..a.. .C..a..v..o..u..r,PAUSA 20:19 -,19:10,21:03
+,,Perosa - Deposito,Giovedì,13:31,22:57,282,Pinerolo - Piazza Cavour ..................1...7..:..2..0.... .T..O...R..I.N...O... -.. .A..u..t.o...s.t..a.z..i.o..n..e.. .c....s,Pinerolo - Movicentro,21:03,22:06
+,,Perosa - Deposito,Giovedì,13:31,22:57,275,Per - Via Nazionale 6(Terminal Sapav1) 7 .:..4..9.... .P...in...e..r.o..l.o.. .-. .M....o..v..i.c.e..n...t.r.o,PAUSA 17:55 -,22:10,18:30
+,,Perosa - Deposito,Giovedì,15:25,23:50,284,Torre Pellice,Bivio Bima,21:10,21:30
+,,Perosa - Deposito,Giovedì,15:25,23:50,275,Perosa - Deposito ..............................1..5...:.3...5.... .B..i.v..i.o.. .B..i.m...a,Perosa Arg.-Pzza Terzo Alpini ...........1...5..:..4..0.... .V...il.l.a..r.. .P..e..r.o..s..a.. .-. .S..t.a..b..i.l.i.m...e,21:30,21:50
+,,Perosa - Deposito,Giovedì,15:25,23:50,303,Perosa Arg.-Pzza Terzo Al ................1...5..:..4..0.... .V...i.l.l.a..r. .P..e..r.o...s.a.. .-. .S..t.a..b..i.l.i.m....e..n..t.o.. .T..e..k..f.o..r.. .A,Perrero .............................................1...5...:.5..5..... .V..i.l. .-. .B..o..g..e,21:50,21:55
+,,Perosa - Deposito,Giovedì,15:25,23:50,275,Perrero ..............................................1...5...:.5..5..... .V..i.l. .-. .B..o..g..e,Perosa Arg.-Pzza Terzo Alpini ...........1...6..:..1..0.... .F..e..n..e..s..t.r..e..l.l.e.. -.. .V..i.a.. .N..a..z..i.o..n..a,22:25,23:05
+,,Perosa - Deposito,Giovedì,15:25,23:50,275,Perosa Arg.-Pzza Terzo Al ................1...6..:..1..0.... .F..e..n..e..s..t.r..e..l.l.e.. .-. .V..i.a.. .N...a.z..i.o..n..a..l.e,Pinerolo - Piazza Cavour,23:05,16:40
+,,Perosa - Deposito,Giovedì,15:25,23:50,282,Pinerolo - Piazza Cavour,TORINO - Autostazione c.so Bolzano,16:40,18:15
+,,Perosa - Deposito,Giovedì,15:25,23:50,275,TORINO - Autostazione c.s,Pinerolo - Movicentro,18:41,19:44
+,,Perosa - Deposito,Giovedì,15:25,23:50,901,Pinerolo - Movicentro,PAUSA 20:25 -,19:50,21:10
+,,Perosa - Deposito,Giovedì,16:35,00:05,275,Vil - Boge,Perosa - Deposito,17:00,20:05
+,,Perosa - Deposito,Giovedì,16:35,00:05,303,Perosa Arg.-Pzza Terzo Al,Pinerolo - Piazza Cavour,17:15,20:40
+,,Perosa - Deposito,Giovedì,16:35,00:05,303,Perosa Arg.-Pzza Terzo Al,TORINO - Autostazione c.s,18:00,22:03
+,,Perosa - Deposito,Giovedì,16:35,00:05,303,Prali Ghigo ........................................1..8...:.4...0.... .P..i.n..e..r..o..l.o.. .-. .P..i.a..z..z.a.. .C..a..v..o..u..r,Perosa Arg.-Pzza Terzo Al,23:20,19:25
+,,Perosa - Deposito,Giovedì,16:35,00:05,282,Ingresso deposito Pinerolo - Piazza Cavour,Perosa - Deposito,23:20,19:26
+,,Perosa - Deposito,Giovedì,16:38,01:05,282,Perosa - Deposito ..............................1..6...:.4...8............................................................................... .P..i.n..e..r.o..l.o.. .-.. .M...o..v..i.c..e..n..tro,TORINO - Autostazione c.so Bolzano,21:46,22:57
+,,Perosa - Deposito,Giovedì,16:38,01:05,282,TORINO - Autostazione c.s,TORINO - Autostazione c.s,23:03,23:03
+,,Perosa - Deposito,Giovedì,16:38,01:05,275,Per - Via Nazionale 6(Terminal Sapav1) 6 .:..4..9............................................................................... .P..i.n..e..r..o..l.o.. .-. .M....o..v..ic..e..n..t..r.o,Perosa Arg.-Pzza Terzo Alpini ...........1...6..:..5..0............................................................................... .P..e..r.o...s.a.. .A..r..g....-.P..z..z.a.. .T..e..r..z.o.. .A...l,00:14,00:50
+,,Perosa - Deposito,Giovedì,16:38,01:05,275,Villar Perosa Stabiliment ..................1..7...:.0...0.... .P..i.n..e..r.o..l.o... -.. .P..i.a..z.z..a.. .C..a..v..o..u..r. . .......................................2......0.....:...1....0......... ..P.....e....r..o....s....a.... ..-.. ..D....e....p.....o.....s..i..t...o,Perosa Arg.-Pzza Terzo Al,00:55,17:15
+,,Perosa - Deposito,Giovedì,16:38,01:05,275,Perosa Arg.-Pzza Terzo Al ................1...7..:..2..0.... .P...i.n..e..r.o..l.o.. .-. .M....o..v..i.c..e..n..t.r.o,Fenestrelle - Via Naziona,20:11,17:44
+,,Perosa - Deposito,Giovedì,16:38,01:05,282,,,,
+,,Perosa - Deposito,Giovedì,16:38,01:05,275,Fenestrelle - Via Naziona .................1...7..:..4..5.... .P..e..r..o..s..a.. A...r.g....-.P..z..z..a.. T...e..r.z.o... .A..l,Perosa - Deposito,21:05,18:16
+,,Perosa - Deposito,Giovedì,16:38,01:05,282,Perosa - Deposito ..............................1..8...:.1...6.... .P..e..r.o..s..a.. .A..r..g....-.P..z..z.a.. .T..e..r.z..o.. .A..l,Pinerolo - Movicentro,21:10,21:42
+,,Perosa - Deposito,Giovedì,04:05,14:38,303,TORINO - Autostazione c.so Bolzano .0..8...:.2...9.... .P..e..r.o..s..a.. .A..r..g...-..P..z.z..a.. .T..e..r.z..o.. .A..l,TORINO - Autostazione c.so Bolzano .0..8...:.2...9.... .P..r.a..l.i. .G...h..i.g..o,12:35,13:14
+,,Perosa - Deposito,Giovedì,04:05,14:38,275,Perosa - Deposito ..............................0..4...:.1...5.... .T..O...R..I.N..O... .-. .A..u...t.o..s..t.a..z..io...n..e.. .c...s.. . ................................0.....8.....:...4.....1......... ..P....r...a....l.i.. ..G.....h.....i.g....o,Pinerolo Bivio Sede Sapav,13:14,09:38
+,,Perosa - Deposito,Giovedì,04:05,14:38,275,Fenestrelle - Via Naziona .................0...4..:..5..0............................................................................... .P..r.a..l.i. .G...h..i.g..o,PAUSA 05:21 - 06:40 Perosa - Deposito,13:45,14:28
+,,Perosa - Deposito,Giovedì,04:05,14:38,282,EXTRA LAYOVER Pinerolo Bivio Sede Sapav,Perosa - Deposito,10:08,06:45
+,,Perosa - Deposito,Giovedì,04:05,14:38,282,Uscita deposito Pinerolo - Movicentro,Perosa Arg.-Pzza Terzo Alpini,10:18,06:50
+,,Perosa - Deposito,Giovedì,04:05,14:38,275,Perosa Arg.-Pzza Terzo Al ................0...6..:..5..0.... .P...e..r.o..s..a.. .-. .D..e..p..o...s.i.t.o,Pinerolo - Piazza Cavour ..................0...7..:..2..0.................. .P...A...U...S...A... . .1...0..:..5..5... .-,10:55,12:25
+,,Perosa - Deposito,Giovedì,04:05,14:38,275,Pinerolo - Piazza Cavour ..................0...7..:..2..0.... .P...e..r.o..s..a.. .-. .D..e..p..o...s.i.t.o,Perosa Arg.-Pzza Terzo Alpini,12:25,12:35
+,,Perosa - Deposito,Giovedì,04:05,14:05,275,Pinerolo - Movicentro,TORINO - Autostazione c.so Bolzano,09:16,10:19
+,,Perosa - Deposito,Giovedì,04:05,14:05,282,Perosa Arg.-Pzza Terzo Al ................0...4..:..2..0.................. .P...A...U...S...A... . .1...0..:..1..9... .-,Pinerolo - Piazza Cavour,12:03,04:45
+,,Perosa - Deposito,Giovedì,04:05,14:05,282,,,,
+,,Perosa - Deposito,Giovedì,04:05,14:05,282,Pinerolo - Piazza Cavour ..................0...4..:..4..5.... .P...in...e..r.o..l.o.. .B..i.v..i.o.. .S..e..d..e.. .S..a..p..a..v,TORINO - Autostazione c.s ...............0..5...:.5...1.... .P..i.n..e..r.o...l.o.. .-. .M...o..v..i.c..e..n..t.r..o,13:08,13:14
+,,Perosa - Deposito,Giovedì,04:05,14:05,282,TORINO - Autostazione c.so Bolzano0 ..5..:..5..1..... P...i.n..e..r.o..l.o.. .-.. M....o..v..i.c..e..n..t.r.o,TORINO - Autostazione c.so Bolzano0 ..5..:..5..1..... P...e..r.o..s..a.. .A..r.g....-.P...z.z..a.. .T..e..r.z..o.. .A..l,13:18,13:50
+,,Perosa - Deposito,Giovedì,04:05,14:05,282,TORINO - Autostazione c.s,Pinerolo - Piazza Cavour,06:53,08:10
+,,Perosa - Deposito,Giovedì,04:05,14:05,282,Pinerolo - Piazza Cavour,Perosa Arg.-Pzza Terzo Alpini,08:10,08:40
+,,Perosa - Deposito,Giovedì,04:05,14:05,275,Perosa Arg.-Pzza Terzo Al,Pinerolo - Movicentro,08:40,09:12
+,,Perosa - Deposito,Giovedì,04:35,15:05,282,Perosa Arg.-Pzza Terzo Al,Pinerolo - Movicentro,04:50,05:22
+,,Perosa - Deposito,Giovedì,04:35,15:05,282,Pinerolo - Movicentro ......................0..5...:.2...6.... .P..e..r..o..s.a.. .A..r..g....-.P..z..z.a.. .T..e..r..z.o.. .A...l.p..i.n..i,Pinerolo - Movicentro,10:10,10:46
+,,Perosa - Deposito,Giovedì,04:35,15:05,275,TORINO - Autostazione c.s ...............0..6...:.4...1.... .T..O...R..I.N..O... .-. .A..u...t.o..s..t.a..z..i.o..n..e.. .c....s,Pinerolo - Movicentro,11:57,07:44
+,,Perosa - Deposito,Giovedì,04:35,15:05,275,Pinerolo - Movicentro ......................0..7...:.4...8.... .T..O...R..I.N...O.. .-. .A...u..t.o..s..t.a..z..i.o..n..e.. .c....s.o.. .B...o..l.z.a..n..o,PAUSA 11:57 -,11:57,13:03
+,,Perosa - Deposito,Giovedì,04:35,15:05,282,TORINO - Autostazione c.s,Pinerolo - Movicentro,13:03,14:14
+,,Perosa - Deposito,Giovedì,04:40,14:30,281,Perosa - Deposito ..............................0..4...:.5...0.... .V..i.l.l.a..r. .P..e..r..o..s.a.. .-.. .V..i.a.. .N..a..z..i.o.. . ........................................0......7....:...3.....8......... ..T....o....r...i..n....o.... ..-.. ..V.....i..a.... ..B....o.....r..s....e....l..l.i.n..o... .(.P..A..R...K..),Perrero ..............................................0...5...:.1..0..... .P..e..r.o..s..a.. .A..r.g....-..P..z.z..a.. .T..e..r.z..o.. .A..l. . ...................................0......7.....:...5....5......... ..T....O.....R.....I..N.....O..... ..-.. .A..u..t..o..s.t..a..z.i.o...n..e.. .c...s..o.. .B..o..l.z..a..n..o,12:35,12:41
+,,Perosa - Deposito,Giovedì,04:40,14:30,303,Perrero .............................................0...5...:.1..0..... .P..e..r.o..s..a.. .A..r..g...-..P..z.z..a.. .T..e..r.z..o.. .A..l.p..i.n..i. .........................0......7....:....5....5......... .T....O......R....I..N......O..... ..-... .A..u..t..o..s.t..a..z.i.o..n..e.. .c....s,Perosa Arg.-Pzza Terzo Al ................0...5..:..2..5.... .P...e..r.o..s..a.. .-. .D..e..p..o...s.i.t.o... ..............................................................0....8......:..0......0........ ..P....i..n....e....r....o....l..o.... ..-.. ..M.......o.....v...i.c....e....n....t....r..o,12:41,13:44
+,,Perosa - Deposito,Giovedì,04:40,14:30,275,Perosa Arg.-Pzza Terzo Al ................0...5..:..2..5............................................................................... .P..i.n..e..r..o..l.o.. .-. .M....o..v..ic..e..n..t..r.o,Perosa - Deposito,13:48,09:00
+,,Perosa - Deposito,Giovedì,04:40,14:30,275,Vil - Boge ..........................................0...6..:..0..0............................................................................... .P..e..r.. .-. .V..i.a.. .N...a.zionale 6(Terminal Sapav),Perosa - Deposito,14:19,09:05
+,,Perosa - Deposito,Giovedì,04:40,14:30,303,Perosa Arg.-Pzza Terzo Al,Pinerolo - Movicentro,06:15,09:46
+,,Perosa - Deposito,Giovedì,04:40,14:30,303,Perrero .............................................0...6...:.5..5..... .T..O..R...I.N..O... .-. .A..u..t..o..s.t..a..z.i.o..n...e.. c....s,Perosa Arg.-Pzza Terzo Al,10:57,07:10
+,,Perosa - Deposito,Giovedì,04:40,14:30,275,Perosa Arg.-Pzza Terzo Al ................0...7..:..1..0.... .T..o...r.i.n..o.. .-. .V...i.a.. B...o..r.s..e..l.l.i.n..o.. .(.P..A...R..K..),PAUSA 11:01 -,11:01,12:30
+,,Perosa - Deposito,Giovedì,04:55,14:45,275,Fro - Via Principe Amedeo 1 ..............0...9..:..2..0.... .P...e..r.o..s..a.. .A..r.g....-.P...z.z..a.. .T..e..r.z..o.. .A..l,Frossasco Via Principe Amedeo .........0..9...:.2...0.... .V..i.l.l.a..r. .P..e..r..o..s..a.. .S.t..a..b..i.l.i.m...e..n..t,13:20,13:39
+,,Perosa - Deposito,Giovedì,04:55,14:45,283,Perosa - Deposito ..............................0..5...:.0...5.... .F..r.o..s..s..a.s..c..o.. .V..i.a.. .P..r..in...c.i.p..e.. .A...m... . ................................0......9....:....2....0......... ..V.....i.l..l..a....r... ..P....e....r..o.....s...a.... ..S....t..a....b....i..l..i..m...e..n..t,Perosa Arg.-Pzza Terzo Alpini ...........0...5..:..1..0.... .P..i.n..e..r..o..l.o.. .-. .P..i.a..z..z.a.. .C...a.v..o..u...r. . .......................................0.....9......:..5.....0......... ..P....e....r..o.....s...a.... ..A....r....g......-...P....z...z...a.... ..T....e....r...z...o.... ..A.....l,14:15,14:30
+,,Perosa - Deposito,Giovedì,04:55,14:45,284,Perosa Arg.-Pzza Terzo Al ................0...5..:..1..0.... .P...i.n..e..r.o..l.o.. .-. .P..i.a..z..z..a.. .C..a..v.o...u..r. .........................................0.....9.....:...5.....0......... ..P....e....r...o....s...a.... ..A.....r..g.......-...P....z...z...a.... ..T....e....r...z...o..... .A.....l..p....i..n..i,Airasca - stabilimento sk ..................0..5...:.5...5.... .P..i.n..e..r..o..l.o.. .-. .P..i.a..z..z.a.. .C..a..v..o..u..r.. .........................................0.....9.....:...5.....5......... ..P....e....r..o....s....a.... ..-.. ..D.....e....p.....o....s..i..t....o,14:30,14:35
+,,Perosa - Deposito,Giovedì,04:55,14:45,283,Pinerolo - Piazza Cavour,Pinerolo - Piazza Cavour,10:00,10:00
+,,Perosa - Deposito,Giovedì,04:55,14:45,284,Airasca - stabilimento sk,Frossasco Via Principe Am,06:30,10:20
+,,Perosa - Deposito,Giovedì,04:55,14:45,284,Perosa Arg.-Pzza Terzo Al,Airasca - stabilimento sk ..................0..8...:.0...5.................. .P...A...U...S..A... .. .1..0...:.5...1.. .-,07:20,12:50
+,,Perosa - Deposito,Giovedì,04:55,14:45,284,Airasca - stabilimento sk ..................0..8...:.2...5.... .P..i.n..e..r..o..l.o.. .-. .P..i.a..z..z.a.. .C..a..v..o..u..r,Pinerolo - Piazza Cavour ..................0...8..:..5..0.... .P...e..r. .-. .V..i.a.. .N...a..z.i.o..n...a.l.e.. .6..(..T..e..r.m...i.n..a..l. .S..a..p..a..v..),12:50,13:19
+,,Perosa - Deposito,Giovedì,04:55,14:45,275,Pinerolo - Piazza Cavour ...................0...8..:..5..0.... .P..e..r.. .-. .V..i.a.. .N...a..z.i.o..n..a..l.e.. .6..(..T..e..r.m...i.n..a..l. .S..a..p..a..v..),Pinerolo - Piazza Cavour ...................0...8..:..5..5.... .P..e..r..o..s..a.. A...r.g....-.P..z..z..a.. .T..e..r.z..o.. .A..l,13:19,13:20
+,,Perosa - Deposito,Giovedì,04:55,14:45,283,Pinerolo - Piazza Cavour ..................0...9..:..0..0.... .P...e..r.o..s..a.. .A..r.g....-.P..z..z..a.. .T..e..r.z..o.. .A..l.p..i.n..i,Fro - Via Principe Amedeo ...............0...9..:..2..0.... .P..e..r..o..s..a. .A...r.g....-.P..z..z..a.. T...e..r.z.o... .A..l.p..i.n..i,13:20,13:20
+,,Perosa - Deposito,Giovedì,05:05,17:00,281,Pinerolo - Stazione Fs ........................0..8...:.3...0.... .T..O...R..I.N..O... .-. .A..u...t.o..s..t.a..z..i.o..n..e.. .c....s,Pinerolo - Piazza Cavour,15:11,16:20
+,,Perosa - Deposito,Giovedì,05:05,17:00,303,Perosa Arg.-Pzza Terzo Al,Perosa - Deposito,05:20,12:35
+,,Perosa - Deposito,Giovedì,05:05,17:00,303,Perrero,Prali Ghigo,06:20,06:50
+,,Perosa - Deposito,Giovedì,05:05,17:00,275,,,,
+,,Perosa - Deposito,Giovedì,05:05,17:00,303,Prali Ghigo ........................................0..6...:.5...0.... .P..i.n..e..r..o..l.o.. .B..i.v..i.o.. .S..e..d..e.. .S..a..p..a..v,Perosa Arg.-Pzza Terzo Al ................0...7..:..3..5.... .T..O...R..I.N...O... .-. .A..u..t..o..s.t..a..z.i.o..n..e.. .c....s,13:23,14:19
+,,Perosa - Deposito,Giovedì,05:05,17:00,281,Perosa Arg.-Pzza Terzo Al ................0...7..:..3..5.... .T..O...R..I.N...O... .-. .A..u..t..o..s.t..a..z.i.o..n..e.. .c....s..o.. .B..o..l.z..a..n..o,Pinerolo - Stazione Fs,14:19,08:15
+,,Perosa - Deposito,Giovedì,05:05,15:30,275,Torino - Via Borsellino (PARK) ...........0...8...:.5..7..... .T..O..R..I.N...O... .-. .A..u..t..o..s.t..a..z.i.o..n..e... c....s,TORINO - Autostazione c.so Bolzano .0..9...:.0...3.... .P..i.n..e..r.o..l.o... .-. .M...o..v..i.c..e..n..t.r..o,13:41,14:44
+,,Perosa - Deposito,Giovedì,05:05,15:30,282,Perosa - Deposito ..............................0..5...:.1...5.... .T..O...R..I.N..O... .-. .A..u...t.o..s..t.a..z..io...n..e.. .c...s.. . ................................0.....9.....:...0.....3......... ..P....i..n....e....r...o....l..o.... ..-... ..M.......o....v...i..c....e....n....t..r.o,Perosa Arg.-Pzza Terzo Alpini ...........0...5..:..2..0.... .P..i.n..e..r..o..l.o.. .B..i.v..i.o.. .S..e..d..e.. .S..a..p..a..v.. . ..................................1....0......:..0......8........ ..P....e....r.. ..-... ..V.....i..a.... ..N....a....z....i..o....n....a....l..e.... ..6....(..T....e....r...m.......i..n....a....l.. S..a..p..a..v..),14:48,15:19
+,,Perosa - Deposito,Giovedì,05:05,15:30,275,Perosa Arg.-Pzza Terzo Al,PAUSA 10:14 -,05:20,11:16
+,,Perosa - Deposito,Giovedì,05:05,15:30,275,Perosa Arg.-Pzza Terzo Al ................0...6..:..4..0.... .P...i.n..e..r.o..l.o.. .-. .M....o..v..i.c..e..n..t.r.o,Pinerolo Bivio Sede Sapav,11:16,11:23
+,,Perosa - Deposito,Giovedì,05:05,15:30,275,Perosa Arg.-Pzza Terzo Al ................0...6..:..4..0.... .P...i.n..e..r.o..l.o.. .B..i.v..i.o.. .S..e..d..e.. .S..a..p..a..v,Pin - Via Giustetto-Via P,11:23,07:03
+,,Perosa - Deposito,Giovedì,05:05,15:30,275,Pin - Via Giustetto-Via P,TORINO - Autostazione c.s,07:05,08:08
+,,Perosa - Deposito,Giovedì,05:05,15:30,275,TORINO - Autostazione c.so Bolzano0 ..8..:..0..8..... P...i.n..e..r.o..l.o.. .B...i.v.i.o.. .S..e..d..e.. .S..a..p..a..v,Torino - Via Borsellino (PARK) ..........0...8..:..1..2.... .T..O...R..I.N...O.. .-.. .A..u..t.o...s.t..a.z..i.o..n..e.. .c....s,11:23,12:19
+,,Perosa - Deposito,Giovedì,05:05,17:26,275,Pinerolo - Movicentro .......................0...8..:.4...8.... .P..e..r..o..s..a. .A...r.g....-.P..z..z..a.. T..e..r..z.o... .A..l,Perosa - Deposito ...............................0..9...:.2...5.... .P..e..r..r.e..r.o,14:30,16:05
+,,Perosa - Deposito,Giovedì,05:05,17:26,275,Perosa Arg.-Pzza Terzo Al ................0...5..:..2..0.... .P...e..r.o..s..a.. .-. .D..e..p..o...s.i.t.o,Prali Ghigo,09:25,16:30
+,,Perosa - Deposito,Giovedì,05:05,17:26,275,Villar Perosa Stabiliment,Perosa - Deposito ...............................1..3...:.0...0.... .P..e..r..o..s.a.. .A...r.g....-.P..z..z.a.. .T..e..r..z.o.. .A...l.p..i.n..i,05:35,17:15
+,,Perosa - Deposito,Giovedì,05:05,17:26,282,Perosa Arg.-Pzza Terzo Al,Pinerolo - Movicentro ......................0..6...:.2...2.... .P..e..r..o..s.a.. .-. .D...e..p..o..s..i.t.o,05:50,13:00
+,,Perosa - Deposito,Giovedì,05:05,17:26,282,Pinerolo Centro Studi (C.Torino/Roch0i6s): 3 ..0.... .P..e..r..r.e..r.o,TORINO - Autostazione c.s ...............0..7...:.3...7.... .P..e..r.o..s..a.. .A..r..g....-.P..z..z.a.. .T..e..r.z..o.. .A..l,13:20,13:35
+,,Perosa - Deposito,Giovedì,05:05,17:26,275,TORINO - Autostazione c.so Bolzano0 ..7..:..3..7..... P...e..r.o..s..a.. .A..r.g....-.P...z.z..a.. .T..e..r.z..o.. .A..l,TORINO - Autostazione c.so Bolzano0 ..7..:..3..7..... V...i.l. .-. .B..o..g..e,13:35,13:45
+,,Perosa - Deposito,Giovedì,05:05,17:26,275,TORINO - Autostazione c.s ...............0..7...:.4...1.... .V..i.l. .-. .B..o...g.e,Pinerolo - Movicentro ......................0..8...:.4...4.... .P..e..r..o..s.a.. .A..r..g....-.P..z..z.a.. .T..e..r..z.o.. .A...l,14:10,14:25
+,,Perosa - Deposito,Giovedì,05:25,15:33,275,Perosa Arg.-Pzza Terzo Al ................0...5..:..4..0.... .P...e..r.o..s..a.. .A..r.g....-.P...z.z..a.. .T..e..r.z..o.. .A..l,Pinerolo - Movicentro,11:40,06:12
+,,Perosa - Deposito,Giovedì,05:25,15:33,500,,,,
+,,Perosa - Deposito,Giovedì,05:25,15:33,275,Pinerolo - Movicentro ......................0..6...:.1...6.... .P..e..r..o..s.a.. .A..r..g....-.P..z..z.a.. .T..e..r..z.o.. .A...l,PAUSA 07:19 - 08:03 Villar Perosa Stabiliment,12:15,13:37
+,,Perosa - Deposito,Giovedì,05:25,15:33,282,TORINO - Autostazione c.s,Fenestrelle - Via Naziona,08:03,14:48
+,,Perosa - Deposito,Giovedì,05:25,15:33,282,Perosa Arg.-Pzza Terzo Al ................0...9..:..5..0.... .F..e..n..e..s..t.r..e..l.l.e.. .-. .V..i.a.. .N...a.z..i.o..n..a..l.e,PAUSA 09:55 -,14:48,11:30
+,,Perosa - Deposito,Giovedì,05:35,17:35,275,Sestriere - Parcheggio ......................0...7..:.0...0.... .P..i.n..e..r..o..l.o.. .-. .D...e..p..o..s..i.t.o.. .........................................................1.....5.....:...0.....7........ ..P.....e....r..o.....s...a.... ..A....r...g.......-..P.....z...z...a.... ..T....e....r...z...o.... ..A...l.p..i.n..i,Pinerolo Bivio Sede Sapav ..................1..5...:.0...8.... .P..e..r.o..s..a.. .-. .D...e..p..o..s.i.t..o,17:20,17:25
+,,Perosa - Deposito,Giovedì,05:35,17:35,285,Sestriere - Parcheggio ......................0...7..:.0...0.... .P..i.n..e..r..o..l.o.. .B..i.v..i.o.. .S..e..d..e.. .S..a..p..a..v,PAUSA 07:45 -,15:08,08:45
+,,Perosa - Deposito,Giovedì,05:35,17:35,285,Oulx - Stazione Fs,Pinerolo Bivio Sede Sapav,08:45,15:08
+,,Perosa - Deposito,Giovedì,05:35,17:35,275,Sestriere - Parcheggio,Pinerolo - Movicentro,09:30,15:14
+,,Perosa - Deposito,Giovedì,05:35,17:35,275,Perosa Arg.-Pzza Terzo Al,Pinerolo - Deposito,10:40,16:38
+,,Perosa - Deposito,Giovedì,05:35,17:35,275,Pinerolo - Deposito,Pinerolo - Deposito,16:43,16:43
+,,Perosa - Deposito,Giovedì,05:35,17:35,275,Pinerolo - Movicentro,Pinerolo Bivio Sede Sapav,11:16,11:23
+,,Perosa - Deposito,Giovedì,06:35,17:53,275,Perosa Arg.-Pzza Terzo Al ................0...6..:..5..0.... .P...e..r.o..s..a.. .-. .D..e..p..o...s.i.t.o... ..............................................................1....1......:..2......0........ ..P....e....r....o....s..a.... ..-... .D......e....p....o....s....i..t..o,Perosa - Deposito,14:15,11:20
+,,Perosa - Deposito,Giovedì,06:35,17:53,282,Fenestrelle - Via Naziona,Perosa Arg.-Pzza Terzo Al,07:40,14:20
+,,Perosa - Deposito,Giovedì,06:35,17:53,303,Pinerolo - Deposito ...........................1...0..:.3...2.... .P..e..r..o..s.a.. .A...r.g....-.P..z..z..a.. T..e..r..z.o... .A..l,Pinerolo Bivio Sede Sapav ................1...0..:..3..8..... P...e..r.r.e..r..o.. ................................................................................................1.....1.....:..3......9.................................... ..P......A......U.......S.....A...... .. ..1.....5.....:...3.....0..... ..-,11:25,16:30
+,,Perosa - Deposito,Giovedì,06:35,17:53,275,Pinerolo Bivio Sede Sapav ...............1...0..:..3..8..... .P..e..r.r.e..r..o.. . ..............................................................................................1.....2.....:...2.....0........ ..S....e....s...t...r..i..e....r...e.... ..-... .P.....a....r..c....h....e....g....g....i..o,Pinerolo - Piazza Cavour ..................1...0..:..5..0.... .P...e..r.o..s..a.. .A..r.g....-.P..z..z..a.. .T..e..r.z..o.. .A..l. . ...................................1.....2......:..3.....5......... ..P....e....r...o....s...a.... ..A.....r...g......-...P....z...z...a.... ..T....e....r...z...o.... ..A.....l,16:30,17:40
+,,Perosa - Deposito,Giovedì,06:35,17:53,275,Pinerolo - Piazza Cavour ..................1...0..:..5..0.... .P...e..r.o..s..a.. .A..r.g....-.P..z..z..a.. .T..e..r.z..o.. .A..l.p..i.n..i,Per - Via Nazionale 6(Terminal Sapav1) 1 .:..1..9.... .P...e..r.o..s..a.. .-. .D..e..p..o...s.i.t.o,12:35,12:36
+,,Perosa - Deposito,Giovedì,06:35,17:53,275,Perosa Arg.-Pzza Terzo Al,Perosa - Deposito,17:40,17:43
+,,Perosa - Deposito,Giovedì,06:55,19:05,275,Perosa - Deposito ..............................0..7...:.0...5............................................................................... .P..e..r. .-. .V..i.a.. .N...a..z.i.o...n..a..l.e.. 6(Terminal Sapav),Perosa - Deposito,17:42,13:55
+,,Perosa - Deposito,Giovedì,06:55,19:05,282,Perosa Arg.-Pzza Terzo Al ................0...7..:..1..0............................................................................... .P..i.n..e..r..o..l.o.. .-. .M....o..v..ic..e..n..t..r.o,Perosa - Deposito,18:18,14:00
+,,Perosa - Deposito,Giovedì,06:55,19:05,282,Pinerolo - Movicentro ......................0..7...:.4...6............................................................................... .P..e..r.o..s..a.. .A..r..g...-..P..z.z..a.. .T..e..r.z..o.. .A.lpini,Prali Ghigo,18:50,14:39
+,,Perosa - Deposito,Giovedì,06:55,19:05,282,Pinerolo - Piazza Cavour,PAUSA 09:27 - 10:03 Perosa - Deposito,08:10,15:36
+,,Perosa - Deposito,Giovedì,06:55,19:05,282,TORINO - Autostazione c.s,Per - Via Nazionale 6(Terminal Sapav),10:03,17:42
+,,Perosa - Deposito,Giovedì,06:55,19:05,282,Pinerolo - Movicentro ......................1..1...:.1...8.... .P..e..r.. -.. .V..i.a.. .N..a..z..i.o..n..a..l.e.. .6..(.T..e..r..m...i.n..a..l. .S..a..p..a..v.),Perosa Arg.-Pzza Terzo Al,17:42,11:50
+,,Perosa - Deposito,Giovedì,07:10,18:51,285,Perosa Arg.-Pzza Terzo Alpini ............0...8..:..4..0..... O...u..l.x.. .-. .S..t.a..z..i.o..n..e.. .F..s,Per - Via Nazionale 6(Terminal Sapav)0 .8...:.4..2..... .S.e..s..t.r..i.e..r.e.. .-. .P..a..r..c.h...e..g.g..i.o,16:45,17:30
+,,Perosa - Deposito,Giovedì,07:10,18:51,275,Perosa - Deposito ..............................0..7...:.2...0............................................................................... .S.e..s..t.r..i.e..r.e.. .-. .P..a..r..c.h..e..g..g.io,Per - Via Nazionale 6(Terminal Sapav),17:30,13:09
+,,Perosa - Deposito,Giovedì,07:10,18:51,281,Perosa Arg.-Pzza Terzo Al ................0...7..:..2..5............................................................................... .P..e..r..o..s.a.. .A...r.g....-.P..z..z.a.. .T..e..r..z.o... A...l.p..i.ni,Perosa - Deposito,18:40,13:15
+,,Perosa - Deposito,Giovedì,07:10,18:51,275,Per - Via Nazionale 6(Terminal Sapav0) 8 .:..3..9.... .P...e..r.o..s..a.. .A..r.g....-.P...z.z..a.. .T..e..r.z..o.. .A..l.p..i.n..i,Perosa Arg.-Pzza Terzo Al,13:20,08:40
+,,Perosa - Deposito,Giovedì,07:10,18:51,275,Perosa Arg.-Pzza Terzo Alpini ...........0...8..:..4..0.... .P..e..r..o..s..a.. A...r.g....-.P..z..z..a.. .T..e..r.z.o... .A..l,Oulx - Stazione Fs,13:20,16:15
+,,Perosa - Deposito,Giovedì,07:19,19:11,282,Perosa - Deposito ..............................0..7...:.2...9.... .P..e..r.o..s..a.. .A..r..g....-.P..z..z.a.. .T..e..r.z..o.. .A..l. . ...................................1......1.....:...1....0.......... ..P....i..n....e....r..o....l..o..... .B......i..v..i..o..... ..S...e....d.....e.... S..a..p..a..v,San Sebastiano ..................................0..7...:.3...0.... .P..i.n..e..r..o..l.o.. .-. .M...o...v.i.c..e..n..t..r.o.. . ...............................................1.....1.....:...4.....2........ ..T....O.....R.....I..N.....O..... ..-... ..A....u.....t..o....s....t..a..z..i.o..n..e.. .c....s,16:23,17:19
+,,Perosa - Deposito,Giovedì,07:19,19:11,281,San Sebastiano .................................0..7...:.3...0.... .P..i.n..e..r..o..l.o.. .-. .M....o..v..ic..e..n..t..r.o.. . ...............................................1.....1.....:...4.....6........ ..T....O.....R.....I..N.....O..... ..-... ..A....u.....t..o....s....t..a...z..i.o..n..e.. .c....s.o... .B..o..l.z..a.n...o,TORINO - Autostazione c.s,17:19,12:57
+,,Perosa - Deposito,Giovedì,07:19,19:11,281,Villar Perosa - Municipio ..................0..7...:.4...5.... .V..u..o...t.o.. ................................................................ .T..O..R..I.N...O... .-. .A..u..t..o..s.t..a..z.i.o..n..e.. .c....s,TORINO - Autostazione c.so Bolzano,17:30,12:57
+,,Perosa - Deposito,Giovedì,07:19,19:11,275,Pinerolo Centro Studi (C.Torino/Roch0i8s): 1...0.................. .P...A...U...S..A... .. .1..2...:.5...7.. .-.. .1...4..:..0..3... ................ .P..i.n.. .-. .V..i.a.. .G...i.u..s.t..e..t.t.o...-.V..i.a.. .P,Perosa - Deposito ..............................0..8...:.4...0............................................................................... .P..e..r. .-. .V..i.a.. .N...a..z.i.o...n..a..l.e.. 6(Terminal Sapav),18:36,18:55
+,,Perosa - Deposito,Giovedì,07:19,19:11,282,Perosa - Deposito ..............................0..8...:.4...0.... .T..O...R..I.N..O... .-. .A..u...t.o..s..t.a..z..io...n..e.. .c...s,PAUSA 08:40 - 11:00 Pinerolo Bivio Sede Sapav ..................1..5...:.0...8.... .P..e..r.o..s..a.. .-. .D...e..p..o..s.i.t..o,14:03,19:01
+,,Perosa - Deposito,Giovedì,12:35,23:30,275,Perosa Arg.-Pzza Terzo Al ................1...2..:..5..0.... .P...e..r.o..s..a.. .A..r.g....-.P...z.z..a.. .T..e..r.z..o.. .A..l.p..i.n..i,Perosa Arg.-Pzza Terzo Al ................1...2..:..5..0.... .P...e..r.o..s..a.. .A..r.g....-.P...z.z..a.. .T..e..r.z..o.. .A..l.p..i.n..i,16:30,16:30
+,,Perosa - Deposito,Giovedì,12:35,23:30,275,,,,
+,,Perosa - Deposito,Giovedì,12:35,23:30,282,Fenestrelle - Via Naziona .................1...3..:..4..0.... .P..e..r.. .-. .V..i.a.. .N...a..z.i.o..n..a..l.e.. .6..(..T.e...r.m...i.n..a..l. .S..a..p..a..v..),Perosa - Deposito ..............................1..4...:.1...1.... .P..i.n..e..r.o...l.o.. .-. .S..t.a..z..i.o..n..e.. .F..s. ..................................................1.....6.....:...5.....5..................................... ..P......A......U......S.....A...... .. ..2...1...:.5...5.. ..-,16:32,22:30
+,,Perosa - Deposito,Giovedì,12:35,23:30,278,Perosa - Deposito ..............................1..4...:.1...8.... .P..i.n..e..r.o...l.o.. .-. .S..t.a..z..i.o..n..e.. .F..s. . ................................................1.....7.....:...0.....0......... ..A....i..r...a....s...c...a.... ..-... ..s...t..a....b.....i.l..i..m.......e....n...t.o... .s.k,Pinerolo - Deposito,22:30,18:45
+,,Perosa - Deposito,Giovedì,12:35,23:30,275,Per - Via Nazionale 6(Terminal Sapav1) 4 .:..1..9.................. .P...A...U...S...A... . .1...8..:..4..5... .-,Perosa Arg.-Pzza Terzo Al,19:38,14:20
+,,Luserna S.Giovanni - Deposito,Giovedì,04:20,14:37,279,Pinerolo - Piazza Cavour ..................0...9..:..0..0.... .T..o...r.r.e.. .P..e..l.l.i.c..e,PAUSA 09:20 -,13:35,12:40
+,,Luserna S.Giovanni - Deposito,Giovedì,04:20,14:37,284,Torre P. - Lombardini/Vol .................0...4..:.3...5....................... .E...X..T..R...A... .L..A...Y..O...V...E..R... ..................... .B..o..b..b..i.o.. .p..e..l.l.i.c..e,None Via Pinerolo ..............................0..5...:.3...5............................................................................. .L.u..s..e..r.n...a.. .S...G...i.o..v..a..n..n..i. .-. Deposito,14:00,14:27
+,,Luserna S.Giovanni - Deposito,Giovedì,04:20,14:37,284,None Via Pinerolo,Pinerolo - Piazza Cavour ....................0...6..:.2...9.... .L..u..s..e..r.n..a.. .S....G...io...v.a..n..n...i. .(.A..i.r.a..l.i.),05:55,12:50
+,,Luserna S.Giovanni - Deposito,Giovedì,04:20,14:37,283,Pinerolo - Piazza Cavour ...................0...8..:..0..0.... .L..u..s..e..r.n..a.. .S....G...i.o..v.a..n...n..i. .(.A..i.r.a..l.i.),Cantalupa ...........................................0...8..:..3..0.... .B...o..b..b..i.o.. .p..e..l.l.i.c..e,12:50,13:15
+,,Luserna S.Giovanni - Deposito,Giovedì,04:20,14:37,283,Cantalupa ..........................................0...8..:..3..0.... .B...o..b..b..i.o.. .p..e..l.l.i.c..e,Pinerolo - Piazza Cavour ...................0...9..:..0..0.... .T..o..r..r.e.. .P..e..l.l.i.c..e,13:15,13:35
+,,Luserna S.Giovanni - Deposito,Giovedì,04:40,15:50,275,Villar Perosa-Via Naziona ................0..7...:.3...0.... .L..u..s.e..r..n..a.. .S....G..i.o..v..a..n..n..i. .-. .D...e..p..o..s..i.t.o,Torre Pellice .......................................0...4..:..5..5.... .P..i.n...e..r.o..l.o.. .-. .P..i.a..z..z.a.. .C...a..v.o..u...r,12:15,07:50
+,,Luserna S.Giovanni - Deposito,Giovedì,04:40,15:50,284,Torre Pellice ......................................0...4..:..5..5.... .P..i.n...e..r.o..l.o.. .-. .P..i.a..z..z..a.. C...a..v.o...u..r,Bivio Bima .........................................0...5...:.1..5..... .T..o..r.r..e.. P...e..ll.i.c..e,08:15,08:40
+,,Luserna S.Giovanni - Deposito,Giovedì,04:40,15:50,275,Bivio Bima .........................................0...5...:.1..5..... .T..o..r.r..e.. P...e..ll.i.c..e.. ...........................................................................0.....8.....:...4.....0......... .T....o.....r...r..e.... ..P....... ..-... ..L...o.....m.....b..a..r.d..i.n..i./..V..o..l.t..a,Villar Perosa - Stabilime ....................0..5...:.3...5.... .L..u..s.e..r..n..a.. .S....G..i.o..v..a..n..n..i. .-. .D...e..p..o..s..i.t.o,12:25,08:45
+,,Luserna S.Giovanni - Deposito,Giovedì,04:40,15:50,901,Vuoto PAUSA 08:45 - 09:25 Torre P. - Lombardini/Vol,Villar Perosa - Stabilimento Tekfor A 0...5..:..3..5............................................................................. .N..o...n..e.. .V..i.a.. .P..i.n..e..r.o...l.o,12:25,13:30
+,,Luserna S.Giovanni - Deposito,Giovedì,04:40,15:50,275,Villar Perosa - Stabilime ....................0..6...:.0...0............................................................................ .N...o..n..e.. .V...ia.. .P..i.n..e...r.o..l.o,Luserna S.Giovanni - Deposito .........0..9...:.3...0................. .P...A...U...S...A... . .1..3...:.3...0.. ..-,13:30,14:25
+,,Luserna S.Giovanni - Deposito,Giovedì,04:40,15:50,275,Perosa Arg.-Pzza Terzo Al .................0...7..:..1..0.... .I.D... .c..o..r..s.a..:.. .2..1..7..3..1.. .|.. .L..i.n..e..a...:. .9..0..1.. ....................... .N..o...n..e.. .V..i.a.. .P..i.n..e..r.o...lo,Pinerolo - Movicentro .....................0..9...:.5...0.... .S..e..g..g..i.o..v..i.a.. .v.a..n..d..a..l.i.n..o,14:25,15:35
+,,Luserna S.Giovanni - Deposito,Giovedì,04:40,15:50,275,Villar Perosa Stabiliment ..................0...7...:.2..5..... .I.n..g..r.e..s..s..o.. .d..e..p..o..s..i.t.o... ......................................... .S..e..g..g..i.o..v..i.a.. .v.a..n..d...a..li.n...o,PAUSA 10:30 -,15:35,12:15
+,,Luserna S.Giovanni - Deposito,Giovedì,04:55,15:09,284,Seggiovia vandalino,PAUSA 05:55 - 06:30 Torre Pellice,05:10,13:05
+,,Luserna S.Giovanni - Deposito,Giovedì,04:55,15:09,284,Airasca - stabilimento sk ...................0..6...:.3...0.... .T..o..r.r..e.. .P..e..l.l.i.c.e,Seggiovia vandalino ..........................0...7..:..0..9.... .B...i.v.i.o... B...i.m...a,13:05,13:25
+,,Luserna S.Giovanni - Deposito,Giovedì,04:55,15:09,275,Seggiovia vandalino ...........................0...7..:..0..9.... .B...i.v.i.o.. .B...i.m...a,Seggiovia vandalino ...........................0...7..:..0..9.... .V...i.l.la..r.. .P..e..r.o..s..a.. .S..t.a..b..i.l.i.m...e..n..t,13:25,13:45
+,,Luserna S.Giovanni - Deposito,Giovedì,04:55,15:09,284,Seggiovia vandalino ..........................0...7..:..2..5.... .V...i.l.l.a.r.. .P..e..r.o..s..a.. .S..t.a..b..i.l.i.m...e..n..t,Airasca - stabilimento sk ...................0..8...:.0...4.... .S..a..n.. .S..e..c.o...n..d..o.. .B..i.v..i.o.. .B..i.m...a,14:15,14:35
+,,Luserna S.Giovanni - Deposito,Giovedì,04:55,15:09,284,Airasca - stabilimento sk ...................0..8...:.1...5.... .S..a..n.. .S..e..c.o...n..d..o.. .B..i.v..i.o.. .B..i.m...a,Pinerolo - Movicentro ........................0..8...:.4...5.... .L..u..s.e..r..n..a.. .S....G..i.o..v..a..n..n..i. .-. .D...e..p..o..s..i.t.o,14:35,14:59
+,,Luserna S.Giovanni - Deposito,Giovedì,04:55,15:09,901,Pinerolo - Movicentro,Torre Pellice,08:50,09:25
+,,Luserna S.Giovanni - Deposito,Giovedì,06:25,18:08,901,Luserna S.Giovanni - Deposito ..........0...6...:.3..5..... .T..o..r.r..e.. P...e..l.l.ic..e.. . .........................................................................1.....1.....:...3.....5......... ..T....O.....R....I..N......O..... ..-.. ..A.....u....t...o....s...t...a....z...i..o....n....e..... .c.......s,Torre P. - Lombardini/Volta ...............0..6...:.4...0.... .P..i.n..e..r.o...l.o.. .-. .M...o..v..i.c..e..n..t.r..o.. . ..........................................1.....2.....:...1.....0........ ..P.....i.n.....e....r...o....l..o.... ..-.. ..S....t...a...z....i..o....n....e.... ..F....s,16:15,17:21
+,,Luserna S.Giovanni - Deposito,Giovedì,06:25,18:08,284,Torre P. - Lombardini/Vol .................0...6..:.4...0.... .P..i.n..e..r..o..l.o.. .-. .M....o..v..i.c.e..n..t..r.o.. .............................................1....2......:..1......0........ ..P....i..n....e....r...o....l..o..... .-... ..S....t..a....z...i..o.....n....e.... ..F....s,Volvera - Fca-Mopar (Via Aldo Moro)0 .7..:..3..5.... .P..i.n..e..r..o..l.o.. .-. .D...e..p..o..s..i.t.o.. .....................................................1.....2.....:..1......5........ ..T....o....r...r...e.... ..P....e....l..l..i..c...e,17:23,17:53
+,,Luserna S.Giovanni - Deposito,Giovedì,06:25,18:08,281,Volvera-Str Piossasco,Pinerolo-Stabilimento TN,07:45,13:31
+,,Luserna S.Giovanni - Deposito,Giovedì,06:25,18:08,901,Pinerolo - Movicentro,Luserna S.Giovanni - Deposito ..........0...9...:.0..0................. ..P..A...U....S..A... . .1...4..:..4..1... .-,08:20,16:04
+,,Luserna S.Giovanni - Deposito,Giovedì,07:20,18:00,281,Luserna S.Giovanni - Deposito .........1..3...:.0...0.... .P..e..r.o..s..a.. .A..r..g....-.P..z.z..a.. .T..e..r.z..o.. .A..l,Torre Pellice .......................................0...7..:..3..5.... .S..e..g..g..i.o..v..i.a.. .v..a..n..d..a..l.i.n..o.. ...................................................1.....3.....:...1.....0......... ..V....i..l..l..a....r.. ..P....e....r...o.....s...a... ..S....t..a..b..i.l.i.m...e..n..t..o.. .S..k..f,16:35,16:45
+,,Luserna S.Giovanni - Deposito,Giovedì,07:20,18:00,901,Torre Pellice ......................................0...7..:..3..5.... .S..e..g..g..i.o..v..i.a.. .v..a..n..d..a..l.i.n..o.. . .................................................1.....3.....:...1.....0......... ..V....i..l..l..a....r.. ..P....e....r...o.....s...a.... .S....t...a..b..i.l.i.m...e..n...t,Pinerolo - Movicentro .......................0..8...:.1...0.... .A..i.r..a.s..c..a.. .-. .s..t.a..b..i.l.i.m...e..n..t.o... s..k.. . ..................................1.....3.....:...5.....5........ ..S....a....n.... ..S....e....c....o....n....d....o.... ..B.....i..v...i..o..... .B.....i..m.......a,17:00,17:20
+,,Luserna S.Giovanni - Deposito,Giovedì,07:20,18:00,284,San Secondo Bivio Bima,San Secondo Bivio Bima,17:25,17:25
+,,Luserna S.Giovanni - Deposito,Giovedì,07:20,18:00,901,Pinerolo - Movicentro .......................0..9...:.2...0.... .A..i.r..a.s..c..a.. .-. .s..t.a..b..i.l.i.m...e..n..t.o... s..k,Torre Pellice,14:30,17:45
+,,Luserna S.Giovanni - Deposito,Giovedì,07:20,18:00,279,Torre Pellice ......................................0...9..:..5..5.... .B...a..r.g..e..-.v..i.a..l.e.. .m...a..z.z..i.n..i./..c.a..v..a..l.l.o..t.t..a,Bobbio pellice ...................................1...0...:.1..3..... .B..a..r.g..e..-.v..i.a..l.e.. .m...a..z..z.i.n..i./..c..a..v.a..l.l.o..t..t.a,15:29,15:29
+,,Luserna S.Giovanni - Deposito,Giovedì,07:20,18:00,280,Bobbio pellice ....................................1...0...:.1..3..... .B..a..r.g..e..-.v..i.a..l.e.. .m...a..z..z.i.n..i./..c..a.v..a..l,Bobbio pellice ....................................1...0...:.1..3..... .P..i.n..e..r.o..l.o.. .-.. .S.t..a..z.i.o..n...e.. F..s,15:30,16:00
+,,Luserna S.Giovanni - Deposito,Giovedì,07:20,18:00,279,Bobbio pellice ...................................1...0...:.1..3..... .P..i.n..e..r.o..l.o.. .-.. .S.t..a..z.i.o..n...e.. F..s,Torre Pellice ......................................1...0..:..3..0.... .P..i.n...e..r.o..l.o.. .-. .I.s..t... .I.m...m....a..c.o..l.a..t..a,16:00,16:05
+,,Luserna S.Giovanni - Deposito,Giovedì,07:20,18:00,281,Torre Pellice .......................................1...0..:..3..0.... .P..i.n...e..r.o..l.o.. .-. .I.s..t... .I.m...m....a..c.o..l.a..t,Luserna S.Giovanni - Deposito ..........1...0...:.3..5..... .P..e..r.o..s..a.. .A..r..g...-..P..z.z..a.. .T..e..r.z..o.. .A..l,16:05,16:35
+,,Luserna S.Giovanni - Deposito,Giovedì,12:50,23:23,282,TORINO - Autostazione c.s,Torre Pellice,17:33,19:25
+,,Luserna S.Giovanni - Deposito,Giovedì,12:50,23:23,901,Pinerolo - Movicentro .......................1..3...:.4...0.... .T..o..r.r..e.. .P..e..l.l.i.c.e,Luserna S.Giovanni - Deposito,19:25,19:30
+,,Luserna S.Giovanni - Deposito,Giovedì,12:50,23:23,275,Pinerolo - Movicentro .......................1..3...:.4...8................. .P..A....U...S..A... . .1...9...:.3...0.. .-,Luserna S.Giovanni - Deposito,21:10,21:15
+,,Luserna S.Giovanni - Deposito,Giovedì,12:50,23:23,275,Perosa Arg.-Pzza Terzo Al,Airasca - stabilimento sk,14:40,22:00
+,,Luserna S.Giovanni - Deposito,Giovedì,12:50,23:23,275,Pinerolo Bivio Sede Sapav ................1...5..:..2..3.... .A...i.r.a..s..c.a.. .-. .s..t.a..b..i.l.i.m....e..n..t.o.. .s..k,PAUSA 16:19 -,22:30,17:33
+,,PONT ST MARTIN Rimessa,Giovedì,06:07,14:20,265,Ivrea - Stazione Fs Est,Chivasso - Staz. Fs Movic,11:28,12:18
+,,PONT ST MARTIN Rimessa,Giovedì,06:07,14:20,265,PONT ST MARTIN Rimessa .................0...6...:.1..7..... .C..h..i.v..a..s.s..o.. .-. .S..t.a..z.... .F..s. .M....o..v..i.c,Pont S.Martin-Pzza Iv Novembre .......0...6...:.2..2..... .I.v.r..e..a.. .-. .S..t.a..z..i.o..n..e.. .F..s. .I.n..t,12:43,13:33
+,,PONT ST MARTIN Rimessa,Giovedì,06:07,14:20,265,Pont S.Martin-Pzza Iv Nov .................0...6..:..2..2.... .I.v..r..e..a.. -.. .S..t.a..z.i.o...n..e.. .F.s.. .I.n..t,Ivrea - Porta Vercelli ..........................0...6..:..5..0..... .P..o..n..t. .S....M....a.r..t.i.n..-.P...z.z..a.. .I.v.. N...o..v,13:35,14:05
+,,PONT ST MARTIN Rimessa,Giovedì,06:07,14:20,265,Ivrea - Porta Vercelli ..........................0...6..:..5..0..... .P..o..n..t. .S....M....a.r..t.i.n..-.P...z.z..a.. .I.v.. N...o..v..e..m...b..r..e,Ivrea - Loc Banchette .........................0...6..:..5..9.... .P..O...N...T.. .S..T.. M....A..R..T..I.N... .R..i.m...e..s..s..a,14:05,14:10
+,,PONT ST MARTIN Rimessa,Giovedì,06:07,14:20,265,Ivrea - Loc Banchette,TORINO - Autostazione c.so Bolzano,07:01,07:56
+,,PONT ST MARTIN Rimessa,Giovedì,06:07,14:20,265,TORINO - Autostazione c.s,Strambino - C.So Torino,08:15,09:25
+,,PONT ST MARTIN Rimessa,Giovedì,06:07,14:20,265,Strambino - C.So Torino,PAUSA 10:11 -,09:27,10:52
+,,PONT ST MARTIN Rimessa,Giovedì,06:07,14:20,265,Pont S.Martin-Pzza Iv Nov,Ivrea - Stazione Fs Est,10:52,11:26
+,,PONT ST MARTIN Rimessa,Giovedì,14:07,23:49,265,Pont S.Martin-Pzza Iv Nov .................1...4..:..2..2.... .P..O...N...T.. .S..T.. .M...A..R...T.I..N.. .R..i.m...e..s..s..a,Ivrea - Loc Banchette .........................1...4..:..5..9.... .P..o...n..t. .S....M...a..r..t.i.n..-.P..z..z..a.. I.v.. .N...o..v..e..m...b..r..e,20:17,20:22
+,,PONT ST MARTIN Rimessa,Giovedì,14:07,23:49,265,Ivrea - Loc Banchette .........................1...5..:..0..1.... .P..o...n..t. .S....M...a..r..t.i.n..-.P..z..z..a.. I.v.. .N...o..v,TORINO - Autostazione c.s .................1..5...:.5...6.... .I.v..r.e..a.. .-. .S..t.a..z..i.o..n..e.. .F..s. .E..s..t,20:22,20:56
+,,PONT ST MARTIN Rimessa,Giovedì,14:07,23:49,265,TORINO - Autostazione c.so Bolzano .1...5..:..5..6.... .I.v..r..e..a.. -.. .S.t..a..z.i.o...n..e.. .F.s.. .E..s..t,TORINO - Autostazione c.so Bolzano .1...5..:..5..6.... .C...h..i.v.a..s..s..o.. .-. .S..t.a..z.... .F.s.. .M...o...v..ic,20:58,21:48
+,,PONT ST MARTIN Rimessa,Giovedì,14:07,23:49,265,Chivasso - Staz. Fs Movic,Chivasso - Staz. Fs Movic,22:12,22:12
+,,PONT ST MARTIN Rimessa,Giovedì,14:07,23:49,265,TORINO - Autostazione c.s,Ivrea - Stazione Fs Int,18:15,23:04
+,,PONT ST MARTIN Rimessa,Giovedì,14:07,23:49,265,Strambino - C.So Torino,PONT ST MARTIN Rimessa,19:27,20:16
+,,PONT ST MARTIN Rimessa,Giovedì,04:50,14:00,265,Pont S.Martin-Pzza Iv Nov,Ivrea - Stazione Fs Est,09:52,10:26
+,,PONT ST MARTIN Rimessa,Giovedì,04:50,14:00,265,PONT ST MARTIN Rimessa .................0...5...:.0..0..... .I.v.r..e..a.. .-. .S..t.a..z..i.o..n..e.. .F..s. .E..s..t,Pont S.Martin-Pzza Iv Novembre .......0...5...:.0..5..... .C..h..i.v..a..s.s..o.. .-. .S..t.a..z.... .F..s. .M....o..v..i.c,10:28,11:18
+,,PONT ST MARTIN Rimessa,Giovedì,04:50,14:00,265,Pont S.Martin-Pzza Iv Nov,Chivasso - Staz. Fs Movic,05:05,12:23
+,,PONT ST MARTIN Rimessa,Giovedì,04:50,14:00,265,Ivrea - Stazione Fs Est,Ivrea - Stazione Fs Int,05:41,13:15
+,,PONT ST MARTIN Rimessa,Giovedì,04:50,14:00,265,Chivasso - Staz. Fs Movic,Pont S.Martin-Pzza Iv Novembre,06:35,13:45
+,,PONT ST MARTIN Rimessa,Giovedì,04:50,14:00,265,Ivrea - Stazione Fs Int,PAUSA 08:10 -,07:35,09:42
+,,PONT ST MARTIN Rimessa,Giovedì,05:10,15:01,265,Strambino - C.So Torino,Pont S.Martin-Pzza Iv Novembre .......0...5...:.2..5..... .P..O..N...T.. .S..T.. .M...A...R..T..I.N.. .R...im....e..s.s..a,14:02,14:51
+,,PONT ST MARTIN Rimessa,Giovedì,05:10,15:01,265,Pont S.Martin-Pzza Iv Nov,Ivrea - Stazione Fs Est,05:25,05:59
+,,PONT ST MARTIN Rimessa,Giovedì,05:10,15:01,265,Ivrea - Stazione Fs Est,Chivasso - P.Le Alfa-Lanc,06:01,06:38
+,,PONT ST MARTIN Rimessa,Giovedì,05:10,15:01,265,Chivasso - P.Le Alfa-Lanc,PAUSA 07:55 -,06:40,12:15
+,,PONT ST MARTIN Rimessa,Giovedì,05:10,15:01,265,TORINO - Autostazione c.s,Strambino - C.So Torino,12:50,14:00
+,,PONT ST MARTIN Rimessa,Giovedì,05:42,18:20,265,Pont S.Martin-Pzza Iv Nov,Ivrea - Porta Vercelli,05:57,06:25
+,,PONT ST MARTIN Rimessa,Giovedì,05:42,18:20,265,Ivrea - Loc Banchette .........................0...6..:..3..4.... .P..O...N...T.. .S..T.. M....A..R..T..I.N... .R..i.m...e..s..s..a,Pont S.Martin-Pzza Iv Novembre,14:47,14:52
+,,PONT ST MARTIN Rimessa,Giovedì,05:42,18:20,265,TORINO - Autostazione c.s .................0..7...:.3...1.... .P..o..n..t. .S....M....a..r.t.i.n..-..P..z.z..a.. .I.v.. .N..o..v,Chivasso - Staz. Fs Movic,14:52,16:18
+,,PONT ST MARTIN Rimessa,Giovedì,05:42,18:20,265,Ivrea - Loc Banchette .........................0...8..:..5..1.... .C..h...i.v.a..s..s..o.. .-. .S..t.a..z.... F..s.. .M...o...v.i.c,Ivrea - Stazione Fs Int,16:43,17:33
+,,PONT ST MARTIN Rimessa,Giovedì,05:42,18:20,265,Pont S.Martin-Pzza Iv Nov .................0...9..:..2..6.... .I.v..r..e..a.. -.. .S..t.a..z.i.o...n..e.. .F.s.. .I.n..t,PONT ST MARTIN Rimessa,17:35,09:31
+,,PONT ST MARTIN Rimessa,Giovedì,05:55,15:20,265,Ivrea - Stazione Fs Int,Caluso - Via De Brissac 23 ...................0..7...:.0...0.... .P..O...N..T.. .S..T.. .M...A...R..T..I.N... R...i.m...e..s.s..a,14:35,15:10
+,,PONT ST MARTIN Rimessa,Giovedì,05:55,15:20,265,Caluso - Via De Brissac,PAUSA 07:58 -,07:00,11:42
+,,PONT ST MARTIN Rimessa,Giovedì,05:55,15:20,265,Pont S.Martin-Pzza Iv Nov,Ivrea - Stazione Fs Est,11:52,12:26
+,,PONT ST MARTIN Rimessa,Giovedì,05:55,15:20,265,Ivrea - Stazione Fs Est,Chivasso - Staz. Fs Movic,12:28,13:18
+,,PONT ST MARTIN Rimessa,Giovedì,05:55,15:20,265,Chivasso - Staz. Fs Movic,Ivrea - Stazione Fs Int,13:43,14:33
+,,PONT ST MARTIN Rimessa,Giovedì,05:59,17:20,265,Ivrea - Stazione Fs Int .........................0..6...:.3...4.... .P..o..n..t.. S....M....a..r.t.i.n...-.P..z.z..a.. .I.v.. .N..o...v,Pont S.Martin-Pzza Iv Nov .................0...7..:..0..0.... .I.v..r..e..a.. -.. .S..t.a..z.i.o...n..e.. .F.s.. .E..s..t,13:52,14:26
+,,PONT ST MARTIN Rimessa,Giovedì,05:59,17:20,265,Ivrea - Stazione Fs Est,Ivrea - Stazione Fs Est,14:28,14:28
+,,PONT ST MARTIN Rimessa,Giovedì,05:59,17:20,265,Pont S.Martin-Pzza Iv Nov,Chivasso - Staz. Fs Movic,07:52,15:43
+,,PONT ST MARTIN Rimessa,Giovedì,05:59,17:20,265,Ivrea - Stazione Fs Est,Ivrea - Stazione Fs Int,08:28,16:35
+,,PONT ST MARTIN Rimessa,Giovedì,05:59,17:20,265,Chivasso - Staz. Fs Movic,Pont S.Martin-Pzza Iv Novembre,09:43,17:05
+,,PONT ST MARTIN Rimessa,Giovedì,05:59,17:20,265,Ivrea - Stazione Fs Int,PAUSA 11:10 -,10:35,13:42
+,,PONT ST MARTIN Rimessa,Giovedì,06:25,19:20,265,PONT ST MARTIN Rimessa .................0...6...:.3..5..... .P..o..n..t. .S....M....a..r.t.i.n..-..P..z.z..a.. .I.v.. N...o..v,Pont S.Martin-Pzza Iv Novembre .......0...6...:.4..0..... .I.v.r..e..a.. .-. .S..t.a..z..i.o..n..e.. .F..s. .E..s..t,16:02,16:36
+,,PONT ST MARTIN Rimessa,Giovedì,06:25,19:20,265,Pont S.Martin-Pzza Iv Nov .................0...6..:..4..0.... .I.v..r..e..a.. -.. .S..t.a..z.i.o...n..e.. .F.s.. .E..s..t,Ivrea - Porta Vercelli ..........................0...7..:..0..8..... .C..h..i.v..a..s.s..o.. .-. .S..t.a..z.... .F..s. .M....o..v..i.c,16:38,17:33
+,,PONT ST MARTIN Rimessa,Giovedì,06:25,19:20,265,Ivrea - Porta Vercelli ..........................0...7..:..0..8..... .C..h..i.v..a..s.s..o.. .-. .S..t.a..z.... .F..s. .M....o..v..i.c,Caluso - Liceo .....................................0...7..:..4..5.... .I.v..r.e...a. .-.. .S.t..a..z.i.o..n...e.. .F.s.. .I.n..t,17:43,18:33
+,,PONT ST MARTIN Rimessa,Giovedì,06:25,19:20,265,Caluso - Liceo .....................................0...7..:..4..5.... .I.v..r.e...a. .-.. .S.t..a..z.i.o..n...e.. .F.s.. .I.n..t,08:50 — PAUSA DIVISA —,18:35,15:52
+,,PONT ST MARTIN Rimessa,Giovedì,06:28,18:33,265,Pont S.Martin-Pzza Iv Nov,TORINO - Autostazione c.so Bolzano,06:43,14:58
+,,PONT ST MARTIN Rimessa,Giovedì,06:28,18:33,265,Strambino - C.So Torino,PONT ST MARTIN Rimessa .................0...8...:.1..9..... .I.v.r..e..a.. .-. .S..t.a..z..i.o..n..e.. .F..s. .I.n..t,07:30,17:46
+,,PONT ST MARTIN Rimessa,Giovedì,06:28,18:33,265,PAUSA 08:19 - 12:42 Ivrea - Stazione Fs Int,Pont S.Martin-Pzza Iv Nov,17:48,18:18
+,,PONT ST MARTIN Rimessa,Giovedì,06:32,16:13,265,Pont S.Martin-Pzza Iv Nov,Strambino - C.So Torino,06:47,07:30
+,,PONT ST MARTIN Rimessa,Giovedì,06:32,16:13,265,Strambino - C.So Torino,PAUSA 08:48 -,07:32,12:06
+,,PONT ST MARTIN Rimessa,Giovedì,06:32,16:13,265,TORINO - Autostazione c.s,Ivrea - Loc Banchette,12:06,13:07
+,,PONT ST MARTIN Rimessa,Giovedì,06:32,16:13,265,Ivrea - Loc Banchette,Pont S.Martin-Pzza Iv Nov,13:09,13:42
+,,PONT ST MARTIN Rimessa,Giovedì,06:32,16:13,265,Pont S.Martin-Pzza Iv Nov,Caluso - Liceo,13:47,14:52
+,,PONT ST MARTIN Rimessa,Giovedì,06:32,16:13,265,Caluso - Liceo,Pont S.Martin-Pzza Iv Nov,14:58,15:58
+,,PONT ST MARTIN Rimessa,Giovedì,12:07,21:20,265,Pont S.Martin-Pzza Iv Nov .................1...2..:..2..2.... .P..O...N...T.. .S..T.. .M...A..R...T.I..N.. .R..i.m...e..s..s..a,Ivrea - Loc Banchette .........................1...2..:..5..9.... .P..o...n..t. .S....M...a..r..t.i.n..-.P..z..z..a.. I.v.. .N...o..v..e..m...b..r..e,17:47,17:52
+,,PONT ST MARTIN Rimessa,Giovedì,12:07,21:20,265,Ivrea - Loc Banchette .........................1...3..:..0..1.... .P..o...n..t. .S....M...a..r..t.i.n..-.P..z..z..a.. I.v.. .N...o..v,TORINO - Autostazione c.s .................1..3...:.5...6.... .I.v..r.e..a.. .-. .S..t.a..z..i.o..n..e.. .F..s. .E..s..t,17:52,18:26
+,,PONT ST MARTIN Rimessa,Giovedì,12:07,21:20,265,TORINO - Autostazione c.so Bolzano .1...3..:..5..6.... .I.v..r..e..a.. -.. .S.t..a..z.i.o...n..e.. .F.s.. .E..s..t,TORINO - Autostazione c.so Bolzano .1...3..:..5..6.... .C...h..i.v.a..s..s..o.. .-. .S..t.a..z.... .F.s.. .M...o...v..ic,18:28,19:18
+,,PONT ST MARTIN Rimessa,Giovedì,12:07,21:20,265,TORINO - Autostazione c.s .................1..4...:.0...6.... .C..h..i.v..a..s.s..o.. .-. .S..t.a..z.... .F..s. .M....o..v..i.c,Ivrea - Loc Banchette .........................1...5..:..0..7.... .I.v..r.e...a. .-.. .S.t..a..z.i.o..n...e.. .F.s.. .I.n..t,19:43,20:33
+,,PONT ST MARTIN Rimessa,Giovedì,12:07,21:20,265,Ivrea - Loc Banchette .........................1...5..:..0..9.... .I.v..r.e...a. .-.. .S.t..a..z.i.o..n...e.. .F.s.. .I.n..t,PAUSA 15:47 -,20:35,17:42
+,,Pinerolo - Deposito,Giovedì,05:00,12:45,275,Pinerolo - Deposito ...................0..5...:.1...0.... .P..e..r..o..s.a.. .A...r.g....-.P..z..z.a.. .T..e..r..z.o... A...l. . ................0......7....:....4....0......... ..S......P.....i.e.....t...r..o.... ..V.....a....l. ..L....e....m......i..n....a.... ..-... .V......i..a,Pinerolo Bivio Sede Sapav ........0...5..:..1..1.... .P...in...e..r.o..l.o.. .C..e..n..t..r.o.. .S..t..u..d..i. . ..............................0....8......:..1......0........ ..M......a....c....e....l..l..o.... ..-.. ..M.......u.....n....i..c..i..p....i..o,10:10,10:50
+,,Pinerolo - Deposito,Giovedì,05:00,12:45,275,Pinerolo Bivio Sede Sapav .......0...5..:..1..1..... P...i.n..e..r.o..l.o.. .C..e..n...t.r.o.. .S..t..u..d..i. ...............................0.....8......:..1.....0......... ..M......a....c....e....l..l..o.... ..-.. ..M.......u....n.....i..c...i.p.....i.o,Villar Perosa Stabiliment ..........0..5...:.3...5.... .P..i.n..e..r.o..l.o... -.. .D..e..p..o..s..i.t.o... ......................................0.....8.....:..1......5........ ..M.......a....c...e....l..l..o.... ..-.. ..M........u....n....i..c....i..p....i..o,10:50,10:50
+,,Pinerolo - Deposito,Giovedì,05:00,12:45,275,Villar Perosa Stabiliment ..........0..6...:.0...5..................................................................... .M...a..c..e..l.l.o.. .-. .M....u..n..i.c..i.p..i.o,PAUSA 08:15 -,10:50,09:10
+,,Pinerolo - Deposito,Giovedì,05:00,12:45,284,Torre Pellice .............................0...6..:..4..5.... .P...in...e..r.o..l.o.. .-. .D...e..p..o..s..i.t.o.. .......................................0....9......:..1......0........ ..S.......P....i..e....t..r...o..... ..V....a....l.. ..L...e....m.......i..n....a.... ..-.. ..V....i..a.... ..E..u..r..o..p..a,Pinerolo - Deposito,11:20,09:15
+,,Pinerolo - Deposito,Giovedì,05:00,12:45,284,Torre Pellice .............................0...6..:..5..0.... .P...in...e..r.o..l.o.. .-. .D...e..p..o..s..i.t.o.. .......................................0.....9.....:..1......5........ ..S.......P....i..e....t..r...o..... ..V....a....l.. ..L...e....m.......i..n....a.... ..-.. ..V....i..a,Bivio Bima ................................0...7...:.1..0...................................................................... .M...a..c..e..l.l.o.. .-. .M....u..n..i.c..i.p..i.o,11:30,12:10
+,,Pinerolo - Deposito,Giovedì,05:00,12:45,275,Bivio Bima ................................0...7...:.1..0...................................................................... .M...a..c..e..l.l.o.. .-. .M....u..n..i.c..i.p..i.o,Villar Perosa Stabiliment ..........0..7...:.3...0..................................................................... .M...a..c..e..l.l.o.. .-. .M....u..n..i.c..i.p..i.o,12:10,12:10
+,,Pinerolo - Deposito,Giovedì,05:00,12:45,701,Villar Perosa Stabilimento Skf ..0...7..:..3..0..... .P..i.n..e..r.o..l.o.. .-.. .D..e..p..o..s..i.t.o.. .......................................0.....9.....:..1......5........ ..M.......a....c...e....l..l..o.... ..-.. ..M........u....n....i..c....i..p....i..o,Villar Perosa - Via Nazionale .....0..7...:.3...0.... .M...a..c..e..l.l.o.. .-. .M....u..n..i.c.i.p..i.o... ....................................0......9....:...2.....5........ ..P....i..n....e....r....o....l..o.... ..-.. ..M........o....v....i..c..e....n....t....r..o,12:10,12:30
+,,Pinerolo - Deposito,Giovedì,05:00,12:45,281,Villar Perosa - Via Nazio ...........0..7...:.3...0.... .M...a..c..e..l.l.o.. .-. .M....u..n..i.c..ip...i.o.. . ..................................0......9....:...2.....5........ ..P....i..n....e....r....o....l..o.... ..-.. ..M........o....v....i..c..e....n....t....r..o,Perosa Arg.-Pzza Terzo Al ........0...7..:..4..0.... .S....P..i.e..t..r.o.. .V..a..l. .L..e..m...i.n..a.. .-. .V...i.a. . .....................1....0......:..0......3........ ..P....i..n....e....r..o......l.o..... ..-.. ..D....e....p....o......s..i..t...o,12:30,12:35
+,,Pinerolo - Deposito,Giovedì,13:10,20:33,283,Pinerolo - Deposito ...................1..3...:.2...0.... .P..i.n..e..r..o..l.o.. .-. .P..i.a..z..z.a.. .C..a..v..o..u..r,Pinerolo - Ist. Immacolata ........1...3...:.3...0.... .C..a..n..t.a..l.u..p..a,18:30,19:00
+,,Pinerolo - Deposito,Giovedì,13:10,20:33,281,Pinerolo - Ist. Immacolat .........1...3...:.3...0.... .C..a..n..t.a..l.u..p..a,Osasio - Piazza Castello ............1..4...:.1...7.... .C..a..n..t.a..l.u..p..a,19:00,19:00
+,,Pinerolo - Deposito,Giovedì,13:10,20:33,281,Osasio - Piazza Castello ............1..4...:.2...0.... .C..a..n..t.a..l.u..p..a,Pinerolo - Movicentro ...............1..5...:.0...2.... .P..i.n..e..r.o...l.o.. .-. .P..i.a..z.z..a.. .C..a..v..o..u..r,19:00,19:25
+,,Pinerolo - Deposito,Giovedì,13:10,20:33,283,Pinerolo - Piazza Cavour,Pinerolo - Piazza Cavour,19:35,19:35
+,,Pinerolo - Deposito,Giovedì,13:10,20:33,282,Pinerolo - Movicentro,Pinerolo - Piazza Cavour,15:46,20:13
+,,Pinerolo - Deposito,Giovedì,13:10,20:33,275,,,,
+,,,,,,,,,,
+,,Pinerolo - Deposito,Giovedì,06:40,15:25,282,Pinerolo - Movicentro ..............1..2...:.1...8.... .V..i.g..o..n..e,Pinerolo - Stazione Fs ...............0...6...:.5..5..... .P..e..r.o..s..a.. .A..r.g....-..P..z.z..a.. .T..e..r.z..o.. .A..l.p..i.n..i. .......1.....2.....:...5.....0........ ..P....i..n....e....r...o.....l..o.... ..-.. ..M.......o.....v...i..c...e....n....t...r...o,14:40,15:10
+,,Pinerolo - Deposito,Giovedì,06:40,15:25,281,Pinerolo - Stazione Fs ..............0...6...:.5..5..... .P..e..r.o..s..a.. .A..r..g...-..P..z.z..a.. .T..e..r.z..o.. .A..l. . .................1.....2.....:...5.....0........ ..P.....i.n.....e....r...o....l..o.... ..-.. ..M.......o.....v...i..c...e....n.....t...r..o,Volvera-Str Piossasco ...............0..7...:.2...0.... .P..i.n..e..r.o...lo... .-. .M...o..v..i.c..e..n..t.r..o.. . ............................1.....3.....:..2......2........ ..P....i..n....e....r...o.....l..o.... ..-.. ..D.....e....p....o.....s...i.t....o,15:10,15:15
+,,Pinerolo - Deposito,Giovedì,06:40,15:25,281,Volvera-Str Piossasco ...............0..7...:.3...0.... .P..i.n..e..r.o...lo... .-. .M...o..v..i.c..e..n..t.r..o,Pinerolo - Movicentro ...............0..7...:.5...5.... .P..i.n..e..r.o...l.o.. .-. .S..t.a..z..i.o..n..e.. .F..s,13:26,13:36
+,,Pinerolo - Deposito,Giovedì,06:40,15:25,275,Pinerolo - Movicentro,Vigone - Piazza Corte,07:56,14:39
+,,Pinerolo - Deposito,Giovedì,06:40,15:25,282,TORINO - Autostazione c.s,Pinerolo - Movicentro,11:03,12:14
+,,Pinerolo - Deposito,Giovedì,15:45,23:42,275,Perosa Arg.-Pzza Terzo Al,Pinerolo - Ist. Immacolata ........1...6...:.0...5.... .P..i.n..e..r.o..l.o... B...i.v.i.o... S..e..d...e.. S..a..p..a..v,21:00,21:31
+,,Pinerolo - Deposito,Giovedì,15:45,23:42,281,Pinerolo - Ist. Immacolat .........1...6...:.0...5.... .P..i.n..e..r.o..l.o... B...i.v.i.o... S..e..d...e.. S..a..p..a..v,None - Via Roma 18 .................1...6..:..5..8.... .V...i.ll.a..r.. .P..e..r.o..s..a.. .S..t.a..b..i.l.i.m...e..n..t,21:31,21:55
+,,Pinerolo - Deposito,Giovedì,15:45,23:42,275,None - Via Roma 18 ..................1...6..:..5..8.... .V..i.l.l.a..r.. .P..e..r.o..s..a.. .S..t.a..b..i.l.i.m...e..n..t,None - Stab. Streglio .................1...7..:.0...3.... .S..a..n.. .S..e..c..o..n..d..o.. .B..i.v..i.o.. .B..i.m....a,22:25,22:45
+,,Pinerolo - Deposito,Giovedì,15:45,23:42,282,None - Stab. Streglio ................1...7..:.2...2.... .S..a..n.. .S..e..c..o..n..d..o.. .B..i.v..i.o.. .B...im....a,TORINO - Autostazione c.so Bol1za8n:o1 5.... .P...i.n..e..r.o..l.o.. .-. .D...e..p..o..s..i.t.o,22:45,23:32
+,,Pinerolo - Deposito,Giovedì,15:45,23:42,282,TORINO - Autostazione c.s,PAUSA 19:44 -,18:33,20:18
+,,Pinerolo - Deposito,Giovedì,15:45,23:42,282,Pinerolo - Movicentro,Perosa Arg.-Pzza Terzo Alpini,20:18,20:50
+,,Pinerolo - Deposito,Giovedì,13:10,20:29,703,Frazione Pascaretto .................1...4..:..0..5..... P...i.n..e..r.o..l.o.. .-. .M....o..v..i.c.e..n...t.r.o,Pinerolo Centro Studi,17:16,14:30
+,,Pinerolo - Deposito,Giovedì,13:10,20:29,282,TORINO - Autostazione c.s,Pinerolo - Movicentro,19:03,20:14
+,,Pinerolo - Deposito,Giovedì,13:10,20:29,281,Pinerolo Centro Studi ...............1..4...:.3...0.... .P..i.n..e..r.o..l.o... -.. .D..e..p..o..s..i.t.o,PAUSA 15:05 -,20:19,16:36
+,,Pinerolo - Deposito,Giovedì,13:10,20:30,278,Pinerolo - Stazione Fs,Pinerolo - Piazza Cavour,13:25,19:10
+,,Pinerolo - Deposito,Giovedì,13:10,20:30,278,Pinerolo - Piazza Cavour,Cercenasco - V. Reg.Margherita,14:10,19:40
+,,Pinerolo - Deposito,Giovedì,13:10,20:30,278,Osasio - Piazza Castello,Pinerolo - Piazza Cavour,15:00,20:10
+,,Pinerolo - Deposito,Giovedì,13:10,20:30,279,Pinerolo - Ist. Immacolat,Torre Pellice,16:12,16:58
+,,Pinerolo - Deposito,Giovedì,13:10,20:30,279,Torre Pellice,Bobbio pellice,17:05,17:21
+,,Pinerolo - Deposito,Giovedì,13:15,23:57,284,,,,
+,,Pinerolo - Deposito,Giovedì,13:15,23:57,281,Pinerolo Centro Studi ...............1..3...:.3...0..................................................................... .N...o..n..e.. .V..i.a.. .P..i.n..e..r..o..l.o,Perosa Arg.-Pzza Terzo Alpini ...1...4..:.0...0.... .P..i.n..e..r..o..l.o.. .-. .M....o..v..i.c.e..n..t..r.o,21:58,18:20
+,,Pinerolo - Deposito,Giovedì,13:15,23:57,284,,,,
+,,Pinerolo - Deposito,Giovedì,13:15,23:57,281,Perosa Arg.-Pzza Terzo Al ........1...4..:..2..0.... .P...in...e..r.o..l.o.. .-. .M....o..v..i.c.e..n...t.r.o.. . .............................1....8......:..2......0........ ..S....e....g....g...i..o.....v...i.a.... ..v....a....n....d....a....l..i..n....o,Pinerolo - Stazione Fs ..............1...4...:.5..0..... .T..o..r.r..e.. P...e..l.l.ic..e,23:22,18:55
+,,Pinerolo - Deposito,Giovedì,13:15,23:57,279,Pinerolo - Stazione Fs ...............1...4...:.5..0..... .T..o..r.r..e.. P...e..ll.i.c..e.. . ...........................................................1.....9.....:...0.....5........ ..P.....i.n.....e....r..o.....l..o.... ..-.. ..D.....e....p.....o....s...i..t...o,Pinerolo - Movicentro ...............1..4...:.5...0.... .B..o..b..b..i.o... .p..e..l.l.ic..e,23:47,19:19
+,,Pinerolo - Deposito,Giovedì,13:15,23:57,901,Pinerolo - Movicentro ..............1..4...:.5...0.... .B..o..b..b...io... .p..e..l.l.i.c.e,Torre Pellice .............................1...5..:..2..5.... .T..o...r.r.e.. .P..e..l.l.i.c..e,19:19,19:34
+,,Pinerolo - Deposito,Giovedì,13:15,23:57,901,Torre Pellice,Torre Pellice,19:35,19:35
+,,Pinerolo - Deposito,Giovedì,13:15,23:57,901,Torre Pellice,Pinerolo - Deposito,17:35,20:15
+,,Pinerolo - Deposito,Giovedì,13:15,23:05,701,S.Pietro Val Lemina - Via ..........1..5...:.5...0.... .S....P..i.e..t.r..o.. .V..a..l. .L..e..m...i.n..a.. .-. .V..i.a.. .E..u..r.o...p..a,S.Pietro Val Lemina - Via ..........1..5...:.5...0.... .S....P..i.e..t.r..o.. .V..a..l. .L..e..m...i.n..a.. .-. .V..i.a.. .E..u..r.o...p..a,81:30,81:30
+,,Pinerolo - Deposito,Giovedì,13:15,23:05,701,Pinerolo - Deposito ...................1..3...:.2...5.... .S....P..i.e..t.r..o.. .V..a..l. .L..e..m...i.n..a.. .-. .V..i.a.. .E..u..r..o..p..a1.. .F5..r:. .56..10.. ..... ..S......P.....i.e.....t..r...o.... ..V.....a....l. ..L....e...m.......i..n....a.... ..-... .V.....i..a,Macello - Municipio .................1...6..:.3...0.... .M....a..c.e..l.l.o.. .-.. M....u..n..i.c..i.p..i.o,18:30,19:10
+,,Pinerolo - Deposito,Giovedì,13:15,23:05,701,S.Pietro Val Lemina - Via ..........1..3...:.5...5.... .M...a..c..e..l.l.o.. .-. .M....u..n..i.c..ip...i.o.. ....................................1......6....:...3.....0........ ..M........a....c..e....l..l..o.... ..-... ..M.......u....n....i..c....i..p....i..o,S.Pietro Val Lemina - Via ..........1..7...:.1...8.... .P..i.n..e..r.o...l.o.. .-. .D..e..p..o...s.i.t..o,19:20,19:45
+,,Pinerolo - Deposito,Giovedì,13:15,23:05,701,S.Pietro Val Lemina - Via ..........1..3...:.5...5.... .V..u..o...t.o.. ................................................................ .P..A...U....S..A... . .1...9..:..4..5... .-,Pinerolo - Deposito,21:40,15:10
+,,Pinerolo - Deposito,Giovedì,13:15,23:05,701,Pinerolo - Deposito ...................1..5...:.1...0.... .S....P..i.e..t.r..o.. .V..a..l. .L..e..m...i.n..a.. .-. .V..i.a.. . ....................1.....8.....:...3.....0......... ..P....i..n....e....r..o.....l..o.... ..-... ..D....e....p....o.....s...i..t...o,Macello - Municipio ..................1...5..:.2...0...................................................................... .P..i.n..e..r.o..l.o.. .-.. .M...o..v..i.c..e..n..t.r..o,21:45,21:50
+,,Pinerolo - Deposito,Giovedì,13:15,23:05,901,Pinerolo - Movicentro,Torre Pellice,21:50,22:20
+,,Pinerolo - Deposito,Giovedì,13:15,23:05,901,Torre Pellice,Pinerolo - Deposito,22:20,22:55
+,,Pinerolo - Deposito,Giovedì,05:33,14:25,275,Pinerolo - Movicentro,Perosa - Deposito,11:48,12:25
+,,Pinerolo - Deposito,Giovedì,05:33,14:25,275,Pinerolo - Movicentro ..............0..5...:.4...8............. .P...A...U...S...A... . .1..2...:.2...5... .-,Perosa - Deposito,13:00,13:05
+,,Pinerolo - Deposito,Giovedì,05:33,14:25,275,Perosa Arg.-Pzza Terzo Al,Perosa Arg.-Pzza Terzo Al,06:20,13:10
+,,Pinerolo - Deposito,Giovedì,05:33,14:25,275,Pin - Via Giustetto-Via P,PAUSA 07:48 -,06:45,10:41
+,,Pinerolo - Deposito,Giovedì,05:33,14:25,275,TORINO - Autostazione c.s,Pinerolo - Movicentro,10:41,11:44
+,,Pinerolo - Deposito,Giovedì,17:15,23:01,282,Pinerolo Bivio Sede Sapav,Pinerolo - Movicentro,21:08,21:14
+,,Pinerolo - Deposito,Giovedì,17:15,23:01,282,Pinerolo - Deposito ...................1..7...:.2...5.... .P..i.n..e..r..o..l.o.. .-. .M....o..v..ic..e..n..t..r.o,Pinerolo - Piazza Cavour ...........1...7..:..3..5.... .P..e..r..o..s..a. .A...r.g....-.P..z..z..a.. T..e..r..z.o... .A..l,21:18,21:50
+,,Pinerolo - Deposito,Giovedì,17:15,23:01,283,Pinerolo - Piazza Cavour ..........1...7..:..3..5.... .P..e..r..o..s..a.. A...r.g....-.P..z..z..a.. .T..e..r.z..o.. .A..l.p..i.n..i,Cantalupa .................................1...7..:..5..5.... .P...e.r..o..s..a.. .A..r.g....-.P..z..z..a.. .T..e..r.z..o.. .A..l.p..i.n..i,21:50,21:50
+,,Pinerolo - Deposito,Giovedì,17:15,23:01,275,Cantalupa ..................................1...7..:..5..5.... .P..e..r..o..s..a.. A...r.g....-.P..z..z..a.. .T..e..r.z..o.. .A..l,Cantalupa ..................................1...7..:..5..5.... .P..i.n..e..r..o..l.o.. .B..i.v..i.o.. .S..e..d..e.. .S..a..p..a..v,22:15,22:50
+,,Pinerolo - Deposito,Giovedì,17:15,23:01,283,Cantalupa .................................1...7..:..5..5.... .P...in...e..r.o..l.o.. .B..i.v..i.o.. .S..e..d..e.. .S..a..p..a..v,Pinerolo - Movicentro,22:50,18:30
+,,Pinerolo - Deposito,Giovedì,17:15,23:01,282,Pinerolo - Movicentro,TORINO - Autostazione c.s,18:46,19:57
+,,Pinerolo - Deposito,Giovedì,17:15,23:01,282,TORINO - Autostazione c.s,Pinerolo Bivio Sede Sapav,20:03,21:08
+,,Pinerolo - Deposito,Giovedì,06:45,18:15,275,Pinerolo Bivio Sede Sapav,Pinerolo - Stazione Fs ...............0...7...:.0..5..... .V..u..o..t..o.. ...................................................... .C..a..n..t..a.l.u...p..a,12:23,17:30
+,,Pinerolo - Deposito,Giovedì,06:45,18:15,284,Pinerolo - Stazione Fs ..............0...7...:.0..5...................................................................... .C..a..n..t..a..lu...p..a,Luserna S.Giovanni (Airali) ........0..7...:.4...0..................................................................... .P..i.n..e..r..o..l.o.. .-. .P..i.a..z..z.a.. .C..a..v..o..u..r,17:30,17:55
+,,Pinerolo - Deposito,Giovedì,06:45,18:15,279,Luserna S.Giovanni (Airali) .......0..7...:.4...0.... .P..i.n..e..r.o...lo... .-. .S..t.a..z.i.o...n..e.. .F..s. ...............................1......4.....:..4.....4......... ..P....i..n....e....r...o....l..o.... ..-... ..P....i..a....z...z...a.... ..C....a....v....o....u....r,Pinerolo Centro Studi (C.Torino0/R8o:c0h8is) ................................................................ P...in...e..r.o..l.o.. .-. .D...e..p..o..s..i.t.o,17:55,18:05
+,,Pinerolo - Deposito,Giovedì,06:45,18:15,281,Ingresso deposito Pinerolo - Stazione Fs ..............1...5...:.0..0..... .P..i.n..e..r.o..l.o.. .-.. .D..e..p..o..s..i.t.o,Gerbole Di Volvera,18:05,15:40
+,,Pinerolo - Deposito,Giovedì,06:45,18:15,281,Gerbole Di Volvera,Pinerolo Bivio Sede Sapav ........1...2..:..2..3.... .P...in...e..r.o..l.o.. .-. .S..t..a..z.i.o..n..e.. .F..s,15:40,16:15
+,,Pinerolo - Deposito,Giovedì,06:45,18:15,281,Pinerolo - Stazione Fs,Villar Perosa - Via Nazio,16:15,16:35
+,,Pinerolo - Deposito,Giovedì,18:35,23:07,275,Pinerolo - Piazza Cavour,Pinerolo - Deposito,20:10,18:45
+,,Pinerolo - Deposito,Giovedì,18:35,23:07,282,TORINO - Autostazione c.s,TORINO - Autostazione c.s,21:41,21:41
+,,Pinerolo - Deposito,Giovedì,18:35,23:07,703,Pinerolo Frazione Riva (Domaro1s8sa:)5 0.... .P..i.n...e.r..o..l.o.. .-. .M....o..v..i.c.e..n..t..r.o,Pin - Fiugera,22:52,19:17
+,,Pinerolo - Deposito,Giovedì,18:35,23:07,703,Pin - Fiugera .............................1...9..:..2..0..... .P..i.n..e..r.o..l.o.. .-.. .D..e..p..o..s..i.t.o,Pinerolo - Deposito,22:57,19:55
+,,Pinerolo - Deposito,Giovedì,04:13,15:30,275,Per - Via Nazionale 6(Terminal S0a4p:a5v9) . .P..i.n...e..r.o..l.o.. .-. .D...e..p..o..s..i.t.o,Pinerolo - Deposito,14:05,14:10
+,,Pinerolo - Deposito,Giovedì,04:13,15:30,275,Fenestrelle - Via Naziona,Pinerolo - Deposito,05:30,14:10
+,,Pinerolo - Deposito,Giovedì,04:13,15:30,275,Sestriere - Parcheggio,Pinerolo - Stazione Fs,06:10,14:15
+,,Pinerolo - Deposito,Giovedì,04:13,15:30,275,Perosa Arg.-Pzza Terzo Al,Gerbole Di Volvera,07:24,14:50
+,,Pinerolo - Deposito,Giovedì,04:13,15:30,275,Volvera-Str Piossasco,Pinerolo - Movicentro,08:12,08:42
+,,Pinerolo - Deposito,Giovedì,04:50,15:45,278,Buriasco Piazza Roma,Pinerolo - Piazza Cavour ...........0...5..:..1..0.... .P..i.n..e..r..o..l.o.. .C..e..n..t..r.o.. .S..t.u..d...i,13:55,14:15
+,,Pinerolo - Deposito,Giovedì,04:50,15:45,275,Pinerolo - Piazza Cavour ..........0...5..:..1..0.... .P..i.n...e..r.o..l.o.. .C..e..n..t..r.o.. .S..t.u...d..i,TORINO - Autostazione c.so Bol0za6n:o1 9.... .P...i.n..e..r.o..l.o.. .-. .V...i.a.. .S.a..l.u..z..z..o.. .(.E..n..e..l.),14:20,14:30
+,,Pinerolo - Deposito,Giovedì,04:50,15:45,281,,,,
+,,Pinerolo - Deposito,Giovedì,04:50,15:45,282,TORINO - Autostazione c.s .......0..6...:.4...3.... .S..c.a..l.e..n..g..h..e.. .-.. .V..i.a.. .C..a..v..o..u..r,Pinerolo - Deposito,15:05,08:10
+,,Pinerolo - Deposito,Giovedì,04:50,15:45,281,PAUSA 08:10 - 13:15 Scalenghe - Via Cavour,Pinerolo - Stazione Fs,15:10,15:30
+,,Pinerolo - Deposito,Giovedì,04:50,15:45,278,Pinerolo - Piazza Cavour,Buriasco Piazza Roma,13:30,13:55
+,,Pinerolo - Deposito,Giovedì,05:15,14:51,701,Pinerolo - Deposito ...................0..5...:.2...5.... .S....P..i.e..t.r..o.. .V..a..l. .L..e..m...i.n..a.. .-. .V..i.a,Pinerolo - Deposito ...................0..5...:.2...5.... .S....P..i.e..t.r..o.. .V..a..l. .L..e..m...i.n..a.. .-. .V..i.a,07:35,07:35
+,,Pinerolo - Deposito,Giovedì,05:15,14:51,701,Pinerolo - Movicentro ..............0..5...:.3...0.... .P..i.n..e..r.o...l.o.. .C..e..n..t.r..o.. .S..t.u..d..i. .(.C.....T..o..r.i.n..o..0/..R.8.o.:.c.0.h.0.i.s..) . P....i..n....e.....r...o....l..o.... ..-.. ..S....t..a....z....i..o....n....e.... ..F....s,Pinerolo - Movicentro ..............0..5...:.3...0.... .P..i.n..e..r.o...l.o.. .C..e..n..t.r..o.. .S..t.u..d..i. .(.C.....T..o..r.i.n..o..0/..R.8.o.:.c.0.h.0.i.s..) . P....i..n....e.....r...o....l..o.... ..-.. ..S....t..a....z....i..o....n....e.... ..F....s,13:15,13:15
+,,Pinerolo - Deposito,Giovedì,05:15,14:51,281,,,,
+,,Pinerolo - Deposito,Giovedì,05:15,14:51,701,Macello - Municipio ..................0...5..:.4...8.... .P..i.n.. .-.. S..t..r... .V..e..c..c..h..i.a.. .D..i. .B..u..r.. . ......................0......8....:....1....9......... ..S...a....n..... .G......e....r..m.......a....n....o..... ..C....h....i..s...o.....n....e,Macello - Municipio ..................0...5..:.4...8.... .S....P..i.e..t.r..o.. .V..a..l. .L..e..m...i.n..a.. .-. .V..i.a,13:45,08:36
+,,Pinerolo - Deposito,Giovedì,05:15,14:51,701,Macello - Municipio .................0...5..:.5...0.... .S....P..i.e..t..r.o.. .V..a..l. .L..e..m...i.n..a.. .-. .V..i.a.. .E..u..r..o..p..a0.. .F8..r.: .36..16.. ..... ..V....i..l..l..a....r.. ..P....e....r....o....s...a.... .S....t...a....b....i..l..i..m.......e....n....t..o.... ..S....k....f,S.Pietro Val Lemina - Via ..........0..6...:.2...0.... .S....P..i.e..t.r..o.. .V..a..l. .L..e..m...i.n..a.. .-. .V..i.a.. .E..u..r.o...p..a,13:55,81:36
+,,Pinerolo - Deposito,Giovedì,05:15,14:51,275,,,,
+,,Pinerolo - Deposito,Giovedì,05:15,14:51,701,S.Pietro Val Lemina - Via Europa0 F6r: 2610 .. .S....P..i.e..t.r..o.. .V..a..l. .L..e.m....i.n..a.. .-. .V..i.a.. . ....................0.....8.....:...4.....0........ ..P....i..n....e....r...o.....l..o.... ..B....i..v....i..o.... ..S....e....d....e.... ..S....a....p....a....v,S.Pietro Val Lemina - Via Europa0 661:2 ..0.... .M....a.c..e..l.l.o.. .-. .M....u..n..i.c..i.p..i.o,14:40,09:20
+,,Pinerolo - Deposito,Giovedì,05:15,14:51,701,S.Pietro Val Lemina - Via ..........0..6...:.2...0.... .M...a..c..e..l.l.o.. .-. .M....u..n..i.c..ip...i.o.. ....................................0......9....:...2.....0........ ..P....i..n....e....r....o....l..o.... ..-.. ..D......e....p....o....s....i.t...o,PAUSA 09:40 -,14:41,13:00
+,,Pinerolo - Deposito,Giovedì,05:15,14:51,701,S.Pietro Val Lemina - Via ..........0..7...:.3...5.... .P..i.n..e..r.o...l.o.. .-. .D..e..p..o...s.i.t..o,Pinerolo - Deposito,13:00,13:05
+,,Pinerolo - Deposito,Giovedì,05:30,17:38,275,Pinerolo - Deposito ...................0..5...:.4...0...................................................................... .P..e..r.o..s..a.. .A..r.g....-..P..z.z..a.. .T..e..r.z..o.. .A..l,Uscita deposito Villar Perosa-Via Naziona,16:30,16:40
+,,Pinerolo - Deposito,Giovedì,05:30,17:38,901,,,,
+,,Pinerolo - Deposito,Giovedì,05:30,17:38,279,,,,
+,,Pinerolo - Deposito,Giovedì,05:30,17:38,282,TORINO - Autostazione c.s .......0..7...:.4...7..................................................................... .V..i.l.l.a..r.. .P..e..r.o..s..a.. .-. .S..t.a..b..i.l.i.m...e,TORINO - Autostazione c.s .......0..7...:.4...7..................................................................... .V..i.l.l.a..r.. .P..e..r.o..s..a.. .-. .S..t.a..b..i.l.i.m...e,17:00,17:00
+,,Pinerolo - Deposito,Giovedì,05:30,17:38,901,Vuoto Torre Pellice,PAUSA 14:45 - 15:18 Pinerolo - Deposito,14:10,17:28
+,,Pinerolo - Deposito,Giovedì,05:30,17:38,275,Pinerolo Bivio Sede Sapav .......0...9..:..0..8..... P...i.n..e..r.o..l.o.. .-. .M....o..v..i.c..e..n..t.r.o,Pinerolo - Piazza Cavour,15:18,09:20
+,,Pinerolo - Deposito,Giovedì,05:30,17:38,282,Ingresso deposito Pinerolo - Piazza Cavour,Perosa - Deposito,15:20,15:55
+,,Pinerolo - Deposito,Giovedì,05:45,17:55,283,Pinerolo - Deposito ...................0..5...:.5...5.... .P..i.n..e..r..o..l.o.. .-. .P..i.a..z..z.a.. .C..a..v..o..u..r,Pinerolo-Stabilimento TN ITALY0 ..6..:..0..0.... .C...a.n...t.a..l.u..p..a,11:10,11:40
+,,Pinerolo - Deposito,Giovedì,05:45,17:55,284,Pinerolo-Stabilimento TN .......0...6..:..0..0..... C...a..n..t.a..l.u..p..a.. .....................................................................1.....1.....:...4.....0........ ..P....i..n....e....r...o.....l..o.... ..C....e....n....t...r...o.... ..S....t..u.....d....i,Seggiovia vandalino .................0...6..:..3..5..... C...a..n..t.a..l.u..p..a,13:50,11:40
+,,Pinerolo - Deposito,Giovedì,05:45,17:55,279,,,,
+,,Pinerolo - Deposito,Giovedì,05:45,17:55,283,Seggiovia vandalino ..................0...6..:..3..5.... .C...a.n...t.a..l.u..p..a.. . ...................................................................1.....1.....:...4.....0........ ..B.....o....b....b....i..o..... .p.....e....l..l.i..c....e,Torre Pellice ..............................0...6..:..4..0.... .P..i.n...e..r.o..l.o.. .-. .P..i.a..z..z..a.. C...a..v.o...u..r,14:46,12:10
+,,Pinerolo - Deposito,Giovedì,05:45,17:55,279,Torre Pellice .............................0...6..:..5..0.... .P...in...e..r.o..l.o.. .-. .P..i.a..z..z..a.. C...a..v.o...u..r. .......................1.....2.....:...1.....0........ ..B.....o....b....b....i..o..... .p.....e....l..l..i.c....e,PAUSA 14:46 -,14:46,15:50
+,,Pinerolo - Deposito,Giovedì,05:45,17:55,275,Cantalupa ..................................0...7..:..4..0.... .P..i.n..e..r..o..l.o.. .B..i.v..i.o.. .S..e..d..e.. .S..a..p..a..v.. . ...............1.....2.....:...2.....3......... .B.....o....b....b....i..o.... ..p.....e...l..l..i..c....e,Torre Pellice,15:50,16:10
+,,Pinerolo - Deposito,Giovedì,05:45,17:55,283,Pinerolo - Piazza Cavour ..........0...8..:..1..3...................................................................... .T..o..r.r..e.. .P..e..l.l.i.c.e,PAUSA 08:23 -,16:25,10:55
+,,Pinerolo - Deposito,Giovedì,05:45,17:55,279,EXTRA LAYOVER Pinerolo - Deposito ...................1..3...:.4...0.... .B..o...b..b..i.o.. .p..e..l.l.i.c.e,Pinerolo - Deposito,16:47,11:00
+,,Pinerolo - Deposito,Giovedì,05:45,17:55,901,Torre Pellice,Pinerolo - Deposito,17:05,17:45
+,,Pinerolo - Deposito,Giovedì,05:49,14:53,283,Pinerolo - Piazza Cavour,Pinerolo Bivio Sede Sapav ........0...6..:..0..0.... .C...a..n..t.a..l.u..p..a,12:20,12:50
+,,Pinerolo - Deposito,Giovedì,05:49,14:53,284,Pinerolo Bivio Sede Sapav .......0...6..:..0..0..... C...a..n..t.a..l.u..p..a,Airasca - stabilimento sk ..........0..6...:.1...5.... .P..i.n..e..r.o...l.o.. .-. .P..i.a..z.z..a.. .C..a..v..o..u..r,12:50,13:15
+,,Pinerolo - Deposito,Giovedì,05:49,14:53,280,Airasca - stabilimento sk ..........0..6...:.3...0.... .P..i.n..e..r.o...l.o.. .-. .P..i.a..z.z..a.. .C..a..v..o..u..r,Barge-viale mazzini/caval ........0...7..:..2..3.... .P...in...e..r.o..l.o.. .-. .V...i.a.. S..a..l.u..z..z..o.. .(.E..n..e..l.),13:15,13:20
+,,Pinerolo - Deposito,Giovedì,05:49,14:53,281,Barge-viale mazzini/cavallotta .0...7...:.2..3..... .P..i.n..e..r.o..l.o.. .-.. .V..i.a.. .S..a.l.u...z.z..o.. .(.E..n..e..l.),Bibiana centro ...........................0..7...:.3...8.... .G...e..r.b..o..l.e.. .D...i. .V..o..l.v..e..r.a,13:25,14:08
+,,Pinerolo - Deposito,Giovedì,05:49,14:53,279,Bibiana centro ..........................0..7...:.4...5.... .G...e..r.b..o..l.e.. .D...i. .V..o..l.v..e..r.a,Pinerolo Centro Studi (C.Torino0/R8o:c1h5is) G ..e..r.b..o..l.e.. .D...i. .V..o..l.v..e..r.a,14:08,14:08
+,,Pinerolo - Deposito,Giovedì,05:49,14:53,281,Pinerolo Centro Studi (C.Torino0/R8o:c1h5is) G...e..r.b..o..l.e.. .D...i. .V..o..l.v..e..r.a,Pinerolo - Deposito ...................0..8...:.2...0.... .P..i.n..e..r..o..l.o.. .-. .S..t.a..z..i.o..n..e.. .F..s,14:08,14:38
+,,Pinerolo - Deposito,Giovedì,06:00,17:25,281,Pinerolo - Stazione Fs ..............0...6...:.2..0..... .P..i.n..e..r.o..l.o.. .B...i.v.i.o.. .S..e..d..e.. .S..a..p..a..v,Gerbole Di Volvera ....................0..6...:.5...0.... .T..o.. .-. .C..o..r..s.o... .V..e..r.c..e..l.l.i.-.V..i.a.. .C..u..o...r.g..n..è,10:23,11:44
+,,Pinerolo - Deposito,Giovedì,06:00,17:25,281,Gerbole Di Volvera ...................0..6...:.5...5.... .T..o.. .-. .C..o...r.s..o.. .V..e..r.c..e..l.l.i.-.V..i.a.. .C,Pinerolo - Ist. Immacolat .........0...7...:.3...5.... .T..o.. .-. .c..o..r.s..o.. .B..e..l.g..i.o,12:15,12:37
+,,Pinerolo - Deposito,Giovedì,06:00,17:25,281,Pinerolo - Ist. Immacolat .........0...7...:.3...5.... .T..o.. .-. .c..o..r.s..o.. .B..e..l.g..i.o,Ponte San Martino ....................0..7...:.5...5.... .P..i.n..e..r..o..l.o.. .-. .M...o...v.i.c..e..n..t..r.o,12:37,14:10
+,,Pinerolo - Deposito,Giovedì,06:00,17:25,281,Ponte San Martino,PAUSA 08:15 - 10:17 Pinerolo - Movicentro,07:55,17:10
+,,Pinerolo - Deposito,Giovedì,06:15,16:00,278,Cer - Sp 138-Via Xx Sette .........0...6..:..4..5..... P...i.n..e..r.o..l.o.. .-.. P...i.a.z..z..a.. .C..a..v..o..u..r,Pinerolo - Ist. Immacolat,13:20,07:20
+,,Pinerolo - Deposito,Giovedì,06:15,16:00,283,Vuoto Pinerolo - Piazza Cavour,Pinerolo - Stazione Fs,13:20,07:25
+,,Pinerolo - Deposito,Giovedì,06:15,16:00,278,Pinerolo - Stazione Fs ..............0...7...:.3..0..... .C..a..n..t.a..l.u..p..a,Macello - Municipio,13:47,07:55
+,,Pinerolo - Deposito,Giovedì,06:15,16:00,283,,,,
+,,Pinerolo - Deposito,Giovedì,06:15,16:00,278,Macello - Municipio .................0...7..:.5...5.... .P..i.n..e..r..o..l.o.. .-. .P..i.a..z..z.a.. .C..a..v..o..u...r,Pinerolo - Deposito,14:07,08:20
+,,Pinerolo - Deposito,Giovedì,06:15,16:00,278,Pinerolo - Deposito ...................0..8...:.2...0.... .P..i.n..e..r..o..l.o.. .-. .S..t.a..z..i.o..n..e.. .F..s,Virle Piemonte - Via Cari,14:30,15:20
+,,Pinerolo - Deposito,Giovedì,06:15,16:34,275,Pinerolo - Movicentro ..............0..9...:.4...8.... .P..e..r.o...s.a.. .-. .D...e..p..o..s..i.t.o,Per - Via Nazionale 6(Terminal S1a0p:a1v9) . .P..e..r..o..s..a.. .-. .D..e..p..o...s.i.t.o,15:30,15:35
+,,Pinerolo - Deposito,Giovedì,06:15,16:34,275,Pinerolo - Deposito ...................0..6...:.2...5.... .P..e..r.. .-. .V..i.a.. .N..a..z..i.o..n..a..l.e.. .6..(.T..e..r..m...i.n..a..l. .S1..a.0.p.:.a.1.v.9.). . ... ..P....e....r...o....s....a.... ..-.. ..D....e....p.....o.....s..i..t...o,Virle Piemonte - Via Carignano .0..6...:.5...5.... .F..e..n..e..s.t..r.e..l.l.e.. .-. .V..i.a.. .N...a..z.i.o..n...a. . ...................1.....0.....:..5......0........ ..P....e....r....o....s..a.... ..A......r..g.......-..P....z....z...a.... .T....e....r....z..o..... ..A.....l..p....i..n....i,15:35,15:40
+,,Pinerolo - Deposito,Giovedì,06:15,16:34,281,Virle Piemonte - Via Cari ..........0..6...:.5...5.... .F..e..n..e..s..t.r.e..l.l.e.. .-. .V...i.a. .N...a..z..i.o..n..a.. . ..................1......1....:...1.....0........ ..P.....e...r....o....s...a.... .A......r..g.......-..P....z....z....a.... .T....e....r...z...o..... ..A....l,Pinerolo - Movicentro,15:40,16:12
+,,Pinerolo - Deposito,Giovedì,06:15,16:34,278,Pinerolo - Stazione Fs ..............0...7...:.4..5..... .P..i.n..e..r.o..l.o.. .-.. .D..e..p..o..s..i.t.o.. .......................................1.....2.....:..1......7........ ..P....i..n....e....r....o....l..o.... ..-.. ..M.......o.....v...i.c....e....n....t....r..o,PAUSA 14:10 -,16:16,15:30
+,,Pinerolo - Deposito,Giovedì,06:15,16:34,275,Pinerolo - Movicentro,Pinerolo - Movicentro,09:44,09:44
+,,Pinerolo - Deposito,Giovedì,06:20,17:59,282,Pin - Fiugera ..............................0...8..:..2..5..... P...i.n..e..r.o..l.o.. .-. .M....o..v..i.c..e..n..t.r.o,PAUSA 08:35 - 13:15 Torino - Via Borsellino (PARK),14:46,16:01
+,,Pinerolo - Deposito,Giovedì,06:20,17:59,901,Torre Pellice .............................0...7..:..0..5.... .P...in...e..r.o..l.o.. .-. .D...e..p..o..s..i.t.o.. .......................................1....3......:..1......5........ ..T....o....r...i..n....o..... ..-.. ..V....i..a.... ..B....o.....r...s...e....l..l.i..n....o..... ..(...P....A..R...K..),Pinerolo - Deposito ...................1..3...:.2...0.... .T..o..r..i.n..o.. .-. .V..i.a.. .B..o...r.s..e..l.li.n..o... .(.P..A..R...K..),16:22,16:27
+,,Pinerolo - Deposito,Giovedì,06:20,17:59,901,Pinerolo - Movicentro ..............0..7...:.4...0..................................................................... .T..o...r.i.n..o.. .-. .V..i.a.. .B...o..r.s..e..l.l.i.n..o.. .(.P..A..R...K..),Pinerolo - Movicentro,16:27,14:42
+,,Pinerolo - Deposito,Giovedì,06:20,17:59,703,Frazione Pascaretto,Pin - Fiugera,07:50,08:25
+,,Pinerolo - Deposito,Giovedì,06:35,19:05,703,Pin - Fiugera .............................1...3..:..5..0..... .P..i.n.. .-. .F..i.u..g..e..r.a,Pin - Fiugera .............................1...3..:..5..0..... .P..i.n.. .-. .F..i.u..g..e..r.a,18:08,18:08
+,,Pinerolo - Deposito,Giovedì,06:35,19:05,703,Pinerolo - Deposito ...................0..6...:.4...5.... .P..i.n.. .-.. F..i.u..g..e..r..a.. . ..........................................................1......4....:....0....0.......... ..P....i..n.... ..-.. ..F....i..u....g....e....r..a,Pinerolo - Deposito ...................0..6...:.4...5.... .P..i.n.. .-.. F..i.u..g..e..r..a.. . ..........................................................1......4....:....0....0.......... ..P....i..n.... ..-.. ..F....i..u....g....e....r..a,18:20,18:20
+,,Pinerolo - Deposito,Giovedì,06:35,19:05,901,Torre Pellice .............................0...7..:..2..0.... .P...in...e..r.o..l.o.. .F..r..a.z..i.o..n..e.. .R..i.v..a.. .(.D...o..m...a..r..o.1.s.4s..a.:.)3. ...0........ ..P....i..n....e....r...o.....l.o..... ..-.. ..D.....e....p....o.....s...i..t..o,Torre Pellice .............................0...7..:..2..0.... .P...in...e..r.o..l.o.. .F..r..a.z..i.o..n..e.. .R..i.v..a.. .(.D...o..m...a..r..o.1.s.4s..a.:.)3. ...0........ ..P....i..n....e....r...o.....l.o..... ..-.. ..D.....e....p....o.....s...i..t..o,18:55,18:55
+,,Pinerolo - Deposito,Giovedì,06:35,19:05,279,Pinerolo Centro Studi (C.Torino0/R8o:c0h0is) P .i.n.. .-. .F..i.u..g..e..r..a,Pinerolo Centro Studi (C.Torino0/R8o:c0h0is) P .i.n.. .-. .F..i.u..g..e..r..a,14:57,14:57
+,,Pinerolo - Deposito,Giovedì,06:35,19:05,703,Pinerolo Centro Studi (C.Torino0/R8o:c0h0is) P..i.n.. .-. .F..i.u..g..e..r..a,Pinerolo Centro Studi (C.Torino0/R8o:c0h0is) P..i.n.. .-. .F..i.u..g..e..r..a,15:00,15:00
+,,Pinerolo - Deposito,Giovedì,06:35,19:05,703,Pin - Fiugera,Pin - Fiugera,17:10,17:10
+,,Pinerolo - Deposito,Giovedì,06:40,19:10,901,Pinerolo - Deposito ...................0..6...:.5...0.... .P..i.n..e..r..o..l.o.. .-. .M....o..v..ic..e..n..t..r.o,Pinerolo - Piazza Cavour ...........0...7..:..0..0.... .T..o..r..r.e.. .P..e..l.l.i.c..e,13:50,14:25
+,,Pinerolo - Deposito,Giovedì,06:40,19:10,278,Pinerolo - Piazza Cavour,Pinerolo - Movicentro,07:00,15:40
+,,Pinerolo - Deposito,Giovedì,06:40,19:10,278,Vigone - Via Torino/Via V,PAUSA 08:15 - 13:04 Pinerolo - Ist. Immacolata,07:25,16:05
+,,Pinerolo - Deposito,Giovedì,06:40,19:10,281,Pinerolo - Deposito ...................1..3...:.0...4.... .P..i.n..e..r..o..l.o.. .-. .I.s..t... .I.m...m...a..c..o..l.a..t,Pinerolo Bivio Sede Sapav ........1...3..:..1..0.... .N...o..n..e.. .V...i.a. .P..i.n...e..r.o..l.o,16:05,16:55
+,,Pinerolo - Deposito,Giovedì,06:40,19:10,275,Pinerolo Bivio Sede Sapav .......1...3..:..1..0..... N...o..n..e.. .V...i.a. .P...in...e..r.o..l.o,Villar Perosa Stabiliment ..........1..3...:.3...5.... .S..e..g.g..i.o..v..i.a.. .v..a..n..d..a..l.i.n..o,17:20,18:35
+,,Pinerolo - Deposito,Giovedì,06:49,18:51,284,Pinerolo - Deposito ...................0..6...:.5...9.... .A..i.r..a..s.c..a.. .-. .s..t.a..b..i.l.i.m...e..n..t..o.. .s.k,Pinerolo Bivio Sede Sapav ........0...7..:..0..0.... .S..e..g..g..i.o..v..i.a.. .v..a..n..d..a..l.i.n..o,14:30,15:15
+,,Pinerolo - Deposito,Giovedì,06:49,18:51,275,Pinerolo Bivio Sede Sapav .......0...7..:..0..0..... S..e..g..g..i.o..v..i.a.. .v..a..n..d..a..l.i.n..o,Torre Pellice,15:15,16:10
+,,Pinerolo - Deposito,Giovedì,06:49,18:51,281,Perosa Arg.-Pzza Terzo Al,PAUSA 08:15 - 13:05 Volvera-Str Piossasco,07:35,17:15
+,,Pinerolo - Deposito,Giovedì,06:49,18:51,284,Pinerolo - Deposito ...................1..3...:.1...0.... .A..i.r..a..s.c..a.. .-. .s..t.a..b..i.l.i.m...e..n..t..o.. .s.k,Pinerolo - Via Saluzzo (Enel) .....1...3..:.2...5.... .S..e..g..g..i.o..v..i.a.. .v.a..n..d...a..li.n...o,17:30,18:16
+,,Pinerolo - Deposito,Giovedì,06:49,18:51,278,Pinerolo - Via Saluzzo (Enel) ....1...3..:.2...5.... .S..e..g..g..i.o..v..i.a.. .v..a.n...d..a..l.in...o,Sca - Fr Pieve Via Savigl ............1..4...:.0...8.... .P..i.n..e..r.o..l.o... .-. .D..e..p..o..s..i.t.o,18:16,18:41
+,,Pinerolo - Deposito,Giovedì,06:50,17:30,282,Pinerolo - Deposito ...................0..7...:.0...0.... .P..e..r..o..s.a.. .A...r.g....-.P..z..z.a.. .T..e..r..z.o... A...l,Gerbole Di Volvera ....................0..7...:.2...5.... .P..i.n..e..r.o...l.o.. .-. .M...o..v..i.c..e..n..t.r..o,15:10,15:42
+,,Pinerolo - Deposito,Giovedì,06:50,17:30,281,Gerbole Di Volvera ...................0..7...:.2...5.... .P..i.n..e..r..o..l.o.. .-. .M...o..v..i.c..e..n..t.r..o,Pinerolo - Stazione Fs ..............0...8...:.0..0..... .P..i.n..e..r.o..l.o.. .-.. .I.s.t.... I.m....m...a..c..o..l.a..t.a,15:42,15:45
+,,Pinerolo - Deposito,Giovedì,06:50,17:30,281,Pinerolo - Stazione Fs ...............0...8...:.0..0..... .P..i.n..e..r.o..l.o.. .-.. .I.s.t.... I.m....m...a..c..o..l.a..t,Pinerolo - Deposito ...................0..8...:.0...5.... .V..i.r..l.e.. .P..i.e..m...o..n..t..e.. -.. .V..i.a.. .C..a..r.i,16:05,16:50
+,,Pinerolo - Deposito,Giovedì,06:50,17:30,281,Pinerolo Centro Studi,Pinerolo Centro Studi,13:30,13:55
+,,Pinerolo - Deposito,Giovedì,06:50,17:30,281,Pinerolo Centro Studi,Perosa Arg.-Pzza Terzo Al,14:30,15:00
+,,Pinerolo - Deposito,Giovedì,06:55,19:25,283,Pinerolo - Piazza Cavour ..........1...5..:..0..5.... .T..o...r.r.e.. .P..e..l.l.i.c..e,Virle P. - Sp Di Virle - Montegrap0p7a: 3...5.... .C..a..n..t.a..l.u..p..a.. .....................................................................1......5....:...3.....0........ ..P....i..n....e....r....o....l..o.... ..-.. ..D......e....p....o....s....i.t...o,18:35,19:15
+,,Pinerolo - Deposito,Giovedì,06:55,19:25,278,Virle P. - Sp Di Virle - ...............0...7..:..3..5.... .C..a..n..t..a..l.u..p..a,Pinerolo - Piazza Cavour ..........0...8..:..1..5.... .P..i.n...e..r.o..l.o.. .-. .P..i.a..z..z.a.. .C...a..v.o..u...r,15:30,15:49
+,,Pinerolo - Deposito,Giovedì,06:55,19:25,275,Pinerolo - Piazza Cavour ...........0...8..:..1..5.... .P..i.n..e..r..o..l.o.. .-. .P..i.a..z..z.a.. .C...a.v..o..u...r,PAUSA 08:25 -,15:50,13:20
+,,Pinerolo - Deposito,Giovedì,06:55,19:25,281,EXTRA LAYOVER Perosa Arg.-Pzza Terzo Al,Pinerolo - Stazione Fs,16:35,13:30
+,,Pinerolo - Deposito,Giovedì,06:55,19:25,281,,,,
+,,Pinerolo - Deposito,Giovedì,06:55,19:25,278,Pinerolo - Stazione Fs ..............1...3...:.3..0..... .P..e..r.o..s..a.. .A..r..g...-..P..z.z..a.. .T..e..r.z..o.. .A..l,Pancalieri - Scuole Medie,17:07,14:05
+,,Pinerolo - Deposito,Giovedì,06:55,19:25,282,,,,
+,,Pinerolo - Deposito,Giovedì,06:55,19:25,281,Pancalieri - Scuole Medie ........1...4...:.0..5..... .P..i.n..e..r.o..l.o.. .-.. .M...o..v..i.c..e..n..t.r.o,Pinerolo - Stazione Fs,17:42,14:55
+,,Pinerolo - Deposito,Giovedì,06:55,19:25,901,Vuoto Pinerolo - Movicentro,Pinerolo - Piazza Cavour,17:50,15:00
+,,Pinerolo - Deposito,Giovedì,07:00,19:35,278,Macello - Municipio,Pinerolo - Movicentro,16:50,12:50
+,,Pinerolo - Deposito,Giovedì,07:00,19:35,278,Pinerolo - C.So Torino-Ma .......0...7..:..1..5...................................................................... .P..i.n..e..r.o...l.o.. .-. .D..e..p..o...s.i.t..o,Pinerolo - Movicentro,17:25,14:20
+,,Pinerolo - Deposito,Giovedì,07:00,19:35,278,Vigone,Pinerolo - Piazza Cavour ..........0...8..:..0..5.............. .P..A...U....S..A... . .1...4..:..5..5... .-,07:40,15:35
+,,Pinerolo - Deposito,Giovedì,07:00,19:35,901,Pinerolo - Piazza Cavour ...........0...8..:..0..5.... .T..o..r..r.e.. .P..e..l.l.i.c..e.. . ..........................................................1......5.....:...3....5......... ..P.....i.n.....e....r..o....l..o..... .-... ..P....i..a....z...z....a.... .C.....a....v...o.....u....r,Pinerolo - Deposito ...................0..8...:.1...5.... .P..i.n..e..r..o..l.o.. .-. .M....o..v..ic..e..n..t..r.o,17:40,16:10
+,,Pinerolo - Deposito,Giovedì,07:00,19:35,278,Pinerolo - Deposito ...................0..8...:.1...5.... .V...u..o..t.o.. ....................................................... .P..i.n..e..r.o..l.o.. .-.. .P..i.a..z.z..a.. .C..a..v..o..u..r,Pinerolo - Via Saluzzo (Enel),17:40,16:12
+,,Pinerolo - Deposito,Giovedì,07:00,19:35,278,,,,
+,,Pinerolo - Deposito,Giovedì,07:00,19:35,278,EXTRA LAYOVER Pinerolo - Via Saluzzo (Enel) ....1...6..:.3...0.... .P..i.n..e..r..o..l.o.. .-. .P..i.a..z..z.a.. .C..a..v..o..u...r,Macello - Municipio,19:10,16:50
+,,Pinerolo - Deposito,Giovedì,07:00,19:35,,,,,
+,,Pinerolo - Deposito,Giovedì,06:58,16:55,703,Pin - Fiugera,Pin - Fiugera,10:57,10:57
+,,Pinerolo - Deposito,Giovedì,06:58,16:55,703,Pinerolo - Deposito ...................0..7...:.0...8.... .P..i.n.. .-.. F..i.u..g..e..r..a,Pinerolo - Deposito ...................0..7...:.0...8.... .P..i.n.. .-.. F..i.u..g..e..r..a,11:00,11:00
+,,Pinerolo - Deposito,Giovedì,06:58,16:55,279,Torre p. - santa margheri .........0..7...:.3...3.... .P..i.n..e..r..o..l.o.. .F..r.a..z..i.o..n..e.. .R..i.v..a.. .(.D...o..m...a..r.o.1.s..1s..a:..)3. ..0......... .P.....i..n....e....r...o....l..o.... ..-.. ..M........o....v....i..c...e....n....t...r..o,Torre p. - santa margheri .........0..7...:.3...3.... .P..i.n..e..r..o..l.o.. .F..r.a..z..i.o..n..e.. .R..i.v..a.. .(.D...o..m...a..r.o.1.s..1s..a:..)3. ..0......... .P.....i..n....e....r...o....l..o.... ..-.. ..M........o....v....i..c...e....n....t...r..o,13:45,13:45
+,,Pinerolo - Deposito,Giovedì,06:58,16:55,701,,,,
+,,Pinerolo - Deposito,Giovedì,06:58,16:55,703,Pinerolo Centro Studi (C.Torino0/R8o:c0h9is) P..i.n..e..r..o..l.o.. .F..r.a..z..i.o..n..e.. .R..i.v..a.. .(.D..o...m...a..r.o.1.s..1s.a.:.).3. . 0........ ..M........a....c...e...l..l..o..... .-.... ..M......u....n....i..c....i..p....i..o,Pin - Fiugera,14:03,11:57
+,,Pinerolo - Deposito,Giovedì,06:58,16:55,701,,,,
+,,Pinerolo - Deposito,Giovedì,06:58,16:55,703,EXTRA LAYOVER Pin - Fiugera .............................1...2..:..1..0..... .S...P...ie..t..r.o.. .V...a..l .L..e..m...i.n..a.. .-.. V...i.a,Pinerolo - Deposito,14:35,12:40
+,,Pinerolo - Deposito,Giovedì,06:58,16:55,701,Pinerolo - Deposito ...................1..2...:.4...0.... .S....P..i.e..t.r..o.. .V..a..l. .L..e..m...i.n..a.. .-. .V..i.a,Macello - Municipio,14:40,15:20
+,,Pinerolo - Deposito,Giovedì,06:58,16:55,703,Pin - Fiugera,Pin - Fiugera,15:57,15:57
+,,Pinerolo - Deposito,Giovedì,06:58,16:55,703,Pin - Fiugera,Pinerolo - Deposito,16:00,16:45
+,,"Via Cuneo, 23, 10015 Ivrea TO, Italia",Giovedì,03:45,12:05,265,Chivasso - Staz. Fs Movic,"Via Cuneo, 23, 10015 Ivrea TO, 0It3al:i5a 5.... .I.v..r.e..a.. .-.. .S.t..a..z.i.o..n...e.. F..s.. .I.n..t",10:45,11:45
+,,"Via Cuneo, 23, 10015 Ivrea TO, Italia",Giovedì,03:45,12:05,265,Ivrea - Porta Vercelli,Chivasso - P.Le Alfa-Lanc,04:05,04:49
+,,"Via Cuneo, 23, 10015 Ivrea TO, Italia",Giovedì,03:45,12:05,265,Chivasso - P.Le Alfa-Lanc,To-P.Za Cattaneo-Mirafiori Fca,04:51,05:37
+,,"Via Cuneo, 23, 10015 Ivrea TO, Italia",Giovedì,03:45,12:05,265,To-P.Za Cattaneo-Mirafior,Chivasso - P.Le Alfa-Lanc,06:10,06:59
+,,"Via Cuneo, 23, 10015 Ivrea TO, Italia",Giovedì,03:45,12:05,265,Chivasso - P.Le Alfa-Lanc,PAUSA 07:57 -,07:01,09:30
+,,"Via Cuneo, 23, 10015 Ivrea TO, Italia",Giovedì,03:45,12:05,265,Ivrea - Stazione Fs Est,Chivasso - Staz. Fs Movic,09:30,10:30
+,,"Via Cuneo, 23, 10015 Ivrea TO, Italia",Giovedì,11:40,20:38,L2,"Via Cuneo, 23, 10015 Ivrea TO, 1It1al:i5a 0.... .S..t.r..a..m...b..i.n..o.. .-.. .C....S..o.. .T..o..r.i.n..o",Ivrea - Porta Vercelli .................1...2...:.0..0..... .I.v.r..e..a.. .-. .S..t.a..z..i.o..n..e.. .F..s. .E..s..t,19:00,20:18
+,,"Via Cuneo, 23, 10015 Ivrea TO, Italia",Giovedì,11:40,20:38,265,Ivrea - Porta Vercelli ................1...2...:.0..0..... .I.v.r..e..a.. .-. .S..t.a..z..i.o..n..e.. .F..s. .E..s..t,Ivrea - Porta Vercelli ................1...2...:.0..0..... .I.v.r..e..a.. .-. .S..t.a..z..i.o..n..e.. .F..s. .E..s..t,20:18,20:18
+,,"Via Cuneo, 23, 10015 Ivrea TO, Italia",Giovedì,11:40,20:38,265,Chivasso - P.Le Alfa-Lanc,To-P.Za Cattaneo-Mirafiori Fca,12:46,13:36
+,,"Via Cuneo, 23, 10015 Ivrea TO, Italia",Giovedì,11:40,20:38,265,To-P.Za Cattaneo-Mirafior,Chivasso - P.Le Alfa-Lanc,14:10,15:04
+,,"Via Cuneo, 23, 10015 Ivrea TO, Italia",Giovedì,11:40,20:38,265,Chivasso - P.Le Alfa-Lanc,PAUSA 16:00 -,15:06,17:20
+,,"Via Cuneo, 23, 10015 Ivrea TO, Italia",Giovedì,11:40,20:38,265,Ivrea - Porta Vercelli,Chivasso - Staz. Fs Movic,17:20,18:18
+,,"Via Cuneo, 23, 10015 Ivrea TO, Italia",Giovedì,04:20,08:22,904,Ivrea - Stazione Fs Est,Chivasso - Staz. Fs Movic,04:40,05:35
+,,"Via Cuneo, 23, 10015 Ivrea TO, Italia",Giovedì,04:20,08:22,904,Chivasso - Staz. Fs Movic,Ivrea - Stazione Fs Int,05:40,06:34
+,,"Via Cuneo, 23, 10015 Ivrea TO, Italia",Giovedì,04:20,08:22,L2,Ivrea - Stazione Fs Int,Strambino - C.So Torino,06:45,08:00
+,,"Via Cuneo, 23, 10015 Ivrea TO, Italia",Giovedì,13:51,00:06,265,Ivrea - Porta Vercelli,Chivasso - P.Le Alfa-Lanc,20:15,20:54
+,,"Via Cuneo, 23, 10015 Ivrea TO, Italia",Giovedì,13:51,00:06,265,"Via Cuneo, 23, 10015 Ivrea TO, 1It4al:i0a 1.... .C..h..i.v..a..s..s.o... .-. .P....L..e.. .A..l.f.a..-.L..a..n..c",Chivasso - Staz. Fs Movicentro .1...4..:.4...3.... .T..o..-..S.e..t..t.e..m...b..r..i.n..i.-.M...i.r..a..f.i.o..r..i,20:56,21:45
+,,"Via Cuneo, 23, 10015 Ivrea TO, Italia",Giovedì,13:51,00:06,265,Chivasso - Staz. Fs Movic .........1...4..:.4...3.... .T..o..-..S.e...t.t.e..m...b..r..i.n..i.-.M....i.r.a..f.i.o..r..i. F..c..a,Ivrea - Porta Vercelli ................1...5...:.3..7..... .T..o..-.P....Z..a.. .C..a..t.t..a..n..e..o..-.M....i.r.a..f.i.o..r..i. F..c..a,21:45,21:47
+,,"Via Cuneo, 23, 10015 Ivrea TO, Italia",Giovedì,13:51,00:06,265,To-P.Za Cattaneo-Mirafior,To-P.Za Cattaneo-Mirafior,22:10,22:10
+,,"Via Cuneo, 23, 10015 Ivrea TO, Italia",Giovedì,13:51,00:06,265,Ivrea - Porta Vercelli,Chivasso - P.Le Alfa-Lanc,16:39,23:01
+,,"Via Cuneo, 23, 10015 Ivrea TO, Italia",Giovedì,13:51,00:06,265,Strambino - C.So Torino,Ivrea - Porta Aosta,17:01,23:44
+,,"Via Cuneo, 23, 10015 Ivrea TO, Italia",Giovedì,13:51,00:06,265,TORINO - Autostazione c.s,Ivrea - Loc Banchette,18:06,19:07
+,,"Via Cuneo, 23, 10015 Ivrea TO, Italia",Giovedì,13:51,00:06,265,Ivrea - Loc Banchette,PAUSA 19:14 -,19:09,20:15

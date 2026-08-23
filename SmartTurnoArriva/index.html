@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#121214" />
+    <!-- iOS non segue "display: standalone" del manifest: senza questi tag
+         "Aggiungi a Home" apre comunque dentro Safari con tutta la sua UI. -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="SmartTurnoArriva" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>SmartTurnoArriva</title>
+    <!-- Stile inline per evitare il flash bianco prima che carichi React -->
+    <style>
+      body {
+        background-color: #121214;
+        margin: 0;
+      }
+    </style>
+    <!-- Service Worker: elimina cache vecchia e forza aggiornamenti -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js', { updateViaCache: 'none' })
+          .then(function(reg) {
+            // Controlla subito se c'è un aggiornamento
+            reg.update();
+            // Quando il nuovo SW è pronto, ricarica la pagina
+            reg.addEventListener('updatefound', function() {
+              var newWorker = reg.installing;
+              newWorker.addEventListener('statechange', function() {
+                if (newWorker.state === 'activated') {
+                  window.location.reload();
+                }
+              });
+            });
+          })
+          .catch(function() {});
+      }
+    </script>
+    <script>
+      (function() {
+        fetch('/version', { cache: 'no-store' })
+          .then(function(r) { return r.json(); })
+          .then(function(data) {
+            var stored = localStorage.getItem('sta_version');
+            if (stored !== null && stored !== data.v) {
+              // Versione cambiata: ricarica con URL nuovo per bypassare cache
+              localStorage.setItem('sta_version', data.v);
+              var url = new URL(window.location.href);
+              url.searchParams.set('_v', data.v);
+              window.location.replace(url.toString());
+            } else {
+              localStorage.setItem('sta_version', data.v);
+            }
+          })
+          .catch(function() {});
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

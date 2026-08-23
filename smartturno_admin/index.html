@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>SmartTurnoArriva - Recupero PIN</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root { color-scheme: dark; }
+  body {
+    font-family: system-ui, sans-serif;
+    background: #121214;
+    color: #f0f0f2;
+    max-width: 480px;
+    margin: 40px auto;
+    padding: 0 16px;
+  }
+  h1 { color: #06b6d4; font-size: 20px; }
+  label { display: block; margin: 16px 0 6px; font-size: 14px; color: #9e9ea6; }
+  input {
+    width: 100%; box-sizing: border-box; background: #1c1c1f;
+    border: 1px solid #2e2e34; border-radius: 8px; color: #f0f0f2;
+    padding: 10px 12px; font-size: 15px;
+  }
+  button {
+    margin-top: 14px; background: #06b6d4; border: none; border-radius: 8px;
+    color: #121214; font-weight: 600; padding: 10px 14px; font-size: 14px;
+    cursor: pointer;
+  }
+  button.secondary { background: #2e2e34; color: #f0f0f2; margin-left: 8px; }
+  .result {
+    margin-top: 18px; background: #1c1c1f; border: 1px solid #2e2e34;
+    border-radius: 8px; padding: 14px; font-size: 14px; white-space: pre-wrap;
+  }
+  .pin { font-size: 28px; font-weight: 700; color: #10b981; letter-spacing: 2px; }
+  .err { color: #ef4444; }
+  table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 13px; }
+  td, th { text-align: left; padding: 6px 4px; border-bottom: 1px solid #2e2e34; }
+</style>
+</head>
+<body>
+  <h1>SmartTurnoArriva &mdash; Recupero PIN autisti</h1>
+
+  <label for="base">Indirizzo del server (tunnel attuale)</label>
+  <input id="base" placeholder="https://xxxx.trycloudflare.com">
+
+  <label for="key">Admin key</label>
+  <input id="key" type="password" placeholder="chiave amministratore">
+
+  <label for="email">Email dell'autista</label>
+  <input id="email" placeholder="nome@esempio.it">
+
+  <div>
+    <button onclick="lookup()">Cerca PIN</button>
+    <button class="secondary" onclick="listAll()">Elenco iscritti</button>
+  </div>
+
+  <hr style="border-color:#2e2e34; margin-top:24px">
+
+  <label for="allowEmail">Autorizza nuova email a registrarsi</label>
+  <input id="allowEmail" placeholder="nome@esempio.it">
+  <div>
+    <button onclick="addAllowed()">Autorizza</button>
+    <button class="secondary" onclick="listAllowed()">Vedi autorizzate</button>
+  </div>
+
+  <div id="result"></div>
+
+<script>
+  const $ = (id) => document.getElementById(id);
+  window.addEventListener('load', () => {
+    $('base').value = localStorage.getItem('st_admin_base') || '';
+    $('key').value = localStorage.getItem('st_admin_key') || '';
+  });
+  function saveSettings() {
+    localStorage.setItem('st_admin_base', $('base').value.trim());
+    localStorage.setItem('st_admin_key', $('key').value.trim());
+  }
+  async function lookup() {
+    saveSettings();
+    const base = $('base').value.trim().replace(/\/$/, '');
+    const key = encodeURIComponent($('key').value.trim());
+    const email = encodeURIComponent($('email').value.trim().toLowerCase());
+    const out = $('result');
+    out.innerHTML = 'Ricerca in corso...';
+    try {
+      const r = await fetch(`${base}/api/auth/admin/lookup?email=${email}&key=${key}`);
+      const data = await r.json();
+      if (data.ok) {
+        out.innerHTML = `<div class="result">PIN: <span class="pin">${data.pin}</span><br>Creato il: ${new Date(data.createdAt).toLocaleString('it-IT')}</div>`;
+      } else if (data.reason === 'forbidden') {
+        out.innerHTML = '<div class="result err">Admin key errata.</div>';
+      } else {
+        out.innerHTML = '<div class="result err">Nessun accesso trovato per questa email.</div>';
+      }
+    } catch (e) {
+      out.innerHTML = '<div class="result err">Impossibile contattare il server. Controlla l\'indirizzo del tunnel.</div>';
+    }
+  }
+  async function listAll() {
+    saveSettings();
+    const base = $('base').value.trim().replace(/\/$/, '');
+    const key = encodeURIComponent($('key').value.trim());
+    const out = $('result');
+    out.innerHTML = 'Caricamento...';
+    try {
+      const r = await fetch(`${base}/api/auth/admin/list?key=${key}`);
+      const data = await r.json();
+      if (!data.ok) { out.innerHTML = '<div class="result err">Admin key errata.</div>'; return; }
+      if (!data.users.length) { out.innerHTML = '<div class="result">Nessun autista ancora registrato.</div>'; return; }
+      const rows = data.users
+        .sort((a, b) => a.email.localeCompare(b.email))
+        .map(u => `<tr><td>${u.email}</td><td>${new Date(u.createdAt).toLocaleDateString('it-IT')}</td></tr>`)
+        .join('');
+      out.innerHTML = `<div class="result"><table><tr><th>Email</th><th>Registrato il</th></tr>${rows}</table></div>`;
+    } catch (e) {
+      out.innerHTML = '<div class="result err">Impossibile contattare il server.</div>';
+    }
+  }
+  async function addAllowed() {
+    saveSettings();
+    const base = $('base').value.trim().replace(/\/$/, '');
+    const key = $('key').value.trim();
+    const email = $('allowEmail').value.trim().toLowerCase();
+    const out = $('result');
+    if (!email.includes('@')) { out.innerHTML = '<div class="result err">Email non valida.</div>'; return; }
+    out.innerHTML = 'Autorizzazione in corso...';
+    try {
+      const r = await fetch(`${base}/api/auth/admin/allowlist`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ key, email }),
+      });
+      const data = await r.json();
+      if (!data.ok) { out.innerHTML = '<div class="result err">Admin key errata.</div>'; return; }
+      $('allowEmail').value = '';
+      out.innerHTML = `<div class="result">Email autorizzata: <b>${email}</b></div>`;
+    } catch (e) {
+      out.innerHTML = '<div class="result err">Impossibile contattare il server.</div>';
+    }
+  }
+  async function listAllowed() {
+    saveSettings();
+    const base = $('base').value.trim().replace(/\/$/, '');
+    const key = encodeURIComponent($('key').value.trim());
+    const out = $('result');
+    out.innerHTML = 'Caricamento...';
+    try {
+      const r = await fetch(`${base}/api/auth/admin/allowlist?key=${key}`);
+      const data = await r.json();
+      if (!data.ok) { out.innerHTML = '<div class="result err">Admin key errata.</div>'; return; }
+      if (!data.allowedEmails.length) { out.innerHTML = '<div class="result">Nessuna email autorizzata.</div>'; return; }
+      const rows = data.allowedEmails
+        .sort()
+        .map(e => `<tr><td>${e}</td><td><button class="secondary" onclick="removeAllowed('${e}')">Rimuovi</button></td></tr>`)
+        .join('');
+      out.innerHTML = `<div class="result"><table><tr><th>Email autorizzata</th><th></th></tr>${rows}</table></div>`;
+    } catch (e) {
+      out.innerHTML = '<div class="result err">Impossibile contattare il server.</div>';
+    }
+  }
+  async function removeAllowed(email) {
+    const base = $('base').value.trim().replace(/\/$/, '');
+    const key = $('key').value.trim();
+    await fetch(`${base}/api/auth/admin/allowlist`, {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ key, email }),
+    });
+    listAllowed();
+  }
+</script>
+</body>
+</html>

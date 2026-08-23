@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Scopri le migliori offerte e volantini dei supermercati a Torino. Risparmia ogni giorno con le nostre selezioni aggiornate!">
+    <title>Offerte Spesa Torino | Risparmia Ogni Giorno</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=11">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <header class="glass-header">
+        <div class="logo">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span>OfferteTorino</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#offerte" style="margin-right: 1rem;">Ultime Offerte</a></li>
+                <li class="dropdown">
+                    <a href="#" class="nav-donate">❤️ Sostienici <i class="fa-solid fa-chevron-down" style="font-size: 0.8rem;"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="https://web.satispay.com/download/qrcode/S6Y-CON--500ED62A-5BDF-4775-BD64-3945A8B75CCD?locale=it" target="_blank" style="color: #ff5a5f;">☕ Satispay</a></li>
+                        <li><a href="https://www.paypal.com/myaccount/transfer/homepage" target="_blank" style="color: #003087;" onclick="prompt('Nella schermata successiva di PayPal (Familiari e Amici), incolla questa email:\\n\\n(Puoi copiarla da qui sotto)', 'antony.potenza@gmail.com');"><i class="fa-brands fa-paypal"></i> PayPal</a></li>
+                        <li><a href="#" style="color: #d97706;" onclick="prompt('Per donare con PostePay (tramite App in rubrica), invia al seguente numero:\\n\\n(Puoi copiarlo da qui sotto)', '3384535341'); return false;"><i class="fa-regular fa-credit-card"></i> PostePay</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" id="cart-icon" class="nav-donate" style="position: relative;">
+                        <i class="fa-solid fa-cart-shopping"></i> Carrello
+                        <span id="cart-badge" style="position: absolute; top: -5px; right: -15px; background: #ef4444; color: white; border-radius: 50%; padding: 0.1rem 0.4rem; font-size: 0.8rem; display: none;">0</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="social-links">
+            <a href="https://t.me/+0mC7roUUmYswZjA0" target="_blank" class="social-btn telegram" aria-label="Telegram"><i class="fa-brands fa-telegram"></i></a>
+            <a href="https://www.facebook.com/1189163407619654" target="_blank" class="social-btn facebook" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero compact-hero">
+            <div class="hero-content-center">
+                <div class="badge-container">
+                    <span class="badge pulse-badge"><i class="fa-solid fa-location-dot"></i> Solo offerte a Torino</span>
+                    <span class="badge"><i class="fa-solid fa-bolt"></i> Aggiornato in tempo reale</span>
+                </div>
+                <h1 class="gradient-text">Il tuo Radar delle Offerte.</h1>
+                <p class="hero-subtitle">Le promozioni più calde dei supermercati torinesi, trovate per te in tempo reale. Non perderti i cali di prezzo di oggi e risparmia sulla spesa.</p>
+                <div class="hero-buttons center-buttons">
+                    <a href="https://t.me/+0mC7roUUmYswZjA0" class="btn btn-primary" target="_blank">
+                        <i class="fa-brands fa-telegram"></i> Entra nel Canale VIP
+                    </a>
+                    <a href="#offerte" class="btn btn-secondary">
+                        <i class="fa-solid fa-arrow-down"></i> Vedi le Offerte
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="shop" style="padding: 4rem 5%; background: rgba(11, 15, 25, 0.5); border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border); position: relative; overflow: hidden;">
+            <h2 class="gradient-text" style="text-align: center; margin-bottom: 2rem;">Vetrina Prodotti</h2>
+            <p style="text-align: center; color: var(--text-muted); margin-bottom: 3rem;">Acquista i nostri prodotti esclusivi. Spedizione rapida in tutta Italia!</p>
+            
+            <div class="carousel-wrapper" style="position: relative; display: flex; align-items: center;">
+                <button id="carousel-prev" style="position: absolute; left: 0; z-index: 10; background: rgba(30,41,59,0.8); border: 1px solid var(--glass-border); color: white; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; backdrop-filter: blur(5px);"><i class="fa-solid fa-chevron-left"></i></button>
+                
+                <div id="products-container" style="display: flex; gap: 2rem; overflow-x: auto; scroll-behavior: smooth; padding: 1rem 3rem; scrollbar-width: none; -ms-overflow-style: none;">
+                    <!-- Prodotti generati via JS -->
+                </div>
+                
+                <button id="carousel-next" style="position: absolute; right: 0; z-index: 10; background: rgba(30,41,59,0.8); border: 1px solid var(--glass-border); color: white; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; backdrop-filter: blur(5px);"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+        </section>
+
+        <section id="live-coupons" style="padding: 4rem 5%; background: rgba(16, 185, 129, 0.05); border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border);">
+            <h2 class="gradient-text" style="text-align: center; margin-bottom: 1rem;"><i class="fa-solid fa-bolt"></i> Sconti & Coupon Live</h2>
+            <p style="text-align: center; color: var(--text-muted); margin-bottom: 3rem;">Trovati in automatico dal nostro Bot su Telegram, eBay e Amazon!</p>
+            <div id="coupons-container" style="display: flex; gap: 1rem; overflow-x: auto; padding: 1rem 0; scrollbar-width: thin;">
+                <!-- I coupon verranno iniettati qui da script.js -->
+            </div>
+        </section>
+
+        <section id="offerte" style="padding: 4rem 5%;">
+            <h2 class="section-title">Offerte in Evidenza 🔥</h2>
+            <div class="filters-container">
+                <input type="text" id="search-input" placeholder="🔍 Cerca prodotto o negozio..." class="filter-input">
+                <select id="sort-price" class="filter-select">
+                    <option value="">Ordina per Prezzo</option>
+                    <option value="asc">Prezzo: Crescente (Più basso)</option>
+                    <option value="desc">Prezzo: Decrescente (Più alto)</option>
+                </select>
+                <select id="sort-date" class="filter-select">
+                    <option value="">Ordina per Scadenza</option>
+                    <option value="soon">Scadenza: Più vicina (Urgente)</option>
+                    <option value="late">Scadenza: Più lontana</option>
+                </select>
+            </div>
+            <div class="offers-grid" id="offers-container">
+            </div>
+            <div id="pagination-container" class="pagination-container"></div>
+        </section>
+    </main>
+
+    <section id="contatti" class="contact-section">
+        <div class="glass-card contact-card">
+            <h2>💡 Hai un consiglio o una richiesta?</h2>
+            <p>Vorresti vedere le offerte di un supermercato specifico? Hai suggerimenti per migliorare il sito? Scrivici!</p>
+            <form id="contact-form">
+                <input type="text" id="contact-name" placeholder="Il tuo nome (facoltativo)" class="filter-input">
+                <textarea id="contact-message" placeholder="Scrivi qui il tuo messaggio..." required class="filter-input" rows="4" style="resize: vertical;"></textarea>
+                <button type="submit" class="btn btn-primary" id="contact-submit">Invia Messaggio <i class="fa-solid fa-paper-plane"></i></button>
+            </form>
+            <div id="contact-status" style="margin-top: 1rem; font-weight: bold; display: none;"></div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Offerte Spesa Torino. Progetto creato per farti risparmiare.</p>
+        <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-top: 1rem;">
+            <a href="https://web.satispay.com/download/qrcode/S6Y-CON--500ED62A-5BDF-4775-BD64-3945A8B75CCD?locale=it" target="_blank" class="donate-link" style="color: #ff5a5f;">☕ Satispay</a>
+            <a href="https://www.paypal.com/myaccount/transfer/homepage" target="_blank" class="donate-link" style="color: #003087;" onclick="prompt('Nella schermata successiva di PayPal (Familiari e Amici), incolla questa email:\\n\\n(Puoi copiarla da qui sotto)', 'antony.potenza@gmail.com');"><i class="fa-brands fa-paypal"></i> PayPal</a>
+            <a href="#" class="donate-link" style="color: #ffcc00;" onclick="prompt('Per donare con PostePay (tramite App in rubrica), invia al seguente numero:\\n\\n(Puoi copiarlo da qui sotto)', '3384535341'); return false;"><i class="fa-regular fa-credit-card"></i> PostePay</a>
+        </div>
+    </footer>
+
+    <!-- Modal Donazione -->
+    <div id="donate-modal" class="modal-overlay">
+        <div class="modal-content glass-card">
+            <button id="close-modal" class="modal-close"><i class="fa-solid fa-xmark"></i></button>
+            <div class="modal-icon">☕</div>
+            <h3 style="margin-bottom: 1rem; font-size: 1.5rem;">Supporta Offerte Torino!</h3>
+            <p style="color: var(--text-muted); margin-bottom: 2rem;">Il nostro bot lavora giorno e notte per farti risparmiare. Se questa offerta ti è utile, ci offriresti un caffè simbolico per mantenere il servizio gratuito?</p>
+            
+            <div class="modal-buttons" style="display: flex; flex-direction: column; gap: 0.8rem; width: 100%;">
+                <a href="https://web.satispay.com/download/qrcode/S6Y-CON--500ED62A-5BDF-4775-BD64-3945A8B75CCD?locale=it" target="_blank" class="btn btn-donate donate-option" style="background-color: #ff5a5f;">
+                    Sì, con Satispay! ❤️
+                </a>
+                
+                <a href="https://www.paypal.com/myaccount/transfer/homepage" target="_blank" class="btn btn-donate donate-option" style="background-color: #003087; color: white;" onclick="prompt('Nella schermata successiva di PayPal (Familiari e Amici), incolla questa email:\\n\\n(Puoi copiarla da qui sotto)', 'antony.potenza@gmail.com');">
+                    <i class="fa-brands fa-paypal"></i> Dona con PayPal
+                </a>
+                
+                <a href="#" class="btn btn-donate donate-option" style="background-color: #ffcc00; color: #000;" onclick="prompt('Per donare con PostePay (tramite App in rubrica), invia al seguente numero:\\n\\n(Puoi copiarlo da qui sotto)', '3384535341'); return false;">
+                    <i class="fa-regular fa-credit-card"></i> Dona con PostePay
+                </a>
+
+                <a href="#" id="continue-link" target="_blank" class="btn btn-secondary" style="margin-top: 1rem;">
+                    Vai all'offerta nel Canale
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Prodotto Vetrina -->
+    <div id="product-modal" class="modal-overlay">
+        <div class="modal-content glass-card" style="max-width: 500px; text-align: center;">
+            <button id="close-product" class="modal-close"><i class="fa-solid fa-xmark"></i></button>
+            <div id="product-modal-img" style="width: 100%; height: 250px; background-size: cover; background-position: center; border-radius: 12px; margin-bottom: 1.5rem;"></div>
+            <h3 id="product-modal-title" style="margin-bottom: 1rem; font-size: 1.5rem;"></h3>
+            <p id="product-modal-desc" style="color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.5;"></p>
+            <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(30,41,59,0.8); padding: 1rem; border-radius: 12px; border: 1px solid var(--glass-border);">
+                <span id="product-modal-price" style="font-weight: 800; font-size: 1.5rem; color: #10b981;"></span>
+                <div style="display: flex; gap: 0.5rem; align-items: center;">
+                    <button id="product-modal-add" class="btn" style="padding: 0.5rem 1.5rem; font-size: 1.1rem; background: #64748b; color: white; cursor: not-allowed;" disabled><i class="fa-solid fa-lock"></i> Acquisti Sospesi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Carrello -->
+    <div id="cart-modal" class="modal-overlay">
+        <div class="modal-content glass-card" style="max-width: 500px;">
+            <button id="close-cart" class="modal-close"><i class="fa-solid fa-xmark"></i></button>
+            <h3 style="margin-bottom: 1.5rem; font-size: 1.5rem;">Il tuo Carrello 🛒</h3>
+            
+            <div id="cart-items" style="max-height: 250px; overflow-y: auto; margin-bottom: 1.5rem; text-align: left;">
+                <!-- Elementi carrello JS -->
+            </div>
+            
+            <div style="display: flex; justify-content: space-between; font-weight: 800; font-size: 1.2rem; margin-bottom: 1.5rem; border-top: 1px solid var(--glass-border); padding-top: 1rem;">
+                <span>Totale:</span>
+                <span id="cart-total">0.00€</span>
+            </div>
+
+            <button id="btn-checkout" class="btn btn-donate" style="width: 100%; display: none;">Paga Ora 💳</button>
+            <p id="empty-cart-msg" style="color: var(--text-muted);">Il carrello è vuoto.</p>
+            
+            <div id="payment-methods" style="margin-top: 1.5rem; display: none;">
+                <h4 style="margin-bottom: 1rem; text-align: center;">Scegli come pagare:</h4>
+                <a href="https://web.satispay.com/download/qrcode/S6Y-CON--500ED62A-5BDF-4775-BD64-3945A8B75CCD?locale=it" target="_blank" class="btn" style="background: #ff5a5f; color: white; display: block; margin-bottom: 0.8rem; text-align: center; text-decoration: none;"><i class="fa-solid fa-mug-hot"></i> Paga con Satispay</a>
+                <a href="https://www.paypal.com/myaccount/transfer/homepage" target="_blank" onclick="prompt('Nella schermata successiva di PayPal (Familiari e Amici), incolla questa email:\\n\\n', 'antony.potenza@gmail.com');" class="btn" style="background: #003087; color: white; display: block; margin-bottom: 0.8rem; text-align: center; text-decoration: none;"><i class="fa-brands fa-paypal"></i> Paga con PayPal</a>
+                <a href="#" onclick="prompt('Paga con PostePay inviando il totale a questo numero (tramite App in rubrica o tabacchino):\\n\\n', '3384535341'); return false;" class="btn" style="background: #d97706; color: white; display: block; text-align: center; text-decoration: none;"><i class="fa-regular fa-credit-card"></i> Paga con PostePay</a>
+                <p style="font-size: 0.8rem; color: var(--text-muted); text-align: center; margin-top: 1rem;">Copia l'importo Totale e invialo. La spedizione verrà elaborata subito dopo la ricezione del pagamento!</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js?v=1006"></script>
+</body>
+</html>

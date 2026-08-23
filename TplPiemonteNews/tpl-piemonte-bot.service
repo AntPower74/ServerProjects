@@ -1,0 +1,12 @@
+[Unit]
+Description=TPL Piemonte Telegram Bot Service
+After=network.target
+
+[Service]
+Type=oneshot
+User=antonio
+WorkingDirectory=/home/antonio/TplPiemonteNews
+ExecStart=/home/antonio/TplPiemonteNews/run_bot.sh
+
+[Install]
+WantedBy=multi-user.target

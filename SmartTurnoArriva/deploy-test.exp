@@ -1,0 +1,8 @@
+#!/usr/bin/expect -f
+set timeout -1
+spawn npx surge ./dist app-turni-beta.surge.sh
+expect "email:"
+send "shiftlink_app12399@example.com\r"
+expect "password:"
+send "MySecurePass123!\r"
+expect eof

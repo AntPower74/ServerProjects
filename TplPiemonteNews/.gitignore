@@ -1,0 +1,31 @@
+# Dependencies & Virtual Envs
+node_modules/
+venv/
+.venv/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Build & Outputs
+dist/
+build/
+.next/
+.nuxt/
+out/
+*.apk
+*.aab
+*.keystore
+*.jks
+local.properties
+.gradle/
+
+# Logs & Temp
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.DS_Store
+.env
+.env.local
+.env.*.local

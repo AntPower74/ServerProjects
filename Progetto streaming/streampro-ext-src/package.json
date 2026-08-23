@@ -1,0 +1,22 @@
+{
+  "name": "streampro",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"
+  },
+  "dependencies": {
+    "@capacitor/cli": "^8.5.0",
+    "@capacitor/core": "^8.5.0",
+    "adm-zip": "^0.6.0",
+    "hls.js": "^1.5.0",
+    "markdown-pdf": "^11.0.0",
+    "mpegts.js": "^1.8.0"
+  }
+}

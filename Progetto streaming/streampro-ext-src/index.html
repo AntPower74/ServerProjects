@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StreamPRO Web</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="app">
+      <div id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+          <h2>StreamPRO</h2>
+          <p class="subtitle">Nessun abbonamento richiesto • 100% Gratis</p>
+        </div>
+        
+        <div class="sidebar-actions">
+          <input type="text" id="m3u-url" placeholder="Inserisci URL M3U (.m3u8)" />
+          <button id="load-m3u">Carica da URL</button>
+          
+          <div style="text-align: center; margin: 4px 0; color: #64748b; font-size: 12px; font-weight: 600;">OPPURE</div>
+          
+          <input type="file" id="m3u-file" accept=".m3u,.m3u8,text/plain" style="display: none;" />
+          <button id="load-file-btn" style="background-color: #10b981;">Carica file M3U scaricato</button>
+        </div>
+        
+        <div class="tabs">
+          <button class="tab-btn active" data-tab="all">Canali</button>
+          <button class="tab-btn" data-tab="groups">Categorie</button>
+          <button class="tab-btn" data-tab="favs">Preferiti</button>
+        </div>
+
+        <div class="search-bar">
+           <input type="text" id="search-input" placeholder="Cerca..." />
+        </div>
+        
+        <div class="list-container">
+          <ul id="main-list" class="item-list">
+            <li class="placeholder">Nessuna playlist caricata</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="main-content">
+        <div class="video-container">
+          <video id="video-player" controls autoplay></video>
+          <div id="now-playing-info" class="now-playing">
+            <h3 id="channel-title">Seleziona un canale</h3>
+            <p id="channel-group">Nessun flusso attivo</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>JATUA Dark — Realistic Combat Flight Simulation</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        body, html {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #03070d;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+            color: #e0f2fe;
+        }
+        #canvas-container {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+        /* HUD Overlay */
+        #hud-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            pointer-events: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 16px;
+        }
+        .hud-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            pointer-events: auto;
+        }
+        .title-badge {
+            background: rgba(4, 15, 30, 0.75);
+            border: 1px solid rgba(0, 229, 255, 0.4);
+            border-left: 4px solid #00e5ff;
+            backdrop-filter: blur(8px);
+            padding: 10px 16px;
+            border-radius: 6px;
+            box-shadow: 0 4px 20px rgba(0, 229, 255, 0.15);
+        }
+        .title-badge h1 {
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #00e5ff;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+        .title-badge p {
+            font-size: 0.75rem;
+            color: #94a3b8;
+            letter-spacing: 1px;
+        }
+        .status-indicators {
+            display: flex;
+            gap: 12px;
+        }
+        .telemetry-card {
+            background: rgba(4, 15, 30, 0.75);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            backdrop-filter: blur(8px);
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.8rem;
+            color: #38bdf8;
+            min-width: 110px;
+        }
+        .telemetry-card span {
+            display: block;
+            font-size: 0.65rem;
+            color: #64748b;
+            text-transform: uppercase;
+        }
+        .telemetry-card strong {
+            font-size: 1.1rem;
+            color: #f0f9ff;
+        }
+
+        /* Center Reticle / Crosshair */
+        #combat-crosshair {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 140px;
+            height: 140px;
+            pointer-events: none;
+            opacity: 0.7;
+            transition: transform 0.1s ease-out, opacity 0.3s;
+        }
+        .crosshair-circle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            border: 1px dashed rgba(0, 229, 255, 0.6);
+            border-radius: 50%;
+        }
+        .crosshair-dot {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 4px;
+            height: 4px;
+            background: #00e5ff;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #00e5ff;
+        }
+        .crosshair-line {
+            position: absolute;
+            background: rgba(0, 229, 255, 0.6);
+        }
+        .crosshair-line.top { top: 10px; left: 50%; width: 1px; height: 18px; transform: translateX(-50%); }
+        .crosshair-line.bottom { bottom: 10px; left: 50%; width: 1px; height: 18px; transform: translateX(-50%); }
+        .crosshair-line.left { left: 10px; top: 50%; height: 1px; width: 18px; transform: translateY(-50%); }
+        .crosshair-line.right { right: 10px; top: 50%; height: 1px; width: 18px; transform: translateY(-50%); }
+
+        /* Control Panels */
+        .hud-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            pointer-events: auto;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .btn-group {
+            display: flex;
+            gap: 8px;
+            background: rgba(4, 15, 30, 0.8);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            backdrop-filter: blur(10px);
+            padding: 6px;
+            border-radius: 8px;
+            flex-wrap: wrap;
+        }
+        .hud-btn {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            color: #cbd5e1;
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .hud-btn:hover, .hud-btn.active {
+            background: rgba(0, 229, 255, 0.2);
+            border-color: #00e5ff;
+            color: #ffffff;
+            box-shadow: 0 0 12px rgba(0, 229, 255, 0.4);
+            transform: translateY(-1px);
+        }
+        .hud-btn.danger {
+            border-color: rgba(239, 68, 68, 0.5);
+            color: #f87171;
+        }
+        .hud-btn.danger:hover, .hud-btn.danger.active {
+            background: rgba(239, 68, 68, 0.3);
+            border-color: #ef4444;
+            color: #ffffff;
+            box-shadow: 0 0 14px rgba(239, 68, 68, 0.6);
+        }
+        .hud-btn.gold {
+            border-color: rgba(234, 179, 8, 0.5);
+            color: #fde047;
+        }
+        .hud-btn.gold:hover, .hud-btn.gold.active {
+            background: rgba(234, 179, 8, 0.3);
+            border-color: #eab308;
+            color: #ffffff;
+            box-shadow: 0 0 14px rgba(234, 179, 8, 0.6);
+        }
+
+        /* Mobile Touch Controls */
+        #mobile-touch-container {
+            display: none;
+            position: absolute;
+            bottom: 80px;
+            left: 0;
+            width: 100%;
+            padding: 0 20px;
+            justify-content: space-between;
+            align-items: flex-end;
+            z-index: 15;
+            pointer-events: none;
+        }
+        .touch-zone {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: rgba(0, 229, 255, 0.08);
+            border: 2px dashed rgba(0, 229, 255, 0.35);
+            position: relative;
+            pointer-events: auto;
+            touch-action: none;
+        }
+        .touch-thumb {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(0, 229, 255, 0.6);
+            border: 2px solid #ffffff;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 12px #00e5ff;
+        }
+        .mobile-action-btns {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            pointer-events: auto;
+        }
+        .touch-action-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(15, 23, 42, 0.85);
+            border: 2px solid #38bdf8;
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            touch-action: none;
+        }
+        .touch-action-btn.fire {
+            border-color: #ef4444;
+            background: rgba(239, 68, 68, 0.25);
+        }
+        .touch-action-btn.boost {
+            border-color: #00e5ff;
+            background: rgba(0, 229, 255, 0.25);
+        }
+
+        /* G-Force & Horizon Artificial Meter */
+        #g-force-meter {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 160px;
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        #g-force-fill {
+            width: 100%;
+            height: 20%;
+            background: #00e5ff;
+            position: absolute;
+            bottom: 0;
+            transition: height 0.1s, background-color 0.2s;
+        }
+        .g-label {
+            position: absolute;
+            left: 34px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.75rem;
+            font-family: monospace;
+            color: #38bdf8;
+        }
+
+        /* Notification Banner */
+        #notification-banner {
+            position: absolute;
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(4, 15, 30, 0.9);
+            border: 1px solid #00e5ff;
+            color: #00e5ff;
+            padding: 8px 24px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            font-weight: 600;
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.4);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            #mobile-touch-container { display: flex; }
+            .title-badge h1 { font-size: 0.9rem; }
+            .telemetry-card { padding: 4px 8px; min-width: 80px; }
+            .telemetry-card strong { font-size: 0.9rem; }
+            .hud-btn { padding: 6px 10px; font-size: 0.7rem; }
+            #g-force-meter, .g-label { display: none; }
+        }
+    </style>
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+</head>
+<body>
+    <div id="canvas-container"></div>
+
+    <div id="hud-overlay">
+        <!-- Top Header & Telemetry -->
+        <div class="hud-header">
+            <div class="title-badge">
+                <h1>JATUA DARK</h1>
+                <p>COMBAT FLIGHT SIMULATOR // RECONSTRUCTION</p>
+            </div>
+            <div class="status-indicators">
+                <div class="telemetry-card">
+                    <span>Velocità / Mach</span>
+                    <strong id="val-speed">Mach 1.8</strong>
+                </div>
+                <div class="telemetry-card">
+                    <span>G-Force</span>
+                    <strong id="val-gforce">3.2 G</strong>
+                </div>
+                <div class="telemetry-card">
+                    <span>Altitudine</span>
+                    <strong id="val-alt">480 m</strong>
+                </div>
+            </div>
+        </div>
+
+        <!-- Center Combat Reticle -->
+        <div id="combat-crosshair">
+            <div class="crosshair-circle"></div>
+            <div class="crosshair-dot"></div>
+            <div class="crosshair-line top"></div>
+            <div class="crosshair-line bottom"></div>
+            <div class="crosshair-line left"></div>
+            <div class="crosshair-line right"></div>
+        </div>
+
+        <!-- G-Meter on Left -->
+        <div id="g-force-meter">
+            <div id="g-force-fill"></div>
+        </div>
+        <div class="g-label" id="g-label-text">1.0 G</div>
+
+        <!-- Notification Banner -->
+        <div id="notification-banner">MANOVRA INIZIATA</div>
+
+        <!-- Touch Controls for Mobile / Termux users -->
+        <div id="mobile-touch-container">
+            <div class="touch-zone" id="touch-stick">
+                <div class="touch-thumb" id="touch-thumb"></div>
+            </div>
+            <div class="mobile-action-btns">
+                <div class="touch-action-btn fire" id="mobile-fire-btn">FUOCO</div>
+                <div class="touch-action-btn boost" id="mobile-boost-btn">BOOST</div>
+            </div>
+        </div>
+
+        <!-- Bottom Controls -->
+        <div class="hud-footer">
+            <!-- Flight / Combat Mode -->
+            <div class="btn-group">
+                <button class="hud-btn active" id="btn-mode-cinematic">🎬 Regia Dogfight (Auto)</button>
+                <button class="hud-btn" id="btn-mode-manual">🕹️ Guida Manuale</button>
+                <button class="hud-btn" id="btn-audio">🔊 Audio FX</button>
+            </div>
+
+            <!-- Combat Maneuver Selectors -->
+            <div class="btn-group">
+                <button class="hud-btn" id="btn-maneuver-slalom">⚡ Slalom Canyon</button>
+                <button class="hud-btn" id="btn-maneuver-barrelroll">🔄 Barrel Roll Evasivo</button>
+                <button class="hud-btn" id="btn-maneuver-cobra">🐍 Manovra Cobra</button>
+                <button class="hud-btn" id="btn-maneuver-splits">⬇️ Split-S Dive</button>
+                <button class="hud-btn danger" id="btn-fire-salvo">💥 Raffica Cannoni</button>
+            </div>
+
+            <!-- Cameras & Video Recorder -->
+            <div class="btn-group">
+                <button class="hud-btn" id="btn-cam-action">🎥 Azione</button>
+                <button class="hud-btn" id="btn-cam-cockpit">🪖 Cockpit HUD</button>
+                <button class="hud-btn" id="btn-cam-flyby">🏙️ Flyby Torre</button>
+                <button class="hud-btn" id="btn-cam-free">🔄 Libera 360°</button>
+                <button class="hud-btn gold" id="btn-record-video">🔴 Registra Video MP4</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

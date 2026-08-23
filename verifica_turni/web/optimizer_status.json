@@ -1,0 +1,1 @@
+{"progress": 100, "step": "\ud83c\udfc6 Ottimizzazione Completata! Ottimo Globale Trovato.", "status": "completed", "timestamp": 1787166110.6104991, "stats": {"totale_turni": 175, "turni_continui": 161, "perc_continui": "92.0%", "ore_stacco_azzerate": "115h 22m", "conformita": "100%", "motore": "Google OR-Tools CP-SAT (C++ Backend)"}}
