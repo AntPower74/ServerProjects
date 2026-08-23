@@ -304,6 +304,149 @@ body {
   gap: 14px;
 }
 
+.modal-card-playlists {
+  width: min(520px, 100%);
+  max-height: 85vh;
+}
+
+.playlists-modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-height: 60vh;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.playlist-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.playlist-section-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+.playlists-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.playlist-item-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 14px;
+  background-color: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--glass-border);
+  border-radius: 14px;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+  cursor: pointer;
+}
+
+.playlist-item-card:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.playlist-item-card.preactivated {
+  background-color: rgba(251, 191, 36, 0.1);
+  border-color: rgba(251, 191, 36, 0.35);
+}
+
+.playlist-item-card.preactivated:hover {
+  background-color: rgba(251, 191, 36, 0.18);
+  border-color: var(--highlight);
+}
+
+.playlist-item-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.playlist-item-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.playlist-item-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.playlist-item-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-main);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.playlist-item-detail {
+  font-size: 11px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.playlist-item-btns {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.playlist-load-btn {
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 999px;
+  background-color: var(--accent);
+  color: #06210f;
+}
+
+.playlist-delete-btn {
+  padding: 6px;
+  background: transparent;
+  color: var(--danger);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.playlist-delete-btn:hover {
+  background-color: rgba(239, 68, 68, 0.15);
+}
+
+.playlist-chip-delete {
+  margin-left: 6px;
+  opacity: 0.7;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 50%;
+}
+
+.playlist-chip-delete:hover {
+  opacity: 1;
+  color: var(--danger);
+}
+
 .modal-card h3 {
   font-size: 16px;
   font-weight: 700;

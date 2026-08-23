@@ -80,6 +80,12 @@ const adminPlaylistModalRemoveBtn = document.getElementById('admin-playlist-moda
 const adminPlaylistModalSaveBtn = document.getElementById('admin-playlist-modal-save');
 const backToHomeBtn = document.getElementById('back-to-home');
 const tilePlaylistsBtn = document.getElementById('tile-playlists');
+const playlistsModal = document.getElementById('playlists-modal');
+const playlistsModalCloseBtn = document.getElementById('playlists-modal-close');
+const playlistsPreactivatedSection = document.getElementById('playlists-preactivated-section');
+const playlistsPreactivatedList = document.getElementById('playlists-preactivated-list');
+const playlistsPersonalSection = document.getElementById('playlists-personal-section');
+const playlistsPersonalList = document.getElementById('playlists-personal-list');
 const tileFileBtn = document.getElementById('tile-file');
 const tileUrlBtn = document.getElementById('tile-url');
 const playlistCarouselEl = document.getElementById('playlist-carousel');
@@ -350,6 +356,16 @@ async function loadFilePlaylistFromDB(label) {
   });
 }
 
+async function deleteFilePlaylistFromDB(label) {
+  const db = await openPlaylistDB();
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction(DB_STORE, 'readwrite');
+    tx.objectStore(DB_STORE).delete(label);
+    tx.oncomplete = () => resolve();
+    tx.onerror = () => reject(tx.error);
+  });
+}
+
 // Pannello di gestione degli accessi Xtream salvati (creare/modificare/
 // cancellare più utenze), separato dalle playlist recenti perché qui
 // servono anche host/utente/password modificabili singolarmente.
@@ -498,30 +514,211 @@ async function openRecentPlaylist(p) {
   }
 }
 
+const HIDDEN_PREACTIVATED_KEY = 'streampro_hidden_preactivated';
+
+function getHiddenPreactivatedIds() {
+  try {
+    return JSON.parse(localStorage.getItem(HIDDEN_PREACTIVATED_KEY) || '[]');
+  } catch {
+    return [];
+  }
+}
+
+function hidePreactivatedPlaylist(item) {
+  const hidden = getHiddenPreactivatedIds();
+  const id = item.id || item.url || item.label;
+  if (!hidden.includes(id)) {
+    hidden.push(id);
+    localStorage.setItem(HIDDEN_PREACTIVATED_KEY, JSON.stringify(hidden));
+  }
+  if (currentPlaylistSource && currentPlaylistSource.label === item.label) {
+    currentPlaylistSource = null;
+    updateHomeStatus();
+  }
+  renderPlaylistsModal();
+  renderRecentPlaylists();
+}
+
+function restorePreactivatedPlaylists() {
+  localStorage.removeItem(HIDDEN_PREACTIVATED_KEY);
+  renderPlaylistsModal();
+  renderRecentPlaylists();
+}
+
+async function deleteRecentPlaylist(p) {
+  if (p.type === 'file') {
+    try {
+      await deleteFilePlaylistFromDB(p.label);
+    } catch (e) {
+      console.warn('Errore cancellazione DB:', e);
+    }
+    let list = getRecentPlaylists().filter(item => !(item.type === 'file' && item.label === p.label));
+    persistRecentPlaylists(list);
+  } else {
+    let list = getRecentPlaylists().filter(item => !(item.type === 'url' && item.url === p.url));
+    persistRecentPlaylists(list);
+  }
+  if (currentPlaylistSource && (
+    (p.type === 'file' && currentPlaylistSource.type === 'file' && currentPlaylistSource.label === p.label) ||
+    (p.type === 'url' && currentPlaylistSource.type === 'url' && currentPlaylistSource.url === p.url)
+  )) {
+    currentPlaylistSource = null;
+    updateHomeStatus();
+  }
+  renderPlaylistsModal();
+  renderRecentPlaylists();
+}
+
+function renderPlaylistsModal() {
+  if (!playlistsModal) return;
+
+  const hiddenIds = getHiddenPreactivatedIds();
+  const visiblePre = (preactivatedPlaylists || []).filter(item => !hiddenIds.includes(item.id || item.url || item.label));
+
+  // 1. Playlist Preattive dall'Admin
+  if (visiblePre.length > 0 || hiddenIds.length > 0) {
+    playlistsPreactivatedSection.style.display = 'flex';
+    playlistsPreactivatedList.innerHTML = '';
+    visiblePre.forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'playlist-item-card preactivated';
+      card.innerHTML = `
+        <div class="playlist-item-main">
+          <span class="playlist-item-icon">🔒</span>
+          <div class="playlist-item-text">
+            <span class="playlist-item-title">${escapeHtml(item.label)}</span>
+            <span class="playlist-item-detail">Playlist preattivata dall'amministratore</span>
+          </div>
+        </div>
+        <div class="playlist-item-btns">
+          <button type="button" class="playlist-load-btn">Carica</button>
+          <button type="button" class="icon-btn icon-btn-danger playlist-delete-btn" title="Elimina playlist dall'app">
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M6 7h12M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2m-8 0 1 13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1l1-13" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      `;
+      card.querySelector('.playlist-item-main').addEventListener('click', () => {
+        playlistsModal.classList.remove('active');
+        loadPreactivatedPlaylist(item);
+      });
+      card.querySelector('.playlist-load-btn').addEventListener('click', (e) => {
+        e.stopPropagation();
+        playlistsModal.classList.remove('active');
+        loadPreactivatedPlaylist(item);
+      });
+      card.querySelector('.playlist-delete-btn').addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (confirm(`Eliminare la playlist "${item.label}" da questa applicazione?`)) {
+          hidePreactivatedPlaylist(item);
+        }
+      });
+      playlistsPreactivatedList.appendChild(card);
+    });
+
+    if (hiddenIds.length > 0) {
+      const restoreBtn = document.createElement('button');
+      restoreBtn.className = 'modal-btn-secondary';
+      restoreBtn.style.fontSize = '12px';
+      restoreBtn.style.padding = '6px 12px';
+      restoreBtn.style.marginTop = '6px';
+      restoreBtn.textContent = '↺ Ripristina playlist preattive rimosse';
+      restoreBtn.addEventListener('click', () => {
+        restorePreactivatedPlaylists();
+      });
+      playlistsPreactivatedList.appendChild(restoreBtn);
+    }
+  } else {
+    playlistsPreactivatedSection.style.display = 'none';
+  }
+
+  // 2. Playlist Personali / Recenti
+  const list = getRecentPlaylists();
+  playlistsPersonalList.innerHTML = '';
+  if (list.length === 0) {
+    playlistsPersonalList.innerHTML = '<div style="color:var(--text-muted); font-size:12px; padding:10px 0;">Nessuna playlist personale salvata. Puoi caricarne una da File o da URL.</div>';
+  } else {
+    list.forEach(p => {
+      const card = document.createElement('div');
+      card.className = 'playlist-item-card';
+      const icon = p.type === 'file' ? '📂' : '🔗';
+      card.innerHTML = `
+        <div class="playlist-item-main">
+          <span class="playlist-item-icon">${icon}</span>
+          <div class="playlist-item-text">
+            <span class="playlist-item-title">${escapeHtml(p.label)}</span>
+            <span class="playlist-item-detail">${escapeHtml(p.type === 'file' ? 'File salvato sul dispositivo' : p.url)}</span>
+          </div>
+        </div>
+        <div class="playlist-item-btns">
+          <button type="button" class="playlist-load-btn">Carica</button>
+          <button type="button" class="icon-btn icon-btn-danger playlist-delete-btn" title="Elimina playlist">
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M6 7h12M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2m-8 0 1 13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1l1-13" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      `;
+      card.querySelector('.playlist-item-main').addEventListener('click', () => {
+        playlistsModal.classList.remove('active');
+        openRecentPlaylist(p);
+      });
+      card.querySelector('.playlist-load-btn').addEventListener('click', (e) => {
+        e.stopPropagation();
+        playlistsModal.classList.remove('active');
+        openRecentPlaylist(p);
+      });
+      card.querySelector('.playlist-delete-btn').addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (confirm(`Eliminare la playlist "${p.label}"?`)) {
+          deleteRecentPlaylist(p);
+        }
+      });
+      playlistsPersonalList.appendChild(card);
+    });
+  }
+}
+
+function openPlaylistsModal() {
+  renderPlaylistsModal();
+  playlistsModal.classList.add('active');
+}
+
 // Banner a scorrimento nella tessera "Seleziona Playlist" della home
 function renderRecentPlaylists() {
   const list = getRecentPlaylists();
+  const hiddenIds = getHiddenPreactivatedIds();
+  const visiblePre = (preactivatedPlaylists || []).filter(item => !hiddenIds.includes(item.id || item.url || item.label));
   playlistCarouselEl.innerHTML = '';
 
-  if (preactivatedPlaylist) {
+  visiblePre.forEach(item => {
     const chip = document.createElement('div');
     chip.className = 'playlist-chip playlist-chip-preactivated';
-    chip.textContent = '🔒 Playlist preattiva';
-    chip.addEventListener('click', (e) => {
+    chip.innerHTML = `<span>🔒 ${escapeHtml(item.label)}</span><span class="playlist-chip-delete" title="Elimina">✕</span>`;
+    chip.querySelector('span:first-child').addEventListener('click', (e) => {
       e.stopPropagation();
-      loadPreactivatedPlaylist();
+      loadPreactivatedPlaylist(item);
+    });
+    chip.querySelector('.playlist-chip-delete').addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (confirm(`Eliminare la playlist "${item.label}" da questa applicazione?`)) {
+        hidePreactivatedPlaylist(item);
+      }
     });
     playlistCarouselEl.appendChild(chip);
-  }
+  });
 
   list.forEach(p => {
     const chip = document.createElement('div');
     chip.className = 'playlist-chip';
     const icon = p.type === 'file' ? '📂' : '🔗';
-    chip.textContent = `${icon} ${p.label}`;
-    chip.addEventListener('click', (e) => {
+    chip.innerHTML = `<span>${icon} ${escapeHtml(p.label)}</span><span class="playlist-chip-delete" title="Elimina">✕</span>`;
+    chip.querySelector('span:first-child').addEventListener('click', (e) => {
       e.stopPropagation();
       openRecentPlaylist(p);
+    });
+    chip.querySelector('.playlist-chip-delete').addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (confirm(`Eliminare la playlist "${p.label}"?`)) {
+        deleteRecentPlaylist(p);
+      }
     });
     playlistCarouselEl.appendChild(chip);
   });
@@ -1325,16 +1522,18 @@ searchInput.addEventListener('input', (e) => {
 // Torna alla schermata di selezione playlist
 backToHomeBtn.addEventListener('click', showHome);
 
-// La tessera "Seleziona Playlist" apre/chiude il banner con le playlist
-// salvate (nascosto di default); se non ce ne sono avvisa l'utente.
 tilePlaylistsBtn.addEventListener('click', (e) => {
   if (e.target.closest('.playlist-chip')) return;
-  if (getRecentPlaylists().length === 0 && !preactivatedPlaylist) {
-    alert('Nessuna playlist salvata: caricane una da file o da URL.');
-    return;
-  }
-  playlistCarouselEl.classList.toggle('open');
+  openPlaylistsModal();
 });
+if (playlistsModalCloseBtn) {
+  playlistsModalCloseBtn.addEventListener('click', () => playlistsModal.classList.remove('active'));
+}
+if (playlistsModal) {
+  playlistsModal.addEventListener('click', (e) => {
+    if (e.target === playlistsModal) playlistsModal.classList.remove('active');
+  });
+}
 
 // Aggiorna la playlist attualmente caricata
 refreshPlaylistBtn.addEventListener('click', () => {
@@ -1409,7 +1608,7 @@ const DEVICE_ID_KEY = 'streampro_device_id';
 // Credenziali della playlist legata al codice, se l'admin ne ha assegnata
 // una: mai mostrate nell'interfaccia (niente campi precompilati, niente URL
 // visibile), solo un'unica voce "Playlist preattiva" cliccabile.
-let preactivatedPlaylist = null;
+let preactivatedPlaylists = [];
 // Scadenza del codice/richiesta di prova che ha sbloccato l'app, mostrata
 // nella home (vedi updateHomeStatus) al posto del vecchio "—" fisso.
 let currentAccessExpiresAt = null;
@@ -1506,14 +1705,26 @@ async function checkAccessCode(code) {
 // oppure un link diretto già pronto (playlistUrl), impostato dal pannello
 // sia digitandolo a mano sia caricando un file (che diventa comunque un
 // link, vedi uploadPlaylistFile lato pannello).
-function derivePreactivatedPlaylist(entry) {
+function derivePreactivatedPlaylists(entry) {
+  if (!entry) return [];
+  if (Array.isArray(entry.playlists) && entry.playlists.length > 0) {
+    return entry.playlists.map((p, idx) => ({
+      id: p.id || `pre_${idx}`,
+      label: p.name || `Playlist ${idx + 1}`,
+      type: p.type || (p.host ? 'xtream' : 'url'),
+      url: p.playlistUrl || p.url,
+      host: p.host,
+      username: p.username,
+      password: p.password
+    }));
+  }
   if (entry.host && entry.username && entry.password) {
-    return { type: 'xtream', host: entry.host, username: entry.username, password: entry.password };
+    return [{ id: 'pre_0', label: 'Playlist preattiva', type: 'xtream', host: entry.host, username: entry.username, password: entry.password }];
   }
   if (entry.playlistUrl) {
-    return { type: 'url', url: entry.playlistUrl };
+    return [{ id: 'pre_0', label: 'Playlist preattiva', type: 'url', url: entry.playlistUrl }];
   }
-  return null;
+  return [];
 }
 
 // Riapre da sola l'ultima playlist usata, al primo sblocco della sessione,
@@ -1526,26 +1737,21 @@ let autoLoadedLastPlaylist = false;
 function applyAccessCheckResult(result) {
   const ok = !!result.ok;
   setUnlocked(ok);
-  preactivatedPlaylist = ok ? derivePreactivatedPlaylist(result.entry) : null;
+  preactivatedPlaylists = ok ? derivePreactivatedPlaylists(result.entry) : [];
   currentAccessExpiresAt = ok ? (result.entry.expiresAt || null) : null;
   // Un codice "speciale" (impostato da Antonio nel pannello) sblocca anche
   // il tasto per aprire il pannello accessi dal telefono: solo i codici
   // possono essere speciali, mai le richieste di prova.
   homePanelActionEl.style.display = (ok && result.entry.special) ? 'flex' : 'none';
   renderRecentPlaylists();
+  renderPlaylistsModal();
   updateHomeStatus();
 
   if (ok && !autoLoadedLastPlaylist) {
     autoLoadedLastPlaylist = true;
-    // La playlist preattivata dal codice ha la precedenza (è la scelta
-    // dell'admin per questo dispositivo/codice); altrimenti si riapre
-    // l'ultima playlist personale usata. Prima la preattivata richiedeva
-    // comunque un tocco manuale sulla sua "chip" — da qui in poi si apre
-    // da sola come l'ultima playlist, così non serve selezionare nulla ad
-    // ogni avvio in nessuno dei due casi.
     if (homeScreen.classList.contains('active')) {
-      if (preactivatedPlaylist) {
-        loadPreactivatedPlaylist();
+      if (preactivatedPlaylists.length > 0) {
+        loadPreactivatedPlaylist(preactivatedPlaylists[0]);
       } else {
         const recent = getRecentPlaylists();
         if (recent.length > 0) openRecentPlaylist(recent[0]);
@@ -1616,7 +1822,7 @@ async function refreshAccessState() {
     const trial = await checkDeviceTrial();
     if (trial.status === 'active') {
       setUnlocked(true);
-      preactivatedPlaylist = null;
+      preactivatedPlaylists = [];
       currentAccessExpiresAt = trial.entry.expiresAt || null;
       homePanelActionEl.style.display = 'none';
       renderRecentPlaylists();
@@ -1642,12 +1848,13 @@ async function refreshAccessState() {
 // banner "Seleziona Playlist", sopra le playlist recenti dell'utente:
 // caricarla non la salva tra le recenti né mostra mai l'URL con le
 // credenziali (vedi opts.hidden in loadFromUrl).
-function loadPreactivatedPlaylist() {
-  if (!preactivatedPlaylist) return;
-  const url = preactivatedPlaylist.type === 'url'
-    ? preactivatedPlaylist.url
-    : buildXtreamM3uUrl(preactivatedPlaylist.host, preactivatedPlaylist.username, preactivatedPlaylist.password);
-  loadFromUrl(url, { hidden: true, label: 'Playlist preattiva' });
+function loadPreactivatedPlaylist(item) {
+  const target = item || (preactivatedPlaylists.length > 0 ? preactivatedPlaylists[0] : null);
+  if (!target) return;
+  const url = target.type === 'url'
+    ? target.url
+    : buildXtreamM3uUrl(target.host, target.username, target.password);
+  loadFromUrl(url, { hidden: true, label: target.label || 'Playlist preattiva' });
 }
 
 accessUserBtn.addEventListener('click', () => {

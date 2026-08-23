@@ -114,6 +114,61 @@
     padding: 20px;
   }
   .modal-overlay.active { display: flex; }
+    .modal-card.wide {
+    width: min(560px, 100%);
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  .edit-playlists-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 8px 0;
+    max-height: 200px;
+    overflow-y: auto;
+  }
+  .edit-playlist-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    gap: 10px;
+  }
+  .edit-playlist-item-info {
+    flex: 1;
+    min-width: 0;
+  }
+  .edit-playlist-item-name {
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .edit-playlist-item-detail {
+    font-size: 11px;
+    color: var(--muted);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-top: 2px;
+  }
+  .add-playlist-box {
+    background: rgba(0,0,0,0.2);
+    border: 1px dashed var(--border);
+    border-radius: 12px;
+    padding: 12px;
+    margin-top: 6px;
+  }
+  .add-playlist-box h4 {
+    font-size: 13px;
+    margin: 0 0 6px;
+    color: var(--muted);
+  }
   .modal-card {
     background: #103826;
     border: 1px solid var(--border);
@@ -246,23 +301,62 @@
   <input type="date" id="expiry-picker" style="position:fixed; top:0; left:0; width:1px; height:1px; opacity:0; pointer-events:none;" />
 
   <div id="playlist-modal" class="modal-overlay">
-    <div class="modal-card">
+    <div class="modal-card wide">
       <h3>Playlist per <span id="playlist-modal-code"></span></h3>
-      <div class="tabs" id="edit-playlist-tabs">
-        <button type="button" class="tab-btn active" data-mode="url">Link diretto</button>
-        <button type="button" class="tab-btn" data-mode="file">File</button>
+      <p class="hint" style="margin-bottom:6px;">Puoi assegnare una o più playlist a questo codice. L'utente potrà selezionarle e passare da una all'altra nell'app.</p>
+      
+      <div id="edit-playlists-list" class="edit-playlists-list"></div>
+
+      <div class="add-playlist-box">
+        <h4>+ Aggiungi nuova playlist al codice</h4>
+        <label>Nome / Etichetta (es. Principale, Sport, Cinema...)</label>
+        <input type="text" id="edit-playlist-name" placeholder="Es. Principale" />
+
+        <div class="tabs playlist-tabs" id="edit-playlist-tabs">
+          <button type="button" class="tab-btn active" data-mode="xtream">Utente Xtream</button>
+          <button type="button" class="tab-btn" data-mode="url">Link diretto</button>
+          <button type="button" class="tab-btn" data-mode="file">File</button>
+        </div>
+
+        <div class="playlist-mode active" id="edit-playlist-xtream">
+          <div class="row">
+            <div>
+              <label>Server (host)</label>
+              <input type="text" id="edit-host" placeholder="http://server.com:8080" />
+            </div>
+          </div>
+          <div class="row">
+            <div>
+              <label>Utente</label>
+              <input type="text" id="edit-user" />
+            </div>
+            <div>
+              <label>Password</label>
+              <input type="text" id="edit-pass" />
+            </div>
+          </div>
+        </div>
+
+        <div class="playlist-mode" id="edit-playlist-url">
+          <label>Link alla playlist (.m3u/.m3u8)</label>
+          <input type="text" id="edit-playlist-url-input" placeholder="https://.../playlist.m3u8" />
+        </div>
+
+        <div class="playlist-mode" id="edit-playlist-file">
+          <label>File playlist (.m3u/.m3u8)</label>
+          <input type="file" id="edit-playlist-file-input" accept=".m3u,.m3u8,text/plain" />
+          <p class="hint" id="edit-playlist-file-status" style="margin-top:6px;"></p>
+        </div>
+
+        <div style="margin-top: 10px; display: flex; justify-content: flex-end;">
+          <button type="button" id="edit-playlist-add-btn" class="small">+ Inserisci nella lista</button>
+        </div>
       </div>
-      <div class="playlist-mode active" id="edit-playlist-url">
-        <input type="text" id="edit-playlist-url-input" placeholder="https://.../playlist.m3u8" />
-      </div>
-      <div class="playlist-mode" id="edit-playlist-file">
-        <input type="file" id="edit-playlist-file-input" accept=".m3u,.m3u8,text/plain" />
-        <p class="hint" id="edit-playlist-file-status" style="margin-top:6px;"></p>
-      </div>
-      <div class="modal-actions">
-        <button class="secondary" id="playlist-modal-remove">Rimuovi playlist</button>
+
+      <div class="modal-actions" style="margin-top: 12px;">
+        <button class="secondary danger" id="playlist-modal-remove">Rimuovi tutte</button>
         <button class="secondary" id="playlist-modal-cancel">Annulla</button>
-        <button id="playlist-modal-save">Salva</button>
+        <button id="playlist-modal-save">Salva modifiche</button>
       </div>
     </div>
   </div>
@@ -378,6 +472,20 @@
     return isExpired(entry) ? 'expired' : 'active';
   }
 
+  function getPlaylistsForEntry(entry) {
+    if (!entry) return [];
+    if (Array.isArray(entry.playlists) && entry.playlists.length > 0) {
+      return entry.playlists;
+    }
+    if (entry.host && entry.username && entry.password) {
+      return [{ id: 'pl_legacy', name: 'Principale', type: 'xtream', host: entry.host, username: entry.username, password: entry.password }];
+    }
+    if (entry.playlistUrl) {
+      return [{ id: 'pl_legacy', name: 'Principale', type: 'url', url: entry.playlistUrl }];
+    }
+    return [];
+  }
+
   async function renderTable() {
     const tbody = document.getElementById('codes-tbody');
     const statusEl = document.getElementById('list-status');
@@ -393,12 +501,12 @@
       }
       entries.forEach(([code, entry]) => {
         const tr = document.createElement('tr');
-        const hasPlaylist = (entry.host && entry.username && entry.password) || entry.playlistUrl;
+        const playlists = getPlaylistsForEntry(entry); const hasPlaylist = playlists.length > 0;
         const expired = isExpired(entry);
         const badges = [];
         badges.push(`<span class="badge ${entry.enabled ? 'on' : 'off'}">${entry.enabled ? 'Abilitato' : 'Disabilitato'}</span>`);
         if (expired) badges.push('<span class="badge expired">Scaduto</span>');
-        if (hasPlaylist) badges.push('<span class="badge pre">playlist</span>');
+        if (hasPlaylist) badges.push(`<span class="badge pre">${playlists.length > 1 ? playlists.length + ' playlist' : 'playlist'}</span>`);
         if (entry.special) badges.push('<span class="badge special">speciale</span>');
         if (entry.deviceId) badges.push('<span class="badge device">dispositivo agganciato</span>');
 
@@ -517,35 +625,82 @@
 
   const playlistModal = document.getElementById('playlist-modal');
   const playlistModalCodeEl = document.getElementById('playlist-modal-code');
+  const editPlaylistsListEl = document.getElementById('edit-playlists-list');
+  const editPlaylistNameInput = document.getElementById('edit-playlist-name');
   const editPlaylistTabs = document.getElementById('edit-playlist-tabs');
+  const editPlaylistHostInput = document.getElementById('edit-host');
+  const editPlaylistUserInput = document.getElementById('edit-user');
+  const editPlaylistPassInput = document.getElementById('edit-pass');
   const editPlaylistUrlInput = document.getElementById('edit-playlist-url-input');
   const editPlaylistFileInput = document.getElementById('edit-playlist-file-input');
   const editPlaylistFileStatus = document.getElementById('edit-playlist-file-status');
-  let editPlaylistMode = 'url';
+  let editPlaylistMode = 'xtream';
   let editPlaylistTargetCode = null;
   let editPlaylistUploadedUrl = null;
+  let currentEditingPlaylists = [];
+
+  function renderEditPlaylistsList() {
+    editPlaylistsListEl.innerHTML = '';
+    if (currentEditingPlaylists.length === 0) {
+      editPlaylistsListEl.innerHTML = '<div style="color:var(--muted); font-size:12px; padding:6px 0;">Nessuna playlist attualmente assegnata a questo codice.</div>';
+      return;
+    }
+    currentEditingPlaylists.forEach((pl, idx) => {
+      const item = document.createElement('div');
+      item.className = 'edit-playlist-item';
+      let typeLabel = pl.type === 'xtream' ? '⚡ Xtream' : (pl.type === 'file' ? '📂 File' : '🔗 URL');
+      let detail = pl.type === 'xtream' ? `${pl.host || ''} (${pl.username || ''})` : (pl.url || '');
+      item.innerHTML = `
+        <div class="edit-playlist-item-info">
+          <div class="edit-playlist-item-name">
+            <span>${escapeHtml(pl.name || 'Playlist ' + (idx + 1))}</span>
+            <span class="badge pre" style="font-size:10px;">${typeLabel}</span>
+          </div>
+          <div class="edit-playlist-item-detail">${escapeHtml(detail)}</div>
+        </div>
+        <button type="button" class="small danger playlist-del-btn" style="padding:4px 8px;">🗑️ Elimina</button>
+      `;
+      item.querySelector('.playlist-del-btn').addEventListener('click', () => {
+        currentEditingPlaylists.splice(idx, 1);
+        renderEditPlaylistsList();
+      });
+      editPlaylistsListEl.appendChild(item);
+    });
+  }
 
   function openPlaylistModal(code, entry) {
     editPlaylistTargetCode = code;
     editPlaylistUploadedUrl = null;
     playlistModalCodeEl.textContent = code;
-    editPlaylistUrlInput.value = entry.playlistUrl || '';
+    currentEditingPlaylists = JSON.parse(JSON.stringify(getPlaylistsForEntry(entry)));
+    renderEditPlaylistsList();
+
+    editPlaylistNameInput.value = '';
+    editPlaylistHostInput.value = '';
+    editPlaylistUserInput.value = '';
+    editPlaylistPassInput.value = '';
+    editPlaylistUrlInput.value = '';
     editPlaylistFileInput.value = '';
     editPlaylistFileStatus.textContent = '';
-    editPlaylistMode = 'url';
-    editPlaylistTabs.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.mode === 'url'));
-    document.getElementById('edit-playlist-url').classList.add('active');
+    editPlaylistMode = 'xtream';
+
+    editPlaylistTabs.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.mode === 'xtream'));
+    document.getElementById('edit-playlist-xtream').classList.add('active');
+    document.getElementById('edit-playlist-url').classList.remove('active');
     document.getElementById('edit-playlist-file').classList.remove('active');
     playlistModal.classList.add('active');
   }
+
   editPlaylistTabs.addEventListener('click', (e) => {
     const btn = e.target.closest('.tab-btn');
     if (!btn) return;
     editPlaylistMode = btn.dataset.mode;
     editPlaylistTabs.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b === btn));
+    document.getElementById('edit-playlist-xtream').classList.toggle('active', editPlaylistMode === 'xtream');
     document.getElementById('edit-playlist-url').classList.toggle('active', editPlaylistMode === 'url');
     document.getElementById('edit-playlist-file').classList.toggle('active', editPlaylistMode === 'file');
   });
+
   editPlaylistFileInput.addEventListener('change', async () => {
     const file = editPlaylistFileInput.files[0];
     if (!file) return;
@@ -558,10 +713,68 @@
       editPlaylistUploadedUrl = null;
     }
   });
+
+  document.getElementById('edit-playlist-add-btn').addEventListener('click', () => {
+    const name = editPlaylistNameInput.value.trim() || `Playlist ${currentEditingPlaylists.length + 1}`;
+    if (editPlaylistMode === 'xtream') {
+      const host = editPlaylistHostInput.value.trim();
+      const username = editPlaylistUserInput.value.trim();
+      const password = editPlaylistPassInput.value.trim();
+      if (!host || !username || !password) {
+        alert('Compila Server, Utente e Password');
+        return;
+      }
+      currentEditingPlaylists.push({
+        id: 'pl_' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6),
+        name,
+        type: 'xtream',
+        host,
+        username,
+        password
+      });
+    } else if (editPlaylistMode === 'url') {
+      const url = editPlaylistUrlInput.value.trim();
+      if (!url) {
+        alert('Inserisci l\'URL della playlist');
+        return;
+      }
+      currentEditingPlaylists.push({
+        id: 'pl_' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6),
+        name,
+        type: 'url',
+        url
+      });
+    } else if (editPlaylistMode === 'file') {
+      if (!editPlaylistUploadedUrl) {
+        alert('Carica prima un file playlist valido');
+        return;
+      }
+      currentEditingPlaylists.push({
+        id: 'pl_' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6),
+        name,
+        type: 'file',
+        url: editPlaylistUploadedUrl
+      });
+    }
+
+    renderEditPlaylistsList();
+    editPlaylistNameInput.value = '';
+    editPlaylistHostInput.value = '';
+    editPlaylistUserInput.value = '';
+    editPlaylistPassInput.value = '';
+    editPlaylistUrlInput.value = '';
+    editPlaylistFileInput.value = '';
+    editPlaylistFileStatus.textContent = '';
+    editPlaylistUploadedUrl = null;
+  });
+
   document.getElementById('playlist-modal-cancel').addEventListener('click', () => playlistModal.classList.remove('active'));
+
   document.getElementById('playlist-modal-remove').addEventListener('click', async () => {
     if (!editPlaylistTargetCode) return;
+    if (!confirm('Rimuovere tutte le playlist da questo codice?')) return;
     const c = await fetchCodes();
+    c[editPlaylistTargetCode].playlists = [];
     delete c[editPlaylistTargetCode].playlistUrl;
     delete c[editPlaylistTargetCode].host;
     delete c[editPlaylistTargetCode].username;
@@ -570,20 +783,67 @@
     playlistModal.classList.remove('active');
     renderTable();
   });
+
   document.getElementById('playlist-modal-save').addEventListener('click', async () => {
     if (!editPlaylistTargetCode) return;
-    const url = editPlaylistMode === 'file' ? editPlaylistUploadedUrl : editPlaylistUrlInput.value.trim();
-    if (!url) {
-      alert(editPlaylistMode === 'file' ? 'Carica prima un file' : 'Inserisci un link');
-      return;
+
+    // Se ci sono campi compilati nel form, aggiungili automaticamente prima di salvare
+    const name = editPlaylistNameInput.value.trim() || `Playlist ${currentEditingPlaylists.length + 1}`;
+    if (editPlaylistMode === 'xtream') {
+      const host = editPlaylistHostInput.value.trim();
+      const username = editPlaylistUserInput.value.trim();
+      const password = editPlaylistPassInput.value.trim();
+      if (host && username && password) {
+        currentEditingPlaylists.push({
+          id: 'pl_' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6),
+          name,
+          type: 'xtream',
+          host,
+          username,
+          password
+        });
+      }
+    } else if (editPlaylistMode === 'url') {
+      const url = editPlaylistUrlInput.value.trim();
+      if (url) {
+        currentEditingPlaylists.push({
+          id: 'pl_' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6),
+          name,
+          type: 'url',
+          url
+        });
+      }
+    } else if (editPlaylistMode === 'file' && editPlaylistUploadedUrl) {
+      currentEditingPlaylists.push({
+        id: 'pl_' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6),
+        name,
+        type: 'file',
+        url: editPlaylistUploadedUrl
+      });
     }
+
     const c = await fetchCodes();
-    c[editPlaylistTargetCode].playlistUrl = url;
-    // Un codice ha una sola playlist attiva alla volta: impostando un link
-    // diretto si tolgono eventuali credenziali Xtream lasciate da prima.
-    delete c[editPlaylistTargetCode].host;
-    delete c[editPlaylistTargetCode].username;
-    delete c[editPlaylistTargetCode].password;
+    c[editPlaylistTargetCode].playlists = currentEditingPlaylists;
+    // Sincronizza il primo elemento anche sui campi legacy per retrocompatibilità
+    if (currentEditingPlaylists.length > 0) {
+      const first = currentEditingPlaylists[0];
+      if (first.type === 'xtream') {
+        c[editPlaylistTargetCode].host = first.host;
+        c[editPlaylistTargetCode].username = first.username;
+        c[editPlaylistTargetCode].password = first.password;
+        delete c[editPlaylistTargetCode].playlistUrl;
+      } else {
+        c[editPlaylistTargetCode].playlistUrl = first.url;
+        delete c[editPlaylistTargetCode].host;
+        delete c[editPlaylistTargetCode].username;
+        delete c[editPlaylistTargetCode].password;
+      }
+    } else {
+      delete c[editPlaylistTargetCode].playlistUrl;
+      delete c[editPlaylistTargetCode].host;
+      delete c[editPlaylistTargetCode].username;
+      delete c[editPlaylistTargetCode].password;
+    }
     await saveCodes(c);
     playlistModal.classList.remove('active');
     renderTable();

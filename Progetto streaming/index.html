@@ -99,6 +99,26 @@
         <input type="file" id="m3u-file" accept=".m3u,.m3u8,text/plain" style="display: none;" />
       </div>
 
+      <div id="playlists-modal" class="modal-overlay">
+        <div class="modal-card modal-card-playlists">
+          <h3>Seleziona Playlist</h3>
+          <div id="playlists-modal-body" class="playlists-modal-body">
+            <div id="playlists-preactivated-section" class="playlist-section" style="display:none;">
+              <h4 class="playlist-section-title">🔒 Playlist Preattive</h4>
+              <div id="playlists-preactivated-list" class="playlists-list"></div>
+            </div>
+            
+            <div id="playlists-personal-section" class="playlist-section">
+              <h4 class="playlist-section-title">📂 Le tue Playlist</h4>
+              <div id="playlists-personal-list" class="playlists-list"></div>
+            </div>
+          </div>
+          <div class="modal-actions playlists-modal-actions">
+            <button id="playlists-modal-close" class="modal-btn-secondary">Chiudi</button>
+          </div>
+        </div>
+      </div>
+
       <div id="url-modal" class="modal-overlay">
         <div class="modal-card">
           <h3>Carica playlist</h3>
