@@ -69,8 +69,106 @@ async function fetchPlaylistContents(targetUrl) {
   if (isPrivateIp(address)) {
     throw new Error('URL non consentito');
   }
-  const res = await fetch(targetUrl);
-  const contents = await res.text();
+
+  const ua = 'IPTVSmartersPro/3.1.5.1 (Linux; Android 11)';
+  let contents = '';
+  let success = false;
+
+  // 1. Prova il download diretto della playlist con User-Agent IPTV
+  try {
+    const res = await fetch(targetUrl, {
+      headers: {
+        'User-Agent': ua,
+        'Accept': '*/*'
+      }
+    });
+    if (res.ok) {
+      contents = await res.text();
+      if (contents.includes('#EXTINF')) {
+        success = true;
+      }
+    }
+  } catch (err) {
+    console.warn('Download diretto playlist fallito:', err.message);
+  }
+
+  // 2. Fallback Xtream API: se il server IPTV blocca get.php (errore 885/461/ecc.)
+  // ma supporta le API Xtream (player_api.php), generiamo noi la playlist M3U al volo.
+  if (!success) {
+    const username = parsed.searchParams.get('username');
+    const password = parsed.searchParams.get('password');
+    if (username && password) {
+      const base = `${parsed.protocol}//${parsed.host}`;
+      const encUser = encodeURIComponent(username);
+      const encPass = encodeURIComponent(password);
+
+      try {
+        const [catsRes, streamsRes, vodCatsRes, vodStreamsRes] = await Promise.all([
+          fetch(`${base}/player_api.php?username=${encUser}&password=${encPass}&action=get_live_categories`, { headers: { 'User-Agent': ua } }).catch(() => null),
+          fetch(`${base}/player_api.php?username=${encUser}&password=${encPass}&action=get_live_streams`, { headers: { 'User-Agent': ua } }).catch(() => null),
+          fetch(`${base}/player_api.php?username=${encUser}&password=${encPass}&action=get_vod_categories`, { headers: { 'User-Agent': ua } }).catch(() => null),
+          fetch(`${base}/player_api.php?username=${encUser}&password=${encPass}&action=get_vod_streams`, { headers: { 'User-Agent': ua } }).catch(() => null)
+        ]);
+
+        const cats = catsRes && catsRes.ok ? await catsRes.json().catch(() => []) : [];
+        const streams = streamsRes && streamsRes.ok ? await streamsRes.json().catch(() => []) : [];
+        const vodCats = vodCatsRes && vodCatsRes.ok ? await vodCatsRes.json().catch(() => []) : [];
+        const vodStreams = vodStreamsRes && vodStreamsRes.ok ? await vodStreamsRes.json().catch(() => []) : [];
+
+        if (Array.isArray(streams) && streams.length > 0) {
+          const catMap = new Map();
+          if (Array.isArray(cats)) {
+            for (const c of cats) {
+              if (c && c.category_id) catMap.set(String(c.category_id), c.category_name || 'Altro');
+            }
+          }
+          const vodCatMap = new Map();
+          if (Array.isArray(vodCats)) {
+            for (const c of vodCats) {
+              if (c && c.category_id) vodCatMap.set(String(c.category_id), c.category_name || 'Film');
+            }
+          }
+
+          const lines = [`#EXTM3U url-tvg="${base}/xmltv.php?username=${encUser}&password=${encPass}"`];
+          for (const s of streams) {
+            if (!s || !s.stream_id) continue;
+            const cat = catMap.get(String(s.category_id)) || 'Canali';
+            const logo = s.stream_icon || '';
+            const epg = s.epg_channel_id || '';
+            const name = (s.name || 'Canale').trim();
+            const sid = s.stream_id;
+            const streamUrl = `${base}/live/${encUser}/${encPass}/${sid}.ts`;
+            lines.push(`#EXTINF:-1 tvg-id="${epg}" tvg-logo="${logo}" group-title="${cat}",${name}`);
+            lines.push(streamUrl);
+          }
+
+          if (Array.isArray(vodStreams)) {
+            for (const v of vodStreams) {
+              if (!v || !v.stream_id) continue;
+              const cat = vodCatMap.get(String(v.category_id)) || 'Film';
+              const logo = v.stream_icon || '';
+              const name = (v.name || 'Film').trim();
+              const sid = v.stream_id;
+              const ext = v.container_extension || 'mp4';
+              const streamUrl = `${base}/movie/${encUser}/${encPass}/${sid}.${ext}`;
+              lines.push(`#EXTINF:-1 tvg-id="" tvg-logo="${logo}" group-title="${cat}",[FILM] ${name}`);
+              lines.push(streamUrl);
+            }
+          }
+
+          contents = lines.join('\n');
+          success = true;
+        }
+      } catch (xtreamErr) {
+        console.warn('Errore fallback Xtream API:', xtreamErr);
+      }
+    }
+  }
+
+  if (!success && !contents) {
+    throw new Error('Impossibile scaricare o elaborare la playlist');
+  }
+
   return contents;
 }
 
