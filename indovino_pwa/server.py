@@ -433,12 +433,13 @@ def update_signals_tracker(draws):
                         'ora': d['ora'],
                         'punti': hits,
                         'ha_oro': has_oro,
-                        'estratti_presi': sorted(list(terzina_set.intersection(set(d['numeri']))))
+                        'estratti_presi': sorted(list(terzina_set.intersection(set(d['numeri'])))),
+                        'tutti_estratti': d.get('numeri', []),
+                        'oro': d.get('oro'),
+                        'doppio_oro': d.get('doppio_oro')
                     })
-                    
-                    # Stop immediato della timeline appena si vince!
-                    if primo_terno is not None or primo_ambo is not None:
-                        break
+
+
 
             s['timeline'] = timeline
             s['colpi_trascorsi'] = len(timeline)

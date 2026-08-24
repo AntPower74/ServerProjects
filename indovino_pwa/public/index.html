@@ -52,30 +52,8 @@
     <!-- ================= TAB 1: PRONOSTICO 15 MINUTI ================= -->
     <section id="tab-pronostico" class="tab-screen active">
       
-      <!-- Ultima Estrazione in Tempo Reale -->
-      <div class="card">
-        <div class="live-banner">
-          <div class="live-meta">
-            <div>
-              <span style="font-size:0.75rem; color:var(--text-muted); font-weight:700; letter-spacing:0.05em;">ESTRAZIONE IN DIRETTA</span>
-              <div class="concorso-tag" id="latest-concorso-num">#---</div>
-            </div>
-            <div class="time-tag" id="latest-concorso-time">--:--</div>
-          </div>
-          
-          <div class="balls-grid" id="latest-draw-balls">
-            <!-- 20 palline caricate via js -->
-          </div>
-
-          <div style="display:flex; justify-content:space-around; margin-top:8px; font-size:0.85rem; background:rgba(0,0,0,0.25); padding:8px; border-radius:8px;">
-            <div>🥇 Numero Oro: <strong id="latest-oro-val" style="color:var(--gold)">--</strong></div>
-            <div>🥈 Doppio Oro: <strong id="latest-doro-val" style="color:#ea580c">--</strong></div>
-            <div>⚖️ Somma: <strong id="latest-sum-val" style="color:var(--cyan)">--</strong></div>
-          </div>
-        </div>
-      </div>
-
       <!-- Card Principale: LA SPIA DEI 30 MINUTI & IL PRONOSTICO ATTIVO -->
+
       <div class="card card-gold">
         <div class="card-title">
           <span>🎯 SPIA 30 MINUTI & PRONOSTICO ATTIVO</span>
@@ -113,9 +91,35 @@
             <span>📈 AVANZAMENTO DEI 5 COLPI:</span>
             <span id="active-spy-colpi-badge" style="color:var(--cyan);">Colpo --/5</span>
           </div>
-          <div id="active-spy-timeline-container" style="display:flex; gap:6px; justify-content:space-between;">
-            <!-- 5 box colpi caricati dinamicamente -->
+          <div id="active-spy-timeline-container" style="display:flex; gap:4px; justify-content:space-between;">
+            <div style="flex:1; min-width:0; background:rgba(0,0,0,0.35); padding:5px 2px; border-radius:6px; text-align:center; border:1px solid rgba(255,255,255,0.08);">
+              <div style="font-size:0.62rem; font-weight:700; color:var(--text-muted);">Colpo 1</div>
+              <div style="font-size:0.7rem; font-weight:800; color:var(--text-muted); margin:2px 0;">0 pt</div>
+              <div style="font-size:0.58rem; color:var(--cyan);">#251 (20:55)</div>
+            </div>
+            <div style="flex:1; min-width:0; background:rgba(0,0,0,0.35); padding:5px 2px; border-radius:6px; text-align:center; border:1px solid rgba(255,255,255,0.08);">
+              <div style="font-size:0.62rem; font-weight:700; color:var(--text-muted);">Colpo 2</div>
+              <div style="font-size:0.7rem; font-weight:800; color:var(--text-muted); margin:2px 0;">0 pt</div>
+              <div style="font-size:0.58rem; color:var(--cyan);">#252 (21:00)</div>
+            </div>
+            <div style="flex:1; min-width:0; background:rgba(0,0,0,0.35); padding:5px 2px; border-radius:6px; text-align:center; border:1px solid rgba(245,158,11,0.4);">
+              <div style="font-size:0.62rem; font-weight:700; color:var(--text-muted);">Colpo 3</div>
+              <div style="font-size:0.7rem; font-weight:800; color:var(--gold); margin:2px 0;">🎯 1 pt [30]</div>
+              <div style="font-size:0.58rem; color:var(--cyan);">#253 (21:05)</div>
+            </div>
+            <div style="flex:1; min-width:0; background:rgba(0,0,0,0.35); padding:5px 2px; border-radius:6px; text-align:center; border:1px solid rgba(255,255,255,0.08);">
+              <div style="font-size:0.62rem; font-weight:700; color:var(--text-muted);">Colpo 4</div>
+              <div style="font-size:0.68rem; font-weight:700; color:rgba(255,255,255,0.3); margin:2px 0;">⏳ Attesa</div>
+              <div style="font-size:0.58rem; color:var(--text-muted);">#254 (21:10)</div>
+            </div>
+            <div style="flex:1; min-width:0; background:rgba(0,0,0,0.35); padding:5px 2px; border-radius:6px; text-align:center; border:1px solid rgba(255,255,255,0.08);">
+              <div style="font-size:0.62rem; font-weight:700; color:var(--text-muted);">Colpo 5</div>
+              <div style="font-size:0.68rem; font-weight:700; color:rgba(255,255,255,0.3); margin:2px 0;">⏳ Attesa</div>
+              <div style="font-size:0.58rem; color:var(--text-muted);">#255 (21:15)</div>
+            </div>
           </div>
+
+
 
           <!-- Riga Finanziaria Spesa & Ricavo Live -->
           <div style="display:flex; justify-content:space-between; align-items:center; background:rgba(0,0,0,0.35); padding:8px 10px; border-radius:8px; margin-top:10px; font-size:0.82rem; border:1px solid rgba(255,255,255,0.06);">
@@ -129,50 +133,15 @@
 
 
 
-      <!-- Card 2: 🧭 RADAR DEI PARAMETRI STATISTICI -->
-      <div class="card" style="border: 1px solid rgba(6, 182, 212, 0.3); background: linear-gradient(145deg, rgba(6, 182, 212, 0.06), rgba(18, 24, 38, 0.95));">
-        <div class="card-title">
-          <span>🧭 RADAR STATISTICO DEL CONCORSO</span>
-          <span style="font-size:0.75rem; color:var(--cyan); border:1px solid var(--cyan); padding:2px 8px; border-radius:12px;">DECODIFICA LIVE</span>
-        </div>
-
-        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-top:8px;">
-          <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:10px;">
-            <div style="font-size:0.72rem; color:var(--text-muted); font-weight:700;">⏰ FASCIA ORARIA:</div>
-            <div id="radar-fascia-oraria" style="font-size:0.95rem; font-weight:800; color:#fff; margin-top:3px;">--</div>
-          </div>
-          <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:10px;">
-            <div style="font-size:0.72rem; color:var(--text-muted); font-weight:700;">🎯 CADENZA CONCORSO:</div>
-            <div id="radar-cadenza-concorso" style="font-size:0.95rem; font-weight:800; color:var(--gold); margin-top:3px;">--</div>
-          </div>
-          <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:10px;">
-            <div style="font-size:0.72rem; color:var(--text-muted); font-weight:700;">🧲 DECINE CALAMITA:</div>
-            <div id="radar-decine-calamita" style="font-size:0.95rem; font-weight:800; color:var(--green); margin-top:3px;">--</div>
-          </div>
-          <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:10px;">
-            <div style="font-size:0.72rem; color:var(--text-muted); font-weight:700;">💥 CATALIZZATORI 1 e 90:</div>
-            <div id="radar-catalizzatori" style="font-size:0.95rem; font-weight:800; color:var(--cyan); margin-top:3px;">--</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 3: 📜 ULTIME ESTRAZIONI PASSATE -->
-      <div class="card">
-        <div class="card-title">
-          <span>📜 ULTIME ESTRAZIONI PRECEDENTI</span>
-          <span style="font-size:0.75rem; color:var(--text-muted);">OGGI</span>
-        </div>
-        <div id="recent-draws-container" style="display:flex; flex-direction:column; gap:10px; margin-top:8px;">
-          <!-- Caricato dinamicamente via js -->
-        </div>
-      </div>
-
     </section>
+
 
 
     <!-- ================= TAB 2: STORICO GIOCATE ================= -->
     <section id="tab-laboratorio" class="tab-screen">
+      
       <div class="card">
+
         <div class="card-title">
           <span>📜 STORICO GIOCATE</span>
           <button class="btn btn-outline" style="width:auto; padding:4px 10px; font-size:0.75rem;" onclick="fetchSignalsData()">🔄 Aggiorna</button>
@@ -181,11 +150,12 @@
           Registro completo di tutte le giocate pilotate in tempo reale: spesa, vincite, incasso ed evoluzione colpo per colpo.
         </p>
 
+
         <!-- Riepilogo Finanziario Giornaliero -->
         <div id="signals-financial-summary" style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:8px; margin-bottom:14px;">
           <div style="background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.3); padding:8px 4px; border-radius:8px; text-align:center;">
             <div style="font-size:0.68rem; color:var(--text-muted); font-weight:700;">💳 SPESA</div>
-            <div id="stats-tot-spesa" style="font-size:0.95rem; font-weight:800; color:#f87171; margin-top:2px;">€ 0.00</div>
+            <div id="stats-tot-spesa" style="font-size:0.95rem; font-weight:800; color:#f87171; margin-top:2px;">€ 2.00</div>
           </div>
           <div style="background:rgba(16,185,129,0.1); border:1px solid rgba(16,185,129,0.3); padding:8px 4px; border-radius:8px; text-align:center;">
             <div style="font-size:0.68rem; color:var(--text-muted); font-weight:700;">💰 RICAVO</div>
@@ -193,13 +163,88 @@
           </div>
           <div style="background:rgba(6,182,212,0.1); border:1px solid rgba(6,182,212,0.3); padding:8px 4px; border-radius:8px; text-align:center;">
             <div style="font-size:0.68rem; color:var(--text-muted); font-weight:700;">🚀 NETTO</div>
-            <div id="stats-tot-netto" style="font-size:0.95rem; font-weight:800; color:var(--gold); margin-top:2px;">€ 0.00</div>
+            <div id="stats-tot-netto" style="font-size:0.95rem; font-weight:800; color:#f87171; margin-top:2px;">-€ 2.00</div>
           </div>
         </div>
+
+        <!-- Box Giocata Attiva In Corso in cima a Storico Giocate -->
+        <div id="tab2-active-signal-box" style="background:linear-gradient(145deg, rgba(245,158,11,0.15), rgba(18,24,38,0.95)); border:1px solid rgba(245,158,11,0.5); border-radius:14px; padding:14px; margin-bottom:14px; box-shadow:0 4px 20px rgba(245,158,11,0.2);">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+            <div style="font-size:0.95rem; font-weight:800; color:var(--gold); display:flex; align-items:center; gap:6px;">
+              <span>🔴 SPIA ATTIVA:</span>
+              <span class="ball ball-spy" style="width:32px; height:32px; font-size:1rem; display:inline-flex; align-items:center; justify-content:center;" id="tab2-spia-num">60</span>
+              <span style="font-size:0.75rem; color:var(--text-muted);" id="tab2-spia-meta">(Conc. #250 ore 20:50)</span>
+            </div>
+            <span style="background:rgba(6,182,212,0.2); color:var(--cyan); border:1px solid var(--cyan); padding:2px 8px; border-radius:12px; font-size:0.75rem; font-weight:bold;" id="tab2-stato-badge">⏳ IN CORSO</span>
+          </div>
+
+          <div style="display:flex; align-items:center; justify-content:space-between; background:rgba(0,0,0,0.3); padding:10px; border-radius:10px; margin-bottom:10px;">
+            <div style="display:flex; align-items:center; gap:8px;">
+              <span style="font-size:0.8rem; color:var(--text-muted);">Terzina:</span>
+              <div id="tab2-terzina-balls" style="display:flex; gap:4px;">
+                <span class="ball ball-large ball-oro" style="width:34px; height:34px; font-size:1rem; display:inline-flex; align-items:center; justify-content:center;">30</span>
+                <span class="ball ball-large ball-oro" style="width:34px; height:34px; font-size:1rem; display:inline-flex; align-items:center; justify-content:center;">33</span>
+                <span class="ball ball-large ball-oro" style="width:34px; height:34px; font-size:1rem; display:inline-flex; align-items:center; justify-content:center;">34</span>
+              </div>
+            </div>
+            <div style="text-align:right;">
+              <div style="font-size:0.75rem; color:var(--text-muted);">Puntata:</div>
+              <strong style="color:var(--green); font-size:0.95rem;">1,00 € (No Oro)</strong>
+            </div>
+          </div>
+
+
+          <div style="font-size:0.8rem; font-weight:700; color:var(--gold); margin-bottom:6px;">📈 AVANZAMENTO DEI 5 COLPI (MONITORAGGIO LIVE):</div>
+          <div id="tab2-timeline-container" style="display:flex; gap:4px; justify-content:space-between;">
+            <div style="flex:1; min-width:0; background:rgba(0,0,0,0.35); padding:5px 2px; border-radius:6px; text-align:center; border:1px solid rgba(255,255,255,0.08);">
+              <div style="font-size:0.62rem; font-weight:700; color:var(--text-muted);">Colpo 1</div>
+              <div style="font-size:0.7rem; font-weight:800; color:var(--text-muted); margin:2px 0;">0 pt</div>
+              <div style="font-size:0.58rem; color:var(--cyan);">#251 (20:55)</div>
+            </div>
+            <div style="flex:1; min-width:0; background:rgba(0,0,0,0.35); padding:5px 2px; border-radius:6px; text-align:center; border:1px solid rgba(255,255,255,0.08);">
+              <div style="font-size:0.62rem; font-weight:700; color:var(--text-muted);">Colpo 2</div>
+              <div style="font-size:0.7rem; font-weight:800; color:var(--text-muted); margin:2px 0;">0 pt</div>
+              <div style="font-size:0.58rem; color:var(--cyan);">#252 (21:00)</div>
+            </div>
+            <div style="flex:1; min-width:0; background:rgba(0,0,0,0.35); padding:5px 2px; border-radius:6px; text-align:center; border:1px solid rgba(245,158,11,0.4);">
+              <div style="font-size:0.62rem; font-weight:700; color:var(--text-muted);">Colpo 3</div>
+              <div style="font-size:0.7rem; font-weight:800; color:var(--gold); margin:2px 0;">🎯 1 pt [30]</div>
+              <div style="font-size:0.58rem; color:var(--cyan);">#253 (21:05)</div>
+            </div>
+            <div style="flex:1; min-width:0; background:rgba(0,0,0,0.35); padding:5px 2px; border-radius:6px; text-align:center; border:1px solid rgba(255,255,255,0.08);">
+              <div style="font-size:0.62rem; font-weight:700; color:var(--text-muted);">Colpo 4</div>
+              <div style="font-size:0.68rem; font-weight:700; color:rgba(255,255,255,0.3); margin:2px 0;">⏳ Attesa</div>
+              <div style="font-size:0.58rem; color:var(--text-muted);">#254 (21:10)</div>
+            </div>
+            <div style="flex:1; min-width:0; background:rgba(0,0,0,0.35); padding:5px 2px; border-radius:6px; text-align:center; border:1px solid rgba(255,255,255,0.08);">
+              <div style="font-size:0.62rem; font-weight:700; color:var(--text-muted);">Colpo 5</div>
+              <div style="font-size:0.68rem; font-weight:700; color:rgba(255,255,255,0.3); margin:2px 0;">⏳ Attesa</div>
+              <div style="font-size:0.58rem; color:var(--text-muted);">#255 (21:15)</div>
+            </div>
+          </div>
+
+
+
+          <!-- Dettaglio Numeri Estratti di ciascun Colpo -->
+          <div id="tab2-colpi-draws-detail" style="display:flex; flex-direction:column; gap:8px; margin-bottom:10px;">
+            <!-- Caricato dinamicamente via js con tutte le palline di ogni colpo -->
+          </div>
+
+          <div style="display:flex; justify-content:space-between; align-items:center; background:rgba(0,0,0,0.35); padding:8px 10px; border-radius:8px; font-size:0.82rem; border:1px solid rgba(255,255,255,0.06);">
+
+            <div>💳 Spesa: <strong id="tab2-spesa" style="color:#f87171;">€ 2.00</strong></div>
+            <div>💰 Ricavo: <strong id="tab2-ricavo" style="color:var(--green);">€ 0.00</strong></div>
+            <div>⚖️ Netto: <strong id="tab2-netto" style="color:#f87171;">-€ 2.00</strong></div>
+          </div>
+        </div>
+
+        <div style="font-size:0.85rem; font-weight:800; color:var(--text-muted); margin-bottom:8px;">📜 GIOCATE PRECEDENTI:</div>
         
         <div id="signals-list-container">
           <!-- Caricato dinamicamente via js -->
         </div>
+
+
 
       </div>
     </section>
@@ -252,9 +297,21 @@
     </div>
   </nav>
 
-  <script src="/app.js?v=23"></script>
+  <script src="/app.js?v=35"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

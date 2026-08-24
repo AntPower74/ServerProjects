@@ -88,14 +88,6 @@
         "link": "https://www.promoqui.it/offerte/freschi-di-convenienza-4937879"
     },
     {
-        "store": "Eurospin",
-        "title": "Passata Di Pomodoro Datterino",
-        "newPrice": "0.79",
-        "expiration": "2026-08-23",
-        "image": "https://data.promoqui.it/offers/images/093/099/754/original/crop_6a79bf13-171c-477d-bb0f-00d90ad3001e_big_20260810161828.jpg?1786463642",
-        "link": "https://www.promoqui.it/offerte/speciale-aperitivo-sardelizie-pascoli-e-athena-4941077"
-    },
-    {
         "store": "Dem",
         "title": "Le stagioni d'italia - Passata Pomodoro Toscano",
         "newPrice": "0.79",
@@ -126,14 +118,6 @@
         "expiration": "2026-09-01",
         "image": "https://data.promoqui.it/offers/images/093/395/863/original/crop_6a8868d7-d66c-48c2-a828-00ac0ad30244_big_20260821175950.jpg?1787337757",
         "link": "https://www.promoqui.it/offerte/offerte-straordinarie-4943932"
-    },
-    {
-        "store": "Eurospin",
-        "title": "Passata Di Pomodoro",
-        "newPrice": "0.65",
-        "expiration": "2026-08-23",
-        "image": "https://data.promoqui.it/offers/images/093/099/761/original/crop_6a79bf15-7424-4523-b7c5-009e0ad300c1_big_20260810161921.jpg?1786463649",
-        "link": "https://www.promoqui.it/offerte/speciale-aperitivo-sardelizie-pascoli-e-athena-4941077"
     },
     {
         "store": "Elite Supermercati",
@@ -584,14 +568,6 @@
         "link": "https://www.promoqui.it/offerte/tutto-a-1-euro-4942765"
     },
     {
-        "store": "Todis",
-        "title": "Purina - Frollini Integrali",
-        "newPrice": "1.0",
-        "expiration": "2026-08-30",
-        "image": "https://data.promoqui.it/offers/images/093/239/328/original/crop_6a82b8fc-2d28-45cd-9288-006a0ad3022c_big_20260817093314.jpg?1787052069",
-        "link": "https://www.promoqui.it/offerte/tutto-a-1-euro-4942766"
-    },
-    {
         "store": "Carrefour Express",
         "title": "Delverde - Granfetta Con Farina Integrale O Classica",
         "newPrice": "0.99",
@@ -694,70 +670,6 @@
         "expiration": "2026-08-26",
         "image": "https://data.promoqui.it/offers/images/093/227/921/original/crop_6a79e835-6700-407f-9aa8-00220ad300fa_big_20260817152446.jpg?1787014774",
         "link": "https://www.promoqui.it/offerte/xxl-4942595"
-    },
-    {
-        "store": "Eurospin",
-        "title": "Trentino - Hotel Morge",
-        "newPrice": "225.0",
-        "expiration": "2026-08-23",
-        "image": "https://data.promoqui.it/offers/images/093/100/272/original/crop_6a79bf73-03d8-4682-93a1-00940ad302c1_big_20260810162526.jpg?1786464029",
-        "link": "https://www.promoqui.it/offerte/speciale-aperitivo-sardelizie-pascoli-e-athena-4941077"
-    },
-    {
-        "store": "Eurospin",
-        "title": "Benessere - Hotel Delle Rose Terme & Wellness Spa",
-        "newPrice": "208.0",
-        "expiration": "2026-08-23",
-        "image": "https://data.promoqui.it/offers/images/093/100/412/original/crop_6a79bf80-6f10-40e7-a5cd-f3c70ad30113_big_20260810162634.jpg?1786464138",
-        "link": "https://www.promoqui.it/offerte/speciale-aperitivo-sardelizie-pascoli-e-athena-4941077"
-    },
-    {
-        "store": "Eurospin",
-        "title": "Puglia sapori - San Menaio",
-        "newPrice": "198.0",
-        "expiration": "2026-08-23",
-        "image": "https://data.promoqui.it/offers/images/093/100/385/original/crop_6a79bf7b-6adc-4974-ad0c-00a50ad30037_big_20260810162553.jpg?1786464112",
-        "link": "https://www.promoqui.it/offerte/speciale-aperitivo-sardelizie-pascoli-e-athena-4941077"
-    },
-    {
-        "store": "Eurospin",
-        "title": "Trentino - Bellamonte (tn) Stella Alpina & Park Hotel Sancelso",
-        "newPrice": "195.0",
-        "expiration": "2026-08-23",
-        "image": "https://data.promoqui.it/offers/images/093/100/293/original/crop_6a79bf75-7bcc-4ee7-b84d-00970ad300ea_big_20260810162745.jpg?1786464044",
-        "link": "https://www.promoqui.it/offerte/speciale-aperitivo-sardelizie-pascoli-e-athena-4941077"
-    },
-    {
-        "store": "Eurospin",
-        "title": "Calabria - Terme Luigiane Formula Roulette",
-        "newPrice": "195.0",
-        "expiration": "2026-08-23",
-        "image": "https://data.promoqui.it/offers/images/093/100/332/original/crop_6a79bf79-34d0-4c13-b47d-003b0ad302e6_big_20260810162823.jpg?1786464073",
-        "link": "https://www.promoqui.it/offerte/speciale-aperitivo-sardelizie-pascoli-e-athena-4941077"
-    },
-    {
-        "store": "Eurospin",
-        "title": "Benessere - Garda Hotel San Viglio Golf",
-        "newPrice": "133.0",
-        "expiration": "2026-08-23",
-        "image": "https://data.promoqui.it/offers/images/093/100/336/original/crop_6a79bf79-66a0-4aaa-b9d4-00800ad30188_big_20260810162726.jpg?1786464076",
-        "link": "https://www.promoqui.it/offerte/speciale-aperitivo-sardelizie-pascoli-e-athena-4941077"
-    },
-    {
-        "store": "Eurospin",
-        "title": "Benessere - Telese Terme (bn)",
-        "newPrice": "105.0",
-        "expiration": "2026-08-23",
-        "image": "https://data.promoqui.it/offers/images/093/100/420/original/crop_6a79bf81-9ab4-434e-8ed0-00cf0ad3024d_big_20260810162848.jpg?1786464145",
-        "link": "https://www.promoqui.it/offerte/speciale-aperitivo-sardelizie-pascoli-e-athena-4941077"
-    },
-    {
-        "store": "Eurospin",
-        "title": "Benessere - Hotel Manzoni",
-        "newPrice": "79.0",
-        "expiration": "2026-08-23",
-        "image": "https://data.promoqui.it/offers/images/093/100/398/original/crop_6a79bf7c-e8d8-4cc0-adb5-00530ad30020_big_20260810162745.jpg?1786464123",
-        "link": "https://www.promoqui.it/offerte/speciale-aperitivo-sardelizie-pascoli-e-athena-4941077"
     },
     {
         "store": "Acqua e Sapone",
@@ -1016,14 +928,6 @@
         "link": "https://www.promoqui.it/offerte/prezzi-freschi-4942461"
     },
     {
-        "store": "Eurospin",
-        "title": "Gs - Bidone In Acciaio Aspiraliquidie Solidi",
-        "newPrice": "49.99",
-        "expiration": "2026-08-23",
-        "image": "https://data.promoqui.it/offers/images/093/107/619/original/crop_6a79bf7a-eb18-49e6-b359-00e50ad30083_big_20260810162635.jpg?1786485896",
-        "link": "https://www.promoqui.it/offerte/speciale-aperitivo-sardelizie-pascoli-e-athena-4941079"
-    },
-    {
         "store": "Pewex",
         "title": "Muller - Crema/Fruit Passion Yogurt Frutta",
         "newPrice": "0.79",
@@ -1085,14 +989,6 @@
         "newPrice": "0.69",
         "expiration": "2026-09-01",
         "image": "https://data.promoqui.it/offers/images/093/399/921/original/crop_6a886a3e-3a14-4499-969b-00b50ad30250_big_20260821180735.jpg?1787338302",
-        "link": "https://www.promoqui.it/offerte/offerte-straordinarie-4943932"
-    },
-    {
-        "store": "Il Castoro Supermercati",
-        "title": "Mila - Yogurt O 0% Gusto Senza Lattosio",
-        "newPrice": "0.69",
-        "expiration": "2026-09-01",
-        "image": "https://data.promoqui.it/offers/images/093/398/433/original/crop_6a8869f1-e188-428a-8155-00270ad3016b_big_20260821180259.jpg?1787338070",
         "link": "https://www.promoqui.it/offerte/offerte-straordinarie-4943932"
     },
     {
@@ -1334,14 +1230,6 @@
         "expiration": "2026-09-08",
         "image": "https://data.promoqui.it/offers/images/093/446/987/original/crop_6a8c13fd-fec4-433a-8642-00480ad30118_big_20260824120740.jpg?1787596180",
         "link": "https://www.promoqui.it/offerte/sconti-fino-al-40-4944315"
-    },
-    {
-        "store": "Il Castoro Supermercati",
-        "title": "Barilla -  Pastadi Semola",
-        "newPrice": "0.59",
-        "expiration": "2026-09-01",
-        "image": "https://data.promoqui.it/offers/images/093/396/000/original/crop_6a8868e2-82dc-46d3-8d34-00780ad30118_big_20260821175840.jpg?1787337773",
-        "link": "https://www.promoqui.it/offerte/offerte-straordinarie-4943932"
     },
     {
         "store": "Il Castoro Supermercati",
@@ -1720,14 +1608,6 @@
         "link": "https://www.promoqui.it/offerte/ripartiamo-dalla-spesa-4943891"
     },
     {
-        "store": "Pewex",
-        "title": "Consilia -  Patatine Classiche Mtp",
-        "newPrice": "1.29",
-        "expiration": "2026-09-01",
-        "image": "https://data.promoqui.it/offers/images/093/392/062/original/crop_6a8802d2-5810-461a-a4b8-00640ad3021a_big_20260821113722.jpg?1787337285",
-        "link": "https://www.promoqui.it/offerte/ripartiamo-dalla-spesa-4943887"
-    },
-    {
         "store": "Elite Supermercati",
         "title": "Finish - Cotte In Padella Patatine",
         "newPrice": "1.29",
@@ -1766,14 +1646,6 @@
         "expiration": "2026-09-03",
         "image": "https://data.promoqui.it/offers/images/093/110/340/original/crop_6a7ad9d9-c530-444d-b69a-00710ad3028a_big_20260811102747.jpg?1786489039",
         "link": "https://www.promoqui.it/offerte/solo-dal-16-al-31-agosto-4941162"
-    },
-    {
-        "store": "Acqua e Sapone",
-        "title": "Vera - Carta Igienica Umidificata",
-        "newPrice": "1.49",
-        "expiration": "2026-09-03",
-        "image": "https://data.promoqui.it/offers/images/092/459/242/original/gibCover_6a6085f1-593c-4830-aaa6-00480ad3013b_big_20260722110055.png?1784739986",
-        "link": "https://www.promoqui.it/offerte/sconti-fino-al-70-4932167"
     },
     {
         "store": "Tigota",
@@ -1934,14 +1806,6 @@
         "expiration": "2026-09-22",
         "image": "https://data.promoqui.it/offers/images/092/368/152/original/crop_6a59d744-088c-4756-82fb-005e0ad3023d_big_20260717091830.jpg?1784424548",
         "link": "https://www.promoqui.it/offerte/back-to-school-4931223"
-    },
-    {
-        "store": "Carrefour Market",
-        "title": "Majestic - Tablet  10.11\" Mod. 720 Plus",
-        "newPrice": "89.0",
-        "expiration": "2026-09-27",
-        "image": "https://data.promoqui.it/offers/images/092/340/975/original/crop_6a59d76b-fbd0-4f88-9564-00640ad3016f_big_20260717091909.jpg?1784404399",
-        "link": "https://www.promoqui.it/offerte/back-to-school-4931166"
     },
     {
         "store": "Conad Superstore",
@@ -2592,28 +2456,12 @@
         "link": "https://www.promoqui.it/offerte/tutto-a-1-euro-4942765"
     },
     {
-        "store": "Todis",
-        "title": "Bonelli - Petto Di Pollo Arrosto 1% Di Grassi",
-        "newPrice": "1.89",
-        "expiration": "2026-08-30",
-        "image": "https://data.promoqui.it/offers/images/093/239/516/original/crop_6a82b914-d994-4ea1-b48a-00180ad30183_big_20260817093338.jpg?1787052166",
-        "link": "https://www.promoqui.it/offerte/tutto-a-1-euro-4942766"
-    },
-    {
         "store": "Conad",
         "title": "Conad - Cotolette Con Filetti Di Pollo Gustosamente",
         "newPrice": "1.49",
         "expiration": "2026-08-25",
         "image": "https://data.promoqui.it/offers/images/092/962/513/original/crop_6a72f3dc-8004-43f9-b73d-00790ad3029f_big_20260805102710.jpg?1786043687",
         "link": "https://www.promoqui.it/offerte/freschi-di-convenienza-4938647"
-    },
-    {
-        "store": "Todis",
-        "title": "Dorada - Petto Di Pollo Grigliato",
-        "newPrice": "1.0",
-        "expiration": "2026-08-30",
-        "image": "https://data.promoqui.it/offers/images/093/239/230/original/crop_6a82b7cf-23c8-4a35-8adb-00950ad30081_big_20260817092714.jpg?1787052016",
-        "link": "https://www.promoqui.it/offerte/tutto-a-1-euro-4942765"
     },
     {
         "store": "Conad Superstore",
@@ -3088,14 +2936,6 @@
         "link": "https://www.promoqui.it/offerte/xxl-4943647"
     },
     {
-        "store": "Conad",
-        "title": "Conad - Banane Percorso Qualit\u00e0",
-        "newPrice": "1.49",
-        "expiration": "2026-08-25",
-        "image": "https://data.promoqui.it/offers/images/092/962/469/original/crop_6a72f3d8-e0c0-4c5d-bcb4-005a0ad30128_big_20260805102707.jpg?1786043666",
-        "link": "https://www.promoqui.it/offerte/freschi-di-convenienza-4938647"
-    },
-    {
         "store": "Todis",
         "title": "Origine - Meloni Retati",
         "newPrice": "1.39",
@@ -3510,14 +3350,6 @@
         "expiration": "2026-09-01",
         "image": "https://data.promoqui.it/offers/images/093/398/897/original/crop_6a880594-7a88-4935-bf46-00100ad3016f_big_20260821121843.jpg?1787338132",
         "link": "https://www.promoqui.it/offerte/ripartiamo-dalla-spesa-4943885"
-    },
-    {
-        "store": "Todis",
-        "title": "Todis - Tonno Al Naturale",
-        "newPrice": "1.0",
-        "expiration": "2026-08-30",
-        "image": "https://data.promoqui.it/offers/images/093/239/200/original/crop_6a82b8ed-b000-448f-a854-00790ad30129_big_20260817093236.jpg?1787052001",
-        "link": "https://www.promoqui.it/offerte/tutto-a-1-euro-4942766"
     },
     {
         "store": "Esselunga",
@@ -3958,14 +3790,6 @@
         "expiration": "2026-09-10",
         "image": "https://data.promoqui.it/offers/images/092/985/579/original/crop_6a75ac88-e31c-4b49-832f-005e0ad300e0_big_20260807140148.jpg?1786125482",
         "link": "https://www.promoqui.it/offerte/back-to-euronics-4939350"
-    },
-    {
-        "store": "Conad City",
-        "title": "Conad - Piacersi Ricottine Senza Lattosio",
-        "newPrice": "1.19",
-        "expiration": "2026-09-06",
-        "image": "https://data.promoqui.it/offers/images/093/437/326/original/crop_6a8bfc91-69fc-4c18-9132-00db0ad301f1_big_20260824103405.jpg?1787571797",
-        "link": "https://www.promoqui.it/offerte/i-numeri-1-4944273"
     },
     {
         "store": "Conad",

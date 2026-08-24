@@ -93,111 +93,40 @@ function renderDashboard(data) {
   const latest = data.latest_draw;
   if (!latest) return;
 
-  // 1. Estrazione Live
-  document.getElementById('latest-concorso-num').textContent = `#${latest.concorso}`;
-  document.getElementById('latest-concorso-time').textContent = latest.ora;
-  
-  // Palline estratti
-  const ballsCont = document.getElementById('latest-draw-balls');
-  ballsCont.innerHTML = '';
-  latest.numeri.forEach(num => {
-    const b = document.createElement('div');
-    b.className = 'ball';
-    if (num === latest.oro) b.classList.add('ball-oro');
-    else if (num === latest.doppio_oro) b.classList.add('ball-doppio-oro');
-    b.textContent = num.toString().padStart(2, '0');
-    ballsCont.appendChild(b);
-  });
-
-  document.getElementById('latest-oro-val').textContent = latest.oro || '--';
-  document.getElementById('latest-doro-val').textContent = latest.doppio_oro || '--';
-
-  // Somma dei 20 numeri
+  // 1. Estrazione Live (renderizzata sia in Tab 1 che in Tab 2)
   const sumTot = latest.numeri.reduce((a, b) => a + b, 0);
-  const sumEl = document.getElementById('latest-sum-val');
-  if (sumEl) {
-    sumEl.textContent = `${sumTot} (${sumTot < 850 ? 'Bassa ➔ Spinta 20-40' : (sumTot > 970 ? 'Alta' : 'Bilanciata')})`;
-  }
+  
+  const updateDrawUI = (prefix) => {
+    const numEl = document.getElementById(`${prefix}latest-concorso-num`);
+    const timeEl = document.getElementById(`${prefix}latest-concorso-time`);
+    const ballsEl = document.getElementById(`${prefix}latest-draw-balls`);
+    const oroEl = document.getElementById(`${prefix}latest-oro-val`);
+    const doroEl = document.getElementById(`${prefix}latest-doro-val`);
+    const sumEl = document.getElementById(`${prefix}latest-sum-val`);
 
-  // 2. Radar Parametri Statistici
-  const hour = parseInt(latest.ora.split(':')[0], 10);
-  const isOroHour = (hour === 13 || hour === 17 || hour === 23);
-  const fasciaEl = document.getElementById('radar-fascia-oraria');
-  if (fasciaEl) {
-    fasciaEl.innerHTML = isOroHour 
-      ? `🔥 Ore ${hour}:00 <span style="color:var(--gold); font-size:0.8rem;">(ORA D'ORO 38.4%)</span>` 
-      : `⏱ Ore ${latest.ora} (Fascia Normale)`;
-  }
+    if (numEl) numEl.textContent = `#${latest.concorso}`;
+    if (timeEl) timeEl.textContent = latest.ora;
+    if (oroEl) oroEl.textContent = latest.oro || '--';
+    if (doroEl) doroEl.textContent = latest.doppio_oro || '--';
+    if (sumEl) sumEl.textContent = `${sumTot} (${sumTot < 850 ? 'Bassa ➔ Spinta 20-40' : (sumTot > 970 ? 'Alta' : 'Bilanciata')})`;
 
-  const cadenza = latest.concorso % 10;
-  const cadenzaEl = document.getElementById('radar-cadenza-concorso');
-  if (cadenzaEl) {
-    let cadNote = 'Normale';
-    if (cadenza === 7) cadNote = '🏆 PICCO MASSIMO (37.7%)';
-    else if (cadenza === 4 || cadenza === 5) cadNote = '🟢 Alta (36.0%)';
-    else if (cadenza === 1 || cadenza === 6) cadNote = '⚪ Bassa (30.7%)';
-    cadenzaEl.innerHTML = `Cadenza #${cadenza} ➔ <span style="font-size:0.8rem;">${cadNote}</span>`;
-  }
-
-  // Decine Calamita (20-29 e 70-79)
-  const d20 = latest.numeri.filter(n => n >= 20 && n <= 29).length;
-  const d70 = latest.numeri.filter(n => n >= 70 && n <= 79).length;
-  const decineEl = document.getElementById('radar-decine-calamita');
-  if (decineEl) {
-    decineEl.innerHTML = `Decina 20: <strong>${d20}</strong> | Decina 70: <strong>${d70}</strong>`;
-  }
-
-  // Catalizzatori 1 e 90
-  const has1 = latest.numeri.includes(1);
-  const has90 = latest.numeri.includes(90);
-  const catEl = document.getElementById('radar-catalizzatori');
-  if (catEl) {
-    if (has1 && has90) catEl.innerHTML = '🌟 <strong>1 e 90 Presenti Insieme!</strong> (+49.6%)';
-    else if (has1) catEl.innerHTML = '🟢 <strong>Numero 1 Presente</strong> (Innesco)';
-    else if (has90) catEl.innerHTML = '🔵 <strong>Numero 90 Presente</strong> (Reset 20-40)';
-    else catEl.innerHTML = '⚪ Assenti';
-  }
-
-  // 3. Render Ultime Estrazioni Precedenti (ultime 10)
-  const recentCont = document.getElementById('recent-draws-container');
-  if (recentCont && data.draws) {
-    recentCont.innerHTML = '';
-    // Mostra le estrazioni dalla penultima indietro (fino a 10 estrazioni)
-    const pastDraws = data.draws.slice(1, 11);
-    if (pastDraws.length === 0) {
-      recentCont.innerHTML = '<div style="color:var(--text-muted); font-size:0.8rem; text-align:center;">In attesa delle prossime estrazioni...</div>';
-    } else {
-      pastDraws.forEach(d => {
-        const row = document.createElement('div');
-        row.style.cssText = 'background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.06); border-radius:10px; padding:10px;';
-        
-        const sumD = d.numeri.reduce((a, b) => a + b, 0);
-        const ballsHtml = d.numeri.map(n => {
-          let cls = 'ball';
-          if (n === d.oro) cls += ' ball-oro';
-          else if (n === d.doppio_oro) cls += ' ball-doppio-oro';
-          return `<span class="${cls}" style="width:26px; height:26px; font-size:0.75rem; display:inline-flex; margin:1px;">${n.toString().padStart(2,'0')}</span>`;
-        }).join('');
-
-        row.innerHTML = `
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; font-size:0.82rem;">
-            <div>
-              <strong style="color:var(--gold);">Concorso #${d.concorso}</strong>
-              <span style="color:var(--text-muted); margin-left:6px;">(${d.ora})</span>
-            </div>
-            <div style="font-size:0.75rem; color:var(--cyan);">
-              Oro: <strong style="color:var(--gold);">${d.oro || '--'}</strong> | Somma: <strong>${sumD}</strong>
-            </div>
-          </div>
-          <div style="display:flex; flex-wrap:wrap; gap:3px;">
-            ${ballsHtml}
-          </div>
-        `;
-        recentCont.appendChild(row);
+    if (ballsEl) {
+      ballsEl.innerHTML = '';
+      latest.numeri.forEach(num => {
+        const b = document.createElement('div');
+        b.className = 'ball';
+        if (num === latest.oro) b.classList.add('ball-oro');
+        else if (num === latest.doppio_oro) b.classList.add('ball-doppio-oro');
+        b.textContent = num.toString().padStart(2, '0');
+        ballsEl.appendChild(b);
       });
     }
-  }
+  };
+
+  updateDrawUI('');
+  updateDrawUI('tab2-');
 }
+
 
 // Caricamento e Render dei Segnali 15 Minuti
 async function fetchSignalsData() {
@@ -219,27 +148,34 @@ function renderSignalsData(data) {
   // 1. Popola la Card Principale del Pronostico 15 Minuti con il segnale più recente
   const activeSig = sigs.length > 0 ? sigs[0] : null;
   if (activeSig) {
-    document.getElementById('pronostico-spy-num').textContent = activeSig.spia.toString().padStart(2, '0');
-    document.getElementById('pronostico-score').textContent = activeSig.power_score || 93;
+    const sSpy = document.getElementById('pronostico-spy-num');
+    if (sSpy) sSpy.textContent = activeSig.spia.toString().padStart(2, '0');
+    const sScore = document.getElementById('pronostico-score');
+    if (sScore) sScore.textContent = activeSig.power_score || 93;
     
     // Terzina Display
     const terzinaCont = document.getElementById('pronostico-terzina');
-    terzinaCont.innerHTML = '';
-    activeSig.terzina.forEach(num => {
-      const b = document.createElement('div');
-      b.className = 'ball ball-large ball-oro';
-      b.textContent = num.toString().padStart(2, '0');
-      terzinaCont.appendChild(b);
-    });
+    if (terzinaCont) {
+      terzinaCont.innerHTML = '';
+      (activeSig.terzina || []).forEach(num => {
+        const b = document.createElement('div');
+        b.className = 'ball ball-large ball-oro';
+        b.textContent = num.toString().padStart(2, '0');
+        terzinaCont.appendChild(b);
+      });
+    }
 
     const oroVal = activeSig.oro || activeSig.terzina[0];
-    document.getElementById('pronostico-oro').textContent = oroVal.toString().padStart(2, '0');
+    const oroEl = document.getElementById('pronostico-oro');
+    if (oroEl) oroEl.textContent = oroVal.toString().padStart(2, '0');
 
     // Dettaglio testo terzina
     const textDesc = document.getElementById('pronostico-terzina-text');
     if (textDesc) {
-      textDesc.textContent = `${activeSig.terzina.map(n => n.toString().padStart(2, '0')).join(' - ')} (Oro: ${oroVal.toString().padStart(2, '0')})`;
+      textDesc.textContent = `${(activeSig.terzina || []).map(n => n.toString().padStart(2, '0')).join(' - ')} | Puntata: 1,00 € (Senza Oro)`;
     }
+
+
 
     // Badge Colpi
     const badgeEl = document.getElementById('active-spy-colpi-badge');
@@ -247,19 +183,18 @@ function renderSignalsData(data) {
       badgeEl.innerHTML = `<strong style="color:var(--green)">🏆 TERNO VINTO al Colpo ${activeSig.primo_terno_colpo || 1}!</strong>`;
     } else if (activeSig.stato === 'vinto_ambo' || activeSig.max_punti >= 2) {
       badgeEl.innerHTML = `<strong style="color:var(--green)">✅ AMBO VINTO al Colpo ${activeSig.primo_ambo_colpo || 1}!</strong>`;
-    } else if (activeSig.colpi_trascorsi === 0) {
-      badgeEl.innerHTML = `<strong style="color:var(--gold)">⚡ INIZIA AL PROSSIMO CONCORSO (#${activeSig.concorso_spia + 1})</strong>`;
     } else {
       badgeEl.innerHTML = `Colpo ${activeSig.colpi_trascorsi}/5 in corso`;
     }
 
     // Timeline 5 Colpi
+
     const timelineCont = document.getElementById('active-spy-timeline-container');
     timelineCont.innerHTML = '';
     for (let c = 1; c <= 5; c++) {
       const targetConc = activeSig.concorso_spia + c;
       const box = document.createElement('div');
-      box.style.cssText = 'flex:1; background:rgba(0,0,0,0.4); padding:6px 2px; border-radius:8px; text-align:center; border:1px solid rgba(255,255,255,0.08);';
+      box.style.cssText = 'flex:1; min-width:0; background:rgba(0,0,0,0.35); padding:5px 2px; border-radius:6px; text-align:center; border:1px solid rgba(255,255,255,0.08);';
       
       const tItem = (activeSig.timeline || []).find(x => x.colpo === c);
       if (tItem) {
@@ -270,27 +205,28 @@ function renderSignalsData(data) {
           ptsColor = 'var(--green)';
           ptsText = '🏆 TERNO!';
           box.style.borderColor = 'var(--green)';
-          box.style.background = 'rgba(16,185,129,0.2)';
+          box.style.background = 'rgba(16,185,129,0.25)';
         } else if (tItem.punti === 2) {
           ptsColor = 'var(--cyan)';
           ptsText = '✅ AMBO!';
           box.style.borderColor = 'var(--cyan)';
-          box.style.background = 'rgba(6,182,212,0.2)';
+          box.style.background = 'rgba(6,182,212,0.25)';
         } else if (tItem.punti === 1) {
-          ptsColor = '#fff';
-          ptsText = `1 pt [${presiArr.join(',')}]`;
+          ptsColor = 'var(--gold)';
+          ptsText = `🎯 1 pt [${presiArr.join(',')}]`;
+          box.style.borderColor = 'rgba(245,158,11,0.4)';
         }
 
         box.innerHTML = `
-          <div style="font-size:0.65rem; color:var(--text-muted);">Colpo ${c}</div>
-          <div style="font-size:0.75rem; font-weight:800; color:${ptsColor}; margin-top:2px;">${ptsText}</div>
-          <div style="font-size:0.62rem; color:var(--text-muted);">#${tItem.concorso}</div>
+          <div style="font-size:0.62rem; font-weight:700; color:var(--text-muted);">Colpo ${c}</div>
+          <div style="font-size:0.7rem; font-weight:800; color:${ptsColor}; margin:2px 0;">${ptsText}</div>
+          <div style="font-size:0.58rem; color:var(--cyan);">#${tItem.concorso} (${tItem.ora})</div>
         `;
       } else {
         box.innerHTML = `
-          <div style="font-size:0.65rem; color:var(--text-muted);">Colpo ${c}</div>
-          <div style="font-size:0.75rem; font-weight:700; color:rgba(255,255,255,0.3); margin-top:2px;">⏳ Attesa</div>
-          <div style="font-size:0.62rem; color:var(--text-muted);">#${targetConc}</div>
+          <div style="font-size:0.62rem; font-weight:700; color:var(--text-muted);">Colpo ${c}</div>
+          <div style="font-size:0.68rem; font-weight:700; color:rgba(255,255,255,0.3); margin:2px 0;">⏳ Attesa</div>
+          <div style="font-size:0.58rem; color:var(--text-muted);">#${targetConc}</div>
         `;
       }
       timelineCont.appendChild(box);
@@ -312,9 +248,138 @@ function renderSignalsData(data) {
     }
   }
 
-  // 2. Popola la Scheda 2 (Registro Segnali 5 Colpi)
-  const cont = document.getElementById('signals-list-container');
+  // 2. Popola la Scheda 2 (Storico Giocate)
+  if (activeSig) {
+    const t2Spia = document.getElementById('tab2-spia-num');
+    const t2Meta = document.getElementById('tab2-spia-meta');
+    const t2Stato = document.getElementById('tab2-stato-badge');
+    const t2Oro = document.getElementById('tab2-oro-num');
+    const t2Balls = document.getElementById('tab2-terzina-balls');
+    const t2Spesa = document.getElementById('tab2-spesa');
+    const t2Ricavo = document.getElementById('tab2-ricavo');
+    const t2Netto = document.getElementById('tab2-netto');
 
+    if (t2Spia) t2Spia.textContent = activeSig.spia;
+    if (t2Meta) t2Meta.textContent = `(Conc. #${activeSig.concorso_spia} ore ${activeSig.ora})`;
+    if (t2Oro) t2Oro.textContent = activeSig.oro || activeSig.terzina[0];
+    
+    if (t2Balls) {
+      t2Balls.innerHTML = (activeSig.terzina || []).map(n => 
+        `<span class="ball ball-large ball-oro" style="width:34px; height:34px; font-size:1rem;">${n.toString().padStart(2, '0')}</span>`
+      ).join('');
+    }
+
+    if (t2Stato) {
+      if (activeSig.stato === 'vinto_terno') {
+        t2Stato.innerHTML = `🏆 TERNO CENTRATO (Colpo ${activeSig.primo_terno_colpo || 1})!`;
+        t2Stato.style.color = 'var(--green)';
+        t2Stato.style.borderColor = 'var(--green)';
+      } else if (activeSig.stato === 'vinto_ambo') {
+        t2Stato.innerHTML = `✅ AMBO VINTO (Colpo ${activeSig.primo_ambo_colpo || 1})!`;
+        t2Stato.style.color = 'var(--green)';
+        t2Stato.style.borderColor = 'var(--green)';
+      } else {
+        t2Stato.innerHTML = `⏳ IN CORSO (Colpo ${activeSig.colpi_trascorsi}/5)`;
+      }
+    }
+
+    const t2Tl = document.getElementById('tab2-timeline-container');
+    if (t2Tl) {
+      t2Tl.innerHTML = '';
+      for (let c = 1; c <= 5; c++) {
+        const targetConc = activeSig.concorso_spia + c;
+        const t = (activeSig.timeline || []).find(x => x.colpo === c);
+        const b = document.createElement('div');
+        b.style.cssText = 'flex:1; min-width:0; background:rgba(0,0,0,0.35); padding:5px 2px; border-radius:6px; text-align:center; border:1px solid rgba(255,255,255,0.08);';
+        if (t) {
+          let ptsColor = 'var(--text-muted)';
+          let ptsText = `${t.punti} pt`;
+          const presiArr = t.estratti_presi || t.presi || [];
+          if (t.punti === 3) {
+            ptsColor = 'var(--green)';
+            ptsText = '🏆 TERNO!';
+            b.style.borderColor = 'var(--green)';
+            b.style.background = 'rgba(16,185,129,0.25)';
+          } else if (t.punti === 2) {
+            ptsColor = 'var(--cyan)';
+            ptsText = '✅ AMBO!';
+            b.style.borderColor = 'var(--cyan)';
+            b.style.background = 'rgba(6,182,212,0.25)';
+          } else if (t.punti === 1) {
+            ptsColor = 'var(--gold)';
+            ptsText = `🎯 1 pt [${presiArr.join(',')}]`;
+            b.style.borderColor = 'rgba(245,158,11,0.4)';
+          }
+          b.innerHTML = `
+            <div style="font-size:0.62rem; font-weight:700; color:var(--text-muted);">Colpo ${c}</div>
+            <div style="font-size:0.7rem; font-weight:800; color:${ptsColor}; margin:2px 0;">${ptsText}</div>
+            <div style="font-size:0.58rem; color:var(--cyan);">#${t.concorso} (${t.ora})</div>
+          `;
+        } else {
+          b.innerHTML = `
+            <div style="font-size:0.62rem; font-weight:700; color:var(--text-muted);">Colpo ${c}</div>
+            <div style="font-size:0.68rem; font-weight:700; color:rgba(255,255,255,0.3); margin:2px 0;">⏳ Attesa</div>
+            <div style="font-size:0.58rem; color:var(--text-muted);">#${targetConc}</div>
+          `;
+        }
+        t2Tl.appendChild(b);
+      }
+    }
+
+
+
+    const drawsDetailCont = document.getElementById('tab2-colpi-draws-detail');
+    if (drawsDetailCont) {
+      drawsDetailCont.innerHTML = '';
+      const tSet = new Set(activeSig.terzina || []);
+      (activeSig.timeline || []).forEach(t => {
+        if (t.tutti_estratti && t.tutti_estratti.length > 0) {
+          const row = document.createElement('div');
+          row.style.cssText = 'background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.06); border-radius:8px; padding:8px;';
+          
+          const ballsHtml = t.tutti_estratti.map(num => {
+            let cls = 'ball';
+            let extraStyle = 'width:24px; height:24px; font-size:0.75rem; display:inline-flex; align-items:center; justify-content:center; margin:1px;';
+            if (num === t.oro) cls += ' ball-oro';
+            else if (num === t.doppio_oro) cls += ' ball-doppio-oro';
+            
+            if (tSet.has(num)) {
+              extraStyle += ' border:2px solid #fef08a; box-shadow:0 0 6px #f59e0b; font-weight:800; transform:scale(1.1);';
+            }
+            return `<span class="${cls}" style="${extraStyle}">${num.toString().padStart(2,'0')}</span>`;
+          }).join(' ');
+
+          row.innerHTML = `
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px; font-size:0.78rem;">
+              <div>
+                <strong style="color:var(--gold);">Colpo ${t.colpo}</strong> (Conc. #${t.concorso} ore ${t.ora})
+              </div>
+              <div style="font-weight:bold; color:${t.punti >= 2 ? 'var(--green)' : (t.punti === 1 ? '#fff' : 'var(--text-muted)')};">
+                ${t.punti} pt centrati
+              </div>
+            </div>
+            <div style="display:flex; flex-wrap:wrap; gap:2px;">
+              ${ballsHtml}
+            </div>
+          `;
+          drawsDetailCont.appendChild(row);
+        }
+      });
+    }
+
+    const sp = activeSig.spesa !== undefined ? activeSig.spesa : (activeSig.timeline ? activeSig.timeline.length * 1.0 : 0.0);
+    const ric = activeSig.ricavo !== undefined ? activeSig.ricavo : 0.0;
+    const net = activeSig.netto !== undefined ? activeSig.netto : (ric - sp);
+
+    if (t2Spesa) t2Spesa.textContent = `€ ${sp.toFixed(2)}`;
+    if (t2Ricavo) t2Ricavo.textContent = `€ ${ric.toFixed(2)}`;
+    if (t2Netto) {
+      t2Netto.textContent = `${net >= 0 ? '+' : ''}€ ${net.toFixed(2)}`;
+      t2Netto.style.color = net > 0 ? 'var(--green)' : (net < 0 ? '#f87171' : 'var(--text-muted)');
+    }
+  }
+
+  const cont = document.getElementById('signals-list-container');
   if (!cont) return;
 
   // Aggiorna Riepilogo Finanziario Giornaliero
@@ -332,12 +397,14 @@ function renderSignalsData(data) {
   }
 
   cont.innerHTML = '';
-  if (sigs.length === 0) {
-    cont.innerHTML = '<div style="text-align:center; padding:20px; color:var(--text-muted);">Nessun segnale ancora registrato per oggi.</div>';
+  const pastSigs = sigs.slice(1);
+  if (pastSigs.length === 0) {
+    cont.innerHTML = '<div style="text-align:center; padding:20px; color:var(--text-muted);">Nessuna giocata precedente registrata.</div>';
     return;
   }
 
-  sigs.forEach(s => {
+  pastSigs.forEach(s => {
+
     const card = document.createElement('div');
     card.style.cssText = 'background: rgba(0,0,0,0.45); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 12px; margin-bottom: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);';
 
