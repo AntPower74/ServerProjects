@@ -14,7 +14,7 @@
     "power_score": 99.0,
     "max_colpi": 20,
     "stato": "in_corso",
-    "colpi_trascorsi": 5,
+    "colpi_trascorsi": 9,
     "max_punti": 1,
     "primo_ambo_colpo": null,
     "primo_terno_colpo": null,
@@ -61,6 +61,40 @@
         "estratti_presi": [
           65
         ]
+      },
+      {
+        "colpo": 6,
+        "concorso": 72,
+        "ora": "06:00",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 7,
+        "concorso": 73,
+        "ora": "06:05",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 8,
+        "concorso": 74,
+        "ora": "06:10",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          65
+        ]
+      },
+      {
+        "colpo": 9,
+        "concorso": 75,
+        "ora": "06:15",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
       }
     ],
     "notifica_5_colpi_inviata": true
@@ -80,7 +114,7 @@
     "power_score": 82.0,
     "max_colpi": 20,
     "stato": "vinto_ambo",
-    "colpi_trascorsi": 13,
+    "colpi_trascorsi": 17,
     "max_punti": 2,
     "primo_ambo_colpo": 3,
     "primo_terno_colpo": null,
@@ -208,6 +242,46 @@
         "punti": 0,
         "ha_oro": false,
         "estratti_presi": []
+      },
+      {
+        "colpo": 14,
+        "concorso": 72,
+        "ora": "06:00",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          13
+        ]
+      },
+      {
+        "colpo": 15,
+        "concorso": 73,
+        "ora": "06:05",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          71
+        ]
+      },
+      {
+        "colpo": 16,
+        "concorso": 74,
+        "ora": "06:10",
+        "punti": 1,
+        "ha_oro": true,
+        "estratti_presi": [
+          51
+        ]
+      },
+      {
+        "colpo": 17,
+        "concorso": 75,
+        "ora": "06:15",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          13
+        ]
       }
     ],
     "notifica_5_colpi_inviata": true
@@ -227,11 +301,11 @@
     "power_score": 93.0,
     "max_colpi": 20,
     "stato": "vinto_ambo",
-    "colpi_trascorsi": 15,
+    "colpi_trascorsi": 19,
     "max_punti": 2,
     "primo_ambo_colpo": 7,
     "primo_terno_colpo": null,
-    "oro_centrato": false,
+    "oro_centrato": true,
     "timeline": [
       {
         "colpo": 1,
@@ -368,6 +442,47 @@
         "estratti_presi": [
           70
         ]
+      },
+      {
+        "colpo": 16,
+        "concorso": 72,
+        "ora": "06:00",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          32
+        ]
+      },
+      {
+        "colpo": 17,
+        "concorso": 73,
+        "ora": "06:05",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          48
+        ]
+      },
+      {
+        "colpo": 18,
+        "concorso": 74,
+        "ora": "06:10",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          32
+        ]
+      },
+      {
+        "colpo": 19,
+        "concorso": 75,
+        "ora": "06:15",
+        "punti": 2,
+        "ha_oro": true,
+        "estratti_presi": [
+          32,
+          70
+        ]
       }
     ],
     "notifica_5_colpi_inviata": true
@@ -387,7 +502,7 @@
     "power_score": 91.0,
     "max_colpi": 20,
     "stato": "vinto_ambo",
-    "colpi_trascorsi": 16,
+    "colpi_trascorsi": 20,
     "max_punti": 2,
     "primo_ambo_colpo": 7,
     "primo_terno_colpo": null,
@@ -537,6 +652,42 @@
         "punti": 0,
         "ha_oro": false,
         "estratti_presi": []
+      },
+      {
+        "colpo": 17,
+        "concorso": 72,
+        "ora": "06:00",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          39
+        ]
+      },
+      {
+        "colpo": 18,
+        "concorso": 73,
+        "ora": "06:05",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 19,
+        "concorso": 74,
+        "ora": "06:10",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 20,
+        "concorso": 75,
+        "ora": "06:15",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          39
+        ]
       }
     ],
     "notifica_5_colpi_inviata": true
@@ -4417,7 +4568,7 @@
     "power_score": 85.5,
     "max_colpi": 20,
     "stato": "vinto_ambo",
-    "colpi_trascorsi": 5,
+    "colpi_trascorsi": 9,
     "max_punti": 2,
     "primo_ambo_colpo": 1,
     "primo_terno_colpo": null,
@@ -4469,6 +4620,45 @@
         "punti": 0,
         "ha_oro": false,
         "estratti_presi": []
+      },
+      {
+        "colpo": 6,
+        "concorso": 72,
+        "ora": "06:00",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          80
+        ]
+      },
+      {
+        "colpo": 7,
+        "concorso": 73,
+        "ora": "06:05",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 8,
+        "concorso": 74,
+        "ora": "06:10",
+        "punti": 2,
+        "ha_oro": true,
+        "estratti_presi": [
+          51,
+          80
+        ]
+      },
+      {
+        "colpo": 9,
+        "concorso": 75,
+        "ora": "06:15",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          10
+        ]
       }
     ],
     "notifica_5_colpi_inviata": true
@@ -4488,7 +4678,7 @@
     "power_score": 95.0,
     "max_colpi": 20,
     "stato": "vinto_ambo",
-    "colpi_trascorsi": 9,
+    "colpi_trascorsi": 13,
     "max_punti": 2,
     "primo_ambo_colpo": 3,
     "primo_terno_colpo": null,
@@ -4578,6 +4768,42 @@
         "punti": 0,
         "ha_oro": false,
         "estratti_presi": []
+      },
+      {
+        "colpo": 10,
+        "concorso": 72,
+        "ora": "06:00",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 11,
+        "concorso": 73,
+        "ora": "06:05",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 12,
+        "concorso": 74,
+        "ora": "06:10",
+        "punti": 1,
+        "ha_oro": true,
+        "estratti_presi": [
+          51
+        ]
+      },
+      {
+        "colpo": 13,
+        "concorso": 75,
+        "ora": "06:15",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          10
+        ]
       }
     ],
     "notifica_5_colpi_inviata": true
@@ -4597,7 +4823,7 @@
     "power_score": 81.5,
     "max_colpi": 20,
     "stato": "vinto_ambo",
-    "colpi_trascorsi": 11,
+    "colpi_trascorsi": 15,
     "max_punti": 2,
     "primo_ambo_colpo": 3,
     "primo_terno_colpo": null,
@@ -4710,6 +4936,45 @@
         "punti": 0,
         "ha_oro": false,
         "estratti_presi": []
+      },
+      {
+        "colpo": 12,
+        "concorso": 72,
+        "ora": "06:00",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          80
+        ]
+      },
+      {
+        "colpo": 13,
+        "concorso": 73,
+        "ora": "06:05",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 14,
+        "concorso": 74,
+        "ora": "06:10",
+        "punti": 2,
+        "ha_oro": true,
+        "estratti_presi": [
+          51,
+          80
+        ]
+      },
+      {
+        "colpo": 15,
+        "concorso": 75,
+        "ora": "06:15",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          10
+        ]
       }
     ],
     "notifica_5_colpi_inviata": true
@@ -4729,7 +4994,7 @@
     "power_score": 81.0,
     "max_colpi": 20,
     "stato": "vinto_ambo",
-    "colpi_trascorsi": 13,
+    "colpi_trascorsi": 17,
     "max_punti": 2,
     "primo_ambo_colpo": 5,
     "primo_terno_colpo": null,
@@ -4860,6 +5125,45 @@
         "punti": 0,
         "ha_oro": false,
         "estratti_presi": []
+      },
+      {
+        "colpo": 14,
+        "concorso": 72,
+        "ora": "06:00",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          80
+        ]
+      },
+      {
+        "colpo": 15,
+        "concorso": 73,
+        "ora": "06:05",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 16,
+        "concorso": 74,
+        "ora": "06:10",
+        "punti": 2,
+        "ha_oro": true,
+        "estratti_presi": [
+          51,
+          80
+        ]
+      },
+      {
+        "colpo": 17,
+        "concorso": 75,
+        "ora": "06:15",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          10
+        ]
       }
     ],
     "notifica_5_colpi_inviata": true
@@ -4879,7 +5183,7 @@
     "power_score": 83.5,
     "max_colpi": 20,
     "stato": "in_corso",
-    "colpi_trascorsi": 14,
+    "colpi_trascorsi": 18,
     "max_punti": 1,
     "primo_ambo_colpo": null,
     "primo_terno_colpo": null,
@@ -5020,6 +5324,42 @@
         "punti": 0,
         "ha_oro": false,
         "estratti_presi": []
+      },
+      {
+        "colpo": 15,
+        "concorso": 72,
+        "ora": "06:00",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 16,
+        "concorso": 73,
+        "ora": "06:05",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 17,
+        "concorso": 74,
+        "ora": "06:10",
+        "punti": 1,
+        "ha_oro": true,
+        "estratti_presi": [
+          51
+        ]
+      },
+      {
+        "colpo": 18,
+        "concorso": 75,
+        "ora": "06:15",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          10
+        ]
       }
     ],
     "notifica_5_colpi_inviata": true
@@ -5039,7 +5379,7 @@
     "power_score": 83.0,
     "max_colpi": 20,
     "stato": "in_corso",
-    "colpi_trascorsi": 15,
+    "colpi_trascorsi": 19,
     "max_punti": 1,
     "primo_ambo_colpo": null,
     "primo_terno_colpo": null,
@@ -5190,6 +5530,42 @@
         "punti": 0,
         "ha_oro": false,
         "estratti_presi": []
+      },
+      {
+        "colpo": 16,
+        "concorso": 72,
+        "ora": "06:00",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 17,
+        "concorso": 73,
+        "ora": "06:05",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 18,
+        "concorso": 74,
+        "ora": "06:10",
+        "punti": 1,
+        "ha_oro": true,
+        "estratti_presi": [
+          51
+        ]
+      },
+      {
+        "colpo": 19,
+        "concorso": 75,
+        "ora": "06:15",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          10
+        ]
       }
     ],
     "notifica_5_colpi_inviata": true
@@ -5209,7 +5585,7 @@
     "power_score": 79.0,
     "max_colpi": 20,
     "stato": "vinto_ambo",
-    "colpi_trascorsi": 19,
+    "colpi_trascorsi": 20,
     "max_punti": 2,
     "primo_ambo_colpo": 4,
     "primo_terno_colpo": null,
@@ -5383,6 +5759,14 @@
         "colpo": 19,
         "concorso": 71,
         "ora": "05:55",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 20,
+        "concorso": 72,
+        "ora": "06:00",
         "punti": 0,
         "ha_oro": false,
         "estratti_presi": []
