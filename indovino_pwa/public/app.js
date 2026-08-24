@@ -339,17 +339,17 @@ function renderSignalsData(data) {
 
   sigs.forEach(s => {
     const card = document.createElement('div');
-    card.className = 'card';
-    card.style.marginBottom = '12px';
+    card.style.cssText = 'background: rgba(0,0,0,0.45); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 12px; margin-bottom: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);';
 
-    let statoBadge = '<span style="color:var(--cyan); font-weight:bold;">⏳ In Corso (Colpi 0/5)</span>';
-    if (s.stato === 'vinto_terno') statoBadge = `<span style="color:var(--green); font-weight:bold;">🏆 TERNO CENTRATO (Colpo ${s.primo_terno_colpo || 1})!</span>`;
-    else if (s.stato === 'vinto_ambo') statoBadge = `<span style="color:var(--green); font-weight:bold;">✅ AMBO VINTO (Colpo ${s.primo_ambo_colpo || 1})!</span>`;
-    else if (s.colpi_trascorsi >= 5) statoBadge = '<span style="color:var(--text-muted);">Chiuso 5/5</span>';
-    else if (s.colpi_trascorsi > 0) statoBadge = `<span style="color:var(--cyan); font-weight:bold;">⏳ In Corso (Colpo ${s.colpi_trascorsi}/5)</span>`;
+    let statoBadge = '<span style="color:var(--cyan); font-weight:bold; font-size:0.8rem;">⏳ In Corso</span>';
+    if (s.stato === 'vinto_terno') statoBadge = `<span style="color:var(--green); font-weight:bold; font-size:0.8rem;">🏆 TERNO CENTRATO (Colpo ${s.primo_terno_colpo || 1})!</span>`;
+    else if (s.stato === 'vinto_ambo') statoBadge = `<span style="color:var(--green); font-weight:bold; font-size:0.8rem;">✅ AMBO VINTO (Colpo ${s.primo_ambo_colpo || 1})!</span>`;
+    else if (s.colpi_trascorsi >= 5) statoBadge = '<span style="color:var(--text-muted); font-size:0.8rem;">Chiuso 5/5</span>';
+    else if (s.colpi_trascorsi > 0) statoBadge = `<span style="color:var(--cyan); font-weight:bold; font-size:0.8rem;">⏳ Colpo ${s.colpi_trascorsi}/5</span>`;
 
-    const tBalls = s.terzina.map(n => `<span class="ball ball-oro" style="width:28px; height:28px; font-size:0.85rem; display:inline-flex;">${n.toString().padStart(2,'0')}</span>`).join(' ');
-    const tText = s.terzina.map(n => n.toString().padStart(2, '0')).join(' - ');
+    const terz = Array.isArray(s.terzina) ? s.terzina : [];
+    const tBalls = terz.map(n => `<span class="ball ball-oro" style="width:28px; height:28px; font-size:0.85rem; display:inline-flex; align-items:center; justify-content:center;">${n.toString().padStart(2,'0')}</span>`).join(' ');
+    const tText = terz.map(n => n.toString().padStart(2, '0')).join(' - ');
 
     const spesaVal = s.spesa !== undefined ? s.spesa : (s.timeline ? s.timeline.length * 1.0 : 0.0);
     const ricavoVal = s.ricavo !== undefined ? s.ricavo : 0.0;
@@ -368,7 +368,7 @@ function renderSignalsData(data) {
         else if (t.punti === 1) tCol = '#fff';
 
         tlHtml += `
-          <div style="flex:1; background:rgba(0,0,0,0.35); padding:6px; border-radius:8px; font-size:0.75rem; text-align:center; border:1px solid rgba(255,255,255,0.08);">
+          <div style="flex:1; min-width:55px; background:rgba(0,0,0,0.35); padding:6px 4px; border-radius:8px; font-size:0.75rem; text-align:center; border:1px solid rgba(255,255,255,0.08);">
             <div style="font-size:0.68rem; color:var(--text-muted);">Colpo ${c}</div>
             <div style="font-weight:800; color:${tCol}; margin-top:2px;">${t.punti} pt ${presiArr.length ? `[${presiArr.join(',')}]` : ''}</div>
             <div style="font-size:0.62rem; color:var(--text-muted);">#${t.concorso}</div>
@@ -376,7 +376,7 @@ function renderSignalsData(data) {
         `;
       } else {
         tlHtml += `
-          <div style="flex:1; background:rgba(0,0,0,0.25); padding:6px; border-radius:8px; font-size:0.75rem; text-align:center; border:1px solid rgba(255,255,255,0.05);">
+          <div style="flex:1; min-width:55px; background:rgba(0,0,0,0.25); padding:6px 4px; border-radius:8px; font-size:0.75rem; text-align:center; border:1px solid rgba(255,255,255,0.05);">
             <div style="font-size:0.68rem; color:var(--text-muted);">Colpo ${c}</div>
             <div style="font-weight:700; color:rgba(255,255,255,0.3); margin-top:2px;">⏳ Attesa</div>
             <div style="font-size:0.62rem; color:var(--text-muted);">#${targetConc}</div>
@@ -388,21 +388,21 @@ function renderSignalsData(data) {
     card.innerHTML = `
       <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
         <div>
-          <span style="font-size:0.85rem; font-weight:800; color:var(--gold);">🔴 Spia #${s.spia}</span>
-          <span style="font-size:0.75rem; color:var(--text-muted); margin-left:6px;">(Rilevata al Conc. #${s.concorso_spia} ore ${s.ora})</span>
+          <span style="font-size:0.88rem; font-weight:800; color:var(--gold);">🔴 Spia #${s.spia}</span>
+          <span style="font-size:0.75rem; color:var(--text-muted); margin-left:6px;">(Conc. #${s.concorso_spia} ore ${s.ora})</span>
         </div>
         <div>${statoBadge}</div>
       </div>
-      <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:8px; background:rgba(0,0,0,0.25); padding:8px 10px; border-radius:8px;">
+      <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:8px; background:rgba(0,0,0,0.3); padding:8px 10px; border-radius:8px;">
         <div style="display:flex; gap:8px; align-items:center;">
           <span style="font-size:0.8rem; color:var(--text-muted);">Terzina:</span>
-          ${tBalls}
+          <div style="display:flex; gap:4px;">${tBalls}</div>
           <strong style="color:#fef08a; font-size:0.95rem; margin-left:4px;">${tText}</strong>
         </div>
         <div style="font-size:0.85rem;">Oro: <strong style="color:var(--gold)">${s.oro}</strong></div>
       </div>
 
-      <div style="display:flex; gap:6px; overflow-x:auto; margin-bottom:8px;">
+      <div style="display:flex; gap:6px; overflow-x:auto; margin-bottom:8px; padding-bottom:4px;">
         ${tlHtml}
       </div>
       <div style="display:flex; justify-content:space-between; align-items:center; background:rgba(0,0,0,0.35); padding:6px 10px; border-radius:8px; font-size:0.8rem; border:1px solid rgba(255,255,255,0.05);">
@@ -414,6 +414,7 @@ function renderSignalsData(data) {
     cont.appendChild(card);
   });
 }
+
 
 
 

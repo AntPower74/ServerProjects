@@ -1,6 +1,40 @@
 [
   {
-    "id": "sig30_2026-08-24_246_89",
+    "id": "sig_250_60",
+    "data": "2026-08-24",
+    "ora": "20:50",
+    "concorso_spia": 250,
+    "spia": 60,
+    "terzina": [
+      30,
+      33,
+      34
+    ],
+    "oro": 33,
+    "power_score": 120.0,
+    "nome_modello": "Consecutivo Stretto 30-33-34",
+    "decina": "30-39",
+    "max_colpi": 5,
+    "stato": "in_corso",
+    "colpi_trascorsi": 1,
+    "max_punti": 0,
+    "primo_ambo_colpo": null,
+    "primo_terno_colpo": null,
+    "oro_centrato": false,
+    "timeline": [
+      {
+        "colpo": 1,
+        "concorso": 251,
+        "ora": "20:55",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      }
+    ],
+    "notifica_colpi_inviati": []
+  },
+  {
+    "id": "sig_246_89",
     "data": "2026-08-24",
     "ora": "20:30",
     "concorso_spia": 246,
@@ -8,10 +42,125 @@
     "terzina": [
       33,
       35,
-      39
+      36
     ],
     "oro": 35,
-    "power_score": 105.0,
+    "power_score": 150.0,
+    "nome_modello": "Consecutivo Stretto 33-35-36",
+    "decina": "30-39",
+    "max_colpi": 5,
+    "stato": "vinto_terno",
+    "colpi_trascorsi": 1,
+    "max_punti": 3,
+    "primo_ambo_colpo": 1,
+    "primo_terno_colpo": 1,
+    "oro_centrato": false,
+    "timeline": [
+      {
+        "colpo": 1,
+        "concorso": 247,
+        "ora": "20:35",
+        "punti": 3,
+        "ha_oro": false,
+        "estratti_presi": [
+          33,
+          35,
+          36
+        ]
+      }
+    ],
+    "notifica_colpi_inviati": []
+  },
+  {
+    "id": "sig_240_66",
+    "data": "2026-08-24",
+    "ora": "20:00",
+    "concorso_spia": 240,
+    "spia": 66,
+    "terzina": [
+      20,
+      22,
+      23
+    ],
+    "oro": 22,
+    "power_score": 120.0,
+    "nome_modello": "Consecutivo Stretto 20-22-23",
+    "decina": "20-29",
+    "max_colpi": 5,
+    "stato": "vinto_ambo",
+    "colpi_trascorsi": 5,
+    "max_punti": 2,
+    "primo_ambo_colpo": 5,
+    "primo_terno_colpo": null,
+    "oro_centrato": false,
+    "timeline": [
+      {
+        "colpo": 1,
+        "concorso": 241,
+        "ora": "20:05",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          20
+        ]
+      },
+      {
+        "colpo": 2,
+        "concorso": 242,
+        "ora": "20:10",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 3,
+        "concorso": 243,
+        "ora": "20:15",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          20
+        ]
+      },
+      {
+        "colpo": 4,
+        "concorso": 244,
+        "ora": "20:20",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          22
+        ]
+      },
+      {
+        "colpo": 5,
+        "concorso": 245,
+        "ora": "20:25",
+        "punti": 2,
+        "ha_oro": false,
+        "estratti_presi": [
+          22,
+          23
+        ]
+      }
+    ],
+    "notifica_colpi_inviati": []
+  },
+  {
+    "id": "sig_234_28",
+    "data": "2026-08-24",
+    "ora": "19:30",
+    "concorso_spia": 234,
+    "spia": 28,
+    "terzina": [
+      20,
+      22,
+      23
+    ],
+    "oro": 22,
+    "power_score": 115.0,
+    "nome_modello": "Consecutivo Stretto 20-22-23",
+    "decina": "20-29",
     "max_colpi": 5,
     "stato": "vinto_ambo",
     "colpi_trascorsi": 1,
@@ -22,8 +171,585 @@
     "timeline": [
       {
         "colpo": 1,
-        "concorso": 247,
-        "ora": "20:35",
+        "concorso": 235,
+        "ora": "19:35",
+        "punti": 2,
+        "ha_oro": false,
+        "estratti_presi": [
+          20,
+          23
+        ]
+      }
+    ],
+    "notifica_colpi_inviati": []
+  },
+  {
+    "id": "sig_228_84",
+    "data": "2026-08-24",
+    "ora": "19:00",
+    "concorso_spia": 228,
+    "spia": 84,
+    "terzina": [
+      33,
+      35,
+      36
+    ],
+    "oro": 35,
+    "power_score": 120.0,
+    "nome_modello": "Consecutivo Stretto 33-35-36",
+    "decina": "30-39",
+    "max_colpi": 5,
+    "stato": "vinto_ambo",
+    "colpi_trascorsi": 3,
+    "max_punti": 2,
+    "primo_ambo_colpo": 3,
+    "primo_terno_colpo": null,
+    "oro_centrato": false,
+    "timeline": [
+      {
+        "colpo": 1,
+        "concorso": 229,
+        "ora": "19:05",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          35
+        ]
+      },
+      {
+        "colpo": 2,
+        "concorso": 230,
+        "ora": "19:10",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          35
+        ]
+      },
+      {
+        "colpo": 3,
+        "concorso": 231,
+        "ora": "19:15",
+        "punti": 2,
+        "ha_oro": false,
+        "estratti_presi": [
+          35,
+          36
+        ]
+      }
+    ],
+    "notifica_colpi_inviati": []
+  },
+  {
+    "id": "sig_222_47",
+    "data": "2026-08-24",
+    "ora": "18:30",
+    "concorso_spia": 222,
+    "spia": 47,
+    "terzina": [
+      30,
+      33,
+      34
+    ],
+    "oro": 33,
+    "power_score": 125.0,
+    "nome_modello": "Consecutivo Stretto 30-33-34",
+    "decina": "30-39",
+    "max_colpi": 5,
+    "stato": "vinto_ambo",
+    "colpi_trascorsi": 1,
+    "max_punti": 2,
+    "primo_ambo_colpo": 1,
+    "primo_terno_colpo": null,
+    "oro_centrato": false,
+    "timeline": [
+      {
+        "colpo": 1,
+        "concorso": 223,
+        "ora": "18:35",
+        "punti": 2,
+        "ha_oro": false,
+        "estratti_presi": [
+          33,
+          34
+        ]
+      }
+    ],
+    "notifica_colpi_inviati": []
+  },
+  {
+    "id": "sig_216_39",
+    "data": "2026-08-24",
+    "ora": "18:00",
+    "concorso_spia": 216,
+    "spia": 39,
+    "terzina": [
+      33,
+      35,
+      36
+    ],
+    "oro": 35,
+    "power_score": 125.0,
+    "nome_modello": "Consecutivo Stretto 33-35-36",
+    "decina": "30-39",
+    "max_colpi": 5,
+    "stato": "vinto_ambo",
+    "colpi_trascorsi": 1,
+    "max_punti": 2,
+    "primo_ambo_colpo": 1,
+    "primo_terno_colpo": null,
+    "oro_centrato": true,
+    "timeline": [
+      {
+        "colpo": 1,
+        "concorso": 217,
+        "ora": "18:05",
+        "punti": 2,
+        "ha_oro": true,
+        "estratti_presi": [
+          33,
+          36
+        ]
+      }
+    ],
+    "notifica_colpi_inviati": []
+  },
+  {
+    "id": "sig_210_60",
+    "data": "2026-08-24",
+    "ora": "17:30",
+    "concorso_spia": 210,
+    "spia": 60,
+    "terzina": [
+      30,
+      33,
+      34
+    ],
+    "oro": 33,
+    "power_score": 130.0,
+    "nome_modello": "Consecutivo Stretto 30-33-34",
+    "decina": "30-39",
+    "max_colpi": 5,
+    "stato": "concluso_vuoto",
+    "colpi_trascorsi": 5,
+    "max_punti": 0,
+    "primo_ambo_colpo": null,
+    "primo_terno_colpo": null,
+    "oro_centrato": false,
+    "timeline": [
+      {
+        "colpo": 1,
+        "concorso": 211,
+        "ora": "17:35",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 2,
+        "concorso": 212,
+        "ora": "17:40",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 3,
+        "concorso": 213,
+        "ora": "17:45",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 4,
+        "concorso": 214,
+        "ora": "17:50",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 5,
+        "concorso": 215,
+        "ora": "17:55",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      }
+    ],
+    "notifica_colpi_inviati": []
+  },
+  {
+    "id": "sig_204_77",
+    "data": "2026-08-24",
+    "ora": "17:00",
+    "concorso_spia": 204,
+    "spia": 77,
+    "terzina": [
+      33,
+      35,
+      36
+    ],
+    "oro": 35,
+    "power_score": 125.0,
+    "nome_modello": "Consecutivo Stretto 33-35-36",
+    "decina": "30-39",
+    "max_colpi": 5,
+    "stato": "vinto_ambo",
+    "colpi_trascorsi": 1,
+    "max_punti": 2,
+    "primo_ambo_colpo": 1,
+    "primo_terno_colpo": null,
+    "oro_centrato": false,
+    "timeline": [
+      {
+        "colpo": 1,
+        "concorso": 205,
+        "ora": "17:05",
+        "punti": 2,
+        "ha_oro": false,
+        "estratti_presi": [
+          35,
+          36
+        ]
+      }
+    ],
+    "notifica_colpi_inviati": []
+  },
+  {
+    "id": "sig_198_77",
+    "data": "2026-08-24",
+    "ora": "16:30",
+    "concorso_spia": 198,
+    "spia": 77,
+    "terzina": [
+      33,
+      35,
+      36
+    ],
+    "oro": 35,
+    "power_score": 120.0,
+    "nome_modello": "Consecutivo Stretto 33-35-36",
+    "decina": "30-39",
+    "max_colpi": 5,
+    "stato": "concluso_vuoto",
+    "colpi_trascorsi": 5,
+    "max_punti": 1,
+    "primo_ambo_colpo": null,
+    "primo_terno_colpo": null,
+    "oro_centrato": false,
+    "timeline": [
+      {
+        "colpo": 1,
+        "concorso": 199,
+        "ora": "16:35",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          33
+        ]
+      },
+      {
+        "colpo": 2,
+        "concorso": 200,
+        "ora": "16:40",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 3,
+        "concorso": 201,
+        "ora": "16:45",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          36
+        ]
+      },
+      {
+        "colpo": 4,
+        "concorso": 202,
+        "ora": "16:50",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 5,
+        "concorso": 203,
+        "ora": "16:55",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      }
+    ],
+    "notifica_colpi_inviati": []
+  },
+  {
+    "id": "sig_192_60",
+    "data": "2026-08-24",
+    "ora": "16:00",
+    "concorso_spia": 192,
+    "spia": 60,
+    "terzina": [
+      30,
+      33,
+      34
+    ],
+    "oro": 33,
+    "power_score": 120.0,
+    "nome_modello": "Consecutivo Stretto 30-33-34",
+    "decina": "30-39",
+    "max_colpi": 5,
+    "stato": "vinto_ambo",
+    "colpi_trascorsi": 2,
+    "max_punti": 2,
+    "primo_ambo_colpo": 2,
+    "primo_terno_colpo": null,
+    "oro_centrato": true,
+    "timeline": [
+      {
+        "colpo": 1,
+        "concorso": 193,
+        "ora": "16:05",
+        "punti": 1,
+        "ha_oro": true,
+        "estratti_presi": [
+          30
+        ]
+      },
+      {
+        "colpo": 2,
+        "concorso": 194,
+        "ora": "16:10",
+        "punti": 2,
+        "ha_oro": true,
+        "estratti_presi": [
+          30,
+          34
+        ]
+      }
+    ],
+    "notifica_colpi_inviati": []
+  },
+  {
+    "id": "sig_186_62",
+    "data": "2026-08-24",
+    "ora": "15:30",
+    "concorso_spia": 186,
+    "spia": 62,
+    "terzina": [
+      20,
+      22,
+      23
+    ],
+    "oro": 22,
+    "power_score": 115.0,
+    "nome_modello": "Consecutivo Stretto 20-22-23",
+    "decina": "20-29",
+    "max_colpi": 5,
+    "stato": "vinto_ambo",
+    "colpi_trascorsi": 1,
+    "max_punti": 2,
+    "primo_ambo_colpo": 1,
+    "primo_terno_colpo": null,
+    "oro_centrato": false,
+    "timeline": [
+      {
+        "colpo": 1,
+        "concorso": 187,
+        "ora": "15:35",
+        "punti": 2,
+        "ha_oro": false,
+        "estratti_presi": [
+          20,
+          22
+        ]
+      }
+    ],
+    "notifica_colpi_inviati": []
+  },
+  {
+    "id": "sig_180_89",
+    "data": "2026-08-24",
+    "ora": "15:00",
+    "concorso_spia": 180,
+    "spia": 89,
+    "terzina": [
+      33,
+      35,
+      36
+    ],
+    "oro": 35,
+    "power_score": 120.0,
+    "nome_modello": "Consecutivo Stretto 33-35-36",
+    "decina": "30-39",
+    "max_colpi": 5,
+    "stato": "concluso_vuoto",
+    "colpi_trascorsi": 5,
+    "max_punti": 1,
+    "primo_ambo_colpo": null,
+    "primo_terno_colpo": null,
+    "oro_centrato": false,
+    "timeline": [
+      {
+        "colpo": 1,
+        "concorso": 181,
+        "ora": "15:05",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 2,
+        "concorso": 182,
+        "ora": "15:10",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          36
+        ]
+      },
+      {
+        "colpo": 3,
+        "concorso": 183,
+        "ora": "15:15",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 4,
+        "concorso": 184,
+        "ora": "15:20",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 5,
+        "concorso": 185,
+        "ora": "15:25",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          35
+        ]
+      }
+    ],
+    "notifica_colpi_inviati": []
+  },
+  {
+    "id": "sig_174_87",
+    "data": "2026-08-24",
+    "ora": "14:30",
+    "concorso_spia": 174,
+    "spia": 87,
+    "terzina": [
+      33,
+      35,
+      36
+    ],
+    "oro": 35,
+    "power_score": 115.0,
+    "nome_modello": "Consecutivo Stretto 33-35-36",
+    "decina": "30-39",
+    "max_colpi": 5,
+    "stato": "vinto_ambo",
+    "colpi_trascorsi": 1,
+    "max_punti": 2,
+    "primo_ambo_colpo": 1,
+    "primo_terno_colpo": null,
+    "oro_centrato": false,
+    "timeline": [
+      {
+        "colpo": 1,
+        "concorso": 175,
+        "ora": "14:35",
+        "punti": 2,
+        "ha_oro": false,
+        "estratti_presi": [
+          35,
+          36
+        ]
+      }
+    ],
+    "notifica_colpi_inviati": []
+  },
+  {
+    "id": "sig_168_87",
+    "data": "2026-08-24",
+    "ora": "14:00",
+    "concorso_spia": 168,
+    "spia": 87,
+    "terzina": [
+      33,
+      35,
+      36
+    ],
+    "oro": 35,
+    "power_score": 125.0,
+    "nome_modello": "Consecutivo Stretto 33-35-36",
+    "decina": "30-39",
+    "max_colpi": 5,
+    "stato": "vinto_ambo",
+    "colpi_trascorsi": 1,
+    "max_punti": 2,
+    "primo_ambo_colpo": 1,
+    "primo_terno_colpo": null,
+    "oro_centrato": false,
+    "timeline": [
+      {
+        "colpo": 1,
+        "concorso": 169,
+        "ora": "14:05",
+        "punti": 2,
+        "ha_oro": false,
+        "estratti_presi": [
+          33,
+          36
+        ]
+      }
+    ],
+    "notifica_colpi_inviati": []
+  },
+  {
+    "id": "sig_162_84",
+    "data": "2026-08-24",
+    "ora": "13:30",
+    "concorso_spia": 162,
+    "spia": 84,
+    "terzina": [
+      33,
+      35,
+      36
+    ],
+    "oro": 35,
+    "power_score": 125.0,
+    "nome_modello": "Consecutivo Stretto 33-35-36",
+    "decina": "30-39",
+    "max_colpi": 5,
+    "stato": "vinto_ambo",
+    "colpi_trascorsi": 2,
+    "max_punti": 2,
+    "primo_ambo_colpo": 2,
+    "primo_terno_colpo": null,
+    "oro_centrato": false,
+    "timeline": [
+      {
+        "colpo": 1,
+        "concorso": 163,
+        "ora": "13:35",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 2,
+        "concorso": 164,
+        "ora": "13:40",
         "punti": 2,
         "ha_oro": false,
         "estratti_presi": [
@@ -32,8 +758,1645 @@
         ]
       }
     ],
-    "notifica_colpi_inviati": [
-      1
-    ]
+    "notifica_colpi_inviati": []
+  },
+  {
+    "id": "sig_156_23",
+    "data": "2026-08-24",
+    "ora": "13:00",
+    "concorso_spia": 156,
+    "spia": 23,
+    "terzina": [
+      20,
+      22,
+      23
+    ],
+    "oro": 22,
+    "power_score": 115.0,
+    "nome_modello": "Consecutivo Stretto 20-22-23",
+    "decina": "20-29",
+    "max_colpi": 5,
+    "stato": "concluso_vuoto",
+    "colpi_trascorsi": 5,
+    "max_punti": 1,
+    "primo_ambo_colpo": null,
+    "primo_terno_colpo": null,
+    "oro_centrato": false,
+    "timeline": [
+      {
+        "colpo": 1,
+        "concorso": 157,
+        "ora": "13:05",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 2,
+        "concorso": 158,
+        "ora": "13:10",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          20
+        ]
+      },
+      {
+        "colpo": 3,
+        "concorso": 159,
+        "ora": "13:15",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          23
+        ]
+      },
+      {
+        "colpo": 4,
+        "concorso": 160,
+        "ora": "13:20",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 5,
+        "concorso": 161,
+        "ora": "13:25",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      }
+    ],
+    "notifica_colpi_inviati": []
+  },
+  {
+    "id": "sig_150_84",
+    "data": "2026-08-24",
+    "ora": "12:30",
+    "concorso_spia": 150,
+    "spia": 84,
+    "terzina": [
+      33,
+      35,
+      36
+    ],
+    "oro": 35,
+    "power_score": 125.0,
+    "nome_modello": "Consecutivo Stretto 33-35-36",
+    "decina": "30-39",
+    "max_colpi": 5,
+    "stato": "vinto_ambo",
+    "colpi_trascorsi": 1,
+    "max_punti": 2,
+    "primo_ambo_colpo": 1,
+    "primo_terno_colpo": null,
+    "oro_centrato": false,
+    "timeline": [
+      {
+        "colpo": 1,
+        "concorso": 151,
+        "ora": "12:35",
+        "punti": 2,
+        "ha_oro": false,
+        "estratti_presi": [
+          33,
+          36
+        ]
+      }
+    ],
+    "notifica_colpi_inviati": []
+  },
+  {
+    "id": "sig_144_56",
+    "data": "2026-08-24",
+    "ora": "12:00",
+    "concorso_spia": 144,
+    "spia": 56,
+    "terzina": [
+      30,
+      33,
+      34
+    ],
+    "oro": 33,
+    "power_score": 130.0,
+    "nome_modello": "Consecutivo Stretto 30-33-34",
+    "decina": "30-39",
+    "max_colpi": 5,
+    "stato": "vinto_ambo",
+    "colpi_trascorsi": 5,
+    "max_punti": 2,
+    "primo_ambo_colpo": 5,
+    "primo_terno_colpo": null,
+    "oro_centrato": false,
+    "timeline": [
+      {
+        "colpo": 1,
+        "concorso": 145,
+        "ora": "12:05",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 2,
+        "concorso": 146,
+        "ora": "12:10",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 3,
+        "concorso": 147,
+        "ora": "12:15",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 4,
+        "concorso": 148,
+        "ora": "12:20",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 5,
+        "concorso": 149,
+        "ora": "12:25",
+        "punti": 2,
+        "ha_oro": false,
+        "estratti_presi": [
+          33,
+          34
+        ]
+      }
+    ],
+    "notifica_colpi_inviati": []
+  },
+  {
+    "id": "sig_138_87",
+    "data": "2026-08-24",
+    "ora": "11:30",
+    "concorso_spia": 138,
+    "spia": 87,
+    "terzina": [
+      33,
+      35,
+      36
+    ],
+    "oro": 35,
+    "power_score": 120.0,
+    "nome_modello": "Consecutivo Stretto 33-35-36",
+    "decina": "30-39",
+    "max_colpi": 5,
+    "stato": "concluso_vuoto",
+    "colpi_trascorsi": 5,
+    "max_punti": 1,
+    "primo_ambo_colpo": null,
+    "primo_terno_colpo": null,
+    "oro_centrato": false,
+    "timeline": [
+      {
+        "colpo": 1,
+        "concorso": 139,
+        "ora": "11:35",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          35
+        ]
+      },
+      {
+        "colpo": 2,
+        "concorso": 140,
+        "ora": "11:40",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 3,
+        "concorso": 141,
+        "ora": "11:45",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 4,
+        "concorso": 142,
+        "ora": "11:50",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 5,
+        "concorso": 143,
+        "ora": "11:55",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      }
+    ],
+    "notifica_colpi_inviati": []
+  },
+  {
+    "id": "sig_132_60",
+    "data": "2026-08-24",
+    "ora": "11:00",
+    "concorso_spia": 132,
+    "spia": 60,
+    "terzina": [
+      30,
+      33,
+      34
+    ],
+    "oro": 33,
+    "power_score": 130.0,
+    "nome_modello": "Consecutivo Stretto 30-33-34",
+    "decina": "30-39",
+    "max_colpi": 5,
+    "stato": "vinto_ambo",
+    "colpi_trascorsi": 4,
+    "max_punti": 2,
+    "primo_ambo_colpo": 4,
+    "primo_terno_colpo": null,
+    "oro_centrato": false,
+    "timeline": [
+      {
+        "colpo": 1,
+        "concorso": 133,
+        "ora": "11:05",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          34
+        ]
+      },
+      {
+        "colpo": 2,
+        "concorso": 134,
+        "ora": "11:10",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          34
+        ]
+      },
+      {
+        "colpo": 3,
+        "concorso": 135,
+        "ora": "11:15",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          30
+        ]
+      },
+      {
+        "colpo": 4,
+        "concorso": 136,
+        "ora": "11:20",
+        "punti": 2,
+        "ha_oro": false,
+        "estratti_presi": [
+          30,
+          34
+        ]
+      }
+    ],
+    "notifica_colpi_inviati": []
+  },
+  {
+    "id": "sig_126_66",
+    "data": "2026-08-24",
+    "ora": "10:30",
+    "concorso_spia": 126,
+    "spia": 66,
+    "terzina": [
+      20,
+      22,
+      23
+    ],
+    "oro": 22,
+    "power_score": 120.0,
+    "nome_modello": "Consecutivo Stretto 20-22-23",
+    "decina": "20-29",
+    "max_colpi": 5,
+    "stato": "concluso_vuoto",
+    "colpi_trascorsi": 5,
+    "max_punti": 1,
+    "primo_ambo_colpo": null,
+    "primo_terno_colpo": null,
+    "oro_centrato": false,
+    "timeline": [
+      {
+        "colpo": 1,
+        "concorso": 127,
+        "ora": "10:35",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 2,
+        "concorso": 128,
+        "ora": "10:40",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          23
+        ]
+      },
+      {
+        "colpo": 3,
+        "concorso": 129,
+        "ora": "10:45",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          23
+        ]
+      },
+      {
+        "colpo": 4,
+        "concorso": 130,
+        "ora": "10:50",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          20
+        ]
+      },
+      {
+        "colpo": 5,
+        "concorso": 131,
+        "ora": "10:55",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      }
+    ],
+    "notifica_colpi_inviati": []
+  },
+  {
+    "id": "sig_120_89",
+    "data": "2026-08-24",
+    "ora": "10:00",
+    "concorso_spia": 120,
+    "spia": 89,
+    "terzina": [
+      33,
+      35,
+      36
+    ],
+    "oro": 35,
+    "power_score": 120.0,
+    "nome_modello": "Consecutivo Stretto 33-35-36",
+    "decina": "30-39",
+    "max_colpi": 5,
+    "stato": "concluso_vuoto",
+    "colpi_trascorsi": 5,
+    "max_punti": 0,
+    "primo_ambo_colpo": null,
+    "primo_terno_colpo": null,
+    "oro_centrato": false,
+    "timeline": [
+      {
+        "colpo": 1,
+        "concorso": 121,
+        "ora": "10:05",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 2,
+        "concorso": 122,
+        "ora": "10:10",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 3,
+        "concorso": 123,
+        "ora": "10:15",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 4,
+        "concorso": 124,
+        "ora": "10:20",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 5,
+        "concorso": 125,
+        "ora": "10:25",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      }
+    ],
+    "notifica_colpi_inviati": []
+  },
+  {
+    "id": "sig_114_77",
+    "data": "2026-08-24",
+    "ora": "09:30",
+    "concorso_spia": 114,
+    "spia": 77,
+    "terzina": [
+      33,
+      35,
+      36
+    ],
+    "oro": 35,
+    "power_score": 125.0,
+    "nome_modello": "Consecutivo Stretto 33-35-36",
+    "decina": "30-39",
+    "max_colpi": 5,
+    "stato": "vinto_terno",
+    "colpi_trascorsi": 1,
+    "max_punti": 3,
+    "primo_ambo_colpo": 1,
+    "primo_terno_colpo": 1,
+    "oro_centrato": false,
+    "timeline": [
+      {
+        "colpo": 1,
+        "concorso": 115,
+        "ora": "09:35",
+        "punti": 3,
+        "ha_oro": false,
+        "estratti_presi": [
+          33,
+          35,
+          36
+        ]
+      }
+    ],
+    "notifica_colpi_inviati": []
+  },
+  {
+    "id": "sig_108_77",
+    "data": "2026-08-24",
+    "ora": "09:00",
+    "concorso_spia": 108,
+    "spia": 77,
+    "terzina": [
+      33,
+      35,
+      36
+    ],
+    "oro": 35,
+    "power_score": 115.0,
+    "nome_modello": "Consecutivo Stretto 33-35-36",
+    "decina": "30-39",
+    "max_colpi": 5,
+    "stato": "concluso_vuoto",
+    "colpi_trascorsi": 5,
+    "max_punti": 1,
+    "primo_ambo_colpo": null,
+    "primo_terno_colpo": null,
+    "oro_centrato": true,
+    "timeline": [
+      {
+        "colpo": 1,
+        "concorso": 109,
+        "ora": "09:05",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          36
+        ]
+      },
+      {
+        "colpo": 2,
+        "concorso": 110,
+        "ora": "09:10",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 3,
+        "concorso": 111,
+        "ora": "09:15",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 4,
+        "concorso": 112,
+        "ora": "09:20",
+        "punti": 1,
+        "ha_oro": true,
+        "estratti_presi": [
+          35
+        ]
+      },
+      {
+        "colpo": 5,
+        "concorso": 113,
+        "ora": "09:25",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      }
+    ],
+    "notifica_colpi_inviati": []
+  },
+  {
+    "id": "sig_102_77",
+    "data": "2026-08-24",
+    "ora": "08:30",
+    "concorso_spia": 102,
+    "spia": 77,
+    "terzina": [
+      33,
+      35,
+      36
+    ],
+    "oro": 35,
+    "power_score": 125.0,
+    "nome_modello": "Consecutivo Stretto 33-35-36",
+    "decina": "30-39",
+    "max_colpi": 5,
+    "stato": "concluso_vuoto",
+    "colpi_trascorsi": 5,
+    "max_punti": 1,
+    "primo_ambo_colpo": null,
+    "primo_terno_colpo": null,
+    "oro_centrato": false,
+    "timeline": [
+      {
+        "colpo": 1,
+        "concorso": 103,
+        "ora": "08:35",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 2,
+        "concorso": 104,
+        "ora": "08:40",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          36
+        ]
+      },
+      {
+        "colpo": 3,
+        "concorso": 105,
+        "ora": "08:45",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          33
+        ]
+      },
+      {
+        "colpo": 4,
+        "concorso": 106,
+        "ora": "08:50",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          35
+        ]
+      },
+      {
+        "colpo": 5,
+        "concorso": 107,
+        "ora": "08:55",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          35
+        ]
+      }
+    ],
+    "notifica_colpi_inviati": []
+  },
+  {
+    "id": "sig_96_39",
+    "data": "2026-08-24",
+    "ora": "08:00",
+    "concorso_spia": 96,
+    "spia": 39,
+    "terzina": [
+      33,
+      35,
+      36
+    ],
+    "oro": 35,
+    "power_score": 115.0,
+    "nome_modello": "Consecutivo Stretto 33-35-36",
+    "decina": "30-39",
+    "max_colpi": 5,
+    "stato": "vinto_ambo",
+    "colpi_trascorsi": 5,
+    "max_punti": 2,
+    "primo_ambo_colpo": 5,
+    "primo_terno_colpo": null,
+    "oro_centrato": false,
+    "timeline": [
+      {
+        "colpo": 1,
+        "concorso": 97,
+        "ora": "08:05",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          33
+        ]
+      },
+      {
+        "colpo": 2,
+        "concorso": 98,
+        "ora": "08:10",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          35
+        ]
+      },
+      {
+        "colpo": 3,
+        "concorso": 99,
+        "ora": "08:15",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 4,
+        "concorso": 100,
+        "ora": "08:20",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          35
+        ]
+      },
+      {
+        "colpo": 5,
+        "concorso": 101,
+        "ora": "08:25",
+        "punti": 2,
+        "ha_oro": false,
+        "estratti_presi": [
+          33,
+          35
+        ]
+      }
+    ],
+    "notifica_colpi_inviati": []
+  },
+  {
+    "id": "sig_90_89",
+    "data": "2026-08-24",
+    "ora": "07:30",
+    "concorso_spia": 90,
+    "spia": 89,
+    "terzina": [
+      33,
+      35,
+      36
+    ],
+    "oro": 35,
+    "power_score": 130.0,
+    "nome_modello": "Consecutivo Stretto 33-35-36",
+    "decina": "30-39",
+    "max_colpi": 5,
+    "stato": "vinto_ambo",
+    "colpi_trascorsi": 1,
+    "max_punti": 2,
+    "primo_ambo_colpo": 1,
+    "primo_terno_colpo": null,
+    "oro_centrato": false,
+    "timeline": [
+      {
+        "colpo": 1,
+        "concorso": 91,
+        "ora": "07:35",
+        "punti": 2,
+        "ha_oro": false,
+        "estratti_presi": [
+          33,
+          36
+        ]
+      }
+    ],
+    "notifica_colpi_inviati": []
+  },
+  {
+    "id": "sig_84_36",
+    "data": "2026-08-24",
+    "ora": "07:00",
+    "concorso_spia": 84,
+    "spia": 36,
+    "terzina": [
+      30,
+      33,
+      34
+    ],
+    "oro": 33,
+    "power_score": 130.0,
+    "nome_modello": "Consecutivo Stretto 30-33-34",
+    "decina": "30-39",
+    "max_colpi": 5,
+    "stato": "vinto_ambo",
+    "colpi_trascorsi": 4,
+    "max_punti": 2,
+    "primo_ambo_colpo": 4,
+    "primo_terno_colpo": null,
+    "oro_centrato": false,
+    "timeline": [
+      {
+        "colpo": 1,
+        "concorso": 85,
+        "ora": "07:05",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          33
+        ]
+      },
+      {
+        "colpo": 2,
+        "concorso": 86,
+        "ora": "07:10",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          30
+        ]
+      },
+      {
+        "colpo": 3,
+        "concorso": 87,
+        "ora": "07:15",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          34
+        ]
+      },
+      {
+        "colpo": 4,
+        "concorso": 88,
+        "ora": "07:20",
+        "punti": 2,
+        "ha_oro": false,
+        "estratti_presi": [
+          33,
+          34
+        ]
+      }
+    ],
+    "notifica_colpi_inviati": []
+  },
+  {
+    "id": "sig_78_87",
+    "data": "2026-08-24",
+    "ora": "06:30",
+    "concorso_spia": 78,
+    "spia": 87,
+    "terzina": [
+      33,
+      35,
+      36
+    ],
+    "oro": 35,
+    "power_score": 130.0,
+    "nome_modello": "Consecutivo Stretto 33-35-36",
+    "decina": "30-39",
+    "max_colpi": 5,
+    "stato": "concluso_vuoto",
+    "colpi_trascorsi": 5,
+    "max_punti": 0,
+    "primo_ambo_colpo": null,
+    "primo_terno_colpo": null,
+    "oro_centrato": false,
+    "timeline": [
+      {
+        "colpo": 1,
+        "concorso": 79,
+        "ora": "06:35",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 2,
+        "concorso": 80,
+        "ora": "06:40",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 3,
+        "concorso": 81,
+        "ora": "06:45",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 4,
+        "concorso": 82,
+        "ora": "06:50",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 5,
+        "concorso": 83,
+        "ora": "06:55",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      }
+    ],
+    "notifica_colpi_inviati": []
+  },
+  {
+    "id": "sig_72_89",
+    "data": "2026-08-24",
+    "ora": "06:00",
+    "concorso_spia": 72,
+    "spia": 89,
+    "terzina": [
+      33,
+      35,
+      36
+    ],
+    "oro": 35,
+    "power_score": 120.0,
+    "nome_modello": "Consecutivo Stretto 33-35-36",
+    "decina": "30-39",
+    "max_colpi": 5,
+    "stato": "concluso_vuoto",
+    "colpi_trascorsi": 5,
+    "max_punti": 1,
+    "primo_ambo_colpo": null,
+    "primo_terno_colpo": null,
+    "oro_centrato": false,
+    "timeline": [
+      {
+        "colpo": 1,
+        "concorso": 73,
+        "ora": "06:05",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          36
+        ]
+      },
+      {
+        "colpo": 2,
+        "concorso": 74,
+        "ora": "06:10",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          36
+        ]
+      },
+      {
+        "colpo": 3,
+        "concorso": 75,
+        "ora": "06:15",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 4,
+        "concorso": 76,
+        "ora": "06:20",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          36
+        ]
+      },
+      {
+        "colpo": 5,
+        "concorso": 77,
+        "ora": "06:25",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      }
+    ],
+    "notifica_colpi_inviati": []
+  },
+  {
+    "id": "sig_66_66",
+    "data": "2026-08-24",
+    "ora": "05:30",
+    "concorso_spia": 66,
+    "spia": 66,
+    "terzina": [
+      20,
+      22,
+      23
+    ],
+    "oro": 22,
+    "power_score": 115.0,
+    "nome_modello": "Consecutivo Stretto 20-22-23",
+    "decina": "20-29",
+    "max_colpi": 5,
+    "stato": "concluso_vuoto",
+    "colpi_trascorsi": 5,
+    "max_punti": 1,
+    "primo_ambo_colpo": null,
+    "primo_terno_colpo": null,
+    "oro_centrato": false,
+    "timeline": [
+      {
+        "colpo": 1,
+        "concorso": 67,
+        "ora": "05:35",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 2,
+        "concorso": 68,
+        "ora": "05:40",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 3,
+        "concorso": 69,
+        "ora": "05:45",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          22
+        ]
+      },
+      {
+        "colpo": 4,
+        "concorso": 70,
+        "ora": "05:50",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 5,
+        "concorso": 71,
+        "ora": "05:55",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      }
+    ],
+    "notifica_colpi_inviati": []
+  },
+  {
+    "id": "sig_60_33",
+    "data": "2026-08-24",
+    "ora": "05:00",
+    "concorso_spia": 60,
+    "spia": 33,
+    "terzina": [
+      33,
+      35,
+      36
+    ],
+    "oro": 35,
+    "power_score": 115.0,
+    "nome_modello": "Consecutivo Stretto 33-35-36",
+    "decina": "30-39",
+    "max_colpi": 5,
+    "stato": "concluso_vuoto",
+    "colpi_trascorsi": 5,
+    "max_punti": 1,
+    "primo_ambo_colpo": null,
+    "primo_terno_colpo": null,
+    "oro_centrato": false,
+    "timeline": [
+      {
+        "colpo": 1,
+        "concorso": 61,
+        "ora": "05:05",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 2,
+        "concorso": 62,
+        "ora": "05:10",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          35
+        ]
+      },
+      {
+        "colpo": 3,
+        "concorso": 63,
+        "ora": "05:15",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 4,
+        "concorso": 64,
+        "ora": "05:20",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          35
+        ]
+      },
+      {
+        "colpo": 5,
+        "concorso": 65,
+        "ora": "05:25",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      }
+    ],
+    "notifica_colpi_inviati": []
+  },
+  {
+    "id": "sig_54_44",
+    "data": "2026-08-24",
+    "ora": "04:30",
+    "concorso_spia": 54,
+    "spia": 44,
+    "terzina": [
+      20,
+      22,
+      23
+    ],
+    "oro": 22,
+    "power_score": 120.0,
+    "nome_modello": "Consecutivo Stretto 20-22-23",
+    "decina": "20-29",
+    "max_colpi": 5,
+    "stato": "concluso_vuoto",
+    "colpi_trascorsi": 5,
+    "max_punti": 1,
+    "primo_ambo_colpo": null,
+    "primo_terno_colpo": null,
+    "oro_centrato": false,
+    "timeline": [
+      {
+        "colpo": 1,
+        "concorso": 55,
+        "ora": "04:35",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          22
+        ]
+      },
+      {
+        "colpo": 2,
+        "concorso": 56,
+        "ora": "04:40",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 3,
+        "concorso": 57,
+        "ora": "04:45",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 4,
+        "concorso": 58,
+        "ora": "04:50",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 5,
+        "concorso": 59,
+        "ora": "04:55",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      }
+    ],
+    "notifica_colpi_inviati": []
+  },
+  {
+    "id": "sig_48_77",
+    "data": "2026-08-24",
+    "ora": "04:00",
+    "concorso_spia": 48,
+    "spia": 77,
+    "terzina": [
+      33,
+      35,
+      36
+    ],
+    "oro": 35,
+    "power_score": 120.0,
+    "nome_modello": "Consecutivo Stretto 33-35-36",
+    "decina": "30-39",
+    "max_colpi": 5,
+    "stato": "vinto_ambo",
+    "colpi_trascorsi": 4,
+    "max_punti": 2,
+    "primo_ambo_colpo": 4,
+    "primo_terno_colpo": null,
+    "oro_centrato": false,
+    "timeline": [
+      {
+        "colpo": 1,
+        "concorso": 49,
+        "ora": "04:05",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 2,
+        "concorso": 50,
+        "ora": "04:10",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 3,
+        "concorso": 51,
+        "ora": "04:15",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          36
+        ]
+      },
+      {
+        "colpo": 4,
+        "concorso": 52,
+        "ora": "04:20",
+        "punti": 2,
+        "ha_oro": false,
+        "estratti_presi": [
+          35,
+          36
+        ]
+      }
+    ],
+    "notifica_colpi_inviati": []
+  },
+  {
+    "id": "sig_42_84",
+    "data": "2026-08-24",
+    "ora": "03:30",
+    "concorso_spia": 42,
+    "spia": 84,
+    "terzina": [
+      33,
+      35,
+      36
+    ],
+    "oro": 35,
+    "power_score": 115.0,
+    "nome_modello": "Consecutivo Stretto 33-35-36",
+    "decina": "30-39",
+    "max_colpi": 5,
+    "stato": "vinto_ambo",
+    "colpi_trascorsi": 5,
+    "max_punti": 2,
+    "primo_ambo_colpo": 5,
+    "primo_terno_colpo": null,
+    "oro_centrato": false,
+    "timeline": [
+      {
+        "colpo": 1,
+        "concorso": 43,
+        "ora": "03:35",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 2,
+        "concorso": 44,
+        "ora": "03:40",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 3,
+        "concorso": 45,
+        "ora": "03:45",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 4,
+        "concorso": 46,
+        "ora": "03:50",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          36
+        ]
+      },
+      {
+        "colpo": 5,
+        "concorso": 47,
+        "ora": "03:55",
+        "punti": 2,
+        "ha_oro": false,
+        "estratti_presi": [
+          33,
+          35
+        ]
+      }
+    ],
+    "notifica_colpi_inviati": []
+  },
+  {
+    "id": "sig_36_89",
+    "data": "2026-08-24",
+    "ora": "03:00",
+    "concorso_spia": 36,
+    "spia": 89,
+    "terzina": [
+      33,
+      35,
+      36
+    ],
+    "oro": 35,
+    "power_score": 125.0,
+    "nome_modello": "Consecutivo Stretto 33-35-36",
+    "decina": "30-39",
+    "max_colpi": 5,
+    "stato": "vinto_ambo",
+    "colpi_trascorsi": 1,
+    "max_punti": 2,
+    "primo_ambo_colpo": 1,
+    "primo_terno_colpo": null,
+    "oro_centrato": false,
+    "timeline": [
+      {
+        "colpo": 1,
+        "concorso": 37,
+        "ora": "03:05",
+        "punti": 2,
+        "ha_oro": false,
+        "estratti_presi": [
+          33,
+          35
+        ]
+      }
+    ],
+    "notifica_colpi_inviati": []
+  },
+  {
+    "id": "sig_30_53",
+    "data": "2026-08-24",
+    "ora": "02:30",
+    "concorso_spia": 30,
+    "spia": 53,
+    "terzina": [
+      34,
+      38,
+      39
+    ],
+    "oro": 38,
+    "power_score": 112.0,
+    "nome_modello": "Consecutivo Stretto 34-38-39",
+    "decina": "30-39",
+    "max_colpi": 5,
+    "stato": "vinto_ambo",
+    "colpi_trascorsi": 4,
+    "max_punti": 2,
+    "primo_ambo_colpo": 4,
+    "primo_terno_colpo": null,
+    "oro_centrato": true,
+    "timeline": [
+      {
+        "colpo": 1,
+        "concorso": 31,
+        "ora": "02:35",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          34
+        ]
+      },
+      {
+        "colpo": 2,
+        "concorso": 32,
+        "ora": "02:40",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 3,
+        "concorso": 33,
+        "ora": "02:45",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          39
+        ]
+      },
+      {
+        "colpo": 4,
+        "concorso": 34,
+        "ora": "02:50",
+        "punti": 2,
+        "ha_oro": true,
+        "estratti_presi": [
+          34,
+          38
+        ]
+      }
+    ],
+    "notifica_colpi_inviati": []
+  },
+  {
+    "id": "sig_24_24",
+    "data": "2026-08-24",
+    "ora": "02:00",
+    "concorso_spia": 24,
+    "spia": 24,
+    "terzina": [
+      21,
+      28,
+      29
+    ],
+    "oro": 28,
+    "power_score": 105.0,
+    "nome_modello": "Consecutivo Stretto 21-28-29",
+    "decina": "20-29",
+    "max_colpi": 5,
+    "stato": "concluso_vuoto",
+    "colpi_trascorsi": 5,
+    "max_punti": 1,
+    "primo_ambo_colpo": null,
+    "primo_terno_colpo": null,
+    "oro_centrato": false,
+    "timeline": [
+      {
+        "colpo": 1,
+        "concorso": 25,
+        "ora": "02:05",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 2,
+        "concorso": 26,
+        "ora": "02:10",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          29
+        ]
+      },
+      {
+        "colpo": 3,
+        "concorso": 27,
+        "ora": "02:15",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 4,
+        "concorso": 28,
+        "ora": "02:20",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 5,
+        "concorso": 29,
+        "ora": "02:25",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          29
+        ]
+      }
+    ],
+    "notifica_colpi_inviati": []
+  },
+  {
+    "id": "sig_18_33",
+    "data": "2026-08-24",
+    "ora": "01:30",
+    "concorso_spia": 18,
+    "spia": 33,
+    "terzina": [
+      33,
+      35,
+      36
+    ],
+    "oro": 35,
+    "power_score": 115.0,
+    "nome_modello": "Consecutivo Stretto 33-35-36",
+    "decina": "30-39",
+    "max_colpi": 5,
+    "stato": "vinto_ambo",
+    "colpi_trascorsi": 1,
+    "max_punti": 2,
+    "primo_ambo_colpo": 1,
+    "primo_terno_colpo": null,
+    "oro_centrato": false,
+    "timeline": [
+      {
+        "colpo": 1,
+        "concorso": 19,
+        "ora": "01:35",
+        "punti": 2,
+        "ha_oro": false,
+        "estratti_presi": [
+          33,
+          35
+        ]
+      }
+    ],
+    "notifica_colpi_inviati": []
+  },
+  {
+    "id": "sig_12_66",
+    "data": "2026-08-24",
+    "ora": "01:00",
+    "concorso_spia": 12,
+    "spia": 66,
+    "terzina": [
+      20,
+      22,
+      23
+    ],
+    "oro": 22,
+    "power_score": 120.0,
+    "nome_modello": "Consecutivo Stretto 20-22-23",
+    "decina": "20-29",
+    "max_colpi": 5,
+    "stato": "concluso_vuoto",
+    "colpi_trascorsi": 5,
+    "max_punti": 1,
+    "primo_ambo_colpo": null,
+    "primo_terno_colpo": null,
+    "oro_centrato": false,
+    "timeline": [
+      {
+        "colpo": 1,
+        "concorso": 13,
+        "ora": "01:05",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 2,
+        "concorso": 14,
+        "ora": "01:10",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          22
+        ]
+      },
+      {
+        "colpo": 3,
+        "concorso": 15,
+        "ora": "01:15",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          20
+        ]
+      },
+      {
+        "colpo": 4,
+        "concorso": 16,
+        "ora": "01:20",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 5,
+        "concorso": 17,
+        "ora": "01:25",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      }
+    ],
+    "notifica_colpi_inviati": []
+  },
+  {
+    "id": "sig_6_84",
+    "data": "2026-08-24",
+    "ora": "00:30",
+    "concorso_spia": 6,
+    "spia": 84,
+    "terzina": [
+      33,
+      35,
+      36
+    ],
+    "oro": 35,
+    "power_score": 135.0,
+    "nome_modello": "Consecutivo Stretto 33-35-36",
+    "decina": "30-39",
+    "max_colpi": 5,
+    "stato": "concluso_vuoto",
+    "colpi_trascorsi": 5,
+    "max_punti": 1,
+    "primo_ambo_colpo": null,
+    "primo_terno_colpo": null,
+    "oro_centrato": false,
+    "timeline": [
+      {
+        "colpo": 1,
+        "concorso": 7,
+        "ora": "00:35",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          35
+        ]
+      },
+      {
+        "colpo": 2,
+        "concorso": 8,
+        "ora": "00:40",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          36
+        ]
+      },
+      {
+        "colpo": 3,
+        "concorso": 9,
+        "ora": "00:45",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 4,
+        "concorso": 10,
+        "ora": "00:50",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          36
+        ]
+      },
+      {
+        "colpo": 5,
+        "concorso": 11,
+        "ora": "00:55",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      }
+    ],
+    "notifica_colpi_inviati": []
   }
 ]

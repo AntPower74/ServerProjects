@@ -11,10 +11,16 @@
   <link rel="apple-touch-icon" href="/icons/icon-192.png">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="Indovino 10eLotto">
-
-  <link rel="stylesheet" href="/style.css?v=6">
+  <link rel="stylesheet" href="/style.css?v=7">
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then(function(regs) {
+        for (let r of regs) r.unregister();
+      });
+    }
+  </script>
 </head>
+
 
 <body>
 
@@ -78,7 +84,7 @@
 
         <div class="pronostico-container">
           <div class="spy-badge-box">
-            <span>SPIA SELEZIONATA (30 MIN):</span>
+            <span>🔴 SPIA ATTIVA (PILOTA AUTOMATICO):</span>
             <span class="ball ball-spy" style="width:36px; height:36px; font-size:1.1rem;" id="pronostico-spy-num">--</span>
             <span style="font-size:0.8rem; color:var(--text-muted);">(Score: <span id="pronostico-score" style="color:var(--gold); font-weight:800;">--</span>)</span>
           </div>
@@ -92,11 +98,12 @@
           </div>
 
           <div class="strategy-box">
-            <div style="margin-bottom:4px;">👉 <strong>Numero Oro consigliato:</strong> <span id="pronostico-oro" style="color:var(--gold); font-weight:bold; font-size:1.05rem;">--</span> (facoltativo)</div>
-            <div style="margin-bottom:4px;">👉 <strong>Gestione Colpi:</strong> Segui per <strong>5 estrazioni consecutive</strong> a <strong>1,00 €</strong> a schedina.</div>
-            <div>👉 <strong>Cadenza:</strong> Una nuova Spia viene calcolata esattamente ogni <strong>30 minuti</strong> (alle :00 e :30).</div>
+            <div style="margin-bottom:4px;">👉 <strong>Pilota Automatico:</strong> Appena si vince (Ambo o Terno), la giocata si <strong>chiude subito con profitto</strong> e viene generata una nuova terzina!</div>
+            <div style="margin-bottom:4px;">👉 <strong>Formula Attiva:</strong> <strong>[A, B, B+1]</strong> (Primi due numeri + consecutivo stretto).</div>
+            <div>👉 <strong>Puntata:</strong> <strong>1,00 €</strong> a schedina (senza oro).</div>
           </div>
         </div>
+
 
 
 
@@ -163,15 +170,15 @@
     </section>
 
 
-    <!-- ================= TAB 2: REGISTRO SEGNALI 30 MINUTI ================= -->
+    <!-- ================= TAB 2: STORICO GIOCATE ================= -->
     <section id="tab-laboratorio" class="tab-screen">
       <div class="card">
         <div class="card-title">
-          <span>🧪 REGISTRO SEGNALI 30 MINUTI (5 COLPI)</span>
+          <span>📜 STORICO GIOCATE</span>
           <button class="btn btn-outline" style="width:auto; padding:4px 10px; font-size:0.75rem;" onclick="fetchSignalsData()">🔄 Aggiorna</button>
         </div>
         <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:12px;">
-          Elenco storico di tutte le Spie calcolate ogni 30 minuti con la cronologia esatta dei 5 colpi successivi, spesa, ricavo e vincite realizzate.
+          Registro completo di tutte le giocate pilotate in tempo reale: spesa, vincite, incasso ed evoluzione colpo per colpo.
         </p>
 
         <!-- Riepilogo Finanziario Giornaliero -->
@@ -197,11 +204,11 @@
       </div>
     </section>
 
-    <!-- ================= TAB 3: ARCHIVIO ESTRAZIONI ================= -->
+    <!-- ================= TAB 3: ARCHIVIO CONCORSI ================= -->
     <section id="tab-archivio" class="tab-screen">
       <div class="card">
         <div class="card-title">
-          <span>📜 ARCHIVIO STORICO ESTRAZIONI</span>
+          <span>🏛️ ARCHIVIO ESTRAZIONI</span>
           <span style="font-size:0.8rem; color:var(--text-muted);" id="archivio-count-badge">Caricamento...</span>
         </div>
         
@@ -233,21 +240,24 @@
   <nav class="nav-bottom">
     <div class="nav-item active" data-tab="tab-pronostico" onclick="switchTab('tab-pronostico')">
       <span class="nav-item-icon" style="font-size:1.3rem;">🎯</span>
-      <span>Pronostico 30m</span>
+      <span>Pronostico Live</span>
     </div>
     <div class="nav-item" data-tab="tab-laboratorio" onclick="switchTab('tab-laboratorio')">
-      <span class="nav-item-icon" style="font-size:1.3rem;">🧪</span>
-      <span>Segnali 5 Colpi</span>
+      <span class="nav-item-icon" style="font-size:1.3rem;">📜</span>
+      <span>Storico Giocate</span>
     </div>
     <div class="nav-item" data-tab="tab-archivio" onclick="switchTab('tab-archivio')">
-      <span class="nav-item-icon" style="font-size:1.3rem;">📜</span>
-      <span>Archivio</span>
+      <span class="nav-item-icon" style="font-size:1.3rem;">🏛️</span>
+      <span>Estrazioni</span>
     </div>
   </nav>
 
-  <script src="/app.js?v=17"></script>
+  <script src="/app.js?v=23"></script>
 </body>
 </html>
+
+
+
 
 
 
