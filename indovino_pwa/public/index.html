@@ -3,18 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Indovino 10eLotto - PWA</title>
+  <title>Indovino 10eLotto - PWA 15 Minuti</title>
   <meta name="description" content="Analisi Statistica e Numeri Spia del 10eLotto ogni 5 minuti">
   <meta name="theme-color" content="#f59e0b">
   
-  <!-- PWA manifest & iOS support -->
   <link rel="manifest" href="/manifest.json">
   <link rel="apple-touch-icon" href="/icons/icon-192.png">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Indovino 10eLotto">
 
-  <link rel="stylesheet" href="/style.css?v=3">
+  <link rel="stylesheet" href="/style.css?v=4">
 </head>
 <body>
 
@@ -36,31 +35,21 @@
   <!-- Main Content Container -->
   <main>
 
-    <!-- Selettore Modalità Spia (In Primo Piano in Alto) -->
-    <div style="display:flex; gap:8px; margin-bottom:14px; background:rgba(0,0,0,0.4); padding:6px; border-radius:12px; border:1px solid var(--border-color);">
-      <button id="mode-recent-btn" class="btn btn-outline" style="padding:10px; font-size:0.85rem; flex:1; border-radius:8px;" onclick="setSpyMode('recent')">
-        ⚡ Spia del Momento (3h)
-      </button>
-      <button id="mode-global-btn" class="btn" style="padding:10px; font-size:0.85rem; flex:1; border-radius:8px;" onclick="setSpyMode('global')">
-        🌟 Spia Giornaliera (24h)
-      </button>
-    </div>
-
     <!-- Alert Spia in Diretta -->
     <div id="spy-alert" class="alert-box">
       <span style="font-size:1.8rem">🚨</span>
       <div id="spy-alert-msg" style="font-size:0.88rem; line-height:1.4;"></div>
     </div>
 
-    <!-- ================= TAB 1: PRONOSTICO ================= -->
+    <!-- ================= TAB 1: PRONOSTICO 15 MINUTI ================= -->
     <section id="tab-pronostico" class="tab-screen active">
       
-      <!-- Ultima Estrazione -->
+      <!-- Ultima Estrazione in Tempo Reale -->
       <div class="card">
         <div class="live-banner">
           <div class="live-meta">
             <div>
-              <span style="font-size:0.8rem; color:var(--text-muted);">ULTIMA ESTRAZIONE</span>
+              <span style="font-size:0.75rem; color:var(--text-muted); font-weight:700; letter-spacing:0.05em;">ESTRAZIONE IN DIRETTA</span>
               <div class="concorso-tag" id="latest-concorso-num">#---</div>
             </div>
             <div class="time-tag" id="latest-concorso-time">--:--</div>
@@ -70,444 +59,149 @@
             <!-- 20 palline caricate via js -->
           </div>
 
-          <div style="display:flex; justify-content:space-around; margin-top:8px; font-size:0.85rem;">
+          <div style="display:flex; justify-content:space-around; margin-top:8px; font-size:0.85rem; background:rgba(0,0,0,0.25); padding:8px; border-radius:8px;">
             <div>🥇 Numero Oro: <strong id="latest-oro-val" style="color:var(--gold)">--</strong></div>
             <div>🥈 Doppio Oro: <strong id="latest-doro-val" style="color:#ea580c">--</strong></div>
+            <div>⚖️ Somma: <strong id="latest-sum-val" style="color:var(--cyan)">--</strong></div>
           </div>
         </div>
       </div>
 
-      <!-- Il Pronostico della Miglior Spia -->
+      <!-- Card Principale: LA SPIA DEI 15 MINUTI & IL PRONOSTICO ATTIVO -->
       <div class="card card-gold">
         <div class="card-title">
-          <span>🎯 IL PRONOSTICO DELL'INDOVINO</span>
-          <span style="font-size:0.75rem; background:rgba(16, 185, 129, 0.2); color:var(--green); border:1px solid var(--green); padding:2px 8px; border-radius:12px; font-weight:bold;">🤖 100% AUTOMATICO</span>
+          <span>🎯 SPIA 15 MINUTI & PRONOSTICO ATTIVO</span>
+          <span style="font-size:0.75rem; background:rgba(16, 185, 129, 0.2); color:var(--green); border:1px solid var(--green); padding:2px 8px; border-radius:12px; font-weight:bold;">⚡ LIVE 5 COLPI</span>
         </div>
-
 
         <div class="pronostico-container">
           <div class="spy-badge-box">
-            <span>MIGLIOR NUMERO SPIA:</span>
-            <span class="ball ball-spy" style="width:32px; height:32px;" id="pronostico-spy-num">--</span>
-            <span style="font-size:0.8rem; color:var(--text-muted);">(uscito <span id="pronostico-spy-pct">--%</span>)</span>
+            <span>SPIA SELEZIONATA (15 MIN):</span>
+            <span class="ball ball-spy" style="width:36px; height:36px; font-size:1.1rem;" id="pronostico-spy-num">--</span>
+            <span style="font-size:0.8rem; color:var(--text-muted);">(Score: <span id="pronostico-score" style="color:var(--gold); font-weight:800;">--</span>)</span>
           </div>
 
           <div>
-            <div style="font-size:0.85rem; color:var(--text-muted); margin-bottom:6px;">TERZINA D'ORO CONSIGLIATA:</div>
+            <div style="font-size:0.85rem; color:var(--text-muted); margin-bottom:6px;">TERZINA D'ORO DA GIOCARE (1,00 €):</div>
             <div class="terzina-display" id="pronostico-terzina">
               <!-- 3 palline terzina -->
             </div>
           </div>
 
           <div class="strategy-box">
-            <div>👉 <strong>Numero Oro consigliato:</strong> <span id="pronostico-oro" style="color:var(--gold); font-weight:bold;">--</span></div>
-            <div>👉 <strong>Regola d'Ingresso:</strong> Giocare a colpo (+1) SUBITO dopo l'uscita della Spia.</div>
-            <div>👉 <strong>Take Profit:</strong> Fermarsi al 1° Terno o a +30€/+50€ di utile.</div>
+            <div style="margin-bottom:4px;">👉 <strong>Numero Oro consigliato:</strong> <span id="pronostico-oro" style="color:var(--gold); font-weight:bold; font-size:1.05rem;">--</span></div>
+            <div style="margin-bottom:4px;">👉 <strong>Gestione Colpi:</strong> Segui per massimo <strong>5 concorsi</strong> a 1€ a schedina.</div>
+            <div>👉 <strong>Regola d'Oro:</strong> Fermati subito appena esce il primo <strong>Ambo (+100%)</strong> o <strong>Terno (+40€ netti)</strong>!</div>
           </div>
-
-          <!-- TASTO 1-CLICK REGISTRA SPIA ATTIVA -->
-          <button class="btn btn-gold" style="margin-top:14px; padding:12px; font-size:0.95rem; font-weight:800; display:flex; align-items:center; justify-content:center; gap:8px;" onclick="registraSpiaAttiva1Click()">
-            <span>📌 1-CLICK: REGISTRA QUESTA SPIA PER 20 ESTRAZIONI</span>
-          </button>
         </div>
 
-        <div class="stats-grid">
-          <div class="stat-box">
-            <div class="stat-label">Power Score</div>
-            <div class="stat-value" id="pronostico-score" style="color:var(--gold)">--</div>
+        <!-- Timeline 5 Colpi del Segnale Attivo -->
+        <div style="margin-top:14px; background:rgba(0,0,0,0.3); padding:12px; border-radius:12px; border:1px solid rgba(245,158,11,0.2);">
+          <div style="font-size:0.8rem; font-weight:700; color:var(--gold); margin-bottom:8px; display:flex; justify-content:space-between;">
+            <span>📈 AVANZAMENTO DEI 5 COLPI:</span>
+            <span id="active-spy-colpi-badge" style="color:var(--cyan);">Colpo --/5</span>
           </div>
-          <div class="stat-box">
-            <div class="stat-label">Ambi Generati</div>
-            <div class="stat-value" id="pronostico-ambi" style="color:var(--cyan)">--</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-label">Terni Generati</div>
-            <div class="stat-value" id="pronostico-terni" style="color:var(--green)">--</div>
+          <div id="active-spy-timeline-container" style="display:flex; gap:6px; justify-content:space-between;">
+            <!-- 5 box colpi caricati dinamicamente -->
           </div>
         </div>
       </div>
 
-      <!-- Barra Rapida Registra Qualsiasi Spia al Volo -->
-      <div class="card" style="border:1px solid rgba(245,158,11,0.3); background:rgba(0,0,0,0.3);">
-        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; flex-wrap:wrap;">
-          <span style="font-size:0.85rem; font-weight:700; color:var(--gold);">⚡ Registra al volo un numero appena uscito:</span>
-          <div style="display:flex; gap:6px; align-items:center;">
-            <input type="number" id="quick-spy-input" class="form-input" placeholder="Es: 68" min="1" max="90" style="width:75px; text-align:center; padding:6px; font-size:1rem; font-weight:800;">
-            <button class="btn" style="width:auto; padding:8px 14px; font-size:0.85rem;" onclick="registraSpiaRapida()">
-              🔴 Registra Spia
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Radar Flusso Algoritmo Card -->
+      <!-- Card 2: 🧭 RADAR DEI PARAMETRI STATISTICI -->
       <div class="card" style="border: 1px solid rgba(6, 182, 212, 0.3); background: linear-gradient(145deg, rgba(6, 182, 212, 0.06), rgba(18, 24, 38, 0.95));">
         <div class="card-title">
-          <span>📡 RADAR FLUSSO ALGORITMO (LIVE ENGINE)</span>
-          <span style="font-size:0.75rem; color:var(--cyan); border:1px solid var(--cyan); padding:2px 8px; border-radius:12px;">DECODIFICA REAL-TIME</span>
+          <span>🧭 RADAR STATISTICO DEL CONCORSO</span>
+          <span style="font-size:0.75rem; color:var(--cyan); border:1px solid var(--cyan); padding:2px 8px; border-radius:12px;">DECODIFICA LIVE</span>
+        </div>
+
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-top:8px;">
+          <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:10px;">
+            <div style="font-size:0.72rem; color:var(--text-muted); font-weight:700;">⏰ FASCIA ORARIA:</div>
+            <div id="radar-fascia-oraria" style="font-size:0.95rem; font-weight:800; color:#fff; margin-top:3px;">--</div>
+          </div>
+          <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:10px;">
+            <div style="font-size:0.72rem; color:var(--text-muted); font-weight:700;">🎯 CADENZA CONCORSO:</div>
+            <div id="radar-cadenza-concorso" style="font-size:0.95rem; font-weight:800; color:var(--gold); margin-top:3px;">--</div>
+          </div>
+          <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:10px;">
+            <div style="font-size:0.72rem; color:var(--text-muted); font-weight:700;">🧲 DECINE CALAMITA:</div>
+            <div id="radar-decine-calamita" style="font-size:0.95rem; font-weight:800; color:var(--green); margin-top:3px;">--</div>
+          </div>
+          <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:10px;">
+            <div style="font-size:0.72rem; color:var(--text-muted); font-weight:700;">💥 CATALIZZATORI 1 e 90:</div>
+            <div id="radar-catalizzatori" style="font-size:0.95rem; font-weight:800; color:var(--cyan); margin-top:3px;">--</div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ================= TAB 2: REGISTRO SEGNALI 15 MINUTI ================= -->
+    <section id="tab-laboratorio" class="tab-screen">
+      <div class="card">
+        <div class="card-title">
+          <span>🧪 REGISTRO SEGNALI & TIMELINE 5 COLPI</span>
+          <button class="btn btn-outline" style="width:auto; padding:4px 10px; font-size:0.75rem;" onclick="fetchSignalsData()">🔄 Aggiorna</button>
         </div>
         <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:12px;">
-          Come si sta muovendo il generatore adesso: tracciamento di <strong>Eco</strong> (ripetizioni), <strong>Deriva Laterale</strong> ($\pm 1$) e <strong>Baricentro</strong>.
-        </p>
-
-        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-bottom:12px;">
-          <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:10px;">
-            <div style="font-size:0.75rem; color:var(--cyan); font-weight:700;">🔄 ECO (Persistenza dal Concorso Precedente):</div>
-            <div id="radar-eco-balls" style="display:flex; gap:6px; margin-top:6px;">
-              <!-- Palline eco -->
-            </div>
-          </div>
-          <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:10px;">
-            <div style="font-size:0.75rem; color:#fef08a; font-weight:700;">↔️ DERIVA LATERALE (Numeri adiacenti ±1):</div>
-            <div id="radar-lateral-balls" style="display:flex; gap:6px; margin-top:6px;">
-              <!-- Palline laterali -->
-            </div>
-          </div>
-        </div>
-
-        <!-- Baricentro Gauge -->
-        <div style="background:rgba(0,0,0,0.25); padding:10px; border-radius:10px; margin-bottom:12px;">
-          <div style="font-size:0.75rem; color:var(--text-muted); font-weight:700; margin-bottom:6px;">🎯 BARICENTRO DI CARICO ATTUALE:</div>
-          <div style="display:flex; justify-content:space-between; font-size:0.8rem; margin-bottom:4px;">
-            <span>1-30: <strong id="baricentro-bassa" style="color:var(--cyan)">--%</strong></span>
-            <span>31-60: <strong id="baricentro-media" style="color:var(--gold)">--%</strong></span>
-            <span>61-90: <strong id="baricentro-alta" style="color:var(--green)">--%</strong></span>
-          </div>
-          <div style="display:flex; height:8px; border-radius:4px; overflow:hidden; background:rgba(255,255,255,0.05);">
-            <div id="bar-fill-bassa" style="background:var(--cyan); width:33%;"></div>
-            <div id="bar-fill-media" style="background:var(--gold); width:33%;"></div>
-            <div id="bar-fill-alta" style="background:var(--green); width:34%;"></div>
-          </div>
-        </div>
-
-        <!-- Terzina Algoritmica Fusion -->
-        <div style="border-top:1px solid rgba(255,255,255,0.08); padding-top:12px; display:flex; justify-content:space-between; align-items:center;">
-          <div>
-            <div style="font-size:0.75rem; color:var(--text-muted);">🔮 TERZINA GENERATA DA FLUSSO ALGORITMO:</div>
-            <div id="radar-fusion-terzina" style="font-size:1.2rem; font-weight:800; color:#fef08a; margin-top:2px;">-- - -- - --</div>
-          </div>
-          <button class="btn btn-outline" style="width:auto; padding:6px 12px; font-size:0.75rem;" onclick="copiaTerzinaRadar()">
-            ⚡ Usa nel Simulatore
-          </button>
-        </div>
-      </div>
-        <div style="overflow-x:auto;">
-          <table class="custom-table">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Spia</th>
-                <th>Presenza</th>
-                <th>Terzina Chiamata</th>
-                <th>Ambi/Terni</th>
-                <th>Score</th>
-              </tr>
-            </thead>
-            <tbody id="top-spies-tbody">
-              <!-- Righe caricate via js -->
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-    </section>
-
-
-    <!-- ================= TAB 2: SIMULATORE ================= -->
-    <section id="tab-simulatore" class="tab-screen">
-      <div class="card">
-        <div class="card-title">💰 SIMULATORE DI VINCITA IN TEMPO REALE</div>
-        
-        <div class="form-group">
-          <label class="form-label">Terzina da Testare (3 numeri separati da spazio):</label>
-          <input type="text" id="sim-input" class="form-input" placeholder="Es: 59 74 84">
-        </div>
-
-        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-bottom:14px;">
-          <div>
-            <label class="form-label">Modalità di Gioco:</label>
-            <select id="sim-option" class="form-input">
-              <option value="oro">Con Numero ORO (2,00 €)</option>
-              <option value="base">Base (1,00 €)</option>
-              <option value="doppio_oro">Con Doppio ORO (3,00 €)</option>
-            </select>
-          </div>
-          <div>
-            <label class="form-label">Puntata Base (€):</label>
-            <input type="number" id="sim-bet" class="form-input" value="1.0" min="1" step="0.5">
-          </div>
-        </div>
-
-        <button class="btn" onclick="eseguiSimulazione()">
-          <span>⚡ Calcola Rendimento Oggi</span>
-        </button>
-      </div>
-
-      <!-- Risultati Simulazione -->
-      <div id="sim-results-container" class="card card-gold" style="display:none;">
-        <div class="card-title">📊 BILANCIO FINANZIARIO SU TUTTE LE ESTRAZIONI DI OGGI</div>
-        
-        <div class="stats-grid" style="grid-template-columns: repeat(3, 1fr); margin-bottom:14px;">
-          <div class="stat-box">
-            <div class="stat-label">Spesa Totale</div>
-            <div class="stat-value" id="sim-res-spesa" style="color:var(--text-muted)">0.00 €</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-label">Incasso Lordo</div>
-            <div class="stat-value" id="sim-res-incasso" style="color:var(--cyan)">0.00 €</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-label">Utile Netto</div>
-            <div class="stat-value" id="sim-res-saldo" style="font-size:1.3rem;">0.00 €</div>
-          </div>
-        </div>
-
-        <div class="stats-grid" style="grid-template-columns: repeat(4, 1fr); margin-bottom:16px;">
-          <div class="stat-box">
-            <div class="stat-label">Ambi Totali</div>
-            <div class="stat-value" id="sim-res-ambi">0</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-label">Ambi con Oro</div>
-            <div class="stat-value" id="sim-res-ambi-oro" style="color:var(--gold)">0</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-label">Terni Totali</div>
-            <div class="stat-value" id="sim-res-terni" style="color:var(--green)">0</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-label">Terni con Oro</div>
-            <div class="stat-value" id="sim-res-terni-oro" style="color:#fef08a">0</div>
-          </div>
-        </div>
-
-        <div style="font-size:0.85rem; color:var(--gold); font-weight:700; margin-bottom:8px;">📜 ULTIME VINCITE DELLA GIORNATA:</div>
-        <div style="overflow-x:auto;">
-          <table class="custom-table">
-            <thead>
-              <tr>
-                <th>Concorso</th>
-                <th>Punteggio</th>
-                <th>Incasso</th>
-                <th>Saldo Prog.</th>
-              </tr>
-            </thead>
-            <tbody id="sim-log-tbody">
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ================= TAB 3: ANALIZZATORE SPIA ================= -->
-    <section id="tab-spia" class="tab-screen">
-      <div class="card">
-        <div class="card-title">🔎 RICERCA MANUALE (FACOLTATIVA)</div>
-        <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:10px;">
-          (La migliore spia è già calcolata in automatico nella prima scheda <strong>"🎯 Pronostico"</strong>). Qui puoi toccare un numero per curiosità e vedere come si comporta.
+          Elenco di tutte le Spie calcolate ogni 15 minuti con la cronologia esatta dei 5 colpi successivi e le vincite realizzate.
         </p>
         
-        <div class="ball-matrix" id="matrix-90-container">
-          <!-- 90 palline caricate via js -->
-        </div>
-      </div>
-
-      <div id="spy-detail-loading" style="text-align:center; padding:20px; display:none;">
-        <span style="color:var(--cyan)">Caricamento analisi spia...</span>
-      </div>
-
-      <div id="spy-detail-card" class="card card-gold" style="display:none;">
-        <div class="card-title">
-          <span>📊 REPORT SPIA NUMERO <span id="spy-det-num" style="color:var(--cyan)">--</span></span>
-        </div>
-
-        <div class="stats-grid" style="grid-template-columns: repeat(2, 1fr); margin-bottom:14px;">
-          <div class="stat-box">
-            <div class="stat-label">Presenze Oggi</div>
-            <div class="stat-value" id="spy-det-freq">--</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-label">Numero Oro Chiamato</div>
-            <div class="stat-value" id="spy-det-oro" style="color:var(--gold)">--</div>
-          </div>
-        </div>
-
-        <div style="background:rgba(0,0,0,0.3); padding:12px; border-radius:10px; margin-bottom:14px; text-align:center;">
-          <div style="font-size:0.8rem; color:var(--text-muted);">TERZINA PIÙ ATTIRATA (+1):</div>
-          <div id="spy-det-terzina" style="font-size:1.3rem; font-weight:800; color:#fef08a; margin:4px 0;">--</div>
-          <div style="font-size:0.8rem; color:var(--text-muted);">
-            Ambi generati: <strong id="spy-det-ambi" style="color:var(--cyan)">--</strong> | Terni generati: <strong id="spy-det-terni" style="color:var(--green)">--</strong>
-          </div>
-        </div>
-
-        <div style="font-size:0.85rem; font-weight:700; color:var(--gold); margin-bottom:10px;">
-          📊 CLASSIFICA DEI NUMERI CHIAMATI:
-        </div>
-        <div id="spy-ranking-list">
-          <!-- barre progresso js -->
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ================= TAB 5: LABORATORIO 24/48H ================= -->
-    <section id="tab-laboratorio" class="tab-screen">
-      <!-- Quadro Diagnostico 100 Estrazioni -->
-      <div class="card" style="border: 1px solid rgba(245, 158, 11, 0.4); background: linear-gradient(145deg, rgba(245, 158, 11, 0.06), rgba(18, 24, 38, 0.95));">
-        <div class="card-title">
-          <span>🧠 QUADRO DIAGNOSTICO GIORNALIERO (CAMPIONE 100 CONCORSI)</span>
-          <span id="prof-badge-semaforo" style="font-size:0.75rem; background:rgba(16, 185, 129, 0.2); color:var(--green); border:1px solid var(--green); padding:2px 8px; border-radius:12px; font-weight:bold;">🟢 VERDE</span>
-        </div>
-        <p id="prof-motivo-text" style="font-size:0.8rem; color:var(--text-muted); margin-bottom:12px;">
-          Decodifica della struttura del giorno formata dopo le prime 100 estrazioni.
-        </p>
-
-        <!-- I 5 Numeri Guida del Giorno -->
-        <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:10px; margin-bottom:10px;">
-          <div style="font-size:0.75rem; color:var(--gold); font-weight:700; margin-bottom:6px;">🔥 I 5 NUMERI GUIDA DEL GIORNO (Colonne Portanti):</div>
-          <div id="prof-top5-balls" style="display:flex; gap:8px; flex-wrap:wrap;">
-            <!-- Palline Top 5 -->
-          </div>
-        </div>
-
-        <!-- Canali Decine e Cadenze -->
-        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-bottom:10px;">
-          <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:10px;">
-            <div style="font-size:0.75rem; color:var(--cyan); font-weight:700;">🎯 DECINE PORTANTI:</div>
-            <div id="prof-decine-text" style="font-size:0.85rem; color:#fff; margin-top:4px;">--</div>
-          </div>
-          <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:10px;">
-            <div style="font-size:0.75rem; color:#fef08a; font-weight:700;">⚡ CADENZE PORTANTI:</div>
-            <div id="prof-cadenze-text" style="font-size:0.85rem; color:#fff; margin-top:4px;">--</div>
-          </div>
-        </div>
-
-        <!-- Super-Spia Certificata -->
-        <div style="background:rgba(0,0,0,0.25); border:1px solid rgba(255,255,255,0.06); padding:10px; border-radius:10px;">
-          <div style="font-size:0.75rem; color:var(--text-muted); font-weight:700;">👑 SUPER-SPIA CERTIFICATA DEL GIORNO:</div>
-          <div id="prof-super-spy-text" style="font-size:0.95rem; font-weight:800; color:#fff; margin-top:4px;">
-            Spia <span id="prof-spy-id" style="color:var(--gold);">--</span> ➔ Terzina: <span id="prof-spy-terzina" style="color:#fef08a;">-- - -- - --</span>
-          </div>
-        </div>
-      </div>
-      <!-- Scorecard Riepilogo -->
-      <div class="card card-gold">
-        <div class="card-title">
-          <span>🧪 LABORATORIO VALIDAZIONE 24/48H</span>
-          <span style="font-size:0.75rem; color:var(--gold);">20 ESTRAZIONI</span>
-        </div>
-        <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:14px;">
-          Ogni volta che compare una Spia, il sistema monitora automaticamente i <strong>20 concorsi successivi</strong> per misurare l'affidabilità scientifica del metodo.
-        </p>
-
-        <div class="stats-grid" style="grid-template-columns: repeat(3, 1fr); margin-bottom:12px;">
-          <div class="stat-box">
-            <div class="stat-label">Segnali Rilevati</div>
-            <div class="stat-value" id="lab-tot-segnali">--</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-label">% Successo Ambo</div>
-            <div class="stat-value" id="lab-pct-ambo" style="color:var(--cyan)">--%</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-label">% Successo Terno</div>
-            <div class="stat-value" id="lab-pct-terno" style="color:var(--green)">--%</div>
-          </div>
-        </div>
-
-        <div class="stats-grid" style="grid-template-columns: repeat(3, 1fr); margin-bottom:12px;">
-          <div class="stat-box">
-            <div class="stat-label">Media Colpo Ambo</div>
-            <div class="stat-value" id="lab-colpo-ambo" style="color:var(--cyan)">--° colpo</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-label">Media Colpo Terno</div>
-            <div class="stat-value" id="lab-colpo-terno" style="color:var(--green)">--° colpo</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-label">% Con Numero Oro</div>
-            <div class="stat-value" id="lab-pct-oro" style="color:var(--gold)">--%</div>
-          </div>
-        </div>
-
-        <!-- Bilancio Economico Globale del Laboratorio -->
-        <div style="background:rgba(0,0,0,0.35); border-radius:10px; padding:12px; border:1px solid rgba(245,158,11,0.25);">
-          <div style="font-size:0.78rem; font-weight:700; color:var(--gold); margin-bottom:8px;">💰 BILANCIO ECONOMICO GLOBALE (Strategia Take Profit al 1° colpo utile):</div>
-          <div style="display:flex; justify-content:space-around; text-align:center;">
-            <div>
-              <div style="font-size:0.75rem; color:var(--text-muted);">Spesa Totale</div>
-              <div id="lab-tot-spesa" style="font-size:1.1rem; font-weight:800; color:#fff;">-- €</div>
-            </div>
-            <div>
-              <div style="font-size:0.75rem; color:var(--text-muted);">Incasso Totale</div>
-              <div id="lab-tot-incasso" style="font-size:1.1rem; font-weight:800; color:var(--cyan);">-- €</div>
-            </div>
-            <div>
-              <div style="font-size:0.75rem; color:var(--text-muted);">Utile Netto</div>
-              <div id="lab-tot-netto" style="font-size:1.2rem; font-weight:800;">-- €</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Inserimento Manuale Segnale -->
-      <div class="card">
-        <div class="card-title">➕ INSERISCI SEGNALE PERSONALIZZATO DA MONITORARE</div>
-        <div style="display:grid; grid-template-columns: 1fr 2fr 1fr; gap:8px; margin-bottom:10px;">
-          <div>
-            <label class="form-label">Spia:</label>
-            <input type="number" id="lab-in-spy" class="form-input" placeholder="Es: 30" min="1" max="90">
-          </div>
-          <div>
-            <label class="form-label">Terzina (3 numeri):</label>
-            <input type="text" id="lab-in-terzina" class="form-input" placeholder="Es: 54 68 90">
-          </div>
-          <div>
-            <label class="form-label">Oro:</label>
-            <input type="number" id="lab-in-oro" class="form-input" placeholder="Es: 54" min="1" max="90">
-          </div>
-        </div>
-        <button class="btn btn-outline" onclick="aggiungiSegnaleManuale()">
-          <span>📌 Registra & Monitora per le prossime 20 estrazioni</span>
-        </button>
-      </div>
-
-      <!-- Elenco Segnali Monitorati -->
-      <div class="card">
-        <div class="card-title">📋 REGISTRO STORICO SEGNALI & TIMELINE 20 ESTRAZIONI</div>
         <div id="signals-list-container">
           <!-- Caricato dinamicamente via js -->
         </div>
       </div>
     </section>
 
+    <!-- ================= TAB 3: ARCHIVIO ESTRAZIONI ================= -->
+    <section id="tab-archivio" class="tab-screen">
+      <div class="card">
+        <div class="card-title">
+          <span>📜 ARCHIVIO STORICO ESTRAZIONI</span>
+          <span style="font-size:0.8rem; color:var(--text-muted);" id="archivio-count-badge">Caricamento...</span>
+        </div>
+        
+        <div style="display:flex; gap:8px; margin-bottom:12px;">
+          <input type="text" id="archivio-search-input" class="form-input" placeholder="Cerca concorso (es: 198) o numero..." oninput="filtraArchivio()">
+        </div>
+
+        <div style="overflow-x:auto;">
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th>Concorso</th>
+                <th>Ora</th>
+                <th>20 Numeri Estratti</th>
+                <th>Oro</th>
+              </tr>
+            </thead>
+            <tbody id="archivio-tbody">
+              <!-- Righe caricate via js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <!-- Bottom Navigation Bar -->
+  <!-- Bottom Navigation Bar a 3 Schede Essenziali -->
   <nav class="nav-bottom">
     <div class="nav-item active" data-tab="tab-pronostico" onclick="switchTab('tab-pronostico')">
-      <span class="nav-item-icon">🎯</span>
-      <span>Pronostico</span>
+      <span class="nav-item-icon" style="font-size:1.3rem;">🎯</span>
+      <span>Pronostico 15m</span>
     </div>
     <div class="nav-item" data-tab="tab-laboratorio" onclick="switchTab('tab-laboratorio')">
-      <span class="nav-item-icon">🧪</span>
-      <span>Test 24/48h</span>
-    </div>
-    <div class="nav-item" data-tab="tab-simulatore" onclick="switchTab('tab-simulatore')">
-      <span class="nav-item-icon">💰</span>
-      <span>Simulatore</span>
-    </div>
-    <div class="nav-item" data-tab="tab-spia" onclick="switchTab('tab-spia')">
-      <span class="nav-item-icon">🔎</span>
-      <span>Spie 1-90</span>
+      <span class="nav-item-icon" style="font-size:1.3rem;">🧪</span>
+      <span>Segnali 5 Colpi</span>
     </div>
     <div class="nav-item" data-tab="tab-archivio" onclick="switchTab('tab-archivio')">
-      <span class="nav-item-icon">📜</span>
+      <span class="nav-item-icon" style="font-size:1.3rem;">📜</span>
       <span>Archivio</span>
     </div>
   </nav>
 
-  <script src="/app.js?v=3"></script>
+  <script src="/app.js?v=4"></script>
 </body>
 </html>
+

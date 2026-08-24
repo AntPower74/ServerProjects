@@ -1,37 +1,18 @@
 // Inizializzazione PWA & State
 let appData = null;
+let signalsData = null;
 let currentTab = 'tab-pronostico';
-let spyMode = 'global'; // Di default 'global' (Spia Giornaliera)
 let lastConcorsoNum = null;
 let currentClientBuild = null;
+let lastRenderedJson = '';
+let lastSignalsJson = '';
 
 // Registrazione Service Worker senza reload forzato
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('/sw.js').catch(err => console.log('SW error:', err));
 }
 
-
-function setSpyMode(mode) {
-  spyMode = mode;
-  const recentBtn = document.getElementById('mode-recent-btn');
-  const globalBtn = document.getElementById('mode-global-btn');
-  
-  if (recentBtn && globalBtn) {
-    if (mode === 'recent') {
-      recentBtn.className = 'btn';
-      globalBtn.className = 'btn btn-outline';
-    } else {
-      recentBtn.className = 'btn btn-outline';
-      globalBtn.className = 'btn';
-    }
-  }
-  
-  if (appData) {
-    renderDashboard(appData);
-  }
-}
-
-// Navigazione a Schede
+// Navigazione a Schede (3 Schede Essenziali)
 function switchTab(tabId) {
   currentTab = tabId;
   document.querySelectorAll('.tab-screen').forEach(el => el.classList.remove('active'));
@@ -68,17 +49,15 @@ function updateCountdown() {
     timerEl.textContent = `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
   }
 
-  // Interroga il server puntualmente allo scoccare della nuova estrazione, non ogni secondo
+  // Interroga il server allo scoccare esatto dell'estrazione
   if (diffSec === 299 || diffSec === 290) {
     fetchLiveData(true);
+    fetchSignalsData();
   }
 }
 setInterval(updateCountdown, 1000);
 
-let lastRenderedJson = '';
-let lastSignalsJson = '';
-
-// Caricamento Dati Principali con Diffing per non azzerare lo scroll
+// Caricamento Dati Principali con Diffing
 async function fetchLiveData(force = false) {
   try {
     const res = await fetch('/api/data?t=' + Date.now());
@@ -88,166 +67,96 @@ async function fetchLiveData(force = false) {
 
       const dataSignature = JSON.stringify({
         c: data.latest_draw ? data.latest_draw.concorso : null,
-        mode: spyMode,
-        best: data.best_spy ? data.best_spy.spy : null,
-        recent: data.recent_spy ? data.recent_spy.spy : null
+        best: data.best_spy ? data.best_spy.spy : null
       });
 
       if (force || dataSignature !== lastRenderedJson) {
         lastRenderedJson = dataSignature;
         if (data.latest_draw && lastConcorsoNum !== data.latest_draw.concorso) {
           lastConcorsoNum = data.latest_draw.concorso;
-          console.log(`📢 Nuova estrazione arrivata: #${lastConcorsoNum} ore ${data.latest_draw.ora}`);
         }
         appData = data;
         renderDashboard(data);
       }
 
-      if (currentTab === 'tab-laboratorio') {
-        fetchSignalsData();
-      }
+      fetchSignalsData();
     }
   } catch (err) {
     console.error('Errore nel recupero dati:', err);
   }
 }
 
-
-// Render Dashboard & Pronostico
+// Render Dashboard & Pronostico 15 Minuti
 function renderDashboard(data) {
-  // Concorso info
-  const countEl = document.getElementById('total-draws-count');
-  if (countEl) countEl.textContent = data.total_draws;
-
   const latest = data.latest_draw;
-  if (latest) {
-    document.getElementById('latest-concorso-num').textContent = `#${latest.concorso}`;
-    document.getElementById('latest-concorso-time').textContent = latest.ora;
-    
-    // Palline estratti
-    const ballsCont = document.getElementById('latest-draw-balls');
-    ballsCont.innerHTML = '';
-    latest.numeri.forEach(num => {
-      const b = document.createElement('div');
-      b.className = 'ball';
-      if (num === latest.oro) b.classList.add('ball-oro');
-      else if (num === latest.doppio_oro) b.classList.add('ball-doppio-oro');
-      b.textContent = num.toString().padStart(2, '0');
-      ballsCont.appendChild(b);
-    });
+  if (!latest) return;
 
-    document.getElementById('latest-oro-val').textContent = latest.oro || '--';
-    document.getElementById('latest-doro-val').textContent = latest.doppio_oro || '--';
-
-    // Alert Spia uscito
-    const bestSpy = data.best_spy;
-    if (bestSpy && latest.numeri.includes(bestSpy.spy)) {
-      const alertBox = document.getElementById('spy-alert');
-      const alertMsg = document.getElementById('spy-alert-msg');
-      alertBox.classList.add('active');
-      const t = bestSpy.top3;
-      alertMsg.innerHTML = `<strong>ALLERTA SPIA ${bestSpy.spy}!</strong> È uscita la spia regina! Gioca subito al concorso #${latest.concorso+1} la terzina: <strong style="color:#fef08a">${t[0]}-${t[1]}-${t[2]}</strong> (Oro: ${bestSpy.top_oro})`;
-    } else {
-      document.getElementById('spy-alert').classList.remove('active');
-    }
-  }
-
-  // Pronostico Sezione
-  const activeSpy = (spyMode === 'recent' && data.recent_spy) ? data.recent_spy : data.best_spy;
+  // 1. Estrazione Live
+  document.getElementById('latest-concorso-num').textContent = `#${latest.concorso}`;
+  document.getElementById('latest-concorso-time').textContent = latest.ora;
   
-  if (latest && activeSpy) {
-    if (latest.numeri.includes(activeSpy.spy)) {
-      const alertBox = document.getElementById('spy-alert');
-      const alertMsg = document.getElementById('spy-alert-msg');
-      alertBox.classList.add('active');
-      const t = activeSpy.top3;
-      alertMsg.innerHTML = `<strong>ALLERTA SPIA ${activeSpy.spy}!</strong> È uscita la spia attiva! Gioca subito al concorso #${latest.concorso+1} la terzina: <strong style="color:#fef08a">${t[0]}-${t[1]}-${t[2]}</strong> (Oro: ${activeSpy.top_oro})`;
-    } else {
-      document.getElementById('spy-alert').classList.remove('active');
-    }
+  // Palline estratti
+  const ballsCont = document.getElementById('latest-draw-balls');
+  ballsCont.innerHTML = '';
+  latest.numeri.forEach(num => {
+    const b = document.createElement('div');
+    b.className = 'ball';
+    if (num === latest.oro) b.classList.add('ball-oro');
+    else if (num === latest.doppio_oro) b.classList.add('ball-doppio-oro');
+    b.textContent = num.toString().padStart(2, '0');
+    ballsCont.appendChild(b);
+  });
+
+  document.getElementById('latest-oro-val').textContent = latest.oro || '--';
+  document.getElementById('latest-doro-val').textContent = latest.doppio_oro || '--';
+
+  // Somma dei 20 numeri
+  const sumTot = latest.numeri.reduce((a, b) => a + b, 0);
+  const sumEl = document.getElementById('latest-sum-val');
+  if (sumEl) {
+    sumEl.textContent = `${sumTot} (${sumTot < 850 ? 'Bassa ➔ Spinta 20-40' : (sumTot > 970 ? 'Alta' : 'Bilanciata')})`;
   }
 
-  if (activeSpy) {
-    const labelBox = document.querySelector('.spy-badge-box span');
-    if (labelBox) {
-      labelBox.textContent = (spyMode === 'recent') ? 'SPIA DEL MOMENTO (3 Ore):' : 'MIGLIOR SPIA GIORNALIERA:';
-    }
-    document.getElementById('pronostico-spy-num').textContent = activeSpy.spy.toString().padStart(2, '0');
-    document.getElementById('pronostico-spy-pct').textContent = `${activeSpy.pct_presence}%`;
-    
-    const terzinaCont = document.getElementById('pronostico-terzina');
-    terzinaCont.innerHTML = '';
-    activeSpy.top3.forEach(num => {
-      const b = document.createElement('div');
-      b.className = 'ball ball-large ball-oro';
-      b.textContent = num.toString().padStart(2, '0');
-      terzinaCont.appendChild(b);
-    });
-
-    document.getElementById('pronostico-oro').textContent = (activeSpy.top_oro || activeSpy.top3[0]).toString().padStart(2, '0');
-    document.getElementById('pronostico-score').textContent = activeSpy.score;
-    document.getElementById('pronostico-ambi').textContent = activeSpy.ambi_post;
-    document.getElementById('pronostico-terni').textContent = activeSpy.terni_post;
-
-    // Popola anche l'input del simulatore
-    const simInput = document.getElementById('sim-input');
-    if (simInput) {
-      simInput.value = activeSpy.top3.join(' ');
-    }
+  // 2. Radar Parametri Statistici
+  const hour = parseInt(latest.ora.split(':')[0], 10);
+  const isOroHour = (hour === 13 || hour === 17 || hour === 23);
+  const fasciaEl = document.getElementById('radar-fascia-oraria');
+  if (fasciaEl) {
+    fasciaEl.innerHTML = isOroHour 
+      ? `🔥 Ore ${hour}:00 <span style="color:var(--gold); font-size:0.8rem;">(ORA D'ORO 38.4%)</span>` 
+      : `⏱ Ore ${latest.ora} (Fascia Normale)`;
   }
 
-  // Radar Flusso Algoritmo Render
-  if (data.radar) {
-    const r = data.radar;
-    // Eco balls
-    const ecoCont = document.getElementById('radar-eco-balls');
-    if (ecoCont && r.eco_candidati) {
-      ecoCont.innerHTML = '';
-      r.eco_candidati.forEach(num => {
-        const b = document.createElement('span');
-        b.className = 'ball';
-        b.style.cssText = 'width:28px; height:28px; font-size:0.8rem; display:inline-flex; border-color:var(--cyan);';
-        b.textContent = num.toString().padStart(2, '0');
-        ecoCont.appendChild(b);
-      });
-    }
-
-    // Lateral balls
-    const latCont = document.getElementById('radar-lateral-balls');
-    if (latCont && r.laterali_candidati) {
-      latCont.innerHTML = '';
-      r.laterali_candidati.forEach(num => {
-        const b = document.createElement('span');
-        b.className = 'ball';
-        b.style.cssText = 'width:28px; height:28px; font-size:0.8rem; display:inline-flex; border-color:#fef08a;';
-        b.textContent = num.toString().padStart(2, '0');
-        latCont.appendChild(b);
-      });
-    }
-
-    // Baricentro
-    if (r.baricentro) {
-      document.getElementById('baricentro-bassa').textContent = `${r.baricentro.bassa_1_30}%`;
-      document.getElementById('baricentro-media').textContent = `${r.baricentro.media_31_60}%`;
-      document.getElementById('baricentro-alta').textContent = `${r.baricentro.alta_61_90}%`;
-
-      document.getElementById('bar-fill-bassa').style.width = `${r.baricentro.bassa_1_30}%`;
-      document.getElementById('bar-fill-media').style.width = `${r.baricentro.media_31_60}%`;
-      document.getElementById('bar-fill-alta').style.width = `${r.baricentro.alta_61_90}%`;
-    }
-
-    // Terzina flow
-    if (r.terzina_flow) {
-      document.getElementById('radar-fusion-terzina').textContent = r.terzina_flow.map(x => x.toString().padStart(2, '0')).join(' - ');
-    }
+  const cadenza = latest.concorso % 10;
+  const cadenzaEl = document.getElementById('radar-cadenza-concorso');
+  if (cadenzaEl) {
+    let cadNote = 'Normale';
+    if (cadenza === 7) cadNote = '🏆 PICCO MASSIMO (37.7%)';
+    else if (cadenza === 4 || cadenza === 5) cadNote = '🟢 Alta (36.0%)';
+    else if (cadenza === 1 || cadenza === 6) cadNote = '⚪ Bassa (30.7%)';
+    cadenzaEl.innerHTML = `Cadenza #${cadenza} ➔ <span style="font-size:0.8rem;">${cadNote}</span>`;
   }
 
-  // Profiler 100 Estrazioni Render
-  if (data.profiler_100) {
-    const p = data.profiler_100;
-    const semBadge = document.getElementById('prof-badge-semaforo');
-    const semMotivo = document.getElementById('prof-motivo-text');
-    
+  // Decine Calamita (20-29 e 70-79)
+  const d20 = latest.numeri.filter(n => n >= 20 && n <= 29).length;
+  const d70 = latest.numeri.filter(n => n >= 70 && n <= 79).length;
+  const decineEl = document.getElementById('radar-decine-calamita');
+  if (decineEl) {
+    decineEl.innerHTML = `Decina 20: <strong>${d20}</strong> | Decina 70: <strong>${d70}</strong>`;
+  }
+
+  // Catalizzatori 1 e 90
+  const has1 = latest.numeri.includes(1);
+  const has90 = latest.numeri.includes(90);
+  const catEl = document.getElementById('radar-catalizzatori');
+  if (catEl) {
+    if (has1 && has90) catEl.innerHTML = '🌟 <strong>1 e 90 Presenti Insieme!</strong> (+49.6%)';
+    else if (has1) catEl.innerHTML = '🟢 <strong>Numero 1 Presente</strong> (Innesco)';
+    else if (has90) catEl.innerHTML = '🔵 <strong>Numero 90 Presente</strong> (Reset 20-40)';
+    else catEl.innerHTML = '⚪ Assenti';
+  }
+}
+
     if (semBadge && p.semaforo) {
       if (p.semaforo === 'VERDE') {
         semBadge.textContent = '🟢 VERDE (ALTA REGOLARITÀ)';
@@ -323,176 +232,12 @@ function copiaTerzinaRadar() {
   }
 }
 
-// Simulatore
-async function eseguiSimulazione() {
-  const inputStr = document.getElementById('sim-input').value.trim();
-  const option = document.getElementById('sim-option').value;
-  const bet = parseFloat(document.getElementById('sim-bet').value) || 1.0;
-
-  const nums = inputStr.split(/\s+/).map(x => parseInt(x, 10)).filter(x => !isNaN(x) && x >= 1 && x <= 90);
-  if (nums.length !== 3) {
-    alert('Inserisci esattamente 3 numeri validi compresi tra 1 e 90 (es: 59 74 84)');
-    return;
-  }
-
-  try {
-    const res = await fetch('/api/simulate', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ numbers: nums, option: option, bet: bet })
-    });
-    const result = await res.json();
-    renderSimResult(result);
-  } catch (err) {
-    console.error('Errore simulazione:', err);
-  }
-}
-
-function renderSimResult(res) {
-  const cont = document.getElementById('sim-results-container');
-  cont.style.display = 'block';
-
-  document.getElementById('sim-res-spesa').textContent = `${res.spesa.toFixed(2)} €`;
-  document.getElementById('sim-res-incasso').textContent = `${res.incasso.toFixed(2)} €`;
-  
-  const saldoEl = document.getElementById('sim-res-saldo');
-  saldoEl.textContent = `${res.saldo >= 0 ? '+' : ''}${res.saldo.toFixed(2)} €`;
-  saldoEl.style.color = res.saldo >= 0 ? 'var(--green)' : 'var(--red)';
-
-  document.getElementById('sim-res-ambi').textContent = res.ambi;
-  document.getElementById('sim-res-ambi-oro').textContent = res.ambi_oro;
-  document.getElementById('sim-res-terni').textContent = res.terni;
-  document.getElementById('sim-res-terni-oro').textContent = res.terni_oro;
-
-  // Log vincite
-  const logCont = document.getElementById('sim-log-tbody');
-  logCont.innerHTML = '';
-  if (res.log && res.log.length > 0) {
-    res.log.slice(0, 10).forEach(item => {
-      const tr = document.createElement('tr');
-      tr.innerHTML = `
-        <td>#${item.concorso} (${item.ora})</td>
-        <td><strong>${item.punti} Punti</strong> ${item.oro ? '<span style="color:var(--gold); font-weight:bold;">[ORO]</span>' : ''}</td>
-        <td style="color:var(--green)">+${item.vinto.toFixed(2)} €</td>
-        <td>${item.saldo_progressivo >= 0 ? '+' : ''}${item.saldo_progressivo.toFixed(2)} €</td>
-      `;
-      logCont.appendChild(tr);
-    });
-  } else {
-    logCont.innerHTML = '<tr><td colspan="4" style="text-align:center; color:var(--text-muted);">Nessuna vincita registrata oggi per questa combinazione.</td></tr>';
-  }
-}
-
-// Matrice 90 Numeri Spia
-function generaMatriceSpia() {
-  const cont = document.getElementById('matrix-90-container');
-  cont.innerHTML = '';
-  for (let i = 1; i <= 90; i++) {
-    const b = document.createElement('div');
-    b.className = 'matrix-ball';
-    b.textContent = i.toString().padStart(2, '0');
-    b.onclick = () => selectSpyFromMatrix(i);
-    b.id = `matrix-ball-${i}`;
-    cont.appendChild(b);
-  }
-}
-
-async function selectSpyFromMatrix(spyNum) {
-  document.querySelectorAll('.matrix-ball').forEach(el => el.classList.remove('selected'));
-  const target = document.getElementById(`matrix-ball-${spyNum}`);
-  if (target) target.classList.add('selected');
-
-  document.getElementById('spy-detail-loading').style.display = 'block';
-  document.getElementById('spy-detail-card').style.display = 'none';
-
-  try {
-    const res = await fetch(`/api/spy?num=${spyNum}`);
-    const spyData = await res.json();
-    renderSpyDetail(spyData);
-  } catch (e) {
-    console.error(e);
-  } finally {
-    document.getElementById('spy-detail-loading').style.display = 'none';
-  }
-}
-
-function renderSpyDetail(data) {
-  if (!data || !data.spy) {
-    alert('Nessun dato per questo numero oggi');
-    return;
-  }
-  const card = document.getElementById('spy-detail-card');
-  card.style.display = 'block';
-
-  document.getElementById('spy-det-num').textContent = data.spy.toString().padStart(2, '0');
-  document.getElementById('spy-det-freq').textContent = `${data.freq} volte (${data.pct_presence}%)`;
-  document.getElementById('spy-det-terzina').textContent = data.top3.join(' - ');
-  document.getElementById('spy-det-oro').textContent = data.top_oro || '--';
-  document.getElementById('spy-det-ambi').textContent = data.ambi_post;
-  document.getElementById('spy-det-terni').textContent = data.terni_post;
-
-  const histCont = document.getElementById('spy-ranking-list');
-  histCont.innerHTML = '';
-  data.ranking_post.forEach(item => {
-    const row = document.createElement('div');
-    row.style.marginBottom = '8px';
-    row.innerHTML = `
-      <div style="display:flex; justify-content:space-between; font-size:0.85rem;">
-        <span>Numero <strong style="color:var(--cyan)">${item.num.toString().padStart(2, '0')}</strong></span>
-        <span>${item.count} uscite (<strong>${item.pct}%</strong>)</span>
-      </div>
-      <div class="progress-bar-container">
-        <div class="progress-bar-fill" style="width: ${Math.min(100, item.pct * 2.5)}%;"></div>
-      </div>
-    `;
-    histCont.appendChild(row);
-  });
-}
-
-// Archivio Completo
-async function caricaArchivioCompleto() {
-  try {
-    const res = await fetch('/api/all_draws');
-    const allDraws = await res.json();
-    const tbody = document.getElementById('archivio-tbody');
-    tbody.innerHTML = '';
-
-    allDraws.forEach(d => {
-      const tr = document.createElement('tr');
-      const ballsHtml = d.numeri.map(n => {
-        let cls = 'ball';
-        if (n === d.oro) cls += ' ball-oro';
-        else if (n === d.doppio_oro) cls += ' ball-doppio-oro';
-        return `<span class="${cls}" style="width:24px; height:24px; font-size:0.75rem; display:inline-flex; margin:1px;">${n.toString().padStart(2,'0')}</span>`;
-      }).join(' ');
-
-      tr.innerHTML = `
-        <td><strong>#${d.concorso}</strong></td>
-        <td>${d.ora}</td>
-        <td><div style="display:flex; flex-wrap:wrap; max-width:480px;">${ballsHtml}</div></td>
-        <td><strong style="color:var(--gold)">${d.oro || '--'}</strong></td>
-      `;
-      tbody.appendChild(tr);
-    });
-  } catch (e) {
-    console.error(e);
-  }
-}
-
-// Avvio applicazione
-document.addEventListener('DOMContentLoaded', () => {
-  generaMatriceSpia();
-  fetchLiveData();
-  setInterval(fetchLiveData, 15000); // refresh ogni 15s
-  selectSpyFromMatrix(24); // default spia 24
-});
-
-// ================= LABORATORIO 24/48H SEGNALI =================
-
+// Caricamento e Render dei Segnali 15 Minuti
 async function fetchSignalsData() {
   try {
-    const res = await fetch('/api/signals');
+    const res = await fetch('/api/signals?t=' + Date.now());
     const data = await res.json();
+    signalsData = data;
     renderSignalsData(data);
   } catch (err) {
     console.error('Errore recupero segnali:', err);
@@ -500,45 +245,192 @@ async function fetchSignalsData() {
 }
 
 function renderSignalsData(data) {
-  if (!data || !data.stats) return;
-  const s = data.stats;
+  if (!data) return;
+  const sigs = data.signals || [];
 
-  document.getElementById('lab-tot-segnali').textContent = s.totale_segnali || 0;
-  document.getElementById('lab-pct-ambo').textContent = `${s.pct_successo_ambo || 0}%`;
-  document.getElementById('lab-pct-terno').textContent = `${s.pct_successo_terno || 0}%`;
-  document.getElementById('lab-colpo-ambo').textContent = `${s.media_colpo_ambo || '--'}° colpo`;
-  document.getElementById('lab-colpo-terno').textContent = `${s.media_colpo_terno || '--'}° colpo`;
-  document.getElementById('lab-pct-oro').textContent = `${s.pct_con_oro || 0}%`;
+  // 1. Popola la Card Principale del Pronostico 15 Minuti con il segnale attivo più recente
+  const activeSig = sigs.length > 0 ? sigs[0] : null;
+  if (activeSig) {
+    document.getElementById('pronostico-spy-num').textContent = activeSig.spia.toString().padStart(2, '0');
+    document.getElementById('pronostico-score').textContent = activeSig.power_score || 93;
+    
+    // Terzina
+    const terzinaCont = document.getElementById('pronostico-terzina');
+    terzinaCont.innerHTML = '';
+    activeSig.terzina.forEach(num => {
+      const b = document.createElement('div');
+      b.className = 'ball ball-large ball-oro';
+      b.textContent = num.toString().padStart(2, '0');
+      terzinaCont.appendChild(b);
+    });
 
-  // Financial totals (Take profit mode)
-  if (document.getElementById('lab-tot-spesa')) {
-    document.getElementById('lab-tot-spesa').textContent = `${s.totale_spesa_tp || 0} €`;
-    document.getElementById('lab-tot-incasso').textContent = `${s.totale_incasso_tp || 0} €`;
-    const netEl = document.getElementById('lab-tot-netto');
-    const netVal = s.saldo_netto_tp || 0;
-    netEl.textContent = `${netVal >= 0 ? '+' : ''}${netVal.toFixed(2)} €`;
-    netEl.style.color = netVal >= 0 ? 'var(--green)' : 'var(--red)';
+    document.getElementById('pronostico-oro').textContent = (activeSig.oro || activeSig.terzina[0]).toString().padStart(2, '0');
+
+    // Badge Colpi
+    const badgeEl = document.getElementById('active-spy-colpi-badge');
+    if (activeSig.stato === 'vinto_terno') {
+      badgeEl.innerHTML = `<strong style="color:var(--green)">🏆 TERNO VINTO al Colpo ${activeSig.primo_terno_colpo || 1}!</strong>`;
+    } else if (activeSig.stato === 'vinto_ambo' || activeSig.max_punti >= 2) {
+      badgeEl.innerHTML = `<strong style="color:var(--green)">✅ AMBO VINTO al Colpo ${activeSig.primo_ambo_colpo || 1}!</strong>`;
+    } else {
+      badgeEl.innerHTML = `Colpo ${activeSig.colpi_trascorsi}/5 in corso`;
+    }
+
+    // Timeline 5 Colpi
+    const timelineCont = document.getElementById('active-spy-timeline-container');
+    timelineCont.innerHTML = '';
+    for (let c = 1; c <= 5; c++) {
+      const box = document.createElement('div');
+      box.style.cssText = 'flex:1; background:rgba(0,0,0,0.4); padding:6px; border-radius:8px; text-align:center; border:1px solid rgba(255,255,255,0.08);';
+      
+      const tItem = (activeSig.timeline || []).find(x => x.colpo === c);
+      if (tItem) {
+        let ptsColor = 'var(--text-muted)';
+        let ptsText = `${tItem.punti} pt`;
+        if (tItem.punti === 3) {
+          ptsColor = 'var(--green)';
+          ptsText = '🏆 TERNO!';
+          box.style.borderColor = 'var(--green)';
+          box.style.background = 'rgba(16,185,129,0.15)';
+        } else if (tItem.punti === 2) {
+          ptsColor = 'var(--cyan)';
+          ptsText = '✅ AMBO!';
+          box.style.borderColor = 'var(--cyan)';
+          box.style.background = 'rgba(6,182,212,0.15)';
+        } else if (tItem.punti === 1) {
+          ptsColor = '#fff';
+          ptsText = `1 pt [${tItem.presi.join(',')}]`;
+        }
+
+        box.innerHTML = `
+          <div style="font-size:0.68rem; color:var(--text-muted);">Colpo ${c}</div>
+          <div style="font-size:0.75rem; font-weight:800; color:${ptsColor}; margin-top:2px;">${ptsText}</div>
+          <div style="font-size:0.65rem; color:var(--text-muted);">#${tItem.concorso}</div>
+        `;
+      } else {
+        box.innerHTML = `
+          <div style="font-size:0.68rem; color:var(--text-muted);">Colpo ${c}</div>
+          <div style="font-size:0.75rem; font-weight:700; color:rgba(255,255,255,0.3); margin-top:2px;">⏳ Attesa</div>
+        `;
+      }
+      timelineCont.appendChild(box);
+    }
   }
 
-  const signalsSignature = JSON.stringify((data.signals || []).slice(0, 30).map(x => ({
-    id: x.id,
-    colpi: x.colpi_trascorsi,
-    pts: x.max_punti,
-    stato: x.stato
-  })));
+  // 2. Popola la Scheda 2 (Registro Segnali 5 Colpi)
+  const cont = document.getElementById('signals-list-container');
+  if (!cont) return;
 
-  if (signalsSignature === lastSignalsJson) {
-    return;
-  }
+  const signalsSignature = JSON.stringify(sigs.map(x => ({ id: x.id, colpi: x.colpi_trascorsi, pts: x.max_punti, stato: x.stato })));
+  if (signalsSignature === lastSignalsJson) return;
   lastSignalsJson = signalsSignature;
 
-  const cont = document.getElementById('signals-list-container');
   cont.innerHTML = '';
-
-  if (!data.signals || data.signals.length === 0) {
-    cont.innerHTML = '<div style="text-align:center; padding:20px; color:var(--text-muted);">Nessun segnale ancora registrato.</div>';
+  if (sigs.length === 0) {
+    cont.innerHTML = '<div style="text-align:center; padding:20px; color:var(--text-muted);">Nessun segnale ancora registrato per oggi.</div>';
     return;
   }
+
+  sigs.forEach(s => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.style.marginBottom = '12px';
+
+    let statoBadge = '<span style="color:var(--cyan); font-weight:bold;">⏳ In Corso</span>';
+    if (s.stato === 'vinto_terno') statoBadge = '<span style="color:var(--green); font-weight:bold;">🏆 TERNO CENTRATO!</span>';
+    else if (s.stato === 'vinto_ambo') statoBadge = '<span style="color:var(--green); font-weight:bold;">✅ AMBO VINTO!</span>';
+    else if (s.colpi_trascorsi >= 5) statoBadge = '<span style="color:var(--text-muted);">Chiuso 5/5</span>';
+
+    const tBalls = s.terzina.map(n => `<span class="ball ball-oro" style="width:28px; height:28px; font-size:0.85rem; display:inline-flex;">${n.toString().padStart(2,'0')}</span>`).join(' ');
+
+    let tlHtml = '';
+    (s.timeline || []).forEach(t => {
+      let tCol = 'var(--text-muted)';
+      if (t.punti === 3) tCol = 'var(--green)';
+      else if (t.punti === 2) tCol = 'var(--cyan)';
+      else if (t.punti === 1) tCol = '#fff';
+
+      tlHtml += `
+        <div style="background:rgba(0,0,0,0.3); padding:4px 8px; border-radius:6px; font-size:0.75rem; text-align:center;">
+          <div>Colpo ${t.colpo} (#${t.concorso})</div>
+          <div style="font-weight:bold; color:${tCol};">${t.punti} pt ${t.presi.length ? `[${t.presi.join(',')}]` : ''}</div>
+        </div>
+      `;
+    });
+
+    card.innerHTML = `
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+        <div>
+          <span style="font-size:0.8rem; color:var(--text-muted);">Spia <strong>#${s.spia}</strong> (Concorso #${s.concorso_spia} ore ${s.ora})</span>
+        </div>
+        <div>${statoBadge}</div>
+      </div>
+      <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:10px;">
+        <div style="display:flex; gap:6px; align-items:center;">
+          <span>Terzina:</span>
+          ${tBalls}
+        </div>
+        <div style="font-size:0.85rem;">Oro: <strong style="color:var(--gold)">${s.oro}</strong></div>
+      </div>
+      <div style="display:flex; gap:6px; overflow-x:auto;">
+        ${tlHtml || '<span style="color:var(--text-muted); font-size:0.75rem;">In attesa dei colpi successivi...</span>'}
+      </div>
+    `;
+    cont.appendChild(card);
+  });
+}
+
+// Archivio Storico
+let archivioDraws = [];
+async function caricaArchivioCompleto() {
+  try {
+    const res = await fetch('/api/all_draws');
+    archivioDraws = await res.json();
+    document.getElementById('archivio-count-badge').textContent = `${archivioDraws.length} estrazioni`;
+    filtraArchivio();
+  } catch (e) {
+    console.error(e);
+  }
+}
+
+function filtraArchivio() {
+  const query = (document.getElementById('archivio-search-input').value || '').trim().toLowerCase();
+  const tbody = document.getElementById('archivio-tbody');
+  tbody.innerHTML = '';
+
+  const filtered = archivioDraws.filter(d => {
+    if (!query) return true;
+    if (d.concorso.toString().includes(query)) return true;
+    if (d.numeri.some(n => n.toString() === query)) return true;
+    return false;
+  }).slice(0, 100);
+
+  filtered.forEach(d => {
+    const tr = document.createElement('tr');
+    const ballsHtml = d.numeri.map(n => {
+      let cls = 'ball';
+      if (n === d.oro) cls += ' ball-oro';
+      else if (n === d.doppio_oro) cls += ' ball-doppio-oro';
+      return `<span class="${cls}" style="width:24px; height:24px; font-size:0.75rem; display:inline-flex; margin:1px;">${n.toString().padStart(2,'0')}</span>`;
+    }).join(' ');
+
+    tr.innerHTML = `
+      <td><strong>#${d.concorso}</strong></td>
+      <td>${d.ora}</td>
+      <td><div style="display:flex; flex-wrap:wrap; max-width:480px;">${ballsHtml}</div></td>
+      <td><strong style="color:var(--gold)">${d.oro || '--'}</strong></td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+// Avvio applicazione
+document.addEventListener('DOMContentLoaded', () => {
+  fetchLiveData();
+  fetchSignalsData();
+  setInterval(fetchLiveData, 15000);
+});
+
 
 
   data.signals.slice(0, 30).forEach(sig => {
