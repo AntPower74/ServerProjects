@@ -1,83 +1,571 @@
 [
     {
-        "store": "Dpi\u00f9",
-        "title": "Miia - M40WGF3 Smart Tv Led 40\"",
-        "newPrice": "179.0",
+        "store": "Pewex",
+        "title": "Vera - Acqua  Naturale",
+        "newPrice": "0.99",
+        "expiration": "2026-09-01",
+        "image": "https://data.promoqui.it/offers/images/093/392/299/original/crop_6a8804c9-9bf8-467e-a578-00870ad302dc_big_20260821121001.jpg?1787337314",
+        "link": "https://www.promoqui.it/offerte/ripartiamo-dalla-spesa-4943885"
+    },
+    {
+        "store": "Conad",
+        "title": "Sant'anna - Bevanda Zero Zuccheri Aggiunti",
+        "newPrice": "0.79",
+        "expiration": "2026-09-30",
+        "image": "https://data.promoqui.it/offers/images/092/827/785/original/crop_6a6c9aab-6b1c-4fb1-8a70-00410ad30060_big_20260731145301.jpg?1785757139",
+        "link": "https://www.promoqui.it/offerte/spunta-il-risparmio-4935620"
+    },
+    {
+        "store": "Todis",
+        "title": "Sanattiva - Acqua Aromatizzata Limone E Zenzero",
+        "newPrice": "0.69",
         "expiration": "2026-08-30",
-        "image": "https://data.promoqui.it/offers/images/093/198/962/original/crop_6a7f1620-8174-4b71-8a76-43170ad30229_big_20260814152039.jpg?1786966354",
-        "link": "https://www.promoqui.it/offerte/sconti-fino-al-50-4942133"
+        "image": "https://data.promoqui.it/offers/images/093/240/212/original/crop_6a82b81c-c7a8-4e02-8cca-00a40ad30184_big_20260817092830.jpg?1787052568",
+        "link": "https://www.promoqui.it/offerte/tutto-a-1-euro-4942765"
+    },
+    {
+        "store": "Conad",
+        "title": "Ferrarelle - Acqua",
+        "newPrice": "0.3",
+        "expiration": "2026-08-25",
+        "image": "https://data.promoqui.it/offers/images/092/963/081/original/crop_6a72f40e-0b34-4e05-8da7-00800ad3005e_big_20260805102800.jpg?1786043993",
+        "link": "https://www.promoqui.it/offerte/freschi-di-convenienza-4938647"
+    },
+    {
+        "store": "Conad",
+        "title": "Conad - Acqua",
+        "newPrice": "0.28",
+        "expiration": "2026-08-25",
+        "image": "https://data.promoqui.it/offers/images/092/962/825/original/crop_6a72f3f9-76c4-4fc0-abc7-00bf0ad3019c_big_20260805102739.jpg?1786043842",
+        "link": "https://www.promoqui.it/offerte/freschi-di-convenienza-4938647"
+    },
+    {
+        "store": "Carrefour Express",
+        "title": "Frasassi - Acqua Naturale",
+        "newPrice": "0.27",
+        "expiration": "2026-08-25",
+        "image": "https://data.promoqui.it/offers/images/093/105/612/original/crop_6a79b187-81ec-465c-9919-008f0ad301b9_big_20260810160153.jpg?1786468985",
+        "link": "https://www.promoqui.it/offerte/sconti-d-estate-4941057"
+    },
+    {
+        "store": "Dem",
+        "title": "Consilia - Acqua Naturale/ Frizzante",
+        "newPrice": "0.26",
+        "expiration": "2026-09-30",
+        "image": "https://data.promoqui.it/offers/images/091/770/644/original/crop_6a437185-0fbc-4307-8e63-00f20ad300d1_big_20260630095519.jpg?1782819094",
+        "link": "https://www.promoqui.it/offerte/carrello-stop-rincari-4926639"
+    },
+    {
+        "store": "Dem",
+        "title": "Consilia - Acqua Frizzante",
+        "newPrice": "0.26",
+        "expiration": "2026-09-01",
+        "image": "https://data.promoqui.it/offers/images/093/391/837/original/crop_6a880639-fadc-4000-b7fa-00250ad300cd_big_20260821122034.jpg?1787337258",
+        "link": "https://www.promoqui.it/offerte/convenienza-xxl-4943889"
+    },
+    {
+        "store": "Conad",
+        "title": "Levissima - Acqua Minerale Naturale",
+        "newPrice": "0.24",
+        "expiration": "2026-08-25",
+        "image": "https://data.promoqui.it/offers/images/092/963/181/original/crop_6a72f417-037c-463d-a45b-00900ad3010c_big_20260805102809.jpg?1786044050",
+        "link": "https://www.promoqui.it/offerte/freschi-di-convenienza-4938647"
+    },
+    {
+        "store": "Leroy Merlin",
+        "title": "Makita - Trapano A Percussione Mod. DHP490RFJ",
+        "newPrice": "199.9",
+        "expiration": "2026-08-31",
+        "image": "https://data.promoqui.it/offers/images/092/904/759/original/crop_6a6765f0-edec-4956-a65a-00640ad300c8_big_20260805174951.jpg?1785969774",
+        "link": "https://www.promoqui.it/offerte/rinnovare-la-casa-da-leroy-merlin-4938013"
+    },
+    {
+        "store": "Leroy Merlin",
+        "title": "Dexter - Trapano A Percussione Mod. DT-CD 18/44-2 Li-i",
+        "newPrice": "64.9",
+        "expiration": "2026-08-31",
+        "image": "https://data.promoqui.it/offers/images/092/904/763/original/crop_6a6765f1-5f00-4aff-a95a-00750ad3008c_big_20260805174952.jpg?1785969776",
+        "link": "https://www.promoqui.it/offerte/rinnovare-la-casa-da-leroy-merlin-4938013"
+    },
+    {
+        "store": "Euronics",
+        "title": "Ninja - Friggitrice Ad Aria Flexdrawer Af500eu",
+        "newPrice": "199.99",
+        "expiration": "2026-09-09",
+        "image": "https://data.promoqui.it/offers/images/093/370/119/original/crop_6a88072d-99e4-4920-8324-00d60ad302dc_big_20260821122704.jpg?1787311944",
+        "link": "https://www.promoqui.it/offerte/back-to-euronics-4943733"
+    },
+    {
+        "store": "Euronics",
+        "title": "Philips - Friggitrice Ad Aria Airfryer Serie 1000 Na150/00",
+        "newPrice": "129.99",
+        "expiration": "2026-09-09",
+        "image": "https://data.promoqui.it/offers/images/093/370/079/original/crop_6a88072c-e560-4645-ad10-00a90ad3016b_big_20260821122529.jpg?1787311938",
+        "link": "https://www.promoqui.it/offerte/back-to-euronics-4943733"
+    },
+    {
+        "store": "Euronics",
+        "title": "Philips - Friggitrice Ad Aria NA 150/00",
+        "newPrice": "129.9",
+        "expiration": "2026-09-10",
+        "image": "https://data.promoqui.it/offers/images/092/985/520/original/crop_6a75aafa-66b0-47b7-a7f4-00950ad300fc_big_20260807135936.jpg?1786125452",
+        "link": "https://www.promoqui.it/offerte/back-to-euronics-4939350"
+    },
+    {
+        "store": "Euronics",
+        "title": "Braun - Friggitrice Ad Aria Multifry 5HF-5034",
+        "newPrice": "99.9",
+        "expiration": "2026-09-10",
+        "image": "https://data.promoqui.it/offers/images/092/985/514/original/crop_6a75aaf9-dca8-4892-a0a4-00780ad3027f_big_20260807135936.jpg?1786125450",
+        "link": "https://www.promoqui.it/offerte/back-to-euronics-4939350"
     },
     {
         "store": "Carrefour Iper",
-        "title": "Inno-Hit - Tv Led 40 Mod..IH40FL2K",
-        "newPrice": "159.0",
+        "title": "Cecotec - Friggitrice Ad Aria",
+        "newPrice": "69.5",
         "expiration": "2026-09-03",
-        "image": "https://data.promoqui.it/offers/images/092/910/360/original/crop_6a733236-fd04-4f33-bd0b-002b0ad3016d_big_20260805145312.jpg?1785974655",
-        "link": "https://www.promoqui.it/offerte/prezzi-freschi-4938019"
-    },
-    {
-        "store": "Carrefour Iper",
-        "title": "Inno-Hit - Tv Led 40 Mod. IH40FL2K",
-        "newPrice": "159.0",
-        "expiration": "2026-09-03",
-        "image": "https://data.promoqui.it/offers/images/093/220/951/original/crop_6a82d164-e3c8-44b7-9229-00360ad300fd_big_20260817111734.jpg?1787011124",
+        "image": "https://data.promoqui.it/offers/images/093/220/973/original/crop_6a82d166-27a4-4ddb-89e2-00660ad3005b_big_20260817111746.jpg?1787011134",
         "link": "https://www.promoqui.it/offerte/prezzi-freschi-4942461"
     },
     {
-        "store": "Dpi\u00f9",
-        "title": "Hisense - 32E410T Smart Tv",
-        "newPrice": "149.0",
-        "expiration": "2026-08-30",
-        "image": "https://data.promoqui.it/offers/images/093/198/946/original/crop_6a7f1620-1e50-4b43-b579-41230ad301d2_big_20260814152042.jpg?1786966346",
-        "link": "https://www.promoqui.it/offerte/sconti-fino-al-50-4942133"
+        "store": "Sinergy",
+        "title": "Ariete - Friggitrice Aria Airy Fryer XXL",
+        "newPrice": "53.1",
+        "expiration": "2026-08-31",
+        "image": "https://data.promoqui.it/offers/images/092/799/364/original/crop_6a6c8559-3968-47e1-ba0c-44680ad301bd_big_20260731132204.jpg?1785500023",
+        "link": "https://www.promoqui.it/offerte/sconto-iva-4933293"
     },
     {
-        "store": "Esselunga",
-        "title": "Saba - Tv Qled  32\" SA32QM10VD",
-        "newPrice": "129.0",
-        "expiration": "2026-08-26",
-        "image": "https://data.promoqui.it/offers/images/093/169/090/original/crop_6a7d7294-bd3c-4b69-bee9-00a10ad30082_big_20260813093210.jpg?1786636063",
-        "link": "https://www.promoqui.it/offerte/sconti-fino-al-50-4941722"
+        "store": "Spazio Conad",
+        "title": "Zephir - Friggitrice Ad Aria ZHC11S",
+        "newPrice": "49.9",
+        "expiration": "2026-08-24",
+        "image": "https://data.promoqui.it/offers/images/092/984/968/original/crop_6a75928f-177c-4640-8287-00640ad30134_big_20260807101029.jpg?1786125185",
+        "link": "https://www.promoqui.it/offerte/1-2-3-euro-4939318"
+    },
+    {
+        "store": "Dpi\u00f9",
+        "title": "Ardes -  Friggisana Infinity, Friggitrice Ad Aria",
+        "newPrice": "49.9",
+        "expiration": "2026-08-30",
+        "image": "https://data.promoqui.it/offers/images/093/198/729/original/crop_6a7f161c-b164-4261-9f80-00320ad30034_big_20260814152031.jpg?1786966230",
+        "link": "https://www.promoqui.it/offerte/sconti-fino-al-50-4942133"
     },
     {
         "store": "Carrefour Iper",
-        "title": "Eko - Tv Lcd Mod. K320hvd",
-        "newPrice": "99.0",
+        "title": "Mele Gala",
+        "newPrice": "1.59",
         "expiration": "2026-09-03",
-        "image": "https://data.promoqui.it/offers/images/092/910/445/original/crop_6a73323d-0b3c-4dbe-85b1-009d0ad30238_big_20260805145319.jpg?1785974702",
+        "image": "https://data.promoqui.it/offers/images/092/908/947/original/crop_6a7331ad-b150-4646-a4b7-00a80ad301fb_big_20260805145056.jpg?1785973700",
         "link": "https://www.promoqui.it/offerte/prezzi-freschi-4938019"
     },
     {
-        "store": "Dpi\u00f9",
-        "title": "Smart Tech -  32HHQTK Televisore",
-        "newPrice": "99.0",
+        "store": "Al Discount",
+        "title": "Mele Gala Rinf Cal 75+ Cat I",
+        "newPrice": "1.59",
+        "expiration": "2026-08-31",
+        "image": "https://data.promoqui.it/offers/images/093/274/260/original/crop_6a85a08a-7974-4608-99ce-00310ad300c5_big_20260819155830.jpg?1787216444",
+        "link": "https://www.promoqui.it/offerte/un-ondata-di-offerte-4943245"
+    },
+    {
+        "store": "Tigre",
+        "title": "Royal - Mela  Gala",
+        "newPrice": "1.49",
+        "expiration": "2026-09-03",
+        "image": "https://data.promoqui.it/offers/images/093/363/485/original/crop_6a86a431-d8d4-4478-8be7-a5140ad3007d_big_20260820085235.jpg?1787301967",
+        "link": "https://www.promoqui.it/offerte/prezzi-shock-4943670"
+    },
+    {
+        "store": "Elite Supermercati",
+        "title": "Royal - Mele  Gala",
+        "newPrice": "1.49",
+        "expiration": "2026-09-03",
+        "image": "https://data.promoqui.it/offers/images/093/372/197/original/crop_6a87fffc-0fb8-414c-ad5c-00410ad302e3_big_20260821102925.jpg?1787312231",
+        "link": "https://www.promoqui.it/offerte/grandi-marche-prezzi-affare-4943724"
+    },
+    {
+        "store": "Oasi",
+        "title": "Royal - Mela Gala",
+        "newPrice": "1.19",
+        "expiration": "2026-09-03",
+        "image": "https://data.promoqui.it/offers/images/093/343/752/original/tmp_asset_6a86db6db957b.jpeg?1787229267",
+        "link": "https://www.promoqui.it/offerte/back-to-school-4943598"
+    },
+    {
+        "store": "Spazio Conad",
+        "title": "Xiaomi - Tablet Pad 2 11\"",
+        "newPrice": "179.0",
+        "expiration": "2026-09-30",
+        "image": "https://data.promoqui.it/offers/images/093/302/333/original/crop_6a82bef1-0be8-4ca1-a1e9-00370ad30139_big_20260817101214.jpg?1787220724",
+        "link": "https://www.promoqui.it/offerte/catalogo-scuola-2026-4942791"
+    },
+    {
+        "store": "Euronics",
+        "title": "Apple - Pencil Pro",
+        "newPrice": "149.99",
+        "expiration": "2026-09-09",
+        "image": "https://data.promoqui.it/offers/images/093/367/817/original/crop_6a8806ff-fe8c-4b8f-ac49-00280ad30118_big_20260821122303.jpg?1787311627",
+        "link": "https://www.promoqui.it/offerte/back-to-euronics-4943733"
+    },
+    {
+        "store": "Euronics",
+        "title": "Acer - Tablet Iconia A11 A11-21P-A6KC",
+        "newPrice": "139.99",
+        "expiration": "2026-09-09",
+        "image": "https://data.promoqui.it/offers/images/093/367/161/original/crop_6a8806f3-41fc-4998-b686-00b60ad300ea_big_20260821122538.jpg?1787311538",
+        "link": "https://www.promoqui.it/offerte/back-to-euronics-4943733"
+    },
+    {
+        "store": "Euronics",
+        "title": "Logitech - Custodia + Tastiera Combo iPad 10\u00b0Gen",
+        "newPrice": "129.9",
+        "expiration": "2026-09-10",
+        "image": "https://data.promoqui.it/offers/images/092/985/425/original/crop_6a75a884-2e80-4e60-b60c-00730ad30084_big_20260807142244.jpg?1786125407",
+        "link": "https://www.promoqui.it/offerte/back-to-euronics-4939350"
+    },
+    {
+        "store": "Euronics",
+        "title": "Acer - Tablet Iconia A10 A10-31P-A42K",
+        "newPrice": "119.99",
+        "expiration": "2026-09-09",
+        "image": "https://data.promoqui.it/offers/images/093/367/469/original/crop_6a8806f7-9744-4f3f-8608-00c10ad30029_big_20260821122508.jpg?1787311578",
+        "link": "https://www.promoqui.it/offerte/back-to-euronics-4943733"
+    },
+    {
+        "store": "Todis",
+        "title": "Majestic - Tablet 920 Plus  4G 10.1-",
+        "newPrice": "99.99",
         "expiration": "2026-08-30",
-        "image": "https://data.promoqui.it/offers/images/093/198/832/original/crop_6a7f161e-507c-41e5-915f-00a80ad302a0_big_20260814152037.jpg?1786966286",
+        "image": "https://data.promoqui.it/offers/images/093/240/488/original/crop_6a82b82f-6970-4533-8dc6-00110ad30183_big_20260817092849.jpg?1787052704",
+        "link": "https://www.promoqui.it/offerte/tutto-a-1-euro-4942765"
+    },
+    {
+        "store": "Carrefour Iper",
+        "title": "Majestic - Tablet  10.11 Mod. 720 Plus",
+        "newPrice": "89.0",
+        "expiration": "2026-09-22",
+        "image": "https://data.promoqui.it/offers/images/092/368/152/original/crop_6a59d744-088c-4756-82fb-005e0ad3023d_big_20260717091830.jpg?1784424548",
+        "link": "https://www.promoqui.it/offerte/back-to-school-4931223"
+    },
+    {
+        "store": "Carrefour Market",
+        "title": "Majestic - Tablet  10.11\" Mod. 720 Plus",
+        "newPrice": "89.0",
+        "expiration": "2026-09-27",
+        "image": "https://data.promoqui.it/offers/images/092/340/975/original/crop_6a59d76b-fbd0-4f88-9564-00640ad3016f_big_20260717091909.jpg?1784404399",
+        "link": "https://www.promoqui.it/offerte/back-to-school-4931166"
+    },
+    {
+        "store": "Conad Superstore",
+        "title": "Lenovo - Tablet ZASD00336E",
+        "newPrice": "79.9",
+        "expiration": "2026-09-30",
+        "image": "https://data.promoqui.it/offers/images/093/211/571/original/crop_6a7ec96d-d8fc-4c53-ba27-465e0ad300ce_big_20260814095445.jpg?1786973915",
+        "link": "https://www.promoqui.it/offerte/catalogo-scuola-4942384"
+    },
+    {
+        "store": "Carrefour Express",
+        "title": "Parmareggio - Parmigiano Reggiano Grattugiato",
+        "newPrice": "1.25",
+        "expiration": "2026-08-25",
+        "image": "https://data.promoqui.it/offers/images/093/105/535/original/crop_6a79b180-061c-45ad-b096-00eb0ad30282_big_20260810160132.jpg?1786468867",
+        "link": "https://www.promoqui.it/offerte/sconti-d-estate-4941057"
+    },
+    {
+        "store": "Conad",
+        "title": "Pr\u00e8sident - Emmental Francese",
+        "newPrice": "1.19",
+        "expiration": "2026-08-25",
+        "image": "https://data.promoqui.it/offers/images/092/962/697/original/crop_6a72f489-5f90-420a-9213-00420ad300c1_big_20260805103003.jpg?1786043780",
+        "link": "https://www.promoqui.it/offerte/catalogo-etnico-4938648"
+    },
+    {
+        "store": "Conad",
+        "title": "Leerdammer - Formaggio",
+        "newPrice": "1.19",
+        "expiration": "2026-08-25",
+        "image": "https://data.promoqui.it/offers/images/092/962/441/original/crop_6a72f3d5-bf20-4aa7-bf7f-005b0ad30249_big_20260805102703.jpg?1786043653",
+        "link": "https://www.promoqui.it/offerte/freschi-di-convenienza-4938647"
+    },
+    {
+        "store": "Conad",
+        "title": "Conad - Asiago DOP",
+        "newPrice": "1.09",
+        "expiration": "2026-08-25",
+        "image": "https://data.promoqui.it/offers/images/092/962/430/original/crop_6a72f3d5-8370-47b4-a0b7-00e10ad30265_big_20260805102703.jpg?1786043649",
+        "link": "https://www.promoqui.it/offerte/freschi-di-convenienza-4938647"
+    },
+    {
+        "store": "Conad City",
+        "title": "Nonno Nanni - Nozzarella",
+        "newPrice": "1.0",
+        "expiration": "2026-09-30",
+        "image": "https://data.promoqui.it/offers/images/092/839/175/original/crop_6a6c9a6f-c314-4bf6-9b71-41540ad30121_big_20260731145207.jpg?1785781030",
+        "link": "https://www.promoqui.it/offerte/spunta-il-risparmio-4936620"
+    },
+    {
+        "store": "Conad",
+        "title": "Valgrana - Formaggio Piemontino",
+        "newPrice": "0.99",
+        "expiration": "2026-08-25",
+        "image": "https://data.promoqui.it/offers/images/092/962/520/original/crop_6a72f3dd-60a8-40fb-b20b-00d00ad300e8_big_20260805102712.jpg?1786043692",
+        "link": "https://www.promoqui.it/offerte/freschi-di-convenienza-4938647"
+    },
+    {
+        "store": "Carrefour Express",
+        "title": "Galbani - Certosa",
+        "newPrice": "0.99",
+        "expiration": "2026-08-25",
+        "image": "https://data.promoqui.it/offers/images/093/105/541/original/crop_6a79b180-4848-46fa-9062-00a30ad3029f_big_20260810160111.jpg?1786468874",
+        "link": "https://www.promoqui.it/offerte/sconti-d-estate-4941057"
+    },
+    {
+        "store": "Carrefour Express",
+        "title": "Cuomo - Mozzarella Fiordilatte Dell'Agro",
+        "newPrice": "0.96",
+        "expiration": "2026-08-31",
+        "image": "https://data.promoqui.it/offers/images/092/668/868/original/crop_6a69bb80-8d34-460a-ab2e-006b0ad302a9_big_20260729103838.jpg?1785346189",
+        "link": "https://www.promoqui.it/offerte/offerte-d-estate-4933661"
+    },
+    {
+        "store": "Conad",
+        "title": "Fattorie Osella - Primosale Le Specialita",
+        "newPrice": "0.79",
+        "expiration": "2026-08-25",
+        "image": "https://data.promoqui.it/offers/images/093/267/875/original/crop_6a840cb4-55c4-4631-a0fb-005d0ad300e3_big_20260818095346.jpg?1787215295",
+        "link": "https://www.promoqui.it/offerte/convenienza-piu-4942942"
+    },
+    {
+        "store": "Conad",
+        "title": "Conad - Ricotta Vaccina",
+        "newPrice": "0.39",
+        "expiration": "2026-08-25",
+        "image": "https://data.promoqui.it/offers/images/092/962/445/original/crop_6a72f3d6-0e34-469c-be38-00620ad3006f_big_20260805102704.jpg?1786043655",
+        "link": "https://www.promoqui.it/offerte/freschi-di-convenienza-4938647"
+    },
+    {
+        "store": "Pewex",
+        "title": "Orogel - Contorno Verdure Leggerezza",
+        "newPrice": "1.99",
+        "expiration": "2026-09-01",
+        "image": "https://data.promoqui.it/offers/images/093/392/772/original/crop_6a8804de-98e4-413b-9448-008f0ad30034_big_20260821120554.jpg?1787337370",
+        "link": "https://www.promoqui.it/offerte/ripartiamo-dalla-spesa-4943885"
+    },
+    {
+        "store": "Elite Supermercati",
+        "title": "Selex - Minestrone Di Verdure",
+        "newPrice": "1.79",
+        "expiration": "2026-08-31",
+        "image": "https://data.promoqui.it/offers/images/090/112/149/original/crop_69f86eb2-6850-445b-aebe-003f0ad30246_big_20260504120228.jpg?1777979257",
+        "link": "https://www.promoqui.it/offerte/spesa-difesa-4913664"
+    },
+    {
+        "store": "Spazio Conad",
+        "title": "Frosta - Bastoncini Di Spinaci O Di Verdure",
+        "newPrice": "1.69",
+        "expiration": "2026-08-24",
+        "image": "https://data.promoqui.it/offers/images/092/983/968/original/crop_6a759237-e72c-402c-9d14-00620ad30019_big_20260807100735.jpg?1786124765",
+        "link": "https://www.promoqui.it/offerte/1-2-3-euro-4939318"
+    },
+    {
+        "store": "Conad Superstore",
+        "title": "Conad - Verdure Grigliate",
+        "newPrice": "1.36",
+        "expiration": "2026-08-25",
+        "image": "https://data.promoqui.it/offers/images/092/908/167/original/crop_6a72f4d2-f668-4404-bf03-48ae0ad3017b_big_20260805103116.jpg?1785973188",
+        "link": "https://www.promoqui.it/offerte/convenienza-grande-4938004"
+    },
+    {
+        "store": "Conad",
+        "title": "Conad - Verdure Grigliate Gustosamente",
+        "newPrice": "1.36",
+        "expiration": "2026-08-25",
+        "image": "https://data.promoqui.it/offers/images/092/962/557/original/crop_6a72f3e1-1728-4aab-b597-00530ad30220_big_20260805102715.jpg?1786043711",
+        "link": "https://www.promoqui.it/offerte/freschi-di-convenienza-4938647"
+    },
+    {
+        "store": "Panorama",
+        "title": "Cous Cous Con Verdure",
+        "newPrice": "0.99",
+        "expiration": "2026-08-26",
+        "image": "https://data.promoqui.it/offers/images/092/978/226/original/crop_6a745347-b7c8-4bbd-a046-00600ad30297_big_20260806112717.jpg?1786069426",
+        "link": "https://www.promoqui.it/offerte/offerte-irresistibili-4938889"
+    },
+    {
+        "store": "Tigre",
+        "title": "Bonduelle - Fantasia Di Verdure",
+        "newPrice": "0.99",
+        "expiration": "2026-09-03",
+        "image": "https://data.promoqui.it/offers/images/093/365/114/original/crop_6a86a463-de98-4b06-9eaf-00260ad3001b_big_20260820085325.jpg?1787302235",
+        "link": "https://www.promoqui.it/offerte/prezzi-shock-4943670"
+    },
+    {
+        "store": "Dpi\u00f9",
+        "title": "Drachenturm - 5% Vol Lattina",
+        "newPrice": "0.62",
+        "expiration": "2026-08-30",
+        "image": "https://data.promoqui.it/offers/images/093/198/487/original/crop_6a7f1617-ca70-4b54-945d-00460ad30199_big_20260814152029.jpg?1786966071",
         "link": "https://www.promoqui.it/offerte/sconti-fino-al-50-4942133"
     },
     {
-        "store": "Sinergy",
-        "title": "Meliconi - FDR 600 Vesa 600 50\"-75\"",
-        "newPrice": "79.4",
-        "expiration": "2026-08-31",
-        "image": "https://data.promoqui.it/offers/images/092/805/419/original/crop_6a6c98d4-daf4-4f62-97ea-00c70ad300d0_big_20260731144510.jpg?1785519199",
-        "link": "https://www.promoqui.it/offerte/sconto-iva-4933293"
+        "store": "Pam",
+        "title": "Pam - Patate Da Forno",
+        "newPrice": "1.59",
+        "expiration": "2026-08-26",
+        "image": "https://data.promoqui.it/offers/images/092/977/753/original/crop_6a745170-c7dc-4e11-90b2-00e30ad3004d_big_20260806111842.jpg?1786069168",
+        "link": "https://www.promoqui.it/offerte/offerte-irresistibili-4938882"
     },
     {
-        "store": "Sinergy",
-        "title": "Meliconi - FS 400 Vesa 400 40\"-65\"",
-        "newPrice": "27.7",
+        "store": "Deco",
+        "title": "Kometa - Petto Di Tacchino Al Forno",
+        "newPrice": "1.49",
         "expiration": "2026-08-31",
-        "image": "https://data.promoqui.it/offers/images/092/805/420/original/crop_6a6c98d5-ff34-4711-80b2-46d20ad301bb_big_20260731144511.jpg?1785519201",
-        "link": "https://www.promoqui.it/offerte/sconto-iva-4933293"
+        "image": "https://data.promoqui.it/offers/images/093/310/784/original/crop_6a857649-1fa4-4d8e-9111-004e0ad30134_big_20260819112437.jpg?1787221895",
+        "link": "https://www.promoqui.it/offerte/lo-show-dei-prezzi-4943242"
     },
     {
-        "store": "Sinergy",
-        "title": "Meliconi - FTR 100 Vesa 100 14\"-25\"",
-        "newPrice": "14.6",
+        "store": "Dpi\u00f9",
+        "title": "Vitalibre - Tacchino/Pollo Al Forno A Fette",
+        "newPrice": "1.49",
+        "expiration": "2026-08-30",
+        "image": "https://data.promoqui.it/offers/images/093/198/493/original/crop_6a7f1617-cba8-48f4-bfb7-00a10ad300bf_big_20260814152027.jpg?1786966075",
+        "link": "https://www.promoqui.it/offerte/sconti-fino-al-50-4942133"
+    },
+    {
+        "store": "Elite Supermercati",
+        "title": "Aia - Aequilibrium Pertro Di Pollo Al Forno",
+        "newPrice": "1.49",
+        "expiration": "2026-09-03",
+        "image": "https://data.promoqui.it/offers/images/093/373/307/original/crop_6a880007-8d5c-470e-8500-00c10ad300af_big_20260821102854.jpg?1787312382",
+        "link": "https://www.promoqui.it/offerte/grandi-marche-prezzi-affare-4943724"
+    },
+    {
+        "store": "Tigre",
+        "title": "Consilia - Patate Caserecce Da Forno",
+        "newPrice": "1.39",
+        "expiration": "2026-09-03",
+        "image": "https://data.promoqui.it/offers/images/093/364/677/original/crop_6a86a459-98b4-41e2-94ce-00dc0ad30191_big_20260820085316.jpg?1787302172",
+        "link": "https://www.promoqui.it/offerte/prezzi-shock-4943670"
+    },
+    {
+        "store": "Cts Supermercati",
+        "title": "Fiorucci - Pa\u00eblla Di Tacchino Al Forno Flatucci",
+        "newPrice": "1.29",
+        "expiration": "2026-09-01",
+        "image": "https://data.promoqui.it/offers/images/093/415/264/original/crop_6a886e5b-02fc-4c8a-978b-00ad0ad3023f_big_20260821183012.jpg?1787341335",
+        "link": "https://www.promoqui.it/offerte/offerte-4943896"
+    },
+    {
+        "store": "Sidis",
+        "title": "Deliziosa - Ricotta Al Forno",
+        "newPrice": "1.09",
+        "expiration": "2026-08-30",
+        "image": "https://data.promoqui.it/offers/images/093/285/698/original/crop_6a8553dc-b618-403f-8926-006b0ad302af_big_20260819085734.jpg?1787218362",
+        "link": "https://www.promoqui.it/offerte/le-offerte-continuano-4943322"
+    },
+    {
+        "store": "Tigota",
+        "title": "Domopak - Pellicola 2in 1 Frigo E Microonde",
+        "newPrice": "0.99",
         "expiration": "2026-08-31",
-        "image": "https://data.promoqui.it/offers/images/092/805/418/original/crop_6a6c98d3-f188-4118-a415-46420ad30004_big_20260731144509.jpg?1785519196",
-        "link": "https://www.promoqui.it/offerte/sconto-iva-4933293"
+        "image": "https://data.promoqui.it/offers/images/092/896/755/original/crop_6a703874-bf68-4436-8ffc-00ba0ad3025a_big_20260803084315.jpg?1785931192",
+        "link": "https://www.promoqui.it/offerte/incredibile-come-le-noste-offerte-4937553"
+    },
+    {
+        "store": "Orizzonte",
+        "title": "Zanzaziiera Magnetica",
+        "newPrice": "7.5",
+        "expiration": "2026-10-11",
+        "image": "https://data.promoqui.it/offers/images/090/113/813/original/crop_69f95c5a-e0f8-4673-b8ee-00d80ad30268_big_20260505045631.jpg?1777980472",
+        "link": "https://www.promoqui.it/offerte/sconti-orizzonte-4913747"
+    },
+    {
+        "store": "Orizzonte",
+        "title": "23945",
+        "newPrice": "4.4",
+        "expiration": "2026-10-11",
+        "image": "https://data.promoqui.it/offers/images/089/444/438/original/crop_69d863df-4908-49a7-affb-00300ad30209_big_20260410231959.jpg?1775935053",
+        "link": "https://www.promoqui.it/offerte/volantino-orizzonte-4908689"
+    },
+    {
+        "store": "Orizzonte",
+        "title": "4490413 Bianco",
+        "newPrice": "3.5",
+        "expiration": "2026-10-11",
+        "image": "https://data.promoqui.it/offers/images/089/444/451/original/crop_69d863e2-83c8-4ac9-8db6-79490ad3021b_big_20260410231114.jpg?1775935069",
+        "link": "https://www.promoqui.it/offerte/volantino-orizzonte-4908689"
+    },
+    {
+        "store": "Orizzonte",
+        "title": "Zanzapiera Rete Con Veloro Adesivo Per Finestra",
+        "newPrice": "3.0",
+        "expiration": "2026-10-11",
+        "image": "https://data.promoqui.it/offers/images/089/444/464/original/crop_69d863e5-2d58-406b-852b-7ae20ad3016d_big_20260410234551.jpg?1775935085",
+        "link": "https://www.promoqui.it/offerte/volantino-orizzonte-4908689"
+    },
+    {
+        "store": "Pewex",
+        "title": "Beretta - Petto Di Pollo Arrosto",
+        "newPrice": "1.99",
+        "expiration": "2026-09-01",
+        "image": "https://data.promoqui.it/offers/images/093/397/983/original/crop_6a880585-9c68-4c48-88b5-00a00ad30257_big_20260821121314.jpg?1787338011",
+        "link": "https://www.promoqui.it/offerte/ripartiamo-dalla-spesa-4943885"
+    },
+    {
+        "store": "Todis",
+        "title": "Ali Di Pollo",
+        "newPrice": "1.99",
+        "expiration": "2026-08-30",
+        "image": "https://data.promoqui.it/offers/images/093/239/562/original/crop_6a82b7e7-8974-4022-92c5-004f0ad30222_big_20260817092737.jpg?1787052198",
+        "link": "https://www.promoqui.it/offerte/tutto-a-1-euro-4942765"
+    },
+    {
+        "store": "Todis",
+        "title": "Casa bonelli - Petto Di Pollo Arrosto 1% Di Grassi",
+        "newPrice": "1.89",
+        "expiration": "2026-08-30",
+        "image": "https://data.promoqui.it/offers/images/093/240/167/original/crop_6a82b819-11ec-4b49-a6e5-00760ad3000e_big_20260817092827.jpg?1787052545",
+        "link": "https://www.promoqui.it/offerte/tutto-a-1-euro-4942765"
+    },
+    {
+        "store": "Todis",
+        "title": "Bonelli - Petto Di Pollo Arrosto 1% Di Grassi",
+        "newPrice": "1.89",
+        "expiration": "2026-08-30",
+        "image": "https://data.promoqui.it/offers/images/093/239/516/original/crop_6a82b914-d994-4ea1-b48a-00180ad30183_big_20260817093338.jpg?1787052166",
+        "link": "https://www.promoqui.it/offerte/tutto-a-1-euro-4942766"
+    },
+    {
+        "store": "Conad",
+        "title": "Conad - Cotolette Con Filetti Di Pollo Gustosamente",
+        "newPrice": "1.49",
+        "expiration": "2026-08-25",
+        "image": "https://data.promoqui.it/offers/images/092/962/513/original/crop_6a72f3dc-8004-43f9-b73d-00790ad3029f_big_20260805102710.jpg?1786043687",
+        "link": "https://www.promoqui.it/offerte/freschi-di-convenienza-4938647"
+    },
+    {
+        "store": "Carrefour Market",
+        "title": "Coscia Di Pollo",
+        "newPrice": "1.39",
+        "expiration": "2026-09-03",
+        "image": "https://data.promoqui.it/offers/images/093/226/821/original/crop_6a82d704-b754-44af-8b37-00a40ad30241_big_20260817114022.jpg?1787014120",
+        "link": "https://www.promoqui.it/offerte/prezzi-freschi-4942580"
+    },
+    {
+        "store": "Carrefour Market",
+        "title": "Campisi - Coscia Di Pollo",
+        "newPrice": "1.39",
+        "expiration": "2026-09-03",
+        "image": "https://data.promoqui.it/offers/images/092/909/002/original/crop_6a736356-6094-4db2-9027-00920ad3028d_big_20260805183414.jpg?1785973743",
+        "link": "https://www.promoqui.it/offerte/prezzi-freschi-4938018"
+    },
+    {
+        "store": "Todis",
+        "title": "Dorada - Petto Di Pollo Grigliato",
+        "newPrice": "1.0",
+        "expiration": "2026-08-30",
+        "image": "https://data.promoqui.it/offers/images/093/239/230/original/crop_6a82b7cf-23c8-4a35-8adb-00950ad30081_big_20260817092714.jpg?1787052016",
+        "link": "https://www.promoqui.it/offerte/tutto-a-1-euro-4942765"
     },
     {
         "store": "Acqua e Sapone",
@@ -153,6 +641,558 @@
     },
     {
         "store": "Conad",
+        "title": "Galbani - Prosciutto Cotto Fetta Golosa",
+        "newPrice": "1.29",
+        "expiration": "2026-08-25",
+        "image": "https://data.promoqui.it/offers/images/093/268/095/original/crop_6a840cb7-663c-44b7-88f5-00e80ad3005d_big_20260818095400.jpg?1787215328",
+        "link": "https://www.promoqui.it/offerte/convenienza-piu-4942942"
+    },
+    {
+        "store": "Carrefour Express",
+        "title": "Mortadella Bologna IGP",
+        "newPrice": "1.29",
+        "expiration": "2026-08-25",
+        "image": "https://data.promoqui.it/offers/images/093/105/333/original/crop_6a79b175-ae34-4ba3-97c2-4ecd0ad301db_big_20260810160230.jpg?1786468674",
+        "link": "https://www.promoqui.it/offerte/sconti-d-estate-4941057"
+    },
+    {
+        "store": "Todis",
+        "title": "Prosciutto Cotto Alla Brace",
+        "newPrice": "1.19",
+        "expiration": "2026-08-30",
+        "image": "https://data.promoqui.it/offers/images/093/239/719/original/crop_6a82b7f5-b184-4339-941d-008a0ad302fd_big_20260817092758.jpg?1787052305",
+        "link": "https://www.promoqui.it/offerte/tutto-a-1-euro-4942765"
+    },
+    {
+        "store": "Conad City",
+        "title": "Conad - Mortadella Di Pollo",
+        "newPrice": "1.19",
+        "expiration": "2026-09-30",
+        "image": "https://data.promoqui.it/offers/images/092/839/244/original/crop_6a6c9a73-0298-4910-bfa7-00770ad3022e_big_20260731145212.jpg?1785781069",
+        "link": "https://www.promoqui.it/offerte/spunta-il-risparmio-4936620"
+    },
+    {
+        "store": "Conad",
+        "title": "Fette Di Bonta - Prosciutto Cotto",
+        "newPrice": "1.09",
+        "expiration": "2026-08-25",
+        "image": "https://data.promoqui.it/offers/images/092/963/256/original/crop_6a72f41d-18c4-47c7-acff-00870ad3010f_big_20260805102815.jpg?1786044101",
+        "link": "https://www.promoqui.it/offerte/freschi-di-convenienza-4938647"
+    },
+    {
+        "store": "Conad",
+        "title": "Villani - Mortadella Bologna IGP",
+        "newPrice": "1.09",
+        "expiration": "2026-08-25",
+        "image": "https://data.promoqui.it/offers/images/092/962/488/original/crop_6a72f3da-2654-408d-a11f-00730ad30188_big_20260805102708.jpg?1786043675",
+        "link": "https://www.promoqui.it/offerte/freschi-di-convenienza-4938647"
+    },
+    {
+        "store": "Todis",
+        "title": "Salame Ventricina Piccante",
+        "newPrice": "1.0",
+        "expiration": "2026-08-30",
+        "image": "https://data.promoqui.it/offers/images/093/239/144/original/crop_6a82b7c5-26bc-45ea-8fc1-00a40ad302b2_big_20260817092704.jpg?1787051966",
+        "link": "https://www.promoqui.it/offerte/tutto-a-1-euro-4942765"
+    },
+    {
+        "store": "Todis",
+        "title": "Mortadella \"la Nostrana\"",
+        "newPrice": "1.0",
+        "expiration": "2026-08-30",
+        "image": "https://data.promoqui.it/offers/images/093/239/246/original/crop_6a82b7d0-3bc8-446b-92f9-00220ad3024e_big_20260817092718.jpg?1787052025",
+        "link": "https://www.promoqui.it/offerte/tutto-a-1-euro-4942765"
+    },
+    {
+        "store": "Conad",
+        "title": "Conad - Prosciutto Crudo",
+        "newPrice": "0.89",
+        "expiration": "2026-08-25",
+        "image": "https://data.promoqui.it/offers/images/092/962/459/original/crop_6a72f3d8-8434-4182-8f36-001a0ad30257_big_20260805102706.jpg?1786043662",
+        "link": "https://www.promoqui.it/offerte/freschi-di-convenienza-4938647"
+    },
+    {
+        "store": "Euronics",
+        "title": "Hoover - Battimaterassi HMC-520UV",
+        "newPrice": "119.9",
+        "expiration": "2026-09-10",
+        "image": "https://data.promoqui.it/offers/images/092/985/851/original/crop_6a75c3c4-3820-48a4-a03e-005e0ad301a8_big_20260807142857.jpg?1786125628",
+        "link": "https://www.promoqui.it/offerte/back-to-euronics-4939350"
+    },
+    {
+        "store": "Sinergy",
+        "title": "Polti - Scopa Elettrica Forzaspira SR90B_Plus",
+        "newPrice": "98.2",
+        "expiration": "2026-08-31",
+        "image": "https://data.promoqui.it/offers/images/092/799/359/original/crop_6a6c786f-51b8-47fa-88cb-007b0ad300ef_big_20260731122657.jpg?1785500009",
+        "link": "https://www.promoqui.it/offerte/sconto-iva-4933293"
+    },
+    {
+        "store": "Carrefour Iper",
+        "title": "Cecotec - Scopa Elettrica Conga Rockstar 2500",
+        "newPrice": "89.9",
+        "expiration": "2026-09-03",
+        "image": "https://data.promoqui.it/offers/images/092/910/338/original/crop_6a733235-cc94-455d-8fed-00210ad30028_big_20260805145311.jpg?1785974643",
+        "link": "https://www.promoqui.it/offerte/prezzi-freschi-4938019"
+    },
+    {
+        "store": "Leroy Merlin",
+        "title": "K\u00e4rcher - Aspiratore Solidi E Liquidi WD 3 S V-19/4/20",
+        "newPrice": "79.9",
+        "expiration": "2026-08-31",
+        "image": "https://data.promoqui.it/offers/images/092/904/660/original/crop_6a6763b8-d1a8-4155-bdbf-004e0ad301db_big_20260805174944.jpg?1785969723",
+        "link": "https://www.promoqui.it/offerte/rinnovare-la-casa-da-leroy-merlin-4938013"
+    },
+    {
+        "store": "Carrefour Iper",
+        "title": "Hoover - Aspirapolvere Con Sacco  H-energy 500",
+        "newPrice": "59.6",
+        "expiration": "2026-09-03",
+        "image": "https://data.promoqui.it/offers/images/092/910/416/original/crop_6a73323a-f710-4f35-804c-00670ad30028_big_20260805145316.jpg?1785974686",
+        "link": "https://www.promoqui.it/offerte/prezzi-freschi-4938019"
+    },
+    {
+        "store": "Dpi\u00f9",
+        "title": "Telefunken - M07784 Scopa Elettrica",
+        "newPrice": "34.9",
+        "expiration": "2026-08-30",
+        "image": "https://data.promoqui.it/offers/images/093/198/902/original/crop_6a7f161f-c0a8-4dd5-ae1c-00400ad302d9_big_20260814152038.jpg?1786966324",
+        "link": "https://www.promoqui.it/offerte/sconti-fino-al-50-4942133"
+    },
+    {
+        "store": "Todis",
+        "title": "Passerina IGT",
+        "newPrice": "2.69",
+        "expiration": "2026-08-30",
+        "image": "https://data.promoqui.it/offers/images/093/240/179/original/crop_6a82b819-8be4-4f26-885d-00a60ad300af_big_20260817092827.jpg?1787052551",
+        "link": "https://www.promoqui.it/offerte/tutto-a-1-euro-4942765"
+    },
+    {
+        "store": "Pewex",
+        "title": "Sole - Orvieto DOC",
+        "newPrice": "2.49",
+        "expiration": "2026-09-01",
+        "image": "https://data.promoqui.it/offers/images/093/391/384/original/crop_6a880354-7a30-46ca-a3d8-00820ad300af_big_20260821115827.jpg?1787337204",
+        "link": "https://www.promoqui.it/offerte/ripartiamo-dalla-spesa-4943885"
+    },
+    {
+        "store": "Carrefour Express",
+        "title": "Le morre - Linea Vini",
+        "newPrice": "2.49",
+        "expiration": "2026-08-25",
+        "image": "https://data.promoqui.it/offers/images/093/105/631/original/crop_6a79b18f-6ed4-4d35-8ed3-00560ad302bb_big_20260810160215.jpg?1786469107",
+        "link": "https://www.promoqui.it/offerte/sconti-d-estate-4941057"
+    },
+    {
+        "store": "Carrefour Express",
+        "title": "Feudi del sole - Castelli Romani DOC",
+        "newPrice": "1.99",
+        "expiration": "2026-08-31",
+        "image": "https://data.promoqui.it/offers/images/092/668/905/original/gibCover_6a69bb86-d7b0-4906-8e3b-00830ad30040_big_20260729103844.png?1785346211",
+        "link": "https://www.promoqui.it/offerte/offerte-d-estate-4933661"
+    },
+    {
+        "store": "Pewex",
+        "title": "Tavernello -  Vino",
+        "newPrice": "1.69",
+        "expiration": "2026-09-01",
+        "image": "https://data.promoqui.it/offers/images/093/391/368/original/crop_6a880354-484c-492f-9fbb-00ba0ad3013f_big_20260821115758.jpg?1787337202",
+        "link": "https://www.promoqui.it/offerte/ripartiamo-dalla-spesa-4943885"
+    },
+    {
+        "store": "Todis",
+        "title": "Rosato Di Puglia IGT",
+        "newPrice": "1.69",
+        "expiration": "2026-08-30",
+        "image": "https://data.promoqui.it/offers/images/093/240/183/original/crop_6a82b81a-1c8c-49d4-8792-00930ad30260_big_20260817092828.jpg?1787052554",
+        "link": "https://www.promoqui.it/offerte/tutto-a-1-euro-4942765"
+    },
+    {
+        "store": "Pewex",
+        "title": "Botte buona - Vino",
+        "newPrice": "1.49",
+        "expiration": "2026-09-01",
+        "image": "https://data.promoqui.it/offers/images/093/391/470/original/crop_6a880357-383c-478c-838f-00150ad30206_big_20260821120331.jpg?1787337214",
+        "link": "https://www.promoqui.it/offerte/ripartiamo-dalla-spesa-4943885"
+    },
+    {
+        "store": "Pewex",
+        "title": "Freschello - Vino",
+        "newPrice": "1.49",
+        "expiration": "2026-09-01",
+        "image": "https://data.promoqui.it/offers/images/093/391/335/original/crop_6a880353-46b8-4851-ab4a-00b10ad300cb_big_20260821115357.jpg?1787337198",
+        "link": "https://www.promoqui.it/offerte/ripartiamo-dalla-spesa-4943885"
+    },
+    {
+        "store": "Todis",
+        "title": "Vino Da Tavola Bianco",
+        "newPrice": "1.0",
+        "expiration": "2026-08-30",
+        "image": "https://data.promoqui.it/offers/images/093/239/224/original/crop_6a82b7ce-e6d8-43cd-a145-004c0ad302fd_big_20260817092715.jpg?1787052013",
+        "link": "https://www.promoqui.it/offerte/tutto-a-1-euro-4942765"
+    },
+    {
+        "store": "Euronics",
+        "title": "Amazfit - Smartwatch Balance 2",
+        "newPrice": "229.9",
+        "expiration": "2026-09-10",
+        "image": "https://data.promoqui.it/offers/images/092/985/354/original/crop_6a75a85e-0094-4031-a271-00c40ad30075_big_20260807140024.jpg?1786125374",
+        "link": "https://www.promoqui.it/offerte/back-to-euronics-4939350"
+    },
+    {
+        "store": "Euronics",
+        "title": "Garmin - Smartwatch Forerunner 165",
+        "newPrice": "199.9",
+        "expiration": "2026-09-10",
+        "image": "https://data.promoqui.it/offers/images/092/985/357/original/crop_6a75a85f-6018-4e3c-9b99-00540ad30084_big_20260807140025.jpg?1786125376",
+        "link": "https://www.promoqui.it/offerte/back-to-euronics-4939350"
+    },
+    {
+        "store": "Euronics",
+        "title": "Amazfit - Smartwatch Active Max",
+        "newPrice": "149.9",
+        "expiration": "2026-09-10",
+        "image": "https://data.promoqui.it/offers/images/092/985/362/original/crop_6a75a85f-7fbc-45ed-9ea6-00280ad301be_big_20260807140024.jpg?1786125378",
+        "link": "https://www.promoqui.it/offerte/back-to-euronics-4939350"
+    },
+    {
+        "store": "Euronics",
+        "title": "Celly - Smartwatch Quadrato Trainermate2BK",
+        "newPrice": "29.99",
+        "expiration": "2026-09-09",
+        "image": "https://data.promoqui.it/offers/images/093/368/506/original/crop_6a88070b-fc90-45d8-9cba-005a0ad3023d_big_20260821122521.jpg?1787311718",
+        "link": "https://www.promoqui.it/offerte/back-to-euronics-4943733"
+    },
+    {
+        "store": "Sinergy",
+        "title": "Trevi - Smartwatch T-Fit 201 Call",
+        "newPrice": "24.5",
+        "expiration": "2026-08-31",
+        "image": "https://data.promoqui.it/offers/images/092/799/374/original/crop_6a6c8d0c-11ec-4f57-993f-00940ad30053_big_20260731135533.jpg?1785500050",
+        "link": "https://www.promoqui.it/offerte/sconto-iva-4933293"
+    },
+    {
+        "store": "Carrefour Market",
+        "title": "Smartband Fitness Train",
+        "newPrice": "12.45",
+        "expiration": "2026-09-27",
+        "image": "https://data.promoqui.it/offers/images/092/340/936/original/crop_6a59d769-f304-496c-83e1-45430ad301ca_big_20260717091907.jpg?1784404378",
+        "link": "https://www.promoqui.it/offerte/back-to-school-4931166"
+    },
+    {
+        "store": "Carrefour Iper",
+        "title": "Coca Cola - Regular O Zero Zuccheri",
+        "newPrice": "1.99",
+        "expiration": "2026-09-30",
+        "image": "https://data.promoqui.it/offers/images/092/421/465/original/crop_6a5f29f3-efc8-4188-bae6-00700ad300d2_big_20260721101237.jpg?1784656363",
+        "link": "https://www.promoqui.it/offerte/speciale-coca-cola-4931962"
+    },
+    {
+        "store": "PRO7 Supermercati",
+        "title": "Coca Cola -  -",
+        "newPrice": "1.99",
+        "expiration": "2026-08-28",
+        "image": "https://data.promoqui.it/offers/images/093/282/240/original/crop_6a858554-9abc-4c2e-bf36-00c80ad300be_big_20260819122838.jpg?1787217877",
+        "link": "https://www.promoqui.it/offerte/sconti-fino-al-50-4943294"
+    },
+    {
+        "store": "Elite Supermercati",
+        "title": "Coca Cola - Sprite Prot. Pet Cl 66",
+        "newPrice": "1.19",
+        "expiration": "2026-09-03",
+        "image": "https://data.promoqui.it/offers/images/093/370/164/original/crop_6a87ffd0-2604-464c-b3eb-00a00ad30250_big_20260821102758.jpg?1787311951",
+        "link": "https://www.promoqui.it/offerte/grandi-marche-prezzi-affare-4943724"
+    },
+    {
+        "store": "Sigma",
+        "title": "Pepsi - Cola",
+        "newPrice": "1.0",
+        "expiration": "2026-08-31",
+        "image": "https://data.promoqui.it/offers/images/093/318/068/original/crop_6a86a27e-1c78-4790-bf52-000f0ad3007d_big_20260820084520.jpg?1787222801",
+        "link": "https://www.promoqui.it/offerte/prezzi-tondi-4943515"
+    },
+    {
+        "store": "Esselunga",
+        "title": "Esselunga - Regular",
+        "newPrice": "0.63",
+        "expiration": "2026-12-31",
+        "image": "https://data.promoqui.it/offers/images/090/771/932/original/crop_6a17fbc9-cc30-435d-810a-005c0ad30016_big_20260528102445.jpg?1780581432",
+        "link": "https://www.promoqui.it/offerte/la-tua-spesa-completa-firmata-4918836"
+    },
+    {
+        "store": "Todis",
+        "title": "Cola Zero",
+        "newPrice": "0.49",
+        "expiration": "2026-08-30",
+        "image": "https://data.promoqui.it/offers/images/093/241/352/original/crop_6a82ba14-5748-4fb2-b06d-00cb0ad30032_big_20260817093756.jpg?1787053145",
+        "link": "https://www.promoqui.it/offerte/tutto-a-1-euro-4942773"
+    },
+    {
+        "store": "Todis",
+        "title": "Zero",
+        "newPrice": "0.49",
+        "expiration": "2026-08-30",
+        "image": "https://data.promoqui.it/offers/images/093/239/575/original/crop_6a82b91d-5300-4478-b311-007e0ad30192_big_20260817093340.jpg?1787052208",
+        "link": "https://www.promoqui.it/offerte/tutto-a-1-euro-4942766"
+    },
+    {
+        "store": "Deco",
+        "title": "Barilla - Farina Di Grano Tenero Tipo \"00\"",
+        "newPrice": "0.89",
+        "expiration": "2026-08-31",
+        "image": "https://data.promoqui.it/offers/images/093/310/129/original/crop_6a85757b-16ec-47ff-b11b-002b0ad301ea_big_20260819112122.jpg?1787221803",
+        "link": "https://www.promoqui.it/offerte/lo-show-dei-prezzi-4943242"
+    },
+    {
+        "store": "Pewex",
+        "title": "Consilia - Farina Integrale Bio Integrale",
+        "newPrice": "0.89",
+        "expiration": "2026-09-01",
+        "image": "https://data.promoqui.it/offers/images/093/392/092/original/crop_6a88028d-4ad0-4f3f-832b-00420ad30118_big_20260821112057.jpg?1787337289",
+        "link": "https://www.promoqui.it/offerte/ripartiamo-dalla-spesa-4943890"
+    },
+    {
+        "store": "Pewex",
+        "title": "Consilia - Bio Integrale",
+        "newPrice": "0.89",
+        "expiration": "2026-09-01",
+        "image": "https://data.promoqui.it/offers/images/093/392/016/original/crop_6a88046f-e5d0-4f2e-b404-008e0ad302ed_big_20260821120719.jpg?1787337280",
+        "link": "https://www.promoqui.it/offerte/ripartiamo-dalla-spesa-4943891"
+    },
+    {
+        "store": "Dpi\u00f9",
+        "title": "Fattoria buon amore - Farina Di Riso",
+        "newPrice": "0.84",
+        "expiration": "2026-08-30",
+        "image": "https://data.promoqui.it/offers/images/093/198/428/original/crop_6a7f1616-9fbc-4dd0-b54f-00bf0ad30233_big_20260814152029.jpg?1786966037",
+        "link": "https://www.promoqui.it/offerte/sconti-fino-al-50-4942133"
+    },
+    {
+        "store": "Esselunga",
+        "title": "Esselunga - Farina Tipo '00'",
+        "newPrice": "0.75",
+        "expiration": "2026-12-31",
+        "image": "https://data.promoqui.it/offers/images/090/771/371/original/crop_6a17fbad-8ab8-4a42-81e3-00830ad301c3_big_20260528102418.jpg?1780581348",
+        "link": "https://www.promoqui.it/offerte/la-tua-spesa-completa-firmata-4918836"
+    },
+    {
+        "store": "Elite Supermercati",
+        "title": "Selex - Farina Di Grano Tenero Tipo \"0\" Tipo \"00\"",
+        "newPrice": "0.69",
+        "expiration": "2026-08-31",
+        "image": "https://data.promoqui.it/offers/images/090/111/952/original/crop_69f86e99-9e84-45d9-b5aa-00910ad301f4_big_20260504120203.jpg?1777979108",
+        "link": "https://www.promoqui.it/offerte/spesa-difesa-4913664"
+    },
+    {
+        "store": "Carrefour Iper",
+        "title": "Altoparlante Bluetooth Mod. PSBTS50",
+        "newPrice": "6.93",
+        "expiration": "2026-09-22",
+        "image": "https://data.promoqui.it/offers/images/092/368/168/original/crop_6a59d745-9878-4be0-b2c2-00d40ad300b1_big_20260717091831.jpg?1784424559",
+        "link": "https://www.promoqui.it/offerte/back-to-school-4931223"
+    },
+    {
+        "store": "Carrefour Iper",
+        "title": "Auricolari Bluetooth Mod. PSTWS219",
+        "newPrice": "6.43",
+        "expiration": "2026-09-22",
+        "image": "https://data.promoqui.it/offers/images/092/368/130/original/crop_6a59d741-4d24-4715-8eb7-00680ad3023c_big_20260717091827.jpg?1784424532",
+        "link": "https://www.promoqui.it/offerte/back-to-school-4931223"
+    },
+    {
+        "store": "Carrefour Market",
+        "title": "Auricolari Wireless Mosa. Pstws219",
+        "newPrice": "6.43",
+        "expiration": "2026-09-27",
+        "image": "https://data.promoqui.it/offers/images/092/340/984/original/crop_6a59d76c-ce48-47fc-be6d-008e0ad301ec_big_20260717091910.jpg?1784404404",
+        "link": "https://www.promoqui.it/offerte/back-to-school-4931166"
+    },
+    {
+        "store": "Cts Supermercati",
+        "title": "Cuffie Turberta",
+        "newPrice": "2.99",
+        "expiration": "2026-09-01",
+        "image": "https://data.promoqui.it/offers/images/093/412/229/original/crop_6a886c90-8d68-4fc7-bf90-00ca0ad3000c_big_20260821182231.jpg?1787340567",
+        "link": "https://www.promoqui.it/offerte/offerte-4943897"
+    },
+    {
+        "store": "Cts Supermercati",
+        "title": "Forte - Cuffie Turberta",
+        "newPrice": "2.99",
+        "expiration": "2026-09-01",
+        "image": "https://data.promoqui.it/offers/images/093/409/222/original/crop_6a886c90-2774-4630-8cb3-005d0ad300f7_big_20260821181743.jpg?1787340145",
+        "link": "https://www.promoqui.it/offerte/offerte-4943896"
+    },
+    {
+        "store": "Deco",
+        "title": "Deco - 50 Cuffie Copri Alimenti",
+        "newPrice": "1.49",
+        "expiration": "2026-08-31",
+        "image": "https://data.promoqui.it/offers/images/093/316/750/original/crop_6a8576db-86f8-47ea-ace7-00ed0ad3017b_big_20260819112810.jpg?1787222628",
+        "link": "https://www.promoqui.it/offerte/lo-show-dei-prezzi-4943242"
+    },
+    {
+        "store": "Euronics",
+        "title": "Lenovo - Loq Desktop Gaming Tower 17IAX10",
+        "newPrice": "1299.0",
+        "expiration": "2026-09-10",
+        "image": "https://data.promoqui.it/offers/images/092/985/223/original/crop_6a75a128-62c4-459f-b79f-00c70ad30046_big_20260807141115.jpg?1786125307",
+        "link": "https://www.promoqui.it/offerte/back-to-euronics-4939350"
+    },
+    {
+        "store": "Euronics",
+        "title": "HP - Omnidesk Ai M03-0014NL",
+        "newPrice": "699.99",
+        "expiration": "2026-09-09",
+        "image": "https://data.promoqui.it/offers/images/093/367/638/original/crop_6a8806fa-7204-4f9c-ba14-00a00ad3024f_big_20260821121754.jpg?1787311601",
+        "link": "https://www.promoqui.it/offerte/back-to-euronics-4943733"
+    },
+    {
+        "store": "Euronics",
+        "title": "HP - Desktop Omnidesk M03-0014NL",
+        "newPrice": "699.9",
+        "expiration": "2026-09-10",
+        "image": "https://data.promoqui.it/offers/images/092/985/303/original/crop_6a75a488-c440-46f3-ad68-00380ad30260_big_20260807141614.jpg?1786125345",
+        "link": "https://www.promoqui.it/offerte/back-to-euronics-4939350"
+    },
+    {
+        "store": "Carrefour Iper",
+        "title": "Misura - Bicicleta",
+        "newPrice": "179.0",
+        "expiration": "2026-09-22",
+        "image": "https://data.promoqui.it/offers/images/092/345/987/original/crop_6a59d731-2d34-40e0-9df5-4fff0ad3001e_big_20260717091811.jpg?1784407796",
+        "link": "https://www.promoqui.it/offerte/back-to-school-4931223"
+    },
+    {
+        "store": "Todis",
+        "title": "Ty - Mtb 27.5",
+        "newPrice": "169.9",
+        "expiration": "2026-08-30",
+        "image": "https://data.promoqui.it/offers/images/093/240/528/original/crop_6a82b836-d724-4e45-ae6a-00c70ad30197_big_20260817092856.jpg?1787052723",
+        "link": "https://www.promoqui.it/offerte/tutto-a-1-euro-4942765"
+    },
+    {
+        "store": "Todis",
+        "title": "Solo - Bici Trekking Unisex 6vel",
+        "newPrice": "159.9",
+        "expiration": "2026-08-30",
+        "image": "https://data.promoqui.it/offers/images/093/240/517/original/crop_6a82b832-0aa0-4c19-a388-00690ad302fd_big_20260817092852.jpg?1787052718",
+        "link": "https://www.promoqui.it/offerte/tutto-a-1-euro-4942765"
+    },
+    {
+        "store": "Todis",
+        "title": "Solo - Bici Pieghevole 20\"",
+        "newPrice": "149.9",
+        "expiration": "2026-08-30",
+        "image": "https://data.promoqui.it/offers/images/093/240/505/original/crop_6a82b830-9654-455e-81b2-00d30ad30105_big_20260817092850.jpg?1787052712",
+        "link": "https://www.promoqui.it/offerte/tutto-a-1-euro-4942765"
+    },
+    {
+        "store": "Carrefour Iper",
+        "title": "Pompa Bici",
+        "newPrice": "5.99",
+        "expiration": "2026-09-22",
+        "image": "https://data.promoqui.it/offers/images/092/345/933/original/crop_6a59d72e-1824-4033-ab3f-003b0ad30007_big_20260717091808.jpg?1784407766",
+        "link": "https://www.promoqui.it/offerte/back-to-school-4931223"
+    },
+    {
+        "store": "Lidl",
+        "title": "Crivit - Camera D'Aria Per Bicicletta, 1 O 2 Pezzi",
+        "newPrice": "3.99",
+        "expiration": "2026-08-26",
+        "image": "https://data.promoqui.it/offers/images/093/354/442/original/crop_6a79e911-ec54-414c-b0f5-00810ad300fc_big_20260820180748.jpg?1787251369",
+        "link": "https://www.promoqui.it/offerte/xxl-4943647"
+    },
+    {
+        "store": "Euronics",
+        "title": "Dyson - Scopa Ricaricabile V10 Cyclone Submarine",
+        "newPrice": "379.0",
+        "expiration": "2026-09-10",
+        "image": "https://data.promoqui.it/offers/images/092/985/888/original/crop_6a75c3cb-fca8-45cd-83e0-003f0ad30260_big_20260807142904.jpg?1786125646",
+        "link": "https://www.promoqui.it/offerte/back-to-euronics-4939350"
+    },
+    {
+        "store": "Euronics",
+        "title": "Hoover - Scopa Ricaricabile HF-610P",
+        "newPrice": "269.9",
+        "expiration": "2026-09-10",
+        "image": "https://data.promoqui.it/offers/images/092/985/579/original/crop_6a75ac88-e31c-4b49-832f-005e0ad300e0_big_20260807140148.jpg?1786125482",
+        "link": "https://www.promoqui.it/offerte/back-to-euronics-4939350"
+    },
+    {
+        "store": "Euronics",
+        "title": "Rowenta - Scopa Elettrica Senza Filo RH7A32E0",
+        "newPrice": "199.99",
+        "expiration": "2026-09-09",
+        "image": "https://data.promoqui.it/offers/images/093/370/100/original/crop_6a88072d-46b8-4087-a7f4-00840ad3024f_big_20260821122536.jpg?1787311942",
+        "link": "https://www.promoqui.it/offerte/back-to-euronics-4943733"
+    },
+    {
+        "store": "Euronics",
+        "title": "Rowenta - Scopa Ricaricabile RH-7A32EO Flex",
+        "newPrice": "199.9",
+        "expiration": "2026-09-10",
+        "image": "https://data.promoqui.it/offers/images/092/985/858/original/crop_6a75c3c6-58dc-4ac4-b4c3-008a0ad30226_big_20260807142905.jpg?1786125632",
+        "link": "https://www.promoqui.it/offerte/back-to-euronics-4939350"
+    },
+    {
+        "store": "Dpi\u00f9",
+        "title": "Samsung - VS15 JET65 PET Scopa Elettrica",
+        "newPrice": "199.0",
+        "expiration": "2026-08-30",
+        "image": "https://data.promoqui.it/offers/images/093/198/819/original/crop_6a7f161e-1394-4cc9-a74b-00a10ad302c2_big_20260814152037.jpg?1786966277",
+        "link": "https://www.promoqui.it/offerte/sconti-fino-al-50-4942133"
+    },
+    {
+        "store": "Esselunga",
+        "title": "Hoover - Scopa Senza Filo Hf401h 011",
+        "newPrice": "129.9",
+        "expiration": "2026-08-26",
+        "image": "https://data.promoqui.it/offers/images/093/169/253/original/crop_6a7d72a6-0064-47a0-8d20-009d0ad3019b_big_20260813093205.jpg?1786636145",
+        "link": "https://www.promoqui.it/offerte/sconti-fino-al-50-4941722"
+    },
+    {
+        "store": "Elite Supermercati",
+        "title": "Francia - Prosciutto Di Bufalcia",
+        "newPrice": "0.89",
+        "expiration": "2026-09-03",
+        "image": "https://data.promoqui.it/offers/images/093/369/663/original/crop_6a87ffc8-a308-410a-8ffb-00420ad302fb_big_20260821102748.jpg?1787311880",
+        "link": "https://www.promoqui.it/offerte/grandi-marche-prezzi-affare-4943724"
+    },
+    {
+        "store": "Pewex",
+        "title": "Prosciutto Cotto Scelto",
+        "newPrice": "0.79",
+        "expiration": "2026-09-01",
+        "image": "https://data.promoqui.it/offers/images/093/392/846/original/crop_6a8802b2-85b0-4da6-a608-00840ad30206_big_20260821112732.jpg?1787337379",
+        "link": "https://www.promoqui.it/offerte/ripartiamo-dalla-spesa-4943890"
+    },
+    {
+        "store": "Sigma",
+        "title": "Energade - Arancia",
+        "newPrice": "2.0",
+        "expiration": "2026-08-31",
+        "image": "https://data.promoqui.it/offers/images/093/320/198/original/crop_6a86a2bd-6b7c-43bc-804d-006f0ad3025a_big_20260820084623.jpg?1787223208",
+        "link": "https://www.promoqui.it/offerte/prezzi-tondi-4943515"
+    },
+    {
+        "store": "Ipertriscount",
+        "title": "Rosso Di Sicilia -  Crema Di Capperi",
+        "newPrice": "1.29",
+        "expiration": "2026-09-01",
+        "image": "https://data.promoqui.it/offers/images/093/391/497/original/crop_6a87f43c-122c-47c7-a3aa-00350ad30257_big_20260821084723.jpg?1787337218",
+        "link": "https://www.promoqui.it/offerte/ondata-di-offerte-4943898"
+    },
+    {
+        "store": "Al Discount",
+        "title": "Energade - Arancia/ Arancia Rossa/ Limone Pet",
+        "newPrice": "1.29",
+        "expiration": "2026-08-31",
+        "image": "https://data.promoqui.it/offers/images/093/273/793/original/crop_6a85a02e-3468-4bef-bc8d-009b0ad302dc_big_20260819145614.jpg?1787216346",
+        "link": "https://www.promoqui.it/offerte/un-ondata-di-offerte-4943245"
+    },
+    {
+        "store": "Conad",
         "title": "Purina - Cibo Per Gatti Gold Gourmet",
         "newPrice": "0.73",
         "expiration": "2026-08-25",
@@ -206,6 +1246,462 @@
         "expiration": "2026-09-03",
         "image": "https://data.promoqui.it/offers/images/092/910/223/original/crop_6a736387-28f8-4f76-82c0-00710ad30120_big_20260805183436.jpg?1785974558",
         "link": "https://www.promoqui.it/offerte/prezzi-freschi-4938018"
+    },
+    {
+        "store": "Orizzonte",
+        "title": "Alba - Madia",
+        "newPrice": "70.0",
+        "expiration": "2026-09-27",
+        "image": "https://data.promoqui.it/offers/images/089/144/209/original/crop_696b1631-64c0-45c2-818c-00c50ad301ea_big_20260328033913.jpg?1775659336",
+        "link": "https://www.promoqui.it/offerte/volantino-orizzonte-4905809"
+    },
+    {
+        "store": "Orizzonte",
+        "title": "Prime - Armadio  5195652",
+        "newPrice": "46.0",
+        "expiration": "2026-09-27",
+        "image": "https://data.promoqui.it/offers/images/089/144/543/original/crop_696b168e-751c-49df-b1ea-00eb0ad30178_big_20260328034011.jpg?1775659900",
+        "link": "https://www.promoqui.it/offerte/volantino-orizzonte-4905809"
+    },
+    {
+        "store": "Orizzonte",
+        "title": "Prime - Armadio  Portascope Dark",
+        "newPrice": "46.0",
+        "expiration": "2026-09-27",
+        "image": "https://data.promoqui.it/offers/images/089/144/540/original/crop_696b168d-ce60-4e2b-8551-00920ad300a5_big_20260328034011.jpg?1775659893",
+        "link": "https://www.promoqui.it/offerte/volantino-orizzonte-4905809"
+    },
+    {
+        "store": "Leroy Merlin",
+        "title": "Keter - Armadio In Polipropilene Sphera L68xP39xH166 Cm",
+        "newPrice": "39.9",
+        "expiration": "2026-08-31",
+        "image": "https://data.promoqui.it/offers/images/092/904/466/original/crop_6a675b11-ee1c-4f31-bf26-00650ad3027a_big_20260805174929.jpg?1785969622",
+        "link": "https://www.promoqui.it/offerte/rinnovare-la-casa-da-leroy-merlin-4938013"
+    },
+    {
+        "store": "Orizzonte",
+        "title": "Linea - Armadio Prime Basso",
+        "newPrice": "27.0",
+        "expiration": "2026-09-27",
+        "image": "https://data.promoqui.it/offers/images/089/144/527/original/crop_696b1688-cb7c-4b12-95f9-00110ad300d5_big_20260328034009.jpg?1775659865",
+        "link": "https://www.promoqui.it/offerte/volantino-orizzonte-4905809"
+    },
+    {
+        "store": "Orizzonte",
+        "title": "Solo - Armadio 334671",
+        "newPrice": "18.0",
+        "expiration": "2026-09-27",
+        "image": "https://data.promoqui.it/offers/images/089/144/573/original/crop_696b169a-e0b0-43aa-9f18-423c0ad3011d_big_20260328034019.jpg?1775659967",
+        "link": "https://www.promoqui.it/offerte/volantino-orizzonte-4905809"
+    },
+    {
+        "store": "Orizzonte",
+        "title": "Solo - Armadietto",
+        "newPrice": "15.0",
+        "expiration": "2026-09-27",
+        "image": "https://data.promoqui.it/offers/images/089/144/569/original/crop_696b1699-30ec-468f-9386-00d50ad30116_big_20260328034019.jpg?1775659958",
+        "link": "https://www.promoqui.it/offerte/volantino-orizzonte-4905809"
+    },
+    {
+        "store": "Orizzonte",
+        "title": "Asta - Armadio",
+        "newPrice": "10.9",
+        "expiration": "2026-09-27",
+        "image": "https://data.promoqui.it/offers/images/089/144/562/original/crop_696b1695-207c-443a-a491-006c0ad3008b_big_20260328034018.jpg?1775659943",
+        "link": "https://www.promoqui.it/offerte/volantino-orizzonte-4905809"
+    },
+    {
+        "store": "Ma Supermercati",
+        "title": "Banane",
+        "newPrice": "1.0",
+        "expiration": "2026-09-01",
+        "image": "https://data.promoqui.it/offers/images/093/395/718/original/crop_6a8809e9-ca9c-4a04-bb91-00890ad3028a_big_20260821123302.jpg?1787337739",
+        "link": "https://www.promoqui.it/offerte/amici-della-convenienza-4943917"
+    },
+    {
+        "store": "Il Castoro Supermercati",
+        "title": "Vall\u00e8 - Margarina-Burro",
+        "newPrice": "1.79",
+        "expiration": "2026-09-01",
+        "image": "https://data.promoqui.it/offers/images/093/399/977/original/crop_6a886a41-a1e8-4112-93ef-00300ad3013f_big_20260821180728.jpg?1787338315",
+        "link": "https://www.promoqui.it/offerte/offerte-straordinarie-4943932"
+    },
+    {
+        "store": "Pewex",
+        "title": "Burrata Di Andria IGP",
+        "newPrice": "1.79",
+        "expiration": "2026-09-01",
+        "image": "https://data.promoqui.it/offers/images/093/395/069/original/crop_6a88054c-867c-4562-b77c-00660ad30118_big_20260821120815.jpg?1787337655",
+        "link": "https://www.promoqui.it/offerte/ripartiamo-dalla-spesa-4943885"
+    },
+    {
+        "store": "Sidis",
+        "title": "Parmareggio - Burro",
+        "newPrice": "1.69",
+        "expiration": "2026-08-30",
+        "image": "https://data.promoqui.it/offers/images/093/285/621/original/crop_6a8553db-b398-4bca-a181-00200ad3011b_big_20260819085733.jpg?1787218353",
+        "link": "https://www.promoqui.it/offerte/le-offerte-continuano-4943322"
+    },
+    {
+        "store": "Elite Supermercati",
+        "title": "Vall\u00e8 - Omega 3",
+        "newPrice": "1.69",
+        "expiration": "2026-09-03",
+        "image": "https://data.promoqui.it/offers/images/093/371/271/original/crop_6a87fff2-23f4-4ae8-b96d-005b0ad30114_big_20260821102822.jpg?1787312106",
+        "link": "https://www.promoqui.it/offerte/grandi-marche-prezzi-affare-4943724"
+    },
+    {
+        "store": "Tigre",
+        "title": "Sabelli - Burratina",
+        "newPrice": "1.49",
+        "expiration": "2026-09-03",
+        "image": "https://data.promoqui.it/offers/images/093/364/553/original/crop_6a86a455-fecc-42d8-a521-00640ad302d2_big_20260820085312.jpg?1787302153",
+        "link": "https://www.promoqui.it/offerte/prezzi-shock-4943670"
+    },
+    {
+        "store": "Elite Supermercati",
+        "title": "Philadelphia - Original",
+        "newPrice": "1.09",
+        "expiration": "2026-09-03",
+        "image": "https://data.promoqui.it/offers/images/093/370/002/original/crop_6a87ffcc-c63c-4b92-8f10-007d0ad30054_big_20260821102658.jpg?1787311927",
+        "link": "https://www.promoqui.it/offerte/grandi-marche-prezzi-affare-4943724"
+    },
+    {
+        "store": "Carrefour Market",
+        "title": "Sabelli - Burrata",
+        "newPrice": "0.99",
+        "expiration": "2026-09-03",
+        "image": "https://data.promoqui.it/offers/images/093/226/617/original/crop_6a82d435-592c-4e26-930e-001d0ad3024d_big_20260817113204.jpg?1787014007",
+        "link": "https://www.promoqui.it/offerte/prezzi-freschi-4942581"
+    },
+    {
+        "store": "Elite Supermercati",
+        "title": "Granterre - Parmareggio Burro Senza Lattosio",
+        "newPrice": "0.99",
+        "expiration": "2026-09-03",
+        "image": "https://data.promoqui.it/offers/images/093/370/978/original/crop_6a87ffea-2f04-497b-a40d-004c0ad30187_big_20260821102840.jpg?1787312065",
+        "link": "https://www.promoqui.it/offerte/grandi-marche-prezzi-affare-4943724"
+    },
+    {
+        "store": "Todis",
+        "title": "Pescare - Pasta D'Acciughe",
+        "newPrice": "1.0",
+        "expiration": "2026-08-30",
+        "image": "https://data.promoqui.it/offers/images/093/239/171/original/crop_6a82b7ca-0f18-424e-a7e9-00b60ad3028e_big_20260817092709.jpg?1787051985",
+        "link": "https://www.promoqui.it/offerte/tutto-a-1-euro-4942765"
+    },
+    {
+        "store": "Pewex",
+        "title": "Rummo - Pasta Di Semola",
+        "newPrice": "0.99",
+        "expiration": "2026-09-01",
+        "image": "https://data.promoqui.it/offers/images/093/397/903/original/crop_6a880584-a258-43ca-a02f-001e0ad30013_big_20260821120950.jpg?1787338001",
+        "link": "https://www.promoqui.it/offerte/ripartiamo-dalla-spesa-4943885"
+    },
+    {
+        "store": "Il Castoro Supermercati",
+        "title": "La Molisana - Pasta Integrale",
+        "newPrice": "0.99",
+        "expiration": "2026-09-01",
+        "image": "https://data.promoqui.it/offers/images/093/396/706/original/crop_6a88695b-412c-4005-8da9-00b90ad3013f_big_20260821180028.jpg?1787337855",
+        "link": "https://www.promoqui.it/offerte/offerte-straordinarie-4943932"
+    },
+    {
+        "store": "Todis",
+        "title": "Bio - Pasta Integrale  Spaghetti",
+        "newPrice": "0.85",
+        "expiration": "2026-08-30",
+        "image": "https://data.promoqui.it/offers/images/093/239/394/original/crop_6a82b7da-a7d8-4f56-aeef-003d0ad30273_big_20260817092725.jpg?1787052103",
+        "link": "https://www.promoqui.it/offerte/tutto-a-1-euro-4942765"
+    },
+    {
+        "store": "Conad",
+        "title": "Grano armando - Pasta Trafilata Al Bronzo",
+        "newPrice": "0.79",
+        "expiration": "2026-08-25",
+        "image": "https://data.promoqui.it/offers/images/093/268/650/original/crop_6a840cba-ab78-4e8a-b725-00250ad3005c_big_20260818095400.jpg?1787215411",
+        "link": "https://www.promoqui.it/offerte/convenienza-piu-4942942"
+    },
+    {
+        "store": "Il Castoro Supermercati",
+        "title": "Barilla - Pasta Di Semola",
+        "newPrice": "0.59",
+        "expiration": "2026-09-01",
+        "image": "https://data.promoqui.it/offers/images/093/396/773/original/crop_6a88695f-508c-41e2-bae1-4aaf0ad30117_big_20260821180031.jpg?1787337862",
+        "link": "https://www.promoqui.it/offerte/offerte-straordinarie-4943932"
+    },
+    {
+        "store": "Il Castoro Supermercati",
+        "title": "Barilla -  Pastadi Semola",
+        "newPrice": "0.59",
+        "expiration": "2026-09-01",
+        "image": "https://data.promoqui.it/offers/images/093/396/000/original/crop_6a8868e2-82dc-46d3-8d34-00780ad30118_big_20260821175840.jpg?1787337773",
+        "link": "https://www.promoqui.it/offerte/offerte-straordinarie-4943932"
+    },
+    {
+        "store": "Euronics",
+        "title": "Realme - Note 70t",
+        "newPrice": "159.0",
+        "expiration": "2026-09-09",
+        "image": "https://data.promoqui.it/offers/images/093/368/823/original/crop_6a880711-0138-4a7e-a4db-00380ad30034_big_20260821122354.jpg?1787311759",
+        "link": "https://www.promoqui.it/offerte/back-to-euronics-4943733"
+    },
+    {
+        "store": "Euronics",
+        "title": "Xiaomi - Redmi 15C",
+        "newPrice": "149.0",
+        "expiration": "2026-09-09",
+        "image": "https://data.promoqui.it/offers/images/093/368/963/original/crop_6a880713-48d4-4f79-9bb6-00160ad30187_big_20260821121830.jpg?1787311779",
+        "link": "https://www.promoqui.it/offerte/back-to-euronics-4943733"
+    },
+    {
+        "store": "Euronics",
+        "title": "Motorola - Moto G06",
+        "newPrice": "129.99",
+        "expiration": "2026-09-09",
+        "image": "https://data.promoqui.it/offers/images/093/368/418/original/crop_6a88070b-7794-4564-a3e9-005d0ad3016f_big_20260821122325.jpg?1787311707",
+        "link": "https://www.promoqui.it/offerte/back-to-euronics-4943733"
+    },
+    {
+        "store": "Sinergy",
+        "title": "Oppo - Smartphone A6X",
+        "newPrice": "122.8",
+        "expiration": "2026-08-31",
+        "image": "https://data.promoqui.it/offers/images/092/799/373/original/crop_6a6c8d0b-c0b4-480f-9f79-437c0ad302cb_big_20260731135532.jpg?1785500048",
+        "link": "https://www.promoqui.it/offerte/sconto-iva-4933293"
+    },
+    {
+        "store": "Dpi\u00f9",
+        "title": "Oppo - A6X Smartphone ICE Blue",
+        "newPrice": "119.0",
+        "expiration": "2026-08-30",
+        "image": "https://data.promoqui.it/offers/images/093/199/066/original/crop_6a7f1621-cec8-4f2d-9c8a-408d0ad3001a_big_20260814152043.jpg?1786966406",
+        "link": "https://www.promoqui.it/offerte/sconti-fino-al-50-4942133"
+    },
+    {
+        "store": "Carrefour Iper",
+        "title": "Motorola - Smartphone Mod. G05",
+        "newPrice": "99.0",
+        "expiration": "2026-09-03",
+        "image": "https://data.promoqui.it/offers/images/092/910/314/original/crop_6a733234-2554-488a-9adc-00cf0ad301f0_big_20260805145310.jpg?1785974629",
+        "link": "https://www.promoqui.it/offerte/prezzi-freschi-4938019"
+    },
+    {
+        "store": "Carrefour Market",
+        "title": "TCL - Smartphone Mod. K70 Se",
+        "newPrice": "89.0",
+        "expiration": "2026-09-03",
+        "image": "https://data.promoqui.it/offers/images/093/227/833/original/crop_6a82d75b-a910-423c-9cea-00260ad30205_big_20260817114210.jpg?1787014682",
+        "link": "https://www.promoqui.it/offerte/prezzi-freschi-4942580"
+    },
+    {
+        "store": "Carrefour Iper",
+        "title": "Linea - Temperino",
+        "newPrice": "1.99",
+        "expiration": "2026-09-22",
+        "image": "https://data.promoqui.it/offers/images/092/345/889/original/crop_6a59d72a-ced0-477b-ae08-003b0ad300d2_big_20260717091804.jpg?1784407742",
+        "link": "https://www.promoqui.it/offerte/back-to-school-4931223"
+    },
+    {
+        "store": "Todis",
+        "title": "Origine - Meloni Retati",
+        "newPrice": "1.39",
+        "expiration": "2026-08-30",
+        "image": "https://data.promoqui.it/offers/images/093/239/633/original/crop_6a82b7ec-5880-4df3-8d45-00640ad301e3_big_20260817092742.jpg?1787052242",
+        "link": "https://www.promoqui.it/offerte/tutto-a-1-euro-4942765"
+    },
+    {
+        "store": "Conad",
+        "title": "Conad - Arocados Hass Sapori&Idee",
+        "newPrice": "1.39",
+        "expiration": "2026-08-25",
+        "image": "https://data.promoqui.it/offers/images/092/962/349/original/crop_6a72f3ce-2c94-45e0-bff0-003c0ad302ec_big_20260805102656.jpg?1786043605",
+        "link": "https://www.promoqui.it/offerte/freschi-di-convenienza-4938647"
+    },
+    {
+        "store": "Todis",
+        "title": "Todis - Melone Giallo",
+        "newPrice": "1.19",
+        "expiration": "2026-08-30",
+        "image": "https://data.promoqui.it/offers/images/093/239/506/original/crop_6a82b7e2-a728-428a-8f17-00ad0ad302a5_big_20260817092732.jpg?1787052160",
+        "link": "https://www.promoqui.it/offerte/tutto-a-1-euro-4942765"
+    },
+    {
+        "store": "Conad",
+        "title": "I Nostri Ori - Melone Giallo",
+        "newPrice": "1.19",
+        "expiration": "2026-08-25",
+        "image": "https://data.promoqui.it/offers/images/093/268/116/original/crop_6a840cb7-abe8-4d94-aee6-007b0ad3005c_big_20260818095354.jpg?1787215331",
+        "link": "https://www.promoqui.it/offerte/convenienza-piu-4942942"
+    },
+    {
+        "store": "Al Discount",
+        "title": "Meloni Gialli Cat I",
+        "newPrice": "0.99",
+        "expiration": "2026-08-31",
+        "image": "https://data.promoqui.it/offers/images/093/274/384/original/crop_6a85a094-c4ac-4b74-b201-002d0ad3025a_big_20260819152416.jpg?1787216468",
+        "link": "https://www.promoqui.it/offerte/un-ondata-di-offerte-4943245"
+    },
+    {
+        "store": "Pewex",
+        "title": "Consilia - Mix Croccante",
+        "newPrice": "0.99",
+        "expiration": "2026-09-01",
+        "image": "https://data.promoqui.it/offers/images/093/394/540/original/crop_6a880535-c988-419a-990f-00660ad301a3_big_20260821121131.jpg?1787337587",
+        "link": "https://www.promoqui.it/offerte/ripartiamo-dalla-spesa-4943885"
+    },
+    {
+        "store": "Pewex",
+        "title": "Melone Giallo",
+        "newPrice": "0.99",
+        "expiration": "2026-09-01",
+        "image": "https://data.promoqui.it/offers/images/093/391/885/original/crop_6a88042f-6c30-4168-8214-00370ad3013f_big_20260821120534.jpg?1787337264",
+        "link": "https://www.promoqui.it/offerte/ripartiamo-dalla-spesa-4943885"
+    },
+    {
+        "store": "Carrefour Express",
+        "title": "Anguria Baby",
+        "newPrice": "0.88",
+        "expiration": "2026-08-25",
+        "image": "https://data.promoqui.it/offers/images/093/105/178/original/crop_6a79b167-ad04-4cf2-ad02-00470ad301de_big_20260810160226.jpg?1786468545",
+        "link": "https://www.promoqui.it/offerte/sconti-d-estate-4941057"
+    },
+    {
+        "store": "Conad",
+        "title": "Conad - Sapori&Idee Percorso Qualita Filiera Controllata",
+        "newPrice": "0.79",
+        "expiration": "2026-08-25",
+        "image": "https://data.promoqui.it/offers/images/092/962/311/original/crop_6a72f3c6-e048-4c53-ac56-00340ad300e4_big_20260805102648.jpg?1786043581",
+        "link": "https://www.promoqui.it/offerte/freschi-di-convenienza-4938647"
+    },
+    {
+        "store": "Sidis",
+        "title": "Pampers - Pannolini, Mutandino Baby-Dry",
+        "newPrice": "4.59",
+        "expiration": "2026-08-30",
+        "image": "https://data.promoqui.it/offers/images/093/292/298/original/crop_6a855400-e578-4f04-8936-00820ad30134_big_20260819085810.jpg?1787219352",
+        "link": "https://www.promoqui.it/offerte/le-offerte-continuano-4943322"
+    },
+    {
+        "store": "Esselunga",
+        "title": "Pampers - Pannolini",
+        "newPrice": "3.99",
+        "expiration": "2026-08-26",
+        "image": "https://data.promoqui.it/offers/images/093/168/662/original/crop_6a7d6e24-4b6c-4e85-a26b-00780ad30189_big_20260813091423.jpg?1786635845",
+        "link": "https://www.promoqui.it/offerte/sconti-fino-al-50-4941722"
+    },
+    {
+        "store": "Deco",
+        "title": "Pampers - Sole E Luna Pannolini",
+        "newPrice": "3.69",
+        "expiration": "2026-08-31",
+        "image": "https://data.promoqui.it/offers/images/093/316/840/original/crop_6a8576dc-7664-4bd7-b273-006e0ad302b0_big_20260819112827.jpg?1787222640",
+        "link": "https://www.promoqui.it/offerte/lo-show-dei-prezzi-4943242"
+    },
+    {
+        "store": "PRO7 Supermercati",
+        "title": "Pampers - Pannolini Sole E Luna",
+        "newPrice": "3.59",
+        "expiration": "2026-08-28",
+        "image": "https://data.promoqui.it/offers/images/093/282/442/original/crop_6a858559-228c-4c72-b163-003c0ad30242_big_20260819122843.jpg?1787217913",
+        "link": "https://www.promoqui.it/offerte/sconti-fino-al-50-4943294"
+    },
+    {
+        "store": "Sidis",
+        "title": "Pampers - Salviettine Baby-Dry",
+        "newPrice": "2.99",
+        "expiration": "2026-08-30",
+        "image": "https://data.promoqui.it/offers/images/093/291/866/original/crop_6a8553fa-df10-4fee-891d-00cb0ad302c5_big_20260819085804.jpg?1787219180",
+        "link": "https://www.promoqui.it/offerte/le-offerte-continuano-4943322"
+    },
+    {
+        "store": "Cts Supermercati",
+        "title": "Chef select - Pannolini",
+        "newPrice": "2.19",
+        "expiration": "2026-09-01",
+        "image": "https://data.promoqui.it/offers/images/093/415/397/original/crop_6a886e22-0eac-4108-b028-00790ad3027d_big_20260821182704.jpg?1787341412",
+        "link": "https://www.promoqui.it/offerte/offerte-4943897"
+    },
+    {
+        "store": "Elite Supermercati",
+        "title": "Pampers - Sole E Luna Salviette",
+        "newPrice": "1.99",
+        "expiration": "2026-09-03",
+        "image": "https://data.promoqui.it/offers/images/093/374/609/original/crop_6a880024-3fc0-4482-bab4-00ed0ad3007f_big_20260821102922.jpg?1787312565",
+        "link": "https://www.promoqui.it/offerte/grandi-marche-prezzi-affare-4943724"
+    },
+    {
+        "store": "Dpi\u00f9",
+        "title": "Miia - M40WGF3 Smart Tv Led 40\"",
+        "newPrice": "179.0",
+        "expiration": "2026-08-30",
+        "image": "https://data.promoqui.it/offers/images/093/198/962/original/crop_6a7f1620-8174-4b71-8a76-43170ad30229_big_20260814152039.jpg?1786966354",
+        "link": "https://www.promoqui.it/offerte/sconti-fino-al-50-4942133"
+    },
+    {
+        "store": "Carrefour Iper",
+        "title": "Inno-Hit - Tv Led 40 Mod..IH40FL2K",
+        "newPrice": "159.0",
+        "expiration": "2026-09-03",
+        "image": "https://data.promoqui.it/offers/images/092/910/360/original/crop_6a733236-fd04-4f33-bd0b-002b0ad3016d_big_20260805145312.jpg?1785974655",
+        "link": "https://www.promoqui.it/offerte/prezzi-freschi-4938019"
+    },
+    {
+        "store": "Dpi\u00f9",
+        "title": "Hisense - 32E410T Smart Tv",
+        "newPrice": "149.0",
+        "expiration": "2026-08-30",
+        "image": "https://data.promoqui.it/offers/images/093/198/946/original/crop_6a7f1620-1e50-4b43-b579-41230ad301d2_big_20260814152042.jpg?1786966346",
+        "link": "https://www.promoqui.it/offerte/sconti-fino-al-50-4942133"
+    },
+    {
+        "store": "Esselunga",
+        "title": "Saba - Tv Qled  32\" SA32QM10VD",
+        "newPrice": "129.0",
+        "expiration": "2026-08-26",
+        "image": "https://data.promoqui.it/offers/images/093/169/090/original/crop_6a7d7294-bd3c-4b69-bee9-00a10ad30082_big_20260813093210.jpg?1786636063",
+        "link": "https://www.promoqui.it/offerte/sconti-fino-al-50-4941722"
+    },
+    {
+        "store": "Carrefour Iper",
+        "title": "Eko - Tv Lcd Mod. K320hvd",
+        "newPrice": "99.0",
+        "expiration": "2026-09-03",
+        "image": "https://data.promoqui.it/offers/images/092/910/445/original/crop_6a73323d-0b3c-4dbe-85b1-009d0ad30238_big_20260805145319.jpg?1785974702",
+        "link": "https://www.promoqui.it/offerte/prezzi-freschi-4938019"
+    },
+    {
+        "store": "Dpi\u00f9",
+        "title": "Smart Tech -  32HHQTK Televisore",
+        "newPrice": "99.0",
+        "expiration": "2026-08-30",
+        "image": "https://data.promoqui.it/offers/images/093/198/832/original/crop_6a7f161e-507c-41e5-915f-00a80ad302a0_big_20260814152037.jpg?1786966286",
+        "link": "https://www.promoqui.it/offerte/sconti-fino-al-50-4942133"
+    },
+    {
+        "store": "Sinergy",
+        "title": "Meliconi - FDR 600 Vesa 600 50\"-75\"",
+        "newPrice": "79.4",
+        "expiration": "2026-08-31",
+        "image": "https://data.promoqui.it/offers/images/092/805/419/original/crop_6a6c98d4-daf4-4f62-97ea-00c70ad300d0_big_20260731144510.jpg?1785519199",
+        "link": "https://www.promoqui.it/offerte/sconto-iva-4933293"
+    },
+    {
+        "store": "Sinergy",
+        "title": "Meliconi - FS 400 Vesa 400 40\"-65\"",
+        "newPrice": "27.7",
+        "expiration": "2026-08-31",
+        "image": "https://data.promoqui.it/offers/images/092/805/420/original/crop_6a6c98d5-ff34-4711-80b2-46d20ad301bb_big_20260731144511.jpg?1785519201",
+        "link": "https://www.promoqui.it/offerte/sconto-iva-4933293"
+    },
+    {
+        "store": "Sinergy",
+        "title": "Meliconi - FTR 100 Vesa 100 14\"-25\"",
+        "newPrice": "14.6",
+        "expiration": "2026-08-31",
+        "image": "https://data.promoqui.it/offers/images/092/805/418/original/crop_6a6c98d3-f188-4118-a415-46420ad30004_big_20260731144509.jpg?1785519196",
+        "link": "https://www.promoqui.it/offerte/sconto-iva-4933293"
     },
     {
         "store": "Euronics",
@@ -352,28 +1848,12 @@
         "link": "https://www.promoqui.it/offerte/convenienza-xxl-4943889"
     },
     {
-        "store": "Il Castoro Supermercati",
-        "title": "Bauli - Mini Cornetti Cacao Albicocca",
-        "newPrice": "0.79",
-        "expiration": "2026-09-01",
-        "image": "https://data.promoqui.it/offers/images/093/397/469/original/crop_6a886995-5c4c-4f7c-b132-00710ad300c7_big_20260821180113.jpg?1787337947",
-        "link": "https://www.promoqui.it/offerte/offerte-straordinarie-4943932"
-    },
-    {
         "store": "Carrefour Market",
         "title": "Bauli - Mini Croissant",
         "newPrice": "0.59",
         "expiration": "2026-09-03",
         "image": "https://data.promoqui.it/offers/images/093/226/850/original/crop_6a82d451-1f80-44c7-a8b2-00530ad300fd_big_20260817113329.jpg?1787014135",
         "link": "https://www.promoqui.it/offerte/prezzi-freschi-4942581"
-    },
-    {
-        "store": "Conad",
-        "title": "Galbani - Prosciutto Cotto Fetta Golosa",
-        "newPrice": "1.29",
-        "expiration": "2026-08-25",
-        "image": "https://data.promoqui.it/offers/images/093/268/095/original/crop_6a840cb7-663c-44b7-88f5-00e80ad3005d_big_20260818095400.jpg?1787215328",
-        "link": "https://www.promoqui.it/offerte/convenienza-piu-4942942"
     },
     {
         "store": "Todis",
@@ -384,124 +1864,12 @@
         "link": "https://www.promoqui.it/offerte/tutto-a-1-euro-4942766"
     },
     {
-        "store": "Carrefour Express",
-        "title": "Mortadella Bologna IGP",
-        "newPrice": "1.29",
-        "expiration": "2026-08-25",
-        "image": "https://data.promoqui.it/offers/images/093/105/333/original/crop_6a79b175-ae34-4ba3-97c2-4ecd0ad301db_big_20260810160230.jpg?1786468674",
-        "link": "https://www.promoqui.it/offerte/sconti-d-estate-4941057"
-    },
-    {
         "store": "Todis",
         "title": "Pancetta Tesa Dolce/Affumicata",
         "newPrice": "1.19",
         "expiration": "2026-08-30",
         "image": "https://data.promoqui.it/offers/images/093/239/747/original/crop_6a82b7fa-7180-430b-83ea-00a80ad3022e_big_20260817092807.jpg?1787052327",
         "link": "https://www.promoqui.it/offerte/tutto-a-1-euro-4942765"
-    },
-    {
-        "store": "Todis",
-        "title": "Prosciutto Cotto Alla Brace",
-        "newPrice": "1.19",
-        "expiration": "2026-08-30",
-        "image": "https://data.promoqui.it/offers/images/093/239/719/original/crop_6a82b7f5-b184-4339-941d-008a0ad302fd_big_20260817092758.jpg?1787052305",
-        "link": "https://www.promoqui.it/offerte/tutto-a-1-euro-4942765"
-    },
-    {
-        "store": "Conad City",
-        "title": "Conad - Mortadella Di Pollo",
-        "newPrice": "1.19",
-        "expiration": "2026-09-30",
-        "image": "https://data.promoqui.it/offers/images/092/839/244/original/crop_6a6c9a73-0298-4910-bfa7-00770ad3022e_big_20260731145212.jpg?1785781069",
-        "link": "https://www.promoqui.it/offerte/spunta-il-risparmio-4936620"
-    },
-    {
-        "store": "Conad",
-        "title": "Fette Di Bonta - Prosciutto Cotto",
-        "newPrice": "1.09",
-        "expiration": "2026-08-25",
-        "image": "https://data.promoqui.it/offers/images/092/963/256/original/crop_6a72f41d-18c4-47c7-acff-00870ad3010f_big_20260805102815.jpg?1786044101",
-        "link": "https://www.promoqui.it/offerte/freschi-di-convenienza-4938647"
-    },
-    {
-        "store": "Conad",
-        "title": "Villani - Mortadella Bologna IGP",
-        "newPrice": "1.09",
-        "expiration": "2026-08-25",
-        "image": "https://data.promoqui.it/offers/images/092/962/488/original/crop_6a72f3da-2654-408d-a11f-00730ad30188_big_20260805102708.jpg?1786043675",
-        "link": "https://www.promoqui.it/offerte/freschi-di-convenienza-4938647"
-    },
-    {
-        "store": "Todis",
-        "title": "Mortadella \"la Nostrana\"",
-        "newPrice": "1.0",
-        "expiration": "2026-08-30",
-        "image": "https://data.promoqui.it/offers/images/093/239/280/original/crop_6a82b8f8-3584-4cb7-b111-41d30ad30199_big_20260817093258.jpg?1787052044",
-        "link": "https://www.promoqui.it/offerte/tutto-a-1-euro-4942766"
-    },
-    {
-        "store": "Conad",
-        "title": "Conad - Prosciutto Crudo",
-        "newPrice": "0.89",
-        "expiration": "2026-08-25",
-        "image": "https://data.promoqui.it/offers/images/092/962/459/original/crop_6a72f3d8-8434-4182-8f36-001a0ad30257_big_20260805102706.jpg?1786043662",
-        "link": "https://www.promoqui.it/offerte/freschi-di-convenienza-4938647"
-    },
-    {
-        "store": "Todis",
-        "title": "Pescare - Pasta D'Acciughe",
-        "newPrice": "1.0",
-        "expiration": "2026-08-30",
-        "image": "https://data.promoqui.it/offers/images/093/239/171/original/crop_6a82b7ca-0f18-424e-a7e9-00b60ad3028e_big_20260817092709.jpg?1787051985",
-        "link": "https://www.promoqui.it/offerte/tutto-a-1-euro-4942765"
-    },
-    {
-        "store": "Pewex",
-        "title": "Rummo - Pasta Di Semola",
-        "newPrice": "0.99",
-        "expiration": "2026-09-01",
-        "image": "https://data.promoqui.it/offers/images/093/397/903/original/crop_6a880584-a258-43ca-a02f-001e0ad30013_big_20260821120950.jpg?1787338001",
-        "link": "https://www.promoqui.it/offerte/ripartiamo-dalla-spesa-4943885"
-    },
-    {
-        "store": "Il Castoro Supermercati",
-        "title": "La Molisana - Pasta Integrale",
-        "newPrice": "0.99",
-        "expiration": "2026-09-01",
-        "image": "https://data.promoqui.it/offers/images/093/396/706/original/crop_6a88695b-412c-4005-8da9-00b90ad3013f_big_20260821180028.jpg?1787337855",
-        "link": "https://www.promoqui.it/offerte/offerte-straordinarie-4943932"
-    },
-    {
-        "store": "Todis",
-        "title": "Bio - Pasta Integrale  Spaghetti",
-        "newPrice": "0.85",
-        "expiration": "2026-08-30",
-        "image": "https://data.promoqui.it/offers/images/093/239/394/original/crop_6a82b7da-a7d8-4f56-aeef-003d0ad30273_big_20260817092725.jpg?1787052103",
-        "link": "https://www.promoqui.it/offerte/tutto-a-1-euro-4942765"
-    },
-    {
-        "store": "Conad",
-        "title": "Grano armando - Pasta Trafilata Al Bronzo",
-        "newPrice": "0.79",
-        "expiration": "2026-08-25",
-        "image": "https://data.promoqui.it/offers/images/093/268/650/original/crop_6a840cba-ab78-4e8a-b725-00250ad3005c_big_20260818095400.jpg?1787215411",
-        "link": "https://www.promoqui.it/offerte/convenienza-piu-4942942"
-    },
-    {
-        "store": "Il Castoro Supermercati",
-        "title": "Barilla - Pasta Di Semola",
-        "newPrice": "0.59",
-        "expiration": "2026-09-01",
-        "image": "https://data.promoqui.it/offers/images/093/396/773/original/crop_6a88695f-508c-41e2-bae1-4aaf0ad30117_big_20260821180031.jpg?1787337862",
-        "link": "https://www.promoqui.it/offerte/offerte-straordinarie-4943932"
-    },
-    {
-        "store": "Il Castoro Supermercati",
-        "title": "Barilla -  Pastadi Semola",
-        "newPrice": "0.59",
-        "expiration": "2026-09-01",
-        "image": "https://data.promoqui.it/offers/images/093/396/000/original/crop_6a8868e2-82dc-46d3-8d34-00780ad30118_big_20260821175840.jpg?1787337773",
-        "link": "https://www.promoqui.it/offerte/offerte-straordinarie-4943932"
     },
     {
         "store": "Orizzonte",
@@ -584,54 +1952,6 @@
         "link": "https://www.promoqui.it/offerte/promozioni-orizzonte-4915157"
     },
     {
-        "store": "Orizzonte",
-        "title": "Zanzaziiera Magnetica",
-        "newPrice": "7.5",
-        "expiration": "2026-10-11",
-        "image": "https://data.promoqui.it/offers/images/090/113/813/original/crop_69f95c5a-e0f8-4673-b8ee-00d80ad30268_big_20260505045631.jpg?1777980472",
-        "link": "https://www.promoqui.it/offerte/sconti-orizzonte-4913747"
-    },
-    {
-        "store": "Orizzonte",
-        "title": "23945",
-        "newPrice": "4.4",
-        "expiration": "2026-10-11",
-        "image": "https://data.promoqui.it/offers/images/089/444/438/original/crop_69d863df-4908-49a7-affb-00300ad30209_big_20260410231959.jpg?1775935053",
-        "link": "https://www.promoqui.it/offerte/volantino-orizzonte-4908689"
-    },
-    {
-        "store": "Orizzonte",
-        "title": "4490413 Bianco",
-        "newPrice": "3.5",
-        "expiration": "2026-10-11",
-        "image": "https://data.promoqui.it/offers/images/089/444/451/original/crop_69d863e2-83c8-4ac9-8db6-79490ad3021b_big_20260410231114.jpg?1775935069",
-        "link": "https://www.promoqui.it/offerte/volantino-orizzonte-4908689"
-    },
-    {
-        "store": "Orizzonte",
-        "title": "Zanzapiera Rete Con Veloro Adesivo Per Finestra",
-        "newPrice": "3.0",
-        "expiration": "2026-10-11",
-        "image": "https://data.promoqui.it/offers/images/089/444/464/original/crop_69d863e5-2d58-406b-852b-7ae20ad3016d_big_20260410234551.jpg?1775935085",
-        "link": "https://www.promoqui.it/offerte/volantino-orizzonte-4908689"
-    },
-    {
-        "store": "Leroy Merlin",
-        "title": "Makita - Trapano A Percussione Mod. DHP490RFJ",
-        "newPrice": "199.9",
-        "expiration": "2026-08-31",
-        "image": "https://data.promoqui.it/offers/images/092/904/759/original/crop_6a6765f0-edec-4956-a65a-00640ad300c8_big_20260805174951.jpg?1785969774",
-        "link": "https://www.promoqui.it/offerte/rinnovare-la-casa-da-leroy-merlin-4938013"
-    },
-    {
-        "store": "Leroy Merlin",
-        "title": "Dexter - Trapano A Percussione Mod. DT-CD 18/44-2 Li-i",
-        "newPrice": "64.9",
-        "expiration": "2026-08-31",
-        "image": "https://data.promoqui.it/offers/images/092/904/763/original/crop_6a6765f1-5f00-4aff-a95a-00750ad3008c_big_20260805174952.jpg?1785969776",
-        "link": "https://www.promoqui.it/offerte/rinnovare-la-casa-da-leroy-merlin-4938013"
-    },
-    {
         "store": "Conad City",
         "title": "Lotus - Biscotti Biscoff",
         "newPrice": "1.49",
@@ -688,68 +2008,12 @@
         "link": "https://www.promoqui.it/offerte/tutto-a-1-euro-4942765"
     },
     {
-        "store": "Todis",
-        "title": "Purina - Frollini Integrali",
-        "newPrice": "1.0",
-        "expiration": "2026-08-30",
-        "image": "https://data.promoqui.it/offers/images/093/239/328/original/crop_6a82b8fc-2d28-45cd-9288-006a0ad3022c_big_20260817093314.jpg?1787052069",
-        "link": "https://www.promoqui.it/offerte/tutto-a-1-euro-4942766"
-    },
-    {
         "store": "Carrefour Express",
         "title": "Delverde - Granfetta Con Farina Integrale O Classica",
         "newPrice": "0.99",
         "expiration": "2026-08-25",
         "image": "https://data.promoqui.it/offers/images/093/105/618/original/crop_6a79b18a-5b64-49ec-86d4-00870ad300fc_big_20260810160215.jpg?1786469024",
         "link": "https://www.promoqui.it/offerte/sconti-d-estate-4941057"
-    },
-    {
-        "store": "Euronics",
-        "title": "Amazfit - Smartwatch Balance 2",
-        "newPrice": "229.9",
-        "expiration": "2026-09-10",
-        "image": "https://data.promoqui.it/offers/images/092/985/354/original/crop_6a75a85e-0094-4031-a271-00c40ad30075_big_20260807140024.jpg?1786125374",
-        "link": "https://www.promoqui.it/offerte/back-to-euronics-4939350"
-    },
-    {
-        "store": "Euronics",
-        "title": "Garmin - Smartwatch Forerunner 165",
-        "newPrice": "199.9",
-        "expiration": "2026-09-10",
-        "image": "https://data.promoqui.it/offers/images/092/985/357/original/crop_6a75a85f-6018-4e3c-9b99-00540ad30084_big_20260807140025.jpg?1786125376",
-        "link": "https://www.promoqui.it/offerte/back-to-euronics-4939350"
-    },
-    {
-        "store": "Euronics",
-        "title": "Amazfit - Smartwatch Active Max",
-        "newPrice": "149.9",
-        "expiration": "2026-09-10",
-        "image": "https://data.promoqui.it/offers/images/092/985/362/original/crop_6a75a85f-7fbc-45ed-9ea6-00280ad301be_big_20260807140024.jpg?1786125378",
-        "link": "https://www.promoqui.it/offerte/back-to-euronics-4939350"
-    },
-    {
-        "store": "Euronics",
-        "title": "Celly - Smartwatch Quadrato Trainermate2BK",
-        "newPrice": "29.99",
-        "expiration": "2026-09-09",
-        "image": "https://data.promoqui.it/offers/images/093/368/506/original/crop_6a88070b-fc90-45d8-9cba-005a0ad3023d_big_20260821122521.jpg?1787311718",
-        "link": "https://www.promoqui.it/offerte/back-to-euronics-4943733"
-    },
-    {
-        "store": "Sinergy",
-        "title": "Trevi - Smartwatch T-Fit 201 Call",
-        "newPrice": "24.5",
-        "expiration": "2026-08-31",
-        "image": "https://data.promoqui.it/offers/images/092/799/374/original/crop_6a6c8d0c-11ec-4f57-993f-00940ad30053_big_20260731135533.jpg?1785500050",
-        "link": "https://www.promoqui.it/offerte/sconto-iva-4933293"
-    },
-    {
-        "store": "Carrefour Market",
-        "title": "Smartband Fitness Train",
-        "newPrice": "12.45",
-        "expiration": "2026-09-27",
-        "image": "https://data.promoqui.it/offers/images/092/340/936/original/crop_6a59d769-f304-496c-83e1-45430ad301ca_big_20260717091907.jpg?1784404378",
-        "link": "https://www.promoqui.it/offerte/back-to-school-4931166"
     },
     {
         "store": "Leroy Merlin",
@@ -784,54 +2048,6 @@
         "link": "https://www.promoqui.it/offerte/xxl-4943647"
     },
     {
-        "store": "Conad",
-        "title": "Leerdammer - Formaggio",
-        "newPrice": "1.19",
-        "expiration": "2026-08-25",
-        "image": "https://data.promoqui.it/offers/images/092/962/441/original/crop_6a72f3d5-bf20-4aa7-bf7f-005b0ad30249_big_20260805102703.jpg?1786043653",
-        "link": "https://www.promoqui.it/offerte/freschi-di-convenienza-4938647"
-    },
-    {
-        "store": "Conad",
-        "title": "Conad - Asiago DOP",
-        "newPrice": "1.09",
-        "expiration": "2026-08-25",
-        "image": "https://data.promoqui.it/offers/images/092/962/430/original/crop_6a72f3d5-8370-47b4-a0b7-00e10ad30265_big_20260805102703.jpg?1786043649",
-        "link": "https://www.promoqui.it/offerte/freschi-di-convenienza-4938647"
-    },
-    {
-        "store": "Conad City",
-        "title": "Nonno Nanni - Nozzarella",
-        "newPrice": "1.0",
-        "expiration": "2026-09-30",
-        "image": "https://data.promoqui.it/offers/images/092/839/175/original/crop_6a6c9a6f-c314-4bf6-9b71-41540ad30121_big_20260731145207.jpg?1785781030",
-        "link": "https://www.promoqui.it/offerte/spunta-il-risparmio-4936620"
-    },
-    {
-        "store": "Conad",
-        "title": "Valgrana - Formaggio Piemontino",
-        "newPrice": "0.99",
-        "expiration": "2026-08-25",
-        "image": "https://data.promoqui.it/offers/images/092/962/520/original/crop_6a72f3dd-60a8-40fb-b20b-00d00ad300e8_big_20260805102712.jpg?1786043692",
-        "link": "https://www.promoqui.it/offerte/freschi-di-convenienza-4938647"
-    },
-    {
-        "store": "Carrefour Express",
-        "title": "Galbani - Certosa",
-        "newPrice": "0.99",
-        "expiration": "2026-08-25",
-        "image": "https://data.promoqui.it/offers/images/093/105/541/original/crop_6a79b180-4848-46fa-9062-00a30ad3029f_big_20260810160111.jpg?1786468874",
-        "link": "https://www.promoqui.it/offerte/sconti-d-estate-4941057"
-    },
-    {
-        "store": "Carrefour Express",
-        "title": "Cuomo - Mozzarella Fiordilatte Dell'Agro",
-        "newPrice": "0.96",
-        "expiration": "2026-08-31",
-        "image": "https://data.promoqui.it/offers/images/092/668/868/original/crop_6a69bb80-8d34-460a-ab2e-006b0ad302a9_big_20260729103838.jpg?1785346189",
-        "link": "https://www.promoqui.it/offerte/offerte-d-estate-4933661"
-    },
-    {
         "store": "Todis",
         "title": "Galbani - Formaggio Grangusto",
         "newPrice": "0.89",
@@ -840,28 +2056,12 @@
         "link": "https://www.promoqui.it/offerte/tutto-a-1-euro-4942766"
     },
     {
-        "store": "Conad",
-        "title": "Fattorie Osella - Primosale Le Specialita",
-        "newPrice": "0.79",
-        "expiration": "2026-08-25",
-        "image": "https://data.promoqui.it/offers/images/093/267/875/original/crop_6a840cb4-55c4-4631-a0fb-005d0ad300e3_big_20260818095346.jpg?1787215295",
-        "link": "https://www.promoqui.it/offerte/convenienza-piu-4942942"
-    },
-    {
         "store": "Todis",
         "title": "Colle maggio - Mozzarella",
         "newPrice": "0.59",
         "expiration": "2026-08-30",
         "image": "https://data.promoqui.it/offers/images/093/239/359/original/crop_6a82b8ff-390c-49c5-9379-00350ad3025a_big_20260817093315.jpg?1787052085",
         "link": "https://www.promoqui.it/offerte/tutto-a-1-euro-4942766"
-    },
-    {
-        "store": "Conad",
-        "title": "Conad - Ricotta Vaccina",
-        "newPrice": "0.39",
-        "expiration": "2026-08-25",
-        "image": "https://data.promoqui.it/offers/images/092/962/445/original/crop_6a72f3d6-0e34-469c-be38-00620ad3006f_big_20260805102704.jpg?1786043655",
-        "link": "https://www.promoqui.it/offerte/freschi-di-convenienza-4938647"
     },
     {
         "store": "Dem",
@@ -878,14 +2078,6 @@
         "expiration": "2026-09-03",
         "image": "https://data.promoqui.it/offers/images/092/908/731/original/crop_6a736345-6c1c-4247-bfb4-00c80ad30073_big_20260805183400.jpg?1785973517",
         "link": "https://www.promoqui.it/offerte/prezzi-freschi-4938018"
-    },
-    {
-        "store": "Carrefour Market",
-        "title": "Sagra - Olio Di Semi",
-        "newPrice": "3.79",
-        "expiration": "2026-09-03",
-        "image": "https://data.promoqui.it/offers/images/093/226/526/original/crop_6a82d6e3-d8dc-4bae-963e-00640ad300b1_big_20260817113950.jpg?1787013962",
-        "link": "https://www.promoqui.it/offerte/prezzi-freschi-4942580"
     },
     {
         "store": "Todis",
@@ -926,14 +2118,6 @@
         "expiration": "2026-08-31",
         "image": "https://data.promoqui.it/offers/images/093/273/739/original/crop_6a85a02b-50d0-45a8-954b-008d0ad3005c_big_20260819150458.jpg?1787216334",
         "link": "https://www.promoqui.it/offerte/un-ondata-di-offerte-4943245"
-    },
-    {
-        "store": "Eurospin",
-        "title": "Sem\u00ec - Olio Di Semi Di Girasole",
-        "newPrice": "1.39",
-        "expiration": "2026-08-23",
-        "image": "https://data.promoqui.it/offers/images/093/100/461/original/crop_6a79c538-1760-4a88-824f-002d0ad3029f_big_20260810163856.jpg?1786464177",
-        "link": "https://www.promoqui.it/offerte/speciale-aperitivo-sardelizie-pascoli-e-athena-4941077"
     },
     {
         "store": "Dem",
@@ -1006,126 +2190,6 @@
         "expiration": "2026-08-25",
         "image": "https://data.promoqui.it/offers/images/092/962/503/original/crop_6a72f3db-70f4-4480-ab78-00730ad3029f_big_20260805102710.jpg?1786043681",
         "link": "https://www.promoqui.it/offerte/freschi-di-convenienza-4938647"
-    },
-    {
-        "store": "Todis",
-        "title": "Origine - Meloni Retati",
-        "newPrice": "1.39",
-        "expiration": "2026-08-30",
-        "image": "https://data.promoqui.it/offers/images/093/239/633/original/crop_6a82b7ec-5880-4df3-8d45-00640ad301e3_big_20260817092742.jpg?1787052242",
-        "link": "https://www.promoqui.it/offerte/tutto-a-1-euro-4942765"
-    },
-    {
-        "store": "Conad",
-        "title": "Conad - Arocados Hass Sapori&Idee",
-        "newPrice": "1.39",
-        "expiration": "2026-08-25",
-        "image": "https://data.promoqui.it/offers/images/092/962/349/original/crop_6a72f3ce-2c94-45e0-bff0-003c0ad302ec_big_20260805102656.jpg?1786043605",
-        "link": "https://www.promoqui.it/offerte/freschi-di-convenienza-4938647"
-    },
-    {
-        "store": "Todis",
-        "title": "Todis - Melone Giallo",
-        "newPrice": "1.19",
-        "expiration": "2026-08-30",
-        "image": "https://data.promoqui.it/offers/images/093/239/506/original/crop_6a82b7e2-a728-428a-8f17-00ad0ad302a5_big_20260817092732.jpg?1787052160",
-        "link": "https://www.promoqui.it/offerte/tutto-a-1-euro-4942765"
-    },
-    {
-        "store": "Conad",
-        "title": "I Nostri Ori - Melone Giallo",
-        "newPrice": "1.19",
-        "expiration": "2026-08-25",
-        "image": "https://data.promoqui.it/offers/images/093/268/116/original/crop_6a840cb7-abe8-4d94-aee6-007b0ad3005c_big_20260818095354.jpg?1787215331",
-        "link": "https://www.promoqui.it/offerte/convenienza-piu-4942942"
-    },
-    {
-        "store": "Al Discount",
-        "title": "Meloni Gialli Cat I",
-        "newPrice": "0.99",
-        "expiration": "2026-08-31",
-        "image": "https://data.promoqui.it/offers/images/093/274/384/original/crop_6a85a094-c4ac-4b74-b201-002d0ad3025a_big_20260819152416.jpg?1787216468",
-        "link": "https://www.promoqui.it/offerte/un-ondata-di-offerte-4943245"
-    },
-    {
-        "store": "Pewex",
-        "title": "Consilia - Mix Croccante",
-        "newPrice": "0.99",
-        "expiration": "2026-09-01",
-        "image": "https://data.promoqui.it/offers/images/093/394/540/original/crop_6a880535-c988-419a-990f-00660ad301a3_big_20260821121131.jpg?1787337587",
-        "link": "https://www.promoqui.it/offerte/ripartiamo-dalla-spesa-4943885"
-    },
-    {
-        "store": "Pewex",
-        "title": "Melone Giallo",
-        "newPrice": "0.99",
-        "expiration": "2026-09-01",
-        "image": "https://data.promoqui.it/offers/images/093/391/885/original/crop_6a88042f-6c30-4168-8214-00370ad3013f_big_20260821120534.jpg?1787337264",
-        "link": "https://www.promoqui.it/offerte/ripartiamo-dalla-spesa-4943885"
-    },
-    {
-        "store": "Carrefour Express",
-        "title": "Anguria Baby",
-        "newPrice": "0.88",
-        "expiration": "2026-08-25",
-        "image": "https://data.promoqui.it/offers/images/093/105/178/original/crop_6a79b167-ad04-4cf2-ad02-00470ad301de_big_20260810160226.jpg?1786468545",
-        "link": "https://www.promoqui.it/offerte/sconti-d-estate-4941057"
-    },
-    {
-        "store": "Conad",
-        "title": "Conad - Sapori&Idee Percorso Qualita Filiera Controllata",
-        "newPrice": "0.79",
-        "expiration": "2026-08-25",
-        "image": "https://data.promoqui.it/offers/images/092/962/311/original/crop_6a72f3c6-e048-4c53-ac56-00340ad300e4_big_20260805102648.jpg?1786043581",
-        "link": "https://www.promoqui.it/offerte/freschi-di-convenienza-4938647"
-    },
-    {
-        "store": "Deco",
-        "title": "Barilla - Farina Di Grano Tenero Tipo \"00\"",
-        "newPrice": "0.89",
-        "expiration": "2026-08-31",
-        "image": "https://data.promoqui.it/offers/images/093/310/129/original/crop_6a85757b-16ec-47ff-b11b-002b0ad301ea_big_20260819112122.jpg?1787221803",
-        "link": "https://www.promoqui.it/offerte/lo-show-dei-prezzi-4943242"
-    },
-    {
-        "store": "Pewex",
-        "title": "Consilia - Farina Integrale Bio Integrale",
-        "newPrice": "0.89",
-        "expiration": "2026-09-01",
-        "image": "https://data.promoqui.it/offers/images/093/392/092/original/crop_6a88028d-4ad0-4f3f-832b-00420ad30118_big_20260821112057.jpg?1787337289",
-        "link": "https://www.promoqui.it/offerte/ripartiamo-dalla-spesa-4943890"
-    },
-    {
-        "store": "Pewex",
-        "title": "Consilia - Bio Integrale",
-        "newPrice": "0.89",
-        "expiration": "2026-09-01",
-        "image": "https://data.promoqui.it/offers/images/093/392/016/original/crop_6a88046f-e5d0-4f2e-b404-008e0ad302ed_big_20260821120719.jpg?1787337280",
-        "link": "https://www.promoqui.it/offerte/ripartiamo-dalla-spesa-4943891"
-    },
-    {
-        "store": "Dpi\u00f9",
-        "title": "Fattoria buon amore - Farina Di Riso",
-        "newPrice": "0.84",
-        "expiration": "2026-08-30",
-        "image": "https://data.promoqui.it/offers/images/093/198/428/original/crop_6a7f1616-9fbc-4dd0-b54f-00bf0ad30233_big_20260814152029.jpg?1786966037",
-        "link": "https://www.promoqui.it/offerte/sconti-fino-al-50-4942133"
-    },
-    {
-        "store": "Esselunga",
-        "title": "Esselunga - Farina Tipo '00'",
-        "newPrice": "0.75",
-        "expiration": "2026-12-31",
-        "image": "https://data.promoqui.it/offers/images/090/771/371/original/crop_6a17fbad-8ab8-4a42-81e3-00830ad301c3_big_20260528102418.jpg?1780581348",
-        "link": "https://www.promoqui.it/offerte/la-tua-spesa-completa-firmata-4918836"
-    },
-    {
-        "store": "Elite Supermercati",
-        "title": "Selex - Farina Di Grano Tenero Tipo \"0\" Tipo \"00\"",
-        "newPrice": "0.69",
-        "expiration": "2026-08-31",
-        "image": "https://data.promoqui.it/offers/images/090/111/952/original/crop_69f86e99-9e84-45d9-b5aa-00910ad301f4_big_20260504120203.jpg?1777979108",
-        "link": "https://www.promoqui.it/offerte/spesa-difesa-4913664"
     },
     {
         "store": "Al Discount",
@@ -1232,36 +2296,12 @@
         "link": "https://www.promoqui.it/offerte/sconti-d-estate-4941057"
     },
     {
-        "store": "Todis",
-        "title": "Ali Di Pollo",
-        "newPrice": "1.99",
-        "expiration": "2026-08-30",
-        "image": "https://data.promoqui.it/offers/images/093/239/296/original/crop_6a82b8f9-3ed0-4b4a-ac1f-00810ad30077_big_20260817093257.jpg?1787052052",
-        "link": "https://www.promoqui.it/offerte/tutto-a-1-euro-4942766"
-    },
-    {
-        "store": "Todis",
-        "title": "Bonelli - Petto Di Pollo Arrosto 1% Di Grassi",
-        "newPrice": "1.89",
-        "expiration": "2026-08-30",
-        "image": "https://data.promoqui.it/offers/images/093/239/516/original/crop_6a82b914-d994-4ea1-b48a-00180ad30183_big_20260817093338.jpg?1787052166",
-        "link": "https://www.promoqui.it/offerte/tutto-a-1-euro-4942766"
-    },
-    {
         "store": "Carrefour Express",
         "title": "Wuber - W\u00fcrstel W\u00fcberone Di Suino",
         "newPrice": "1.89",
         "expiration": "2026-08-25",
         "image": "https://data.promoqui.it/offers/images/093/105/447/original/crop_6a79b17a-be78-4589-9f49-00b90ad3000e_big_20260810160130.jpg?1786468766",
         "link": "https://www.promoqui.it/offerte/sconti-d-estate-4941057"
-    },
-    {
-        "store": "Conad",
-        "title": "Conad - Cotolette Con Filetti Di Pollo Gustosamente",
-        "newPrice": "1.49",
-        "expiration": "2026-08-25",
-        "image": "https://data.promoqui.it/offers/images/092/962/513/original/crop_6a72f3dc-8004-43f9-b73d-00790ad3029f_big_20260805102710.jpg?1786043687",
-        "link": "https://www.promoqui.it/offerte/freschi-di-convenienza-4938647"
     },
     {
         "store": "Euronics",
@@ -1334,78 +2374,6 @@
         "expiration": "2026-08-31",
         "image": "https://data.promoqui.it/offers/images/092/904/545/original/crop_6a675cca-4e4c-4ffc-b5d1-00170ad301db_big_20260805174935.jpg?1785969664",
         "link": "https://www.promoqui.it/offerte/rinnovare-la-casa-da-leroy-merlin-4938013"
-    },
-    {
-        "store": "Todis",
-        "title": "Passerina IGT",
-        "newPrice": "2.69",
-        "expiration": "2026-08-30",
-        "image": "https://data.promoqui.it/offers/images/093/240/179/original/crop_6a82b819-8be4-4f26-885d-00a60ad300af_big_20260817092827.jpg?1787052551",
-        "link": "https://www.promoqui.it/offerte/tutto-a-1-euro-4942765"
-    },
-    {
-        "store": "Pewex",
-        "title": "Sole - Orvieto DOC",
-        "newPrice": "2.49",
-        "expiration": "2026-09-01",
-        "image": "https://data.promoqui.it/offers/images/093/391/384/original/crop_6a880354-7a30-46ca-a3d8-00820ad300af_big_20260821115827.jpg?1787337204",
-        "link": "https://www.promoqui.it/offerte/ripartiamo-dalla-spesa-4943885"
-    },
-    {
-        "store": "Carrefour Express",
-        "title": "Le morre - Linea Vini",
-        "newPrice": "2.49",
-        "expiration": "2026-08-25",
-        "image": "https://data.promoqui.it/offers/images/093/105/631/original/crop_6a79b18f-6ed4-4d35-8ed3-00560ad302bb_big_20260810160215.jpg?1786469107",
-        "link": "https://www.promoqui.it/offerte/sconti-d-estate-4941057"
-    },
-    {
-        "store": "Carrefour Express",
-        "title": "Feudi del sole - Castelli Romani DOC",
-        "newPrice": "1.99",
-        "expiration": "2026-08-31",
-        "image": "https://data.promoqui.it/offers/images/092/668/905/original/gibCover_6a69bb86-d7b0-4906-8e3b-00830ad30040_big_20260729103844.png?1785346211",
-        "link": "https://www.promoqui.it/offerte/offerte-d-estate-4933661"
-    },
-    {
-        "store": "Pewex",
-        "title": "Tavernello -  Vino",
-        "newPrice": "1.69",
-        "expiration": "2026-09-01",
-        "image": "https://data.promoqui.it/offers/images/093/391/368/original/crop_6a880354-484c-492f-9fbb-00ba0ad3013f_big_20260821115758.jpg?1787337202",
-        "link": "https://www.promoqui.it/offerte/ripartiamo-dalla-spesa-4943885"
-    },
-    {
-        "store": "Todis",
-        "title": "Rosato Di Puglia IGT",
-        "newPrice": "1.69",
-        "expiration": "2026-08-30",
-        "image": "https://data.promoqui.it/offers/images/093/240/183/original/crop_6a82b81a-1c8c-49d4-8792-00930ad30260_big_20260817092828.jpg?1787052554",
-        "link": "https://www.promoqui.it/offerte/tutto-a-1-euro-4942765"
-    },
-    {
-        "store": "Pewex",
-        "title": "Botte buona - Vino",
-        "newPrice": "1.49",
-        "expiration": "2026-09-01",
-        "image": "https://data.promoqui.it/offers/images/093/391/470/original/crop_6a880357-383c-478c-838f-00150ad30206_big_20260821120331.jpg?1787337214",
-        "link": "https://www.promoqui.it/offerte/ripartiamo-dalla-spesa-4943885"
-    },
-    {
-        "store": "Pewex",
-        "title": "Freschello - Vino",
-        "newPrice": "1.49",
-        "expiration": "2026-09-01",
-        "image": "https://data.promoqui.it/offers/images/093/391/335/original/crop_6a880353-46b8-4851-ab4a-00b10ad300cb_big_20260821115357.jpg?1787337198",
-        "link": "https://www.promoqui.it/offerte/ripartiamo-dalla-spesa-4943885"
-    },
-    {
-        "store": "Todis",
-        "title": "Vino Da Tavola Bianco",
-        "newPrice": "1.0",
-        "expiration": "2026-08-30",
-        "image": "https://data.promoqui.it/offers/images/093/239/224/original/crop_6a82b7ce-e6d8-43cd-a145-004c0ad302fd_big_20260817092715.jpg?1787052013",
-        "link": "https://www.promoqui.it/offerte/tutto-a-1-euro-4942765"
     },
     {
         "store": "Euronics",
@@ -1576,14 +2544,6 @@
         "link": "https://www.promoqui.it/offerte/sconti-fino-al-50-4941722"
     },
     {
-        "store": "Dpi\u00f9",
-        "title": "Samsung - VS15 JET65 PET Scopa Elettrica",
-        "newPrice": "199.0",
-        "expiration": "2026-08-30",
-        "image": "https://data.promoqui.it/offers/images/093/198/819/original/crop_6a7f161e-1394-4cc9-a74b-00a10ad302c2_big_20260814152037.jpg?1786966277",
-        "link": "https://www.promoqui.it/offerte/sconti-fino-al-50-4942133"
-    },
-    {
         "store": "Euronics",
         "title": "Samsung - G55c Ls32cg552 Curvo",
         "newPrice": "189.99",
@@ -1736,14 +2696,6 @@
         "link": "https://www.promoqui.it/offerte/ripartiamo-dalla-spesa-4943885"
     },
     {
-        "store": "Il Castoro Supermercati",
-        "title": "Muller - Yogurt Bianco Intero",
-        "newPrice": "0.69",
-        "expiration": "2026-09-01",
-        "image": "https://data.promoqui.it/offers/images/093/400/574/original/crop_6a886a7f-845c-41be-ae80-00600ad30248_big_20260821180628.jpg?1787338516",
-        "link": "https://www.promoqui.it/offerte/offerte-straordinarie-4943932"
-    },
-    {
         "store": "Pewex",
         "title": "Muller - Crema Yogurt Bianco",
         "newPrice": "0.69",
@@ -1769,35 +2721,11 @@
     },
     {
         "store": "Acqua e Sapone",
-        "title": "Felce Azzurra - Ferce Azzurra",
-        "newPrice": "1.99",
-        "expiration": "2026-09-02",
-        "image": "https://data.promoqui.it/offers/images/093/005/860/original/crop_6a7994cc-9508-4a51-a9dd-007e0ad302bb_big_20260810152313.jpg?1786376335",
-        "link": "https://www.promoqui.it/offerte/sconti-fino-al-70-4940570"
-    },
-    {
-        "store": "Acqua e Sapone",
         "title": "Fabuloso - Fresco Amadori",
         "newPrice": "1.99",
         "expiration": "2026-08-29",
         "image": "https://data.promoqui.it/offers/images/093/003/181/original/crop_6a799425-c43c-40a0-8ad5-004e0ad302bb_big_20260810152537.jpg?1786373975",
         "link": "https://www.promoqui.it/offerte/le-offerte-viste-in-ti-4940569"
-    },
-    {
-        "store": "Acqua e Sapone",
-        "title": "Fabuloso - Fresco Mattino Ammorbidente Concentrato Profumoso",
-        "newPrice": "1.99",
-        "expiration": "2026-08-29",
-        "image": "https://data.promoqui.it/offers/images/093/003/067/original/crop_6a799420-2c04-4866-b4e4-00460ad302a5_big_20260810152833.jpg?1786373865",
-        "link": "https://www.promoqui.it/offerte/le-offerte-viste-in-ti-4940569"
-    },
-    {
-        "store": "Acqua e Sapone",
-        "title": "Felce Azzurra - Ammorbidente Concentrato",
-        "newPrice": "1.99",
-        "expiration": "2026-09-03",
-        "image": "https://data.promoqui.it/offers/images/092/459/103/original/gibCover_6a6085d6-c1c8-431b-b60b-006f0ad3011b_big_20260722110017.png?1784739309",
-        "link": "https://www.promoqui.it/offerte/sconti-fino-al-70-4932167"
     },
     {
         "store": "Acqua e Sapone",
@@ -1888,100 +2816,12 @@
         "link": "https://www.promoqui.it/offerte/catalogo-scuola-4942384"
     },
     {
-        "store": "Euronics",
-        "title": "Hoover - Battimaterassi HMC-520UV",
-        "newPrice": "119.9",
-        "expiration": "2026-09-10",
-        "image": "https://data.promoqui.it/offers/images/092/985/851/original/crop_6a75c3c4-3820-48a4-a03e-005e0ad301a8_big_20260807142857.jpg?1786125628",
-        "link": "https://www.promoqui.it/offerte/back-to-euronics-4939350"
-    },
-    {
-        "store": "Sinergy",
-        "title": "Polti - Scopa Elettrica Forzaspira SR90B_Plus",
-        "newPrice": "98.2",
-        "expiration": "2026-08-31",
-        "image": "https://data.promoqui.it/offers/images/092/799/359/original/crop_6a6c786f-51b8-47fa-88cb-007b0ad300ef_big_20260731122657.jpg?1785500009",
-        "link": "https://www.promoqui.it/offerte/sconto-iva-4933293"
-    },
-    {
-        "store": "Carrefour Iper",
-        "title": "Cecotec - Scopa Elettrica Conga Rockstar 2500",
-        "newPrice": "89.9",
-        "expiration": "2026-09-03",
-        "image": "https://data.promoqui.it/offers/images/092/910/338/original/crop_6a733235-cc94-455d-8fed-00210ad30028_big_20260805145311.jpg?1785974643",
-        "link": "https://www.promoqui.it/offerte/prezzi-freschi-4938019"
-    },
-    {
-        "store": "Leroy Merlin",
-        "title": "K\u00e4rcher - Aspiratore Solidi E Liquidi WD 3 S V-19/4/20",
-        "newPrice": "79.9",
-        "expiration": "2026-08-31",
-        "image": "https://data.promoqui.it/offers/images/092/904/660/original/crop_6a6763b8-d1a8-4155-bdbf-004e0ad301db_big_20260805174944.jpg?1785969723",
-        "link": "https://www.promoqui.it/offerte/rinnovare-la-casa-da-leroy-merlin-4938013"
-    },
-    {
-        "store": "Carrefour Iper",
-        "title": "Hoover - Aspirapolvere Con Sacco  H-energy 500",
-        "newPrice": "59.6",
-        "expiration": "2026-09-03",
-        "image": "https://data.promoqui.it/offers/images/092/910/416/original/crop_6a73323a-f710-4f35-804c-00670ad30028_big_20260805145316.jpg?1785974686",
-        "link": "https://www.promoqui.it/offerte/prezzi-freschi-4938019"
-    },
-    {
-        "store": "Dpi\u00f9",
-        "title": "Telefunken - M07784 Scopa Elettrica",
-        "newPrice": "34.9",
-        "expiration": "2026-08-30",
-        "image": "https://data.promoqui.it/offers/images/093/198/902/original/crop_6a7f161f-c0a8-4dd5-ae1c-00400ad302d9_big_20260814152038.jpg?1786966324",
-        "link": "https://www.promoqui.it/offerte/sconti-fino-al-50-4942133"
-    },
-    {
         "store": "Conad",
         "title": "Conad - Petto Di Pollo A Fette Percorso Qualit\u00e0",
         "newPrice": "2.49",
         "expiration": "2026-08-25",
         "image": "https://data.promoqui.it/offers/images/093/268/218/original/crop_6a840cb8-2694-498b-8e4f-00a30ad30260_big_20260818095359.jpg?1787215347",
         "link": "https://www.promoqui.it/offerte/convenienza-piu-4942942"
-    },
-    {
-        "store": "Euronics",
-        "title": "Dyson - Scopa Ricaricabile V10 Cyclone Submarine",
-        "newPrice": "379.0",
-        "expiration": "2026-09-10",
-        "image": "https://data.promoqui.it/offers/images/092/985/888/original/crop_6a75c3cb-fca8-45cd-83e0-003f0ad30260_big_20260807142904.jpg?1786125646",
-        "link": "https://www.promoqui.it/offerte/back-to-euronics-4939350"
-    },
-    {
-        "store": "Euronics",
-        "title": "Hoover - Scopa Ricaricabile HF-610P",
-        "newPrice": "269.9",
-        "expiration": "2026-09-10",
-        "image": "https://data.promoqui.it/offers/images/092/985/579/original/crop_6a75ac88-e31c-4b49-832f-005e0ad300e0_big_20260807140148.jpg?1786125482",
-        "link": "https://www.promoqui.it/offerte/back-to-euronics-4939350"
-    },
-    {
-        "store": "Euronics",
-        "title": "Rowenta - Scopa Elettrica Senza Filo RH7A32E0",
-        "newPrice": "199.99",
-        "expiration": "2026-09-09",
-        "image": "https://data.promoqui.it/offers/images/093/370/100/original/crop_6a88072d-46b8-4087-a7f4-00840ad3024f_big_20260821122536.jpg?1787311942",
-        "link": "https://www.promoqui.it/offerte/back-to-euronics-4943733"
-    },
-    {
-        "store": "Euronics",
-        "title": "Rowenta - Scopa Ricaricabile RH-7A32EO Flex",
-        "newPrice": "199.9",
-        "expiration": "2026-09-10",
-        "image": "https://data.promoqui.it/offers/images/092/985/858/original/crop_6a75c3c6-58dc-4ac4-b4c3-008a0ad30226_big_20260807142905.jpg?1786125632",
-        "link": "https://www.promoqui.it/offerte/back-to-euronics-4939350"
-    },
-    {
-        "store": "Esselunga",
-        "title": "Hoover - Scopa Senza Filo Hf401h 011",
-        "newPrice": "129.9",
-        "expiration": "2026-08-26",
-        "image": "https://data.promoqui.it/offers/images/093/169/253/original/crop_6a7d72a6-0064-47a0-8d20-009d0ad3019b_big_20260813093205.jpg?1786636145",
-        "link": "https://www.promoqui.it/offerte/sconti-fino-al-50-4941722"
     },
     {
         "store": "Spazio Conad",
@@ -2054,14 +2894,6 @@
         "expiration": "2026-09-01",
         "image": "https://data.promoqui.it/offers/images/093/392/107/original/crop_6a88028d-6138-413c-9229-00d00ad30175_big_20260821112132.jpg?1787337291",
         "link": "https://www.promoqui.it/offerte/ripartiamo-dalla-spesa-4943890"
-    },
-    {
-        "store": "Pewex",
-        "title": "Consilia - Patatine Classiche Mtp",
-        "newPrice": "1.29",
-        "expiration": "2026-09-01",
-        "image": "https://data.promoqui.it/offers/images/093/392/798/original/crop_6a880480-a5b4-414e-98e3-009f0ad3024f_big_20260821120720.jpg?1787337373",
-        "link": "https://www.promoqui.it/offerte/ripartiamo-dalla-spesa-4943891"
     },
     {
         "store": "Elite Supermercati",
@@ -2152,14 +2984,6 @@
         "link": "https://www.promoqui.it/offerte/incredibile-come-le-noste-offerte-4937553"
     },
     {
-        "store": "Todis",
-        "title": "Salame Ventricina Piccante",
-        "newPrice": "1.0",
-        "expiration": "2026-08-30",
-        "image": "https://data.promoqui.it/offers/images/093/239/144/original/crop_6a82b7c5-26bc-45ea-8fc1-00a40ad302b2_big_20260817092704.jpg?1787051966",
-        "link": "https://www.promoqui.it/offerte/tutto-a-1-euro-4942765"
-    },
-    {
         "store": "Lidl",
         "title": "Scarpiera A 2 Scomparti",
         "newPrice": "29.99",
@@ -2206,62 +3030,6 @@
         "expiration": "2026-09-27",
         "image": "https://data.promoqui.it/offers/images/089/144/557/original/crop_696b1693-debc-41c6-9886-00300ad3028e_big_20260328034018.jpg?1775659932",
         "link": "https://www.promoqui.it/offerte/volantino-orizzonte-4905809"
-    },
-    {
-        "store": "Carrefour Express",
-        "title": "Parmareggio - Parmigiano Reggiano Grattugiato",
-        "newPrice": "1.25",
-        "expiration": "2026-08-25",
-        "image": "https://data.promoqui.it/offers/images/093/105/535/original/crop_6a79b180-061c-45ad-b096-00eb0ad30282_big_20260810160132.jpg?1786468867",
-        "link": "https://www.promoqui.it/offerte/sconti-d-estate-4941057"
-    },
-    {
-        "store": "Conad",
-        "title": "Pr\u00e8sident - Emmental Francese",
-        "newPrice": "1.19",
-        "expiration": "2026-08-25",
-        "image": "https://data.promoqui.it/offers/images/092/962/697/original/crop_6a72f489-5f90-420a-9213-00420ad300c1_big_20260805103003.jpg?1786043780",
-        "link": "https://www.promoqui.it/offerte/catalogo-etnico-4938648"
-    },
-    {
-        "store": "Carrefour Iper",
-        "title": "Mele Gala",
-        "newPrice": "1.59",
-        "expiration": "2026-09-03",
-        "image": "https://data.promoqui.it/offers/images/092/908/947/original/crop_6a7331ad-b150-4646-a4b7-00a80ad301fb_big_20260805145056.jpg?1785973700",
-        "link": "https://www.promoqui.it/offerte/prezzi-freschi-4938019"
-    },
-    {
-        "store": "Al Discount",
-        "title": "Mele Gala Rinf Cal 75+ Cat I",
-        "newPrice": "1.59",
-        "expiration": "2026-08-31",
-        "image": "https://data.promoqui.it/offers/images/093/274/260/original/crop_6a85a08a-7974-4608-99ce-00310ad300c5_big_20260819155830.jpg?1787216444",
-        "link": "https://www.promoqui.it/offerte/un-ondata-di-offerte-4943245"
-    },
-    {
-        "store": "Tigre",
-        "title": "Royal - Mela  Gala",
-        "newPrice": "1.49",
-        "expiration": "2026-09-03",
-        "image": "https://data.promoqui.it/offers/images/093/363/485/original/crop_6a86a431-d8d4-4478-8be7-a5140ad3007d_big_20260820085235.jpg?1787301967",
-        "link": "https://www.promoqui.it/offerte/prezzi-shock-4943670"
-    },
-    {
-        "store": "Elite Supermercati",
-        "title": "Royal - Mele  Gala",
-        "newPrice": "1.49",
-        "expiration": "2026-09-03",
-        "image": "https://data.promoqui.it/offers/images/093/372/197/original/crop_6a87fffc-0fb8-414c-ad5c-00410ad302e3_big_20260821102925.jpg?1787312231",
-        "link": "https://www.promoqui.it/offerte/grandi-marche-prezzi-affare-4943724"
-    },
-    {
-        "store": "Oasi",
-        "title": "Royal - Mela Gala",
-        "newPrice": "1.19",
-        "expiration": "2026-09-03",
-        "image": "https://data.promoqui.it/offers/images/093/343/752/original/tmp_asset_6a86db6db957b.jpeg?1787229267",
-        "link": "https://www.promoqui.it/offerte/back-to-school-4943598"
     },
     {
         "store": "Euronics",
@@ -2385,102 +3153,6 @@
     },
     {
         "store": "Pewex",
-        "title": "Vera - Acqua  Naturale",
-        "newPrice": "0.99",
-        "expiration": "2026-09-01",
-        "image": "https://data.promoqui.it/offers/images/093/392/299/original/crop_6a8804c9-9bf8-467e-a578-00870ad302dc_big_20260821121001.jpg?1787337314",
-        "link": "https://www.promoqui.it/offerte/ripartiamo-dalla-spesa-4943885"
-    },
-    {
-        "store": "Conad",
-        "title": "Sant'anna - Bevanda Zero Zuccheri Aggiunti",
-        "newPrice": "0.79",
-        "expiration": "2026-09-30",
-        "image": "https://data.promoqui.it/offers/images/092/827/785/original/crop_6a6c9aab-6b1c-4fb1-8a70-00410ad30060_big_20260731145301.jpg?1785757139",
-        "link": "https://www.promoqui.it/offerte/spunta-il-risparmio-4935620"
-    },
-    {
-        "store": "Todis",
-        "title": "Sanattiva - Acqua Aromatizzata Limone E Zenzero",
-        "newPrice": "0.69",
-        "expiration": "2026-08-30",
-        "image": "https://data.promoqui.it/offers/images/093/240/212/original/crop_6a82b81c-c7a8-4e02-8cca-00a40ad30184_big_20260817092830.jpg?1787052568",
-        "link": "https://www.promoqui.it/offerte/tutto-a-1-euro-4942765"
-    },
-    {
-        "store": "Conad",
-        "title": "Ferrarelle - Acqua",
-        "newPrice": "0.3",
-        "expiration": "2026-08-25",
-        "image": "https://data.promoqui.it/offers/images/092/963/081/original/crop_6a72f40e-0b34-4e05-8da7-00800ad3005e_big_20260805102800.jpg?1786043993",
-        "link": "https://www.promoqui.it/offerte/freschi-di-convenienza-4938647"
-    },
-    {
-        "store": "Conad",
-        "title": "Conad - Acqua",
-        "newPrice": "0.28",
-        "expiration": "2026-08-25",
-        "image": "https://data.promoqui.it/offers/images/092/962/825/original/crop_6a72f3f9-76c4-4fc0-abc7-00bf0ad3019c_big_20260805102739.jpg?1786043842",
-        "link": "https://www.promoqui.it/offerte/freschi-di-convenienza-4938647"
-    },
-    {
-        "store": "Carrefour Express",
-        "title": "Frasassi - Acqua Naturale",
-        "newPrice": "0.27",
-        "expiration": "2026-08-25",
-        "image": "https://data.promoqui.it/offers/images/093/105/612/original/crop_6a79b187-81ec-465c-9919-008f0ad301b9_big_20260810160153.jpg?1786468985",
-        "link": "https://www.promoqui.it/offerte/sconti-d-estate-4941057"
-    },
-    {
-        "store": "Dem",
-        "title": "Consilia - Acqua Naturale/ Frizzante",
-        "newPrice": "0.26",
-        "expiration": "2026-09-30",
-        "image": "https://data.promoqui.it/offers/images/091/770/644/original/crop_6a437185-0fbc-4307-8e63-00f20ad300d1_big_20260630095519.jpg?1782819094",
-        "link": "https://www.promoqui.it/offerte/carrello-stop-rincari-4926639"
-    },
-    {
-        "store": "Conad",
-        "title": "Levissima - Acqua Minerale Naturale",
-        "newPrice": "0.24",
-        "expiration": "2026-08-25",
-        "image": "https://data.promoqui.it/offers/images/092/963/181/original/crop_6a72f417-037c-463d-a45b-00900ad3010c_big_20260805102809.jpg?1786044050",
-        "link": "https://www.promoqui.it/offerte/freschi-di-convenienza-4938647"
-    },
-    {
-        "store": "Pewex",
-        "title": "Beretta - Petto Di Pollo Arrosto",
-        "newPrice": "1.99",
-        "expiration": "2026-09-01",
-        "image": "https://data.promoqui.it/offers/images/093/397/983/original/crop_6a880585-9c68-4c48-88b5-00a00ad30257_big_20260821121314.jpg?1787338011",
-        "link": "https://www.promoqui.it/offerte/ripartiamo-dalla-spesa-4943885"
-    },
-    {
-        "store": "Todis",
-        "title": "Casa bonelli - Petto Di Pollo Arrosto 1% Di Grassi",
-        "newPrice": "1.89",
-        "expiration": "2026-08-30",
-        "image": "https://data.promoqui.it/offers/images/093/240/167/original/crop_6a82b819-11ec-4b49-a6e5-00760ad3000e_big_20260817092827.jpg?1787052545",
-        "link": "https://www.promoqui.it/offerte/tutto-a-1-euro-4942765"
-    },
-    {
-        "store": "Carrefour Market",
-        "title": "Coscia Di Pollo",
-        "newPrice": "1.39",
-        "expiration": "2026-09-03",
-        "image": "https://data.promoqui.it/offers/images/093/226/821/original/crop_6a82d704-b754-44af-8b37-00a40ad30241_big_20260817114022.jpg?1787014120",
-        "link": "https://www.promoqui.it/offerte/prezzi-freschi-4942580"
-    },
-    {
-        "store": "Todis",
-        "title": "Dorada - Petto Di Pollo Grigliato",
-        "newPrice": "1.0",
-        "expiration": "2026-08-30",
-        "image": "https://data.promoqui.it/offers/images/093/239/230/original/crop_6a82b7cf-23c8-4a35-8adb-00950ad30081_big_20260817092714.jpg?1787052016",
-        "link": "https://www.promoqui.it/offerte/tutto-a-1-euro-4942765"
-    },
-    {
-        "store": "Pewex",
         "title": "Nostromo -  Tonno Leggero",
         "newPrice": "2.29",
         "expiration": "2026-09-01",
@@ -2518,14 +3190,6 @@
         "expiration": "2026-09-01",
         "image": "https://data.promoqui.it/offers/images/093/398/897/original/crop_6a880594-7a88-4935-bf46-00100ad3016f_big_20260821121843.jpg?1787338132",
         "link": "https://www.promoqui.it/offerte/ripartiamo-dalla-spesa-4943885"
-    },
-    {
-        "store": "Todis",
-        "title": "Todis - Tonno Al Naturale",
-        "newPrice": "1.0",
-        "expiration": "2026-08-30",
-        "image": "https://data.promoqui.it/offers/images/093/239/200/original/crop_6a82b8ed-b000-448f-a854-00790ad30129_big_20260817093236.jpg?1787052001",
-        "link": "https://www.promoqui.it/offerte/tutto-a-1-euro-4942766"
     },
     {
         "store": "Carrefour Express",
@@ -2680,70 +3344,6 @@
         "link": "https://www.promoqui.it/offerte/lo-show-dei-prezzi-4943242"
     },
     {
-        "store": "Euronics",
-        "title": "Ninja - Friggitrice Ad Aria Flexdrawer Af500eu",
-        "newPrice": "199.99",
-        "expiration": "2026-09-09",
-        "image": "https://data.promoqui.it/offers/images/093/370/119/original/crop_6a88072d-99e4-4920-8324-00d60ad302dc_big_20260821122704.jpg?1787311944",
-        "link": "https://www.promoqui.it/offerte/back-to-euronics-4943733"
-    },
-    {
-        "store": "Euronics",
-        "title": "Philips - Friggitrice Ad Aria Airfryer Serie 1000 Na150/00",
-        "newPrice": "129.99",
-        "expiration": "2026-09-09",
-        "image": "https://data.promoqui.it/offers/images/093/370/079/original/crop_6a88072c-e560-4645-ad10-00a90ad3016b_big_20260821122529.jpg?1787311938",
-        "link": "https://www.promoqui.it/offerte/back-to-euronics-4943733"
-    },
-    {
-        "store": "Euronics",
-        "title": "Philips - Friggitrice Ad Aria NA 150/00",
-        "newPrice": "129.9",
-        "expiration": "2026-09-10",
-        "image": "https://data.promoqui.it/offers/images/092/985/520/original/crop_6a75aafa-66b0-47b7-a7f4-00950ad300fc_big_20260807135936.jpg?1786125452",
-        "link": "https://www.promoqui.it/offerte/back-to-euronics-4939350"
-    },
-    {
-        "store": "Euronics",
-        "title": "Braun - Friggitrice Ad Aria Multifry 5HF-5034",
-        "newPrice": "99.9",
-        "expiration": "2026-09-10",
-        "image": "https://data.promoqui.it/offers/images/092/985/514/original/crop_6a75aaf9-dca8-4892-a0a4-00780ad3027f_big_20260807135936.jpg?1786125450",
-        "link": "https://www.promoqui.it/offerte/back-to-euronics-4939350"
-    },
-    {
-        "store": "Carrefour Iper",
-        "title": "Cecotec - Friggitrice Ad Aria",
-        "newPrice": "69.5",
-        "expiration": "2026-09-03",
-        "image": "https://data.promoqui.it/offers/images/093/220/973/original/crop_6a82d166-27a4-4ddb-89e2-00660ad3005b_big_20260817111746.jpg?1787011134",
-        "link": "https://www.promoqui.it/offerte/prezzi-freschi-4942461"
-    },
-    {
-        "store": "Sinergy",
-        "title": "Ariete - Friggitrice Aria Airy Fryer XXL",
-        "newPrice": "53.1",
-        "expiration": "2026-08-31",
-        "image": "https://data.promoqui.it/offers/images/092/799/364/original/crop_6a6c8559-3968-47e1-ba0c-44680ad301bd_big_20260731132204.jpg?1785500023",
-        "link": "https://www.promoqui.it/offerte/sconto-iva-4933293"
-    },
-    {
-        "store": "Spazio Conad",
-        "title": "Zephir - Friggitrice Ad Aria ZHC11S",
-        "newPrice": "49.9",
-        "expiration": "2026-08-24",
-        "image": "https://data.promoqui.it/offers/images/092/984/968/original/crop_6a75928f-177c-4640-8287-00640ad30134_big_20260807101029.jpg?1786125185",
-        "link": "https://www.promoqui.it/offerte/1-2-3-euro-4939318"
-    },
-    {
-        "store": "Dpi\u00f9",
-        "title": "Ardes -  Friggisana Infinity, Friggitrice Ad Aria",
-        "newPrice": "49.9",
-        "expiration": "2026-08-30",
-        "image": "https://data.promoqui.it/offers/images/093/198/729/original/crop_6a7f161c-b164-4261-9f80-00320ad30034_big_20260814152031.jpg?1786966230",
-        "link": "https://www.promoqui.it/offerte/sconti-fino-al-50-4942133"
-    },
-    {
         "store": "Todis",
         "title": "Cereal bio - Orzo Solubile",
         "newPrice": "1.79",
@@ -2886,246 +3486,6 @@
         "expiration": "2026-08-25",
         "image": "https://data.promoqui.it/offers/images/092/908/833/original/crop_6a72f524-6968-4daf-9d3a-00c60ad300c1_big_20260805103238.jpg?1785973616",
         "link": "https://www.promoqui.it/offerte/convenienza-grande-4938004"
-    },
-    {
-        "store": "Euronics",
-        "title": "Lenovo - Loq Desktop Gaming Tower 17IAX10",
-        "newPrice": "1299.0",
-        "expiration": "2026-09-10",
-        "image": "https://data.promoqui.it/offers/images/092/985/223/original/crop_6a75a128-62c4-459f-b79f-00c70ad30046_big_20260807141115.jpg?1786125307",
-        "link": "https://www.promoqui.it/offerte/back-to-euronics-4939350"
-    },
-    {
-        "store": "Euronics",
-        "title": "HP - Omnidesk Ai M03-0014NL",
-        "newPrice": "699.99",
-        "expiration": "2026-09-09",
-        "image": "https://data.promoqui.it/offers/images/093/367/638/original/crop_6a8806fa-7204-4f9c-ba14-00a00ad3024f_big_20260821121754.jpg?1787311601",
-        "link": "https://www.promoqui.it/offerte/back-to-euronics-4943733"
-    },
-    {
-        "store": "Euronics",
-        "title": "HP - Desktop Omnidesk M03-0014NL",
-        "newPrice": "699.9",
-        "expiration": "2026-09-10",
-        "image": "https://data.promoqui.it/offers/images/092/985/303/original/crop_6a75a488-c440-46f3-ad68-00380ad30260_big_20260807141614.jpg?1786125345",
-        "link": "https://www.promoqui.it/offerte/back-to-euronics-4939350"
-    },
-    {
-        "store": "Il Castoro Supermercati",
-        "title": "Vall\u00e8 - Margarina-Burro",
-        "newPrice": "1.79",
-        "expiration": "2026-09-01",
-        "image": "https://data.promoqui.it/offers/images/093/399/977/original/crop_6a886a41-a1e8-4112-93ef-00300ad3013f_big_20260821180728.jpg?1787338315",
-        "link": "https://www.promoqui.it/offerte/offerte-straordinarie-4943932"
-    },
-    {
-        "store": "Pewex",
-        "title": "Burrata Di Andria IGP",
-        "newPrice": "1.79",
-        "expiration": "2026-09-01",
-        "image": "https://data.promoqui.it/offers/images/093/395/069/original/crop_6a88054c-867c-4562-b77c-00660ad30118_big_20260821120815.jpg?1787337655",
-        "link": "https://www.promoqui.it/offerte/ripartiamo-dalla-spesa-4943885"
-    },
-    {
-        "store": "Sidis",
-        "title": "Parmareggio - Burro",
-        "newPrice": "1.69",
-        "expiration": "2026-08-30",
-        "image": "https://data.promoqui.it/offers/images/093/285/621/original/crop_6a8553db-b398-4bca-a181-00200ad3011b_big_20260819085733.jpg?1787218353",
-        "link": "https://www.promoqui.it/offerte/le-offerte-continuano-4943322"
-    },
-    {
-        "store": "Elite Supermercati",
-        "title": "Vall\u00e8 - Omega 3",
-        "newPrice": "1.69",
-        "expiration": "2026-09-03",
-        "image": "https://data.promoqui.it/offers/images/093/371/271/original/crop_6a87fff2-23f4-4ae8-b96d-005b0ad30114_big_20260821102822.jpg?1787312106",
-        "link": "https://www.promoqui.it/offerte/grandi-marche-prezzi-affare-4943724"
-    },
-    {
-        "store": "Tigre",
-        "title": "Sabelli - Burratina",
-        "newPrice": "1.49",
-        "expiration": "2026-09-03",
-        "image": "https://data.promoqui.it/offers/images/093/364/553/original/crop_6a86a455-fecc-42d8-a521-00640ad302d2_big_20260820085312.jpg?1787302153",
-        "link": "https://www.promoqui.it/offerte/prezzi-shock-4943670"
-    },
-    {
-        "store": "Elite Supermercati",
-        "title": "Philadelphia - Original",
-        "newPrice": "1.09",
-        "expiration": "2026-09-03",
-        "image": "https://data.promoqui.it/offers/images/093/370/002/original/crop_6a87ffcc-c63c-4b92-8f10-007d0ad30054_big_20260821102658.jpg?1787311927",
-        "link": "https://www.promoqui.it/offerte/grandi-marche-prezzi-affare-4943724"
-    },
-    {
-        "store": "Carrefour Market",
-        "title": "Sabelli - Burrata",
-        "newPrice": "0.99",
-        "expiration": "2026-09-03",
-        "image": "https://data.promoqui.it/offers/images/093/226/617/original/crop_6a82d435-592c-4e26-930e-001d0ad3024d_big_20260817113204.jpg?1787014007",
-        "link": "https://www.promoqui.it/offerte/prezzi-freschi-4942581"
-    },
-    {
-        "store": "Elite Supermercati",
-        "title": "Granterre - Parmareggio Burro Senza Lattosio",
-        "newPrice": "0.99",
-        "expiration": "2026-09-03",
-        "image": "https://data.promoqui.it/offers/images/093/370/978/original/crop_6a87ffea-2f04-497b-a40d-004c0ad30187_big_20260821102840.jpg?1787312065",
-        "link": "https://www.promoqui.it/offerte/grandi-marche-prezzi-affare-4943724"
-    },
-    {
-        "store": "Ma Supermercati",
-        "title": "Banane",
-        "newPrice": "1.0",
-        "expiration": "2026-09-01",
-        "image": "https://data.promoqui.it/offers/images/093/395/718/original/crop_6a8809e9-ca9c-4a04-bb91-00890ad3028a_big_20260821123302.jpg?1787337739",
-        "link": "https://www.promoqui.it/offerte/amici-della-convenienza-4943917"
-    },
-    {
-        "store": "Pam",
-        "title": "Pam - Patate Da Forno",
-        "newPrice": "1.59",
-        "expiration": "2026-08-26",
-        "image": "https://data.promoqui.it/offers/images/092/977/753/original/crop_6a745170-c7dc-4e11-90b2-00e30ad3004d_big_20260806111842.jpg?1786069168",
-        "link": "https://www.promoqui.it/offerte/offerte-irresistibili-4938882"
-    },
-    {
-        "store": "Deco",
-        "title": "Kometa - Petto Di Tacchino Al Forno",
-        "newPrice": "1.49",
-        "expiration": "2026-08-31",
-        "image": "https://data.promoqui.it/offers/images/093/310/784/original/crop_6a857649-1fa4-4d8e-9111-004e0ad30134_big_20260819112437.jpg?1787221895",
-        "link": "https://www.promoqui.it/offerte/lo-show-dei-prezzi-4943242"
-    },
-    {
-        "store": "Dpi\u00f9",
-        "title": "Vitalibre - Tacchino/Pollo Al Forno A Fette",
-        "newPrice": "1.49",
-        "expiration": "2026-08-30",
-        "image": "https://data.promoqui.it/offers/images/093/198/493/original/crop_6a7f1617-cba8-48f4-bfb7-00a10ad300bf_big_20260814152027.jpg?1786966075",
-        "link": "https://www.promoqui.it/offerte/sconti-fino-al-50-4942133"
-    },
-    {
-        "store": "Elite Supermercati",
-        "title": "Aia - Aequilibrium Pertro Di Pollo Al Forno",
-        "newPrice": "1.49",
-        "expiration": "2026-09-03",
-        "image": "https://data.promoqui.it/offers/images/093/373/307/original/crop_6a880007-8d5c-470e-8500-00c10ad300af_big_20260821102854.jpg?1787312382",
-        "link": "https://www.promoqui.it/offerte/grandi-marche-prezzi-affare-4943724"
-    },
-    {
-        "store": "Tigre",
-        "title": "Consilia - Patate Caserecce Da Forno",
-        "newPrice": "1.39",
-        "expiration": "2026-09-03",
-        "image": "https://data.promoqui.it/offers/images/093/364/677/original/crop_6a86a459-98b4-41e2-94ce-00dc0ad30191_big_20260820085316.jpg?1787302172",
-        "link": "https://www.promoqui.it/offerte/prezzi-shock-4943670"
-    },
-    {
-        "store": "Cts Supermercati",
-        "title": "Fiorucci - Pa\u00eblla Di Tacchino Al Forno Flatucci",
-        "newPrice": "1.29",
-        "expiration": "2026-09-01",
-        "image": "https://data.promoqui.it/offers/images/093/415/264/original/crop_6a886e5b-02fc-4c8a-978b-00ad0ad3023f_big_20260821183012.jpg?1787341335",
-        "link": "https://www.promoqui.it/offerte/offerte-4943896"
-    },
-    {
-        "store": "Sidis",
-        "title": "Deliziosa - Ricotta Al Forno",
-        "newPrice": "1.09",
-        "expiration": "2026-08-30",
-        "image": "https://data.promoqui.it/offers/images/093/285/698/original/crop_6a8553dc-b618-403f-8926-006b0ad302af_big_20260819085734.jpg?1787218362",
-        "link": "https://www.promoqui.it/offerte/le-offerte-continuano-4943322"
-    },
-    {
-        "store": "Tigota",
-        "title": "Domopak - Pellicola 2in 1 Frigo E Microonde",
-        "newPrice": "0.99",
-        "expiration": "2026-08-31",
-        "image": "https://data.promoqui.it/offers/images/092/896/755/original/crop_6a703874-bf68-4436-8ffc-00ba0ad3025a_big_20260803084315.jpg?1785931192",
-        "link": "https://www.promoqui.it/offerte/incredibile-come-le-noste-offerte-4937553"
-    },
-    {
-        "store": "Sigma",
-        "title": "Energade - Arancia",
-        "newPrice": "2.0",
-        "expiration": "2026-08-31",
-        "image": "https://data.promoqui.it/offers/images/093/320/198/original/crop_6a86a2bd-6b7c-43bc-804d-006f0ad3025a_big_20260820084623.jpg?1787223208",
-        "link": "https://www.promoqui.it/offerte/prezzi-tondi-4943515"
-    },
-    {
-        "store": "Ipertriscount",
-        "title": "Rosso Di Sicilia -  Crema Di Capperi",
-        "newPrice": "1.29",
-        "expiration": "2026-09-01",
-        "image": "https://data.promoqui.it/offers/images/093/391/497/original/crop_6a87f43c-122c-47c7-a3aa-00350ad30257_big_20260821084723.jpg?1787337218",
-        "link": "https://www.promoqui.it/offerte/ondata-di-offerte-4943898"
-    },
-    {
-        "store": "Al Discount",
-        "title": "Energade - Arancia/ Arancia Rossa/ Limone Pet",
-        "newPrice": "1.29",
-        "expiration": "2026-08-31",
-        "image": "https://data.promoqui.it/offers/images/093/273/793/original/crop_6a85a02e-3468-4bef-bc8d-009b0ad302dc_big_20260819145614.jpg?1787216346",
-        "link": "https://www.promoqui.it/offerte/un-ondata-di-offerte-4943245"
-    },
-    {
-        "store": "Carrefour Iper",
-        "title": "Coca Cola - Regular O Zero Zuccheri",
-        "newPrice": "1.99",
-        "expiration": "2026-09-30",
-        "image": "https://data.promoqui.it/offers/images/092/421/465/original/crop_6a5f29f3-efc8-4188-bae6-00700ad300d2_big_20260721101237.jpg?1784656363",
-        "link": "https://www.promoqui.it/offerte/speciale-coca-cola-4931962"
-    },
-    {
-        "store": "PRO7 Supermercati",
-        "title": "Coca Cola -  -",
-        "newPrice": "1.99",
-        "expiration": "2026-08-28",
-        "image": "https://data.promoqui.it/offers/images/093/282/240/original/crop_6a858554-9abc-4c2e-bf36-00c80ad300be_big_20260819122838.jpg?1787217877",
-        "link": "https://www.promoqui.it/offerte/sconti-fino-al-50-4943294"
-    },
-    {
-        "store": "Elite Supermercati",
-        "title": "Coca Cola - Sprite Prot. Pet Cl 66",
-        "newPrice": "1.19",
-        "expiration": "2026-09-03",
-        "image": "https://data.promoqui.it/offers/images/093/370/164/original/crop_6a87ffd0-2604-464c-b3eb-00a00ad30250_big_20260821102758.jpg?1787311951",
-        "link": "https://www.promoqui.it/offerte/grandi-marche-prezzi-affare-4943724"
-    },
-    {
-        "store": "Sigma",
-        "title": "Pepsi - Cola",
-        "newPrice": "1.0",
-        "expiration": "2026-08-31",
-        "image": "https://data.promoqui.it/offers/images/093/318/068/original/crop_6a86a27e-1c78-4790-bf52-000f0ad3007d_big_20260820084520.jpg?1787222801",
-        "link": "https://www.promoqui.it/offerte/prezzi-tondi-4943515"
-    },
-    {
-        "store": "Esselunga",
-        "title": "Esselunga - Regular",
-        "newPrice": "0.63",
-        "expiration": "2026-12-31",
-        "image": "https://data.promoqui.it/offers/images/090/771/932/original/crop_6a17fbc9-cc30-435d-810a-005c0ad30016_big_20260528102445.jpg?1780581432",
-        "link": "https://www.promoqui.it/offerte/la-tua-spesa-completa-firmata-4918836"
-    },
-    {
-        "store": "Todis",
-        "title": "Cola Zero",
-        "newPrice": "0.49",
-        "expiration": "2026-08-30",
-        "image": "https://data.promoqui.it/offers/images/093/241/352/original/crop_6a82ba14-5748-4fb2-b06d-00cb0ad30032_big_20260817093756.jpg?1787053145",
-        "link": "https://www.promoqui.it/offerte/tutto-a-1-euro-4942773"
-    },
-    {
-        "store": "Todis",
-        "title": "Zero",
-        "newPrice": "0.49",
-        "expiration": "2026-08-30",
-        "image": "https://data.promoqui.it/offers/images/093/239/575/original/crop_6a82b91d-5300-4478-b311-007e0ad30192_big_20260817093340.jpg?1787052208",
-        "link": "https://www.promoqui.it/offerte/tutto-a-1-euro-4942766"
     },
     {
         "store": "Conad Superstore",
@@ -3320,148 +3680,12 @@
         "link": "https://www.promoqui.it/offerte/xxl-4943647"
     },
     {
-        "store": "Sidis",
-        "title": "Pampers - Pannolini, Mutandino Baby-Dry",
-        "newPrice": "4.59",
-        "expiration": "2026-08-30",
-        "image": "https://data.promoqui.it/offers/images/093/292/298/original/crop_6a855400-e578-4f04-8936-00820ad30134_big_20260819085810.jpg?1787219352",
-        "link": "https://www.promoqui.it/offerte/le-offerte-continuano-4943322"
-    },
-    {
-        "store": "Esselunga",
-        "title": "Pampers - Pannolini",
-        "newPrice": "3.99",
-        "expiration": "2026-08-26",
-        "image": "https://data.promoqui.it/offers/images/093/168/662/original/crop_6a7d6e24-4b6c-4e85-a26b-00780ad30189_big_20260813091423.jpg?1786635845",
-        "link": "https://www.promoqui.it/offerte/sconti-fino-al-50-4941722"
-    },
-    {
-        "store": "Deco",
-        "title": "Pampers - Sole E Luna Pannolini",
-        "newPrice": "3.69",
-        "expiration": "2026-08-31",
-        "image": "https://data.promoqui.it/offers/images/093/316/840/original/crop_6a8576dc-7664-4bd7-b273-006e0ad302b0_big_20260819112827.jpg?1787222640",
-        "link": "https://www.promoqui.it/offerte/lo-show-dei-prezzi-4943242"
-    },
-    {
-        "store": "PRO7 Supermercati",
-        "title": "Pampers - Pannolini Sole E Luna",
-        "newPrice": "3.59",
-        "expiration": "2026-08-28",
-        "image": "https://data.promoqui.it/offers/images/093/282/442/original/crop_6a858559-228c-4c72-b163-003c0ad30242_big_20260819122843.jpg?1787217913",
-        "link": "https://www.promoqui.it/offerte/sconti-fino-al-50-4943294"
-    },
-    {
-        "store": "Sidis",
-        "title": "Pampers - Salviettine Baby-Dry",
-        "newPrice": "2.99",
-        "expiration": "2026-08-30",
-        "image": "https://data.promoqui.it/offers/images/093/291/866/original/crop_6a8553fa-df10-4fee-891d-00cb0ad302c5_big_20260819085804.jpg?1787219180",
-        "link": "https://www.promoqui.it/offerte/le-offerte-continuano-4943322"
-    },
-    {
-        "store": "Cts Supermercati",
-        "title": "Chef select - Pannolini",
-        "newPrice": "2.19",
-        "expiration": "2026-09-01",
-        "image": "https://data.promoqui.it/offers/images/093/415/397/original/crop_6a886e22-0eac-4108-b028-00790ad3027d_big_20260821182704.jpg?1787341412",
-        "link": "https://www.promoqui.it/offerte/offerte-4943897"
-    },
-    {
-        "store": "Elite Supermercati",
-        "title": "Pampers - Sole E Luna Salviette",
-        "newPrice": "1.99",
-        "expiration": "2026-09-03",
-        "image": "https://data.promoqui.it/offers/images/093/374/609/original/crop_6a880024-3fc0-4482-bab4-00ed0ad3007f_big_20260821102922.jpg?1787312565",
-        "link": "https://www.promoqui.it/offerte/grandi-marche-prezzi-affare-4943724"
-    },
-    {
-        "store": "Euronics",
-        "title": "Realme - Note 70t",
-        "newPrice": "159.0",
-        "expiration": "2026-09-09",
-        "image": "https://data.promoqui.it/offers/images/093/368/823/original/crop_6a880711-0138-4a7e-a4db-00380ad30034_big_20260821122354.jpg?1787311759",
-        "link": "https://www.promoqui.it/offerte/back-to-euronics-4943733"
-    },
-    {
-        "store": "Euronics",
-        "title": "Xiaomi - Redmi 15C",
-        "newPrice": "149.0",
-        "expiration": "2026-09-09",
-        "image": "https://data.promoqui.it/offers/images/093/368/963/original/crop_6a880713-48d4-4f79-9bb6-00160ad30187_big_20260821121830.jpg?1787311779",
-        "link": "https://www.promoqui.it/offerte/back-to-euronics-4943733"
-    },
-    {
-        "store": "Euronics",
-        "title": "Motorola - Moto G06",
-        "newPrice": "129.99",
-        "expiration": "2026-09-09",
-        "image": "https://data.promoqui.it/offers/images/093/368/418/original/crop_6a88070b-7794-4564-a3e9-005d0ad3016f_big_20260821122325.jpg?1787311707",
-        "link": "https://www.promoqui.it/offerte/back-to-euronics-4943733"
-    },
-    {
-        "store": "Sinergy",
-        "title": "Oppo - Smartphone A6X",
-        "newPrice": "122.8",
-        "expiration": "2026-08-31",
-        "image": "https://data.promoqui.it/offers/images/092/799/373/original/crop_6a6c8d0b-c0b4-480f-9f79-437c0ad302cb_big_20260731135532.jpg?1785500048",
-        "link": "https://www.promoqui.it/offerte/sconto-iva-4933293"
-    },
-    {
-        "store": "Dpi\u00f9",
-        "title": "Oppo - A6X Smartphone ICE Blue",
-        "newPrice": "119.0",
-        "expiration": "2026-08-30",
-        "image": "https://data.promoqui.it/offers/images/093/199/066/original/crop_6a7f1621-cec8-4f2d-9c8a-408d0ad3001a_big_20260814152043.jpg?1786966406",
-        "link": "https://www.promoqui.it/offerte/sconti-fino-al-50-4942133"
-    },
-    {
-        "store": "Carrefour Iper",
-        "title": "Motorola - Smartphone Mod. G05",
-        "newPrice": "99.0",
-        "expiration": "2026-09-03",
-        "image": "https://data.promoqui.it/offers/images/092/910/314/original/crop_6a733234-2554-488a-9adc-00cf0ad301f0_big_20260805145310.jpg?1785974629",
-        "link": "https://www.promoqui.it/offerte/prezzi-freschi-4938019"
-    },
-    {
-        "store": "Carrefour Market",
-        "title": "TCL - Smartphone Mod. K70 Se",
-        "newPrice": "89.0",
-        "expiration": "2026-09-03",
-        "image": "https://data.promoqui.it/offers/images/093/227/833/original/crop_6a82d75b-a910-423c-9cea-00260ad30205_big_20260817114210.jpg?1787014682",
-        "link": "https://www.promoqui.it/offerte/prezzi-freschi-4942580"
-    },
-    {
-        "store": "Carrefour Iper",
-        "title": "Linea - Temperino",
-        "newPrice": "1.99",
-        "expiration": "2026-09-22",
-        "image": "https://data.promoqui.it/offers/images/092/345/889/original/crop_6a59d72a-ced0-477b-ae08-003b0ad300d2_big_20260717091804.jpg?1784407742",
-        "link": "https://www.promoqui.it/offerte/back-to-school-4931223"
-    },
-    {
         "store": "Carrefour Market",
         "title": "Adoc - Cat Gatto Tonnetto",
         "newPrice": "0.95",
         "expiration": "2026-09-03",
         "image": "https://data.promoqui.it/offers/images/092/909/974/original/crop_6a73637e-046c-439a-83f8-004e0ad3023a_big_20260805183432.jpg?1785974409",
         "link": "https://www.promoqui.it/offerte/prezzi-freschi-4938018"
-    },
-    {
-        "store": "Elite Supermercati",
-        "title": "Francia - Prosciutto Di Bufalcia",
-        "newPrice": "0.89",
-        "expiration": "2026-09-03",
-        "image": "https://data.promoqui.it/offers/images/093/369/663/original/crop_6a87ffc8-a308-410a-8ffb-00420ad302fb_big_20260821102748.jpg?1787311880",
-        "link": "https://www.promoqui.it/offerte/grandi-marche-prezzi-affare-4943724"
-    },
-    {
-        "store": "Pewex",
-        "title": "Prosciutto Cotto Scelto",
-        "newPrice": "0.79",
-        "expiration": "2026-09-01",
-        "image": "https://data.promoqui.it/offers/images/093/392/846/original/crop_6a8802b2-85b0-4da6-a608-00840ad30206_big_20260821112732.jpg?1787337379",
-        "link": "https://www.promoqui.it/offerte/ripartiamo-dalla-spesa-4943890"
     },
     {
         "store": "Acqua e Sapone",
@@ -3496,116 +3720,12 @@
         "link": "https://www.promoqui.it/offerte/la-tua-spesa-completa-firmata-4918836"
     },
     {
-        "store": "Carrefour Iper",
-        "title": "Altoparlante Bluetooth Mod. PSBTS50",
-        "newPrice": "6.93",
-        "expiration": "2026-09-22",
-        "image": "https://data.promoqui.it/offers/images/092/368/168/original/crop_6a59d745-9878-4be0-b2c2-00d40ad300b1_big_20260717091831.jpg?1784424559",
-        "link": "https://www.promoqui.it/offerte/back-to-school-4931223"
-    },
-    {
-        "store": "Carrefour Iper",
-        "title": "Auricolari Bluetooth Mod. PSTWS219",
-        "newPrice": "6.43",
-        "expiration": "2026-09-22",
-        "image": "https://data.promoqui.it/offers/images/092/368/130/original/crop_6a59d741-4d24-4715-8eb7-00680ad3023c_big_20260717091827.jpg?1784424532",
-        "link": "https://www.promoqui.it/offerte/back-to-school-4931223"
-    },
-    {
-        "store": "Carrefour Market",
-        "title": "Auricolari Wireless Mosa. Pstws219",
-        "newPrice": "6.43",
-        "expiration": "2026-09-27",
-        "image": "https://data.promoqui.it/offers/images/092/340/984/original/crop_6a59d76c-ce48-47fc-be6d-008e0ad301ec_big_20260717091910.jpg?1784404404",
-        "link": "https://www.promoqui.it/offerte/back-to-school-4931166"
-    },
-    {
-        "store": "Cts Supermercati",
-        "title": "Cuffie Turberta",
-        "newPrice": "2.99",
-        "expiration": "2026-09-01",
-        "image": "https://data.promoqui.it/offers/images/093/412/229/original/crop_6a886c90-8d68-4fc7-bf90-00ca0ad3000c_big_20260821182231.jpg?1787340567",
-        "link": "https://www.promoqui.it/offerte/offerte-4943897"
-    },
-    {
-        "store": "Dpi\u00f9",
-        "title": "Drachenturm - 5% Vol Lattina",
-        "newPrice": "0.62",
-        "expiration": "2026-08-30",
-        "image": "https://data.promoqui.it/offers/images/093/198/487/original/crop_6a7f1617-ca70-4b54-945d-00460ad30199_big_20260814152029.jpg?1786966071",
-        "link": "https://www.promoqui.it/offerte/sconti-fino-al-50-4942133"
-    },
-    {
         "store": "Acqua e Sapone",
         "title": "Vidal - Doccia",
         "newPrice": "0.99",
         "expiration": "2026-09-03",
         "image": "https://data.promoqui.it/offers/images/093/110/105/original/crop_6a7ad99a-e260-48be-8e19-00a60ad30176_big_20260811102543.jpg?1786487696",
         "link": "https://www.promoqui.it/offerte/solo-dal-16-al-31-agosto-4941162"
-    },
-    {
-        "store": "Spazio Conad",
-        "title": "Xiaomi - Tablet Pad 2 11\"",
-        "newPrice": "179.0",
-        "expiration": "2026-09-30",
-        "image": "https://data.promoqui.it/offers/images/093/302/333/original/crop_6a82bef1-0be8-4ca1-a1e9-00370ad30139_big_20260817101214.jpg?1787220724",
-        "link": "https://www.promoqui.it/offerte/catalogo-scuola-2026-4942791"
-    },
-    {
-        "store": "Euronics",
-        "title": "Apple - Pencil Pro",
-        "newPrice": "149.99",
-        "expiration": "2026-09-09",
-        "image": "https://data.promoqui.it/offers/images/093/367/817/original/crop_6a8806ff-fe8c-4b8f-ac49-00280ad30118_big_20260821122303.jpg?1787311627",
-        "link": "https://www.promoqui.it/offerte/back-to-euronics-4943733"
-    },
-    {
-        "store": "Euronics",
-        "title": "Acer - Tablet Iconia A11 A11-21P-A6KC",
-        "newPrice": "139.99",
-        "expiration": "2026-09-09",
-        "image": "https://data.promoqui.it/offers/images/093/367/161/original/crop_6a8806f3-41fc-4998-b686-00b60ad300ea_big_20260821122538.jpg?1787311538",
-        "link": "https://www.promoqui.it/offerte/back-to-euronics-4943733"
-    },
-    {
-        "store": "Euronics",
-        "title": "Logitech - Custodia + Tastiera Combo iPad 10\u00b0Gen",
-        "newPrice": "129.9",
-        "expiration": "2026-09-10",
-        "image": "https://data.promoqui.it/offers/images/092/985/425/original/crop_6a75a884-2e80-4e60-b60c-00730ad30084_big_20260807142244.jpg?1786125407",
-        "link": "https://www.promoqui.it/offerte/back-to-euronics-4939350"
-    },
-    {
-        "store": "Euronics",
-        "title": "Acer - Tablet Iconia A10 A10-31P-A42K",
-        "newPrice": "119.99",
-        "expiration": "2026-09-09",
-        "image": "https://data.promoqui.it/offers/images/093/367/469/original/crop_6a8806f7-9744-4f3f-8608-00c10ad30029_big_20260821122508.jpg?1787311578",
-        "link": "https://www.promoqui.it/offerte/back-to-euronics-4943733"
-    },
-    {
-        "store": "Todis",
-        "title": "Majestic - Tablet 920 Plus  4G 10.1-",
-        "newPrice": "99.99",
-        "expiration": "2026-08-30",
-        "image": "https://data.promoqui.it/offers/images/093/240/488/original/crop_6a82b82f-6970-4533-8dc6-00110ad30183_big_20260817092849.jpg?1787052704",
-        "link": "https://www.promoqui.it/offerte/tutto-a-1-euro-4942765"
-    },
-    {
-        "store": "Carrefour Iper",
-        "title": "Majestic - Tablet  10.11 Mod. 720 Plus",
-        "newPrice": "89.0",
-        "expiration": "2026-09-22",
-        "image": "https://data.promoqui.it/offers/images/092/368/152/original/crop_6a59d744-088c-4756-82fb-005e0ad3023d_big_20260717091830.jpg?1784424548",
-        "link": "https://www.promoqui.it/offerte/back-to-school-4931223"
-    },
-    {
-        "store": "Conad Superstore",
-        "title": "Lenovo - Tablet ZASD00336E",
-        "newPrice": "79.9",
-        "expiration": "2026-09-30",
-        "image": "https://data.promoqui.it/offers/images/093/211/571/original/crop_6a7ec96d-d8fc-4c53-ba27-465e0ad300ce_big_20260814095445.jpg?1786973915",
-        "link": "https://www.promoqui.it/offerte/catalogo-scuola-4942384"
     },
     {
         "store": "Carrefour Market",
@@ -3656,116 +3776,12 @@
         "link": "https://www.promoqui.it/offerte/un-ondata-di-offerte-4943245"
     },
     {
-        "store": "Carrefour Iper",
-        "title": "Misura - Bicicleta",
-        "newPrice": "179.0",
-        "expiration": "2026-09-22",
-        "image": "https://data.promoqui.it/offers/images/092/345/987/original/crop_6a59d731-2d34-40e0-9df5-4fff0ad3001e_big_20260717091811.jpg?1784407796",
-        "link": "https://www.promoqui.it/offerte/back-to-school-4931223"
-    },
-    {
-        "store": "Todis",
-        "title": "Ty - Mtb 27.5",
-        "newPrice": "169.9",
-        "expiration": "2026-08-30",
-        "image": "https://data.promoqui.it/offers/images/093/240/528/original/crop_6a82b836-d724-4e45-ae6a-00c70ad30197_big_20260817092856.jpg?1787052723",
-        "link": "https://www.promoqui.it/offerte/tutto-a-1-euro-4942765"
-    },
-    {
-        "store": "Todis",
-        "title": "Solo - Bici Trekking Unisex 6vel",
-        "newPrice": "159.9",
-        "expiration": "2026-08-30",
-        "image": "https://data.promoqui.it/offers/images/093/240/517/original/crop_6a82b832-0aa0-4c19-a388-00690ad302fd_big_20260817092852.jpg?1787052718",
-        "link": "https://www.promoqui.it/offerte/tutto-a-1-euro-4942765"
-    },
-    {
-        "store": "Todis",
-        "title": "Solo - Bici Pieghevole 20\"",
-        "newPrice": "149.9",
-        "expiration": "2026-08-30",
-        "image": "https://data.promoqui.it/offers/images/093/240/505/original/crop_6a82b830-9654-455e-81b2-00d30ad30105_big_20260817092850.jpg?1787052712",
-        "link": "https://www.promoqui.it/offerte/tutto-a-1-euro-4942765"
-    },
-    {
-        "store": "Carrefour Iper",
-        "title": "Pompa Bici",
-        "newPrice": "5.99",
-        "expiration": "2026-09-22",
-        "image": "https://data.promoqui.it/offers/images/092/345/933/original/crop_6a59d72e-1824-4033-ab3f-003b0ad30007_big_20260717091808.jpg?1784407766",
-        "link": "https://www.promoqui.it/offerte/back-to-school-4931223"
-    },
-    {
-        "store": "Lidl",
-        "title": "Crivit - Camera D'Aria Per Bicicletta, 1 O 2 Pezzi",
-        "newPrice": "3.99",
-        "expiration": "2026-08-26",
-        "image": "https://data.promoqui.it/offers/images/093/354/442/original/crop_6a79e911-ec54-414c-b0f5-00810ad300fc_big_20260820180748.jpg?1787251369",
-        "link": "https://www.promoqui.it/offerte/xxl-4943647"
-    },
-    {
         "store": "Acqua e Sapone",
         "title": "Fabuloso - Ammorbidente Concentrato 45 Lavaggi",
         "newPrice": "1.99",
         "expiration": "2026-09-02",
         "image": "https://data.promoqui.it/offers/images/093/003/789/original/crop_6a79949b-e7a4-43e8-85c9-00910ad3012b_big_20260810152409.jpg?1786374597",
         "link": "https://www.promoqui.it/offerte/sconti-fino-al-70-4940570"
-    },
-    {
-        "store": "Pewex",
-        "title": "Orogel - Contorno Verdure Leggerezza",
-        "newPrice": "1.99",
-        "expiration": "2026-09-01",
-        "image": "https://data.promoqui.it/offers/images/093/392/772/original/crop_6a8804de-98e4-413b-9448-008f0ad30034_big_20260821120554.jpg?1787337370",
-        "link": "https://www.promoqui.it/offerte/ripartiamo-dalla-spesa-4943885"
-    },
-    {
-        "store": "Elite Supermercati",
-        "title": "Selex - Minestrone Di Verdure",
-        "newPrice": "1.79",
-        "expiration": "2026-08-31",
-        "image": "https://data.promoqui.it/offers/images/090/112/149/original/crop_69f86eb2-6850-445b-aebe-003f0ad30246_big_20260504120228.jpg?1777979257",
-        "link": "https://www.promoqui.it/offerte/spesa-difesa-4913664"
-    },
-    {
-        "store": "Spazio Conad",
-        "title": "Frosta - Bastoncini Di Spinaci O Di Verdure",
-        "newPrice": "1.69",
-        "expiration": "2026-08-24",
-        "image": "https://data.promoqui.it/offers/images/092/983/968/original/crop_6a759237-e72c-402c-9d14-00620ad30019_big_20260807100735.jpg?1786124765",
-        "link": "https://www.promoqui.it/offerte/1-2-3-euro-4939318"
-    },
-    {
-        "store": "Conad Superstore",
-        "title": "Conad - Verdure Grigliate",
-        "newPrice": "1.36",
-        "expiration": "2026-08-25",
-        "image": "https://data.promoqui.it/offers/images/092/908/167/original/crop_6a72f4d2-f668-4404-bf03-48ae0ad3017b_big_20260805103116.jpg?1785973188",
-        "link": "https://www.promoqui.it/offerte/convenienza-grande-4938004"
-    },
-    {
-        "store": "Conad",
-        "title": "Conad - Verdure Grigliate Gustosamente",
-        "newPrice": "1.36",
-        "expiration": "2026-08-25",
-        "image": "https://data.promoqui.it/offers/images/092/962/557/original/crop_6a72f3e1-1728-4aab-b597-00530ad30220_big_20260805102715.jpg?1786043711",
-        "link": "https://www.promoqui.it/offerte/freschi-di-convenienza-4938647"
-    },
-    {
-        "store": "Panorama",
-        "title": "Cous Cous Con Verdure",
-        "newPrice": "0.99",
-        "expiration": "2026-08-26",
-        "image": "https://data.promoqui.it/offers/images/092/978/226/original/crop_6a745347-b7c8-4bbd-a046-00600ad30297_big_20260806112717.jpg?1786069426",
-        "link": "https://www.promoqui.it/offerte/offerte-irresistibili-4938889"
-    },
-    {
-        "store": "Tigre",
-        "title": "Bonduelle - Fantasia Di Verdure",
-        "newPrice": "0.99",
-        "expiration": "2026-09-03",
-        "image": "https://data.promoqui.it/offers/images/093/365/114/original/crop_6a86a463-de98-4b06-9eaf-00260ad3001b_big_20260820085325.jpg?1787302235",
-        "link": "https://www.promoqui.it/offerte/prezzi-shock-4943670"
     },
     {
         "store": "Acqua e Sapone",
@@ -3910,29 +3926,5 @@
         "expiration": "2026-08-26",
         "image": "https://data.promoqui.it/offers/images/092/978/252/original/crop_6a745199-e308-4664-9d09-007d0ad300d5_big_20260806111928.jpg?1786069439",
         "link": "https://www.promoqui.it/offerte/offerte-irresistibili-4938882"
-    },
-    {
-        "store": "Il Castoro Supermercati",
-        "title": "Caff\u00e8 Trombetta",
-        "newPrice": "2.99",
-        "expiration": "2026-09-01",
-        "image": "https://data.promoqui.it/offers/images/093/397/448/original/crop_6a886994-a7c4-4636-8f52-001b0ad30171_big_20260821180109.jpg?1787337945",
-        "link": "https://www.promoqui.it/offerte/offerte-straordinarie-4943932"
-    },
-    {
-        "store": "Conad City",
-        "title": "Meran - Yogurt Drink Bella Vita",
-        "newPrice": "0.79",
-        "expiration": "2026-08-25",
-        "image": "https://data.promoqui.it/offers/images/093/214/318/original/crop_6a82b9e6-5a2c-4fc6-808e-00230ad3028e_big_20260817093613.jpg?1786991537",
-        "link": "https://www.promoqui.it/offerte/convenienza-piu-4942429"
-    },
-    {
-        "store": "Orizzonte",
-        "title": "Prime - Armadio  5195652",
-        "newPrice": "46.0",
-        "expiration": "2026-09-27",
-        "image": "https://data.promoqui.it/offers/images/089/144/543/original/crop_696b168e-751c-49df-b1ea-00eb0ad30178_big_20260328034011.jpg?1775659900",
-        "link": "https://www.promoqui.it/offerte/volantino-orizzonte-4905809"
     }
 ]
