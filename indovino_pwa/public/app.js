@@ -293,49 +293,67 @@ function renderSignalsData(data) {
     card.className = 'card';
     card.style.marginBottom = '12px';
 
-    let statoBadge = '<span style="color:var(--cyan); font-weight:bold;">⏳ In Corso</span>';
+    let statoBadge = '<span style="color:var(--cyan); font-weight:bold;">⏳ In Corso (Colpi 0/5)</span>';
     if (s.stato === 'vinto_terno') statoBadge = '<span style="color:var(--green); font-weight:bold;">🏆 TERNO CENTRATO!</span>';
-    else if (s.stato === 'vinto_ambo') statoBadge = '<span style="color:var(--green); font-weight:bold;">✅ AMBO VINTO!</span>';
+    else if (s.stato === 'vinto_ambo') statoBadge = `<span style="color:var(--green); font-weight:bold;">✅ AMBO VINTO (Colpo ${s.primo_ambo_colpo || 1})!</span>`;
     else if (s.colpi_trascorsi >= 5) statoBadge = '<span style="color:var(--text-muted);">Chiuso 5/5</span>';
+    else if (s.colpi_trascorsi > 0) statoBadge = `<span style="color:var(--cyan); font-weight:bold;">⏳ In Corso (Colpo ${s.colpi_trascorsi}/5)</span>`;
 
     const tBalls = s.terzina.map(n => `<span class="ball ball-oro" style="width:28px; height:28px; font-size:0.85rem; display:inline-flex;">${n.toString().padStart(2,'0')}</span>`).join(' ');
+    const tText = s.terzina.map(n => n.toString().padStart(2, '0')).join(' - ');
 
     let tlHtml = '';
-    (s.timeline || []).forEach(t => {
-      let tCol = 'var(--text-muted)';
-      if (t.punti === 3) tCol = 'var(--green)';
-      else if (t.punti === 2) tCol = 'var(--cyan)';
-      else if (t.punti === 1) tCol = '#fff';
+    for (let c = 1; c <= 5; c++) {
+      const targetConc = s.concorso_spia + c;
+      const t = (s.timeline || []).find(x => x.colpo === c);
+      if (t) {
+        let tCol = 'var(--text-muted)';
+        if (t.punti === 3) tCol = 'var(--green)';
+        else if (t.punti === 2) tCol = 'var(--cyan)';
+        else if (t.punti === 1) tCol = '#fff';
 
-      tlHtml += `
-        <div style="background:rgba(0,0,0,0.3); padding:4px 8px; border-radius:6px; font-size:0.75rem; text-align:center;">
-          <div>Colpo ${t.colpo} (#${t.concorso})</div>
-          <div style="font-weight:bold; color:${tCol};">${t.punti} pt ${t.presi.length ? `[${t.presi.join(',')}]` : ''}</div>
-        </div>
-      `;
-    });
+        tlHtml += `
+          <div style="flex:1; background:rgba(0,0,0,0.35); padding:6px; border-radius:8px; font-size:0.75rem; text-align:center; border:1px solid rgba(255,255,255,0.08);">
+            <div style="font-size:0.68rem; color:var(--text-muted);">Colpo ${c}</div>
+            <div style="font-weight:800; color:${tCol}; margin-top:2px;">${t.punti} pt ${t.presi.length ? `[${t.presi.join(',')}]` : ''}</div>
+            <div style="font-size:0.62rem; color:var(--text-muted);">#${t.concorso}</div>
+          </div>
+        `;
+      } else {
+        tlHtml += `
+          <div style="flex:1; background:rgba(0,0,0,0.25); padding:6px; border-radius:8px; font-size:0.75rem; text-align:center; border:1px solid rgba(255,255,255,0.05);">
+            <div style="font-size:0.68rem; color:var(--text-muted);">Colpo ${c}</div>
+            <div style="font-weight:700; color:rgba(255,255,255,0.3); margin-top:2px;">⏳ Attesa</div>
+            <div style="font-size:0.62rem; color:var(--text-muted);">#${targetConc}</div>
+          </div>
+        `;
+      }
+    }
 
     card.innerHTML = `
       <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
         <div>
-          <span style="font-size:0.8rem; color:var(--text-muted);">Spia <strong>#${s.spia}</strong> (Concorso #${s.concorso_spia} ore ${s.ora})</span>
+          <span style="font-size:0.85rem; font-weight:800; color:var(--gold);">🔴 Spia #${s.spia}</span>
+          <span style="font-size:0.78rem; color:var(--text-muted); margin-left:6px;">(Conc. #${s.concorso_spia} ore ${s.ora})</span>
         </div>
         <div>${statoBadge}</div>
       </div>
-      <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:10px;">
-        <div style="display:flex; gap:6px; align-items:center;">
-          <span>Terzina:</span>
+      <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:10px; background:rgba(0,0,0,0.25); padding:8px 10px; border-radius:8px;">
+        <div style="display:flex; gap:8px; align-items:center;">
+          <span style="font-size:0.8rem; color:var(--text-muted);">Terzina:</span>
           ${tBalls}
+          <strong style="color:#fef08a; font-size:0.95rem; margin-left:4px;">${tText}</strong>
         </div>
         <div style="font-size:0.85rem;">Oro: <strong style="color:var(--gold)">${s.oro}</strong></div>
       </div>
       <div style="display:flex; gap:6px; overflow-x:auto;">
-        ${tlHtml || '<span style="color:var(--text-muted); font-size:0.75rem;">In attesa dei colpi successivi...</span>'}
+        ${tlHtml}
       </div>
     `;
     cont.appendChild(card);
   });
 }
+
 
 // Archivio Storico
 let archivioDraws = [];
