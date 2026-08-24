@@ -322,34 +322,32 @@ def get_best_spy(draws):
     spies.sort(key=lambda x: x['score'], reverse=True)
     return spies[0] if spies else None
 
-# Mappa Spie Speciali per Pattern geometrico [1-20 e 20-40]
+# Mappa Spie Speciali per Pattern calibrati ESCLUSIVAMENTE su [20-29] o [30-39]
 PATTERN_SPIES = {
-    # --- Fascia 1 - 20 ---
-    43: {'terzina': [17, 19, 20], 'oro': 17, 'score': 96.0, 'desc': 'Pattern 17-19-20 (Spia #43)'},
-    86: {'terzina': [17, 19, 20], 'oro': 19, 'score': 93.0, 'desc': 'Pattern 17-19-20 (Spia #86)'},
-    89: {'terzina': [14, 16, 17], 'oro': 14, 'score': 95.0, 'desc': 'Pattern 14-16-17 (Spia #89)'},
-    88: {'terzina': [14, 16, 17], 'oro': 16, 'score': 92.0, 'desc': 'Pattern 14-16-17 (Spia #88)'},
-    66: {'terzina': [5, 7, 8],     'oro': 5,  'score': 92.0, 'desc': 'Pattern 05-07-08 (Spia #66)'},
-    67: {'terzina': [3, 5, 6],     'oro': 3,  'score': 93.0, 'desc': 'Pattern 03-05-06 (Spia #67)'},
-    2:  {'terzina': [6, 8, 9],     'oro': 6,  'score': 91.0, 'desc': 'Pattern 06-08-09 (Spia #02)'},
-    10: {'terzina': [2, 4, 5],     'oro': 2,  'score': 92.0, 'desc': 'Pattern 02-04-05 (Spia #10)'},
-    41: {'terzina': [1, 3, 4],     'oro': 1,  'score': 91.0, 'desc': 'Pattern 01-03-04 (Spia #41)'},
+    # --- Decina 20 - 29 ---
+    26: {'terzina': [20, 22, 23], 'oro': 20, 'score': 95.0, 'desc': 'Decina 20-29: [20, 22, 23] (Spia #26)'},
+    73: {'terzina': [20, 22, 23], 'oro': 22, 'score': 92.0, 'desc': 'Decina 20-29: [20, 22, 23] (Spia #73)'},
+    87: {'terzina': [26, 28, 29], 'oro': 26, 'score': 94.0, 'desc': 'Decina 20-29: [26, 28, 29] (Spia #87)'},
+    44: {'terzina': [26, 28, 29], 'oro': 28, 'score': 90.0, 'desc': 'Decina 20-29: [26, 28, 29] (Spia #44)'},
+    51: {'terzina': [21, 23, 24], 'oro': 21, 'score': 91.0, 'desc': 'Decina 20-29: [21, 23, 24] (Spia #51)'},
+    12: {'terzina': [21, 23, 24], 'oro': 23, 'score': 89.0, 'desc': 'Decina 20-29: [21, 23, 24] (Spia #12)'},
+    62: {'terzina': [24, 26, 27], 'oro': 24, 'score': 91.0, 'desc': 'Decina 20-29: [24, 26, 27] (Spia #62)'},
+    38: {'terzina': [24, 26, 27], 'oro': 26, 'score': 88.0, 'desc': 'Decina 20-29: [24, 26, 27] (Spia #38)'},
 
-    # --- Fascia 20 - 40 ---
-    26: {'terzina': [20, 22, 23], 'oro': 20, 'score': 95.0, 'desc': 'Pattern 20-22-23 (Spia #26)'},
-    73: {'terzina': [20, 22, 23], 'oro': 22, 'score': 92.0, 'desc': 'Pattern 20-22-23 (Spia #73)'},
-    87: {'terzina': [26, 28, 29], 'oro': 26, 'score': 94.0, 'desc': 'Pattern 26-28-29 (Spia #87)'},
-    44: {'terzina': [26, 28, 29], 'oro': 28, 'score': 90.0, 'desc': 'Pattern 26-28-29 (Spia #44)'},
-    56: {'terzina': [30, 32, 33], 'oro': 30, 'score': 94.0, 'desc': 'Pattern 30-32-33 (Spia #56)'},
-    40: {'terzina': [30, 32, 33], 'oro': 32, 'score': 91.0, 'desc': 'Pattern 30-32-33 (Spia #40)'},
-    74: {'terzina': [29, 31, 32], 'oro': 29, 'score': 93.0, 'desc': 'Pattern 29-31-32 (Spia #74)'},
-    77: {'terzina': [29, 31, 32], 'oro': 31, 'score': 91.0, 'desc': 'Pattern 29-31-32 (Spia #77)'},
-    83: {'terzina': [32, 34, 35], 'oro': 32, 'score': 92.0, 'desc': 'Pattern 32-34-35 (Spia #83)'},
-    85: {'terzina': [32, 34, 35], 'oro': 34, 'score': 89.0, 'desc': 'Pattern 32-34-35 (Spia #85)'},
-    64: {'terzina': [31, 33, 34], 'oro': 31, 'score': 85.0, 'desc': 'Pattern 31-33-34 (Spia #64)'},
-    19: {'terzina': [31, 33, 34], 'oro': 33, 'score': 84.0, 'desc': 'Pattern 31-33-34 (Spia #19)'},
+    # --- Decina 30 - 39 ---
+    56: {'terzina': [30, 32, 33], 'oro': 30, 'score': 94.0, 'desc': 'Decina 30-39: [30, 32, 33] (Spia #56)'},
+    40: {'terzina': [30, 32, 33], 'oro': 32, 'score': 91.0, 'desc': 'Decina 30-39: [30, 32, 33] (Spia #40)'},
+    83: {'terzina': [32, 34, 35], 'oro': 32, 'score': 92.0, 'desc': 'Decina 30-39: [32, 34, 35] (Spia #83)'},
+    85: {'terzina': [32, 34, 35], 'oro': 34, 'score': 89.0, 'desc': 'Decina 30-39: [32, 34, 35] (Spia #85)'},
+    64: {'terzina': [31, 33, 34], 'oro': 31, 'score': 85.0, 'desc': 'Decina 30-39: [31, 33, 34] (Spia #64)'},
+    19: {'terzina': [31, 33, 34], 'oro': 33, 'score': 84.0, 'desc': 'Decina 30-39: [31, 33, 34] (Spia #19)'},
     81: {'terzina': [31, 33, 34], 'oro': 34, 'score': 83.0, 'desc': 'Pattern 31-33-34 (Spia #81)'},
+    58: {'terzina': [34, 36, 37], 'oro': 34, 'score': 90.0, 'desc': 'Decina 30-39: [34, 36, 37] (Spia #58)'},
+    21: {'terzina': [34, 36, 37], 'oro': 36, 'score': 88.0, 'desc': 'Decina 30-39: [34, 36, 37] (Spia #21)'},
+    69: {'terzina': [35, 37, 38], 'oro': 35, 'score': 89.0, 'desc': 'Decina 30-39: [35, 37, 38] (Spia #69)'},
+    15: {'terzina': [35, 37, 38], 'oro': 37, 'score': 87.0, 'desc': 'Decina 30-39: [35, 37, 38] (Spia #15)'}
 }
+
 
 def update_signals_tracker(draws):
     if not draws:
@@ -560,27 +558,34 @@ def get_signals_summary():
     
     for s in signals:
         timeline = s.get('timeline', [])
-        # Schedina Base = 1,00 € per colpo (senza opzione oro)
-        spesa_signal = float(len(timeline)) * 1.0
-        incasso_signal = 0.0
+        colpo_primo_ambo = s.get('primo_ambo_colpo')
+        colpo_primo_terno = s.get('primo_terno_colpo')
         
-        for item in timeline:
-            pts = item.get('punti', 0)
+        # 1. Calcolo con Regola d'Oro (Take Profit: fermarsi al primo ambo o terno)
+        if colpo_primo_terno is not None and (colpo_primo_ambo is None or colpo_primo_terno <= colpo_primo_ambo):
+            colpi_giocati = colpo_primo_terno
+            incasso_tp = 45.0
+        elif colpo_primo_ambo is not None:
+            colpi_giocati = colpo_primo_ambo
+            incasso_tp = 2.0
+        else:
+            colpi_giocati = len(timeline)
+            incasso_tp = 0.0
             
-            if pts == 2:
-                incasso_signal += 2.0
-            elif pts == 3:
-                incasso_signal += 45.0
-                
-        s['spesa'] = round(spesa_signal, 2)
-        s['ricavo'] = round(incasso_signal, 2)
-        s['netto'] = round(incasso_signal - spesa_signal, 2)
+        spesa_tp = float(colpi_giocati) * 1.0
+        netto_tp = round(incasso_tp - spesa_tp, 2)
+        
+        s['spesa'] = round(spesa_tp, 2)
+        s['ricavo'] = round(incasso_tp, 2)
+        s['netto'] = netto_tp
         s['spesa_totale'] = s['spesa']
         s['incasso_totale'] = s['ricavo']
         s['netto_totale'] = s['netto']
+        s['colpi_giocati_tp'] = colpi_giocati
         
         tot_spesa_globale += s['spesa']
         tot_incasso_globale += s['ricavo']
+
 
 
 

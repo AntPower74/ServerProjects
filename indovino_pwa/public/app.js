@@ -389,7 +389,7 @@ function renderSignalsData(data) {
       <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
         <div>
           <span style="font-size:0.85rem; font-weight:800; color:var(--gold);">🔴 Spia #${s.spia}</span>
-          <span style="font-size:0.78rem; color:var(--text-muted); margin-left:6px;">(Conc. #${s.concorso_spia} ore ${s.ora})</span>
+          <span style="font-size:0.75rem; color:var(--text-muted); margin-left:6px;">(Rilevata al Conc. #${s.concorso_spia} ore ${s.ora})</span>
         </div>
         <div>${statoBadge}</div>
       </div>
@@ -401,6 +401,7 @@ function renderSignalsData(data) {
         </div>
         <div style="font-size:0.85rem;">Oro: <strong style="color:var(--gold)">${s.oro}</strong></div>
       </div>
+
       <div style="display:flex; gap:6px; overflow-x:auto; margin-bottom:8px;">
         ${tlHtml}
       </div>
