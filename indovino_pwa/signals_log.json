@@ -1,5 +1,27 @@
 [
   {
+    "id": "sig_2026-08-24_47_63",
+    "data": "2026-08-24",
+    "ora": "03:55",
+    "concorso_spia": 47,
+    "spia": 63,
+    "terzina": [
+      39,
+      67,
+      12
+    ],
+    "oro": 71,
+    "power_score": 90.0,
+    "max_colpi": 20,
+    "stato": "in_corso",
+    "colpi_trascorsi": 0,
+    "max_punti": 0,
+    "primo_ambo_colpo": null,
+    "primo_terno_colpo": null,
+    "oro_centrato": false,
+    "timeline": []
+  },
+  {
     "id": "sig_2026-08-24_42_72",
     "data": "2026-08-24",
     "ora": "03:30",
@@ -13,10 +35,10 @@
     "oro": 71,
     "power_score": 107.0,
     "max_colpi": 20,
-    "stato": "in_corso",
-    "colpi_trascorsi": 1,
-    "max_punti": 0,
-    "primo_ambo_colpo": null,
+    "stato": "vinto_ambo",
+    "colpi_trascorsi": 5,
+    "max_punti": 2,
+    "primo_ambo_colpo": 2,
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [
@@ -27,8 +49,44 @@
         "punti": 0,
         "ha_oro": false,
         "estratti_presi": []
+      },
+      {
+        "colpo": 2,
+        "concorso": 44,
+        "ora": "03:40",
+        "punti": 2,
+        "ha_oro": false,
+        "estratti_presi": [
+          53,
+          71
+        ]
+      },
+      {
+        "colpo": 3,
+        "concorso": 45,
+        "ora": "03:45",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 4,
+        "concorso": 46,
+        "ora": "03:50",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 5,
+        "concorso": 47,
+        "ora": "03:55",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
       }
-    ]
+    ],
+    "notifica_5_colpi_inviata": true
   },
   {
     "id": "sig_2026-08-24_39_72",
@@ -45,7 +103,7 @@
     "power_score": 101.5,
     "max_colpi": 20,
     "stato": "vinto_ambo",
-    "colpi_trascorsi": 4,
+    "colpi_trascorsi": 8,
     "max_punti": 2,
     "primo_ambo_colpo": 1,
     "primo_terno_colpo": null,
@@ -90,8 +148,44 @@
         "punti": 0,
         "ha_oro": false,
         "estratti_presi": []
+      },
+      {
+        "colpo": 5,
+        "concorso": 44,
+        "ora": "03:40",
+        "punti": 2,
+        "ha_oro": false,
+        "estratti_presi": [
+          53,
+          71
+        ]
+      },
+      {
+        "colpo": 6,
+        "concorso": 45,
+        "ora": "03:45",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 7,
+        "concorso": 46,
+        "ora": "03:50",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 8,
+        "concorso": 47,
+        "ora": "03:55",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
       }
-    ]
+    ],
+    "notifica_5_colpi_inviata": true
   },
   {
     "id": "sig_2026-08-24_34_72",
@@ -108,7 +202,7 @@
     "power_score": 101.0,
     "max_colpi": 20,
     "stato": "vinto_ambo",
-    "colpi_trascorsi": 9,
+    "colpi_trascorsi": 13,
     "max_punti": 2,
     "primo_ambo_colpo": 6,
     "primo_terno_colpo": null,
@@ -197,6 +291,41 @@
         "punti": 0,
         "ha_oro": false,
         "estratti_presi": []
+      },
+      {
+        "colpo": 10,
+        "concorso": 44,
+        "ora": "03:40",
+        "punti": 2,
+        "ha_oro": false,
+        "estratti_presi": [
+          53,
+          71
+        ]
+      },
+      {
+        "colpo": 11,
+        "concorso": 45,
+        "ora": "03:45",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 12,
+        "concorso": 46,
+        "ora": "03:50",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 13,
+        "concorso": 47,
+        "ora": "03:55",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
       }
     ],
     "notifica_5_colpi_inviata": true
@@ -216,7 +345,7 @@
     "power_score": 58.0,
     "max_colpi": 20,
     "stato": "vinto_ambo",
-    "colpi_trascorsi": 18,
+    "colpi_trascorsi": 20,
     "max_punti": 2,
     "primo_ambo_colpo": 4,
     "primo_terno_colpo": null,
@@ -393,6 +522,24 @@
         "estratti_presi": [
           44
         ]
+      },
+      {
+        "colpo": 19,
+        "concorso": 44,
+        "ora": "03:40",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 20,
+        "concorso": 45,
+        "ora": "03:45",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          44
+        ]
       }
     ],
     "notifica_5_colpi_inviata": true
@@ -412,7 +559,7 @@
     "power_score": 61.5,
     "max_colpi": 20,
     "stato": "vinto_terno",
-    "colpi_trascorsi": 19,
+    "colpi_trascorsi": 20,
     "max_punti": 3,
     "primo_ambo_colpo": 6,
     "primo_terno_colpo": 15,
@@ -597,6 +744,14 @@
         "estratti_presi": [
           76
         ]
+      },
+      {
+        "colpo": 20,
+        "concorso": 44,
+        "ora": "03:40",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
       }
     ],
     "notifica_5_colpi_inviata": true
@@ -3182,7 +3337,7 @@
     "power_score": 64.0,
     "max_colpi": 20,
     "stato": "vinto_ambo",
-    "colpi_trascorsi": 12,
+    "colpi_trascorsi": 16,
     "max_punti": 2,
     "primo_ambo_colpo": 1,
     "primo_terno_colpo": null,
@@ -3299,6 +3454,47 @@
         "punti": 0,
         "ha_oro": false,
         "estratti_presi": []
+      },
+      {
+        "colpo": 13,
+        "concorso": 44,
+        "ora": "03:40",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          11
+        ]
+      },
+      {
+        "colpo": 14,
+        "concorso": 45,
+        "ora": "03:45",
+        "punti": 2,
+        "ha_oro": false,
+        "estratti_presi": [
+          11,
+          17
+        ]
+      },
+      {
+        "colpo": 15,
+        "concorso": 46,
+        "ora": "03:50",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          82
+        ]
+      },
+      {
+        "colpo": 16,
+        "concorso": 47,
+        "ora": "03:55",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          11
+        ]
       }
     ],
     "notifica_5_colpi_inviata": true
@@ -3318,7 +3514,7 @@
     "power_score": 66.0,
     "max_colpi": 20,
     "stato": "vinto_ambo",
-    "colpi_trascorsi": 14,
+    "colpi_trascorsi": 18,
     "max_punti": 2,
     "primo_ambo_colpo": 4,
     "primo_terno_colpo": null,
@@ -3455,6 +3651,46 @@
         "punti": 0,
         "ha_oro": false,
         "estratti_presi": []
+      },
+      {
+        "colpo": 15,
+        "concorso": 44,
+        "ora": "03:40",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          11
+        ]
+      },
+      {
+        "colpo": 16,
+        "concorso": 45,
+        "ora": "03:45",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          11
+        ]
+      },
+      {
+        "colpo": 17,
+        "concorso": 46,
+        "ora": "03:50",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          82
+        ]
+      },
+      {
+        "colpo": 18,
+        "concorso": 47,
+        "ora": "03:55",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          11
+        ]
       }
     ],
     "notifica_5_colpi_inviata": true
@@ -3474,11 +3710,11 @@
     "power_score": 75.5,
     "max_colpi": 20,
     "stato": "vinto_ambo",
-    "colpi_trascorsi": 15,
+    "colpi_trascorsi": 19,
     "max_punti": 2,
     "primo_ambo_colpo": 7,
     "primo_terno_colpo": null,
-    "oro_centrato": false,
+    "oro_centrato": true,
     "timeline": [
       {
         "colpo": 1,
@@ -3619,6 +3855,43 @@
         "estratti_presi": [
           67
         ]
+      },
+      {
+        "colpo": 16,
+        "concorso": 44,
+        "ora": "03:40",
+        "punti": 2,
+        "ha_oro": true,
+        "estratti_presi": [
+          27,
+          67
+        ]
+      },
+      {
+        "colpo": 17,
+        "concorso": 45,
+        "ora": "03:45",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          27
+        ]
+      },
+      {
+        "colpo": 18,
+        "concorso": 46,
+        "ora": "03:50",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 19,
+        "concorso": 47,
+        "ora": "03:55",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
       }
     ],
     "notifica_5_colpi_inviata": true
