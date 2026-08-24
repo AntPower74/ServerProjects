@@ -27,9 +27,11 @@ function switchTab(tabId) {
   if (tabId === 'tab-archivio') {
     caricaArchivioCompleto();
   } else if (tabId === 'tab-laboratorio') {
+    if (signalsData) renderSignalsData(signalsData);
     fetchSignalsData();
   }
 }
+
 
 // Countdown Timer alla prossima estrazione (ogni 5 minuti)
 function updateCountdown() {
@@ -155,10 +157,51 @@ function renderDashboard(data) {
     else if (has90) catEl.innerHTML = '🔵 <strong>Numero 90 Presente</strong> (Reset 20-40)';
     else catEl.innerHTML = '⚪ Assenti';
   }
+
+  // 3. Render Ultime Estrazioni Precedenti (ultime 10)
+  const recentCont = document.getElementById('recent-draws-container');
+  if (recentCont && data.draws) {
+    recentCont.innerHTML = '';
+    // Mostra le estrazioni dalla penultima indietro (fino a 10 estrazioni)
+    const pastDraws = data.draws.slice(1, 11);
+    if (pastDraws.length === 0) {
+      recentCont.innerHTML = '<div style="color:var(--text-muted); font-size:0.8rem; text-align:center;">In attesa delle prossime estrazioni...</div>';
+    } else {
+      pastDraws.forEach(d => {
+        const row = document.createElement('div');
+        row.style.cssText = 'background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.06); border-radius:10px; padding:10px;';
+        
+        const sumD = d.numeri.reduce((a, b) => a + b, 0);
+        const ballsHtml = d.numeri.map(n => {
+          let cls = 'ball';
+          if (n === d.oro) cls += ' ball-oro';
+          else if (n === d.doppio_oro) cls += ' ball-doppio-oro';
+          return `<span class="${cls}" style="width:26px; height:26px; font-size:0.75rem; display:inline-flex; margin:1px;">${n.toString().padStart(2,'0')}</span>`;
+        }).join('');
+
+        row.innerHTML = `
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; font-size:0.82rem;">
+            <div>
+              <strong style="color:var(--gold);">Concorso #${d.concorso}</strong>
+              <span style="color:var(--text-muted); margin-left:6px;">(${d.ora})</span>
+            </div>
+            <div style="font-size:0.75rem; color:var(--cyan);">
+              Oro: <strong style="color:var(--gold);">${d.oro || '--'}</strong> | Somma: <strong>${sumD}</strong>
+            </div>
+          </div>
+          <div style="display:flex; flex-wrap:wrap; gap:3px;">
+            ${ballsHtml}
+          </div>
+        `;
+        recentCont.appendChild(row);
+      });
+    }
+  }
 }
 
 // Caricamento e Render dei Segnali 15 Minuti
 async function fetchSignalsData() {
+
   try {
     const res = await fetch('/api/signals?t=' + Date.now());
     const data = await res.json();
@@ -222,6 +265,7 @@ function renderSignalsData(data) {
       if (tItem) {
         let ptsColor = 'var(--text-muted)';
         let ptsText = `${tItem.punti} pt`;
+        const presiArr = tItem.estratti_presi || tItem.presi || [];
         if (tItem.punti === 3) {
           ptsColor = 'var(--green)';
           ptsText = '🏆 TERNO!';
@@ -234,7 +278,7 @@ function renderSignalsData(data) {
           box.style.background = 'rgba(6,182,212,0.2)';
         } else if (tItem.punti === 1) {
           ptsColor = '#fff';
-          ptsText = `1 pt [${tItem.presi.join(',')}]`;
+          ptsText = `1 pt [${presiArr.join(',')}]`;
         }
 
         box.innerHTML = `
@@ -253,34 +297,9 @@ function renderSignalsData(data) {
     }
   }
 
-  // Box Spie Precedenti ancora attive
-  const otherActiveSigs = sigs.filter((s, idx) => idx > 0 && s.stato === 'in_corso' && s.colpi_trascorsi < 5);
-  const otherCont = document.getElementById('other-active-spies-container');
-  if (otherCont) {
-    if (otherActiveSigs.length > 0) {
-      otherCont.style.display = 'block';
-      otherCont.innerHTML = '<div style="font-size:0.78rem; font-weight:700; color:var(--cyan); margin-bottom:6px;">⏳ SPIA PRECEDENTE ANCORA IN CORSO:</div>';
-      otherActiveSigs.forEach(os => {
-        otherCont.innerHTML += `
-          <div style="background:rgba(0,0,0,0.3); padding:8px 10px; border-radius:8px; font-size:0.82rem; margin-bottom:4px; display:flex; justify-content:space-between; align-items:center;">
-            <div>🔴 Spia <strong>#${os.spia}</strong> ➔ Terzina: <strong style="color:#fef08a">${os.terzina.join('-')}</strong> (Oro: ${os.oro})</div>
-            <div style="color:var(--cyan); font-weight:bold;">Colpo ${os.colpi_trascorsi}/5</div>
-          </div>
-        `;
-      });
-    } else {
-      otherCont.style.display = 'none';
-    }
-  }
-
-
   // 2. Popola la Scheda 2 (Registro Segnali 5 Colpi)
   const cont = document.getElementById('signals-list-container');
   if (!cont) return;
-
-  const signalsSignature = JSON.stringify(sigs.map(x => ({ id: x.id, colpi: x.colpi_trascorsi, pts: x.max_punti, stato: x.stato })));
-  if (signalsSignature === lastSignalsJson) return;
-  lastSignalsJson = signalsSignature;
 
   cont.innerHTML = '';
   if (sigs.length === 0) {
@@ -294,7 +313,7 @@ function renderSignalsData(data) {
     card.style.marginBottom = '12px';
 
     let statoBadge = '<span style="color:var(--cyan); font-weight:bold;">⏳ In Corso (Colpi 0/5)</span>';
-    if (s.stato === 'vinto_terno') statoBadge = '<span style="color:var(--green); font-weight:bold;">🏆 TERNO CENTRATO!</span>';
+    if (s.stato === 'vinto_terno') statoBadge = `<span style="color:var(--green); font-weight:bold;">🏆 TERNO CENTRATO (Colpo ${s.primo_terno_colpo || 1})!</span>`;
     else if (s.stato === 'vinto_ambo') statoBadge = `<span style="color:var(--green); font-weight:bold;">✅ AMBO VINTO (Colpo ${s.primo_ambo_colpo || 1})!</span>`;
     else if (s.colpi_trascorsi >= 5) statoBadge = '<span style="color:var(--text-muted);">Chiuso 5/5</span>';
     else if (s.colpi_trascorsi > 0) statoBadge = `<span style="color:var(--cyan); font-weight:bold;">⏳ In Corso (Colpo ${s.colpi_trascorsi}/5)</span>`;
@@ -308,6 +327,7 @@ function renderSignalsData(data) {
       const t = (s.timeline || []).find(x => x.colpo === c);
       if (t) {
         let tCol = 'var(--text-muted)';
+        const presiArr = t.estratti_presi || t.presi || [];
         if (t.punti === 3) tCol = 'var(--green)';
         else if (t.punti === 2) tCol = 'var(--cyan)';
         else if (t.punti === 1) tCol = '#fff';
@@ -315,7 +335,7 @@ function renderSignalsData(data) {
         tlHtml += `
           <div style="flex:1; background:rgba(0,0,0,0.35); padding:6px; border-radius:8px; font-size:0.75rem; text-align:center; border:1px solid rgba(255,255,255,0.08);">
             <div style="font-size:0.68rem; color:var(--text-muted);">Colpo ${c}</div>
-            <div style="font-weight:800; color:${tCol}; margin-top:2px;">${t.punti} pt ${t.presi.length ? `[${t.presi.join(',')}]` : ''}</div>
+            <div style="font-weight:800; color:${tCol}; margin-top:2px;">${t.punti} pt ${presiArr.length ? `[${presiArr.join(',')}]` : ''}</div>
             <div style="font-size:0.62rem; color:var(--text-muted);">#${t.concorso}</div>
           </div>
         `;
@@ -329,6 +349,7 @@ function renderSignalsData(data) {
         `;
       }
     }
+
 
     card.innerHTML = `
       <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">

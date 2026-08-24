@@ -406,8 +406,8 @@ def update_signals_tracker(draws):
                         'timeline': [],
                         'notifica_colpi_inviati': []
                     }
-                    # Mantieni solo il segnale attivo dei 30 minuti pulendo tutto il resto
-                    signals = [new_sig]
+                    # Inserisci in cima allo storico senza cancellare i cicli passati
+                    signals.insert(0, new_sig)
                     print(f"[*] 🌟 Unica Spia 30min Attivata: Concorso #{conc_num} Spia #{best['spy']} ➔ {best['terzina']}")
 
                     terzina_str = ' - '.join(str(n) for n in best['terzina'])
@@ -422,6 +422,7 @@ def update_signals_tracker(draws):
                         f"📡 <i>Monitoraggio 5 estrazioni attivo! Prossimo calcolo tra 30 minuti (alle :00 o :30).</i>"
                     )
                     send_telegram_message(msg)
+
 
 
 

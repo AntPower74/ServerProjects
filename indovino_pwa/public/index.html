@@ -138,17 +138,29 @@
         </div>
       </div>
 
+      <!-- Card 3: 📜 ULTIME ESTRAZIONI PASSATE -->
+      <div class="card">
+        <div class="card-title">
+          <span>📜 ULTIME ESTRAZIONI PRECEDENTI</span>
+          <span style="font-size:0.75rem; color:var(--text-muted);">OGGI</span>
+        </div>
+        <div id="recent-draws-container" style="display:flex; flex-direction:column; gap:10px; margin-top:8px;">
+          <!-- Caricato dinamicamente via js -->
+        </div>
+      </div>
+
     </section>
 
-    <!-- ================= TAB 2: REGISTRO SEGNALI 15 MINUTI ================= -->
+
+    <!-- ================= TAB 2: REGISTRO SEGNALI 30 MINUTI ================= -->
     <section id="tab-laboratorio" class="tab-screen">
       <div class="card">
         <div class="card-title">
-          <span>🧪 REGISTRO SEGNALI & TIMELINE 5 COLPI</span>
+          <span>🧪 REGISTRO SEGNALI 30 MINUTI (5 COLPI)</span>
           <button class="btn btn-outline" style="width:auto; padding:4px 10px; font-size:0.75rem;" onclick="fetchSignalsData()">🔄 Aggiorna</button>
         </div>
         <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:12px;">
-          Elenco di tutte le Spie calcolate ogni 15 minuti con la cronologia esatta dei 5 colpi successivi e le vincite realizzate.
+          Elenco storico di tutte le Spie calcolate ogni 30 minuti con la cronologia esatta dei 5 colpi successivi e le vincite realizzate.
         </p>
         
         <div id="signals-list-container">
@@ -205,9 +217,12 @@
     </div>
   </nav>
 
-  <script src="/app.js?v=9"></script>
+  <script src="/app.js?v=12"></script>
 </body>
 </html>
+
+
+
 
 
 
