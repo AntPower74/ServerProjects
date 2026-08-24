@@ -158,7 +158,6 @@ function renderDashboard(data) {
 }
 
 // Caricamento e Render dei Segnali 15 Minuti
-
 async function fetchSignalsData() {
   try {
     const res = await fetch('/api/signals?t=' + Date.now());
@@ -174,13 +173,13 @@ function renderSignalsData(data) {
   if (!data) return;
   const sigs = data.signals || [];
 
-  // 1. Popola la Card Principale del Pronostico 15 Minuti con il segnale attivo più recente
+  // 1. Popola la Card Principale del Pronostico 15 Minuti con il segnale più recente
   const activeSig = sigs.length > 0 ? sigs[0] : null;
   if (activeSig) {
     document.getElementById('pronostico-spy-num').textContent = activeSig.spia.toString().padStart(2, '0');
     document.getElementById('pronostico-score').textContent = activeSig.power_score || 93;
     
-    // Terzina
+    // Terzina Display
     const terzinaCont = document.getElementById('pronostico-terzina');
     terzinaCont.innerHTML = '';
     activeSig.terzina.forEach(num => {
@@ -190,7 +189,14 @@ function renderSignalsData(data) {
       terzinaCont.appendChild(b);
     });
 
-    document.getElementById('pronostico-oro').textContent = (activeSig.oro || activeSig.terzina[0]).toString().padStart(2, '0');
+    const oroVal = activeSig.oro || activeSig.terzina[0];
+    document.getElementById('pronostico-oro').textContent = oroVal.toString().padStart(2, '0');
+
+    // Dettaglio testo terzina
+    const textDesc = document.getElementById('pronostico-terzina-text');
+    if (textDesc) {
+      textDesc.textContent = `${activeSig.terzina.map(n => n.toString().padStart(2, '0')).join(' - ')} (Oro: ${oroVal.toString().padStart(2, '0')})`;
+    }
 
     // Badge Colpi
     const badgeEl = document.getElementById('active-spy-colpi-badge');
@@ -198,6 +204,8 @@ function renderSignalsData(data) {
       badgeEl.innerHTML = `<strong style="color:var(--green)">🏆 TERNO VINTO al Colpo ${activeSig.primo_terno_colpo || 1}!</strong>`;
     } else if (activeSig.stato === 'vinto_ambo' || activeSig.max_punti >= 2) {
       badgeEl.innerHTML = `<strong style="color:var(--green)">✅ AMBO VINTO al Colpo ${activeSig.primo_ambo_colpo || 1}!</strong>`;
+    } else if (activeSig.colpi_trascorsi === 0) {
+      badgeEl.innerHTML = `<strong style="color:var(--gold)">⚡ INIZIA AL PROSSIMO CONCORSO (#${activeSig.concorso_spia + 1})</strong>`;
     } else {
       badgeEl.innerHTML = `Colpo ${activeSig.colpi_trascorsi}/5 in corso`;
     }
@@ -206,8 +214,9 @@ function renderSignalsData(data) {
     const timelineCont = document.getElementById('active-spy-timeline-container');
     timelineCont.innerHTML = '';
     for (let c = 1; c <= 5; c++) {
+      const targetConc = activeSig.concorso_spia + c;
       const box = document.createElement('div');
-      box.style.cssText = 'flex:1; background:rgba(0,0,0,0.4); padding:6px; border-radius:8px; text-align:center; border:1px solid rgba(255,255,255,0.08);';
+      box.style.cssText = 'flex:1; background:rgba(0,0,0,0.4); padding:6px 2px; border-radius:8px; text-align:center; border:1px solid rgba(255,255,255,0.08);';
       
       const tItem = (activeSig.timeline || []).find(x => x.colpo === c);
       if (tItem) {
@@ -217,31 +226,53 @@ function renderSignalsData(data) {
           ptsColor = 'var(--green)';
           ptsText = '🏆 TERNO!';
           box.style.borderColor = 'var(--green)';
-          box.style.background = 'rgba(16,185,129,0.15)';
+          box.style.background = 'rgba(16,185,129,0.2)';
         } else if (tItem.punti === 2) {
           ptsColor = 'var(--cyan)';
           ptsText = '✅ AMBO!';
           box.style.borderColor = 'var(--cyan)';
-          box.style.background = 'rgba(6,182,212,0.15)';
+          box.style.background = 'rgba(6,182,212,0.2)';
         } else if (tItem.punti === 1) {
           ptsColor = '#fff';
           ptsText = `1 pt [${tItem.presi.join(',')}]`;
         }
 
         box.innerHTML = `
-          <div style="font-size:0.68rem; color:var(--text-muted);">Colpo ${c}</div>
+          <div style="font-size:0.65rem; color:var(--text-muted);">Colpo ${c}</div>
           <div style="font-size:0.75rem; font-weight:800; color:${ptsColor}; margin-top:2px;">${ptsText}</div>
-          <div style="font-size:0.65rem; color:var(--text-muted);">#${tItem.concorso}</div>
+          <div style="font-size:0.62rem; color:var(--text-muted);">#${tItem.concorso}</div>
         `;
       } else {
         box.innerHTML = `
-          <div style="font-size:0.68rem; color:var(--text-muted);">Colpo ${c}</div>
+          <div style="font-size:0.65rem; color:var(--text-muted);">Colpo ${c}</div>
           <div style="font-size:0.75rem; font-weight:700; color:rgba(255,255,255,0.3); margin-top:2px;">⏳ Attesa</div>
+          <div style="font-size:0.62rem; color:var(--text-muted);">#${targetConc}</div>
         `;
       }
       timelineCont.appendChild(box);
     }
   }
+
+  // Box Spie Precedenti ancora attive
+  const otherActiveSigs = sigs.filter((s, idx) => idx > 0 && s.stato === 'in_corso' && s.colpi_trascorsi < 5);
+  const otherCont = document.getElementById('other-active-spies-container');
+  if (otherCont) {
+    if (otherActiveSigs.length > 0) {
+      otherCont.style.display = 'block';
+      otherCont.innerHTML = '<div style="font-size:0.78rem; font-weight:700; color:var(--cyan); margin-bottom:6px;">⏳ SPIA PRECEDENTE ANCORA IN CORSO:</div>';
+      otherActiveSigs.forEach(os => {
+        otherCont.innerHTML += `
+          <div style="background:rgba(0,0,0,0.3); padding:8px 10px; border-radius:8px; font-size:0.82rem; margin-bottom:4px; display:flex; justify-content:space-between; align-items:center;">
+            <div>🔴 Spia <strong>#${os.spia}</strong> ➔ Terzina: <strong style="color:#fef08a">${os.terzina.join('-')}</strong> (Oro: ${os.oro})</div>
+            <div style="color:var(--cyan); font-weight:bold;">Colpo ${os.colpi_trascorsi}/5</div>
+          </div>
+        `;
+      });
+    } else {
+      otherCont.style.display = 'none';
+    }
+  }
+
 
   // 2. Popola la Scheda 2 (Registro Segnali 5 Colpi)
   const cont = document.getElementById('signals-list-container');

@@ -359,12 +359,14 @@ def update_signals_tracker(draws):
         latest = draws[-1]
         today_str = datetime.now().strftime('%Y-%m-%d')
         conc_num = latest.get('concorso', 0)
+        ora_str = latest.get('ora', '00:00')
+        minuto = int(ora_str.split(':')[1]) if ':' in ora_str else 0
 
-        # 1. Rilevamento 1 SOLA SPIA ogni 15 minuti (ad ogni concorso divisibile per 3 o al cambio quarto d'ora)
-        # Es. concorso #195 (16:15), #198 (16:30), #201 (16:45), #204 (17:00)...
-        is_15min_window = (conc_num % 3 == 0) or (conc_num % 3 == 1 and not signals)
+        # 1. Rilevamento 1 SOLA SPIA ogni 30 MINUTI (alle :00 e :30 di ogni ora, ovvero concorso % 6 == 0)
+        # Es. concorso #204 (17:00), concorso #210 (17:30), concorso #216 (18:00)...
+        is_30min_window = (conc_num % 6 == 0) or (minuto in (0, 30)) or (not signals)
 
-        if is_15min_window:
+        if is_30min_window:
             # Trova tra i numeri estratti la MIGLIORE SPIA in assoluto per score
             candidate_spies = []
             for spy_num, p_info in PATTERN_SPIES.items():
@@ -381,7 +383,7 @@ def update_signals_tracker(draws):
             if candidate_spies:
                 candidate_spies.sort(key=lambda x: x['score'], reverse=True)
                 best = candidate_spies[0]
-                sig_id = f"sig15_{today_str}_{conc_num}_{best['spy']}"
+                sig_id = f"sig30_{today_str}_{conc_num}_{best['spy']}"
 
                 # Registra solo se non già presente per questo concorso
                 if not any(s.get('concorso_spia') == conc_num for s in signals):
@@ -404,21 +406,23 @@ def update_signals_tracker(draws):
                         'timeline': [],
                         'notifica_colpi_inviati': []
                     }
-                    signals.insert(0, new_sig)
-                    print(f"[*] 🌟 Unica Spia 15min Attivata: Concorso #{conc_num} Spia #{best['spy']} ➔ {best['terzina']}")
+                    # Mantieni solo il segnale attivo dei 30 minuti pulendo tutto il resto
+                    signals = [new_sig]
+                    print(f"[*] 🌟 Unica Spia 30min Attivata: Concorso #{conc_num} Spia #{best['spy']} ➔ {best['terzina']}")
 
                     terzina_str = ' - '.join(str(n) for n in best['terzina'])
                     msg = (
-                        f"🎯 <b>SPIA 15 MINUTI SELEZIONATA</b>\n"
+                        f"🎯 <b>NUOVA SPIA 30 MINUTI SELEZIONATA</b>\n"
                         f"━━━━━━━━━━━━━━━━━━━━\n"
                         f"⏱ <b>Concorso:</b> #{conc_num} (Ore {latest['ora']})\n"
                         f"🔴 <b>Numero Spia:</b> <b>#{best['spy']}</b>\n"
                         f"🏆 <b>Terzina da Giocare:</b> <b>{terzina_str}</b>\n"
                         f"🥇 <b>Numero Oro:</b> <b>{best['oro']}</b>\n"
                         f"━━━━━━━━━━━━━━━━━━━━\n"
-                        f"📡 <i>Monitoraggio 5 estrazioni attivo! Prossima spia tra 15 minuti.</i>"
+                        f"📡 <i>Monitoraggio 5 estrazioni attivo! Prossimo calcolo tra 30 minuti (alle :00 o :30).</i>"
                     )
                     send_telegram_message(msg)
+
 
 
         # 3. Aggiornamento timeline di tutti i segnali aperti per le estrazioni successive

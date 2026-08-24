@@ -68,16 +68,16 @@
         </div>
       </div>
 
-      <!-- Card Principale: LA SPIA DEI 15 MINUTI & IL PRONOSTICO ATTIVO -->
+      <!-- Card Principale: LA SPIA DEI 30 MINUTI & IL PRONOSTICO ATTIVO -->
       <div class="card card-gold">
         <div class="card-title">
-          <span>🎯 SPIA 15 MINUTI & PRONOSTICO ATTIVO</span>
+          <span>🎯 SPIA 30 MINUTI & PRONOSTICO ATTIVO</span>
           <span style="font-size:0.75rem; background:rgba(16, 185, 129, 0.2); color:var(--green); border:1px solid var(--green); padding:2px 8px; border-radius:12px; font-weight:bold;">⚡ LIVE 5 COLPI</span>
         </div>
 
         <div class="pronostico-container">
           <div class="spy-badge-box">
-            <span>SPIA SELEZIONATA (15 MIN):</span>
+            <span>SPIA SELEZIONATA (30 MIN):</span>
             <span class="ball ball-spy" style="width:36px; height:36px; font-size:1.1rem;" id="pronostico-spy-num">--</span>
             <span style="font-size:0.8rem; color:var(--text-muted);">(Score: <span id="pronostico-score" style="color:var(--gold); font-weight:800;">--</span>)</span>
           </div>
@@ -87,12 +87,13 @@
             <div class="terzina-display" id="pronostico-terzina">
               <!-- 3 palline terzina -->
             </div>
+            <div id="pronostico-terzina-text" style="font-size:1.1rem; font-weight:800; color:#fef08a; letter-spacing:0.05em; margin-top:4px;">-- - -- - --</div>
           </div>
 
           <div class="strategy-box">
             <div style="margin-bottom:4px;">👉 <strong>Numero Oro consigliato:</strong> <span id="pronostico-oro" style="color:var(--gold); font-weight:bold; font-size:1.05rem;">--</span></div>
-            <div style="margin-bottom:4px;">👉 <strong>Gestione Colpi:</strong> Segui per massimo <strong>5 concorsi</strong> a 1€ a schedina.</div>
-            <div>👉 <strong>Regola d'Oro:</strong> Fermati subito appena esce il primo <strong>Ambo (+100%)</strong> o <strong>Terno (+40€ netti)</strong>!</div>
+            <div style="margin-bottom:4px;">👉 <strong>Gestione Colpi:</strong> Segui per <strong>5 estrazioni consecutive</strong> a 1€ a schedina.</div>
+            <div>👉 <strong>Cadenza:</strong> Una nuova Spia viene calcolata esattamente ogni <strong>30 minuti</strong> (alle :00 e :30).</div>
           </div>
         </div>
 
@@ -107,6 +108,8 @@
           </div>
         </div>
       </div>
+
+
 
       <!-- Card 2: 🧭 RADAR DEI PARAMETRI STATISTICI -->
       <div class="card" style="border: 1px solid rgba(6, 182, 212, 0.3); background: linear-gradient(145deg, rgba(6, 182, 212, 0.06), rgba(18, 24, 38, 0.95));">
@@ -190,7 +193,7 @@
   <nav class="nav-bottom">
     <div class="nav-item active" data-tab="tab-pronostico" onclick="switchTab('tab-pronostico')">
       <span class="nav-item-icon" style="font-size:1.3rem;">🎯</span>
-      <span>Pronostico 15m</span>
+      <span>Pronostico 30m</span>
     </div>
     <div class="nav-item" data-tab="tab-laboratorio" onclick="switchTab('tab-laboratorio')">
       <span class="nav-item-icon" style="font-size:1.3rem;">🧪</span>
@@ -202,9 +205,11 @@
     </div>
   </nav>
 
-  <script src="/app.js?v=6"></script>
+  <script src="/app.js?v=8"></script>
 </body>
 </html>
+
+
 
 
 

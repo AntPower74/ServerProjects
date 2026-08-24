@@ -1,194 +1,58 @@
 [
   {
-    "id": "sig15_2026-08-24_201_2",
+    "id": "sig30_2026-08-24_204_43",
     "data": "2026-08-24",
-    "ora": "16:45",
-    "concorso_spia": 201,
-    "spia": 2,
+    "ora": "17:00",
+    "concorso_spia": 204,
+    "spia": 43,
     "terzina": [
-      6,
-      8,
-      9
+      17,
+      19,
+      20
     ],
-    "oro": 6,
-    "power_score": 91.0,
-    "max_colpi": 5,
-    "stato": "in_corso",
-    "colpi_trascorsi": 2,
-    "max_punti": 1,
-    "primo_ambo_colpo": null,
-    "primo_terno_colpo": null,
-    "oro_centrato": false,
-    "timeline": [
-      {
-        "colpo": 1,
-        "concorso": 202,
-        "ora": "16:50",
-        "punti": 0,
-        "ha_oro": false,
-        "estratti_presi": []
-      },
-      {
-        "colpo": 2,
-        "concorso": 203,
-        "ora": "16:55",
-        "punti": 1,
-        "ha_oro": false,
-        "estratti_presi": [
-          6
-        ]
-      }
-    ],
-    "notifica_colpi_inviati": [
-      1,
-      2
-    ]
-  },
-  {
-    "id": "sig15_2026-08-24_199_26",
-    "data": "2026-08-24",
-    "ora": "16:35",
-    "concorso_spia": 199,
-    "spia": 26,
-    "terzina": [
-      20,
-      22,
-      23
-    ],
-    "oro": 20,
-    "power_score": 95.0,
-    "max_colpi": 5,
-    "stato": "in_corso",
-    "colpi_trascorsi": 4,
-    "max_punti": 1,
-    "primo_ambo_colpo": null,
-    "primo_terno_colpo": null,
-    "oro_centrato": false,
-    "timeline": [
-      {
-        "colpo": 1,
-        "concorso": 200,
-        "ora": "16:40",
-        "punti": 0,
-        "ha_oro": false,
-        "estratti_presi": []
-      },
-      {
-        "colpo": 2,
-        "concorso": 201,
-        "ora": "16:45",
-        "punti": 1,
-        "ha_oro": false,
-        "estratti_presi": [
-          23
-        ]
-      },
-      {
-        "colpo": 3,
-        "concorso": 202,
-        "ora": "16:50",
-        "punti": 1,
-        "ha_oro": false,
-        "estratti_presi": [
-          20
-        ]
-      },
-      {
-        "colpo": 4,
-        "concorso": 203,
-        "ora": "16:55",
-        "punti": 1,
-        "ha_oro": false,
-        "estratti_presi": [
-          20
-        ]
-      }
-    ],
-    "notifica_colpi_inviati": [
-      1,
-      2,
-      3,
-      4
-    ]
-  },
-  {
-    "id": "sig15_2026-08-24_198_74",
-    "data": "2026-08-24",
-    "ora": "16:30",
-    "concorso_spia": 198,
-    "spia": 74,
-    "terzina": [
-      29,
-      31,
-      32
-    ],
-    "oro": 29,
+    "oro": 17,
     "power_score": 93.0,
     "max_colpi": 5,
-    "stato": "vinto_ambo",
-    "colpi_trascorsi": 5,
-    "max_punti": 2,
-    "primo_ambo_colpo": 1,
+    "stato": "in_corso",
+    "colpi_trascorsi": 3,
+    "max_punti": 1,
+    "primo_ambo_colpo": null,
     "primo_terno_colpo": null,
-    "oro_centrato": false,
+    "oro_centrato": true,
     "timeline": [
       {
         "colpo": 1,
-        "concorso": 199,
-        "ora": "16:35",
-        "punti": 2,
+        "concorso": 205,
+        "ora": "17:05",
+        "punti": 1,
         "ha_oro": false,
         "estratti_presi": [
-          31,
-          32
+          19
         ]
       },
       {
         "colpo": 2,
-        "concorso": 200,
-        "ora": "16:40",
+        "concorso": 206,
+        "ora": "17:10",
         "punti": 0,
         "ha_oro": false,
         "estratti_presi": []
       },
       {
         "colpo": 3,
-        "concorso": 201,
-        "ora": "16:45",
+        "concorso": 207,
+        "ora": "17:15",
         "punti": 1,
-        "ha_oro": false,
+        "ha_oro": true,
         "estratti_presi": [
-          29
-        ]
-      },
-      {
-        "colpo": 4,
-        "concorso": 202,
-        "ora": "16:50",
-        "punti": 1,
-        "ha_oro": false,
-        "estratti_presi": [
-          31
-        ]
-      },
-      {
-        "colpo": 5,
-        "concorso": 203,
-        "ora": "16:55",
-        "punti": 1,
-        "ha_oro": false,
-        "estratti_presi": [
-          31
+          19
         ]
       }
     ],
     "notifica_colpi_inviati": [
       1,
       2,
-      3,
-      4,
-      5
-    ],
-    "notifica_5_colpi_inviata": true
+      3
+    ]
   }
 ]
