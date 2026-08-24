@@ -5,24 +5,11 @@ let spyMode = 'global'; // Di default 'global' (Spia Giornaliera)
 let lastConcorsoNum = null;
 let currentClientBuild = null;
 
-// Registrazione Service Worker con Auto-Update
+// Registrazione Service Worker senza reload forzato
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js').then(reg => {
-    reg.onupdatefound = () => {
-      const installingWorker = reg.installing;
-      installingWorker.onstatechange = () => {
-        if (installingWorker.state === 'installed' && navigator.serviceWorker.controller) {
-          console.log('🔄 Nuovo aggiornamento PWA disponibile! Ricaricamento...');
-          window.location.reload(true);
-        }
-      };
-    };
-  });
-
-  navigator.serviceWorker.addEventListener('controllerchange', () => {
-    window.location.reload(true);
-  });
+  navigator.serviceWorker.register('/sw.js').catch(err => console.log('SW error:', err));
 }
+
 
 function setSpyMode(mode) {
   spyMode = mode;
@@ -81,35 +68,41 @@ function updateCountdown() {
     timerEl.textContent = `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
   }
 
-  // Quando mancano meno di 10 secondi, interroga più rapidamente il server
-  if (diffSec <= 10 || diffSec >= 295) {
-    fetchLiveData();
+  // Interroga il server puntualmente allo scoccare della nuova estrazione, non ogni secondo
+  if (diffSec === 299 || diffSec === 290) {
+    fetchLiveData(true);
   }
 }
 setInterval(updateCountdown, 1000);
 
-// Caricamento Dati Principali con Auto-Aggiornamento Codice
-async function fetchLiveData() {
+let lastRenderedJson = '';
+let lastSignalsJson = '';
+
+// Caricamento Dati Principali con Diffing per non azzerare lo scroll
+async function fetchLiveData(force = false) {
   try {
     const res = await fetch('/api/data?t=' + Date.now());
     const data = await res.json();
     if (data.status === 'ok') {
-      // Controllo se il server ha una nuova versione del codice PWA
-      if (currentClientBuild && data.build_version && data.build_version > currentClientBuild) {
-        console.log('🔄 Nuova build rilevata dal server, auto-aggiornamento immediato!');
-        window.location.reload(true);
-        return;
-      }
       currentClientBuild = data.build_version;
 
-      // Rilevamento nuova estrazione
-      if (data.latest_draw && lastConcorsoNum !== data.latest_draw.concorso) {
-        lastConcorsoNum = data.latest_draw.concorso;
-        console.log(`📢 Nuova estrazione arrivata: #${lastConcorsoNum} ore ${data.latest_draw.ora}`);
+      const dataSignature = JSON.stringify({
+        c: data.latest_draw ? data.latest_draw.concorso : null,
+        mode: spyMode,
+        best: data.best_spy ? data.best_spy.spy : null,
+        recent: data.recent_spy ? data.recent_spy.spy : null
+      });
+
+      if (force || dataSignature !== lastRenderedJson) {
+        lastRenderedJson = dataSignature;
+        if (data.latest_draw && lastConcorsoNum !== data.latest_draw.concorso) {
+          lastConcorsoNum = data.latest_draw.concorso;
+          console.log(`📢 Nuova estrazione arrivata: #${lastConcorsoNum} ore ${data.latest_draw.ora}`);
+        }
+        appData = data;
+        renderDashboard(data);
       }
 
-      appData = data;
-      renderDashboard(data);
       if (currentTab === 'tab-laboratorio') {
         fetchSignalsData();
       }
@@ -118,6 +111,7 @@ async function fetchLiveData() {
     console.error('Errore nel recupero dati:', err);
   }
 }
+
 
 // Render Dashboard & Pronostico
 function renderDashboard(data) {
@@ -526,6 +520,18 @@ function renderSignalsData(data) {
     netEl.style.color = netVal >= 0 ? 'var(--green)' : 'var(--red)';
   }
 
+  const signalsSignature = JSON.stringify((data.signals || []).slice(0, 30).map(x => ({
+    id: x.id,
+    colpi: x.colpi_trascorsi,
+    pts: x.max_punti,
+    stato: x.stato
+  })));
+
+  if (signalsSignature === lastSignalsJson) {
+    return;
+  }
+  lastSignalsJson = signalsSignature;
+
   const cont = document.getElementById('signals-list-container');
   cont.innerHTML = '';
 
@@ -533,6 +539,7 @@ function renderSignalsData(data) {
     cont.innerHTML = '<div style="text-align:center; padding:20px; color:var(--text-muted);">Nessun segnale ancora registrato.</div>';
     return;
   }
+
 
   data.signals.slice(0, 30).forEach(sig => {
     const card = document.createElement('div');

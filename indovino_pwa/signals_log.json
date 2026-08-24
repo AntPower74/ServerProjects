@@ -1,5 +1,386 @@
 [
   {
+    "id": "pat_2026-08-24_115_64",
+    "data": "2026-08-24",
+    "ora": "09:35",
+    "concorso_spia": 115,
+    "spia": 64,
+    "terzina": [
+      31,
+      33,
+      34
+    ],
+    "oro": 31,
+    "power_score": 85.0,
+    "max_colpi": 5,
+    "stato": "in_corso",
+    "colpi_trascorsi": 0,
+    "max_punti": 0,
+    "primo_ambo_colpo": null,
+    "primo_terno_colpo": null,
+    "oro_centrato": false,
+    "timeline": [],
+    "notifica_colpi_inviati": []
+  },
+  {
+    "id": "sig_2026-08-24_114_28",
+    "data": "2026-08-24",
+    "ora": "09:30",
+    "concorso_spia": 114,
+    "spia": 28,
+    "terzina": [
+      63,
+      66,
+      6
+    ],
+    "oro": 72,
+    "power_score": 112.5,
+    "max_colpi": 5,
+    "stato": "in_corso",
+    "colpi_trascorsi": 1,
+    "max_punti": 1,
+    "primo_ambo_colpo": null,
+    "primo_terno_colpo": null,
+    "oro_centrato": false,
+    "timeline": [
+      {
+        "colpo": 1,
+        "concorso": 115,
+        "ora": "09:35",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          66
+        ]
+      }
+    ],
+    "notifica_colpi_inviati": [
+      1
+    ]
+  },
+  {
+    "id": "pat_2026-08-24_114_77",
+    "data": "2026-08-24",
+    "ora": "09:30",
+    "concorso_spia": 114,
+    "spia": 77,
+    "terzina": [
+      29,
+      31,
+      32
+    ],
+    "oro": 31,
+    "power_score": 91.0,
+    "max_colpi": 5,
+    "stato": "in_corso",
+    "colpi_trascorsi": 1,
+    "max_punti": 0,
+    "primo_ambo_colpo": null,
+    "primo_terno_colpo": null,
+    "oro_centrato": false,
+    "timeline": [
+      {
+        "colpo": 1,
+        "concorso": 115,
+        "ora": "09:35",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      }
+    ],
+    "notifica_colpi_inviati": [
+      1
+    ]
+  },
+  {
+    "id": "pat_2026-08-24_113_74",
+    "data": "2026-08-24",
+    "ora": "09:25",
+    "concorso_spia": 113,
+    "spia": 74,
+    "terzina": [
+      29,
+      31,
+      32
+    ],
+    "oro": 29,
+    "power_score": 93.0,
+    "max_colpi": 5,
+    "stato": "in_corso",
+    "colpi_trascorsi": 2,
+    "max_punti": 0,
+    "primo_ambo_colpo": null,
+    "primo_terno_colpo": null,
+    "oro_centrato": false,
+    "timeline": [
+      {
+        "colpo": 1,
+        "concorso": 114,
+        "ora": "09:30",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 2,
+        "concorso": 115,
+        "ora": "09:35",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      }
+    ],
+    "notifica_colpi_inviati": [
+      1,
+      2
+    ]
+  },
+  {
+    "id": "pat_2026-08-24_113_40",
+    "data": "2026-08-24",
+    "ora": "09:25",
+    "concorso_spia": 113,
+    "spia": 40,
+    "terzina": [
+      30,
+      32,
+      33
+    ],
+    "oro": 32,
+    "power_score": 91.0,
+    "max_colpi": 5,
+    "stato": "in_corso",
+    "colpi_trascorsi": 2,
+    "max_punti": 1,
+    "primo_ambo_colpo": null,
+    "primo_terno_colpo": null,
+    "oro_centrato": false,
+    "timeline": [
+      {
+        "colpo": 1,
+        "concorso": 114,
+        "ora": "09:30",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 2,
+        "concorso": 115,
+        "ora": "09:35",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          33
+        ]
+      }
+    ],
+    "notifica_colpi_inviati": [
+      1,
+      2
+    ]
+  },
+  {
+    "id": "pat_2026-08-24_113_44",
+    "data": "2026-08-24",
+    "ora": "09:25",
+    "concorso_spia": 113,
+    "spia": 44,
+    "terzina": [
+      26,
+      28,
+      29
+    ],
+    "oro": 28,
+    "power_score": 90.0,
+    "max_colpi": 5,
+    "stato": "in_corso",
+    "colpi_trascorsi": 2,
+    "max_punti": 1,
+    "primo_ambo_colpo": null,
+    "primo_terno_colpo": null,
+    "oro_centrato": false,
+    "timeline": [
+      {
+        "colpo": 1,
+        "concorso": 114,
+        "ora": "09:30",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          28
+        ]
+      },
+      {
+        "colpo": 2,
+        "concorso": 115,
+        "ora": "09:35",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      }
+    ],
+    "notifica_colpi_inviati": [
+      1,
+      2
+    ]
+  },
+  {
+    "id": "pat_2026-08-24_113_87",
+    "data": "2026-08-24",
+    "ora": "09:25",
+    "concorso_spia": 113,
+    "spia": 87,
+    "terzina": [
+      26,
+      28,
+      29
+    ],
+    "oro": 26,
+    "power_score": 94.0,
+    "max_colpi": 5,
+    "stato": "in_corso",
+    "colpi_trascorsi": 2,
+    "max_punti": 1,
+    "primo_ambo_colpo": null,
+    "primo_terno_colpo": null,
+    "oro_centrato": false,
+    "timeline": [
+      {
+        "colpo": 1,
+        "concorso": 114,
+        "ora": "09:30",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          28
+        ]
+      },
+      {
+        "colpo": 2,
+        "concorso": 115,
+        "ora": "09:35",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      }
+    ],
+    "notifica_colpi_inviati": [
+      1,
+      2
+    ]
+  },
+  {
+    "id": "pat_2026-08-24_112_64",
+    "data": "2026-08-24",
+    "ora": "09:20",
+    "concorso_spia": 112,
+    "spia": 64,
+    "terzina": [
+      31,
+      33,
+      34
+    ],
+    "oro": 31,
+    "power_score": 85.0,
+    "max_colpi": 5,
+    "stato": "in_corso",
+    "colpi_trascorsi": 3,
+    "max_punti": 1,
+    "primo_ambo_colpo": null,
+    "primo_terno_colpo": null,
+    "oro_centrato": true,
+    "timeline": [
+      {
+        "colpo": 1,
+        "concorso": 113,
+        "ora": "09:25",
+        "punti": 1,
+        "ha_oro": true,
+        "estratti_presi": [
+          34
+        ]
+      },
+      {
+        "colpo": 2,
+        "concorso": 114,
+        "ora": "09:30",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 3,
+        "concorso": 115,
+        "ora": "09:35",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          33
+        ]
+      }
+    ],
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "id": "pat_2026-08-24_112_40",
+    "data": "2026-08-24",
+    "ora": "09:20",
+    "concorso_spia": 112,
+    "spia": 40,
+    "terzina": [
+      30,
+      32,
+      33
+    ],
+    "oro": 32,
+    "power_score": 91.0,
+    "max_colpi": 5,
+    "stato": "in_corso",
+    "colpi_trascorsi": 3,
+    "max_punti": 1,
+    "primo_ambo_colpo": null,
+    "primo_terno_colpo": null,
+    "oro_centrato": false,
+    "timeline": [
+      {
+        "colpo": 1,
+        "concorso": 113,
+        "ora": "09:25",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 2,
+        "concorso": 114,
+        "ora": "09:30",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 3,
+        "concorso": 115,
+        "ora": "09:35",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          33
+        ]
+      }
+    ],
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3
+    ]
+  },
+  {
     "id": "sig_2026-08-24_105_60",
     "data": "2026-08-24",
     "ora": "08:45",
@@ -14,7 +395,7 @@
     "power_score": 109.5,
     "max_colpi": 20,
     "stato": "in_corso",
-    "colpi_trascorsi": 6,
+    "colpi_trascorsi": 10,
     "max_punti": 1,
     "primo_ambo_colpo": null,
     "primo_terno_colpo": null,
@@ -73,9 +454,48 @@
         "punti": 0,
         "ha_oro": false,
         "estratti_presi": []
+      },
+      {
+        "colpo": 7,
+        "concorso": 112,
+        "ora": "09:20",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 8,
+        "concorso": 113,
+        "ora": "09:25",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 9,
+        "concorso": 114,
+        "ora": "09:30",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 10,
+        "concorso": 115,
+        "ora": "09:35",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
       }
     ],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
   },
   {
     "id": "sig_2026-08-24_102_60",
@@ -92,7 +512,7 @@
     "power_score": 109.0,
     "max_colpi": 20,
     "stato": "in_corso",
-    "colpi_trascorsi": 9,
+    "colpi_trascorsi": 13,
     "max_punti": 1,
     "primo_ambo_colpo": null,
     "primo_terno_colpo": null,
@@ -179,9 +599,48 @@
         "punti": 0,
         "ha_oro": false,
         "estratti_presi": []
+      },
+      {
+        "colpo": 10,
+        "concorso": 112,
+        "ora": "09:20",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 11,
+        "concorso": 113,
+        "ora": "09:25",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 12,
+        "concorso": 114,
+        "ora": "09:30",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 13,
+        "concorso": 115,
+        "ora": "09:35",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
       }
     ],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
   },
   {
     "id": "sig_2026-08-24_100_29",
@@ -198,7 +657,7 @@
     "power_score": 109.5,
     "max_colpi": 20,
     "stato": "in_corso",
-    "colpi_trascorsi": 11,
+    "colpi_trascorsi": 15,
     "max_punti": 1,
     "primo_ambo_colpo": null,
     "primo_terno_colpo": null,
@@ -299,9 +758,52 @@
         "punti": 0,
         "ha_oro": false,
         "estratti_presi": []
+      },
+      {
+        "colpo": 12,
+        "concorso": 112,
+        "ora": "09:20",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 13,
+        "concorso": 113,
+        "ora": "09:25",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          44
+        ]
+      },
+      {
+        "colpo": 14,
+        "concorso": 114,
+        "ora": "09:30",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 15,
+        "concorso": 115,
+        "ora": "09:35",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          16
+        ]
       }
     ],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
   },
   {
     "id": "sig_2026-08-24_96_29",
@@ -318,7 +820,7 @@
     "power_score": 109.0,
     "max_colpi": 20,
     "stato": "in_corso",
-    "colpi_trascorsi": 15,
+    "colpi_trascorsi": 19,
     "max_punti": 1,
     "primo_ambo_colpo": null,
     "primo_terno_colpo": null,
@@ -455,9 +957,52 @@
         "punti": 0,
         "ha_oro": false,
         "estratti_presi": []
+      },
+      {
+        "colpo": 16,
+        "concorso": 112,
+        "ora": "09:20",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 17,
+        "concorso": 113,
+        "ora": "09:25",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          44
+        ]
+      },
+      {
+        "colpo": 18,
+        "concorso": 114,
+        "ora": "09:30",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 19,
+        "concorso": 115,
+        "ora": "09:35",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          16
+        ]
       }
     ],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
   },
   {
     "id": "sig_2026-08-24_95_90",
@@ -474,7 +1019,7 @@
     "power_score": 124.0,
     "max_colpi": 20,
     "stato": "vinto_ambo",
-    "colpi_trascorsi": 16,
+    "colpi_trascorsi": 20,
     "max_punti": 2,
     "primo_ambo_colpo": 3,
     "primo_terno_colpo": null,
@@ -630,9 +1175,50 @@
         "estratti_presi": [
           63
         ]
+      },
+      {
+        "colpo": 17,
+        "concorso": 112,
+        "ora": "09:20",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          63
+        ]
+      },
+      {
+        "colpo": 18,
+        "concorso": 113,
+        "ora": "09:25",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 19,
+        "concorso": 114,
+        "ora": "09:30",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 20,
+        "concorso": 115,
+        "ora": "09:35",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
       }
     ],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
   },
   {
     "id": "sig_2026-08-24_93_90",
@@ -649,7 +1235,7 @@
     "power_score": 123.5,
     "max_colpi": 20,
     "stato": "vinto_ambo",
-    "colpi_trascorsi": 18,
+    "colpi_trascorsi": 20,
     "max_punti": 2,
     "primo_ambo_colpo": 5,
     "primo_terno_colpo": null,
@@ -823,9 +1409,34 @@
         "estratti_presi": [
           63
         ]
+      },
+      {
+        "colpo": 19,
+        "concorso": 112,
+        "ora": "09:20",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          63
+        ]
+      },
+      {
+        "colpo": 20,
+        "concorso": 113,
+        "ora": "09:25",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
       }
     ],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
   },
   {
     "id": "sig_2026-08-24_92_90",
@@ -842,7 +1453,7 @@
     "power_score": 123.0,
     "max_colpi": 20,
     "stato": "vinto_ambo",
-    "colpi_trascorsi": 19,
+    "colpi_trascorsi": 20,
     "max_punti": 2,
     "primo_ambo_colpo": 6,
     "primo_terno_colpo": null,
@@ -1024,9 +1635,26 @@
         "estratti_presi": [
           63
         ]
+      },
+      {
+        "colpo": 20,
+        "concorso": 112,
+        "ora": "09:20",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          63
+        ]
       }
     ],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
   },
   {
     "id": "sig_2026-08-24_89_90",
@@ -1236,7 +1864,14 @@
         ]
       }
     ],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
   },
   {
     "id": "sig_2026-08-24_79_90",
@@ -1441,7 +2076,14 @@
         "estratti_presi": []
       }
     ],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
   },
   {
     "id": "sig_2026-08-24_66_66",
@@ -1644,7 +2286,14 @@
         ]
       }
     ],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
   },
   {
     "id": "sig_2026-08-24_58_47",
@@ -1857,7 +2506,14 @@
         "estratti_presi": []
       }
     ],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
   },
   {
     "id": "sig_2026-08-24_56_51",
@@ -2068,7 +2724,14 @@
         ]
       }
     ],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
   },
   {
     "id": "sig_2026-08-24_55_63",
@@ -2273,7 +2936,14 @@
         ]
       }
     ],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
   },
   {
     "id": "sig_2026-08-24_50_63",
@@ -2479,7 +3149,14 @@
         "estratti_presi": []
       }
     ],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
   },
   {
     "id": "sig_2026-08-24_47_63",
@@ -2687,7 +3364,14 @@
         "estratti_presi": []
       }
     ],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
   },
   {
     "id": "sig_2026-08-24_42_72",
@@ -2891,7 +3575,14 @@
         ]
       }
     ],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
   },
   {
     "id": "sig_2026-08-24_39_72",
@@ -3097,7 +3788,14 @@
         "estratti_presi": []
       }
     ],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
   },
   {
     "id": "sig_2026-08-24_34_72",
@@ -3303,7 +4001,14 @@
         "estratti_presi": []
       }
     ],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
   },
   {
     "id": "sig_2026-08-24_25_2",
@@ -3517,7 +4222,14 @@
         ]
       }
     ],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
   },
   {
     "id": "sig_2026-08-24_24_15",
@@ -3729,7 +4441,14 @@
         "estratti_presi": []
       }
     ],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
   },
   {
     "id": "sig_2026-08-24_21_23",
@@ -3936,7 +4655,14 @@
         "estratti_presi": []
       }
     ],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
   },
   {
     "id": "sig_2026-08-24_20_6",
@@ -4146,7 +4872,14 @@
         ]
       }
     ],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
   },
   {
     "id": "sig_2026-08-24_19_37",
@@ -4352,7 +5085,14 @@
         "estratti_presi": []
       }
     ],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
   },
   {
     "id": "sig_2026-08-24_10_62",
@@ -4552,7 +5292,14 @@
         ]
       }
     ],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
   },
   {
     "id": "sig_2026-08-24_6_75",
@@ -4755,7 +5502,14 @@
         "estratti_presi": []
       }
     ],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
   },
   {
     "id": "sig_2026-08-23_284_7",
@@ -4777,7 +5531,8 @@
     "primo_ambo_colpo": null,
     "primo_terno_colpo": null,
     "oro_centrato": false,
-    "timeline": []
+    "timeline": [],
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-23_279_1",
@@ -4800,7 +5555,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-23_278_1",
@@ -4823,7 +5579,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-23_276_1",
@@ -4846,7 +5603,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-23_273_1",
@@ -4869,7 +5627,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-23_272_1",
@@ -4892,7 +5651,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-23_271_1",
@@ -4915,7 +5675,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-23_265_21",
@@ -4938,7 +5699,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-23_264_1",
@@ -4961,7 +5723,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-23_258_26",
@@ -4984,7 +5747,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-23_253_20",
@@ -5007,7 +5771,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-23_251_20",
@@ -5030,7 +5795,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-23_247_16",
@@ -5053,7 +5819,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-23_245_1",
@@ -5076,7 +5843,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-23_243_1",
@@ -5099,7 +5867,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-23_236_1",
@@ -5122,7 +5891,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-23_227_1",
@@ -5145,7 +5915,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-23_225_1",
@@ -5168,7 +5939,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-23_222_1",
@@ -5191,7 +5963,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-23_219_1",
@@ -5214,7 +5987,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-23_216_1",
@@ -5237,7 +6011,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-23_213_1",
@@ -5260,7 +6035,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-23_212_1",
@@ -5283,7 +6059,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-23_209_1",
@@ -5306,7 +6083,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-23_205_1",
@@ -5329,7 +6107,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-23_202_1",
@@ -5352,7 +6131,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-23_196_39",
@@ -5375,7 +6155,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-23_190_39",
@@ -5398,7 +6179,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-23_177_88",
@@ -5421,7 +6203,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-23_175_9",
@@ -5444,7 +6227,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-23_173_9",
@@ -5467,7 +6251,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-23_172_77",
@@ -5490,7 +6275,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-23_169_38",
@@ -5513,7 +6299,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-23_168_38",
@@ -5536,7 +6323,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-23_161_76",
@@ -5559,7 +6347,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-23_159_76",
@@ -5582,7 +6371,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-23_157_76",
@@ -5605,7 +6395,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-23_153_88",
@@ -5628,7 +6419,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-23_152_88",
@@ -5651,7 +6443,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-23_150_76",
@@ -5674,7 +6467,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-23_149_69",
@@ -5697,7 +6491,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-23_142_69",
@@ -5720,7 +6515,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-23_134_69",
@@ -5743,7 +6539,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-23_131_69",
@@ -5766,7 +6563,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-23_130_69",
@@ -5789,7 +6587,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-23_129_9",
@@ -5812,7 +6611,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-23_121_9",
@@ -5835,7 +6635,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-23_118_9",
@@ -5858,7 +6659,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-23_113_9",
@@ -5874,14 +6676,41 @@
     "oro": 51,
     "power_score": 127.0,
     "max_colpi": 20,
-    "stato": "in_corso",
-    "colpi_trascorsi": 0,
-    "max_punti": 0,
-    "primo_ambo_colpo": null,
+    "stato": "vinto_ambo",
+    "colpi_trascorsi": 2,
+    "max_punti": 2,
+    "primo_ambo_colpo": 1,
     "primo_terno_colpo": null,
     "oro_centrato": false,
-    "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "timeline": [
+      {
+        "colpo": 1,
+        "concorso": 114,
+        "ora": "09:30",
+        "punti": 2,
+        "ha_oro": false,
+        "estratti_presi": [
+          38,
+          77
+        ]
+      },
+      {
+        "colpo": 2,
+        "concorso": 115,
+        "ora": "09:35",
+        "punti": 2,
+        "ha_oro": false,
+        "estratti_presi": [
+          38,
+          75
+        ]
+      }
+    ],
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": [
+      1,
+      2
+    ]
   },
   {
     "id": "sig_2026-08-23_112_9",
@@ -5897,14 +6726,52 @@
     "oro": 51,
     "power_score": 126.5,
     "max_colpi": 20,
-    "stato": "in_corso",
-    "colpi_trascorsi": 0,
-    "max_punti": 0,
-    "primo_ambo_colpo": null,
+    "stato": "vinto_ambo",
+    "colpi_trascorsi": 3,
+    "max_punti": 2,
+    "primo_ambo_colpo": 2,
     "primo_terno_colpo": null,
     "oro_centrato": false,
-    "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "timeline": [
+      {
+        "colpo": 1,
+        "concorso": 113,
+        "ora": "09:25",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          38
+        ]
+      },
+      {
+        "colpo": 2,
+        "concorso": 114,
+        "ora": "09:30",
+        "punti": 2,
+        "ha_oro": false,
+        "estratti_presi": [
+          38,
+          77
+        ]
+      },
+      {
+        "colpo": 3,
+        "concorso": 115,
+        "ora": "09:35",
+        "punti": 2,
+        "ha_oro": false,
+        "estratti_presi": [
+          38,
+          75
+        ]
+      }
+    ],
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3
+    ]
   },
   {
     "id": "sig_2026-08-23_111_9",
@@ -5920,14 +6787,61 @@
     "oro": 51,
     "power_score": 123.0,
     "max_colpi": 20,
-    "stato": "in_corso",
-    "colpi_trascorsi": 0,
-    "max_punti": 0,
-    "primo_ambo_colpo": null,
+    "stato": "vinto_ambo",
+    "colpi_trascorsi": 4,
+    "max_punti": 2,
+    "primo_ambo_colpo": 3,
     "primo_terno_colpo": null,
     "oro_centrato": false,
-    "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "timeline": [
+      {
+        "colpo": 1,
+        "concorso": 112,
+        "ora": "09:20",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 2,
+        "concorso": 113,
+        "ora": "09:25",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          38
+        ]
+      },
+      {
+        "colpo": 3,
+        "concorso": 114,
+        "ora": "09:30",
+        "punti": 2,
+        "ha_oro": false,
+        "estratti_presi": [
+          38,
+          77
+        ]
+      },
+      {
+        "colpo": 4,
+        "concorso": 115,
+        "ora": "09:35",
+        "punti": 2,
+        "ha_oro": false,
+        "estratti_presi": [
+          38,
+          75
+        ]
+      }
+    ],
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3,
+      4
+    ]
   },
   {
     "id": "sig_2026-08-23_110_9",
@@ -5943,10 +6857,10 @@
     "oro": 51,
     "power_score": 122.5,
     "max_colpi": 20,
-    "stato": "in_corso",
-    "colpi_trascorsi": 1,
-    "max_punti": 0,
-    "primo_ambo_colpo": null,
+    "stato": "vinto_ambo",
+    "colpi_trascorsi": 5,
+    "max_punti": 2,
+    "primo_ambo_colpo": 4,
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [
@@ -5957,9 +6871,56 @@
         "punti": 0,
         "ha_oro": false,
         "estratti_presi": []
+      },
+      {
+        "colpo": 2,
+        "concorso": 112,
+        "ora": "09:20",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 3,
+        "concorso": 113,
+        "ora": "09:25",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          38
+        ]
+      },
+      {
+        "colpo": 4,
+        "concorso": 114,
+        "ora": "09:30",
+        "punti": 2,
+        "ha_oro": false,
+        "estratti_presi": [
+          38,
+          77
+        ]
+      },
+      {
+        "colpo": 5,
+        "concorso": 115,
+        "ora": "09:35",
+        "punti": 2,
+        "ha_oro": false,
+        "estratti_presi": [
+          38,
+          75
+        ]
       }
     ],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
   },
   {
     "id": "sig_2026-08-23_102_69",
@@ -5976,7 +6937,7 @@
     "power_score": 115.0,
     "max_colpi": 20,
     "stato": "vinto_ambo",
-    "colpi_trascorsi": 9,
+    "colpi_trascorsi": 13,
     "max_punti": 2,
     "primo_ambo_colpo": 4,
     "primo_terno_colpo": null,
@@ -6065,9 +7026,51 @@
         "punti": 0,
         "ha_oro": false,
         "estratti_presi": []
+      },
+      {
+        "colpo": 10,
+        "concorso": 112,
+        "ora": "09:20",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 11,
+        "concorso": 113,
+        "ora": "09:25",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 12,
+        "concorso": 114,
+        "ora": "09:30",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 13,
+        "concorso": 115,
+        "ora": "09:35",
+        "punti": 2,
+        "ha_oro": false,
+        "estratti_presi": [
+          16,
+          80
+        ]
       }
     ],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
   },
   {
     "id": "sig_2026-08-23_100_69",
@@ -6084,7 +7087,7 @@
     "power_score": 114.5,
     "max_colpi": 20,
     "stato": "vinto_ambo",
-    "colpi_trascorsi": 11,
+    "colpi_trascorsi": 15,
     "max_punti": 2,
     "primo_ambo_colpo": 6,
     "primo_terno_colpo": null,
@@ -6191,9 +7194,51 @@
         "punti": 0,
         "ha_oro": false,
         "estratti_presi": []
+      },
+      {
+        "colpo": 12,
+        "concorso": 112,
+        "ora": "09:20",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 13,
+        "concorso": 113,
+        "ora": "09:25",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 14,
+        "concorso": 114,
+        "ora": "09:30",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 15,
+        "concorso": 115,
+        "ora": "09:35",
+        "punti": 2,
+        "ha_oro": false,
+        "estratti_presi": [
+          16,
+          80
+        ]
       }
     ],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
   },
   {
     "id": "sig_2026-08-23_94_87",
@@ -6210,7 +7255,7 @@
     "power_score": 106.0,
     "max_colpi": 20,
     "stato": "vinto_terno",
-    "colpi_trascorsi": 17,
+    "colpi_trascorsi": 20,
     "max_punti": 3,
     "primo_ambo_colpo": 4,
     "primo_terno_colpo": 4,
@@ -6373,9 +7418,42 @@
         "punti": 0,
         "ha_oro": false,
         "estratti_presi": []
+      },
+      {
+        "colpo": 18,
+        "concorso": 112,
+        "ora": "09:20",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 19,
+        "concorso": 113,
+        "ora": "09:25",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          53
+        ]
+      },
+      {
+        "colpo": 20,
+        "concorso": 114,
+        "ora": "09:30",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
       }
     ],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
   },
   {
     "id": "sig_2026-08-23_89_20",
@@ -6579,7 +7657,14 @@
         ]
       }
     ],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
   },
   {
     "id": "sig_2026-08-23_88_20",
@@ -6781,7 +7866,14 @@
         "estratti_presi": []
       }
     ],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
   },
   {
     "id": "sig_2026-08-23_87_53",
@@ -6984,7 +8076,14 @@
         ]
       }
     ],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
   },
   {
     "id": "sig_2026-08-23_79_20",
@@ -7195,7 +8294,14 @@
         ]
       }
     ],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
   },
   {
     "id": "sig_2026-08-23_78_20",
@@ -7405,7 +8511,14 @@
         "estratti_presi": []
       }
     ],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
   },
   {
     "id": "sig_2026-08-23_66_87",
@@ -7614,7 +8727,14 @@
         "estratti_presi": []
       }
     ],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
   },
   {
     "id": "sig_2026-08-23_62_87",
@@ -7822,7 +8942,14 @@
         ]
       }
     ],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
   },
   {
     "id": "sig_2026-08-23_60_87",
@@ -8036,7 +9163,14 @@
         "estratti_presi": []
       }
     ],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
   },
   {
     "id": "sig_2026-08-23_58_87",
@@ -8249,7 +9383,14 @@
         "estratti_presi": []
       }
     ],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
   },
   {
     "id": "sig_2026-08-23_57_87",
@@ -8461,7 +9602,14 @@
         "estratti_presi": []
       }
     ],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
   },
   {
     "id": "sig_2026-08-23_56_87",
@@ -8675,7 +9823,14 @@
         "estratti_presi": []
       }
     ],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
   },
   {
     "id": "sig_2026-08-23_52_56",
@@ -8879,7 +10034,14 @@
         "estratti_presi": []
       }
     ],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
   },
   {
     "id": "sig_2026-08-23_31_52",
@@ -9092,7 +10254,14 @@
         "estratti_presi": []
       }
     ],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
   },
   {
     "id": "sig_2026-08-23_29_67",
@@ -9308,7 +10477,14 @@
         ]
       }
     ],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
   },
   {
     "id": "sig_2026-08-23_28_76",
@@ -9519,7 +10695,14 @@
         ]
       }
     ],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
   },
   {
     "id": "sig_2026-08-23_22_43",
@@ -9726,7 +10909,14 @@
         ]
       }
     ],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
   },
   {
     "id": "sig_2026-08-23_17_14",
@@ -9933,7 +11123,14 @@
         "estratti_presi": []
       }
     ],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
   },
   {
     "id": "sig_2026-08-23_16_14",
@@ -10140,7 +11337,14 @@
         "estratti_presi": []
       }
     ],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
   },
   {
     "id": "sig_2026-08-23_12_28",
@@ -10344,7 +11548,14 @@
         ]
       }
     ],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
   },
   {
     "id": "sig_2026-08-23_4_31",
@@ -10558,7 +11769,14 @@
         ]
       }
     ],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
   },
   {
     "id": "sig_2026-08-23_2_7",
@@ -10762,7 +11980,14 @@
         "estratti_presi": []
       }
     ],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
   },
   {
     "id": "sig_2026-08-22_286_24",
@@ -10784,7 +12009,8 @@
     "primo_ambo_colpo": null,
     "primo_terno_colpo": null,
     "oro_centrato": false,
-    "timeline": []
+    "timeline": [],
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-22_281_24",
@@ -10807,7 +12033,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-22_279_24",
@@ -10830,7 +12057,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-22_277_24",
@@ -10853,7 +12081,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-22_270_24",
@@ -10876,7 +12105,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-22_265_24",
@@ -10899,7 +12129,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-22_263_24",
@@ -10922,7 +12153,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-22_252_23",
@@ -10945,7 +12177,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-22_250_42",
@@ -10968,7 +12201,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-22_249_42",
@@ -10991,7 +12225,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-22_248_42",
@@ -11014,7 +12249,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-22_245_42",
@@ -11037,7 +12273,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-22_232_42",
@@ -11060,7 +12297,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-22_220_17",
@@ -11083,7 +12321,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-22_214_17",
@@ -11106,7 +12345,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-22_212_36",
@@ -11129,7 +12369,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-22_208_36",
@@ -11152,7 +12393,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-22_201_75",
@@ -11175,7 +12417,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-22_200_75",
@@ -11198,7 +12441,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-22_197_75",
@@ -11221,7 +12465,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-22_189_2",
@@ -11244,7 +12489,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-22_180_2",
@@ -11267,7 +12513,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-22_175_75",
@@ -11290,7 +12537,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-22_171_42",
@@ -11313,7 +12561,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-22_168_42",
@@ -11336,7 +12585,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-22_166_42",
@@ -11359,7 +12609,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-22_165_42",
@@ -11382,7 +12633,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-22_163_88",
@@ -11405,7 +12657,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-22_160_88",
@@ -11428,7 +12681,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-22_155_88",
@@ -11451,7 +12705,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-22_150_88",
@@ -11474,7 +12729,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-22_149_14",
@@ -11497,7 +12753,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-22_148_88",
@@ -11520,7 +12777,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-22_144_88",
@@ -11543,7 +12801,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-22_139_88",
@@ -11566,7 +12825,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-22_135_88",
@@ -11589,7 +12849,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-22_129_24",
@@ -11612,7 +12873,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-22_126_72",
@@ -11635,7 +12897,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-22_121_14",
@@ -11658,7 +12921,8 @@
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": []
   },
   {
     "id": "sig_2026-08-22_105_10",
@@ -11674,10 +12938,10 @@
     "oro": 44,
     "power_score": 108.5,
     "max_colpi": 20,
-    "stato": "in_corso",
-    "colpi_trascorsi": 6,
-    "max_punti": 1,
-    "primo_ambo_colpo": null,
+    "stato": "vinto_ambo",
+    "colpi_trascorsi": 10,
+    "max_punti": 2,
+    "primo_ambo_colpo": 8,
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [
@@ -11736,9 +13000,51 @@
         "estratti_presi": [
           87
         ]
+      },
+      {
+        "colpo": 7,
+        "concorso": 112,
+        "ora": "09:20",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 8,
+        "concorso": 113,
+        "ora": "09:25",
+        "punti": 2,
+        "ha_oro": false,
+        "estratti_presi": [
+          58,
+          87
+        ]
+      },
+      {
+        "colpo": 9,
+        "concorso": 114,
+        "ora": "09:30",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 10,
+        "concorso": 115,
+        "ora": "09:35",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
       }
     ],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
   },
   {
     "id": "sig_2026-08-22_99_10",
@@ -11754,10 +13060,10 @@
     "oro": 44,
     "power_score": 107.0,
     "max_colpi": 20,
-    "stato": "in_corso",
-    "colpi_trascorsi": 12,
-    "max_punti": 1,
-    "primo_ambo_colpo": null,
+    "stato": "vinto_ambo",
+    "colpi_trascorsi": 16,
+    "max_punti": 2,
+    "primo_ambo_colpo": 14,
     "primo_terno_colpo": null,
     "oro_centrato": false,
     "timeline": [
@@ -11866,9 +13172,51 @@
         "estratti_presi": [
           87
         ]
+      },
+      {
+        "colpo": 13,
+        "concorso": 112,
+        "ora": "09:20",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 14,
+        "concorso": 113,
+        "ora": "09:25",
+        "punti": 2,
+        "ha_oro": false,
+        "estratti_presi": [
+          58,
+          87
+        ]
+      },
+      {
+        "colpo": 15,
+        "concorso": 114,
+        "ora": "09:30",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 16,
+        "concorso": 115,
+        "ora": "09:35",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
       }
     ],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
   },
   {
     "id": "sig_2026-08-22_90_86",
@@ -12069,7 +13417,14 @@
         "estratti_presi": []
       }
     ],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
   },
   {
     "id": "sig_2026-08-22_89_86",
@@ -12270,7 +13625,14 @@
         "estratti_presi": []
       }
     ],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
   },
   {
     "id": "sig_2026-08-22_5_2",
@@ -12476,7 +13838,14 @@
         ]
       }
     ],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
   },
   {
     "id": "sig_2026-08-22_3_2",
@@ -12682,7 +14051,14 @@
         "estratti_presi": []
       }
     ],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
   },
   {
     "id": "sig_2026-08-22_2_2",
@@ -12882,6 +14258,13 @@
         "estratti_presi": []
       }
     ],
-    "notifica_5_colpi_inviata": true
+    "notifica_5_colpi_inviata": true,
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
   }
 ]

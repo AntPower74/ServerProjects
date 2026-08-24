@@ -66,7 +66,7 @@ def load_telegram_config():
             return {}
     return {}
 
-def send_telegram_message(text):
+def send_telegram_message(text, parse_mode='HTML'):
     """Invia una notifica Telegram in background, senza bloccare il chiamante."""
     cfg = load_telegram_config()
     token = cfg.get('bot_token')
@@ -77,7 +77,10 @@ def send_telegram_message(text):
     def _send():
         try:
             url = f'https://api.telegram.org/bot{token}/sendMessage'
-            data = urllib.parse.urlencode({'chat_id': chat_id, 'text': text}).encode('utf-8')
+            post_data = {'chat_id': chat_id, 'text': text}
+            if parse_mode:
+                post_data['parse_mode'] = parse_mode
+            data = urllib.parse.urlencode(post_data).encode('utf-8')
             req = urllib.request.Request(url, data=data)
             urllib.request.urlopen(req, timeout=10).read()
         except Exception as e:
@@ -319,6 +322,23 @@ def get_best_spy(draws):
     spies.sort(key=lambda x: x['score'], reverse=True)
     return spies[0] if spies else None
 
+# Mappa Spie Speciali per Pattern geometrico [20-40]
+PATTERN_20_40_SPIES = {
+    26: {'terzina': [20, 22, 23], 'oro': 20, 'score': 95.0, 'desc': 'Pattern 20-22-23 (Spia #26)'},
+    73: {'terzina': [20, 22, 23], 'oro': 22, 'score': 92.0, 'desc': 'Pattern 20-22-23 (Spia #73)'},
+    87: {'terzina': [26, 28, 29], 'oro': 26, 'score': 94.0, 'desc': 'Pattern 26-28-29 (Spia #87)'},
+    44: {'terzina': [26, 28, 29], 'oro': 28, 'score': 90.0, 'desc': 'Pattern 26-28-29 (Spia #44)'},
+    56: {'terzina': [30, 32, 33], 'oro': 30, 'score': 94.0, 'desc': 'Pattern 30-32-33 (Spia #56)'},
+    40: {'terzina': [30, 32, 33], 'oro': 32, 'score': 91.0, 'desc': 'Pattern 30-32-33 (Spia #40)'},
+    74: {'terzina': [29, 31, 32], 'oro': 29, 'score': 93.0, 'desc': 'Pattern 29-31-32 (Spia #74)'},
+    77: {'terzina': [29, 31, 32], 'oro': 31, 'score': 91.0, 'desc': 'Pattern 29-31-32 (Spia #77)'},
+    83: {'terzina': [32, 34, 35], 'oro': 32, 'score': 92.0, 'desc': 'Pattern 32-34-35 (Spia #83)'},
+    85: {'terzina': [32, 34, 35], 'oro': 34, 'score': 89.0, 'desc': 'Pattern 32-34-35 (Spia #85)'},
+    64: {'terzina': [31, 33, 34], 'oro': 31, 'score': 85.0, 'desc': 'Pattern 31-33-34 (Spia #64)'},
+    19: {'terzina': [31, 33, 34], 'oro': 33, 'score': 84.0, 'desc': 'Pattern 31-33-34 (Spia #19)'},
+    81: {'terzina': [31, 33, 34], 'oro': 34, 'score': 83.0, 'desc': 'Pattern 31-33-34 (Spia #81)'},
+}
+
 def update_signals_tracker(draws):
     if not draws:
         return
@@ -327,11 +347,48 @@ def update_signals_tracker(draws):
         latest = draws[-1]
         today_str = datetime.now().strftime('%Y-%m-%d')
 
-        # 1. Rilevamento automatico: se esce la top spia, registriamo il segnale
+        # 1. Rilevamento Spie Pattern 20-40
+        for spy_num, p_info in PATTERN_20_40_SPIES.items():
+            if spy_num in latest['numeri']:
+                sig_id = f"pat_{today_str}_{latest['concorso']}_{spy_num}"
+                if not any(s.get('id') == sig_id for s in signals):
+                    new_sig = {
+                        'id': sig_id,
+                        'data': today_str,
+                        'ora': latest['ora'],
+                        'concorso_spia': latest['concorso'],
+                        'spia': spy_num,
+                        'terzina': p_info['terzina'],
+                        'oro': p_info['oro'],
+                        'power_score': p_info['score'],
+                        'max_colpi': 5,
+                        'stato': 'in_corso',
+                        'colpi_trascorsi': 0,
+                        'max_punti': 0,
+                        'primo_ambo_colpo': None,
+                        'primo_terno_colpo': None,
+                        'oro_centrato': False,
+                        'timeline': [],
+                        'notifica_colpi_inviati': []
+                    }
+                    signals.insert(0, new_sig)
+                    print(f"[*] Nuovo Segnale Spia Pattern Registrato: Concorso #{latest['concorso']} Spia {spy_num}")
+                    
+                    msg = (
+                        f"🚨 <b>SPIA #{spy_num} RILEVATA! (Monitoraggio 5 Colpi)</b>\n"
+                        f"⏱ Concorso: #{latest['concorso']} (ore {latest['ora']})\n"
+                        f"🎯 Terzina da seguire: <b>{' - '.join(str(n) for n in p_info['terzina'])}</b>\n"
+                        f"🥇 Numero Oro: <b>{p_info['oro']}</b>\n"
+                        f"📌 Nota: {p_info['desc']}\n\n"
+                        f"📡 <i>Monitoraggio automatico 5 colpi avviato su Telegram.</i>"
+                    )
+                    send_telegram_message(msg)
+
+        # 2. Rilevamento automatico Spia Dinamica del Giorno
         best_spy = get_best_spy(draws)
         if best_spy and (best_spy['spy'] in latest['numeri']):
             sig_id = f"sig_{today_str}_{latest['concorso']}_{best_spy['spy']}"
-            exists = any(s['id'] == sig_id for s in signals)
+            exists = any(s.get('id') == sig_id for s in signals)
             if not exists:
                 new_sig = {
                     'id': sig_id,
@@ -342,37 +399,40 @@ def update_signals_tracker(draws):
                     'terzina': best_spy['top3'],
                     'oro': best_spy['top_oro'],
                     'power_score': best_spy['score'],
-                    'max_colpi': 20,
+                    'max_colpi': 5,
                     'stato': 'in_corso',
                     'colpi_trascorsi': 0,
                     'max_punti': 0,
                     'primo_ambo_colpo': None,
                     'primo_terno_colpo': None,
                     'oro_centrato': False,
-                    'timeline': []
+                    'timeline': [],
+                    'notifica_colpi_inviati': []
                 }
                 signals.insert(0, new_sig)
-                print(f"[*] Nuovo Segnale Spia Registrato: Concorso #{latest['concorso']} Spia {best_spy['spy']}")
+                print(f"[*] Nuovo Segnale Spia Dinamica Registrato: Concorso #{latest['concorso']} Spia {best_spy['spy']}")
 
                 cfg = load_telegram_config()
                 min_score = cfg.get('strong_signal_min_score', 50)
                 if best_spy['score'] >= min_score:
                     terzina_str = ' - '.join(str(n) for n in best_spy['top3'])
                     msg = (
-                        f"🔮 SEGNALE FORTE 10eLotto (osservazione)\n\n"
-                        f"Spia uscita: {best_spy['spy']} (concorso #{latest['concorso']}, ore {latest['ora']})\n"
-                        f"Terzina tracciata: {terzina_str}\n"
-                        f"Oro: {best_spy['top_oro']}\n"
-                        f"Power score: {best_spy['score']}"
+                        f"🔮 <b>SEGNALE FORTE 10eLotto (Monitoraggio 5 Colpi)</b>\n\n"
+                        f"Spia uscita: <b>#{best_spy['spy']}</b> (concorso #{latest['concorso']}, ore {latest['ora']})\n"
+                        f"Terzina tracciata: <b>{terzina_str}</b>\n"
+                        f"Oro: <b>{best_spy['top_oro']}</b>\n"
+                        f"Power score: <b>{best_spy['score']}</b>\n\n"
+                        f"📡 <i>Monitoraggio colpo per colpo attivo!</i>"
                     )
                     send_telegram_message(msg)
 
-        # 2. Aggiornamento timeline di tutti i segnali aperti per le 20 estrazioni successive
+        # 3. Aggiornamento timeline di tutti i segnali aperti per le estrazioni successive
         draw_map = {d['concorso']: d for d in draws}
 
         for s in signals:
             start_conc = s['concorso_spia']
             terzina_set = set(s['terzina'])
+            max_colpi = s.get('max_colpi', 5)
 
             timeline = []
             max_p = 0
@@ -380,7 +440,7 @@ def update_signals_tracker(draws):
             primo_terno = None
             oro_ok = False
 
-            for step in range(1, s['max_colpi'] + 1):
+            for step in range(1, max_colpi + 1):
                 target_conc = start_conc + step
                 if target_conc in draw_map:
                     d = draw_map[target_conc]
@@ -412,35 +472,66 @@ def update_signals_tracker(draws):
                 s['stato'] = 'vinto_terno'
             elif primo_ambo is not None:
                 s['stato'] = 'vinto_ambo'
-            elif len(timeline) >= s['max_colpi']:
+            elif len(timeline) >= max_colpi:
                 s['stato'] = 'concluso_vuoto'
             else:
                 s['stato'] = 'in_corso'
 
+            # Notifica LIVE per ciascuno dei 5 colpi
+            notificati = s.setdefault('notifica_colpi_inviati', [])
+            for step_idx, item in enumerate(timeline, start=1):
+                if step_idx <= 5 and step_idx not in notificati:
+                    notificati.append(step_idx)
+                    pts = item['punti']
+                    ha_oro = item['ha_oro']
+                    estr = item['estratti_presi']
+                    estr_str = ', '.join(str(x) for x in estr) if estr else 'nessuno'
+
+                    if pts == 3:
+                        esito_colpo = "🏆 <b>TERNO VINTO!</b>"
+                    elif pts == 2:
+                        esito_colpo = "✅ <b>AMBO VINTO!</b>"
+                    elif pts == 1:
+                        esito_colpo = "1 punto centrato"
+                    else:
+                        esito_colpo = "0 punti"
+                    oro_colpo = " 🥇 <b>ORO!</b>" if ha_oro else ""
+
+                    msg_colpo = (
+                        f"🎯 <b>Colpo {step_idx}/5</b> ➔ Concorso #{item['concorso']} ({item['ora']})\n"
+                        f"• Spia di origine: <b>#{s['spia']}</b>\n"
+                        f"• Terzina seguita: <b>{' - '.join(str(n) for n in s['terzina'])}</b>\n"
+                        f"• Esito: {esito_colpo}{oro_colpo}\n"
+                        f"• Estratti presi: <code>[{estr_str}]</code>"
+                    )
+                    send_telegram_message(msg_colpo)
+
+            # Notifica RIEPILOGO FINALE al termine dei 5 colpi
             if len(timeline) >= 5 and not s.get('notifica_5_colpi_inviata', False):
                 s['notifica_5_colpi_inviata'] = True
                 primi5 = timeline[:5]
                 max_p5 = max(t['punti'] for t in primi5)
                 oro5 = any(t['ha_oro'] for t in primi5)
                 righe = '\n'.join(
-                    f"  #{t['concorso']} (ore {t['ora']}): {t['punti']}/3 punti" + (' 🥇' if t['ha_oro'] else '')
+                    f"  • Colpo {t['colpo']} (#{t['concorso']} - {t['ora']}): {t['punti']}/3 punti" + (' 🥇' if t['ha_oro'] else '')
                     for t in primi5
                 )
                 if max_p5 == 3:
-                    esito = 'TERNO ✅'
+                    esito = '🏆 TERNO VINTO'
                 elif max_p5 == 2:
-                    esito = 'AMBO ✅'
+                    esito = '✅ AMBO VINTO'
                 else:
-                    esito = 'nessuna vincita'
+                    esito = '❌ Nessuna vincita'
                 msg = (
-                    f"📊 Esito 5 colpi - Spia {s['spia']}\n"
-                    f"Terzina giocata: {' - '.join(str(n) for n in s['terzina'])}\n\n"
-                    f"{righe}\n\n"
-                    f"Risultato: {esito}" + (' + Oro 🥇' if oro5 else '')
+                    f"📊 <b>REPORT FINALE 5 COLPI - Spia #{s['spia']}</b>\n"
+                    f"• Terzina giocata: <b>{' - '.join(str(n) for n in s['terzina'])}</b>\n\n"
+                    f"<b>Dettaglio dei 5 colpi:</b>\n{righe}\n\n"
+                    f"🏁 <b>Risultato ciclo:</b> {esito}" + (' + Oro 🥇' if oro5 else '')
                 )
                 send_telegram_message(msg)
 
         save_signals(signals)
+
 
 def get_signals_summary():
     signals = load_signals()
@@ -695,7 +786,7 @@ def get_profiler_100(draws):
         'super_spy_certificata': super_spy
     }
 
-BUILD_VERSION = 1787349900
+BUILD_VERSION = 1787355000
 
 def get_full_analysis():
     live_draws = fetch_draws()

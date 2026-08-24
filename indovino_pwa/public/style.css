@@ -13,11 +13,9 @@
   --font: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  -webkit-tap-highlight-color: transparent;
+html {
+  overflow-anchor: none;
+  scroll-behavior: auto;
 }
 
 body {
@@ -26,9 +24,11 @@ body {
   color: var(--text-primary);
   font-family: var(--font);
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  padding-bottom: 75px;
+  min-height: 100dvh;
+  display: block;
+  padding-bottom: 90px;
+  overflow-x: hidden;
+  overflow-anchor: none;
 }
 
 /* Header */
@@ -93,23 +93,18 @@ main {
   width: 100%;
   margin: 0 auto;
   padding: 16px;
-  flex: 1;
+  display: block;
 }
 
 /* Tab Screens */
 .tab-screen {
   display: none;
-  animation: fadeIn 0.3s ease;
 }
 
 .tab-screen.active {
   display: block;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(6px); }
-  to { opacity: 1; transform: translateY(0); }
-}
 
 /* Glass Card */
 .card {
