@@ -1,5 +1,59 @@
 [
   {
+    "id": "sig30_2026-08-24_240_58",
+    "data": "2026-08-24",
+    "ora": "20:00",
+    "concorso_spia": 240,
+    "spia": 58,
+    "terzina": [
+      34,
+      36,
+      37
+    ],
+    "oro": 34,
+    "power_score": 90.0,
+    "max_colpi": 5,
+    "stato": "in_corso",
+    "colpi_trascorsi": 3,
+    "max_punti": 1,
+    "primo_ambo_colpo": null,
+    "primo_terno_colpo": null,
+    "oro_centrato": false,
+    "timeline": [
+      {
+        "colpo": 1,
+        "concorso": 241,
+        "ora": "20:05",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 2,
+        "concorso": 242,
+        "ora": "20:10",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": []
+      },
+      {
+        "colpo": 3,
+        "concorso": 243,
+        "ora": "20:15",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          36
+        ]
+      }
+    ],
+    "notifica_colpi_inviati": [
+      1,
+      2,
+      3
+    ]
+  },
+  {
     "id": "sig30_2026-08-24_234_87",
     "data": "2026-08-24",
     "ora": "19:30",
