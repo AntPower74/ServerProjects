@@ -295,11 +295,41 @@ function renderSignalsData(data) {
       }
       timelineCont.appendChild(box);
     }
+
+    // Live Financials Active Spy
+    const actSpesa = activeSig.spesa !== undefined ? activeSig.spesa : (activeSig.timeline ? activeSig.timeline.length * 1.0 : 0.0);
+    const actRicavo = activeSig.ricavo !== undefined ? activeSig.ricavo : 0.0;
+    const actNetto = activeSig.netto !== undefined ? activeSig.netto : (actRicavo - actSpesa);
+    
+    const actSEl = document.getElementById('active-spy-spesa');
+    const actREl = document.getElementById('active-spy-ricavo');
+    const actNEl = document.getElementById('active-spy-netto');
+    if (actSEl) actSEl.textContent = `€ ${actSpesa.toFixed(2)}`;
+    if (actREl) actREl.textContent = `€ ${actRicavo.toFixed(2)}`;
+    if (actNEl) {
+      actNEl.textContent = `${actNetto >= 0 ? '+' : ''}€ ${actNetto.toFixed(2)}`;
+      actNEl.style.color = actNetto > 0 ? 'var(--green)' : (actNetto < 0 ? '#f87171' : 'var(--gold)');
+    }
   }
 
   // 2. Popola la Scheda 2 (Registro Segnali 5 Colpi)
   const cont = document.getElementById('signals-list-container');
+
   if (!cont) return;
+
+  // Aggiorna Riepilogo Finanziario Giornaliero
+  if (data.stats) {
+    const sEl = document.getElementById('stats-tot-spesa');
+    const iEl = document.getElementById('stats-tot-incasso');
+    const nEl = document.getElementById('stats-tot-netto');
+    if (sEl) sEl.textContent = `€ ${(data.stats.totale_spesa || 0).toFixed(2)}`;
+    if (iEl) iEl.textContent = `€ ${(data.stats.totale_incasso || 0).toFixed(2)}`;
+    if (nEl) {
+      const net = data.stats.saldo_netto || 0;
+      nEl.textContent = `${net >= 0 ? '+' : ''}€ ${net.toFixed(2)}`;
+      nEl.style.color = net >= 0 ? 'var(--green)' : '#f87171';
+    }
+  }
 
   cont.innerHTML = '';
   if (sigs.length === 0) {
@@ -320,6 +350,11 @@ function renderSignalsData(data) {
 
     const tBalls = s.terzina.map(n => `<span class="ball ball-oro" style="width:28px; height:28px; font-size:0.85rem; display:inline-flex;">${n.toString().padStart(2,'0')}</span>`).join(' ');
     const tText = s.terzina.map(n => n.toString().padStart(2, '0')).join(' - ');
+
+    const spesaVal = s.spesa !== undefined ? s.spesa : (s.timeline ? s.timeline.length * 1.0 : 0.0);
+    const ricavoVal = s.ricavo !== undefined ? s.ricavo : 0.0;
+    const nettoVal = s.netto !== undefined ? s.netto : (ricavoVal - spesaVal);
+    const nettoColor = nettoVal > 0 ? 'var(--green)' : (nettoVal < 0 ? '#f87171' : 'var(--text-muted)');
 
     let tlHtml = '';
     for (let c = 1; c <= 5; c++) {
@@ -350,7 +385,6 @@ function renderSignalsData(data) {
       }
     }
 
-
     card.innerHTML = `
       <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
         <div>
@@ -359,7 +393,7 @@ function renderSignalsData(data) {
         </div>
         <div>${statoBadge}</div>
       </div>
-      <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:10px; background:rgba(0,0,0,0.25); padding:8px 10px; border-radius:8px;">
+      <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:8px; background:rgba(0,0,0,0.25); padding:8px 10px; border-radius:8px;">
         <div style="display:flex; gap:8px; align-items:center;">
           <span style="font-size:0.8rem; color:var(--text-muted);">Terzina:</span>
           ${tBalls}
@@ -367,13 +401,19 @@ function renderSignalsData(data) {
         </div>
         <div style="font-size:0.85rem;">Oro: <strong style="color:var(--gold)">${s.oro}</strong></div>
       </div>
-      <div style="display:flex; gap:6px; overflow-x:auto;">
+      <div style="display:flex; gap:6px; overflow-x:auto; margin-bottom:8px;">
         ${tlHtml}
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:center; background:rgba(0,0,0,0.35); padding:6px 10px; border-radius:8px; font-size:0.8rem; border:1px solid rgba(255,255,255,0.05);">
+        <div>💳 Spesa: <strong style="color:#f87171;">€ ${spesaVal.toFixed(2)}</strong></div>
+        <div>💰 Ricavo: <strong style="color:var(--green);">€ ${ricavoVal.toFixed(2)}</strong></div>
+        <div>⚖️ Netto: <strong style="color:${nettoColor};">${nettoVal >= 0 ? '+' : ''}€ ${nettoVal.toFixed(2)}</strong></div>
       </div>
     `;
     cont.appendChild(card);
   });
 }
+
 
 
 // Archivio Storico
@@ -420,10 +460,29 @@ function filtraArchivio() {
   });
 }
 
-// Avvio applicazione
+// Avvio applicazione con Auto-Refresh Continuo
 document.addEventListener('DOMContentLoaded', () => {
-  fetchLiveData();
+  fetchLiveData(true);
   fetchSignalsData();
-  setInterval(fetchLiveData, 15000);
+
+  // Aggiornamento continuo in background ogni 10 secondi
+  setInterval(() => {
+    fetchLiveData(true);
+    fetchSignalsData();
+  }, 10000);
+
+  // Auto-sync immediato quando l'utente sblocca il telefono o torna sulla pagina
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) {
+      fetchLiveData(true);
+      fetchSignalsData();
+    }
+  });
+
+  window.addEventListener('focus', () => {
+    fetchLiveData(true);
+    fetchSignalsData();
+  });
 });
+
 

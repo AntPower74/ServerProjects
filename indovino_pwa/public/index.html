@@ -27,11 +27,12 @@
       </div>
     </div>
     <div class="header-status">
-      <button onclick="location.reload(true)" style="background:rgba(245,158,11,0.2); border:1px solid var(--gold); color:var(--gold); border-radius:6px; padding:3px 8px; font-size:0.75rem; cursor:pointer; margin-right:6px;">🔄 Aggiorna</button>
-      <span class="status-dot"></span>
-      <span style="font-size:0.78rem;">Prossima: <strong id="next-draw-timer" style="color:var(--cyan)">--:--</strong></span>
+      <span class="status-dot" title="Auto-Sync attivo"></span>
+      <span style="font-size:0.75rem; color:var(--green); font-weight:700;">AUTO-SYNC</span>
+      <span style="font-size:0.78rem; margin-left:6px;">Prossima: <strong id="next-draw-timer" style="color:var(--cyan)">--:--</strong></span>
     </div>
   </header>
+
 
   <!-- Main Content Container -->
   <main>
@@ -83,7 +84,7 @@
           </div>
 
           <div>
-            <div style="font-size:0.85rem; color:var(--text-muted); margin-bottom:6px;">TERZINA D'ORO DA GIOCARE (1,00 €):</div>
+            <div style="font-size:0.85rem; color:var(--text-muted); margin-bottom:6px;">TERZINA DA GIOCARE (1,00 € Base):</div>
             <div class="terzina-display" id="pronostico-terzina">
               <!-- 3 palline terzina -->
             </div>
@@ -91,11 +92,13 @@
           </div>
 
           <div class="strategy-box">
-            <div style="margin-bottom:4px;">👉 <strong>Numero Oro consigliato:</strong> <span id="pronostico-oro" style="color:var(--gold); font-weight:bold; font-size:1.05rem;">--</span></div>
-            <div style="margin-bottom:4px;">👉 <strong>Gestione Colpi:</strong> Segui per <strong>5 estrazioni consecutive</strong> a 1€ a schedina.</div>
+            <div style="margin-bottom:4px;">👉 <strong>Numero Oro consigliato:</strong> <span id="pronostico-oro" style="color:var(--gold); font-weight:bold; font-size:1.05rem;">--</span> (facoltativo)</div>
+            <div style="margin-bottom:4px;">👉 <strong>Gestione Colpi:</strong> Segui per <strong>5 estrazioni consecutive</strong> a <strong>1,00 €</strong> a schedina.</div>
             <div>👉 <strong>Cadenza:</strong> Una nuova Spia viene calcolata esattamente ogni <strong>30 minuti</strong> (alle :00 e :30).</div>
           </div>
         </div>
+
+
 
         <!-- Timeline 5 Colpi del Segnale Attivo -->
         <div style="margin-top:14px; background:rgba(0,0,0,0.3); padding:12px; border-radius:12px; border:1px solid rgba(245,158,11,0.2);">
@@ -106,8 +109,16 @@
           <div id="active-spy-timeline-container" style="display:flex; gap:6px; justify-content:space-between;">
             <!-- 5 box colpi caricati dinamicamente -->
           </div>
+
+          <!-- Riga Finanziaria Spesa & Ricavo Live -->
+          <div style="display:flex; justify-content:space-between; align-items:center; background:rgba(0,0,0,0.35); padding:8px 10px; border-radius:8px; margin-top:10px; font-size:0.82rem; border:1px solid rgba(255,255,255,0.06);">
+            <div>💳 Spesa: <strong id="active-spy-spesa" style="color:#f87171;">€ 0.00</strong></div>
+            <div>💰 Ricavo: <strong id="active-spy-ricavo" style="color:var(--green);">€ 0.00</strong></div>
+            <div>⚖️ Bilancio: <strong id="active-spy-netto" style="color:var(--gold);">€ 0.00</strong></div>
+          </div>
         </div>
       </div>
+
 
 
 
@@ -160,12 +171,29 @@
           <button class="btn btn-outline" style="width:auto; padding:4px 10px; font-size:0.75rem;" onclick="fetchSignalsData()">🔄 Aggiorna</button>
         </div>
         <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:12px;">
-          Elenco storico di tutte le Spie calcolate ogni 30 minuti con la cronologia esatta dei 5 colpi successivi e le vincite realizzate.
+          Elenco storico di tutte le Spie calcolate ogni 30 minuti con la cronologia esatta dei 5 colpi successivi, spesa, ricavo e vincite realizzate.
         </p>
+
+        <!-- Riepilogo Finanziario Giornaliero -->
+        <div id="signals-financial-summary" style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:8px; margin-bottom:14px;">
+          <div style="background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.3); padding:8px 4px; border-radius:8px; text-align:center;">
+            <div style="font-size:0.68rem; color:var(--text-muted); font-weight:700;">💳 SPESA</div>
+            <div id="stats-tot-spesa" style="font-size:0.95rem; font-weight:800; color:#f87171; margin-top:2px;">€ 0.00</div>
+          </div>
+          <div style="background:rgba(16,185,129,0.1); border:1px solid rgba(16,185,129,0.3); padding:8px 4px; border-radius:8px; text-align:center;">
+            <div style="font-size:0.68rem; color:var(--text-muted); font-weight:700;">💰 RICAVO</div>
+            <div id="stats-tot-incasso" style="font-size:0.95rem; font-weight:800; color:var(--green); margin-top:2px;">€ 0.00</div>
+          </div>
+          <div style="background:rgba(6,182,212,0.1); border:1px solid rgba(6,182,212,0.3); padding:8px 4px; border-radius:8px; text-align:center;">
+            <div style="font-size:0.68rem; color:var(--text-muted); font-weight:700;">🚀 NETTO</div>
+            <div id="stats-tot-netto" style="font-size:0.95rem; font-weight:800; color:var(--gold); margin-top:2px;">€ 0.00</div>
+          </div>
+        </div>
         
         <div id="signals-list-container">
           <!-- Caricato dinamicamente via js -->
         </div>
+
       </div>
     </section>
 
@@ -217,9 +245,13 @@
     </div>
   </nav>
 
-  <script src="/app.js?v=12"></script>
+  <script src="/app.js?v=16"></script>
 </body>
 </html>
+
+
+
+
 
 
 

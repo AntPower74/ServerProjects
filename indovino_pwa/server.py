@@ -560,93 +560,30 @@ def get_signals_summary():
     
     for s in signals:
         timeline = s.get('timeline', [])
-        spesa_20 = len(timeline) * 2.0
-        incasso_20 = 0.0
-        
-        # Track cumulative winnings step by step
-        running_win = 0.0
-        running_cost = 0.0
-        
-        colpo_terno = s.get('primo_terno_colpo')
-        colpo_ambo_oro = None
-        colpo_primo_ambo = s.get('primo_ambo_colpo')
-        
-        win_at_terno = 0.0
-        cost_at_terno = 0.0
-        
-        win_at_ambo_oro = 0.0
-        cost_at_ambo_oro = 0.0
+        # Schedina Base = 1,00 € per colpo (senza opzione oro)
+        spesa_signal = float(len(timeline)) * 1.0
+        incasso_signal = 0.0
         
         for item in timeline:
-            step = item['colpo']
-            pts = item['punti']
-            has_oro = item['ha_oro']
+            pts = item.get('punti', 0)
             
-            win = 0.0
             if pts == 2:
-                win = 25.0 if has_oro else 2.0
-                if has_oro and colpo_ambo_oro is None:
-                    colpo_ambo_oro = step
+                incasso_signal += 2.0
             elif pts == 3:
-                win = 130.0 if has_oro else 45.0
+                incasso_signal += 45.0
                 
-            running_win += win
-            running_cost = step * 2.0
-            
-            if colpo_terno is not None and step == colpo_terno:
-                win_at_terno = running_win
-                cost_at_terno = running_cost
-                
-            if colpo_ambo_oro is not None and step == colpo_ambo_oro and win_at_ambo_oro == 0.0:
-                win_at_ambo_oro = running_win
-                cost_at_ambo_oro = running_cost
-                
-        incasso_20 = running_win
-        s['spesa_totale'] = round(spesa_20, 2)
-        s['incasso_totale'] = round(incasso_20, 2)
-        s['netto_totale'] = round(incasso_20 - spesa_20, 2)
+        s['spesa'] = round(spesa_signal, 2)
+        s['ricavo'] = round(incasso_signal, 2)
+        s['netto'] = round(incasso_signal - spesa_signal, 2)
+        s['spesa_totale'] = s['spesa']
+        s['incasso_totale'] = s['ricavo']
+        s['netto_totale'] = s['netto']
         
-        # Take profit logic: priority Terno > Ambo con Oro > Ambo base > Fine ciclo
-        if colpo_terno is not None:
-            s['spesa_take_profit'] = round(cost_at_terno, 2)
-            s['incasso_take_profit'] = round(win_at_terno, 2)
-            s['netto_take_profit'] = round(win_at_terno - cost_at_terno, 2)
-            s['colpo_take_profit'] = colpo_terno
-            s['tipo_tp'] = 'Terno'
-        elif colpo_ambo_oro is not None:
-            s['spesa_take_profit'] = round(cost_at_ambo_oro, 2)
-            s['incasso_take_profit'] = round(win_at_ambo_oro, 2)
-            s['netto_take_profit'] = round(win_at_ambo_oro - cost_at_ambo_oro, 2)
-            s['colpo_take_profit'] = colpo_ambo_oro
-            s['tipo_tp'] = 'Ambo con Oro'
-        elif colpo_primo_ambo is not None:
-            # check up to first ambo
-            cost_a = colpo_primo_ambo * 2.0
-            win_a = 2.0
-            # if 20 draws completed and made more ambi, use total
-            if incasso_20 > spesa_20:
-                s['spesa_take_profit'] = round(spesa_20, 2)
-                s['incasso_take_profit'] = round(incasso_20, 2)
-                s['netto_take_profit'] = round(incasso_20 - spesa_20, 2)
-                s['colpo_take_profit'] = len(timeline)
-                s['tipo_tp'] = 'Multi-Ambi'
-            else:
-                s['spesa_take_profit'] = round(cost_a, 2)
-                s['incasso_take_profit'] = round(win_a, 2)
-                s['netto_take_profit'] = round(win_a - cost_a, 2)
-                s['colpo_take_profit'] = colpo_primo_ambo
-                s['tipo_tp'] = 'Ambo'
-        else:
-            s['spesa_take_profit'] = round(spesa_20, 2)
-            s['incasso_take_profit'] = 0.0
-            s['netto_take_profit'] = round(-spesa_20, 2)
-            s['colpo_take_profit'] = None
-            s['tipo_tp'] = 'Nessuna vincita'
-            
-        tot_spesa_globale += s['spesa_totale']
-        tot_incasso_globale += s['incasso_totale']
-        tot_spesa_tp_globale += s['spesa_take_profit']
-        tot_incasso_tp_globale += s['incasso_take_profit']
+        tot_spesa_globale += s['spesa']
+        tot_incasso_globale += s['ricavo']
+
+
+
         
     stats = {
         'totale_segnali': total,
