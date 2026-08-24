@@ -317,7 +317,7 @@ def get_best_spy(draws):
     if not draws:
         return None
     latest = draws[-1]
-    pred = get_adaptive_spy_prediction(draws, latest)
+    pred = get_adaptive_spy_prediction(draws, latest, load_signals())
     if pred:
         return {
             'spy': pred['spy'],
@@ -349,7 +349,7 @@ ROI_MODELS = {
 }
 
 
-def get_adaptive_spy_prediction(draws, latest):
+def get_adaptive_spy_prediction(draws, latest, recent_history_signals=None):
     if not latest:
         return None
     nums = set(latest.get('numeri', []))
@@ -359,39 +359,63 @@ def get_adaptive_spy_prediction(draws, latest):
     
     # 1. Analisi Baricentro ed Entropia di Decina
     if somma < 910 or n_30 >= n_20:
-        decina_target = '30-39'
+        primary_decina = '30-39'
+        fallback_decina = '20-29'
     else:
-        decina_target = '20-29'
+        primary_decina = '20-29'
+        fallback_decina = '30-39'
         
-    models = ROI_MODELS[decina_target]
-    best_candidate = None
-    best_spy_found = None
-    best_match_score = -1
+    all_models = ROI_MODELS[primary_decina] + ROI_MODELS[fallback_decina]
     
-    for m in models:
+    # 2. Verifica dell'ultima terzina giocata per vietare ripetizioni consecutive (MAI CONSECUTIVE)
+    last_played_terzina = None
+    if recent_history_signals and len(recent_history_signals) > 0:
+        last_played_terzina = tuple(recent_history_signals[0].get('terzina', []))
+
+    # 3. Selezione Candidato con REGOLA ZERO RIPETIZIONI (Rotazione Forzata al 100%)
+    candidates = []
+    for m in all_models:
+        t_tuple = tuple(m['terzina'])
+        if last_played_terzina and t_tuple == last_played_terzina:
+            # VIETATA: la terzina è appena stata giocata, rotazione obbligatoria!
+            continue
+            
         matching_spies = nums.intersection(set(m['spie']))
         if matching_spies:
             match_score = m['score'] + (len(matching_spies) * 5.0)
-            if match_score > best_match_score:
-                best_match_score = match_score
-                best_candidate = m
-                best_spy_found = sorted(list(matching_spies), reverse=True)[0]
-                
-    if not best_candidate:
-        best_candidate = models[0]
+            best_spy = sorted(list(matching_spies), reverse=True)[0]
+            candidates.append({
+                'model': m,
+                'spy': best_spy,
+                'score': match_score,
+                'decina': m.get('nome', '').split()[0]
+            })
+            
+    if candidates:
+        candidates.sort(key=lambda x: x['score'], reverse=True)
+        chosen = candidates[0]
+        best_candidate = chosen['model']
+        best_spy_found = chosen['spy']
+        best_match_score = chosen['score']
+    else:
+        # Se nessuna spia corrisponde, prendi la migliore terzina diversa dalla precedente
+        fresh_models = [m for m in all_models if not last_played_terzina or tuple(m['terzina']) != last_played_terzina]
+        best_candidate = fresh_models[0] if fresh_models else all_models[0]
         best_spy_found = best_candidate['spie'][0]
         best_match_score = best_candidate['score']
+
         
     return {
         'spy': best_spy_found,
         'terzina': best_candidate['terzina'],
         'oro': best_candidate['oro'],
         'score': round(best_match_score, 1),
-        'decina': decina_target,
+        'decina': primary_decina,
         'somma': somma,
         'nome_modello': best_candidate['nome'],
         'desc': f"{best_candidate['nome']} (Spia #{best_spy_found})"
     }
+
 
 def update_signals_tracker(draws):
     if not draws:
@@ -461,7 +485,8 @@ def update_signals_tracker(draws):
         has_active_signal = any(s.get('stato') == 'in_corso' for s in signals)
 
         if not has_active_signal:
-            best = get_adaptive_spy_prediction(draws, latest)
+            best = get_adaptive_spy_prediction(draws, latest, signals)
+
             if best and not any(s.get('concorso_spia') == conc_num for s in signals):
                 sig_id = f"sig_pilot_{today_str}_{conc_num}_{best['spy']}"
                 new_sig = {

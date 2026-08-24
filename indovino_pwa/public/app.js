@@ -24,13 +24,19 @@ function switchTab(tabId) {
   const navBtn = document.querySelector(`[data-tab="${tabId}"]`);
   if (navBtn) navBtn.classList.add('active');
 
+  // Rende istantaneo l'aggiornamento grafico di tutte le schermate
+  if (appData) renderDashboard(appData);
+  if (signalsData) renderSignalsData(signalsData);
+
   if (tabId === 'tab-archivio') {
     caricaArchivioCompleto();
-  } else if (tabId === 'tab-laboratorio') {
-    if (signalsData) renderSignalsData(signalsData);
-    fetchSignalsData();
   }
+  
+  // Sincronizza sempre i dati live in background
+  fetchLiveData(true);
+  fetchSignalsData();
 }
+
 
 
 // Countdown Timer alla prossima estrazione (ogni 5 minuti)
@@ -51,13 +57,14 @@ function updateCountdown() {
     timerEl.textContent = `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
   }
 
-  // Interroga il server allo scoccare esatto dell'estrazione
-  if (diffSec === 299 || diffSec === 290) {
+  // Interroga il server in modo super rapido durante il momento dell'estrazione (ogni secondo)
+  if (diffSec >= 285 || diffSec <= 10) {
     fetchLiveData(true);
     fetchSignalsData();
   }
 }
 setInterval(updateCountdown, 1000);
+
 
 // Caricamento Dati Principali con Diffing
 async function fetchLiveData(force = false) {
@@ -529,18 +536,18 @@ function filtraArchivio() {
   });
 }
 
-// Avvio applicazione con Auto-Refresh Continuo
+// Avvio applicazione con Auto-Refresh Continuo e Immediato
 document.addEventListener('DOMContentLoaded', () => {
   fetchLiveData(true);
   fetchSignalsData();
 
-  // Aggiornamento continuo in background ogni 10 secondi
+  // Aggiornamento continuo ultra-rapido ogni 3 secondi
   setInterval(() => {
     fetchLiveData(true);
     fetchSignalsData();
-  }, 10000);
+  }, 3000);
 
-  // Auto-sync immediato quando l'utente sblocca il telefono o torna sulla pagina
+  // Auto-sync immediato quando l'utente tocca lo schermo o torna sulla pagina
   document.addEventListener('visibilitychange', () => {
     if (!document.hidden) {
       fetchLiveData(true);
@@ -552,6 +559,12 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchLiveData(true);
     fetchSignalsData();
   });
+
+  window.addEventListener('touchstart', () => {
+    fetchLiveData(false);
+    fetchSignalsData();
+  }, { passive: true });
 });
+
 
 
