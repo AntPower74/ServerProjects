@@ -322,8 +322,20 @@ def get_best_spy(draws):
     spies.sort(key=lambda x: x['score'], reverse=True)
     return spies[0] if spies else None
 
-# Mappa Spie Speciali per Pattern geometrico [20-40]
-PATTERN_20_40_SPIES = {
+# Mappa Spie Speciali per Pattern geometrico [1-20 e 20-40]
+PATTERN_SPIES = {
+    # --- Fascia 1 - 20 ---
+    43: {'terzina': [17, 19, 20], 'oro': 17, 'score': 96.0, 'desc': 'Pattern 17-19-20 (Spia #43)'},
+    86: {'terzina': [17, 19, 20], 'oro': 19, 'score': 93.0, 'desc': 'Pattern 17-19-20 (Spia #86)'},
+    89: {'terzina': [14, 16, 17], 'oro': 14, 'score': 95.0, 'desc': 'Pattern 14-16-17 (Spia #89)'},
+    88: {'terzina': [14, 16, 17], 'oro': 16, 'score': 92.0, 'desc': 'Pattern 14-16-17 (Spia #88)'},
+    66: {'terzina': [5, 7, 8],     'oro': 5,  'score': 92.0, 'desc': 'Pattern 05-07-08 (Spia #66)'},
+    67: {'terzina': [3, 5, 6],     'oro': 3,  'score': 93.0, 'desc': 'Pattern 03-05-06 (Spia #67)'},
+    2:  {'terzina': [6, 8, 9],     'oro': 6,  'score': 91.0, 'desc': 'Pattern 06-08-09 (Spia #02)'},
+    10: {'terzina': [2, 4, 5],     'oro': 2,  'score': 92.0, 'desc': 'Pattern 02-04-05 (Spia #10)'},
+    41: {'terzina': [1, 3, 4],     'oro': 1,  'score': 91.0, 'desc': 'Pattern 01-03-04 (Spia #41)'},
+
+    # --- Fascia 20 - 40 ---
     26: {'terzina': [20, 22, 23], 'oro': 20, 'score': 95.0, 'desc': 'Pattern 20-22-23 (Spia #26)'},
     73: {'terzina': [20, 22, 23], 'oro': 22, 'score': 92.0, 'desc': 'Pattern 20-22-23 (Spia #73)'},
     87: {'terzina': [26, 28, 29], 'oro': 26, 'score': 94.0, 'desc': 'Pattern 26-28-29 (Spia #87)'},
@@ -347,11 +359,12 @@ def update_signals_tracker(draws):
         latest = draws[-1]
         today_str = datetime.now().strftime('%Y-%m-%d')
 
-        # 1. Rilevamento Spie Pattern 20-40
-        for spy_num, p_info in PATTERN_20_40_SPIES.items():
+        # 1. Rilevamento Spie Pattern (1-20 e 20-40)
+        for spy_num, p_info in PATTERN_SPIES.items():
             if spy_num in latest['numeri']:
                 sig_id = f"pat_{today_str}_{latest['concorso']}_{spy_num}"
                 if not any(s.get('id') == sig_id for s in signals):
+
                     new_sig = {
                         'id': sig_id,
                         'data': today_str,
