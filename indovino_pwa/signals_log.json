@@ -1,5 +1,99 @@
 [
   {
+    "id": "sig_pilot_2026-08-24_265_56",
+    "data": "2026-08-24",
+    "ora": "22:05",
+    "concorso_spia": 265,
+    "spia": 56,
+    "terzina": [
+      30,
+      33,
+      34
+    ],
+    "oro": 33,
+    "power_score": 120.0,
+    "decina": "30-39",
+    "nome_modello": "Consecutivo Stretto 30-33-34",
+    "max_colpi": 5,
+    "stato": "in_corso",
+    "colpi_trascorsi": 2,
+    "max_punti": 1,
+    "primo_ambo_colpo": null,
+    "primo_terno_colpo": null,
+    "oro_centrato": false,
+    "timeline": [
+      {
+        "colpo": 1,
+        "concorso": 266,
+        "ora": "22:10",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          30
+        ],
+        "tutti_estratti": [
+          1,
+          7,
+          9,
+          16,
+          21,
+          25,
+          30,
+          32,
+          42,
+          49,
+          52,
+          67,
+          71,
+          74,
+          76,
+          78,
+          80,
+          82,
+          83,
+          84
+        ],
+        "oro": 84,
+        "doppio_oro": 67
+      },
+      {
+        "colpo": 2,
+        "concorso": 267,
+        "ora": "22:15",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          33
+        ],
+        "tutti_estratti": [
+          4,
+          8,
+          10,
+          11,
+          19,
+          27,
+          33,
+          35,
+          46,
+          48,
+          52,
+          59,
+          64,
+          65,
+          66,
+          67,
+          71,
+          73,
+          75,
+          88
+        ],
+        "oro": 75,
+        "doppio_oro": 35
+      }
+    ],
+    "notifica_colpi_inviati": []
+  },
+  {
     "id": "sig_pilot_2026-08-24_260_76",
     "data": "2026-08-24",
     "ora": "21:40",
@@ -15,8 +109,8 @@
     "decina": "30-39",
     "nome_modello": "Consecutivo Stretto 21-28-29",
     "max_colpi": 5,
-    "stato": "in_corso",
-    "colpi_trascorsi": 3,
+    "stato": "concluso_vuoto",
+    "colpi_trascorsi": 5,
     "max_punti": 1,
     "primo_ambo_colpo": null,
     "primo_terno_colpo": null,
@@ -119,6 +213,72 @@
         ],
         "oro": 68,
         "doppio_oro": 36
+      },
+      {
+        "colpo": 4,
+        "concorso": 264,
+        "ora": "22:00",
+        "punti": 1,
+        "ha_oro": false,
+        "estratti_presi": [
+          21
+        ],
+        "tutti_estratti": [
+          3,
+          9,
+          10,
+          12,
+          20,
+          21,
+          25,
+          26,
+          31,
+          53,
+          54,
+          57,
+          60,
+          63,
+          64,
+          67,
+          75,
+          79,
+          85,
+          87
+        ],
+        "oro": 12,
+        "doppio_oro": 85
+      },
+      {
+        "colpo": 5,
+        "concorso": 265,
+        "ora": "22:05",
+        "punti": 0,
+        "ha_oro": false,
+        "estratti_presi": [],
+        "tutti_estratti": [
+          7,
+          9,
+          10,
+          11,
+          12,
+          16,
+          19,
+          20,
+          23,
+          27,
+          32,
+          34,
+          42,
+          56,
+          58,
+          64,
+          67,
+          71,
+          72,
+          84
+        ],
+        "oro": 7,
+        "doppio_oro": 16
       }
     ],
     "notifica_colpi_inviati": []
