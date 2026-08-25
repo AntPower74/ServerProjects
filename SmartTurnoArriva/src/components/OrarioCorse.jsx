@@ -596,10 +596,9 @@ const OrarioCorse = () => {
               width: isTurno ? '56px' : '44px',
               minWidth: isTurno ? '56px' : '44px',
               maxWidth: isTurno ? '56px' : '44px',
-              position: isTurno ? 'sticky' : isStickyTop ? 'sticky' : 'static',
-              top: isStickyTop ? 0 : 'auto',
+              position: isTurno ? 'sticky' : 'static',
               left: isTurno ? 0 : 'auto',
-              zIndex: isTurno ? (isStickyTop ? 40 : 30) : isMatched ? 25 : (isStickyTop ? 20 : 5),
+              zIndex: isTurno ? 30 : isMatched ? 15 : 1,
               height: isTurno ? 'auto' : '122px',
               boxShadow: isMatched ? 'inset 0 0 10px rgba(245, 166, 35, 0.3)' : 'none',
               boxSizing: 'border-box'

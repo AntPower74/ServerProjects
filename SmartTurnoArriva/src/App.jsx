@@ -600,73 +600,72 @@ function App() {
     <div className="app-container">
       <div className="app-fade-in">
       <div className="header">
-        <div className="header-title-container">
+        <div className="header-top-bar">
           <div className="header-logo">
             <img src="/icon-512.png" alt="" className="header-logo-img" />
-            SmartTurnoArriva
+            <span>SmartTurnoArriva</span>
           </div>
 
-          <button
-            type="button"
-            className="theme-toggle-btn"
-            onClick={() => setTheme(t => t === 'dark' ? 'light' : 'dark')}
-            title={theme === 'dark' ? 'Passa al tema chiaro' : 'Passa al tema scuro'}
-          >
-            {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-          </button>
+          <div className="header-actions">
+            {/* Campanella Notifiche */}
+            <div className="notif-wrapper">
+              <button
+                type="button"
+                className={`theme-toggle-btn ${notifEnabled ? 'is-active' : ''}`}
+                onClick={() => setIsNotifMenuOpen(!isNotifMenuOpen)}
+                disabled={notifBusy}
+                title={notifEnabled ? `Notifiche attive: avviso ${getOffsetLabel(notifOffset)} prima` : "Attiva notifiche"}
+              >
+                {notifEnabled ? <Bell size={18} /> : <BellOff size={18} />}
+              </button>
+              {isNotifMenuOpen && (
+                <div className="notif-dropdown" style={{ position: 'absolute', top: '100%', right: 0, marginTop: '0.5rem', background: 'var(--bg-card)', border: '1px solid var(--border-color)', borderRadius: '8px', zIndex: 100, minWidth: '180px', boxShadow: '0 4px 12px rgba(0,0,0,0.5)', overflowY: 'auto', maxHeight: '300px' }}>
+                  {!notifEnabled ? (
+                    <>
+                      <div style={{ padding: '0.75rem 1rem', fontSize: '0.85rem', color: 'var(--text-muted)', borderBottom: '1px solid var(--border-color)', fontWeight: 'bold' }}>Attiva avviso prima:</div>
+                      {notifOptions.map(mins => (
+                        <div key={mins} onClick={() => { setNotifOffset(mins); enableNotifications(); setIsNotifMenuOpen(false); }} style={{ padding: '0.75rem 1rem', cursor: 'pointer', borderBottom: '1px solid rgba(255,255,255,0.05)' }} className="notif-menu-item">
+                          {getOffsetLabel(mins)}
+                        </div>
+                      ))}
+                    </>
+                  ) : (
+                    <>
+                      <div onClick={() => {
+                        setNotifEnabled(false);
+                        setIsNotifMenuOpen(false);
+                        if (!Capacitor.isNativePlatform()) {
+                          alert("Icona disattivata. Ricorda però che i turni esportati nel Calendario vanno rimossi manualmente dall'app Calendario.");
+                        }
+                      }} style={{ padding: '0.75rem 1rem', cursor: 'pointer', color: 'var(--accent-red)', borderBottom: '1px solid var(--border-color)', fontWeight: 'bold' }} className="notif-menu-item">
+                        Disattiva notifiche
+                      </div>
+                      <div style={{ padding: '0.75rem 1rem', fontSize: '0.85rem', color: 'var(--text-muted)', borderBottom: '1px solid var(--border-color)', fontWeight: 'bold' }}>Modifica preavviso:</div>
+                      {notifOptions.map(mins => (
+                        <div key={mins} onClick={() => { setNotifOffset(mins); setIsNotifMenuOpen(false); }} style={{ padding: '0.75rem 1rem', cursor: 'pointer', background: notifOffset === mins ? 'rgba(56, 189, 248, 0.15)' : 'transparent', color: notifOffset === mins ? 'var(--accent-cyan)' : 'inherit', borderBottom: '1px solid rgba(255,255,255,0.05)' }} className="notif-menu-item">
+                          {getOffsetLabel(mins)} {notifOffset === mins && '✓'}
+                        </div>
+                      ))}
+                    </>
+                  )}
+                </div>
+              )}
+            </div>
 
-          <div style={{ position: 'absolute', top: 'env(safe-area-inset-top, 0px)', right: '44px', zIndex: 20 }}>
+            {/* Switch Chiaro / Scuro */}
             <button
               type="button"
-              className={`theme-toggle-btn ${notifEnabled ? 'is-active' : ''}`}
-              style={{ position: 'relative', top: 'auto', right: 'auto', zIndex: 'auto' }}
-              onClick={() => setIsNotifMenuOpen(!isNotifMenuOpen)}
-              disabled={notifBusy}
-              title={notifEnabled ? `Notifiche attive: avviso ${getOffsetLabel(notifOffset)} prima` : "Attiva notifiche"}
+              className="theme-toggle-btn"
+              onClick={() => setTheme(t => t === 'dark' ? 'light' : 'dark')}
+              title={theme === 'dark' ? 'Passa al tema chiaro' : 'Passa al tema scuro'}
             >
-              {notifEnabled ? <Bell size={18} /> : <BellOff size={18} />}
+              {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
             </button>
-            {isNotifMenuOpen && (
-              <div className="notif-dropdown" style={{ position: 'absolute', top: '100%', right: 0, marginTop: '0.5rem', background: 'var(--bg-card)', border: '1px solid var(--border-color)', borderRadius: '8px', zIndex: 100, minWidth: '180px', boxShadow: '0 4px 12px rgba(0,0,0,0.5)', overflowY: 'auto', maxHeight: '300px' }}>
-                {!notifEnabled ? (
-                  <>
-                    <div style={{ padding: '0.75rem 1rem', fontSize: '0.85rem', color: 'var(--text-muted)', borderBottom: '1px solid var(--border-color)', fontWeight: 'bold' }}>Attiva avviso prima:</div>
-                    {notifOptions.map(mins => (
-                      <div key={mins} onClick={() => { setNotifOffset(mins); enableNotifications(); setIsNotifMenuOpen(false); }} style={{ padding: '0.75rem 1rem', cursor: 'pointer', borderBottom: '1px solid rgba(255,255,255,0.05)' }} className="notif-menu-item">
-                        {getOffsetLabel(mins)}
-                      </div>
-                    ))}
-                  </>
-                ) : (
-                  <>
-                    <div onClick={() => {
-                      setNotifEnabled(false);
-                      setIsNotifMenuOpen(false);
-                      if (!Capacitor.isNativePlatform()) {
-                        alert("Icona disattivata. Ricorda però che i turni esportati nel Calendario vanno rimossi manualmente dall'app Calendario.");
-                      }
-                    }} style={{ padding: '0.75rem 1rem', cursor: 'pointer', color: 'var(--accent-red)', borderBottom: '1px solid var(--border-color)', fontWeight: 'bold' }} className="notif-menu-item">
-                      Disattiva notifiche
-                    </div>
-                    <div style={{ padding: '0.75rem 1rem', fontSize: '0.85rem', color: 'var(--text-muted)', borderBottom: '1px solid var(--border-color)', fontWeight: 'bold' }}>Modifica preavviso:</div>
-                    {notifOptions.map(mins => (
-                      <div key={mins} onClick={() => { setNotifOffset(mins); setIsNotifMenuOpen(false); }} style={{ padding: '0.75rem 1rem', cursor: 'pointer', background: notifOffset === mins ? 'rgba(56, 189, 248, 0.15)' : 'transparent', color: notifOffset === mins ? 'var(--accent-cyan)' : 'inherit', borderBottom: '1px solid rgba(255,255,255,0.05)' }} className="notif-menu-item">
-                        {getOffsetLabel(mins)} {notifOffset === mins && '✓'}
-                      </div>
-                    ))}
-                  </>
-                )}
-              </div>
-            )}
           </div>
+        </div>
 
-          {activeTab === 'search' && <SearchTrips />}
-          {activeTab === 'orariocorse' && <OrarioCorse />}
-          {activeTab === 'cartellini' && <Cartellini />}
-          {activeTab === 'arriva' && <ArrivaServices onNoticeCountUpdate={setArrivaNoticesCount} />}
-
-          {activeTab === 'shifts' && (
-            <div className="filters-container" style={{display: 'flex', gap: '0.65rem', width: '100%', maxWidth: '800px', flexDirection: 'column'}}>
+        {activeTab === 'shifts' && (
+          <div className="filters-container" style={{display: 'flex', gap: '0.65rem', width: '100%', maxWidth: '800px', flexDirection: 'column'}}>
             
               {/* 1. Nome Autista (con selettore / cerca autista rapido) */}
               <div style={{ width: '100%', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
@@ -868,9 +867,12 @@ function App() {
           )}
         </div>
 
-      </div>
+        {activeTab === 'search' && <SearchTrips />}
+        {activeTab === 'orariocorse' && <OrarioCorse />}
+        {activeTab === 'cartellini' && <Cartellini />}
+        {activeTab === 'arriva' && <ArrivaServices onNoticeCountUpdate={setArrivaNoticesCount} />}
 
-      {activeTab === 'shifts' && (
+        {activeTab === 'shifts' && (
       <>
       {viewMode === 'today' && (
         <TodayShiftModal
