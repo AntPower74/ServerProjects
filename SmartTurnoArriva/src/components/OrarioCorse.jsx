@@ -659,10 +659,11 @@ const OrarioCorse = () => {
           if (stickyCell) stickyCell.style.background = stickyBg;
         }}
       >
-        {/* Colonna TURNO Sticky con Griglia */}
+        {/* Colonna TURNO Sticky con Griglia Centrata */}
         <td style={{
-          padding: '2px 4px',
+          padding: '0',
           textAlign: 'center',
+          verticalAlign: 'middle',
           position: 'sticky',
           left: 0,
           background: stickyBg,
@@ -670,35 +671,47 @@ const OrarioCorse = () => {
           width: '56px',
           minWidth: '56px',
           maxWidth: '56px',
+          height: '28px',
           borderRight: '2px solid rgba(245, 166, 35, 0.4)',
           borderBottom: '1px solid rgba(255,255,255,0.12)',
           fontWeight: '800',
           boxSizing: 'border-box',
           transition: 'background 0.1s'
         }}>
-          {hasTurno ? (
-            <span style={{
-              background: rowItem.isReturn ? 'rgba(16, 185, 129, 0.22)' : 'rgba(245, 166, 35, 0.22)',
-              border: rowItem.isReturn ? '1px solid rgba(16, 185, 129, 0.5)' : '1px solid rgba(245, 166, 35, 0.5)',
-              color: rowItem.isReturn ? '#34d399' : 'var(--accent-orange)',
-              padding: '1px 4px',
-              borderRadius: '4px',
-              fontSize: '0.68rem',
-              fontWeight: '800',
-              display: 'inline-block',
-              letterSpacing: '-0.02em',
-              whiteSpace: 'nowrap'
-            }}>
-              {turnoCode}
-            </span>
-          ) : (
-            <span style={{ color: 'rgba(255,255,255,0.25)', fontSize: '0.65rem' }}>
-              {turnoCode || '—'}
-            </span>
-          )}
+          <div style={{
+            width: '100%',
+            height: '100%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            textAlign: 'center'
+          }}>
+            {hasTurno ? (
+              <span style={{
+                background: rowItem.isReturn ? 'rgba(16, 185, 129, 0.22)' : 'rgba(245, 166, 35, 0.22)',
+                border: rowItem.isReturn ? '1px solid rgba(16, 185, 129, 0.5)' : '1px solid rgba(245, 166, 35, 0.5)',
+                color: rowItem.isReturn ? '#34d399' : 'var(--accent-orange)',
+                padding: '2px 4px',
+                borderRadius: '4px',
+                fontSize: '0.68rem',
+                fontWeight: '800',
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                letterSpacing: '-0.02em',
+                whiteSpace: 'nowrap'
+              }}>
+                {turnoCode}
+              </span>
+            ) : (
+              <span style={{ color: 'rgba(255,255,255,0.25)', fontSize: '0.65rem' }}>
+                {turnoCode || '—'}
+              </span>
+            )}
+          </div>
         </td>
 
-        {/* Colonne Fermate a Griglia con Spazio e Contrasto (44px fisse) */}
+        {/* Colonne Fermate a Griglia Centrate Perfettamente (44px fisse) */}
         {rowItem.cells.map((cellVal, j) => {
           const val = cleanDisplayTime(cellVal);
           const isStopValid = val !== '' && val !== '—' && val !== '-';
@@ -709,11 +722,13 @@ const OrarioCorse = () => {
             <td
               key={j}
               style={{
-                padding: '2px 4px',
+                padding: '0',
                 textAlign: 'center',
+                verticalAlign: 'middle',
                 width: '44px',
                 minWidth: '44px',
                 maxWidth: '44px',
+                height: '28px',
                 boxSizing: 'border-box',
                 background: isColMatched 
                   ? (isStopValid ? 'rgba(245, 166, 35, 0.26)' : 'rgba(245, 166, 35, 0.12)')
@@ -734,7 +749,17 @@ const OrarioCorse = () => {
                 boxShadow: isColMatched && isStopValid ? 'inset 0 0 4px rgba(245, 166, 35, 0.2)' : 'none'
               }}
             >
-              {isStopValid ? val : '—'}
+              <div style={{
+                width: '100%',
+                height: '100%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                textAlign: 'center',
+                margin: '0 auto'
+              }}>
+                {isStopValid ? val : '—'}
+              </div>
             </td>
           );
         })}

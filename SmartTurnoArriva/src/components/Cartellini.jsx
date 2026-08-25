@@ -94,6 +94,8 @@ const Cartellini = () => {
       minHeight: '100vh',
       paddingBottom: '80px',
       width: '100%',
+      maxWidth: '800px',
+      margin: '0 auto',
       minWidth: 0,
       boxSizing: 'border-box',
       overflowX: 'hidden'

@@ -600,7 +600,7 @@ function App() {
     <div className="app-container">
       <div className="app-fade-in">
       <div className="header">
-        <div className="header-top-bar">
+        <div className="header-top-bar" style={{ maxWidth: '800px', margin: '0 auto' }}>
           <div className="header-logo">
             <img src="/icon-512.png" alt="" className="header-logo-img" />
             <span>SmartTurnoArriva</span>
@@ -665,7 +665,7 @@ function App() {
         </div>
 
         {activeTab === 'shifts' && (
-          <div className="filters-container" style={{display: 'flex', gap: '0.65rem', width: '100%', maxWidth: '800px', flexDirection: 'column'}}>
+          <div className="filters-container" style={{display: 'flex', gap: '0.65rem', width: '100%', maxWidth: '800px', margin: '0 auto', flexDirection: 'column'}}>
             
               {/* 1. Nome Autista (con selettore / cerca autista rapido) */}
               <div style={{ width: '100%', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
@@ -883,11 +883,11 @@ function App() {
         />
       )}
       {viewMode === 'personal' && (
-      <div className="timeline-container">
+      <div className="timeline-container" style={{ maxWidth: '800px', margin: '0 auto 2rem auto' }}>
         <div className="timeline-header">
-          <div className="timeline-cell header-cell">Data</div>
-          <div className="timeline-cell header-cell">Turno</div>
-          <div className="timeline-cell header-cell">Orario</div>
+          <div className="timeline-cell header-cell" style={{ textAlign: 'center', justifyContent: 'center' }}>Data</div>
+          <div className="timeline-cell header-cell" style={{ textAlign: 'center', justifyContent: 'center' }}>Turno</div>
+          <div className="timeline-cell header-cell" style={{ textAlign: 'center', justifyContent: 'center' }}>Orario</div>
         </div>
 
         {filteredShifts.length === 0 ? (
@@ -1016,7 +1016,7 @@ function App() {
       )}
 
       {viewMode === 'depot' && (
-        <div className="depot-view-container" style={{ overflowX: 'auto', borderRadius: '8px', border: '1px solid var(--border-color)', backgroundColor: 'var(--bg-card)', marginBottom: '2rem' }}>
+        <div className="depot-view-container" style={{ maxWidth: '1000px', margin: '0 auto 2rem auto', overflowX: 'auto', borderRadius: '8px', border: '1px solid var(--border-color)', backgroundColor: 'var(--bg-card)' }}>
           <table style={{ width: '100%', borderCollapse: 'collapse', whiteSpace: 'nowrap' }}>
             <thead>
               <tr>
