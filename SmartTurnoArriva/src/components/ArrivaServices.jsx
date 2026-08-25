@@ -1381,10 +1381,10 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
   };
 
   return (
-    <div className="arriva-services-container" style={{ width: '100%', maxWidth: '900px', margin: '0 auto', paddingBottom: '5rem' }}>
+    <div className="arriva-services-container">
       
       {/* Hero Header */}
-      <div style={{
+      <div className="arriva-hero-card" style={{
         background: 'linear-gradient(135deg, rgba(6, 182, 212, 0.15) 0%, rgba(245, 166, 35, 0.12) 100%)',
         border: '1px solid var(--border-color)',
         borderRadius: '16px',
@@ -1395,28 +1395,30 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
         gap: '0.75rem',
         boxShadow: '0 4px 20px rgba(0,0,0,0.15)'
       }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.5rem' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.75rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', minWidth: 0 }}>
             <div style={{
-              width: '42px', height: '42px', borderRadius: '12px',
+              width: '40px', height: '40px', borderRadius: '12px',
               background: 'linear-gradient(135deg, #0891b2, #0284c7)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
-              color: '#fff', boxShadow: '0 4px 12px rgba(8, 145, 178, 0.3)'
+              color: '#fff', boxShadow: '0 4px 12px rgba(8, 145, 178, 0.3)',
+              flexShrink: 0
             }}>
-              <Bus size={24} />
+              <Bus size={22} />
             </div>
-            <div>
-              <h2 style={{ fontSize: '1.2rem', fontWeight: '700', color: 'var(--text-main)', margin: 0, display: 'flex', alignItems: 'center', gap: '6px' }}>
-                Arriva Italia <span style={{ fontSize: '0.8rem', padding: '2px 8px', background: 'rgba(245, 166, 35, 0.2)', color: 'var(--accent-orange)', borderRadius: '12px', border: '1px solid rgba(245, 166, 35, 0.4)' }}>Viaggia & MyPay</span>
+            <div style={{ minWidth: 0 }}>
+              <h2 style={{ fontSize: '1.15rem', fontWeight: '700', color: 'var(--text-main)', margin: 0, display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap' }}>
+                <span>Arriva Italia</span>
+                <span style={{ fontSize: '0.75rem', padding: '2px 8px', background: 'rgba(245, 166, 35, 0.2)', color: 'var(--accent-orange)', borderRadius: '12px', border: '1px solid rgba(245, 166, 35, 0.4)', whiteSpace: 'nowrap' }}>Viaggia & MyPay</span>
               </h2>
-              <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', margin: 0 }}>
-                Calcolo percorso, orari in tempo reale, ricerca turno e tariffe ufficiali
+              <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)', margin: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                Calcolo percorso, orari in tempo reale, ricerca turno e tariffe
               </p>
             </div>
           </div>
 
           {/* Area Selector + Tabellario Button */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
             <button
               type="button"
               onClick={() => setShowFaresModal(true)}
@@ -1431,7 +1433,8 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
                 color: 'var(--accent-green)',
                 fontWeight: '700',
                 fontSize: '0.82rem',
-                cursor: 'pointer'
+                cursor: 'pointer',
+                whiteSpace: 'nowrap'
               }}
             >
               <BookOpen size={15} />
@@ -1459,31 +1462,15 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
         </div>
 
         {/* Sub-navigation tabs */}
-        <div style={{
-          display: 'flex',
-          gap: '0.5rem',
-          overflowX: 'auto',
-          paddingTop: '0.5rem',
-          borderTop: '1px solid rgba(255,255,255,0.06)'
-        }}>
+        <div className="arriva-subtabs-bar">
           <button
             onClick={() => setActiveSubTab('travel')}
+            className="arriva-subtab-btn"
             style={{
-              flex: '1 1 auto',
-              padding: '8px 14px',
-              borderRadius: '8px',
               border: activeSubTab === 'travel' ? '1px solid var(--accent-orange)' : '1px solid var(--border-color)',
               background: activeSubTab === 'travel' ? 'var(--accent-orange)' : 'var(--bg-card)',
               color: activeSubTab === 'travel' ? '#121214' : 'var(--text-main)',
-              fontWeight: activeSubTab === 'travel' ? '700' : '500',
-              fontSize: '0.85rem',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '6px',
-              cursor: 'pointer',
-              whiteSpace: 'nowrap',
-              transition: 'all 0.2s ease'
+              fontWeight: activeSubTab === 'travel' ? '700' : '500'
             }}
           >
             <Compass size={16} />
@@ -1492,22 +1479,12 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
 
           <button
             onClick={() => setActiveSubTab('notices')}
+            className="arriva-subtab-btn"
             style={{
-              flex: '1 1 auto',
-              padding: '8px 14px',
-              borderRadius: '8px',
               border: activeSubTab === 'notices' ? '1px solid var(--accent-orange)' : '1px solid var(--border-color)',
               background: activeSubTab === 'notices' ? 'var(--accent-orange)' : 'var(--bg-card)',
               color: activeSubTab === 'notices' ? '#121214' : 'var(--text-main)',
-              fontWeight: activeSubTab === 'notices' ? '700' : '500',
-              fontSize: '0.85rem',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '6px',
-              cursor: 'pointer',
-              whiteSpace: 'nowrap',
-              transition: 'all 0.2s ease'
+              fontWeight: activeSubTab === 'notices' ? '700' : '500'
             }}
           >
             <Bell size={16} />
@@ -1528,47 +1505,26 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
 
           <button
             onClick={() => setActiveSubTab('lines')}
+            className="arriva-subtab-btn"
             style={{
-              flex: '1 1 auto',
-              padding: '8px 14px',
-              borderRadius: '8px',
               border: activeSubTab === 'lines' ? '1px solid var(--accent-orange)' : '1px solid var(--border-color)',
               background: activeSubTab === 'lines' ? 'var(--accent-orange)' : 'var(--bg-card)',
               color: activeSubTab === 'lines' ? '#121214' : 'var(--text-main)',
-              fontWeight: activeSubTab === 'lines' ? '700' : '500',
-              fontSize: '0.85rem',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '6px',
-              cursor: 'pointer',
-              whiteSpace: 'nowrap',
-              transition: 'all 0.2s ease'
+              fontWeight: activeSubTab === 'lines' ? '700' : '500'
             }}
           >
             <FileText size={16} />
             <span>Linee & Orari PDF</span>
           </button>
 
-
           <button
             onClick={() => setActiveSubTab('mypay')}
+            className="arriva-subtab-btn"
             style={{
-              flex: '1 1 auto',
-              padding: '8px 14px',
-              borderRadius: '8px',
               border: activeSubTab === 'mypay' ? '1px solid var(--accent-orange)' : '1px solid var(--border-color)',
               background: activeSubTab === 'mypay' ? 'var(--accent-orange)' : 'var(--bg-card)',
               color: activeSubTab === 'mypay' ? '#121214' : 'var(--text-main)',
-              fontWeight: activeSubTab === 'mypay' ? '700' : '500',
-              fontSize: '0.85rem',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '6px',
-              cursor: 'pointer',
-              whiteSpace: 'nowrap',
-              transition: 'all 0.2s ease'
+              fontWeight: activeSubTab === 'mypay' ? '700' : '500'
             }}
           >
             <Smartphone size={16} />
@@ -1577,22 +1533,12 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
 
           <button
             onClick={() => setActiveSubTab('info')}
+            className="arriva-subtab-btn"
             style={{
-              flex: '1 1 auto',
-              padding: '8px 14px',
-              borderRadius: '8px',
               border: activeSubTab === 'info' ? '1px solid var(--accent-orange)' : '1px solid var(--border-color)',
               background: activeSubTab === 'info' ? 'var(--accent-orange)' : 'var(--bg-card)',
               color: activeSubTab === 'info' ? '#121214' : 'var(--text-main)',
-              fontWeight: activeSubTab === 'info' ? '700' : '500',
-              fontSize: '0.85rem',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '6px',
-              cursor: 'pointer',
-              whiteSpace: 'nowrap',
-              transition: 'all 0.2s ease'
+              fontWeight: activeSubTab === 'info' ? '700' : '500'
             }}
           >
             <Info size={16} />
@@ -1608,7 +1554,7 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
           
           {/* Main Card */}
-          <div style={{
+          <div className="arriva-hero-card" style={{
             background: 'var(--bg-card)',
             border: '1px solid var(--accent-cyan)',
             borderRadius: '16px',
@@ -1620,60 +1566,35 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
           }}>
             
             {/* Search Mode Switch Tabs */}
-            <div style={{
-              display: 'flex',
-              gap: '6px',
-              background: 'rgba(255,255,255,0.03)',
-              padding: '4px',
-              borderRadius: '12px',
-              border: '1px solid var(--border-color)'
-            }}>
+            <div className="arriva-mode-switcher">
               <button
                 type="button"
                 onClick={() => setPlannerMode('route')}
+                className="arriva-mode-btn"
                 style={{
-                  flex: 1,
-                  padding: '9px 12px',
-                  borderRadius: '9px',
-                  border: 'none',
                   background: plannerMode === 'route' ? 'linear-gradient(135deg, #0891b2, #0284c7)' : 'transparent',
                   color: plannerMode === 'route' ? '#fff' : 'var(--text-muted)',
-                  fontWeight: plannerMode === 'route' ? '700' : '500',
-                  fontSize: '0.85rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '6px',
-                  cursor: 'pointer',
-                  transition: 'all 0.2s'
+                  fontWeight: plannerMode === 'route' ? '700' : '500'
                 }}
               >
-                <Navigation size={16} />
-                <span>Calcola Percorso (Fermate)</span>
+                <Navigation size={15} style={{ flexShrink: 0 }} />
+                <span className="arriva-mode-label-desktop">Calcola Percorso (Fermate)</span>
+                <span className="arriva-mode-label-mobile">Calcola Percorso</span>
               </button>
 
               <button
                 type="button"
                 onClick={() => setPlannerMode('turni')}
+                className="arriva-mode-btn"
                 style={{
-                  flex: 1,
-                  padding: '9px 12px',
-                  borderRadius: '9px',
-                  border: 'none',
                   background: plannerMode === 'turni' ? 'linear-gradient(135deg, #f5a623, #d97706)' : 'transparent',
                   color: plannerMode === 'turni' ? '#121214' : 'var(--text-muted)',
-                  fontWeight: plannerMode === 'turni' ? '700' : '500',
-                  fontSize: '0.85rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '6px',
-                  cursor: 'pointer',
-                  transition: 'all 0.2s'
+                  fontWeight: plannerMode === 'turni' ? '700' : '500'
                 }}
               >
-                <UserCheck size={16} />
-                <span>Cerca Turno, Deposito & Corsa</span>
+                <UserCheck size={15} style={{ flexShrink: 0 }} />
+                <span className="arriva-mode-label-desktop">Cerca Turno, Deposito & Corsa</span>
+                <span className="arriva-mode-label-mobile">Cerca Turno</span>
               </button>
             </div>
 
@@ -1682,9 +1603,9 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
             {/* =================================================================== */}
             {plannerMode === 'route' && (
               <form onSubmit={handleSearchSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                  <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', margin: 0 }}>
-                    Inserisci fermata di partenza e arrivo per visualizzare orari e prima corsa disponibile
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px' }}>
+                  <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)', margin: 0, lineHeight: 1.35 }}>
+                    Inserisci fermata di partenza e arrivo per visualizzare orari e prima corsa
                   </p>
 
                   {(origin || destination) && (
@@ -1692,7 +1613,7 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
                       type="button"
                       onClick={() => { setOrigin(''); setDestination(''); }}
                       style={{
-                        background: 'transparent', border: 'none', color: 'var(--text-muted)', fontSize: '0.78rem', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '4px'
+                        background: 'transparent', border: 'none', color: 'var(--text-muted)', fontSize: '0.78rem', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '4px', flexShrink: 0
                       }}
                     >
                       <X size={14} />
@@ -1718,16 +1639,17 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
                           setIsOriginOpen(true);
                         }}
                         onFocus={() => setIsOriginOpen(true)}
-                        placeholder="Da dove parti? (es. Torino Porta Susa, Malpensa, Pinerolo...)"
+                        placeholder="Da dove parti? (es. Porta Susa, Malpensa...)"
                         style={{
                           flex: 1,
                           background: 'rgba(255,255,255,0.03)',
                           border: '1px solid var(--border-color)',
                           borderRadius: '10px',
-                          padding: '11px 14px',
+                          padding: '10px 14px',
                           color: 'var(--text-main)',
-                          fontSize: '0.9rem',
-                          outline: 'none'
+                          fontSize: '0.88rem',
+                          outline: 'none',
+                          minWidth: 0
                         }}
                       />
                       {origin && (
@@ -1742,7 +1664,7 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
                     {/* Origin Dropdown Autocomplete */}
                     {isOriginOpen && filteredOriginStops.length > 0 && (
                       <div style={{
-                        position: 'absolute', top: '100%', left: '26px', right: 0,
+                        position: 'absolute', top: '100%', left: 0, right: 0,
                         background: 'var(--bg-card)', border: '1px solid var(--accent-cyan)',
                         borderRadius: '10px', maxHeight: '220px', overflowY: 'auto',
                         zIndex: 100, boxShadow: '0 10px 25px rgba(0,0,0,0.5)', marginTop: '4px'
@@ -1772,7 +1694,7 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
                             onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(6, 182, 212, 0.15)'}
                             onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
                           >
-                            <MapPin size={14} style={{ color: 'var(--accent-cyan)' }} />
+                            <MapPin size={14} style={{ color: 'var(--accent-cyan)', flexShrink: 0 }} />
                             <span>{stop}</span>
                           </div>
                         ))}
@@ -1818,16 +1740,17 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
                           setIsDestOpen(true);
                         }}
                         onFocus={() => setIsDestOpen(true)}
-                        placeholder="Dove vuoi arrivare? (es. Torino Caselle Airport, Aosta...)"
+                        placeholder="Dove vuoi arrivare? (es. Caselle Airport, Aosta...)"
                         style={{
                           flex: 1,
                           background: 'rgba(255,255,255,0.03)',
                           border: '1px solid var(--border-color)',
                           borderRadius: '10px',
-                          padding: '11px 14px',
+                          padding: '10px 14px',
                           color: 'var(--text-main)',
-                          fontSize: '0.9rem',
-                          outline: 'none'
+                          fontSize: '0.88rem',
+                          outline: 'none',
+                          minWidth: 0
                         }}
                       />
                       {destination && (
@@ -1842,7 +1765,7 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
                     {/* Destination Dropdown Autocomplete */}
                     {isDestOpen && filteredDestStops.length > 0 && (
                       <div style={{
-                        position: 'absolute', top: '100%', left: '26px', right: 0,
+                        position: 'absolute', top: '100%', left: 0, right: 0,
                         background: 'var(--bg-card)', border: '1px solid var(--accent-orange)',
                         borderRadius: '10px', maxHeight: '220px', overflowY: 'auto',
                         zIndex: 100, boxShadow: '0 10px 25px rgba(0,0,0,0.5)', marginTop: '4px'
@@ -1862,7 +1785,7 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
                             onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(245, 166, 35, 0.15)'}
                             onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
                           >
-                            <MapPin size={14} style={{ color: 'var(--accent-orange)' }} />
+                            <MapPin size={14} style={{ color: 'var(--accent-orange)', flexShrink: 0 }} />
                             <span>{stop}</span>
                           </div>
                         ))}
@@ -1918,14 +1841,15 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
                   
                   {/* Row 1: Tendina Selezione Orario */}
                   <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flex: '1 1 250px' }}>
-                      <Clock size={16} style={{ color: 'var(--accent-cyan)' }} />
-                      <span style={{ fontSize: '0.8rem', fontWeight: 'bold', color: 'var(--text-main)' }}>Visualizzazione Orari:</span>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flex: '1 1 220px', minWidth: 0 }}>
+                      <Clock size={15} style={{ color: 'var(--accent-cyan)', flexShrink: 0 }} />
                       <select
                         value={timeViewMode}
                         onChange={(e) => setTimeViewMode(e.target.value)}
                         style={{
                           flex: 1,
+                          width: '100%',
+                          minWidth: 0,
                           background: 'var(--bg-card)',
                           color: 'var(--text-main)',
                           border: '1px solid var(--border-color)',
@@ -1969,7 +1893,7 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
                       <Calendar size={14} style={{ color: 'var(--accent-cyan)' }} />
                       <span>Giorno:</span>
                     </label>
-                    <div style={{ position: 'relative', flex: 1 }}>
+                    <div style={{ position: 'relative', flex: 1, minWidth: 0 }}>
                       <select
                         id="calendar-day-select"
                         value={dayFilter}
@@ -1985,7 +1909,8 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
                           color: dayFilter === 'today' ? '#10b981' : 'var(--text-main)',
                           cursor: 'pointer',
                           appearance: 'none',
-                          WebkitAppearance: 'none'
+                          WebkitAppearance: 'none',
+                          minWidth: 0
                         }}
                       >
                         <option value="today">{todayOptionLabel}</option>
@@ -2307,35 +2232,35 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
                               </div>
 
                               {/* Departure -> Arrival Times Hero */}
-                              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: 'rgba(0,0,0,0.2)', padding: '8px 12px', borderRadius: '8px' }}>
-                                <div style={{ display: 'flex', flexDirection: 'column' }}>
-                                  <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>Partenza</span>
-                                  <span style={{ fontSize: '1.25rem', fontWeight: '800', color: '#10b981' }}>
+                              <div className="arriva-times-hero" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: 'rgba(0,0,0,0.2)', padding: '8px 12px', borderRadius: '8px', gap: '6px' }}>
+                                <div style={{ display: 'flex', flexDirection: 'column', flex: 1, minWidth: 0 }}>
+                                  <span style={{ fontSize: '0.68rem', color: 'var(--text-muted)' }}>Partenza</span>
+                                  <span style={{ fontSize: '1.2rem', fontWeight: '800', color: '#10b981', lineHeight: 1.2 }}>
                                     {res.departureTime}
                                   </span>
-                                  <span style={{ fontSize: '0.72rem', color: 'var(--text-main)', maxWidth: '140px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                                  <span style={{ fontSize: '0.72rem', color: 'var(--text-main)', width: '100%', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                                     {formatStopDisplayName(res.fromName)}
                                   </span>
                                 </div>
 
-                                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2px' }}>
+                                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2px', flexShrink: 0, padding: '0 4px' }}>
                                   {res.durationMins !== null && (
-                                    <span style={{ fontSize: '0.72rem', fontWeight: 'bold', color: 'var(--accent-orange)' }}>
+                                    <span style={{ fontSize: '0.72rem', fontWeight: 'bold', color: 'var(--accent-orange)', whiteSpace: 'nowrap' }}>
                                       ⏱️ {formatDuration(res.durationMins)}
                                     </span>
                                   )}
-                                  <ArrowRight size={16} style={{ color: 'var(--text-muted)' }} />
-                                  <span style={{ fontSize: '0.65rem', color: 'var(--text-muted)' }}>
+                                  <ArrowRight size={15} style={{ color: 'var(--text-muted)' }} />
+                                  <span style={{ fontSize: '0.65rem', color: 'var(--text-muted)', whiteSpace: 'nowrap' }}>
                                     {res.intermediateStops.length <= 2 ? 'Corsa Diretta' : `${res.intermediateStops.length - 1} fermate`}
                                   </span>
                                 </div>
 
-                                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
-                                  <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>Arrivo</span>
-                                  <span style={{ fontSize: '1.25rem', fontWeight: '800', color: 'var(--accent-cyan)' }}>
+                                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', flex: 1, minWidth: 0 }}>
+                                  <span style={{ fontSize: '0.68rem', color: 'var(--text-muted)' }}>Arrivo</span>
+                                  <span style={{ fontSize: '1.2rem', fontWeight: '800', color: 'var(--accent-cyan)', lineHeight: 1.2 }}>
                                     {res.arrivalTime}
                                   </span>
-                                  <span style={{ fontSize: '0.72rem', color: 'var(--text-main)', maxWidth: '140px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', textAlign: 'right' }}>
+                                  <span style={{ fontSize: '0.72rem', color: 'var(--text-main)', width: '100%', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', textAlign: 'right' }}>
                                     {formatStopDisplayName(res.toName)}
                                   </span>
                                 </div>
@@ -2635,19 +2560,19 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', background: 'rgba(0,0,0,0.25)', padding: '10px 12px', borderRadius: '10px' }}>
                               
                               {/* 1. Tratta 1 (Partenza) */}
-                              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                                  <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#10b981' }} />
-                                  <div style={{ display: 'flex', flexDirection: 'column' }}>
-                                    <span style={{ fontSize: '0.8rem', fontWeight: '700', color: 'var(--text-main)' }}>
+                              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '6px' }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flex: 1, minWidth: 0 }}>
+                                  <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#10b981', flexShrink: 0 }} />
+                                  <div style={{ display: 'flex', flexDirection: 'column', minWidth: 0, flex: 1 }}>
+                                    <span style={{ fontSize: '0.8rem', fontWeight: '700', color: 'var(--text-main)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                                       1ª Tratta: Linea {res.leg1.line} {res.leg1.fare ? `(${res.leg1.fare.price})` : ''}
                                     </span>
-                                    <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>
+                                    <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                                       Da {formatStopDisplayName(res.leg1.fromName)}
                                     </span>
                                   </div>
                                 </div>
-                                <span style={{ fontSize: '0.9rem', fontWeight: '800', color: '#10b981' }}>
+                                <span style={{ fontSize: '0.85rem', fontWeight: '800', color: '#10b981', flexShrink: 0 }}>
                                   {res.leg1.departureTime} ➔ {res.leg1.arrivalTime}
                                 </span>
                               </div>
@@ -2687,7 +2612,7 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
                                     <span>
                                       {expandedTransferLegs[res.tripId]
                                         ? 'Nascondi fermate'
-                                        : `Vedi tutte le fermate (${(res.leg1.intermediateStops?.length || 0) + (res.leg2.intermediateStops?.length || 0)} fermate con coincidenza)`}
+                                        : `Vedi tutte le fermate (${(res.leg1.intermediateStops?.length || 0) + (res.leg2.intermediateStops?.length || 0)} fermate)`}
                                     </span>
                                     <ChevronDown size={12} style={{ transform: expandedTransferLegs[res.tripId] ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }} />
                                   </button>
@@ -2779,19 +2704,19 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
                               </div>
 
                               {/* 3. Tratta 2 (Arrivo) */}
-                              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                                  <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--accent-cyan)' }} />
-                                  <div style={{ display: 'flex', flexDirection: 'column' }}>
-                                    <span style={{ fontSize: '0.8rem', fontWeight: '700', color: 'var(--text-main)' }}>
+                              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '6px' }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flex: 1, minWidth: 0 }}>
+                                  <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--accent-cyan)', flexShrink: 0 }} />
+                                  <div style={{ display: 'flex', flexDirection: 'column', minWidth: 0, flex: 1 }}>
+                                    <span style={{ fontSize: '0.8rem', fontWeight: '700', color: 'var(--text-main)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                                       2ª Tratta: Linea {res.leg2.line} {res.leg2.fare ? `(${res.leg2.fare.price})` : ''}
                                     </span>
-                                    <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>
+                                    <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                                       Verso {formatStopDisplayName(res.leg2.toName)}
                                     </span>
                                   </div>
                                 </div>
-                                <span style={{ fontSize: '0.9rem', fontWeight: '800', color: 'var(--accent-cyan)' }}>
+                                <span style={{ fontSize: '0.85rem', fontWeight: '800', color: 'var(--accent-cyan)', flexShrink: 0 }}>
                                   {res.leg2.departureTime} ➔ {res.leg2.arrivalTime}
                                 </span>
                               </div>
@@ -3192,21 +3117,21 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
                                             </div>
 
                                             {/* Route & Times */}
-                                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'var(--bg-card-hover)', border: '1px solid var(--border-color)', padding: '6px 10px', borderRadius: '8px' }}>
-                                              <div style={{ display: 'flex', flexDirection: 'column', maxWidth: '42%' }}>
+                                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'var(--bg-card-hover)', border: '1px solid var(--border-color)', padding: '6px 10px', borderRadius: '8px', gap: '6px' }}>
+                                              <div style={{ display: 'flex', flexDirection: 'column', flex: 1, minWidth: 0 }}>
                                                 <span style={{ fontSize: '0.68rem', color: 'var(--text-muted)' }}>Partenza</span>
-                                                <span style={{ fontSize: '1.1rem', fontWeight: '800', color: '#10b981' }}>{c.partenza}</span>
-                                                <span style={{ fontSize: '0.72rem', color: 'var(--text-main)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                                                <span style={{ fontSize: '1.1rem', fontWeight: '800', color: '#10b981', lineHeight: 1.2 }}>{c.partenza}</span>
+                                                <span style={{ fontSize: '0.72rem', color: 'var(--text-main)', width: '100%', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                                                   {fromClean}
                                                 </span>
                                               </div>
 
-                                              <ArrowRight size={16} style={{ color: 'var(--text-muted)' }} />
+                                              <ArrowRight size={15} style={{ color: 'var(--text-muted)', flexShrink: 0 }} />
 
-                                              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', maxWidth: '42%' }}>
+                                              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', flex: 1, minWidth: 0 }}>
                                                 <span style={{ fontSize: '0.68rem', color: 'var(--text-muted)' }}>Arrivo</span>
-                                                <span style={{ fontSize: '1.1rem', fontWeight: '800', color: 'var(--accent-cyan)' }}>{c.arrivo}</span>
-                                                <span style={{ fontSize: '0.72rem', color: 'var(--text-main)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', textAlign: 'right' }}>
+                                                <span style={{ fontSize: '1.1rem', fontWeight: '800', color: 'var(--accent-cyan)', lineHeight: 1.2 }}>{c.arrivo}</span>
+                                                <span style={{ fontSize: '0.72rem', color: 'var(--text-main)', width: '100%', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', textAlign: 'right' }}>
                                                   {toClean}
                                                 </span>
                                               </div>
@@ -4115,15 +4040,15 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              padding: '1rem'
+              padding: '0.75rem'
             }}>
-              <div style={{
+              <div className="arriva-modal-card" style={{
                 background: 'var(--bg-card)',
                 border: '1px solid var(--border-color)',
                 borderRadius: '16px',
                 width: '100%',
                 maxWidth: '650px',
-                maxHeight: '85vh',
+                maxHeight: '88vh',
                 display: 'flex',
                 flexDirection: 'column',
                 overflow: 'hidden',
@@ -4157,7 +4082,7 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
                       Data pubblicazione: <strong>{formatDate(selectedNotice.date)}</strong>
                     </span>
                     {selectedNotice.lines && selectedNotice.lines.length > 0 && (
-                      <div style={{ display: 'flex', gap: '4px' }}>
+                      <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap' }}>
                         {selectedNotice.lines.map(l => (
                           <span key={l} style={{ fontSize: '0.75rem', fontWeight: 'bold', padding: '2px 8px', borderRadius: '6px', background: 'rgba(245,166,35,0.15)', color: 'var(--accent-orange)' }}>
                             Linea {l}
@@ -4167,18 +4092,18 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
                     )}
                   </div>
 
-                  <h3 style={{ fontSize: '1.1rem', fontWeight: '700', color: 'var(--text-main)', marginBottom: '1rem', lineHeight: 1.4 }}>
+                  <h3 style={{ fontSize: '1.05rem', fontWeight: '700', color: 'var(--text-main)', marginBottom: '1rem', lineHeight: 1.4 }}>
                     {selectedNotice.title}
                   </h3>
 
                   {selectedNotice.content ? (
                     <div 
                       className="arriva-notice-html"
-                      style={{ fontSize: '0.9rem', lineHeight: 1.6, color: 'var(--text-main)' }}
+                      style={{ fontSize: '0.88rem', lineHeight: 1.6, color: 'var(--text-main)' }}
                       dangerouslySetInnerHTML={{ __html: selectedNotice.content }}
                     />
                   ) : (
-                    <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>
+                    <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)' }}>
                       {selectedNotice.excerpt || 'Nessun dettaglio aggiuntivo nel testo del comunicato.'}
                     </p>
                   )}
@@ -4190,6 +4115,8 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
                   display: 'flex',
                   justifyContent: 'space-between',
                   alignItems: 'center',
+                  flexWrap: 'wrap',
+                  gap: '8px',
                   background: 'rgba(255,255,255,0.02)'
                 }}>
                   {selectedNotice.link && (
@@ -4220,7 +4147,8 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
                       padding: '6px 16px',
                       color: 'var(--text-main)',
                       fontSize: '0.85rem',
-                      cursor: 'pointer'
+                      cursor: 'pointer',
+                      marginLeft: 'auto'
                     }}
                   >
                     Chiudi
@@ -4237,8 +4165,8 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
       {/* ========================================================================= */}
       {activeSubTab === 'lines' && (
         <div>
-          <div style={{ display: 'flex', gap: '0.75rem', marginBottom: '1rem', alignItems: 'center' }}>
-            <div style={{ position: 'relative', flex: 1 }}>
+          <div style={{ display: 'flex', gap: '0.75rem', marginBottom: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
+            <div style={{ position: 'relative', flex: '1 1 220px', minWidth: 0 }}>
               <Search size={16} style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
               <input
                 type="text"
@@ -4277,7 +4205,8 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
                 padding: '9px 14px',
                 color: 'var(--text-main)',
                 fontSize: '0.85rem',
-                cursor: loadingLines ? 'not-allowed' : 'pointer'
+                cursor: loadingLines ? 'not-allowed' : 'pointer',
+                flexShrink: 0
               }}
             >
               <RefreshCw size={14} className={loadingLines ? 'animate-spin' : ''} />
@@ -4305,7 +4234,7 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
               <p style={{ fontSize: '0.85rem' }}>Verifica il termine di ricerca inserito o l'area selezionata.</p>
             </div>
           ) : (
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '0.75rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 280px), 1fr))', gap: '0.75rem' }}>
               {filteredLines.map((line) => (
                 <div
                   key={line.id}
@@ -4366,7 +4295,8 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
                           color: 'var(--accent-orange)',
                           fontSize: '0.75rem',
                           fontWeight: '600',
-                          textDecoration: 'none'
+                          textDecoration: 'none',
+                          whiteSpace: 'nowrap'
                         }}
                       >
                         <FileText size={14} />
@@ -4392,7 +4322,8 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
                           border: '1px solid var(--border-color)',
                           color: 'var(--text-main)',
                           fontSize: '0.75rem',
-                          textDecoration: 'none'
+                          textDecoration: 'none',
+                          whiteSpace: 'nowrap'
                         }}
                       >
                         <MapPin size={14} />
@@ -4413,11 +4344,11 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
       {activeSubTab === 'mypay' && (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           
-          <div style={{
+          <div className="arriva-hero-card" style={{
             background: 'linear-gradient(135deg, rgba(8, 145, 178, 0.2) 0%, rgba(28, 28, 31, 0.8) 100%)',
             border: '1px solid var(--accent-cyan)',
             borderRadius: '16px',
-            padding: '1.5rem',
+            padding: '1.25rem',
             display: 'flex',
             flexDirection: 'column',
             gap: '1rem',
@@ -4425,19 +4356,19 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
           }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
               <div style={{
-                width: '54px', height: '54px', borderRadius: '14px',
+                width: '46px', height: '46px', borderRadius: '12px',
                 background: '#0891b2',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 color: '#fff', boxShadow: '0 4px 14px rgba(8, 145, 178, 0.4)',
                 flexShrink: 0
               }}>
-                <Smartphone size={30} />
+                <Smartphone size={26} />
               </div>
               <div>
-                <h3 style={{ fontSize: '1.15rem', fontWeight: '700', color: 'var(--text-main)', margin: '0 0 4px 0' }}>
+                <h3 style={{ fontSize: '1.1rem', fontWeight: '700', color: 'var(--text-main)', margin: '0 0 4px 0' }}>
                   Arriva MyPay
                 </h3>
-                <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', margin: 0 }}>
+                <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', margin: 0 }}>
                   App ufficiale Arriva per titoli di viaggio, tessere, borsellino elettronico e servizi di mobilità.
                 </p>
               </div>
@@ -4449,13 +4380,14 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
                 disabled={launchingApp}
                 style={{
                   flex: '1 1 200px',
+                  width: '100%',
                   background: 'linear-gradient(135deg, #f5a623 0%, #d97706 100%)',
                   border: 'none',
                   borderRadius: '10px',
                   padding: '12px 18px',
                   color: '#121214',
                   fontWeight: '700',
-                  fontSize: '0.95rem',
+                  fontSize: '0.92rem',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -4473,13 +4405,14 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
                 download="Arriva_MyPay.apk"
                 style={{
                   flex: '1 1 200px',
+                  width: '100%',
                   background: 'var(--bg-card)',
                   border: '1px solid var(--border-color)',
                   borderRadius: '10px',
                   padding: '12px 18px',
                   color: 'var(--text-main)',
                   fontWeight: '600',
-                  fontSize: '0.9rem',
+                  fontSize: '0.88rem',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -4498,7 +4431,7 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
             Servizi Online & Portali Arriva
           </h3>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '0.75rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', gap: '0.75rem' }}>
             <a
               href="https://torino.arriva.it/orari-e-linee/"
               target="_blank"
@@ -4588,7 +4521,7 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
       {/* ========================================================================= */}
       {activeSubTab === 'info' && (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-          <div style={{
+          <div className="arriva-hero-card" style={{
             background: 'var(--bg-card)',
             border: '1px solid var(--border-color)',
             borderRadius: '14px',
@@ -4600,19 +4533,19 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
             </h3>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', fontSize: '0.85rem' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid rgba(255,255,255,0.05)', paddingBottom: '6px' }}>
+              <div className="arriva-contact-row">
                 <span style={{ color: 'var(--text-muted)' }}>Sede Arriva Italia - Torino</span>
                 <span style={{ color: 'var(--text-main)', fontWeight: '600' }}>Strada del Portone 145/26, Grugliasco (TO)</span>
               </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid rgba(255,255,255,0.05)', paddingBottom: '6px' }}>
+              <div className="arriva-contact-row">
                 <span style={{ color: 'var(--text-muted)' }}>Call Center & Assistenza</span>
                 <a href="tel:035289000" style={{ color: 'var(--accent-cyan)', textDecoration: 'none', fontWeight: '600' }}>035 28 90 00</a>
               </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid rgba(255,255,255,0.05)', paddingBottom: '6px' }}>
+              <div className="arriva-contact-row">
                 <span style={{ color: 'var(--text-muted)' }}>Biglietteria Autostazione Torino</span>
                 <span style={{ color: 'var(--text-main)', fontWeight: '600' }}>Corso Vittorio Emanuele II 131/H</span>
               </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '6px' }}>
+              <div className="arriva-contact-row">
                 <span style={{ color: 'var(--text-muted)' }}>Portale Reclami & Info</span>
                 <a href="https://torino.arriva.it/contatti-e-assistenza/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-cyan)', textDecoration: 'none', fontWeight: '600' }}>
                   Assistenza Online
@@ -4651,9 +4584,9 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          padding: '1rem'
+          padding: '0.75rem'
         }}>
-          <div style={{
+          <div className="arriva-modal-card" style={{
             background: 'var(--bg-card)',
             border: '1px solid var(--border-color)',
             borderRadius: '18px',
@@ -4700,7 +4633,9 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
               padding: '0.75rem 1.25rem',
               background: 'rgba(255,255,255,0.02)',
               borderBottom: '1px solid rgba(255,255,255,0.05)',
-              overflowX: 'auto'
+              overflowX: 'auto',
+              WebkitOverflowScrolling: 'touch',
+              scrollbarWidth: 'none'
             }}>
               {[
                 { id: 'airport', label: '✈️ Aeroporti (Malpensa & Caselle)' },
@@ -4720,7 +4655,8 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
                     color: faresModalTab === t.id ? '#121214' : 'var(--text-muted)',
                     border: faresModalTab === t.id ? '1px solid var(--accent-cyan)' : '1px solid var(--border-color)',
                     cursor: 'pointer',
-                    whiteSpace: 'nowrap'
+                    whiteSpace: 'nowrap',
+                    flexShrink: 0
                   }}
                 >
                   {t.label}
@@ -4744,34 +4680,36 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
                       <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Prenotazione posto garantito</span>
                     </div>
 
-                    <table style={{ width: '100%', fontSize: '0.82rem', borderCollapse: 'collapse', color: 'var(--text-main)' }}>
-                      <tbody>
-                        <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-                          <td style={{ padding: '6px 0' }}>Corsa Semplice (da Torino Porta Susa / C.so G. Cesare)</td>
-                          <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-green)' }}>22,00 €</td>
-                        </tr>
-                        <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-                          <td style={{ padding: '6px 0' }}>Andata e Ritorno A/R (valido 30 giorni)</td>
-                          <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-orange)' }}>39,00 €</td>
-                        </tr>
-                        <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-                          <td style={{ padding: '6px 0' }}>Corsa Semplice da Chivasso / Carisio (Casello A4)</td>
-                          <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-green)' }}>18,00 €</td>
-                        </tr>
-                        <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-                          <td style={{ padding: '6px 0' }}>Andata e Ritorno A/R da Chivasso / Carisio</td>
-                          <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-orange)' }}>32,00 €</td>
-                        </tr>
-                        <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-                          <td style={{ padding: '6px 0' }}>Carnet 10 Corse (da Torino)</td>
-                          <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700' }}>180,00 € (18 €/corsa)</td>
-                        </tr>
-                        <tr>
-                          <td style={{ padding: '6px 0' }}>Bambini (2-12 anni)</td>
-                          <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700' }}>11,00 €</td>
-                        </tr>
-                      </tbody>
-                    </table>
+                    <div className="arriva-table-scroll">
+                      <table style={{ width: '100%', fontSize: '0.82rem', borderCollapse: 'collapse', color: 'var(--text-main)', minWidth: '380px' }}>
+                        <tbody>
+                          <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+                            <td style={{ padding: '6px 0' }}>Corsa Semplice (da Torino Porta Susa / C.so G. Cesare)</td>
+                            <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-green)' }}>22,00 €</td>
+                          </tr>
+                          <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+                            <td style={{ padding: '6px 0' }}>Andata e Ritorno A/R (valido 30 giorni)</td>
+                            <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-orange)' }}>39,00 €</td>
+                          </tr>
+                          <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+                            <td style={{ padding: '6px 0' }}>Corsa Semplice da Chivasso / Carisio (Casello A4)</td>
+                            <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-green)' }}>18,00 €</td>
+                          </tr>
+                          <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+                            <td style={{ padding: '6px 0' }}>Andata e Ritorno A/R da Chivasso / Carisio</td>
+                            <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-orange)' }}>32,00 €</td>
+                          </tr>
+                          <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+                            <td style={{ padding: '6px 0' }}>Carnet 10 Corse (da Torino)</td>
+                            <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700' }}>180,00 € (18 €/corsa)</td>
+                          </tr>
+                          <tr>
+                            <td style={{ padding: '6px 0' }}>Bambini (2-12 anni)</td>
+                            <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700' }}>11,00 €</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
 
                   {/* Caselle Express */}
@@ -4783,26 +4721,28 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
                       <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Frequenza ogni 15-30 min</span>
                     </div>
 
-                    <table style={{ width: '100%', fontSize: '0.82rem', borderCollapse: 'collapse', color: 'var(--text-main)' }}>
-                      <tbody>
-                        <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-                          <td style={{ padding: '6px 0' }}>Corsa Semplice (MyPay / Tabaccheria / Contactless a bordo)</td>
-                          <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-green)' }}>7,50 €</td>
-                        </tr>
-                        <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-                          <td style={{ padding: '6px 0' }}>Andata e Ritorno A/R</td>
-                          <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-orange)' }}>14,00 €</td>
-                        </tr>
-                        <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-                          <td style={{ padding: '6px 0' }}>Corsa Semplice con Torino+Piemonte Card</td>
-                          <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-green)' }}>5,00 €</td>
-                        </tr>
-                        <tr>
-                          <td style={{ padding: '6px 0' }}>Acquisto a bordo in contanti dal conducente</td>
-                          <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700' }}>8,00 €</td>
-                        </tr>
-                      </tbody>
-                    </table>
+                    <div className="arriva-table-scroll">
+                      <table style={{ width: '100%', fontSize: '0.82rem', borderCollapse: 'collapse', color: 'var(--text-main)', minWidth: '380px' }}>
+                        <tbody>
+                          <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+                            <td style={{ padding: '6px 0' }}>Corsa Semplice (MyPay / Tabaccheria / Contactless a bordo)</td>
+                            <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-green)' }}>7,50 €</td>
+                          </tr>
+                          <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+                            <td style={{ padding: '6px 0' }}>Andata e Ritorno A/R</td>
+                            <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-orange)' }}>14,00 €</td>
+                          </tr>
+                          <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+                            <td style={{ padding: '6px 0' }}>Corsa Semplice con Torino+Piemonte Card</td>
+                            <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-green)' }}>5,00 €</td>
+                          </tr>
+                          <tr>
+                            <td style={{ padding: '6px 0' }}>Acquisto a bordo in contanti dal conducente</td>
+                            <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700' }}>8,00 €</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
 
                 </div>
@@ -4820,37 +4760,39 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
                       </span>
                     </div>
 
-                    <table style={{ width: '100%', fontSize: '0.82rem', borderCollapse: 'collapse', color: 'var(--text-main)' }}>
-                      <thead>
-                        <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.1)', color: 'var(--text-muted)' }}>
-                          <th style={{ textAlign: 'left', padding: '4px 0' }}>Destinazione da Malpensa</th>
-                          <th style={{ textAlign: 'right', padding: '4px 0' }}>Corsa Semplice</th>
-                          <th style={{ textAlign: 'right', padding: '4px 0' }}>Andata & Ritorno (A/R)</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-                          <td style={{ padding: '6px 0' }}>Pont Saint Martin</td>
-                          <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-green)' }}>15,00 €</td>
-                          <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-orange)' }}>28,00 €</td>
-                        </tr>
-                        <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-                          <td style={{ padding: '6px 0' }}>Verrès</td>
-                          <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-green)' }}>17,00 €</td>
-                          <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-orange)' }}>31,00 €</td>
-                        </tr>
-                        <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-                          <td style={{ padding: '6px 0' }}>Châtillon / Saint-Vincent</td>
-                          <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-green)' }}>19,00 €</td>
-                          <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-orange)' }}>34,00 €</td>
-                        </tr>
-                        <tr>
-                          <td style={{ padding: '6px 0' }}>Aosta Autostazione (Piazza Manzetti)</td>
-                          <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-green)' }}>20,00 €</td>
-                          <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-orange)' }}>36,00 €</td>
-                        </tr>
-                      </tbody>
-                    </table>
+                    <div className="arriva-table-scroll">
+                      <table style={{ width: '100%', fontSize: '0.82rem', borderCollapse: 'collapse', color: 'var(--text-main)', minWidth: '400px' }}>
+                        <thead>
+                          <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.1)', color: 'var(--text-muted)' }}>
+                            <th style={{ textAlign: 'left', padding: '4px 0' }}>Destinazione da Malpensa</th>
+                            <th style={{ textAlign: 'right', padding: '4px 0' }}>Corsa Semplice</th>
+                            <th style={{ textAlign: 'right', padding: '4px 0' }}>Andata & Ritorno (A/R)</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+                            <td style={{ padding: '6px 0' }}>Pont Saint Martin</td>
+                            <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-green)' }}>15,00 €</td>
+                            <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-orange)' }}>28,00 €</td>
+                          </tr>
+                          <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+                            <td style={{ padding: '6px 0' }}>Verrès</td>
+                            <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-green)' }}>17,00 €</td>
+                            <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-orange)' }}>31,00 €</td>
+                          </tr>
+                          <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+                            <td style={{ padding: '6px 0' }}>Châtillon / Saint-Vincent</td>
+                            <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-green)' }}>19,00 €</td>
+                            <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-orange)' }}>34,00 €</td>
+                          </tr>
+                          <tr>
+                            <td style={{ padding: '6px 0' }}>Aosta Autostazione (Piazza Manzetti)</td>
+                            <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-green)' }}>20,00 €</td>
+                            <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-orange)' }}>36,00 €</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
 
                   {/* SAVDA Torino Linea 101 */}
@@ -4861,42 +4803,44 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
                       </span>
                     </div>
 
-                    <table style={{ width: '100%', fontSize: '0.82rem', borderCollapse: 'collapse', color: 'var(--text-main)' }}>
-                      <thead>
-                        <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.1)', color: 'var(--text-muted)' }}>
-                          <th style={{ textAlign: 'left', padding: '4px 0' }}>Destinazione da Torino</th>
-                          <th style={{ textAlign: 'right', padding: '4px 0' }}>Corsa Semplice</th>
-                          <th style={{ textAlign: 'right', padding: '4px 0' }}>Andata & Ritorno (A/R)</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-                          <td style={{ padding: '6px 0' }}>Pont Saint Martin</td>
-                          <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-green)' }}>6,50 €</td>
-                          <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-orange)' }}>12,00 €</td>
-                        </tr>
-                        <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-                          <td style={{ padding: '6px 0' }}>Verrès</td>
-                          <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-green)' }}>8,20 €</td>
-                          <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-orange)' }}>15,00 €</td>
-                        </tr>
-                        <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-                          <td style={{ padding: '6px 0' }}>Châtillon / Saint-Vincent</td>
-                          <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-green)' }}>9,40 €</td>
-                          <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-orange)' }}>17,50 €</td>
-                        </tr>
-                        <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-                          <td style={{ padding: '6px 0' }}>Aosta Autostazione</td>
-                          <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-green)' }}>10,70 €</td>
-                          <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-orange)' }}>19,50 €</td>
-                        </tr>
-                        <tr>
-                          <td style={{ padding: '6px 0' }}>Ivrea ↔ Aosta</td>
-                          <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-green)' }}>7,20 €</td>
-                          <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-orange)' }}>13,00 €</td>
-                        </tr>
-                      </tbody>
-                    </table>
+                    <div className="arriva-table-scroll">
+                      <table style={{ width: '100%', fontSize: '0.82rem', borderCollapse: 'collapse', color: 'var(--text-main)', minWidth: '400px' }}>
+                        <thead>
+                          <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.1)', color: 'var(--text-muted)' }}>
+                            <th style={{ textAlign: 'left', padding: '4px 0' }}>Destinazione da Torino</th>
+                            <th style={{ textAlign: 'right', padding: '4px 0' }}>Corsa Semplice</th>
+                            <th style={{ textAlign: 'right', padding: '4px 0' }}>Andata & Ritorno (A/R)</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+                            <td style={{ padding: '6px 0' }}>Pont Saint Martin</td>
+                            <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-green)' }}>6,50 €</td>
+                            <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-orange)' }}>12,00 €</td>
+                          </tr>
+                          <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+                            <td style={{ padding: '6px 0' }}>Verrès</td>
+                            <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-green)' }}>8,20 €</td>
+                            <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-orange)' }}>15,00 €</td>
+                          </tr>
+                          <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+                            <td style={{ padding: '6px 0' }}>Châtillon / Saint-Vincent</td>
+                            <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-green)' }}>9,40 €</td>
+                            <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-orange)' }}>17,50 €</td>
+                          </tr>
+                          <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+                            <td style={{ padding: '6px 0' }}>Aosta Autostazione</td>
+                            <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-green)' }}>10,70 €</td>
+                            <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-orange)' }}>19,50 €</td>
+                          </tr>
+                          <tr>
+                            <td style={{ padding: '6px 0' }}>Ivrea ↔ Aosta</td>
+                            <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-green)' }}>7,20 €</td>
+                            <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-orange)' }}>13,00 €</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
 
                 </div>
@@ -4909,40 +4853,42 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
                     Tariffario chilometrico Regionale TPL Piemonte (Linee 275, 282, 260, 265, 310, 510 e provinciali):
                   </p>
 
-                  <table style={{ width: '100%', fontSize: '0.82rem', borderCollapse: 'collapse', color: 'var(--text-main)' }}>
-                    <thead>
-                      <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.1)', color: 'var(--text-muted)' }}>
-                        <th style={{ textAlign: 'left', padding: '4px 0' }}>Fascia (Distanza km)</th>
-                        <th style={{ textAlign: 'center', padding: '4px 0' }}>Corsa Semplice</th>
-                        <th style={{ textAlign: 'right', padding: '4px 0' }}>Abbonamento Mensile</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {[
-                        { f: 'F1 (1 - 5 km)', cs: '1,70 €', m: '38,00 €' },
-                        { f: 'F2 (5,1 - 10 km)', cs: '2,20 €', m: '47,00 €' },
-                        { f: 'F3 (10,1 - 15 km)', cs: '2,60 €', m: '55,00 €' },
-                        { f: 'F4 (15,1 - 20 km)', cs: '3,10 €', m: '63,00 €' },
-                        { f: 'F5 (20,1 - 25 km)', cs: '3,50 €', m: '70,00 €' },
-                        { f: 'F6 (25,1 - 30 km)', cs: '3,80 €', m: '76,00 €' },
-                        { f: 'F7 (30,1 - 35 km - es. TO-Pinerolo)', cs: '4,60 €', m: '84,00 €' },
-                        { f: 'F8 (35,1 - 40 km)', cs: '4,60 €', m: '89,00 €' },
-                        { f: 'F9 (40,1 - 45 km)', cs: '5,10 €', m: '95,00 €' },
-                        { f: 'F10 (45,1 - 50 km - es. TO-Perosa)', cs: '5,60 €', m: '101,00 €' },
-                        { f: 'F11 (50,1 - 60 km - es. TO-Ivrea)', cs: '6,10 €', m: '108,00 €' },
-                        { f: 'F12 (60,1 - 70 km)', cs: '6,80 €', m: '116,00 €' },
-                        { f: 'F13 (70,1 - 80 km)', cs: '7,50 €', m: '124,00 €' },
-                        { f: 'F14 (80,1 - 90 km - es. TO-Sestriere)', cs: '8,50 €', m: '133,00 €' },
-                        { f: 'F15 (> 90 km)', cs: '9,50 €', m: '142,00 €' }
-                      ].map((r, i) => (
-                        <tr key={i} style={{ borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
-                          <td style={{ padding: '5px 0' }}>{r.f}</td>
-                          <td style={{ padding: '5px 0', textAlign: 'center', fontWeight: '700', color: 'var(--accent-green)' }}>{r.cs}</td>
-                          <td style={{ padding: '5px 0', textAlign: 'right', fontWeight: '600' }}>{r.m}</td>
+                  <div className="arriva-table-scroll">
+                    <table style={{ width: '100%', fontSize: '0.82rem', borderCollapse: 'collapse', color: 'var(--text-main)', minWidth: '380px' }}>
+                      <thead>
+                        <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.1)', color: 'var(--text-muted)' }}>
+                          <th style={{ textAlign: 'left', padding: '4px 0' }}>Fascia (Distanza km)</th>
+                          <th style={{ textAlign: 'center', padding: '4px 0' }}>Corsa Semplice</th>
+                          <th style={{ textAlign: 'right', padding: '4px 0' }}>Abbonamento Mensile</th>
                         </tr>
-                      ))}
-                    </tbody>
-                  </table>
+                      </thead>
+                      <tbody>
+                        {[
+                          { f: 'F1 (1 - 5 km)', cs: '1,70 €', m: '38,00 €' },
+                          { f: 'F2 (5,1 - 10 km)', cs: '2,20 €', m: '47,00 €' },
+                          { f: 'F3 (10,1 - 15 km)', cs: '2,60 €', m: '55,00 €' },
+                          { f: 'F4 (15,1 - 20 km)', cs: '3,10 €', m: '63,00 €' },
+                          { f: 'F5 (20,1 - 25 km)', cs: '3,50 €', m: '70,00 €' },
+                          { f: 'F6 (25,1 - 30 km)', cs: '3,80 €', m: '76,00 €' },
+                          { f: 'F7 (30,1 - 35 km - es. TO-Pinerolo)', cs: '4,60 €', m: '84,00 €' },
+                          { f: 'F8 (35,1 - 40 km)', cs: '4,60 €', m: '89,00 €' },
+                          { f: 'F9 (40,1 - 45 km)', cs: '5,10 €', m: '95,00 €' },
+                          { f: 'F10 (45,1 - 50 km - es. TO-Perosa)', cs: '5,60 €', m: '101,00 €' },
+                          { f: 'F11 (50,1 - 60 km - es. TO-Ivrea)', cs: '6,10 €', m: '108,00 €' },
+                          { f: 'F12 (60,1 - 70 km)', cs: '6,80 €', m: '116,00 €' },
+                          { f: 'F13 (70,1 - 80 km)', cs: '7,50 €', m: '124,00 €' },
+                          { f: 'F14 (80,1 - 90 km - es. TO-Sestriere)', cs: '8,50 €', m: '133,00 €' },
+                          { f: 'F15 (> 90 km)', cs: '9,50 €', m: '142,00 €' }
+                        ].map((r, i) => (
+                          <tr key={i} style={{ borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
+                            <td style={{ padding: '5px 0' }}>{r.f}</td>
+                            <td style={{ padding: '5px 0', textAlign: 'center', fontWeight: '700', color: 'var(--accent-green)' }}>{r.cs}</td>
+                            <td style={{ padding: '5px 0', textAlign: 'right', fontWeight: '600' }}>{r.m}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               )}
 
@@ -4953,52 +4899,54 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
                     Tariffe integrate per viaggiare indistintamente su rete Arriva, GTT urbana/suburbana e treni SFM (Trenitalia):
                   </p>
 
-                  <table style={{ width: '100%', fontSize: '0.82rem', borderCollapse: 'collapse', color: 'var(--text-main)' }}>
-                    <thead>
-                      <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.1)', color: 'var(--text-muted)' }}>
-                        <th style={{ textAlign: 'left', padding: '4px 0' }}>Tipologia Titolo Formula</th>
-                        <th style={{ textAlign: 'center', padding: '4px 0' }}>Validità</th>
-                        <th style={{ textAlign: 'right', padding: '4px 0' }}>Prezzo Corsa</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
-                        <td style={{ padding: '6px 0' }}>City / Formula U (Torino Urbano)</td>
-                        <td style={{ padding: '6px 0', textAlign: 'center' }}>100 min</td>
-                        <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-green)' }}>2,00 €</td>
-                      </tr>
-                      <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
-                        <td style={{ padding: '6px 0' }}>Formula 1 (Zona U + 1 Zona adiacente)</td>
-                        <td style={{ padding: '6px 0', textAlign: 'center' }}>120 min</td>
-                        <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-green)' }}>2,50 €</td>
-                      </tr>
-                      <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
-                        <td style={{ padding: '6px 0' }}>Formula 2 (Zona U + 2 Zone)</td>
-                        <td style={{ padding: '6px 0', textAlign: 'center' }}>150 min</td>
-                        <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-green)' }}>3,20 €</td>
-                      </tr>
-                      <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
-                        <td style={{ padding: '6px 0' }}>Formula 3 (es. Torino + Pinerolo)</td>
-                        <td style={{ padding: '6px 0', textAlign: 'center' }}>180 min</td>
-                        <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-green)' }}>4,30 €</td>
-                      </tr>
-                      <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
-                        <td style={{ padding: '6px 0' }}>Formula 4 (Zone U + 4 Zone)</td>
-                        <td style={{ padding: '6px 0', textAlign: 'center' }}>210 min</td>
-                        <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-green)' }}>5,30 €</td>
-                      </tr>
-                      <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
-                        <td style={{ padding: '6px 0' }}>Daily U (Giornaliero Rete Urbana Torino)</td>
-                        <td style={{ padding: '6px 0', textAlign: 'center' }}>Fino a fine servizio</td>
-                        <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-cyan)' }}>4,50 €</td>
-                      </tr>
-                      <tr>
-                        <td style={{ padding: '6px 0' }}>MultiDaily 7 (7 Giornalieri)</td>
-                        <td style={{ padding: '6px 0', textAlign: 'center' }}>7 giorni a scelta</td>
-                        <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-orange)' }}>21,00 €</td>
-                      </tr>
-                    </tbody>
-                  </table>
+                  <div className="arriva-table-scroll">
+                    <table style={{ width: '100%', fontSize: '0.82rem', borderCollapse: 'collapse', color: 'var(--text-main)', minWidth: '400px' }}>
+                      <thead>
+                        <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.1)', color: 'var(--text-muted)' }}>
+                          <th style={{ textAlign: 'left', padding: '4px 0' }}>Tipologia Titolo Formula</th>
+                          <th style={{ textAlign: 'center', padding: '4px 0' }}>Validità</th>
+                          <th style={{ textAlign: 'right', padding: '4px 0' }}>Prezzo Corsa</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
+                          <td style={{ padding: '6px 0' }}>City / Formula U (Torino Urbano)</td>
+                          <td style={{ padding: '6px 0', textAlign: 'center' }}>100 min</td>
+                          <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-green)' }}>2,00 €</td>
+                        </tr>
+                        <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
+                          <td style={{ padding: '6px 0' }}>Formula 1 (Zona U + 1 Zona adiacente)</td>
+                          <td style={{ padding: '6px 0', textAlign: 'center' }}>120 min</td>
+                          <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-green)' }}>2,50 €</td>
+                        </tr>
+                        <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
+                          <td style={{ padding: '6px 0' }}>Formula 2 (Zona U + 2 Zone)</td>
+                          <td style={{ padding: '6px 0', textAlign: 'center' }}>150 min</td>
+                          <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-green)' }}>3,20 €</td>
+                        </tr>
+                        <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
+                          <td style={{ padding: '6px 0' }}>Formula 3 (es. Torino + Pinerolo)</td>
+                          <td style={{ padding: '6px 0', textAlign: 'center' }}>180 min</td>
+                          <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-green)' }}>4,30 €</td>
+                        </tr>
+                        <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
+                          <td style={{ padding: '6px 0' }}>Formula 4 (Zone U + 4 Zone)</td>
+                          <td style={{ padding: '6px 0', textAlign: 'center' }}>210 min</td>
+                          <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-green)' }}>5,30 €</td>
+                        </tr>
+                        <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
+                          <td style={{ padding: '6px 0' }}>Daily U (Giornaliero Rete Urbana Torino)</td>
+                          <td style={{ padding: '6px 0', textAlign: 'center' }}>Fino a fine servizio</td>
+                          <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-cyan)' }}>4,50 €</td>
+                        </tr>
+                        <tr>
+                          <td style={{ padding: '6px 0' }}>MultiDaily 7 (7 Giornalieri)</td>
+                          <td style={{ padding: '6px 0', textAlign: 'center' }}>7 giorni a scelta</td>
+                          <td style={{ padding: '6px 0', textAlign: 'right', fontWeight: '700', color: 'var(--accent-orange)' }}>21,00 €</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               )}
 
@@ -5011,6 +4959,8 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'center',
+              flexWrap: 'wrap',
+              gap: '8px',
               background: 'rgba(255,255,255,0.02)'
             }}>
               <a
@@ -5040,7 +4990,8 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
                   padding: '6px 16px',
                   color: 'var(--text-main)',
                   fontSize: '0.85rem',
-                  cursor: 'pointer'
+                  cursor: 'pointer',
+                  marginLeft: 'auto'
                 }}
               >
                 Chiudi

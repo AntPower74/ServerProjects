@@ -586,6 +586,130 @@ body {
   }
 }
 
+/* Arriva Services (Viaggia & Arriva) Responsive Styles */
+.arriva-services-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding-bottom: 5rem;
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+.arriva-subtabs-bar {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-top: 0.5rem;
+  padding-bottom: 4px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.arriva-subtabs-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.arriva-subtab-btn {
+  flex: 0 0 auto;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.arriva-mode-switcher {
+  display: flex;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 4px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+}
+
+.arriva-mode-btn {
+  flex: 1 1 0;
+  padding: 9px 12px;
+  border-radius: 9px;
+  border: none;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  min-width: 0;
+}
+
+.arriva-mode-label-desktop {
+  display: inline;
+}
+.arriva-mode-label-mobile {
+  display: none;
+}
+
+.arriva-table-scroll {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.arriva-contact-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding-bottom: 8px;
+  gap: 8px;
+}
+
+@media (max-width: 600px) {
+  .arriva-services-container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .arriva-mode-label-desktop {
+    display: none;
+  }
+  .arriva-mode-label-mobile {
+    display: inline;
+  }
+  .arriva-mode-btn {
+    padding: 8px 6px;
+    font-size: 0.78rem;
+    gap: 4px;
+  }
+  .arriva-subtab-btn {
+    padding: 7px 11px;
+    font-size: 0.8rem;
+    gap: 5px;
+  }
+  .arriva-hero-card {
+    padding: 0.9rem !important;
+    border-radius: 12px !important;
+  }
+  .arriva-contact-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+  .arriva-modal-card {
+    padding: 0 !important;
+    max-height: 92vh !important;
+    border-radius: 14px !important;
+  }
+  .arriva-times-hero {
+    padding: 6px 8px !important;
+  }
+}
+
 
 .fingerprint-glow-ring {
   width: 88px;
