@@ -286,12 +286,28 @@ export const CATEGORY_CLUSTERS = [
     ]
   },
   {
+    id: 'ebike_mobility',
+    match: ['engwe', 'engwei', 'ebike', 'e-bike', 'bici elettrica', 'bicicletta elettrica', 'fat bike', 'fiido', 'ado', 'samebike', 'monopattino', 'xiaomi pro', 'ninebot', 'segway', 'kukirin', 'smartgyro', 'nilox'],
+    name: 'E-Bike, Bici Elettriche, Fat Bike & Monopattini',
+    platform: 'Subito.it (Scambio a mano prioritario a Torino per verifica batteria/motore)',
+    retailMultiplier: 1.8,
+    baseBenchmark: 580,
+    targetMargin: 0.45,
+    liquidity: 'Altissima',
+    liquidityTip: 'Le bici elettriche Engwe e i monopattini elettrici hanno grandissima richiesta a mano a Torino. Verifica sempre salute della batteria e presenza del caricatore originale.',
+    checklist: [
+      'Batteria & Autonomia: controlla stato di carica, voltaggio e assenza di rigonfiamenti',
+      'Motore & Display: accendi e testa accelerazione/pedalata assistita su tutti i livelli',
+      'Freni & Telaio: controlla freni a disco idraulici/meccanici e integrità del telaio pieghevole'
+    ]
+  },
+  {
     id: 'cycling_sport',
-    match: ['bici', 'bicicletta', 'mtb', 'bici da corsa', 'garmin', 'wahoo', 'meilan', 'cycplus', 'igpsport', 'ciclocomputer', 'rulli', 'elite', 'tacx', 'sci', 'snowboard', 'tapis roulant'],
-    name: 'Ciclismo, Rulli Smart & Attrezzatura Sportiva',
+    match: ['bici da corsa', 'mtb', 'bicicletta classica', 'garmin', 'wahoo', 'meilan', 'cycplus', 'igpsport', 'ciclocomputer', 'rulli', 'elite', 'tacx', 'sci', 'snowboard', 'tapis roulant'],
+    name: 'Ciclismo Classico, Rulli Smart & Sensori GPS',
     platform: 'Subito.it a mano a Torino per telai/bici | Vinted per ciclocomputer e sensori',
     retailMultiplier: 2.1,
-    baseBenchmark: 75,
+    baseBenchmark: 120,
     targetMargin: 0.50,
     liquidity: 'Alta',
     liquidityTip: 'I ciclocomputer e gli accessori sportivi si spediscono su Vinted; per biciclette e rulli pesanti punta allo scambio a mano a Torino.',
@@ -333,20 +349,33 @@ export function valutaOggettoUniversale(testoAnnuncio, prezzoManuale) {
   if (prezzoManuale && Number(prezzoManuale) > 0) {
     prezzoRichiesto = Math.round(Number(prezzoManuale))
   } else {
-    const matchBlocco = clean.match(/(?:blocco|tutti|prendi|stock|lotto)[^0-9\n]{0,30}(\d{2,4})\s*(?:€|euro|eur)/i)
-      || clean.match(/(\d{2,4})\s*(?:€|euro|eur)[^0-9\n]{0,30}(?:blocco|tutti|totale)/i)
-      || clean.match(/(?:a soli|prezzo blocco|totale)\s*[:=]?\s*(\d{2,4})\s*(?:€|euro|eur)?/i)
+    const matchBlocco = clean.match(/(?:blocco|tutti|prendi|stock|lotto)[^0-9\n]{0,30}(\d{1,3}(?:\.\d{3})+(?:,\d{1,2})?|\d+(?:[.,]\d{1,2})?)\s*(?:€|euro|eur)/i)
+      || clean.match(/(\d{1,3}(?:\.\d{3})+(?:,\d{1,2})?|\d+(?:[.,]\d{1,2})?)\s*(?:€|euro|eur)[^0-9\n]{0,30}(?:blocco|tutti|totale)/i)
+      || clean.match(/(?:a soli|prezzo blocco|totale)\s*[:=]?\s*(\d{1,3}(?:\.\d{3})+(?:,\d{1,2})?|\d+(?:[.,]\d{1,2})?)\s*(?:€|euro|eur)?/i)
+
+    const parseNum = (str) => {
+      if (!str) return null
+      let p = String(str).trim().replace(/€|eur|euro/gi, '').trim()
+      if (/^\d{1,3}(?:\.\d{3})+(?:,\d{1,2})?$/.test(p)) p = p.replace(/\./g, '').replace(',', '.')
+      else if (/^\d{1,3}\.\d{3}$/.test(p)) p = p.replace(/\./g, '')
+      else if (/^\d+,\d{1,2}$/.test(p)) p = p.replace(',', '.')
+      const n = parseFloat(p)
+      return !isNaN(n) && n > 0 ? n : null
+    }
 
     if (matchBlocco) {
-      prezzoRichiesto = parseInt(matchBlocco[1], 10)
+      prezzoRichiesto = Math.round(parseNum(matchBlocco[1]) || 0)
     } else {
-      const matchPrezzo1 = clean.match(/(?:prezzo|vendo a|cedo a|richiesta|costo)\s*[:=]?\s*(\d{1,4})\s*(?:€|euro|eur)?/i)
-      const matchPrezzo2 = clean.match(/(\d{1,4})\s*(?:€|euro|eur)/i)
+      const matchPrezzo1 = clean.match(/(?:prezzo|vendo a|cedo a|richiesta|costo)\s*[:=]?\s*(\d{1,3}(?:\.\d{3})+(?:,\d{1,2})?|\d+(?:[.,]\d{1,2})?)\s*(?:€|euro|eur)?/i)
+      const matchPrezzo2 = clean.match(/(\d{1,3}(?:\.\d{3})+(?:,\d{1,2})?|\d+(?:[.,]\d{1,2})?)\s*(?:€|euro|eur)/i)
+      const matchPrezzo3 = clean.match(/(?:€|eur)\s*(\d{1,3}(?:\.\d{3})+(?:,\d{1,2})?|\d+(?:[.,]\d{1,2})?)/i)
 
-      if (matchPrezzo1 && parseInt(matchPrezzo1[1], 10) >= 5) {
-        prezzoRichiesto = parseInt(matchPrezzo1[1], 10)
-      } else if (matchPrezzo2 && parseInt(matchPrezzo2[1], 10) >= 5) {
-        prezzoRichiesto = parseInt(matchPrezzo2[1], 10)
+      if (matchPrezzo1 && parseNum(matchPrezzo1[1]) >= 5) {
+        prezzoRichiesto = Math.round(parseNum(matchPrezzo1[1]))
+      } else if (matchPrezzo2 && parseNum(matchPrezzo2[1]) >= 5) {
+        prezzoRichiesto = Math.round(parseNum(matchPrezzo2[1]))
+      } else if (matchPrezzo3 && parseNum(matchPrezzo3[1]) >= 5) {
+        prezzoRichiesto = Math.round(parseNum(matchPrezzo3[1]))
       }
     }
   }

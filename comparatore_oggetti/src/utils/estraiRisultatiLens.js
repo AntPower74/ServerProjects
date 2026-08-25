@@ -23,14 +23,36 @@ function hostnamePulito(url) {
   }
 }
 
+export function pulisciPrezzoItaliano(str) {
+  if (!str) return null
+  let pulito = String(str).trim().replace(/€|eur|euro/gi, '').trim()
+  
+  // Se ha formato "1.199,50" -> togli punti migliaia, virgola diventa punto decimale
+  if (/^\d{1,3}(?:\.\d{3})+(?:,\d{1,2})?$/.test(pulito)) {
+    pulito = pulito.replace(/\./g, '').replace(',', '.')
+  }
+  // Se ha formato "1.199" (migliaia con punto, 3 cifre esatte dopo il punto)
+  else if (/^\d{1,3}\.\d{3}$/.test(pulito)) {
+    pulito = pulito.replace(/\./g, '')
+  }
+  // Se ha formato "1199,50" o "55,00" (virgola decimale)
+  else if (/^\d+,\d{1,2}$/.test(pulito)) {
+    pulito = pulito.replace(',', '.')
+  }
+  // Se ha formato "1 199" con spazio
+  else if (/^\d{1,3}\s+\d{3}$/.test(pulito)) {
+    pulito = pulito.replace(/\s+/g, '')
+  }
+
+  const num = parseFloat(pulito)
+  return !isNaN(num) && num > 0 ? num : null
+}
+
 function estraiPrezzoDaTesto(testo) {
-  // Il simbolo € sta dopo il numero su Google ("90 €") ma spesso prima su
-  // altri siti ("€90"/"€ 90,00" su Marketplace) — proviamo entrambi gli ordini.
-  const corrispondenza = (testo || '').match(/(\d+(?:[.,]\d{1,2})?)\s*€|€\s*(\d+(?:[.,]\d{1,2})?)/)
+  const corrispondenza = (testo || '').match(/(\d{1,3}(?:\.\d{3})+(?:,\d{1,2})?|\d+(?:[.,]\d{1,2})?)\s*€|€\s*(\d{1,3}(?:\.\d{3})+(?:,\d{1,2})?|\d+(?:[.,]\d{1,2})?)/i)
   if (!corrispondenza) return null
   const grezzo = corrispondenza[1] ?? corrispondenza[2]
-  const valore = parseFloat(grezzo.replace(',', '.'))
-  return !isNaN(valore) && valore > 0 ? valore : null
+  return pulisciPrezzoItaliano(grezzo)
 }
 
 // Come .textContent, ma ignora <script>/<style> (che .textContent include per

@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react'
+import React, { useState, useMemo, useEffect, useCallback } from 'react'
 import {
   Target,
   Flame,
@@ -21,10 +21,11 @@ import {
   Shield,
   SlidersHorizontal,
   Eye,
-  EyeOff
+  EyeOff,
+  Loader2
 } from 'lucide-react'
 import { valutaOggettoUniversale } from '../utils/aiEvaluator.js'
-import { estraiRisultatiDaHtml } from '../utils/estraiRisultatiLens.js'
+import { estraiRisultatiDaHtml, pulisciPrezzoItaliano } from '../utils/estraiRisultatiLens.js'
 import { confrontaEAnalizzaLotto, isAccessorio, isCategoriaDisallineata } from '../utils/filtroRumore.js'
 
 function estraiPrezziDaTestoGrezzo(testo) {
@@ -33,16 +34,16 @@ function estraiPrezziDaTestoGrezzo(testo) {
   const annunci = []
   
   // 1. Regex Vinted (es. "Telefono Oppo, Brand: OPPO, Modello: Find X5, Condizioni: Ottime, 100.00 €")
-  const regexVinted = /(.*?),\s*(?:Brand:\s*([^,]+),)?\s*(?:Modello:\s*([^,]+),)?\s*(?:Condizioni:\s*([^,]+),)?\s*(\d+(?:[.,]\d{1,2})?)\s*€/i
+  const regexVinted = /(.*?),\s*(?:Brand:\s*([^,]+),)?\s*(?:Modello:\s*([^,]+),)?\s*(?:Condizioni:\s*([^,]+),)?\s*(\d{1,3}(?:\.\d{3})+(?:,\d{1,2})?|\d+(?:[.,]\d{1,2})?)\s*€/i
   
   // 2. Regex Facebook Marketplace (es. "Smartphone Oppo A74, 55 €, San Giorgio di Piano, annuncio 1354061726834615")
-  const regexMarketplace = /^(.*?),\s*(\d+(?:[.,]\d{1,2})?)\s*€(?:,\s*([^,]+))?(?:,\s*(?:annuncio|id)\s*([a-z0-9_-]+))?$/i
+  const regexMarketplace = /^(.*?),\s*(\d{1,3}(?:\.\d{3})+(?:,\d{1,2})?|\d+(?:[.,]\d{1,2})?)\s*€(?:,\s*([^,]+))?(?:,\s*(?:annuncio|id)\s*([a-z0-9_-]+))?$/i
 
   // 3. Regex Subito / Generico a trattino (es. "Samsung Galaxy S8 64GB - 65 € - Torino")
-  const regexTrattino = /^(.*?)\s*[-–—|]\s*(\d+(?:[.,]\d{1,2})?)\s*€(?:\s*[-–—|]\s*(.*))?$/i
+  const regexTrattino = /^(.*?)\s*[-–—|]\s*(\d{1,3}(?:\.\d{3})+(?:,\d{1,2})?|\d+(?:[.,]\d{1,2})?)\s*€(?:\s*[-–—|]\s*(.*))?$/i
 
-  // 4. Prezzo isolato su una riga (es. "55 €")
-  const regexPrezzoIsolato = /^(\d+(?:[.,]\d{1,2})?)\s*€$/
+  // 4. Prezzo isolato su una riga (es. "1.199 €" o "55 €")
+  const regexPrezzoIsolato = /^(\d{1,3}(?:\.\d{3})+(?:,\d{1,2})?|\d+(?:[.,]\d{1,2})?)\s*€$/i
 
   for (let i = 0; i < linee.length; i++) {
     const linea = linee[i]
@@ -54,9 +55,9 @@ function estraiPrezziDaTestoGrezzo(testo) {
       const brand = matchVinted[2]?.trim() || ''
       const modello = matchVinted[3]?.trim() || ''
       const condizione = matchVinted[4]?.trim() || ''
-      const prezzo = parseFloat(matchVinted[5].replace(',', '.'))
+      const prezzo = pulisciPrezzoItaliano(matchVinted[5])
       
-      if (!isNaN(prezzo) && prezzo > 0) {
+      if (prezzo !== null && prezzo > 0) {
         annunci.push({
           id: `vinted_${annunci.length}_${Date.now()}`,
           titolo: modello ? `${brand} ${modello}`.trim() : (testoDesc.length > 40 ? testoDesc.slice(0, 40) + '...' : testoDesc),
@@ -73,11 +74,11 @@ function estraiPrezziDaTestoGrezzo(testo) {
     const matchMarketplace = linea.match(regexMarketplace)
     if (matchMarketplace) {
       const titolo = matchMarketplace[1]?.trim() || 'Articolo Marketplace'
-      const prezzo = parseFloat(matchMarketplace[2].replace(',', '.'))
+      const prezzo = pulisciPrezzoItaliano(matchMarketplace[2])
       const luogo = matchMarketplace[3]?.trim() || ''
       const idAnnuncio = matchMarketplace[4]?.trim() || ''
 
-      if (!isNaN(prezzo) && prezzo > 0) {
+      if (prezzo !== null && prezzo > 0) {
         annunci.push({
           id: idAnnuncio ? `fb_${idAnnuncio}` : `fb_${annunci.length}_${Date.now()}`,
           titolo,
@@ -93,10 +94,10 @@ function estraiPrezziDaTestoGrezzo(testo) {
     const matchTrattino = linea.match(regexTrattino)
     if (matchTrattino) {
       const titolo = matchTrattino[1]?.trim() || 'Articolo'
-      const prezzo = parseFloat(matchTrattino[2].replace(',', '.'))
+      const prezzo = pulisciPrezzoItaliano(matchTrattino[2])
       const extra = matchTrattino[3]?.trim() || ''
 
-      if (!isNaN(prezzo) && prezzo > 0) {
+      if (prezzo !== null && prezzo > 0) {
         annunci.push({
           id: `subito_${annunci.length}_${Date.now()}`,
           titolo,
@@ -108,20 +109,20 @@ function estraiPrezziDaTestoGrezzo(testo) {
       }
     }
 
-    // Test 4: Prezzo su riga singola isolata
+    // Test 4: Prezzo su riga singola isolata (es. "1.199 €" dopo "Roma (RM)" e "Super fat bike")
     const matchPrezzo = linea.match(regexPrezzoIsolato)
     if (matchPrezzo && i >= 1) {
-      const prezzo = parseFloat(matchPrezzo[1].replace(',', '.'))
-      const possibileCondizione = linee[i - 1]
+      const prezzo = pulisciPrezzoItaliano(matchPrezzo[1])
+      const possibileLuogo = linee[i - 1]
       const possibileTitolo = i >= 2 ? linee[i - 2] : linee[i - 1]
       
-      if (!annunci.some(a => a.prezzo === prezzo && a.titolo === possibileTitolo)) {
+      if (prezzo !== null && prezzo > 0 && !annunci.some(a => a.prezzo === prezzo && a.titolo === possibileTitolo)) {
         annunci.push({
-          id: `multi_${annunci.length}_${Date.now()}`,
+          id: `subito_multi_${annunci.length}_${Date.now()}`,
           titolo: possibileTitolo,
-          descrizione: possibileCondizione !== possibileTitolo ? possibileCondizione : '',
+          descrizione: possibileLuogo !== possibileTitolo ? possibileLuogo : '',
           prezzo,
-          fonte: linea.toLowerCase().includes('facebook') ? 'Marketplace' : 'Vinted'
+          fonte: 'Subito'
         })
       }
     }
@@ -132,6 +133,8 @@ function estraiPrezziDaTestoGrezzo(testo) {
 
 export default function RadarOfferteView({ onCercaSitiEsterni, estensioneInstallata }) {
   const [query, setQuery] = useState('Samsung Galaxy S8')
+  const [inputQuery, setInputQuery] = useState('Samsung Galaxy S8')
+  const [caricandoAuto, setCaricandoAuto] = useState(false)
   const [testoIncollato, setTestoIncollato] = useState('')
   const [mostraBoxIncolla, setMostraBoxIncolla] = useState(false)
   const [annunci, setAnnunci] = useState([])
@@ -142,6 +145,40 @@ export default function RadarOfferteView({ onCercaSitiEsterni, estensioneInstall
   const [affariSalvati, setAffariSalvati] = useState(() => {
     try { return JSON.parse(localStorage.getItem('prezzly_flip_deals') || '[]') } catch { return [] }
   })
+
+  // Ricerca automatica dal vivo multi-marketplace
+  const cercaAnnunciAutomatico = useCallback(async (testoRicerca) => {
+    const q = (testoRicerca || query).trim()
+    if (!q || q.length < 2) return
+    setCaricandoAuto(true)
+    try {
+      const res = await fetch(`/api/search?q=${encodeURIComponent(q)}`)
+      if (res.ok) {
+        const data = await res.json()
+        if (data && Array.isArray(data.annunci) && data.annunci.length > 0) {
+          const formattati = data.annunci.map((item, idx) => ({
+            id: item.id || `live_${idx}_${Date.now()}`,
+            titolo: item.titolo || item.title || q,
+            prezzo: parseFloat(item.prezzo || item.price) || 0,
+            descrizione: item.descrizione || item.description || '',
+            immagine: item.immagine || item.image || null,
+            url: item.url || item.link || '',
+            fonte: item.sorgente || 'eBay'
+          }))
+          setAnnunci(formattati)
+        }
+      }
+    } catch (err) {
+      console.warn('Errore ricerca automatica:', err)
+    } finally {
+      setCaricandoAuto(false)
+    }
+  }, [query])
+
+  // Avvio automatico scansione al primo caricamento
+  useEffect(() => {
+    cercaAnnunciAutomatico('Samsung Galaxy S8')
+  }, [])
 
   // Calcolo Benchmark AI
   const valutazioneAI = useMemo(() => {
@@ -304,37 +341,67 @@ export default function RadarOfferteView({ onCercaSitiEsterni, estensioneInstall
           </div>
         </div>
 
-        {/* Barra di Ricerca & Pulsanti Azione */}
-        <div className="flex flex-col sm:flex-row gap-2 pt-2 border-t border-slate-800/80">
+        {/* Barra di Ricerca Automatica & Azioni Rapide */}
+        <form
+          onSubmit={(e) => {
+            e.preventDefault()
+            const q = inputQuery.trim()
+            if (q) {
+              setQuery(q)
+              cercaAnnunciAutomatico(q)
+            }
+          }}
+          className="flex flex-col sm:flex-row gap-2 pt-2 border-t border-slate-800/80"
+        >
           <div className="relative flex-1">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
             <input
               type="text"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Cerca un modello (es. Samsung Galaxy S8, iPhone 12, Nintendo Switch...)"
-              className="w-full pl-9 pr-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs sm:text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-indigo-500 font-medium"
+              value={inputQuery}
+              onChange={(e) => setInputQuery(e.target.value)}
+              placeholder="Cosa vuoi cercare? (es. Samsung Galaxy S8, Oppo A74, iPhone 12)..."
+              className="w-full pl-9 pr-3 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-xs sm:text-sm font-semibold text-slate-100 placeholder-slate-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all shadow-inner"
             />
           </div>
 
           <div className="flex items-center gap-1.5">
             <button
+              type="submit"
+              disabled={caricandoAuto}
+              className="flex-1 sm:flex-none flex items-center justify-center gap-1.5 bg-indigo-600 hover:bg-indigo-500 active:scale-95 text-white text-xs sm:text-sm font-bold px-4 py-2.5 rounded-xl transition-all shadow-lg shadow-indigo-600/30 cursor-pointer disabled:opacity-50"
+            >
+              {caricandoAuto ? (
+                <>
+                  <Loader2 className="w-4 h-4 animate-spin text-white" />
+                  <span>Scansione...</span>
+                </>
+              ) : (
+                <>
+                  <Sparkles className="w-4 h-4 text-amber-300" />
+                  <span>Cerca Annunci</span>
+                </>
+              )}
+            </button>
+
+            <button
               type="button"
               onClick={handleIncollaDaAppunti}
-              className="flex-1 sm:flex-none flex items-center justify-center gap-1.5 bg-indigo-600 hover:bg-indigo-500 active:scale-95 text-white text-xs font-bold px-3 py-2 rounded-xl transition-all shadow"
+              className="flex items-center justify-center gap-1.5 bg-slate-800 hover:bg-slate-700 active:scale-95 text-slate-200 text-xs font-bold px-3 py-2.5 rounded-xl transition-all border border-slate-700"
+              title="Incolla annunci copiati da Vinted o Subito"
             >
-              <ClipboardPaste className="w-4 h-4" /> Incolla da Vinted/Subito
+              <ClipboardPaste className="w-4 h-4 text-indigo-400" /> Incolla
             </button>
+
             <button
               type="button"
               onClick={() => setMostraBoxIncolla(!mostraBoxIncolla)}
-              className="p-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-xs border border-slate-700"
+              className="p-2.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-xs border border-slate-700"
               title="Apri box di inserimento manuale"
             >
               <Tag className="w-4 h-4" />
             </button>
           </div>
-        </div>
+        </form>
 
         {/* Box Incolla Manuale Espandibile */}
         {mostraBoxIncolla && (

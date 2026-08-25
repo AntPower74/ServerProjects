@@ -263,7 +263,7 @@ const FlipRadarHub = forwardRef(function FlipRadarHub({ onSearchMarketplace, est
       return
     }
 
-    let queryRicerca = raw.split(/\r?\n/)[0].replace(/[0-9]{1,4}\s*(?:€|euro)/gi, '').trim()
+    let queryRicerca = raw.split(/\r?\n/)[0].replace(/(?:\d{1,3}(?:\.\d{3})+|\d+)(?:[.,]\d{1,2})?\s*(?:€|euro|eur)/gi, '').trim()
 
     // 1. RENDER ISTANTANEO A 0 MILLISECONDI
     try {
@@ -308,15 +308,33 @@ const FlipRadarHub = forwardRef(function FlipRadarHub({ onSearchMarketplace, est
         .then(dataSearch => {
           clearTimeout(timeoutId)
           if (dataSearch && dataSearch.annunci && Array.isArray(dataSearch.annunci) && dataSearch.annunci.length > 0) {
-            // Uniamo (non sostituiamo): Subito/Vinted/Marketplace via bookmarklet/estensione
-            // possono già essere arrivati o arrivare a momenti diversi da eBay.
             setAnnunciRealiLive(prev => {
               const mappa = new Map(prev.map(a => [a.url || `${a.fonte}-${a.titolo}-${a.prezzo}`, a]))
               for (const a of dataSearch.annunci) {
                 mappa.set(a.url || `${a.fonte}-${a.titolo}-${a.prezzo}`, a)
               }
               const uniti = Array.from(mappa.values())
-              setMedianaRealeLive(ricalcolaMediana(uniti))
+              const nuovaMediana = ricalcolaMediana(uniti, queryRicerca)
+              if (nuovaMediana) {
+                setMedianaRealeLive(nuovaMediana)
+                setAnalisiDettagliata(prev => {
+                  if (!prev) return prev
+                  const targetVal = Math.round(nuovaMediana * 0.52)
+                  const maxVal = Math.round(nuovaMediana * 0.70)
+                  const profit = nuovaMediana - targetVal
+                  const roi = Math.round((profit / targetVal) * 100)
+                  return {
+                    ...prev,
+                    valoreRivenditaUsato: nuovaMediana,
+                    strategiaFlipping: [
+                      { voce: 'Offerta Target d\'Acquisto', valore: `${targetVal}€`, badge: 'DA INVIARE', highlight: true },
+                      { voce: 'Tetto Massimo da non superare', valore: `${maxVal}€`, nota: `Oltre i ${maxVal}€ il margine scende` },
+                      { voce: 'Valore Reale Rivendita Usato', valore: `~${nuovaMediana}€`, nota: 'Prezzo mediano basato su annunci reali dal vivo' },
+                      { voce: 'Profitto Netto Stimato', valore: `+${profit}€`, nota: `ROI: +${roi}%`, isProfit: true }
+                    ]
+                  }
+                })
+              }
               return uniti
             })
           }
