@@ -53,7 +53,7 @@ async function ottieniToken() {
 // Nota: la Browse API espone solo annunci ATTIVI. Lo storico dei "venduti"
 // richiede la Marketplace Insights API, soggetta ad approvazione separata
 // da parte di eBay (non disponibile di default sui nuovi account developer).
-export async function cercaSuEbay(query, { marketplace = 'EBAY_IT', limite = 20 } = {}) {
+export async function cercaSuEbay(query, { marketplace = 'EBAY_IT', limite = 30 } = {}) {
   let token
   try {
     token = await ottieniToken()
@@ -62,8 +62,22 @@ export async function cercaSuEbay(query, { marketplace = 'EBAY_IT', limite = 20 
     return []
   }
 
+  // Normalizza query ed aggiungi parole negative per escludere accessori su eBay
+  let queryEbay = query.trim()
+  if (/^samsung\s+s\d+/i.test(queryEbay) && !/galaxy/i.test(queryEbay)) {
+    queryEbay = queryEbay.replace(/^samsung\s+/i, 'Samsung Galaxy ')
+  }
+  if (/^s(7|8|9|10|20|21|22|23|24)$/i.test(queryEbay)) {
+    queryEbay = `Samsung Galaxy ${queryEbay.toUpperCase()}`
+  }
+
+  // Se cerchiamo uno smartphone, escludiamo cover e ricambi direttamente nella query eBay
+  if (/(galaxy\s*s\d+|iphone|smartphone|cellulare)/i.test(queryEbay)) {
+    queryEbay = `${queryEbay} -cover -custodia -vetro -pellicola -ricambio -ricambi -display -batteria -flex -tasti -pulsante -tab -tablet`
+  }
+
   const url = new URL(`${BASE_URL}/buy/browse/v1/item_summary/search`)
-  url.searchParams.set('q', query)
+  url.searchParams.set('q', queryEbay)
   url.searchParams.set('limit', String(limite))
 
   try {
@@ -91,6 +105,7 @@ export async function cercaSuEbay(query, { marketplace = 'EBAY_IT', limite = 20 
         valuta: item.price.currency ?? 'EUR',
         condizione: item.condition ?? null,
         url: item.itemWebUrl ?? null,
+        immagine: item.image?.imageUrl || item.thumbnailImages?.[0]?.imageUrl || null,
         stato: 'attivo',
         giorniFa: null
       }))

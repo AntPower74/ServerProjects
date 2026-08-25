@@ -30,6 +30,26 @@ export const ANDROID_MODELS = {
   's7': { name: 'Samsung Galaxy S7 / S7 Edge', screen: '5.1" / 5.5" Super AMOLED', baseResale: 45, retail: '729€', tier: 'Fascia Entry Usato' },
   'galaxy s8': { name: 'Samsung Galaxy S8', screen: '5.8" Super AMOLED Infinity Display Quad HD+', baseResale: 65, retail: '829€', tier: 'Flagship Vintage Compatto' },
 
+  // OPPO (Find X, Reno, A Series)
+  'find x5 lite': { name: 'OPPO Find X5 Lite 5G (256 GB)', screen: '6.43" AMOLED 90Hz, 8GB + 256GB', baseResale: 140, retail: '499€', tier: 'Fascia Media OPPO (Best-seller 256GB)' },
+  'find x5 pro': { name: 'OPPO Find X5 Pro 5G', screen: '6.7" LTPO2 AMOLED 120Hz Hasselblad', baseResale: 280, retail: '1299€', tier: 'Top di Gamma OPPO' },
+  'find x5': { name: 'OPPO Find X5 5G', screen: '6.55" OLED 120Hz Hasselblad', baseResale: 200, retail: '999€', tier: 'Fascia Alta OPPO' },
+  'find x3 pro': { name: 'OPPO Find X3 Pro 5G', screen: '6.7" AMOLED 120Hz', baseResale: 180, retail: '1149€', tier: 'Ex-Flagship OPPO' },
+  'find x3 lite': { name: 'OPPO Find X3 Lite 5G', screen: '6.43" AMOLED 90Hz', baseResale: 100, retail: '499€', tier: 'Fascia Economica OPPO' },
+  'oppo reno': { name: 'OPPO Reno Series', screen: 'AMOLED', baseResale: 130, retail: '499€', tier: 'Fascia Media Design' },
+  'oppo': { name: 'OPPO Smartphone', screen: 'AMOLED / IPS', baseResale: 110, retail: '399€', tier: 'Fascia Media Android' },
+
+  // Xiaomi / Redmi / POCO
+  'xiaomi 13': { name: 'Xiaomi 13 / 13 Pro', screen: 'AMOLED 120Hz Leica', baseResale: 340, retail: '999€', tier: 'Top di Gamma Xiaomi Leica' },
+  'xiaomi 12': { name: 'Xiaomi 12 / 12 Pro / 12X', screen: 'AMOLED 120Hz', baseResale: 210, retail: '799€', tier: 'Fascia Alta Xiaomi' },
+  'xiaomi 11': { name: 'Xiaomi 11 / 11T Pro', screen: 'AMOLED 120Hz', baseResale: 140, retail: '649€', tier: 'Fascia Media Xiaomi' },
+  'redmi note 13': { name: 'Xiaomi Redmi Note 13 / 13 Pro', screen: '6.67" AMOLED 120Hz', baseResale: 140, retail: '299€', tier: 'Best-Seller Fascia Media' },
+  'redmi note 12': { name: 'Xiaomi Redmi Note 12 / 12 Pro', screen: '6.67" AMOLED 120Hz', baseResale: 110, retail: '279€', tier: 'Fascia Economica Best-Seller' },
+  'redmi note 11': { name: 'Xiaomi Redmi Note 11', screen: '6.43" AMOLED 90Hz', baseResale: 80, retail: '229€', tier: 'Entry-Level Usato' },
+  'poco x6': { name: 'POCO X6 / X6 Pro 5G', screen: '6.67" Flow AMOLED 120Hz', baseResale: 180, retail: '349€', tier: 'Best-Buy Performance POCO' },
+  'poco f5': { name: 'POCO F5 / F5 Pro', screen: 'AMOLED 120Hz Snapdragon', baseResale: 200, retail: '429€', tier: 'Flagship Killer POCO' },
+  'poco x5': { name: 'POCO X5 / X5 Pro 5G', screen: 'AMOLED 120Hz', baseResale: 120, retail: '299€', tier: 'Fascia Media POCO' },
+
   // Google Pixel
   'pixel 8 pro': { name: 'Google Pixel 8 Pro', screen: '6.7" Super Actua OLED 120Hz', baseResale: 480, retail: '1099€', tier: 'Top di Gamma Google' },
   'pixel 8': { name: 'Google Pixel 8', screen: '6.2" Actua OLED 120Hz', baseResale: 360, retail: '799€', tier: 'Fascia Alta Google' },
@@ -313,8 +333,13 @@ export function valutaOggettoUniversale(testoAnnuncio) {
 
       let discountText = ''
       if (prezzoRichiesto) {
-        const sconto = Math.round(((prezzoRichiesto - targetVal) / prezzoRichiesto) * 100)
-        discountText = ` (Chiede ${prezzoRichiesto}€ ➔ Chiedi uno sconto del ${sconto}%)`
+        if (prezzoRichiesto > resaleVal * 1.15) {
+          discountText = ` ⚠️ Il venditore chiede ${prezzoRichiesto}€ (superiore al valore di rivendita di ~${resaleVal}€): prezzo fuori mercato.`
+        } else {
+          const scontoRealistico = Math.min(28, Math.max(12, Math.round(((prezzoRichiesto - targetVal) / prezzoRichiesto) * 100)))
+          const offertaRealistica = Math.round(prezzoRichiesto * (1 - scontoRealistico / 100))
+          discountText = ` (Chiede ${prezzoRichiesto}€ ➔ Proponi ${offertaRealistica}€ con sconto realistico del -${scontoRealistico}%)`
+        }
       }
 
       return {
@@ -645,8 +670,13 @@ export function valutaOggettoUniversale(testoAnnuncio) {
 
   let consiglioExtra = liquiditaConsiglio
   if (prezzoRichiesto) {
-    const sconto = Math.round(((prezzoRichiesto - targetVal) / prezzoRichiesto) * 100)
-    consiglioExtra += ` Il venditore chiede ${prezzoRichiesto}€: offrendo ${targetVal}€ chiedi uno sconto del ${sconto}%.`
+    if (prezzoRichiesto > resaleVal * 1.15) {
+      consiglioExtra = `⚠️ Il venditore chiede ${prezzoRichiesto}€ per un oggetto che ne vale circa ${resaleVal}€. L'annuncio è fuori mercato per il flipping e una trattativa troppo aggressiva verrebbe rifiutata.`
+    } else {
+      const scontoRealistico = Math.min(28, Math.max(12, Math.round(((prezzoRichiesto - targetVal) / prezzoRichiesto) * 100)))
+      const offertaRealistica = Math.round(prezzoRichiesto * (1 - scontoRealistico / 100))
+      consiglioExtra += ` Il venditore chiede ${prezzoRichiesto}€: proponi un'offerta realistica di ${offertaRealistica}€ (-${scontoRealistico}%) per massimizzare la probabilità di accordo.`
+    }
   }
 
   return {

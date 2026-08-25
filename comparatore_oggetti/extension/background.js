@@ -1,10 +1,22 @@
 const URL_PREZZLY = 'https://prezzly.cupto.it'
 const TIMEOUT_ESTRAZIONE_MS = 15000
 
+function normalizzaQuery(query) {
+  if (!query) return ''
+  let q = query.trim()
+  if (/^samsung\s+s\d+/i.test(q) && !/galaxy/i.test(q)) {
+    q = q.replace(/^samsung\s+/i, 'Samsung Galaxy ')
+  }
+  if (/^s(7|8|9|10|20|21|22|23|24)$/i.test(q)) {
+    q = `Samsung Galaxy ${q.toUpperCase()}`
+  }
+  return q
+}
+
 const URL_SITI = {
-  subito: (q) => `https://www.subito.it/annunci-italia/vendita/usato/?q=${encodeURIComponent(q)}`,
-  vinted: (q) => `https://www.vinted.it/catalog?search_text=${encodeURIComponent(q)}`,
-  marketplace: (q) => `https://www.facebook.com/marketplace/search/?query=${encodeURIComponent(q)}`
+  subito: (q) => `https://www.subito.it/annunci-italia/vendita/usato/?q=${encodeURIComponent(normalizzaQuery(q))}&order=price_asc`,
+  vinted: (q) => `https://www.vinted.it/catalog?search_text=${encodeURIComponent(normalizzaQuery(q))}&order=price_low_to_high`,
+  marketplace: (q) => `https://www.facebook.com/marketplace/search/?query=${encodeURIComponent(normalizzaQuery(q))}`
 }
 
 // tabId della scheda di ricerca aperta in background -> tabId della scheda

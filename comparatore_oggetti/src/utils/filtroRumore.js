@@ -86,12 +86,10 @@ export function analizzaAnnuncio(ann, query, benchmarkVal) {
   const isDisallineato = isCategoriaDisallineata(titolo, query)
   const isScartabile = isAcc || isDisallineato
 
-  const targetAcquisto = Math.round((benchmarkVal || 70) * 0.52)
-  const tettoMassimo = Math.round((benchmarkVal || 70) * 0.70)
-
+  const B = benchmarkVal || 75
   let tipo = 'mercato'
   let badge = 'PREZZO DI MERCATO'
-  let offerta = targetAcquisto
+  let offerta = null
   let profitto = null
   let sconto = 0
 
@@ -100,17 +98,39 @@ export function analizzaAnnuncio(ann, query, benchmarkVal) {
     badge = isAcc ? '📦 ACCESSORIO / RICAMBIO' : '⚠️ CATEGORIA / MODELLO DIVERSO'
     offerta = prezzo || 10
   } else if (prezzo !== null) {
-    if (prezzo <= targetAcquisto) {
+    if (prezzo <= B * 0.55) {
+      // 1. SUPER DEAL: Prezzo già eccellente (45%+ sotto mercato)
+      // Se si fa un'offerta, proponiamo un ulteriore sconto rapido (-12%) per massimizzare il margine
       tipo = 'super_deal'
-      badge = '🔥 SUPER DEAL (Compra Subito)'
-      profitto = Math.max(10, Math.round(benchmarkVal - prezzo))
-      offerta = prezzo
-    } else if (prezzo <= tettoMassimo || prezzo <= benchmarkVal * 0.85) {
+      badge = '🔥 SUPER DEAL (Affare Top)'
+      const scontoRapido = 12
+      offerta = Math.round(prezzo * (1 - scontoRapido / 100))
+      sconto = scontoRapido
+      profitto = Math.round(B - offerta)
+    } else if (prezzo <= B * 0.95) {
+      // 2. DA TRATTARE: Prezzo buono, proponi sconto realistico (15% - 25%) che il venditore accetta!
       tipo = 'da_trattare'
       badge = '💬 DA TRATTARE'
-      sconto = Math.max(5, Math.round(((prezzo - targetAcquisto) / prezzo) * 100))
-      profitto = Math.round(benchmarkVal - targetAcquisto)
-      offerta = targetAcquisto
+      
+      // Calcola sconto realistico proporzionato (max 25% per non farsi mandare a quel paese)
+      const scontoRealistico = Math.min(25, Math.max(15, Math.round(((prezzo - (B * 0.50)) / prezzo) * 100)))
+      offerta = Math.round(prezzo * (1 - scontoRealistico / 100))
+      sconto = Math.round(((prezzo - offerta) / prezzo) * 100)
+      profitto = Math.max(12, Math.round(B - offerta))
+    } else if (prezzo <= B * 1.15) {
+      // 3. PREZZO DI MERCATO: Allineato alla media, margine flipping stretto
+      tipo = 'mercato'
+      badge = '🏷️ PREZZO DI MERCATO'
+      offerta = Math.round(prezzo * 0.82) // Proposta -18%
+      sconto = 18
+      profitto = Math.round(B - offerta)
+    } else {
+      // 4. FUORI MERCATO: Chiede 100€ su un telefono da 75€ -> Non proporre 30€ (insulto), segnala sovrapprezzo!
+      tipo = 'fuori_mercato'
+      badge = '🔴 FUORI MERCATO (Chiede troppo)'
+      offerta = null
+      profitto = null
+      sconto = 0
     }
   }
 

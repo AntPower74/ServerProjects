@@ -169,6 +169,18 @@ const SITI = {
   }
 }
 
+function trovaDescrizione(ancora, contenitore, titolo) {
+  if (!contenitore) return null
+  const paragrafi = Array.from(contenitore.querySelectorAll('p, [data-testid*="subtitle"], [data-testid*="description"], .item-description, .item-details'))
+    .map(p => testoVisibile(p).trim())
+    .filter(t => t.length > 5 && t !== titolo && !t.includes('€') && !ARIA_LABEL_GENERICHE.test(t))
+  
+  if (paragrafi.length > 0) {
+    return paragrafi.slice(0, 2).join(' • ')
+  }
+  return null
+}
+
 export function estraiRisultatiDaHtml(html, sito = 'lens') {
   if (!html || !html.includes('<')) return []
 
@@ -199,6 +211,7 @@ export function estraiRisultatiDaHtml(html, sito = 'lens') {
 
     const titolo = trovaTitolo(ancora, contenitore)
     const immagine = trovaImmagine(ancora, contenitore)
+    const descrizione = trovaDescrizione(ancora, contenitore, titolo)
 
     trovati.set(href, {
       id: href,
@@ -207,6 +220,7 @@ export function estraiRisultatiDaHtml(html, sito = 'lens') {
       sorgente: config.sorgente(host || 'vinted.it'),
       giorniFa: null,
       titolo: titolo || 'Articolo ' + (host || 'Vinted'),
+      descrizione,
       url: href,
       immagine,
       disponibile: trovaDisponibilita(testoContenitore)

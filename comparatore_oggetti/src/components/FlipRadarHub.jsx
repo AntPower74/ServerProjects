@@ -89,6 +89,7 @@ const FlipRadarHub = forwardRef(function FlipRadarHub({ onSearchMarketplace, est
   const [caricandoAnnunciLive, setCaricandoAnnunciLive] = useState(false)
   const [medianaRealeLive, setMedianaRealeLive] = useState(null)
   const [filtroOpportunita, setFiltroOpportunita] = useState('tutti')
+  const [filtraAccessori, setFiltraAccessori] = useState(true)
   const [copiatoOffertaId, setCopiatoOffertaId] = useState(null)
 
   function copiaMessaggioOffertaRapida(ann, offertaConsigliata, id) {
@@ -576,49 +577,7 @@ const FlipRadarHub = forwardRef(function FlipRadarHub({ onSearchMarketplace, est
                 </div>
               </div>
 
-              {/* 2. SEZIONE STRATEGIA DI FLIPPING & MARGINI (TABELLA) */}
-              <div className="p-4 rounded-2xl border border-indigo-500/30 bg-slate-900/90 space-y-3">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <span className="text-base">🎯</span>
-                    <h3 className="text-sm font-bold text-slate-100">La Strategia di Flipping & Margini</h3>
-                  </div>
-                  <span className="text-[10px] font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 px-2 py-0.5 rounded">
-                    Regola 50% Margine
-                  </span>
-                </div>
 
-                <div className="space-y-2">
-                  {Array.isArray(analisiDettagliata?.strategiaFlipping) && analisiDettagliata.strategiaFlipping.map((riga, i) => (
-                    <div
-                      key={i}
-                      className={`p-3 rounded-xl flex items-center justify-between gap-2 text-xs ${
-                        riga?.isProfit
-                          ? 'bg-emerald-950/40 border border-emerald-500/30 text-emerald-300'
-                          : riga?.highlight
-                          ? 'bg-indigo-950/40 border border-indigo-500/40 text-indigo-200'
-                          : 'bg-slate-800/80 border border-slate-700/70 text-slate-300'
-                      }`}
-                    >
-                      <div>
-                        <div className="flex items-center gap-1.5 font-bold">
-                          <span>{riga?.voce}</span>
-                          {riga?.badge && (
-                            <span className="text-[9px] bg-indigo-500 text-white px-1.5 py-0.2 rounded font-mono">
-                              {riga.badge}
-                            </span>
-                          )}
-                        </div>
-                        {riga?.nota && <span className="text-[10px] text-slate-400 block mt-0.5">{riga.nota}</span>}
-                      </div>
-
-                      <b className={`font-mono text-base ${riga?.isProfit ? 'text-emerald-400 font-extrabold' : riga?.highlight ? 'text-indigo-400 font-extrabold' : 'text-slate-100'}`}>
-                        {riga?.valore}
-                      </b>
-                    </div>
-                  ))}
-                </div>
-              </div>
 
               {/* 3. SEZIONE GIUDIZIO LIQUIDITÀ & CONSIGLIO OPERATIVO */}
               <div className="p-4 rounded-2xl border border-amber-500/30 bg-slate-900/90 space-y-3">
@@ -728,46 +687,23 @@ const FlipRadarHub = forwardRef(function FlipRadarHub({ onSearchMarketplace, est
 
               {/* 6. RADAR OPPORTUNITÀ & ANNUNCI SU CUI FARE OFFERTA */}
               {(() => {
-                const benchmarkVal = medianaRealeLive || (analisiDettagliata?.schedaOggetto?.prezzoUsatoDettaglio ? parseInt(analisiDettagliata.schedaOggetto.prezzoUsatoDettaglio.replace(/[^\d]/g, '') || '65', 10) : 65)
-                const targetVal = Math.round(benchmarkVal * 0.52)
-                const tettoVal = Math.round(benchmarkVal * 0.70)
+                const queryCorrente = analisiDettagliata?.titoloRilevato || oggettoManual?.nome || ''
+                const benchmarkVal = medianaRealeLive || (analisiDettagliata?.schedaOggetto?.prezzoUsatoDettaglio ? parseInt(analisiDettagliata.schedaOggetto.prezzoUsatoDettaglio.replace(/[^\d]/g, '') || '70', 10) : 70)
 
                 const annunciElaborati = (annunciRealiLive || []).map((ann, idx) => {
-                  const p = parseFloat(ann?.prezzo)
-                  const prezzoNum = !isNaN(p) && p > 0 ? p : null
-                  const idUnico = ann?.url || `ann_${idx}`
-                  let tipo = 'mercato'
-                  let offerta = targetVal
-                  let profitto = null
-                  let sconto = 0
-
-                  if (prezzoNum !== null) {
-                    if (prezzoNum <= targetVal) {
-                      tipo = 'super_deal'
-                      profitto = Math.max(10, Math.round(benchmarkVal - prezzoNum))
-                      offerta = prezzoNum
-                    } else if (prezzoNum <= tettoVal || prezzoNum <= benchmarkVal * 0.85) {
-                      tipo = 'da_trattare'
-                      sconto = Math.max(5, Math.round(((prezzoNum - targetVal) / prezzoNum) * 100))
-                      profitto = Math.round(benchmarkVal - targetVal)
-                      offerta = targetVal
-                    }
-                  }
-
+                  const analizzato = analizzaAnnuncio(ann, queryCorrente, benchmarkVal)
                   return {
-                    ...ann,
-                    idUnico,
-                    prezzoNum,
-                    tipo,
-                    offerta,
-                    profitto,
-                    sconto
+                    ...analizzato,
+                    idUnico: ann?.url || `ann_${idx}`
                   }
                 })
 
-                const superDeals = annunciElaborati.filter(a => a.tipo === 'super_deal')
-                const trattabili = annunciElaborati.filter(a => a.tipo === 'da_trattare')
-                const listaMostrata = annunciElaborati.filter(a => {
+                const numeroScartati = annunciElaborati.filter(a => a.isScartabile).length
+                const annunciFiltratiRumore = filtraAccessori ? annunciElaborati.filter(a => !a.isScartabile) : annunciElaborati
+
+                const superDeals = annunciFiltratiRumore.filter(a => a.tipo === 'super_deal')
+                const trattabili = annunciFiltratiRumore.filter(a => a.tipo === 'da_trattare')
+                const listaMostrata = annunciFiltratiRumore.filter(a => {
                   if (filtroOpportunita === 'affari') return a.tipo === 'super_deal'
                   if (filtroOpportunita === 'trattabili') return a.tipo === 'super_deal' || a.tipo === 'da_trattare'
                   return true
@@ -795,7 +731,7 @@ const FlipRadarHub = forwardRef(function FlipRadarHub({ onSearchMarketplace, est
 
                       {benchmarkVal && (
                         <div className="flex items-center gap-1.5 self-start sm:self-auto">
-                          <span className="text-[10px] text-slate-400 font-medium">Valore Riferimento:</span>
+                          <span className="text-[10px] text-slate-400 font-medium">Valore Riferimento Telefono:</span>
                           <span className="text-xs font-mono font-extrabold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded">
                             ~{benchmarkVal}€
                           </span>
@@ -803,12 +739,31 @@ const FlipRadarHub = forwardRef(function FlipRadarHub({ onSearchMarketplace, est
                       )}
                     </div>
 
+                    {/* Banner Antirumore Accessori */}
+                    {numeroScartati > 0 && (
+                      <div className="flex items-center justify-between gap-2 p-2 rounded-xl bg-slate-950/80 border border-slate-800 text-[11px]">
+                        <div className="flex items-center gap-1.5">
+                          <Shield className="w-3.5 h-3.5 text-indigo-400 shrink-0" />
+                          <span className="text-slate-300">
+                            Filtro Antirumore: <b className="text-emerald-400">{numeroScartati}</b> cover, ricambi e accessori nascosti.
+                          </span>
+                        </div>
+                        <button
+                          type="button"
+                          onClick={() => setFiltraAccessori(!filtraAccessori)}
+                          className="text-[10px] font-bold text-slate-400 hover:text-slate-200 inline-flex items-center gap-1 underline"
+                        >
+                          {filtraAccessori ? <><Eye className="w-3 h-3" /> Mostra tutti</> : <><EyeOff className="w-3 h-3" /> Nascondi accessori</>}
+                        </button>
+                      </div>
+                    )}
+
                     {caricandoAnnunciLive ? (
                       <div className="flex items-center justify-center gap-2 py-6 text-xs text-slate-400">
                         <Loader2 className="w-4 h-4 animate-spin text-indigo-400" />
                         <span>Scansione e calcolo offerte in tempo reale da Vinted, Subito ed eBay...</span>
                       </div>
-                    ) : annunciElaborati.length > 0 ? (
+                    ) : annunciFiltratiRumore.length > 0 ? (
                       <div className="space-y-3">
                         {/* Filtri Rapidi */}
                         <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none">
@@ -821,7 +776,7 @@ const FlipRadarHub = forwardRef(function FlipRadarHub({ onSearchMarketplace, est
                                 : 'bg-slate-950 text-slate-400 border-slate-800 hover:text-slate-200'
                             }`}
                           >
-                            Tutti ({annunciElaborati.length})
+                            Dispositivi ({annunciFiltratiRumore.length})
                           </button>
                           <button
                             type="button"
@@ -865,14 +820,31 @@ const FlipRadarHub = forwardRef(function FlipRadarHub({ onSearchMarketplace, est
                               <div
                                 key={ann.idUnico || i}
                                 className={`p-3 rounded-xl border transition-all ${
-                                  ann.tipo === 'super_deal'
+                                  ann.isScartabile
+                                    ? 'bg-slate-950/40 border-slate-800/60 opacity-60'
+                                    : ann.tipo === 'super_deal'
                                     ? 'bg-emerald-950/20 border-emerald-500/40 hover:border-emerald-500/70 shadow-sm'
                                     : ann.tipo === 'da_trattare'
                                     ? 'bg-slate-950/80 border-amber-500/30 hover:border-amber-500/60'
                                     : 'bg-slate-950/60 border-slate-800/80'
                                 }`}
                               >
-                                <div className="flex items-start justify-between gap-2">
+                                <div className="flex items-start justify-between gap-3">
+                                  {ann.immagine ? (
+                                    <div className="relative shrink-0">
+                                      <img
+                                        src={ann.immagine}
+                                        alt={ann.titolo}
+                                        className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl object-cover bg-slate-950 border border-slate-800/80 shadow-sm"
+                                        onError={(e) => { e.target.parentElement.style.display = 'none' }}
+                                      />
+                                    </div>
+                                  ) : (
+                                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-slate-950 border border-slate-800/80 flex items-center justify-center text-xl shrink-0 select-none">
+                                      📱
+                                    </div>
+                                  )}
+
                                   <div className="space-y-1 flex-1 min-w-0">
                                     <div className="flex items-center gap-1.5 flex-wrap">
                                       <span className={`text-[10px] font-bold px-2 py-0.5 rounded border inline-flex items-center gap-1 ${badgeColoreFonte}`}>
@@ -890,17 +862,29 @@ const FlipRadarHub = forwardRef(function FlipRadarHub({ onSearchMarketplace, est
                                           <MessageSquareText className="w-3 h-3 text-amber-400" /> DA TRATTARE (-{ann.sconto}%)
                                         </span>
                                       )}
+
+                                      {ann.isScartabile && (
+                                        <span className="text-[10px] text-slate-400 bg-slate-800 px-2 py-0.5 rounded border border-slate-700">
+                                          {ann.badge}
+                                        </span>
+                                      )}
                                     </div>
 
                                     <h4 className="text-xs font-semibold text-slate-200 line-clamp-2 mt-1">
                                       {String(ann?.titolo || 'Articolo')}
                                     </h4>
+
+                                    {ann.descrizione && (
+                                      <p className="text-[10px] text-slate-400 line-clamp-2 mt-1 italic bg-slate-950/60 px-2 py-0.5 rounded border border-slate-800/80">
+                                        <span className="text-slate-500 font-medium not-italic">📝 Note:</span> {ann.descrizione}
+                                      </p>
+                                    )}
                                   </div>
 
                                   <div className="text-right shrink-0">
                                     <span className="text-[10px] text-slate-400 block">Prezzo Richiesto:</span>
                                     <b className="text-base font-extrabold text-slate-100 font-mono">
-                                      {ann.prezzoNum != null ? `${ann.prezzoNum}€` : 'N/D'}
+                                      {ann.prezzo != null ? `${ann.prezzo}€` : 'N/D'}
                                     </b>
                                   </div>
                                 </div>
@@ -908,44 +892,54 @@ const FlipRadarHub = forwardRef(function FlipRadarHub({ onSearchMarketplace, est
                                 {/* Banner Proposta Offerta e Margine */}
                                 <div className="mt-2.5 pt-2 border-t border-slate-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                                   <div className="text-[11px]">
-                                    {ann.tipo === 'super_deal' ? (
+                                    {ann.isScartabile ? (
+                                      <span className="text-slate-500 italic">
+                                        Articolo accessorio o modello secondario escluso dal calcolo di rivendita.
+                                      </span>
+                                    ) : ann.tipo === 'fuori_mercato' ? (
+                                      <span className="text-rose-400 font-medium flex items-center gap-1">
+                                        <span>🔴 Fuori Mercato:</span> Chiede troppo ({ann.prezzo}€ vs valore ~{benchmarkVal}€). Trattativa sconsigliata.
+                                      </span>
+                                    ) : ann.tipo === 'super_deal' ? (
                                       <span className="text-emerald-400 font-bold flex items-center gap-1">
                                         <CheckCircle2 className="w-3.5 h-3.5" /> Margine netto stimato: +{ann.profitto}€
                                       </span>
                                     ) : ann.tipo === 'da_trattare' ? (
                                       <span className="text-amber-300 font-medium flex items-center gap-1">
-                                        <span>💡 Offerta consigliata:</span> <b className="text-amber-400 font-bold font-mono text-xs">{ann.offerta}€</b>
+                                        <span>💡 Offerta realistica (-{ann.sconto}%):</span> <b className="text-amber-400 font-bold font-mono text-xs">{ann.offerta}€</b>
                                         <span className="text-[10px] text-slate-400">(Margine target: +{ann.profitto}€)</span>
                                       </span>
                                     ) : (
                                       <span className="text-slate-400">
-                                        In linea con il valore mediano di mercato (~{benchmarkVal}€)
+                                        In linea con il valore di mercato (~{benchmarkVal}€)
                                       </span>
                                     )}
                                   </div>
 
                                   {/* Bottoni Azione Rapida */}
                                   <div className="flex items-center gap-1.5 self-end sm:self-auto">
-                                    <button
-                                      type="button"
-                                      onClick={() => copiaMessaggioOffertaRapida(ann, ann.offerta, ann.idUnico)}
-                                      className={`text-[11px] font-bold px-2.5 py-1 rounded-lg border transition-all flex items-center gap-1 ${
-                                        isCopiato
-                                          ? 'bg-emerald-600 text-white border-emerald-500'
-                                          : 'bg-indigo-600/20 hover:bg-indigo-600/30 text-indigo-300 border-indigo-500/30 active:scale-95'
-                                      }`}
-                                      title="Copia messaggio di offerta e trattativa"
-                                    >
-                                      {isCopiato ? (
-                                        <>
-                                          <Check className="w-3 h-3" /> Offerta Copiata!
-                                        </>
-                                      ) : (
-                                        <>
-                                          <Copy className="w-3 h-3" /> Copia Offerta ({ann.offerta}€)
-                                        </>
-                                      )}
-                                    </button>
+                                    {!ann.isScartabile && ann.offerta != null && ann.tipo !== 'fuori_mercato' && (
+                                      <button
+                                        type="button"
+                                        onClick={() => copiaMessaggioOffertaRapida(ann, ann.offerta, ann.idUnico)}
+                                        className={`text-[11px] font-bold px-2.5 py-1 rounded-lg border transition-all flex items-center gap-1 ${
+                                          isCopiato
+                                            ? 'bg-emerald-600 text-white border-emerald-500'
+                                            : 'bg-indigo-600/20 hover:bg-indigo-600/30 text-indigo-300 border-indigo-500/30 active:scale-95'
+                                        }`}
+                                        title="Copia messaggio di offerta e trattativa"
+                                      >
+                                        {isCopiato ? (
+                                          <>
+                                            <Check className="w-3 h-3" /> Offerta Copiata!
+                                          </>
+                                        ) : (
+                                          <>
+                                            <Copy className="w-3 h-3" /> Copia Offerta ({ann.offerta}€)
+                                          </>
+                                        )}
+                                      </button>
+                                    )}
 
                                     <button
                                       type="button"
@@ -979,7 +973,7 @@ const FlipRadarHub = forwardRef(function FlipRadarHub({ onSearchMarketplace, est
                         </div>
 
                         <p className="text-[10px] text-slate-400 text-center pt-1">
-                          Trovati <b className="text-slate-200">{annunciElaborati.length}</b> annunci reali. Clicca <b>"Copia Offerta"</b> per incollare subito la proposta al venditore.
+                          Trovati <b className="text-slate-200">{annunciFiltratiRumore.length}</b> dispositivi reali. Clicca <b>"Copia Offerta"</b> per incollare subito la proposta al venditore.
                         </p>
                       </div>
                     ) : (

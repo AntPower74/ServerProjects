@@ -25,50 +25,7 @@ import {
 } from 'lucide-react'
 import { valutaOggettoUniversale } from '../utils/aiEvaluator.js'
 import { estraiRisultatiDaHtml } from '../utils/estraiRisultatiLens.js'
-
-const KEYWORDS_ACCESSORI = [
-  'cover', 'custodia', 'custodie', 'coque', 'funda', 'fundas', 'capa', 'capas',
-  'case', 'cases', 'hoesje', 'housse', 'etui', 'étui', 'bumper', 'skin',
-  'vetro', 'vetro temperato', 'screen protector', 'protection écran', 'protection ecran',
-  'proteggi schermo', 'pellicola', 'pellicole', 'protector', 'tempered glass', 'folie', 'schutzfolie',
-  'copri batteria', 'copribatteria', 'battery cover', 'akkudeckel', 'retro cover',
-  'scatola originale', 'scatola vuota', 'box originale', 'empty box', 'boite vide', 'solo scatola', 'boîte',
-  'cavo', 'caricatore', 'caricabatterie', 'charger', 'câble', 'adattatore', 'power bank',
-  'supporto auto', 'holder', 'coque silicone', 'funda movil', 'reinder',
-  'solo display', 'display per', 'solo schermo', 'pezzi di ricambio', 'per ricambi'
-]
-
-function isAccessorio(titolo, prezzo) {
-  if (!titolo) return false
-  const t = titolo.toLowerCase()
-  
-  // Prezzo inferiore a 12€ per smartphone/console è quasi sempre un accessorio
-  if (prezzo !== null && prezzo < 12) return true
-  
-  return KEYWORDS_ACCESSORI.some(kw => {
-    return t.includes(kw)
-  })
-}
-
-function isModelloIncoerente(titolo, query) {
-  if (!titolo || !query) return false
-  const t = titolo.toLowerCase()
-  const q = query.toLowerCase()
-
-  // Se cerco S8 specifico, scarta tablet, A8, J8, S7, S9, Note 8, Note 9
-  if (/\bs8\b/i.test(q)) {
-    if (/\b(tab\s*s8|tablet)\b/i.test(t)) return true
-    if (/\b(galaxy\s*a8|galaxy\s*j8|galaxy\s*s7|galaxy\s*s9|galaxy\s*note\s*8|galaxy\s*note\s*9|galaxy\s*a6)\b/i.test(t)) return true
-    if (/\b(a8|j8|s7|s9|s10|s20|note\s*8|note\s*9|a6)\b/i.test(t) && !/\bs8\b/i.test(t)) return true
-  }
-
-  // Se cerco iPhone 12, scarta altri numeri
-  if (/\biphone\s*12\b/i.test(q)) {
-    if (/\biphone\s*(11|13|14|15|x|xr|xs|7|8)\b/i.test(t) && !/\biphone\s*12\b/i.test(t)) return true
-  }
-
-  return false
-}
+import { analizzaAnnuncio, isAccessorio, isCategoriaDisallineata } from '../utils/filtroRumore.js'
 
 function estraiPrezziDaTestoGrezzo(testo) {
   if (!testo) return []
@@ -83,7 +40,7 @@ function estraiPrezziDaTestoGrezzo(testo) {
     
     const matchRiga = linea.match(regexRigaCompleta)
     if (matchRiga) {
-      const titolo = matchRiga[1]?.trim() || 'Articolo Vinted'
+      const testoDesc = matchRiga[1]?.trim() || ''
       const brand = matchRiga[2]?.trim() || ''
       const modello = matchRiga[3]?.trim() || ''
       const condizione = matchRiga[4]?.trim() || ''
@@ -92,7 +49,8 @@ function estraiPrezziDaTestoGrezzo(testo) {
       if (!isNaN(prezzo) && prezzo > 0) {
         annunci.push({
           id: `vinted_txt_${annunci.length}_${Date.now()}`,
-          titolo: modello ? `${brand} ${modello} - ${titolo}` : titolo,
+          titolo: modello ? `${brand} ${modello}`.trim() : (testoDesc.length > 40 ? testoDesc.slice(0, 40) + '...' : testoDesc),
+          descrizione: testoDesc,
           condizione,
           prezzo,
           fonte: 'Vinted'
@@ -141,98 +99,47 @@ export default function RadarOfferteView({ onCercaSitiEsterni, estensioneInstall
     return valutaOggettoUniversale(query)
   }, [query])
 
-  // Identificazione e marcatura accessori / rumore
-  const annunciClassificati = useMemo(() => {
-    return annunci.map(ann => {
-      const isAcc = isAccessorio(ann.titolo, ann.prezzo)
-      const isIncoerente = isModelloIncoerente(ann.titolo, query)
-      const isScartabile = isAcc || isIncoerente
-      return {
-        ...ann,
-        isAccessorio: isAcc,
-        isIncoerente,
-        isScartabile
-      }
-    })
-  }, [annunci, query])
-
-  const numeroScartati = useMemo(() => {
-    return annunciClassificati.filter(a => a.isScartabile).length
-  }, [annunciClassificati])
-
-  // Calcolo Benchmark su annunci puliti (non inquinati da cover a 2€)
+  // Calcolo Benchmark su annunci puliti da filtro rumore
   const benchmarkVal = useMemo(() => {
     if (valutazioneAI?.schedaOggetto?.prezzoUsatoDettaglio) {
       const match = valutazioneAI.schedaOggetto.prezzoUsatoDettaglio.match(/~(\d+)/)
       if (match) return parseInt(match[1], 10)
     }
-    const annunciPuliti = annunciClassificati.filter(a => !a.isScartabile)
-    const prezzi = annunciPuliti.map(a => a.prezzo).filter(p => !isNaN(p) && p >= 15).sort((a, b) => a - b)
+    const annunciPuliti = (annunci || []).filter(a => !isAccessorio(a.titolo, a.prezzo) && !isCategoriaDisallineata(a.titolo, query))
+    const prezzi = annunciPuliti.map(a => parseFloat(a.prezzo)).filter(p => !isNaN(p) && p >= 15).sort((a, b) => a - b)
     if (prezzi.length > 0) {
       const mid = Math.floor(prezzi.length / 2)
       return prezzi.length % 2 !== 0 ? prezzi[mid] : Math.round((prezzi[mid - 1] + prezzi[mid]) / 2)
     }
-    return 65
-  }, [valutazioneAI, annunciClassificati])
+    return 70
+  }, [valutazioneAI, annunci, query])
 
   const targetAcquisto = useMemo(() => Math.round(benchmarkVal * 0.52), [benchmarkVal])
   const tettoMassimo = useMemo(() => Math.round(benchmarkVal * 0.70), [benchmarkVal])
 
   // Analisi completa di ciascun annuncio
   const annunciAnalizzati = useMemo(() => {
-    return annunciClassificati.map((ann, idx) => {
-      const p = parseFloat(ann.prezzo)
-      const prezzo = !isNaN(p) && p > 0 ? p : null
-      const id = ann.id || ann.url || `ann_${idx}`
-      
-      let tipo = 'mercato'
-      let badge = 'PREZZO DI MERCATO'
-      let offerta = targetAcquisto
-      let profitto = null
-      let sconto = 0
-
-      if (prezzo !== null) {
-        if (ann.isScartabile) {
-          tipo = 'accessorio'
-          badge = ann.isAccessorio ? '📦 ACCESSORIO / COVER' : '⚠️ MODELLO DIVERSO'
-          offerta = prezzo
-        } else if (prezzo <= targetAcquisto) {
-          tipo = 'super_deal'
-          badge = '🔥 SUPER DEAL (Compra Ora)'
-          profitto = Math.max(10, Math.round(benchmarkVal - prezzo))
-          offerta = prezzo
-        } else if (prezzo <= tettoMassimo || prezzo <= benchmarkVal * 0.85) {
-          tipo = 'da_trattare'
-          badge = '💬 DA TRATTARE'
-          sconto = Math.max(5, Math.round(((prezzo - targetAcquisto) / prezzo) * 100))
-          profitto = Math.round(benchmarkVal - targetAcquisto)
-          offerta = targetAcquisto
-        }
-      }
-
+    return (annunci || []).map((ann, idx) => {
+      const analizzato = analizzaAnnuncio(ann, query, benchmarkVal)
       return {
-        ...ann,
-        id,
-        prezzo,
-        tipo,
-        badge,
-        offerta,
-        profitto,
-        sconto
+        ...analizzato,
+        id: ann.id || ann.url || `ann_${idx}`
       }
     })
-  }, [annunciClassificati, benchmarkVal, targetAcquisto, tettoMassimo])
+  }, [annunci, query, benchmarkVal])
+
+  const numeroScartati = useMemo(() => {
+    return annunciAnalizzati.filter(a => a.isScartabile).length
+  }, [annunciAnalizzati])
 
   // Filtro e Ordinamento
   const annunciFiltrati = useMemo(() => {
     let res = annunciAnalizzati
 
-    // Applica filtro antirumore (esclude cover/scatole/altri modelli)
     if (filtraAccessori) {
       res = res.filter(a => !a.isScartabile)
     }
 
-    // Applica filtro categoria deal
     if (filtro === 'affari') res = res.filter(a => a.tipo === 'super_deal')
     if (filtro === 'trattabili') res = res.filter(a => a.tipo === 'super_deal' || a.tipo === 'da_trattare')
 
@@ -417,7 +324,7 @@ export default function RadarOfferteView({ onCercaSitiEsterni, estensioneInstall
             rel="noreferrer"
             className="text-[11px] font-bold px-2 py-1 rounded-lg bg-teal-500/10 border border-teal-500/20 text-teal-300 hover:bg-teal-500/20 transition-colors inline-flex items-center gap-1"
           >
-            👗 Vinted (dal + economico) <ExternalLink className="w-3 h-3" />
+            👗 Vinted <ExternalLink className="w-3 h-3" />
           </a>
           <a
             href={`https://www.subito.it/annunci-italia/vendita/usato/?q=${encodeURIComponent(query)}&order=price_asc`}
@@ -425,7 +332,15 @@ export default function RadarOfferteView({ onCercaSitiEsterni, estensioneInstall
             rel="noreferrer"
             className="text-[11px] font-bold px-2 py-1 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-300 hover:bg-amber-500/20 transition-colors inline-flex items-center gap-1"
           >
-            🟧 Subito (dal + economico) <ExternalLink className="w-3 h-3" />
+            🟧 Subito <ExternalLink className="w-3 h-3" />
+          </a>
+          <a
+            href={`https://www.facebook.com/marketplace/search/?query=${encodeURIComponent(query)}`}
+            target="_blank"
+            rel="noreferrer"
+            className="text-[11px] font-bold px-2 py-1 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-300 hover:bg-sky-500/20 transition-colors inline-flex items-center gap-1"
+          >
+            👥 Marketplace <ExternalLink className="w-3 h-3" />
           </a>
           <a
             href={`https://www.ebay.it/sch/i.html?_nkw=${encodeURIComponent(query)}&_sop=15`}
@@ -460,7 +375,7 @@ export default function RadarOfferteView({ onCercaSitiEsterni, estensioneInstall
           <div className="flex items-center gap-2">
             <Shield className="w-4 h-4 text-indigo-400 shrink-0" />
             <span className="text-slate-300">
-              Filtro Antirumore: <b className="text-emerald-400">{numeroScartati}</b> cover, accessori e modelli non coerenti nascosti.
+              Filtro Antirumore: <b className="text-emerald-400">{numeroScartati}</b> cover, ricambi e accessori nascosti.
             </span>
           </div>
           <button
@@ -605,6 +520,12 @@ export default function RadarOfferteView({ onCercaSitiEsterni, estensioneInstall
                       <h4 className="text-xs sm:text-sm font-semibold text-slate-100 line-clamp-2 mt-1">
                         {String(ann.titolo || 'Articolo')}
                       </h4>
+
+                      {ann.descrizione && (
+                        <p className="text-[11px] text-slate-400 line-clamp-2 mt-1 italic bg-slate-950/60 px-2 py-1 rounded-lg border border-slate-800/80">
+                          <span className="text-slate-500 font-medium not-italic">📝 Note:</span> {ann.descrizione}
+                        </p>
+                      )}
                     </div>
 
                     <div className="text-right shrink-0">
@@ -622,24 +543,28 @@ export default function RadarOfferteView({ onCercaSitiEsterni, estensioneInstall
                         <span className="text-slate-500 italic">
                           Articolo accessorio o modello secondario escluso dal calcolo di rivendita.
                         </span>
+                      ) : ann.tipo === 'fuori_mercato' ? (
+                        <span className="text-rose-400 font-medium flex items-center gap-1">
+                          <span>🔴 Fuori Mercato:</span> Chiede troppo ({ann.prezzo}€ vs valore ~{benchmarkVal}€). Trattativa sconsigliata.
+                        </span>
                       ) : ann.tipo === 'super_deal' ? (
                         <span className="text-emerald-400 font-bold flex items-center gap-1">
                           <CheckCircle2 className="w-3.5 h-3.5" /> Guadagno netto stimato: +{ann.profitto}€
                         </span>
                       ) : ann.tipo === 'da_trattare' ? (
                         <span className="text-amber-300 font-medium flex items-center gap-1">
-                          <span>💡 Offerta consigliata:</span> <b className="text-amber-400 font-bold font-mono text-xs">{ann.offerta}€</b>
+                          <span>💡 Offerta realistica (-{ann.sconto}%):</span> <b className="text-amber-400 font-bold font-mono text-xs">{ann.offerta}€</b>
                           <span className="text-[10px] text-slate-400">(Margine target: +{ann.profitto}€)</span>
                         </span>
                       ) : (
                         <span className="text-slate-400">
-                          Prezzo allineato alla mediana di mercato (~{benchmarkVal}€)
+                          Prezzo allineato al valore di mercato (~{benchmarkVal}€)
                         </span>
                       )}
                     </div>
 
                     <div className="flex items-center gap-1.5 self-end sm:self-auto">
-                      {!ann.isScartabile && (
+                      {!ann.isScartabile && ann.offerta != null && ann.tipo !== 'fuori_mercato' && (
                         <button
                           type="button"
                           onClick={() => copiaMessaggioOfferta(ann)}
