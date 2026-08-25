@@ -563,14 +563,11 @@ const OrarioCorse = () => {
     return fullMatch || shortMatch || patternMatch;
   };
 
-  // Funzione di rendering per l'intestazione di tabella
+  // Funzione di rendering per l'intestazione di tabella (allineata allo scorrimento orizzontale)
   const renderHeaderRow = (headerList, isStickyTop = true) => (
     <tr style={{
       background: '#131824',
-      borderBottom: '2px solid rgba(245, 166, 35, 0.6)',
-      position: isStickyTop ? 'sticky' : 'static',
-      top: 0,
-      zIndex: 20
+      borderBottom: '2px solid rgba(245, 166, 35, 0.6)'
     }}>
       {headerList.map((h, i) => {
         const isTurno = i === 0;
@@ -599,9 +596,10 @@ const OrarioCorse = () => {
               width: isTurno ? '56px' : '44px',
               minWidth: isTurno ? '56px' : '44px',
               maxWidth: isTurno ? '56px' : '44px',
-              position: isTurno ? 'sticky' : 'static',
-              left: 0,
-              zIndex: isTurno ? 30 : isMatched ? 25 : 20,
+              position: isTurno ? 'sticky' : isStickyTop ? 'sticky' : 'static',
+              top: isStickyTop ? 0 : 'auto',
+              left: isTurno ? 0 : 'auto',
+              zIndex: isTurno ? (isStickyTop ? 40 : 30) : isMatched ? 25 : (isStickyTop ? 20 : 5),
               height: isTurno ? 'auto' : '122px',
               boxShadow: isMatched ? 'inset 0 0 10px rgba(245, 166, 35, 0.3)' : 'none',
               boxSizing: 'border-box'
