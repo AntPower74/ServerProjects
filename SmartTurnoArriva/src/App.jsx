@@ -1145,22 +1145,7 @@ function App() {
       </>
       )}
       
-      <footer style={{
-        textAlign: 'center',
-        padding: '2rem 0',
-        marginTop: '2rem',
-        color: 'var(--text-muted)',
-        fontSize: '0.75rem',
-        fontWeight: '400',
-        letterSpacing: '0.05em',
-        textTransform: 'uppercase',
-        borderTop: '1px dashed rgba(255,255,255,0.05)'
-      }}>
-        <div style={{ marginBottom: '0.5rem', fontSize: '0.7rem', color: 'var(--text-muted)', textTransform: 'none', letterSpacing: 'normal' }}>
-          Ultimo aggiornamento: {lastUpdate || "..."}
-        </div>
-        Developed by <span style={{ color: 'var(--text-light)', fontWeight: '600' }}>Antpower74</span>
-      </footer>
+
 
       <div style={{ height: '70px' }}></div>
       </div>

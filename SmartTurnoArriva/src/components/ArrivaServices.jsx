@@ -66,9 +66,19 @@ function matchStop(stopName, query) {
   const s = normalizeStop(stopName);
   const q = normalizeStop(query);
 
-  if (s === q || s.includes(q) || q.includes(s)) return true;
+  if (s === q) return true;
 
-  // 1. Villar Perosa vs Perosa Argentina (crucial: they are separate municipalities!)
+  // 1. Sestriere (Comune / Colle / Borgata) vs "via Sestriere / SP Sestriere" in altri paesi (None, Nichelino, ecc.)
+  const qHasSestriere = q.includes('sestriere');
+  const sHasSestriere = s.includes('sestriere');
+  if (qHasSestriere || sHasSestriere) {
+    const qIsVia = q.includes('via sestriere') || q.includes('none') || q.includes('sp23');
+    const sIsVia = s.includes('via sestriere') || s.includes('none') || s.includes('sp23');
+    if (qHasSestriere && !qIsVia && sIsVia) return false;
+    if (sHasSestriere && !sIsVia && qIsVia) return false;
+  }
+
+  // 2. Villar Perosa vs Perosa Argentina (crucial: they are separate municipalities!)
   const qHasVillar = q.includes('villar');
   const sHasVillar = s.includes('villar');
   if (qHasVillar !== sHasVillar) return false;
@@ -79,7 +89,7 @@ function matchStop(stopName, query) {
     return true;
   }
 
-  // 2. Specific Airport Terminal Matching (do not greedily match local road stops like "str. Aeroporto")
+  // 3. Specific Airport Terminal Matching (do not greedily match local road stops like "str. Aeroporto")
   const isQueryAirportTerminal = (q.includes('aeroporto') || q.includes('airport')) && !q.includes('str') && !q.includes('44') && !q.includes('36');
   if (isQueryAirportTerminal) {
     const isStopAirportTerminal = (s.includes('torino aeroporto') || s.includes('aeroporto caselle')) && !s.includes('str') && !s.includes('44') && !s.includes('36');
@@ -92,12 +102,15 @@ function matchStop(stopName, query) {
     return s.includes('str aeroporto') || s.includes('str aerop');
   }
 
-  // 3. Riva di Pinerolo / Candiolo via Pinerolo vs Pinerolo Centro
+  // 4. Riva di Pinerolo / Candiolo via Pinerolo vs Pinerolo Centro
   if (q.includes('riva') && !s.includes('riva')) return false;
   if (!q.includes('riva') && s.includes('riva di pinerolo')) return false;
   if (!q.includes('candiolo') && s.includes('candiolo via pinerolo')) return false;
 
-  // 4. Ultra-fast semantic alias checks (O(1) string operations)
+  // Generic Substring Matching (after disambiguation rules)
+  if (s.includes(q) || q.includes(s)) return true;
+
+  // 5. Ultra-fast semantic alias checks (O(1) string operations)
   if ((q.includes('porta susa') || q.includes('bolzano') || (q.includes('susa') && !q.includes('val di susa'))) && (s.includes('porta susa') || s.includes('bolzano'))) {
     return true;
   }
@@ -602,7 +615,18 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
   const [expandedTurnoKey, setExpandedTurnoKey] = useState(null);
   const [expandedTurnoCorsaKey, setExpandedTurnoCorsaKey] = useState(null);
 
+  // Timetable (Orario Corse per Linea) State
+  const [selectedTimetableLine, setSelectedTimetableLine] = useState('275/282');
+  const [timetableDirection, setTimetableDirection] = useState('all'); // 'all' | 'outbound' | 'inbound'
+  const [timetableDayFilter, setTimetableDayFilter] = useState('today'); // 'today' | 'fer' | 'sab' | 'dom' | 'sco' | 'all'
+  const [timetableTimeFilter, setTimetableTimeFilter] = useState('all'); // 'all' | 'morning' | 'afternoon' | 'evening'
+  const [timetableSearchTerm, setTimetableSearchTerm] = useState('');
+  const [expandedTimetableTripId, setExpandedTimetableTripId] = useState(null);
+  const [timetableViewMode, setTimetableViewMode] = useState('table'); // 'table' | 'cards'
+
+
   // Tariffs Modal State
+
   const [showFaresModal, setShowFaresModal] = useState(false);
   const [faresModalTab, setFaresModalTab] = useState('airport');
 
@@ -688,6 +712,211 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
       return matchCodice || matchNome || matchDep || matchCorsa;
     });
   }, [turnoSearchTerm, selectedDeposito, selectedTurnoGiorno]);
+
+  // Available Lines in Database for Timetable
+  const availableTimetableLines = useMemo(() => {
+    const map = new Map();
+    (databaseOrari.trips || []).forEach(t => {
+      const l = t.line;
+      if (!l) return;
+      if (!map.has(l)) {
+        const validStops = (t.stops || []).filter(s => isValidTime(s.time));
+        map.set(l, {
+          line: l,
+          count: 0,
+          sampleFrom: validStops[0]?.name || '',
+          sampleTo: validStops[validStops.length - 1]?.name || ''
+        });
+      }
+      map.get(l).count++;
+    });
+    return Array.from(map.values()).sort((a, b) => b.count - a.count);
+  }, []);
+
+  // Lookup Shift Code (Turno) for a Corsa
+  const findTurnoForTrip = useCallback((tripLine, depTime, giornoFilter) => {
+    const depM = parseTimeToMinutes(depTime);
+    if (depM === null) return '—';
+
+    for (const t of turniCorseDb) {
+      const tg = (t.giorno || '').toLowerCase();
+      if (giornoFilter === 'fer' && !tg.includes('gioved') && !tg.includes('feriale') && !tg.includes('lun')) continue;
+      if (giornoFilter === 'sab' && !tg.includes('sabato')) continue;
+      if (giornoFilter === 'dom' && !tg.includes('domenica') && !tg.includes('festivo')) continue;
+
+      for (const c of (t.corse || [])) {
+        const cLine = String(c.linea || '');
+        const cDepM = parseTimeToMinutes(c.partenza);
+        if ((tripLine.includes(cLine) || cLine.includes(tripLine)) && cDepM === depM) {
+          return t.codice;
+        }
+      }
+    }
+    return '—';
+  }, []);
+
+  // Filtered Timetable Trips for Selected Line
+  const filteredTimetableTrips = useMemo(() => {
+    if (!selectedTimetableLine) return [];
+    
+    let trips = (databaseOrari.trips || []).filter(t => t.line === selectedTimetableLine);
+    
+    // Day Filter
+    if (timetableDayFilter === 'today') {
+      const dow = new Date().getDay();
+      if (dow === 0) {
+        trips = trips.filter(t => (t.days && (t.days.includes('7') || t.days.includes('8'))) || t.season === 'FES' || t.season === 'FEST');
+      } else if (dow === 6) {
+        trips = trips.filter(t => t.days && t.days.includes('6'));
+      } else {
+        trips = trips.filter(t => !t.days || t.days.includes('1') || t.days.includes('2') || t.days.includes('3') || t.days.includes('4') || t.days.includes('5') || t.season === 'FER');
+      }
+    } else if (timetableDayFilter === 'fer') {
+      trips = trips.filter(t => !t.days || t.days.includes('1') || t.days.includes('2') || t.days.includes('3') || t.days.includes('4') || t.days.includes('5') || t.season === 'FER');
+    } else if (timetableDayFilter === 'sab') {
+      trips = trips.filter(t => t.days && t.days.includes('6'));
+    } else if (timetableDayFilter === 'dom') {
+      trips = trips.filter(t => (t.days && (t.days.includes('7') || t.days.includes('8'))) || t.season === 'FES' || t.season === 'FEST');
+    } else if (timetableDayFilter === 'sco') {
+      trips = trips.filter(t => t.season === 'SCO' || (t.season && t.season.includes('SCO')));
+    }
+
+    // Map each trip with valid stops, dep and arr times
+    let processed = trips.map(t => {
+      const validStops = cleanAndMergeStops(t.stops || []);
+      if (validStops.length < 2) return null;
+      const first = validStops[0];
+      const last = validStops[validStops.length - 1];
+      const depMins = parseTimeToMinutes(first.time);
+      const arrMins = parseTimeToMinutes(last.time);
+      let durationMins = null;
+      if (depMins !== null && arrMins !== null) {
+        durationMins = (arrMins - depMins + 1440) % 1440;
+      }
+      const turno = findTurnoForTrip(t.line, first.time, timetableDayFilter);
+
+      return {
+        ...t,
+        validStops,
+        originName: first.name,
+        originTime: first.time,
+        destName: last.name,
+        destTime: last.time,
+        depMins,
+        arrMins,
+        durationMins,
+        turno
+      };
+    }).filter(Boolean);
+
+    // Direction Filter
+    if (timetableDirection !== 'all') {
+      if (timetableDirection === 'outbound') {
+        processed = processed.filter(t => {
+          const orig = t.originName.toUpperCase();
+          return orig.includes('TORINO') || orig.includes('PINEROLO') || orig.includes('SUSA') || orig.includes('CHIVASSO') || orig.includes('AOSTA') || orig.includes('PEROSA');
+        });
+      } else if (timetableDirection === 'inbound') {
+        processed = processed.filter(t => {
+          const dest = t.destName.toUpperCase();
+          return dest.includes('TORINO') || dest.includes('PINEROLO') || dest.includes('SUSA') || dest.includes('CHIVASSO') || dest.includes('AOSTA') || dest.includes('PEROSA');
+        });
+      }
+    }
+
+    // Time Filter
+    if (timetableTimeFilter === 'morning') {
+      processed = processed.filter(t => t.depMins !== null && t.depMins >= 300 && t.depMins < 720);
+    } else if (timetableTimeFilter === 'afternoon') {
+      processed = processed.filter(t => t.depMins !== null && t.depMins >= 720 && t.depMins < 1080);
+    } else if (timetableTimeFilter === 'evening') {
+      processed = processed.filter(t => t.depMins !== null && t.depMins >= 1080);
+    }
+
+    // Search Term (stop name, time, or turno)
+    if (timetableSearchTerm.trim()) {
+      const q = timetableSearchTerm.trim().toLowerCase();
+      processed = processed.filter(t => 
+        (t.id && t.id.toLowerCase().includes(q)) ||
+        (t.turno && t.turno.toLowerCase().includes(q)) ||
+        (t.originName && t.originName.toLowerCase().includes(q)) ||
+        (t.destName && t.destName.toLowerCase().includes(q)) ||
+        (t.originTime && t.originTime.includes(q)) ||
+        (t.destTime && t.destTime.includes(q)) ||
+        t.validStops.some(s => (s.name && s.name.toLowerCase().includes(q)) || (s.time && s.time.includes(q)))
+      );
+    }
+
+    // Deduplicate identical physical runs
+    const dedupMap = new Map();
+    processed.forEach(p => {
+      const depKey = String(p.originTime || '').replace('.', ':');
+      const arrKey = String(p.destTime || '').replace('.', ':');
+      const key = `${p.line}_${depKey}_${arrKey}`;
+      if (!dedupMap.has(key)) {
+        dedupMap.set(key, p);
+      } else {
+        const existing = dedupMap.get(key);
+        if (p.validStops.length > existing.validStops.length) {
+          dedupMap.set(key, p);
+        }
+      }
+    });
+
+    const finalResults = Array.from(dedupMap.values());
+    finalResults.sort((a, b) => (a.depMins ?? 9999) - (b.depMins ?? 9999));
+    return finalResults;
+  }, [selectedTimetableLine, timetableDayFilter, timetableDirection, timetableTimeFilter, timetableSearchTerm, findTurnoForTrip]);
+
+  // Dynamic Stop Columns for the Table / Grid View
+  const timetableTableColumns = useMemo(() => {
+    if (!filteredTimetableTrips || filteredTimetableTrips.length === 0) return [];
+    
+    // Find trip with highest number of stops to use as column baseline
+    const sortedByStops = [...filteredTimetableTrips].sort((a, b) => b.validStops.length - a.validStops.length);
+    const longestTrip = sortedByStops[0];
+    
+    const columns = [];
+    const seen = new Set();
+    
+    longestTrip.validStops.forEach(s => {
+      const norm = normalizeStop(s.name);
+      if (!seen.has(norm)) {
+        seen.add(norm);
+        columns.push({
+          rawName: s.name,
+          displayName: formatStopDisplayName(s.name),
+          norm
+        });
+      }
+    });
+
+    // Also include any first/last stops from other trips
+    filteredTimetableTrips.forEach(t => {
+      const first = t.validStops[0];
+      const last = t.validStops[t.validStops.length - 1];
+      if (first && !seen.has(normalizeStop(first.name))) {
+        seen.add(normalizeStop(first.name));
+        columns.unshift({
+          rawName: first.name,
+          displayName: formatStopDisplayName(first.name),
+          norm: normalizeStop(first.name)
+        });
+      }
+      if (last && !seen.has(normalizeStop(last.name))) {
+        seen.add(normalizeStop(last.name));
+        columns.push({
+          rawName: last.name,
+          displayName: formatStopDisplayName(last.name),
+          norm: normalizeStop(last.name)
+        });
+      }
+    });
+
+    return columns;
+  }, [filteredTimetableTrips]);
+
+
 
 
   // Load notices
@@ -1321,6 +1550,7 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
             <span>Linee & Orari PDF</span>
           </button>
 
+
           <button
             onClick={() => setActiveSubTab('mypay')}
             style={{
@@ -1403,7 +1633,7 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
                 onClick={() => setPlannerMode('route')}
                 style={{
                   flex: 1,
-                  padding: '9px',
+                  padding: '9px 12px',
                   borderRadius: '9px',
                   border: 'none',
                   background: plannerMode === 'route' ? 'linear-gradient(135deg, #0891b2, #0284c7)' : 'transparent',
@@ -1427,7 +1657,7 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
                 onClick={() => setPlannerMode('turni')}
                 style={{
                   flex: 1,
-                  padding: '9px',
+                  padding: '9px 12px',
                   borderRadius: '9px',
                   border: 'none',
                   background: plannerMode === 'turni' ? 'linear-gradient(135deg, #f5a623, #d97706)' : 'transparent',
