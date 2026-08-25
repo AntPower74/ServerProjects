@@ -288,30 +288,67 @@ const matchTripInDb = (c) => {
   if (!c || !databaseOrari || !databaseOrari.trips) return null;
   const lineClean = String(c.linea || '').replace(/\D+/g, '');
   const depM = parseTimeToMinutes(c.partenza);
+  const arrM = parseTimeToMinutes(c.arrivo);
   if (depM === null) return null;
 
-  const tratta = parseTratta(c.da);
+  const { fromClean, toClean } = getCleanTratta(c);
 
-  return databaseOrari.trips.find(t => {
+  let bestTrip = null;
+  let bestScore = -1;
+
+  for (const t of databaseOrari.trips) {
     const tLineClean = String(t.line || '').replace(/\D+/g, '');
     if (lineClean && tLineClean) {
-      if (!tLineClean.includes(lineClean) && !lineClean.includes(tLineClean)) return false;
+      if (!tLineClean.includes(lineClean) && !lineClean.includes(tLineClean)) continue;
     } else if (lineClean && !tLineClean) {
-      return false;
+      continue;
     }
 
     const validStops = t.stops.filter(s => isValidTime(s.time));
-    if (validStops.length === 0) return false;
+    if (validStops.length === 0) continue;
 
-    return validStops.some(s => {
-      const sM = parseTimeToMinutes(s.time);
-      if (sM === depM) {
-        if (tratta.from) return matchStop(s.name, tratta.from);
-        return true;
-      }
-      return false;
-    });
-  });
+    const firstStop = validStops[0];
+    const lastStop = validStops[validStops.length - 1];
+    const tDepM = parseTimeToMinutes(firstStop.time);
+    const tArrM = parseTimeToMinutes(lastStop.time);
+
+    let score = 0;
+
+    // 1. Partenza esatta dal capolinea di partenza
+    if (tDepM !== null && tDepM === depM) {
+      score += 10;
+      if (fromClean && matchStop(firstStop.name, fromClean)) score += 5;
+    }
+
+    // 2. Arrivo esatto al capolinea di destinazione
+    if (arrM !== null && tArrM !== null && tArrM === arrM) {
+      score += 10;
+      if (toClean && matchStop(lastStop.name, toClean)) score += 5;
+    }
+
+    // 3. Corrispondenza tratta
+    if (fromClean && matchStop(firstStop.name, fromClean)) score += 3;
+    if (toClean && matchStop(lastStop.name, toClean)) score += 3;
+
+    // 4. Se corsa parziale / intermedia
+    if (score < 10) {
+      const intermediateMatch = validStops.some((s, idx) => {
+        const sM = parseTimeToMinutes(s.time);
+        if (sM === depM && fromClean && matchStop(s.name, fromClean)) {
+          return idx < validStops.length - 1;
+        }
+        return false;
+      });
+      if (intermediateMatch) score += 6;
+    }
+
+    if (score > bestScore && score >= 10) {
+      bestScore = score;
+      bestTrip = t;
+    }
+  }
+
+  return bestTrip;
 };
 
 export default function TodayShiftModal({ 
