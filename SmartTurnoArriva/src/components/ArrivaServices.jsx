@@ -530,8 +530,11 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
   const [timeViewMode, setTimeViewMode] = useState('now');
   const [customTime, setCustomTime] = useState('');
   const [expandedTripId, setExpandedTripId] = useState(null);
+  const [expandedTransferLegs, setExpandedTransferLegs] = useState({});
   const [showFullLineStops, setShowFullLineStops] = useState({});
   const [expandedConnKey, setExpandedConnKey] = useState(null);
+
+
 
   // Turni & Deposito Search State
   const [turnoSearchTerm, setTurnoSearchTerm] = useState('');
@@ -944,8 +947,8 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
       };
     }
 
-    // 2. No direct trip found -> Find 1-transfer connection via Hubs
-    const transferSolutions = [];
+    // 2. No direct trip found -> Find 1-transfer connection via Hubs (Smart Transit: prima coincidenza utile, zero doppioni)
+    const transferSolutionsMap = new Map();
 
     HUBS.forEach(hub => {
       if (matchStop(deferredOrigin, hub.query) || matchStop(deferredDestination, hub.query)) return;
@@ -956,38 +959,57 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
       if (leg1List.length === 0 || leg2List.length === 0) return;
 
       leg1List.forEach(l1 => {
-        if (l1.arrivalMins === null) return;
+        if (l1.arrivalMins === null || l1.departureMins === null) return;
+
+        // Trova SOLO la prima coincidenza utile l2 con attesa realistica compresa tra 5 e 50 minuti
+        let bestL2 = null;
+        let minWait = 9999;
 
         leg2List.forEach(l2 => {
           if (l2.departureMins === null) return;
           const waitMins = (l2.departureMins - l1.arrivalMins + 1440) % 1440;
 
-          // Connection wait window: 10 mins <= wait <= 180 mins
-          if (waitMins >= 10 && waitMins <= 180) {
-            const totalDuration = (l1.durationMins || 0) + waitMins + (l2.durationMins || 0);
-            const totalFareNum = ((l1.fare?.priceNum || 0) + (l2.fare?.priceNum || 0)).toFixed(2).replace('.', ',');
-
-            transferSolutions.push({
-              type: 'transfer',
-              tripId: `${l1.tripId}_${l2.tripId}`,
-              hubName: hub.name,
-              waitMins,
-              totalDuration,
-              departureTime: l1.departureTime,
-              arrivalTime: l2.arrivalTime,
-              departureMins: l1.departureMins,
-              fromName: l1.fromName,
-              toName: l2.toName,
-              totalFare: `${totalFareNum} €`,
-              leg1: l1,
-              leg2: l2
-            });
+          // Finestra reale di cambio coincidenza: da 5 min a massimo 50 min
+          if (waitMins >= 5 && waitMins <= 50) {
+            if (waitMins < minWait) {
+              minWait = waitMins;
+              bestL2 = l2;
+            }
           }
         });
+
+        if (bestL2) {
+          const totalDuration = (l1.durationMins || 0) + minWait + (bestL2.durationMins || 0);
+          const totalFareNum = ((l1.fare?.priceNum || 0) + (bestL2.fare?.priceNum || 0)).toFixed(2).replace('.', ',');
+
+          const depKey = `${l1.departureTime}_${l1.fromName}`;
+          const existing = transferSolutionsMap.get(depKey);
+
+          // Se non esiste ancora per questo orario di partenza o se questa combinazione è più rapida, salvala
+          if (!existing || totalDuration < existing.totalDuration) {
+            transferSolutionsMap.set(depKey, {
+              type: 'transfer',
+              tripId: `${l1.tripId}_${bestL2.tripId}`,
+              hubName: hub.name,
+              waitMins: minWait,
+              totalDuration,
+              departureTime: l1.departureTime,
+              arrivalTime: bestL2.arrivalTime,
+              departureMins: l1.departureMins,
+              fromName: l1.fromName,
+              toName: bestL2.toName,
+              totalFare: `${totalFareNum} €`,
+              leg1: l1,
+              leg2: bestL2
+            });
+          }
+        }
       });
     });
 
+    const transferSolutions = Array.from(transferSolutionsMap.values());
     transferSolutions.sort((a, b) => (a.departureMins ?? 9999) - (b.departureMins ?? 9999));
+
 
     let filteredTransfers = transferSolutions;
     if (minMins !== null) {
@@ -1818,6 +1840,8 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
                         const isExpanded = expandedTripId === res.tripId;
                         const isNextUpcoming = (timeViewMode === 'now' || timeViewMode === 'custom') && index === 0;
 
+
+
                         // Calculate wait time until bus departs
                         let waitMinutesDiff = null;
                         if (res.departureMins !== null && res.departureMins >= currentNowMins) {
@@ -2021,13 +2045,25 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
                                   type="button"
                                   onClick={() => setExpandedTripId(isExpanded ? null : res.tripId)}
                                   style={{
-                                    background: 'transparent', border: 'none', color: 'var(--accent-cyan)',
-                                    fontSize: '0.75rem', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '4px'
+                                    background: isExpanded ? 'rgba(6, 182, 212, 0.15)' : 'rgba(255,255,255,0.04)',
+                                    border: isExpanded ? '1px solid var(--accent-cyan)' : '1px solid var(--border-color)',
+                                    borderRadius: '6px',
+                                    padding: '4px 10px',
+                                    color: isExpanded ? 'var(--accent-cyan)' : 'var(--text-main)',
+                                    fontSize: '0.75rem',
+                                    fontWeight: '600',
+                                    cursor: 'pointer',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '5px'
                                   }}
                                 >
-                                  <span>{isExpanded ? 'Nascondi fermate' : 'Vedi fermate'}</span>
-                                  <ChevronDown size={14} style={{ transform: isExpanded ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }} />
+                                  <MapPin size={13} style={{ color: 'var(--accent-cyan)' }} />
+                                  <span>{isExpanded ? 'Chiudi fermate' : `Fermate (${res.intermediateStops?.length || 0})`}</span>
+                                  <ChevronDown size={13} style={{ transform: isExpanded ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }} />
                                 </button>
+
+
 
                                 {isAosta ? (
                                   <a
@@ -2133,10 +2169,6 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
                                         else if (sIdx === stopsToRender.length - 1) isDestStop = true;
                                       }
 
-                                      const connections = getStopConnections(stop.name, stop.time, res.tripId, dayFilter, 25, res.line);
-                                      const connKey = `${res.tripId}_${sIdx}`;
-                                      const isConnOpen = expandedConnKey === connKey;
-
                                       return (
                                         <div key={sIdx} style={{ display: 'flex', flexDirection: 'column' }}>
                                           <div style={{
@@ -2156,32 +2188,6 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
                                               }}>
                                                 {formatStopDisplayName(stop.name)}
                                               </span>
-                                              {connections.length > 0 && (
-                                                <button
-                                                  type="button"
-                                                  onClick={(e) => {
-                                                    e.stopPropagation();
-                                                    setExpandedConnKey(isConnOpen ? null : connKey);
-                                                  }}
-                                                  style={{
-                                                    background: isConnOpen ? 'rgba(245, 166, 35, 0.25)' : 'rgba(245, 166, 35, 0.12)',
-                                                    border: '1px solid rgba(245, 166, 35, 0.4)',
-                                                    borderRadius: '4px',
-                                                    padding: '1px 6px',
-                                                    fontSize: '0.66rem',
-                                                    fontWeight: '700',
-                                                    color: 'var(--accent-orange)',
-                                                    cursor: 'pointer',
-                                                    display: 'inline-flex',
-                                                    alignItems: 'center',
-                                                    gap: '3px'
-                                                  }}
-                                                  title="Mostra coincidenze in partenza da questo nodo"
-                                                >
-                                                  <Shuffle size={10} />
-                                                  <span>{connections.length} coincidenz{connections.length === 1 ? 'a' : 'e'}</span>
-                                                </button>
-                                              )}
                                             </div>
                                             <span style={{
                                               color: isOriginStop ? '#10b981' : isDestStop ? 'var(--accent-cyan)' : 'var(--text-muted)',
@@ -2190,42 +2196,11 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
                                               {stop.time}
                                             </span>
                                           </div>
-
-                                          {/* Coincidenze Sub-Panel */}
-                                          {isConnOpen && (
-                                            <div style={{
-                                              margin: '3px 0 6px 16px',
-                                              padding: '6px 10px',
-                                              background: 'rgba(245, 166, 35, 0.08)',
-                                              borderLeft: '3px solid var(--accent-orange)',
-                                              borderRadius: '6px',
-                                              display: 'flex',
-                                              flexDirection: 'column',
-                                              gap: '4px',
-                                              fontSize: '0.72rem'
-                                            }}>
-                                              <div style={{ fontWeight: '700', color: 'var(--accent-orange)', display: 'flex', alignItems: 'center', gap: '4px', marginBottom: '2px' }}>
-                                                <Shuffle size={12} />
-                                                <span>Coincidenze attive da questo nodo (entro 25 min):</span>
-                                              </div>
-                                              {connections.map((c, cIdx) => (
-                                                <div key={cIdx} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', color: 'var(--text-main)', borderBottom: cIdx < connections.length - 1 ? '1px dashed rgba(255,255,255,0.06)' : 'none', paddingBottom: '3px' }}>
-                                                  <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-                                                    <span style={{ color: 'var(--accent-cyan)', fontWeight: '700' }}>Linea {c.line}</span>
-                                                    <span>➔ {c.directionTo}</span>
-                                                    <span style={{ color: 'var(--text-muted)', fontSize: '0.68rem' }}>({c.tripId})</span>
-                                                  </div>
-                                                  <span style={{ fontWeight: '700', color: c.waitMins <= 5 ? '#10b981' : 'var(--accent-orange)' }}>
-                                                    Ore {c.departureTime} {c.waitMins === 0 ? '(subito)' : `(+${c.waitMins}m)`}
-                                                  </span>
-                                                </div>
-                                              ))}
-                                            </div>
-                                          )}
                                         </div>
                                       );
                                     });
                                   })()}
+
                                 </div>
                               )}
                             </div>
@@ -2311,13 +2286,13 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
                             {/* Visual Step-by-Step Connection */}
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', background: 'rgba(0,0,0,0.25)', padding: '10px 12px', borderRadius: '10px' }}>
                               
-                              {/* Tratta 1 */}
+                              {/* Tratta 1 Header */}
                               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                                   <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#10b981' }} />
                                   <div style={{ display: 'flex', flexDirection: 'column' }}>
                                     <span style={{ fontSize: '0.8rem', fontWeight: '700', color: 'var(--text-main)' }}>
-                                      1ª Tratta: {res.leg1.line} {res.leg1.fare ? `(${res.leg1.fare.price})` : ''}
+                                      1ª Tratta: Linea {res.leg1.line} {res.leg1.fare ? `(${res.leg1.fare.price})` : ''}
                                     </span>
                                     <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>
                                       Da {formatStopDisplayName(res.leg1.fromName)}
@@ -2328,6 +2303,60 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
                                   {res.leg1.departureTime} ➔ {res.leg1.arrivalTime}
                                 </span>
                               </div>
+
+                              {/* Tratta 1 Toggle Fermate Button */}
+                              {res.leg1.intermediateStops && res.leg1.intermediateStops.length > 0 && (
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', margin: '2px 0 2px 14px' }}>
+
+                                  <button
+                                    type="button"
+                                    onClick={() => setExpandedTransferLegs(prev => ({ ...prev, [`${res.tripId}_1`]: !prev[`${res.tripId}_1`] }))}
+                                    style={{
+                                      background: 'transparent',
+                                      border: 'none',
+                                      color: 'var(--accent-cyan)',
+                                      fontSize: '0.73rem',
+                                      fontWeight: '600',
+                                      cursor: 'pointer',
+                                      display: 'inline-flex',
+                                      alignItems: 'center',
+                                      gap: '4px',
+                                      padding: '2px 0',
+                                      width: 'fit-content'
+                                    }}
+                                  >
+                                    <MapPin size={12} />
+                                    <span>{expandedTransferLegs[`${res.tripId}_1`] ? 'Chiudi fermate 1ª tratta' : `Vedi fermate 1ª tratta (${res.leg1.intermediateStops.length})`}</span>
+                                    <ChevronDown size={12} style={{ transform: expandedTransferLegs[`${res.tripId}_1`] ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }} />
+                                  </button>
+
+                                  {expandedTransferLegs[`${res.tripId}_1`] && (
+                                    <div style={{
+                                      padding: '6px 10px',
+                                      background: 'rgba(0,0,0,0.25)',
+                                      borderRadius: '8px',
+                                      borderLeft: '2px solid #10b981',
+                                      display: 'flex',
+                                      flexDirection: 'column',
+                                      gap: '3px'
+                                    }}>
+                                      {res.leg1.intermediateStops.map((s, idx) => (
+                                        <div key={idx} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.73rem' }}>
+                                          <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+                                            <span style={{ fontSize: '0.65rem' }}>{idx === 0 ? '🟢' : idx === res.leg1.intermediateStops.length - 1 ? '🏁' : '•'}</span>
+                                            <span style={{ color: idx === 0 || idx === res.leg1.intermediateStops.length - 1 ? 'var(--text-main)' : 'var(--text-muted)', fontWeight: idx === 0 || idx === res.leg1.intermediateStops.length - 1 ? '700' : 'normal' }}>
+                                              {formatStopDisplayName(s.name)}
+                                            </span>
+                                          </div>
+                                          <span style={{ color: idx === 0 || idx === res.leg1.intermediateStops.length - 1 ? '#10b981' : 'var(--text-muted)', fontWeight: '600' }}>
+                                            {s.time}
+                                          </span>
+                                        </div>
+                                      ))}
+                                    </div>
+                                  )}
+                                </div>
+                              )}
 
                               {/* Interscambio Hub */}
                               <div style={{
@@ -2344,13 +2373,13 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
                                 <span>Cambio a <strong>{formatStopDisplayName(res.hubName)}</strong> • Attesa {res.waitMins} min</span>
                               </div>
 
-                              {/* Tratta 2 */}
+                              {/* Tratta 2 Header */}
                               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                                   <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--accent-cyan)' }} />
                                   <div style={{ display: 'flex', flexDirection: 'column' }}>
                                     <span style={{ fontSize: '0.8rem', fontWeight: '700', color: 'var(--text-main)' }}>
-                                      2ª Tratta: {res.leg2.line} {res.leg2.fare ? `(${res.leg2.fare.price})` : ''}
+                                      2ª Tratta: Linea {res.leg2.line} {res.leg2.fare ? `(${res.leg2.fare.price})` : ''}
                                     </span>
                                     <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>
                                       Verso {formatStopDisplayName(res.leg2.toName)}
@@ -2363,6 +2392,124 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
                               </div>
 
                             </div>
+
+                            {/* Unico Pulsante Tendina per tutte le fermate del percorso */}
+                            <button
+                              type="button"
+                              onClick={() => setExpandedTransferLegs(prev => ({ ...prev, [res.tripId]: !prev[res.tripId] }))}
+                              style={{
+                                background: expandedTransferLegs[res.tripId] ? 'rgba(245, 166, 35, 0.15)' : 'rgba(255,255,255,0.04)',
+                                border: expandedTransferLegs[res.tripId] ? '1px solid var(--accent-orange)' : '1px solid var(--border-color)',
+                                borderRadius: '8px',
+                                padding: '7px 12px',
+                                color: expandedTransferLegs[res.tripId] ? 'var(--accent-orange)' : 'var(--text-main)',
+                                fontSize: '0.78rem',
+                                fontWeight: '700',
+                                cursor: 'pointer',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'space-between',
+                                width: '100%',
+                                marginTop: '4px'
+                              }}
+                            >
+                              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                                <MapPin size={14} style={{ color: 'var(--accent-orange)' }} />
+                                <span>
+                                  {expandedTransferLegs[res.tripId] 
+                                    ? 'Nascondi tutte le fermate del percorso' 
+                                    : `Vedi tutte le fermate (${(res.leg1.intermediateStops?.length || 0) + (res.leg2.intermediateStops?.length || 0)} fermate con coincidenza)`}
+                                </span>
+                              </div>
+                              <ChevronDown size={14} style={{ transform: expandedTransferLegs[res.tripId] ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }} />
+                            </button>
+
+                            {/* Unica Tendina con tutte le fermate e coincidenza evidenziata */}
+                            {expandedTransferLegs[res.tripId] && (
+                              <div style={{
+                                marginTop: '4px',
+                                padding: '10px 12px',
+                                background: 'rgba(0,0,0,0.3)',
+                                borderRadius: '10px',
+                                borderLeft: '3px solid var(--accent-orange)',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                gap: '4px'
+                              }}>
+                                {/* 1. Sezione 1ª Tratta */}
+                                <div style={{ fontSize: '0.72rem', fontWeight: '800', color: '#10b981', display: 'flex', alignItems: 'center', gap: '5px', marginBottom: '2px' }}>
+                                  <span>1ª Tratta: Linea {res.leg1.line} (da {formatStopDisplayName(res.leg1.fromName)})</span>
+                                </div>
+                                {res.leg1.intermediateStops?.map((s, idx) => (
+                                  <div key={`l1_${idx}`} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.74rem' }}>
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                                      <span style={{ fontSize: '0.68rem' }}>{idx === 0 ? '🟢' : '•'}</span>
+                                      <span style={{ color: idx === 0 ? 'var(--text-main)' : 'var(--text-muted)', fontWeight: idx === 0 ? '700' : 'normal' }}>
+                                        {formatStopDisplayName(s.name)}
+                                      </span>
+                                    </div>
+                                    <span style={{ color: idx === 0 ? '#10b981' : 'var(--text-muted)', fontWeight: '600' }}>
+                                      {s.time}
+                                    </span>
+                                  </div>
+                                ))}
+
+                                {/* 2. Coincidenza Evidenziata */}
+                                <div style={{
+                                  margin: '8px 0',
+                                  padding: '8px 12px',
+                                  background: 'linear-gradient(135deg, rgba(245, 166, 35, 0.22) 0%, rgba(217, 119, 6, 0.18) 100%)',
+                                  border: '1.5px solid #f5a623',
+                                  borderRadius: '8px',
+                                  display: 'flex',
+                                  flexDirection: 'column',
+                                  gap: '3px',
+                                  boxShadow: '0 2px 10px rgba(245, 166, 35, 0.15)'
+                                }}>
+                                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '4px' }}>
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontWeight: '800', color: 'var(--accent-orange)', fontSize: '0.80rem' }}>
+                                      <Shuffle size={14} />
+                                      <span>CAMBIO BUS A {formatStopDisplayName(res.hubName).toUpperCase()}</span>
+                                    </div>
+                                    <span style={{
+                                      fontWeight: '800', fontSize: '0.74rem', color: '#121214', background: 'var(--accent-orange)',
+                                      padding: '2px 8px', borderRadius: '4px'
+                                    }}>
+                                      Attesa {res.waitMins} min
+                                    </span>
+                                  </div>
+                                  <div style={{ fontSize: '0.73rem', color: 'var(--text-main)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '2px', borderTop: '1px dashed rgba(245,166,35,0.3)', paddingTop: '4px' }}>
+                                    <span>Arrivo 1ª Tratta (L.{res.leg1.line}): <strong style={{ color: '#10b981' }}>{res.leg1.arrivalTime}</strong></span>
+                                    <span style={{ color: 'var(--text-muted)' }}>➔</span>
+                                    <span>Ripartenza 2ª Tratta (L.{res.leg2.line}): <strong style={{ color: 'var(--accent-cyan)' }}>{res.leg2.departureTime}</strong></span>
+                                  </div>
+                                </div>
+
+                                {/* 3. Sezione 2ª Tratta */}
+                                <div style={{ fontSize: '0.72rem', fontWeight: '800', color: 'var(--accent-cyan)', display: 'flex', alignItems: 'center', gap: '5px', marginBottom: '2px' }}>
+                                  <span>2ª Tratta: Linea {res.leg2.line} (verso {formatStopDisplayName(res.leg2.toName)})</span>
+                                </div>
+                                {res.leg2.intermediateStops?.map((s, idx) => {
+                                  const isLast = idx === (res.leg2.intermediateStops.length - 1);
+                                  return (
+                                    <div key={`l2_${idx}`} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.74rem' }}>
+                                      <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                                        <span style={{ fontSize: '0.68rem' }}>{isLast ? '🏁' : '•'}</span>
+                                        <span style={{ color: isLast ? 'var(--text-main)' : 'var(--text-muted)', fontWeight: isLast ? '700' : 'normal' }}>
+                                          {formatStopDisplayName(s.name)}
+                                        </span>
+                                      </div>
+                                      <span style={{ color: isLast ? 'var(--accent-cyan)' : 'var(--text-muted)', fontWeight: '600' }}>
+                                        {s.time}
+                                      </span>
+                                    </div>
+                                  );
+                                })}
+                              </div>
+                            )}
+
+
+
 
                             {/* Action buttons */}
                             <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '6px', paddingTop: '2px' }}>
