@@ -6,19 +6,19 @@ import turniCorseData from '../data/turni_corse_db.json';
 
 // Linee disponibili con descrizione e capolinea
 const AVAILABLE_LINES = [
-  { id: '268', code: '268', name: 'Linea 268', route: 'Torino ↔ Caselle Aeroporto', count: 144 },
-  { id: '275/282', code: '275/282', name: 'Linea 275/282', route: 'Torino ↔ Pinerolo ↔ Perosa ↔ Sestriere ↔ Oulx', count: 156 },
-  { id: '901', code: '901', name: 'Linea 901 (Val Pellice)', route: 'Bobbio ↔ Torre Pellice ↔ Luserna ↔ Pinerolo ↔ Torino', count: 115 },
-  { id: '285', code: '285', name: 'Linea 285 (Alta Val Susa)', route: 'Oulx FS ↔ Sauze d\'Oulx ↔ Cesana ↔ Claviere ↔ Sestriere', count: 111 },
-  { id: '267', code: '267', name: 'Linea 267', route: 'Torino ↔ Nichelino ↔ Vinovo ↔ Piobesi Torinese', count: 107 },
-  { id: '265', code: '265', name: 'Linea 265 (Canavese)', route: 'Torino ↔ Chivasso ↔ Caluso ↔ Ivrea ↔ Pont-St-Martin', count: 75 },
-  { id: '283', code: '283', name: 'Linea 283', route: 'Pinerolo ↔ Roletto ↔ Frossasco ↔ Cantalupa', count: 55 },
-  { id: '303', code: '303', name: 'Linea 303 (Val Germanasca)', route: 'Torino / Pinerolo ↔ Perosa ↔ Perrero ↔ Prali', count: 55 },
-  { id: '278', code: '278', name: 'Linea 278', route: 'Pinerolo ↔ Buriasco ↔ Cercenasco ↔ Vigone ↔ Pancalieri', count: 40 },
-  { id: '274', code: '274', name: 'Linea 274 (Val Susa)', route: 'Avigliana ↔ S.Ambrogio ↔ Sant\'Antonino ↔ Bruzolo ↔ Susa', count: 33 },
-  { id: '20 (Malpensa Express)', code: '20', name: 'Linea 20 Malpensa', route: 'Torino ↔ Chivasso ↔ Carisio ↔ Milano Malpensa', count: 30 },
-  { id: '101 (Torino - Aosta / SAVDA)', code: '101', name: 'Linea 101 SAVDA', route: 'Torino ↔ Chivasso ↔ Ivrea ↔ Pont ↔ Verrès ↔ Aosta', count: 14 },
-  { id: 'SAVDA (Aosta ↔ Malpensa)', code: 'SAVDA-MXP', name: 'SAVDA Aosta ↔ Malpensa', route: 'Aosta ↔ Châtillon ↔ Verrès ↔ Pont ↔ Malpensa', count: 10 }
+  { id: '268', code: '268', name: 'Linea 268', route: 'Torino ↔ Caselle Aeroporto', count: 144, outLabel: '➔ Aeroporto', inLabel: '➔ Torino' },
+  { id: '275/282', code: '275/282', name: 'Linea 275/282', route: 'Torino ↔ Pinerolo ↔ Perosa ↔ Sestriere ↔ Oulx', count: 156, outLabel: '➔ Pinerolo / Sestriere', inLabel: '➔ Torino' },
+  { id: '901', code: '901', name: 'Linea 901 (Val Pellice)', route: 'Bobbio ↔ Torre Pellice ↔ Luserna ↔ Pinerolo ↔ Torino', count: 115, outLabel: '➔ Bobbio Pellice', inLabel: '➔ Torino' },
+  { id: '285', code: '285', name: 'Linea 285 (Alta Val Susa)', route: 'Oulx FS ↔ Sauze d\'Oulx ↔ Cesana ↔ Claviere ↔ Sestriere', count: 111, outLabel: '➔ Sestriere / Claviere', inLabel: '➔ Oulx FS' },
+  { id: '267', code: '267', name: 'Linea 267', route: 'Torino ↔ Nichelino ↔ Vinovo ↔ Piobesi Torinese', count: 107, outLabel: '➔ Piobesi / Vinovo', inLabel: '➔ Torino' },
+  { id: '265', code: '265', name: 'Linea 265 (Canavese)', route: 'Torino ↔ Chivasso ↔ Caluso ↔ Ivrea ↔ Pont-St-Martin', count: 75, outLabel: '➔ Ivrea / Pont', inLabel: '➔ Torino' },
+  { id: '283', code: '283', name: 'Linea 283', route: 'Pinerolo ↔ Roletto ↔ Frossasco ↔ Cantalupa', count: 55, outLabel: '➔ Cantalupa', inLabel: '➔ Pinerolo' },
+  { id: '303', code: '303', name: 'Linea 303 (Val Germanasca)', route: 'Torino / Pinerolo ↔ Perosa ↔ Perrero ↔ Prali', count: 55, outLabel: '➔ Perrero / Prali', inLabel: '➔ Perosa / Torino' },
+  { id: '278', code: '278', name: 'Linea 278', route: 'Pinerolo ↔ Buriasco ↔ Cercenasco ↔ Vigone ↔ Pancalieri', count: 40, outLabel: '➔ Vigone / Pancalieri', inLabel: '➔ Pinerolo' },
+  { id: '274', code: '274', name: 'Linea 274 (Val Susa)', route: 'Avigliana ↔ S.Ambrogio ↔ Sant\'Antonino ↔ Bruzolo ↔ Susa', count: 33, outLabel: '➔ Susa', inLabel: '➔ Avigliana' },
+  { id: '20 (Malpensa Express)', code: '20', name: 'Linea 20 Malpensa', route: 'Torino ↔ Chivasso ↔ Carisio ↔ Milano Malpensa', count: 30, outLabel: '➔ Malpensa', inLabel: '➔ Torino' },
+  { id: '101 (Torino - Aosta / SAVDA)', code: '101', name: 'Linea 101 SAVDA', route: 'Torino ↔ Chivasso ↔ Ivrea ↔ Pont ↔ Verrès ↔ Aosta', count: 14, outLabel: '➔ Aosta', inLabel: '➔ Torino' },
+  { id: 'SAVDA (Aosta ↔ Malpensa)', code: 'SAVDA-MXP', name: 'SAVDA Aosta ↔ Malpensa', route: 'Aosta ↔ Châtillon ↔ Verrès ↔ Pont ↔ Malpensa', count: 10, outLabel: '➔ Malpensa', inLabel: '➔ Aosta' }
 ];
 
 // Configurazioni fermate canoniche ordinate per corridoio geografico (Andata)
@@ -302,20 +302,29 @@ const cleanDisplayTime = (val) => {
 };
 
 // Trova codice turno autista per una corsa
+// Trova codice turno autista per una corsa con verifica incrociata partenza/arrivo
 const resolveTurnoForTrip = (trip) => {
   if (trip.turno && trip.turno !== '—') return trip.turno;
   if (!turniCorseData || turniCorseData.length === 0) return '—';
   
   const stops = trip.stops || [];
-  if (stops.length === 0) return '—';
+  const realStops = stops.filter(s => cleanTime(s.time));
+  if (realStops.length === 0) return '—';
   
-  const tripDep = cleanTime(stops[0].time);
-  const tripArr = cleanTime(stops[stops.length - 1].time);
+  const tripDep = cleanTime(realStops[0].time);
+  const tripArr = cleanTime(realStops[realStops.length - 1].time);
   const tripLine = String(trip.line || '');
 
+  let bestMatch = '—';
+  let bestScore = 0;
+
   for (const t of turniCorseData) {
-    if (!t.corse || t.corse.length === 0) continue;
-    for (const c of t.corse) {
+    const corse = t.corse || [];
+    if (corse.length === 0) continue;
+
+    const lastCorseArr = cleanTime(corse[corse.length - 1]?.arrivo);
+
+    for (const c of corse) {
       const cLine = String(c.linea || '');
       const matchLine = !cLine || !tripLine || cLine.includes(tripLine) || tripLine.includes(cLine) || tripLine.split('/')[0] === cLine;
       if (!matchLine) continue;
@@ -323,18 +332,68 @@ const resolveTurnoForTrip = (trip) => {
       const cDep = cleanTime(c.partenza);
       const cArr = cleanTime(c.arrivo);
 
-      if (tripDep && cDep && tripDep === cDep) return t.codice;
-      if (tripArr && cArr && tripArr === cArr) return t.codice;
+      // 1. Corrispondenza perfetta: partenza e arrivo completo della corsa coincidono
+      if (tripDep && tripArr && cDep === tripDep && (cArr === tripArr || lastCorseArr === tripArr)) {
+        return t.codice;
+      }
+
+      // 2. Corrispondenza su arrivo finale
+      if (tripArr && (cArr === tripArr || lastCorseArr === tripArr)) {
+        if (bestScore < 2) {
+          bestMatch = t.codice;
+          bestScore = 2;
+        }
+      }
+
+      // 3. Corrispondenza su partenza (solo se l'arrivo non è in aperto conflitto)
+      if (tripDep && cDep === tripDep && (!tripArr || !lastCorseArr || Math.abs(parseInt(tripArr.replace(':','')) - parseInt(lastCorseArr.replace(':',''))) <= 5)) {
+        if (bestScore < 1.5) {
+          bestMatch = t.codice;
+          bestScore = 1.5;
+        }
+      }
     }
   }
-  return '—';
+
+  return bestScore >= 1.5 ? bestMatch : '—';
+};
+
+// Helper per determinare la direzione predefinita in base al deposito dell'utente
+const getDefaultDirectionForDepot = (lineId) => {
+  const userDepot = (localStorage.getItem('shiftlink_saved_depot') || '').toLowerCase();
+  
+  if (['pinerolo', 'perosa', 'bobbio', 'luserna', 'perrero'].some(d => userDepot.includes(d))) {
+    if (['275/282', '901', '303', '267'].includes(lineId)) return 'inbound';
+    if (['283', '278'].includes(lineId)) return 'outbound';
+  }
+  
+  if (userDepot.includes('caselle')) {
+    if (lineId === '268') return 'inbound';
+  }
+  
+  if (['ivrea', 'pont'].some(d => userDepot.includes(d))) {
+    if (['265', '101 (Torino - Aosta / SAVDA)'].includes(lineId)) return 'inbound';
+  }
+  
+  if (['susa', 'oulx', 'cesana', 'sestriere'].some(d => userDepot.includes(d))) {
+    if (['285', '274'].includes(lineId)) return 'inbound';
+  }
+  
+  return 'outbound';
 };
 
 const OrarioCorse = () => {
   const [selectedLineId, setSelectedLineId] = useState('268');
   const [searchTerm, setSearchTerm] = useState('');
-  const [directionFilter, setDirectionFilter] = useState('outbound'); // 'outbound' | 'inbound'
   const tableContainerRef = useRef(null);
+  const sectionInboundRef = useRef(null);
+
+  const handleLineChange = (lineId) => {
+    setSelectedLineId(lineId);
+    if (tableContainerRef.current) {
+      tableContainerRef.current.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    }
+  };
 
   const scrollTable = (offset) => {
     if (tableContainerRef.current) {
@@ -348,59 +407,76 @@ const OrarioCorse = () => {
     }
   };
 
+  const jumpToSection = (section) => {
+    if (section === 'top' && tableContainerRef.current) {
+      tableContainerRef.current.scrollTo({ top: 0, behavior: 'smooth' });
+    } else if (section === 'inbound' && sectionInboundRef.current && tableContainerRef.current) {
+      const topPos = sectionInboundRef.current.offsetTop;
+      tableContainerRef.current.scrollTo({ top: Math.max(0, topPos - 10), behavior: 'smooth' });
+    }
+  };
+
   const currentLineInfo = useMemo(() => {
     return AVAILABLE_LINES.find(l => l.id === selectedLineId) || {
       id: selectedLineId,
       name: `Linea ${selectedLineId}`,
       route: '',
-      count: 0
+      count: 0,
+      outLabel: '➔ Andata',
+      inLabel: '➔ Ritorno'
     };
   }, [selectedLineId]);
 
-  // Dati calcolati per la linea selezionata
-  const { headers, rows, outboundCount, inboundCount } = useMemo(() => {
-    // 1. Caso speciale Linea 268 (dataset manuale 144 corse)
+  // Dati calcolati per la linea selezionata (Sezione Andata + Sezione Ritorno per Tabella Unica)
+  const { outboundData, inboundData, totalTripsCount } = useMemo(() => {
+    const q = searchTerm.trim().toLowerCase();
+
+    // 1. Linea 268
     if (selectedLineId === '268') {
-      const isReturnRow268 = (idx) => idx >= 66;
-      let list = orarioCorseData.map((row, idx) => {
-        const isReturn = isReturnRow268(idx);
-        const cells = (isReturn && directionFilter === 'inbound') 
-          ? [...row.slice(1, 10)].reverse() 
-          : row.slice(1, 10);
+      const headersOut = [
+        { full: 'TURNO', short: 'TURNO', isTurno: true },
+        ...CANONICAL_LINE_STOPS['268']
+      ];
+      const headersIn = [
+        { full: 'TURNO', short: 'TURNO', isTurno: true },
+        ...[...CANONICAL_LINE_STOPS['268']].reverse()
+      ];
 
-        return {
-          turno: (row[0] || '').trim(),
-          isReturn,
-          cells,
-          originalIndex: idx,
-          rawSearch: row.join(' ')
-        };
-      });
+      const rawOut = orarioCorseData.slice(0, 66).map((row, idx) => ({
+        turno: (row[0] || '').trim(),
+        isReturn: false,
+        cells: row.slice(1, 10),
+        rawSearch: row.join(' ')
+      }));
 
-      if (directionFilter === 'outbound') list = list.filter(r => !r.isReturn);
-      if (directionFilter === 'inbound') list = list.filter(r => r.isReturn);
+      const rawIn = orarioCorseData.slice(66).map((row, idx) => ({
+        turno: (row[0] || '').trim(),
+        isReturn: true,
+        cells: [...row.slice(1, 10)].reverse(), // Fermate e orari invertiti: Caselle a sinistra -> Torino a destra
+        rawSearch: row.join(' ')
+      }));
 
-      if (searchTerm.trim()) {
-        const q = searchTerm.trim().toLowerCase();
-        list = list.filter(r => r.rawSearch.toLowerCase().includes(q));
-      }
-
-      const headers268 = directionFilter === 'inbound'
-        ? [...CANONICAL_LINE_STOPS['268']].reverse()
-        : [...CANONICAL_LINE_STOPS['268']];
+      const filteredOut = q ? rawOut.filter(r => r.rawSearch.toLowerCase().includes(q)) : rawOut;
+      const filteredIn = q ? rawIn.filter(r => r.rawSearch.toLowerCase().includes(q)) : rawIn;
 
       return {
-        headers: [
-          { full: 'TURNO', short: 'TURNO', isTurno: true },
-          ...headers268
-        ],
-        rows: list,
-        outboundCount: 66,
-        inboundCount: 78
+        outboundData: {
+          title: `Partenze da ${CANONICAL_LINE_STOPS['268'][0].short} ➔ ${CANONICAL_LINE_STOPS['268'][CANONICAL_LINE_STOPS['268'].length - 1].short}`,
+          headers: headersOut,
+          rows: filteredOut,
+          totalCount: rawOut.length
+        },
+        inboundData: {
+          title: `Partenze da ${CANONICAL_LINE_STOPS['268'][CANONICAL_LINE_STOPS['268'].length - 1].short} ➔ ${CANONICAL_LINE_STOPS['268'][0].short}`,
+          headers: headersIn,
+          rows: filteredIn,
+          totalCount: rawIn.length
+        },
+        totalTripsCount: rawOut.length + rawIn.length
       };
     }
 
-    // 2. Tutte le altre linee da database_orari.json con mapping canonico ordinato
+    // 2. Tutte le altre linee dal database
     const allTrips = (databaseOrari.trips || []).filter(t => {
       if (selectedLineId === 'SAVDA (Aosta ↔ Malpensa)') {
         return String(t.line || '').includes('SAVDA') && String(t.line || '').includes('Malpensa');
@@ -409,105 +485,73 @@ const OrarioCorse = () => {
     });
     const lineConfig = CANONICAL_LINE_STOPS[selectedLineId] || [];
 
-    // Classifica andata / ritorno per ogni corsa in modo esatto
     const classifiedTrips = allTrips.map((trip, idx) => {
       const isReturn = isTripReturn(trip, selectedLineId);
       const turno = resolveTurnoForTrip(trip);
-
-      return {
-        trip,
-        turno,
-        isReturn,
-        stops: trip.stops || [],
-        originalIndex: idx
-      };
+      return { trip, turno, isReturn, stops: trip.stops || [], originalIndex: idx };
     });
 
-    const totalOutbound = classifiedTrips.filter(t => !t.isReturn).length;
-    const totalInbound = classifiedTrips.filter(t => t.isReturn).length;
+    const outTrips = classifiedTrips.filter(t => !t.isReturn);
+    const inTrips = classifiedTrips.filter(t => t.isReturn);
 
-    // Filtra per direzione
-    let filteredTrips = classifiedTrips;
-    if (directionFilter === 'outbound') filteredTrips = filteredTrips.filter(t => !t.isReturn);
-    if (directionFilter === 'inbound') filteredTrips = filteredTrips.filter(t => t.isReturn);
+    const colsOut = lineConfig;
+    const colsIn = [...lineConfig].reverse();
 
-    // Filtra per ricerca testo
-    if (searchTerm.trim()) {
-      const q = searchTerm.trim().toLowerCase();
-      filteredTrips = filteredTrips.filter(t => {
-        if (t.turno.toLowerCase().includes(q)) return true;
-        return t.stops.some(s => s.name.toLowerCase().includes(q) || s.time.includes(q));
-      });
-    }
+    const headersOut = [{ full: 'TURNO', short: 'TURNO', isTurno: true }, ...colsOut];
+    const headersIn = [{ full: 'TURNO', short: 'TURNO', isTurno: true }, ...colsIn];
 
-    // Se abbiamo configurazione fermate canoniche:
-    let dynamicStopColumns = [];
-    if (lineConfig.length > 0) {
-      // Ordina fermate: se Ritorno, inverti la sequenza per seguire la direzione di marcia
-      dynamicStopColumns = directionFilter === 'inbound' 
-        ? [...lineConfig].reverse() 
-        : [...lineConfig];
-    } else {
-      // Fallback dinamico pulito
-      const seen = new Set();
-      filteredTrips.forEach(t => {
-        t.stops.forEach(s => {
-          const rawName = s.name.trim();
-          if (!seen.has(rawName)) {
-            seen.add(rawName);
-            dynamicStopColumns.push({
-              key: rawName,
-              full: rawName,
-              short: rawName.length > 18 ? rawName.slice(0, 16) + '..' : rawName,
-              patterns: [rawName.toUpperCase()]
-            });
-          }
+    const mapTripToCells = (tripList, colList, isReturn) => {
+      let list = tripList;
+      if (q) {
+        list = list.filter(t => {
+          if (t.turno.toLowerCase().includes(q)) return true;
+          return t.stops.some(s => s.name.toLowerCase().includes(q) || s.time.includes(q));
         });
-      });
-    }
+      }
 
-    const finalHeaders = [
-      { full: 'TURNO', short: 'TURNO', isTurno: true },
-      ...dynamicStopColumns
-    ];
-
-    // Crea le righe a matrice con matching intelligente
-    const dynamicRows = filteredTrips.map(t => {
-      const cells = dynamicStopColumns.map(col => {
-        // Cerca nella corsa una fermata che corrisponde ai pattern della colonna (rispettando gli excludes)
-        let matchedTime = '—';
-        const excludes = col.excludes || [];
-
-        for (const stop of t.stops) {
-          const stopUpper = stop.name.toUpperCase();
-          const isExcluded = excludes.some(ex => stopUpper.includes(ex));
-          if (isExcluded) continue;
-
-          const isMatch = col.patterns.some(p => stopUpper.includes(p));
-          if (isMatch) {
-            matchedTime = stop.time;
-            break;
+      return list.map(t => {
+        const cells = colList.map(col => {
+          let matchedTime = '—';
+          const excludes = col.excludes || [];
+          for (const stop of t.stops) {
+            const stopUpper = stop.name.toUpperCase();
+            if (excludes.some(ex => stopUpper.includes(ex))) continue;
+            if (col.patterns.some(p => stopUpper.includes(p))) {
+              matchedTime = stop.time;
+              break;
+            }
           }
-        }
-        return matchedTime;
-      });
+          return matchedTime;
+        });
 
-      return {
-        turno: t.turno,
-        isReturn: t.isReturn,
-        cells,
-        originalIndex: t.originalIndex,
-        rawSearch: ''
-      };
-    });
+        return {
+          turno: t.turno,
+          isReturn,
+          cells,
+          originalIndex: t.originalIndex
+        };
+      });
+    };
+
+    const firstStopName = lineConfig[0]?.short || 'Partenza';
+    const lastStopName = lineConfig[lineConfig.length - 1]?.short || 'Arrivo';
 
     return {
-      headers: finalHeaders,
-      rows: dynamicRows,
-      outboundCount: totalOutbound,
-      inboundCount: totalInbound
+      outboundData: {
+        title: `Partenze da ${firstStopName} ➔ ${lastStopName}`,
+        headers: headersOut,
+        rows: mapTripToCells(outTrips, colsOut, false),
+        totalCount: outTrips.length
+      },
+      inboundData: {
+        title: `Partenze da ${lastStopName} ➔ ${firstStopName}`,
+        headers: headersIn,
+        rows: mapTripToCells(inTrips, colsIn, true),
+        totalCount: inTrips.length
+      },
+      totalTripsCount: classifiedTrips.length
     };
-  }, [selectedLineId, directionFilter, searchTerm]);
+  }, [selectedLineId, searchTerm, currentLineInfo]);
 
   // Verifica se un header corrisponde al termine di ricerca o è selezionato
   const isHeaderMatched = (header) => {
@@ -517,6 +561,188 @@ const OrarioCorse = () => {
     const shortMatch = header.short && header.short.toLowerCase().includes(q);
     const patternMatch = header.patterns && header.patterns.some(p => p.toLowerCase().includes(q));
     return fullMatch || shortMatch || patternMatch;
+  };
+
+  // Funzione di rendering per l'intestazione di tabella
+  const renderHeaderRow = (headerList, isStickyTop = true) => (
+    <tr style={{
+      background: '#131824',
+      borderBottom: '2px solid rgba(245, 166, 35, 0.6)',
+      position: isStickyTop ? 'sticky' : 'static',
+      top: 0,
+      zIndex: 20
+    }}>
+      {headerList.map((h, i) => {
+        const isTurno = i === 0;
+        const isMatched = isHeaderMatched(h);
+
+        return (
+          <th
+            key={i}
+            style={{
+              padding: isTurno ? '6px 4px' : '4px 2px',
+              background: isTurno 
+                ? '#131824' 
+                : isMatched 
+                  ? 'linear-gradient(180deg, rgba(245, 166, 35, 0.38) 0%, rgba(245, 166, 35, 0.18) 100%)' 
+                  : '#131824',
+              color: isTurno 
+                ? 'var(--accent-orange)' 
+                : isMatched 
+                  ? '#fbbf24' 
+                  : '#cbd5e1',
+              textAlign: 'center',
+              borderBottom: isMatched ? '3px solid #f5a623' : '2px solid rgba(245, 166, 35, 0.6)',
+              borderRight: isTurno ? '2px solid rgba(245, 166, 35, 0.5)' : isMatched ? '2px solid #f5a623' : '1px solid rgba(255,255,255,0.15)',
+              borderLeft: isMatched ? '2px solid #f5a623' : 'none',
+              verticalAlign: 'bottom',
+              width: isTurno ? '56px' : '44px',
+              minWidth: isTurno ? '56px' : '44px',
+              maxWidth: isTurno ? '56px' : '44px',
+              position: isTurno ? 'sticky' : 'static',
+              left: 0,
+              zIndex: isTurno ? 30 : isMatched ? 25 : 20,
+              height: isTurno ? 'auto' : '122px',
+              boxShadow: isMatched ? 'inset 0 0 10px rgba(245, 166, 35, 0.3)' : 'none',
+              boxSizing: 'border-box'
+            }}
+            title={h.full}
+          >
+            <div style={{
+              writingMode: isTurno ? 'horizontal-tb' : 'vertical-rl',
+              transform: isTurno ? 'none' : 'rotate(180deg)',
+              whiteSpace: 'nowrap',
+              fontSize: isTurno ? '0.75rem' : isMatched ? '0.74rem' : '0.68rem',
+              fontWeight: (isTurno || isMatched) ? '900' : '600',
+              letterSpacing: '0.01em',
+              color: isTurno ? 'var(--accent-orange)' : isMatched ? '#fbbf24' : '#e2e8f0',
+              paddingBottom: isTurno ? '4px' : '6px',
+              paddingTop: isTurno ? '0' : '3px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              height: isTurno ? '100%' : '114px',
+              margin: '0 auto',
+              textShadow: isMatched ? '0 0 6px rgba(245, 166, 35, 0.5)' : 'none'
+            }}>
+              {isMatched && <span style={{ fontSize: '0.60rem', marginBottom: '2px' }}>📍</span>}
+              <span>{h.short}</span>
+            </div>
+          </th>
+        );
+      })}
+    </tr>
+  );
+
+  // Funzione di rendering per le righe delle corse
+  const renderRowItem = (rowItem, rIdx, headerList) => {
+    const turnoCode = (rowItem.turno || '').trim();
+    const hasTurno = turnoCode !== '' && turnoCode !== '—' && turnoCode !== '-';
+    const isEven = rIdx % 2 === 0;
+    const rowBg = isEven ? 'rgba(30, 41, 59, 0.55)' : 'rgba(15, 23, 42, 0.95)';
+    const stickyBg = isEven ? '#1e293b' : '#0f172a';
+
+    return (
+      <tr
+        key={rIdx}
+        style={{
+          background: rowBg,
+          borderBottom: '1px solid rgba(255,255,255,0.12)',
+          height: '26px',
+          transition: 'background 0.1s'
+        }}
+        onMouseEnter={e => {
+          e.currentTarget.style.background = 'rgba(245, 166, 35, 0.2)';
+          const stickyCell = e.currentTarget.querySelector('td:first-child');
+          if (stickyCell) stickyCell.style.background = '#27272a';
+        }}
+        onMouseLeave={e => {
+          e.currentTarget.style.background = rowBg;
+          const stickyCell = e.currentTarget.querySelector('td:first-child');
+          if (stickyCell) stickyCell.style.background = stickyBg;
+        }}
+      >
+        {/* Colonna TURNO Sticky con Griglia */}
+        <td style={{
+          padding: '2px 4px',
+          textAlign: 'center',
+          position: 'sticky',
+          left: 0,
+          background: stickyBg,
+          zIndex: 5,
+          width: '56px',
+          minWidth: '56px',
+          maxWidth: '56px',
+          borderRight: '2px solid rgba(245, 166, 35, 0.4)',
+          borderBottom: '1px solid rgba(255,255,255,0.12)',
+          fontWeight: '800',
+          boxSizing: 'border-box',
+          transition: 'background 0.1s'
+        }}>
+          {hasTurno ? (
+            <span style={{
+              background: rowItem.isReturn ? 'rgba(16, 185, 129, 0.22)' : 'rgba(245, 166, 35, 0.22)',
+              border: rowItem.isReturn ? '1px solid rgba(16, 185, 129, 0.5)' : '1px solid rgba(245, 166, 35, 0.5)',
+              color: rowItem.isReturn ? '#34d399' : 'var(--accent-orange)',
+              padding: '1px 4px',
+              borderRadius: '4px',
+              fontSize: '0.68rem',
+              fontWeight: '800',
+              display: 'inline-block',
+              letterSpacing: '-0.02em',
+              whiteSpace: 'nowrap'
+            }}>
+              {turnoCode}
+            </span>
+          ) : (
+            <span style={{ color: 'rgba(255,255,255,0.25)', fontSize: '0.65rem' }}>
+              {turnoCode || '—'}
+            </span>
+          )}
+        </td>
+
+        {/* Colonne Fermate a Griglia con Spazio e Contrasto (44px fisse) */}
+        {rowItem.cells.map((cellVal, j) => {
+          const val = cleanDisplayTime(cellVal);
+          const isStopValid = val !== '' && val !== '—' && val !== '-';
+          const correspondingHeader = headerList[j + 1];
+          const isColMatched = isHeaderMatched(correspondingHeader);
+
+          return (
+            <td
+              key={j}
+              style={{
+                padding: '2px 4px',
+                textAlign: 'center',
+                width: '44px',
+                minWidth: '44px',
+                maxWidth: '44px',
+                boxSizing: 'border-box',
+                background: isColMatched 
+                  ? (isStopValid ? 'rgba(245, 166, 35, 0.26)' : 'rgba(245, 166, 35, 0.12)')
+                  : 'transparent',
+                borderLeft: isColMatched ? '1.5px solid rgba(245, 166, 35, 0.6)' : 'none',
+                borderRight: isColMatched ? '1.5px solid rgba(245, 166, 35, 0.6)' : '1px solid rgba(255,255,255,0.12)',
+                borderBottom: '1px solid rgba(255,255,255,0.12)',
+                color: isColMatched
+                  ? (isStopValid ? '#fbbf24' : 'rgba(251, 191, 36, 0.4)')
+                  : isStopValid 
+                    ? (rowItem.isReturn ? '#34d399' : '#38bdf8') 
+                    : 'rgba(255,255,255,0.18)',
+                fontWeight: isColMatched && isStopValid ? '800' : isStopValid ? '700' : '400',
+                fontSize: isColMatched && isStopValid ? '0.74rem' : isStopValid ? '0.72rem' : '0.64rem',
+                fontVariantNumeric: 'tabular-nums',
+                letterSpacing: '0.01em',
+                whiteSpace: 'nowrap',
+                boxShadow: isColMatched && isStopValid ? 'inset 0 0 4px rgba(245, 166, 35, 0.2)' : 'none'
+              }}
+            >
+              {isStopValid ? val : '—'}
+            </td>
+          );
+        })}
+      </tr>
+    );
   };
 
   return (
@@ -554,7 +780,7 @@ const OrarioCorse = () => {
             <span>Orario Corse ({currentLineInfo.name})</span>
           </h2>
           <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', margin: '2px 0 0 0' }}>
-            {currentLineInfo.route || 'Quadro orario con codici turno'}
+            {currentLineInfo.route || 'Quadro orario completo con corse di andata e ritorno'}
           </p>
         </div>
 
@@ -562,7 +788,7 @@ const OrarioCorse = () => {
         <div style={{ position: 'relative' }}>
           <select
             value={selectedLineId}
-            onChange={(e) => setSelectedLineId(e.target.value)}
+            onChange={(e) => handleLineChange(e.target.value)}
             style={{
               background: 'var(--bg-card)',
               color: 'var(--accent-cyan)',
@@ -601,7 +827,7 @@ const OrarioCorse = () => {
             <button
               key={line.id}
               type="button"
-              onClick={() => setSelectedLineId(line.id)}
+              onClick={() => handleLineChange(line.id)}
               style={{
                 padding: '5px 10px',
                 borderRadius: '8px',
@@ -625,7 +851,7 @@ const OrarioCorse = () => {
         })}
       </div>
 
-      {/* Barra Filtri: 2 Grandi Schede (Andata e Ritorno) & Ricerca */}
+      {/* Barra Azioni Rapide e Ricerca */}
       <div style={{
         background: 'var(--bg-card)',
         border: '1px solid var(--border-color)',
@@ -643,74 +869,58 @@ const OrarioCorse = () => {
           flexWrap: 'wrap',
           gap: '0.5rem'
         }}>
-          {/* Selettore Direzione a 2 Schede: Andata e Ritorno */}
+          {/* Pulsanti di Salto Rapido tra le 2 Sezioni */}
           <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
             <button
               type="button"
-              onClick={() => setDirectionFilter('outbound')}
+              onClick={() => jumpToSection('top')}
               style={{
-                padding: '6px 13px',
+                padding: '5px 11px',
                 borderRadius: '8px',
-                border: directionFilter === 'outbound' ? '1.5px solid #38bdf8' : '1px solid var(--border-color)',
-                background: directionFilter === 'outbound' ? 'rgba(56, 189, 248, 0.25)' : 'rgba(255,255,255,0.03)',
-                color: directionFilter === 'outbound' ? '#38bdf8' : 'var(--text-main)',
+                border: '1.5px solid #38bdf8',
+                background: 'rgba(56, 189, 248, 0.18)',
+                color: '#38bdf8',
                 fontWeight: '800',
-                fontSize: '0.78rem',
+                fontSize: '0.75rem',
                 cursor: 'pointer',
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '6px',
-                boxShadow: directionFilter === 'outbound' ? '0 0 10px rgba(56, 189, 248, 0.3)' : 'none',
+                gap: '5px',
                 transition: 'all 0.15s'
               }}
             >
-              <span>Andata ➔</span>
-              <span style={{
-                background: directionFilter === 'outbound' ? '#38bdf8' : 'rgba(255,255,255,0.12)',
-                color: directionFilter === 'outbound' ? '#0f172a' : 'var(--text-muted)',
-                borderRadius: '10px',
-                padding: '1px 6px',
-                fontSize: '0.68rem',
-                fontWeight: '900'
-              }}>
-                {outboundCount}
+              <span>⬆️ Inizio: {currentLineInfo.outLabel || 'Andata'}</span>
+              <span style={{ background: '#38bdf8', color: '#0f172a', borderRadius: '10px', padding: '0 5px', fontSize: '0.65rem', fontWeight: '900' }}>
+                {outboundData.rows.length}
               </span>
             </button>
 
             <button
               type="button"
-              onClick={() => setDirectionFilter('inbound')}
+              onClick={() => jumpToSection('inbound')}
               style={{
-                padding: '6px 13px',
+                padding: '5px 11px',
                 borderRadius: '8px',
-                border: directionFilter === 'inbound' ? '1.5px solid #10b981' : '1px solid var(--border-color)',
-                background: directionFilter === 'inbound' ? 'rgba(16, 185, 129, 0.25)' : 'rgba(255,255,255,0.03)',
-                color: directionFilter === 'inbound' ? '#10b981' : 'var(--text-main)',
+                border: '1.5px solid #10b981',
+                background: 'rgba(16, 185, 129, 0.18)',
+                color: '#10b981',
                 fontWeight: '800',
-                fontSize: '0.78rem',
+                fontSize: '0.75rem',
                 cursor: 'pointer',
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '6px',
-                boxShadow: directionFilter === 'inbound' ? '0 0 10px rgba(16, 185, 129, 0.3)' : 'none',
+                gap: '5px',
                 transition: 'all 0.15s'
               }}
             >
-              <span>⬅ Ritorno</span>
-              <span style={{
-                background: directionFilter === 'inbound' ? '#10b981' : 'rgba(255,255,255,0.12)',
-                color: directionFilter === 'inbound' ? '#0f172a' : 'var(--text-muted)',
-                borderRadius: '10px',
-                padding: '1px 6px',
-                fontSize: '0.68rem',
-                fontWeight: '900'
-              }}>
-                {inboundCount}
+              <span>⬇️ Salta a: {currentLineInfo.inLabel || 'Ritorno'}</span>
+              <span style={{ background: '#10b981', color: '#0f172a', borderRadius: '10px', padding: '0 5px', fontSize: '0.65rem', fontWeight: '900' }}>
+                {inboundData.rows.length}
               </span>
             </button>
           </div>
 
-          {/* Ricerca Rapida Turno / Orario */}
+          {/* Ricerca Rapida Turno / Fermata */}
           <div style={{ position: 'relative', minWidth: '170px', flex: '1 1 170px' }}>
             <Search size={13} style={{ position: 'absolute', left: '8px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
             <input
@@ -740,7 +950,7 @@ const OrarioCorse = () => {
         </div>
 
         <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>
-          Mostrate <strong>{rows.length}</strong> corse di {directionFilter === 'outbound' ? 'Andata' : 'Ritorno'} su {currentLineInfo.name}
+          Tabella unica con <strong>{outboundData.rows.length + inboundData.rows.length}</strong> corse totali su {currentLineInfo.name}
           {searchTerm.trim() && (
             <span style={{ marginLeft: '6px', color: 'var(--accent-orange)', fontWeight: '700' }}>
               • Evidenziazione colonna attiva
@@ -792,15 +1002,15 @@ const OrarioCorse = () => {
 
           <button
             type="button"
-            onClick={() => scrollTable(-200)}
+            onClick={() => scrollTable(-350)}
             title="Scorri Sinistra"
             style={{
               background: 'var(--bg-card)',
               border: '1px solid var(--border-color)',
               borderRadius: '6px',
-              padding: '3px 8px',
+              padding: '4px 10px',
               color: 'var(--text-main)',
-              fontSize: '0.7rem',
+              fontSize: '0.72rem',
               fontWeight: '700',
               cursor: 'pointer',
               display: 'inline-flex',
@@ -808,21 +1018,21 @@ const OrarioCorse = () => {
               gap: '2px'
             }}
           >
-            <ChevronLeft size={13} />
+            <ChevronLeft size={14} />
             <span>SX</span>
           </button>
 
           <button
             type="button"
-            onClick={() => scrollTable(200)}
+            onClick={() => scrollTable(350)}
             title="Scorri Destra"
             style={{
               background: 'var(--bg-card)',
               border: '1px solid var(--border-color)',
               borderRadius: '6px',
-              padding: '3px 8px',
+              padding: '4px 10px',
               color: 'var(--text-main)',
-              fontSize: '0.7rem',
+              fontSize: '0.72rem',
               fontWeight: '700',
               cursor: 'pointer',
               display: 'inline-flex',
@@ -831,7 +1041,7 @@ const OrarioCorse = () => {
             }}
           >
             <span>DX</span>
-            <ChevronRight size={13} />
+            <ChevronRight size={14} />
           </button>
 
           <button
@@ -842,9 +1052,9 @@ const OrarioCorse = () => {
               background: 'var(--bg-card)',
               border: '1px solid var(--border-color)',
               borderRadius: '6px',
-              padding: '3px 7px',
+              padding: '4px 9px',
               color: 'var(--accent-cyan)',
-              fontSize: '0.7rem',
+              fontSize: '0.72rem',
               fontWeight: '700',
               cursor: 'pointer',
               display: 'inline-flex',
@@ -853,12 +1063,12 @@ const OrarioCorse = () => {
             }}
           >
             <span>Capolinea</span>
-            <ChevronsRight size={13} />
+            <ChevronsRight size={14} />
           </button>
         </div>
       </div>
 
-      {/* Tabella Quadro Orario a Griglia Chiara con Spaziatura Ottimale */}
+      {/* Tabella Unica Continua con Intestazione Invertita a Centro Pagina */}
       <div style={{
         borderRadius: '8px',
         border: '1.5px solid rgba(255, 255, 255, 0.18)',
@@ -871,10 +1081,11 @@ const OrarioCorse = () => {
           ref={tableContainerRef}
           style={{
             overflowX: 'auto',
-            maxHeight: 'calc(100vh - 300px)',
+            maxHeight: 'calc(100vh - 240px)',
             overflowY: 'auto',
             maxWidth: '100%',
             WebkitOverflowScrolling: 'touch',
+            touchAction: 'pan-x pan-y',
             scrollbarWidth: 'thin',
             scrollbarColor: '#f5a623 rgba(255,255,255,0.05)'
           }}
@@ -883,194 +1094,83 @@ const OrarioCorse = () => {
             width: 'max-content',
             borderCollapse: 'collapse',
             fontSize: '0.74rem',
-            tableLayout: 'fixed'
+            tableLayout: 'fixed',
+            touchAction: 'pan-x pan-y'
           }}>
+            {/* SEZIONE 1: ANDATA (Partenze da Capolinea 1) */}
             <thead>
-              <tr style={{
-                background: '#131824',
-                borderBottom: '2px solid rgba(245, 166, 35, 0.6)',
-                position: 'sticky',
-                top: 0,
-                zIndex: 20
-              }}>
-                {headers.map((h, i) => {
-                  const isTurno = i === 0;
-                  const isMatched = isHeaderMatched(h);
-
-                  return (
-                    <th
-                      key={i}
-                      style={{
-                        padding: isTurno ? '6px 4px' : '4px 2px',
-                        background: isTurno 
-                          ? '#131824' 
-                          : isMatched 
-                            ? 'linear-gradient(180deg, rgba(245, 166, 35, 0.38) 0%, rgba(245, 166, 35, 0.18) 100%)' 
-                            : '#131824',
-                        color: isTurno 
-                          ? 'var(--accent-orange)' 
-                          : isMatched 
-                            ? '#fbbf24' 
-                            : '#cbd5e1',
-                        textAlign: 'center',
-                        borderBottom: isMatched ? '3px solid #f5a623' : '2px solid rgba(245, 166, 35, 0.6)',
-                        borderRight: isTurno ? '2px solid rgba(245, 166, 35, 0.5)' : isMatched ? '2px solid #f5a623' : '1px solid rgba(255,255,255,0.15)',
-                        borderLeft: isMatched ? '2px solid #f5a623' : 'none',
-                        verticalAlign: 'bottom',
-                        width: isTurno ? '56px' : '44px',
-                        minWidth: isTurno ? '56px' : '44px',
-                        maxWidth: isTurno ? '56px' : '44px',
-                        position: isTurno ? 'sticky' : 'static',
-                        left: 0,
-                        zIndex: isTurno ? 30 : isMatched ? 25 : 20,
-                        height: isTurno ? 'auto' : '122px',
-                        boxShadow: isMatched ? 'inset 0 0 10px rgba(245, 166, 35, 0.3)' : 'none',
-                        boxSizing: 'border-box'
-                      }}
-                      title={h.full}
-                    >
-                      <div style={{
-                        writingMode: isTurno ? 'horizontal-tb' : 'vertical-rl',
-                        transform: isTurno ? 'none' : 'rotate(180deg)',
-                        whiteSpace: 'nowrap',
-                        fontSize: isTurno ? '0.75rem' : isMatched ? '0.74rem' : '0.68rem',
-                        fontWeight: (isTurno || isMatched) ? '900' : '600',
-                        letterSpacing: '0.01em',
-                        color: isTurno ? 'var(--accent-orange)' : isMatched ? '#fbbf24' : '#e2e8f0',
-                        paddingBottom: isTurno ? '4px' : '6px',
-                        paddingTop: isTurno ? '0' : '3px',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        height: isTurno ? '100%' : '114px',
-                        margin: '0 auto',
-                        textShadow: isMatched ? '0 0 6px rgba(245, 166, 35, 0.5)' : 'none'
-                      }}>
-                        {isMatched && <span style={{ fontSize: '0.60rem', marginBottom: '2px' }}>📍</span>}
-                        <span>{h.short}</span>
-                      </div>
-                    </th>
-                  );
-                })}
-              </tr>
+              {renderHeaderRow(outboundData.headers, true)}
             </thead>
             <tbody>
-              {rows.length === 0 ? (
+              {outboundData.rows.length === 0 ? (
                 <tr>
-                  <td colSpan={headers.length} style={{ padding: '2rem 1rem', textAlign: 'center', color: 'var(--text-muted)' }}>
-                    Nessuna corsa trovata con i filtri inseriti per {currentLineInfo.name}.
+                  <td colSpan={outboundData.headers.length} style={{ padding: '1.5rem 1rem', textAlign: 'center', color: 'var(--text-muted)' }}>
+                    Nessuna corsa di andata trovata.
                   </td>
                 </tr>
               ) : (
-                rows.map((rowItem, rIdx) => {
-                  const turnoCode = (rowItem.turno || '').trim();
-                  const hasTurno = turnoCode !== '' && turnoCode !== '—' && turnoCode !== '-';
-                  const isEven = rIdx % 2 === 0;
-                  const rowBg = isEven ? 'rgba(30, 41, 59, 0.55)' : 'rgba(15, 23, 42, 0.95)';
-                  const stickyBg = isEven ? '#1e293b' : '#0f172a';
+                outboundData.rows.map((rowItem, rIdx) => renderRowItem(rowItem, rIdx, outboundData.headers))
+              )}
 
-                  return (
-                    <tr
-                      key={rIdx}
+              {/* DIVISORE DI SEZIONE CENTRALE */}
+              <tr ref={sectionInboundRef} style={{ background: 'transparent' }}>
+                <td
+                  colSpan={inboundData.headers.length}
+                  style={{
+                    padding: '12px 14px',
+                    background: 'linear-gradient(90deg, rgba(16, 185, 129, 0.35) 0%, rgba(15, 23, 42, 0.95) 100%)',
+                    borderTop: '3px solid #10b981',
+                    borderBottom: '2px solid #10b981',
+                    color: '#34d399',
+                    fontWeight: '900',
+                    fontSize: '0.82rem',
+                    textAlign: 'left'
+                  }}
+                >
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '8px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      <span style={{ fontSize: '1rem' }}>🔄</span>
+                      <span>{inboundData.title} ({inboundData.rows.length} corse)</span>
+                      <span style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.7)', fontWeight: 'normal' }}>
+                        — Sequenza fermate invertita per lettura naturale da sinistra a destra
+                      </span>
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={() => jumpToSection('top')}
                       style={{
-                        background: rowBg,
-                        borderBottom: '1px solid rgba(255,255,255,0.12)',
-                        height: '26px',
-                        transition: 'background 0.1s'
-                      }}
-                      onMouseEnter={e => {
-                        e.currentTarget.style.background = 'rgba(245, 166, 35, 0.2)';
-                        const stickyCell = e.currentTarget.querySelector('td:first-child');
-                        if (stickyCell) stickyCell.style.background = '#27272a';
-                      }}
-                      onMouseLeave={e => {
-                        e.currentTarget.style.background = rowBg;
-                        const stickyCell = e.currentTarget.querySelector('td:first-child');
-                        if (stickyCell) stickyCell.style.background = stickyBg;
+                        background: 'rgba(255,255,255,0.1)',
+                        border: '1px solid rgba(255,255,255,0.3)',
+                        borderRadius: '6px',
+                        padding: '3px 8px',
+                        color: '#ffffff',
+                        fontSize: '0.68rem',
+                        fontWeight: '700',
+                        cursor: 'pointer',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '4px'
                       }}
                     >
-                      {/* Colonna TURNO Sticky con Griglia */}
-                      <td style={{
-                        padding: '2px 4px',
-                        textAlign: 'center',
-                        position: 'sticky',
-                        left: 0,
-                        background: stickyBg,
-                        zIndex: 5,
-                        width: '56px',
-                        minWidth: '56px',
-                        maxWidth: '56px',
-                        borderRight: '2px solid rgba(245, 166, 35, 0.4)',
-                        borderBottom: '1px solid rgba(255,255,255,0.12)',
-                        fontWeight: '800',
-                        boxSizing: 'border-box',
-                        transition: 'background 0.1s'
-                      }}>
-                        {hasTurno ? (
-                          <span style={{
-                            background: rowItem.isReturn ? 'rgba(16, 185, 129, 0.22)' : 'rgba(245, 166, 35, 0.22)',
-                            border: rowItem.isReturn ? '1px solid rgba(16, 185, 129, 0.5)' : '1px solid rgba(245, 166, 35, 0.5)',
-                            color: rowItem.isReturn ? '#34d399' : 'var(--accent-orange)',
-                            padding: '1px 4px',
-                            borderRadius: '4px',
-                            fontSize: '0.68rem',
-                            fontWeight: '800',
-                            display: 'inline-block',
-                            letterSpacing: '-0.02em',
-                            whiteSpace: 'nowrap'
-                          }}>
-                            {turnoCode}
-                          </span>
-                        ) : (
-                          <span style={{ color: 'rgba(255,255,255,0.25)', fontSize: '0.65rem' }}>
-                            {turnoCode || '—'}
-                          </span>
-                        )}
-                      </td>
+                      <span>⬆️ Torna a inizio tabella</span>
+                    </button>
+                  </div>
+                </td>
+              </tr>
 
-                      {/* Colonne Fermate a Griglia con Spazio e Contrasto (Stessa identica dimensione su tutte le linee) */}
-                      {rowItem.cells.map((cellVal, j) => {
-                        const val = cleanDisplayTime(cellVal);
-                        const isStopValid = val !== '' && val !== '—' && val !== '-';
-                        const correspondingHeader = headers[j + 1];
-                        const isColMatched = isHeaderMatched(correspondingHeader);
+              {/* SEZIONE 2: INTESTAZIONE FERMATE INVERTITE A CENTRO TABELLA */}
+              {renderHeaderRow(inboundData.headers, false)}
 
-                        return (
-                          <td
-                            key={j}
-                            style={{
-                              padding: '2px 4px',
-                              textAlign: 'center',
-                              width: '44px',
-                              minWidth: '44px',
-                              maxWidth: '44px',
-                              boxSizing: 'border-box',
-                              background: isColMatched 
-                                ? (isStopValid ? 'rgba(245, 166, 35, 0.26)' : 'rgba(245, 166, 35, 0.12)')
-                                : 'transparent',
-                              borderLeft: isColMatched ? '1.5px solid rgba(245, 166, 35, 0.6)' : 'none',
-                              borderRight: isColMatched ? '1.5px solid rgba(245, 166, 35, 0.6)' : '1px solid rgba(255,255,255,0.12)',
-                              borderBottom: '1px solid rgba(255,255,255,0.12)',
-                              color: isColMatched
-                                ? (isStopValid ? '#fbbf24' : 'rgba(251, 191, 36, 0.4)')
-                                : isStopValid 
-                                  ? (rowItem.isReturn ? '#34d399' : '#38bdf8') 
-                                  : 'rgba(255,255,255,0.18)',
-                              fontWeight: isColMatched && isStopValid ? '800' : isStopValid ? '700' : '400',
-                              fontSize: isColMatched && isStopValid ? '0.74rem' : isStopValid ? '0.72rem' : '0.64rem',
-                              fontVariantNumeric: 'tabular-nums',
-                              letterSpacing: '0.01em',
-                              whiteSpace: 'nowrap',
-                              boxShadow: isColMatched && isStopValid ? 'inset 0 0 4px rgba(245, 166, 35, 0.2)' : 'none'
-                            }}
-                          >
-                            {isStopValid ? val : '—'}
-                          </td>
-                        );
-                      })}
-                    </tr>
-                  );
-                })
+              {/* RIGHE SEZIONE 2 (RITORNO) */}
+              {inboundData.rows.length === 0 ? (
+                <tr>
+                  <td colSpan={inboundData.headers.length} style={{ padding: '1.5rem 1rem', textAlign: 'center', color: 'var(--text-muted)' }}>
+                    Nessuna corsa di ritorno trovata.
+                  </td>
+                </tr>
+              ) : (
+                inboundData.rows.map((rowItem, rIdx) => renderRowItem(rowItem, rIdx, inboundData.headers))
               )}
             </tbody>
           </table>
