@@ -78,24 +78,39 @@ function trovaContenitoreConPrezzo(ancora, maxLivelli = 8, maxCaratteri = 1000) 
 const ARIA_LABEL_GENERICHE = /^(informazioni su|condividi|chiudi|indietro|copia link|invia|riprova|microphone|aggiungi file)/i
 
 function trovaTitolo(ancora, contenitore) {
-  // 1) Un <h3> è quasi sempre il titolo (è così nei risultati organici da
-  // sempre, tag semantico stabile, non una classe generata).
+  // 1) Attributi diretti sul link: title o aria-label
+  const titleAttr = ancora.getAttribute('title')?.trim()
+  if (titleAttr && titleAttr.length > 3 && !ARIA_LABEL_GENERICHE.test(titleAttr)) return titleAttr
+
+  const ariaAttr = ancora.getAttribute('aria-label')?.trim()
+  if (ariaAttr && ariaAttr.length > 3 && !ARIA_LABEL_GENERICHE.test(ariaAttr)) return ariaAttr
+
+  // 2) Immagine con alt dentro il link (comunissimo nelle card Vinted/Subito)
+  const imgAlt = ancora.querySelector('img')?.getAttribute('alt')?.trim()
+  if (imgAlt && imgAlt.length > 3 && !ARIA_LABEL_GENERICHE.test(imgAlt)) return imgAlt
+
+  // 3) Elementi specifici di Vinted / Subito / Lens (data-testid o classi note)
+  const testIdTitle = contenitore.querySelector?.('[data-testid*="title"], [data-testid*="name"], [data-testid="grid-item-subtitle"], .item-title, h3, h4')
+  const testoTestId = testIdTitle ? testoVisibile(testIdTitle).trim() : ''
+  if (testoTestId && testoTestId.length > 3 && !ARIA_LABEL_GENERICHE.test(testoTestId)) return testoTestId
+
+  // 4) h3 classico
   const h3 = contenitore.querySelector?.('h3')
   const testoH3 = h3 ? testoVisibile(h3).trim() : ''
   if (testoH3) return testoH3
 
-  // 2) Nelle schede immagine il titolo sta nell'aria-label di un elemento
+  // 5) Nelle schede immagine il titolo sta nell'aria-label di un elemento
   // FRATELLO del link (non un antenato), spesso nel formato "Titolo, 90 €*":
   // cerchiamo quindi in tutto il contenitore, non risalendo dal link.
   const candidati = Array.from(contenitore.querySelectorAll?.('[aria-label]') || [])
     .map((el) => (el.getAttribute('aria-label') || '').trim())
-    .filter((testo) => testo.length > 8 && !/^\d/.test(testo) && !ARIA_LABEL_GENERICHE.test(testo))
+    .filter((testo) => testo.length > 5 && !/^\d/.test(testo) && !ARIA_LABEL_GENERICHE.test(testo))
 
   const conPrezzo = candidati.find((testo) => /€/.test(testo))
   const scelto = conPrezzo || candidati[0]
   if (scelto) return scelto.replace(/,?\s*\d+(?:[.,]\d{1,2})?\s*€\*?$/, '').trim()
 
-  // 3) Ultima spiaggia: il testo del link stesso.
+  // 6) Testo del link stesso
   const testoAncora = testoVisibile(ancora).trim()
   return testoAncora ? testoAncora.slice(0, 120) : null
 }
@@ -112,26 +127,25 @@ function trovaDisponibilita(testo) {
 // stesso dominio, verso il singolo annuncio — li riconosciamo dal pattern
 // stabile dell'URL (definito pubblicamente da ciascun sito), non da classi
 // CSS generate che cambiano ad ogni deploy.
-//
-// Nota: questi tre pattern non sono stati verificati contro HTML reale (i
-// siti bloccano lo scraping server-side, vedi memoria progetto) — sono
-// costruiti sulla struttura nota degli URL. Come già successo con Lens,
-// vanno probabilmente affinati dopo il primo uso reale.
 const SITI = {
   lens: {
-    accettaLink: (host) => !!host && !DOMINI_ESCLUSI.some((d) => host === d || host.endsWith(`.${d}`)),
+    baseUrl: '',
+    accettaLink: (host, href) => !!host && !DOMINI_ESCLUSI.some((d) => host === d || host.endsWith(`.${d}`)),
     sorgente: (host) => host
   },
   subito: {
-    accettaLink: (host, href) => !!host && host.endsWith('subito.it') && /-\d{6,}\.html?(?:[?#]|$)/i.test(href),
+    baseUrl: 'https://www.subito.it',
+    accettaLink: (host, href) => (!host || host.endsWith('subito.it')) && (/-\d{6,}\.html?(?:[?#]|$)/i.test(href) || /\/annunci\//i.test(href)),
     sorgente: () => 'Subito'
   },
   vinted: {
-    accettaLink: (host, href) => !!host && host.endsWith('vinted.it') && /\/items\/\d+/i.test(href),
+    baseUrl: 'https://www.vinted.it',
+    accettaLink: (host, href) => (!host || /(^|\.)vinted\.[a-z.]+$/i.test(host)) && /\/items\/\d+/i.test(href),
     sorgente: () => 'Vinted'
   },
   marketplace: {
-    accettaLink: (host, href) => !!host && (host === 'facebook.com' || host.endsWith('.facebook.com')) && /\/marketplace\/item\/\d+/i.test(href),
+    baseUrl: 'https://www.facebook.com',
+    accettaLink: (host, href) => (!host || host === 'facebook.com' || host.endsWith('.facebook.com')) && /\/marketplace\/item\/\d+/i.test(href),
     sorgente: () => 'Marketplace'
   }
 }
@@ -141,11 +155,19 @@ export function estraiRisultatiDaHtml(html, sito = 'lens') {
 
   const config = SITI[sito] || SITI.lens
   const doc = new DOMParser().parseFromString(html, 'text/html')
-  const ancore = Array.from(doc.querySelectorAll('a[href^="http"]'))
+  // Seleziona tutti i tag <a> con href (sia link assoluti che relativi /items/...)
+  const ancore = Array.from(doc.querySelectorAll('a[href]'))
   const trovati = new Map()
 
   for (const ancora of ancore) {
-    const href = ancora.getAttribute('href')
+    let href = ancora.getAttribute('href') || ''
+    if (!href || href.startsWith('#') || href.startsWith('javascript:')) continue
+
+    // Risolvi i link relativi se il sito ha un dominio base definito
+    if (href.startsWith('/') && config.baseUrl) {
+      href = config.baseUrl + href
+    }
+
     const host = hostnamePulito(href)
     if (!config.accettaLink(host, href)) continue
     if (trovati.has(href)) continue
@@ -156,13 +178,15 @@ export function estraiRisultatiDaHtml(html, sito = 'lens') {
     const prezzo = estraiPrezzoDaTesto(testoContenitore)
     if (prezzo === null) continue
 
+    const titolo = trovaTitolo(ancora, contenitore)
+
     trovati.set(href, {
       id: href,
       prezzo,
       stato: 'attivo',
-      sorgente: config.sorgente(host),
+      sorgente: config.sorgente(host || 'vinted.it'),
       giorniFa: null,
-      titolo: trovaTitolo(ancora, contenitore),
+      titolo: titolo || 'Articolo ' + (host || 'Vinted'),
       url: href,
       disponibile: trovaDisponibilita(testoContenitore)
     })

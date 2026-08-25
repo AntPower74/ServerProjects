@@ -5,7 +5,10 @@
 // evita che il content script estragga dati durante la normale navigazione
 // dell'utente su questi siti, che non ha nulla a che fare con Prezzly).
 const SELETTORE_PRONTO = {
-  lens: '#search'
+  lens: '#search',
+  vinted: '[data-testid="grid-items"], .feed-grid, [data-testid="catalog__layout"], [data-testid="grid-item"], a[href*="/items/"]',
+  subito: '[class*="item-card"], .items__container, [data-testid*="item-card"]',
+  marketplace: '[role="main"]'
 }
 
 ;(async function () {

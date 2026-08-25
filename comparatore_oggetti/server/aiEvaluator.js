@@ -21,6 +21,14 @@ export const ANDROID_MODELS = {
   's22 ultra': { name: 'Samsung Galaxy S22 Ultra', screen: '6.8" AMOLED 120Hz S-Pen', baseResale: 390, retail: '1279€', tier: 'Fascia Alta' },
   's22': { name: 'Samsung Galaxy S22', screen: '6.1" AMOLED 120Hz', baseResale: 260, retail: '799€', tier: 'Fascia Media-Alta' },
   's21': { name: 'Samsung Galaxy S21 / S21 FE', screen: '6.2" Dynamic AMOLED 120Hz', baseResale: 180, retail: '699€', tier: 'Fascia Media' },
+  's20': { name: 'Samsung Galaxy S20 / S20 FE', screen: '6.2" / 6.5" Super AMOLED 120Hz', baseResale: 140, retail: '649€', tier: 'Fascia Media Usato' },
+  's10': { name: 'Samsung Galaxy S10 / S10+', screen: '6.1" Dynamic AMOLED Quad HD+', baseResale: 110, retail: '779€', tier: 'Fascia Economica Storica' },
+  's9': { name: 'Samsung Galaxy S9 / S9+', screen: '5.8" Super AMOLED Quad HD+', baseResale: 85, retail: '699€', tier: 'Fascia Economica' },
+  's8 plus': { name: 'Samsung Galaxy S8+', screen: '6.2" Super AMOLED Infinity Display Quad HD+', baseResale: 75, retail: '929€', tier: 'Flagship Vintage Grande' },
+  's8+': { name: 'Samsung Galaxy S8+', screen: '6.2" Super AMOLED Infinity Display Quad HD+', baseResale: 75, retail: '929€', tier: 'Flagship Vintage Grande' },
+  's8': { name: 'Samsung Galaxy S8', screen: '5.8" Super AMOLED Infinity Display Quad HD+', baseResale: 65, retail: '829€', tier: 'Flagship Vintage Compatto (Best for Muletto/Backup)' },
+  's7': { name: 'Samsung Galaxy S7 / S7 Edge', screen: '5.1" / 5.5" Super AMOLED', baseResale: 45, retail: '729€', tier: 'Fascia Entry Usato' },
+  'galaxy s8': { name: 'Samsung Galaxy S8', screen: '5.8" Super AMOLED Infinity Display Quad HD+', baseResale: 65, retail: '829€', tier: 'Flagship Vintage Compatto' },
 
   // Google Pixel
   'pixel 8 pro': { name: 'Google Pixel 8 Pro', screen: '6.7" Super Actua OLED 120Hz', baseResale: 480, retail: '1099€', tier: 'Top di Gamma Google' },
