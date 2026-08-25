@@ -401,15 +401,31 @@ function calculateFare(line, fromName, toName, durationMins, isTripExpress = fal
 }
 
 // Trova turno associato a una corsa specifica
-function matchTurnoForTrip(line, depTime) {
+function matchTurnoForTrip(line, depTime, dayFilter = 'feriale') {
   if (!turniCorseDb || turniCorseDb.length === 0) return null;
   const lineClean = String(line || '').replace(/\D+/g, '');
-  const depClean = String(depTime || '').replace('.', ':');
+  let depClean = String(depTime || '').replace('.', ':').trim();
+  if (depClean.length === 4 && depClean[1] === ':') {
+    depClean = '0' + depClean;
+  }
 
   for (const t of turniCorseDb) {
-    for (const c of t.corse) {
+    const giorno = t.giorno || '';
+    if (dayFilter === 'domenica' || dayFilter === 'festivo') {
+      if (giorno !== 'Domenica') continue;
+    } else if (dayFilter === 'sabato') {
+      if (giorno !== 'Sabato') continue;
+    } else {
+      if (giorno === 'Domenica' || giorno === 'Sabato') continue;
+    }
+
+    for (const c of (t.corse || [])) {
+      let cDep = String(c.partenza || '').replace('.', ':').trim();
+      if (cDep.length === 4 && cDep[1] === ':') {
+        cDep = '0' + cDep;
+      }
       const cLine = String(c.linea || '').replace(/\D+/g, '');
-      const cDep = String(c.partenza || '').replace('.', ':');
+
       if (cDep === depClean) {
         if (!lineClean || !cLine || cLine.includes(lineClean) || lineClean.includes(cLine)) {
           return {
@@ -418,7 +434,12 @@ function matchTurnoForTrip(line, depTime) {
             deposito: t.deposito,
             giorno: t.giorno,
             inizio: t.inizio,
-            fine: t.fine
+            fine: t.fine,
+            corsaPartenza: c.partenza,
+            corsaArrivo: c.arrivo,
+            corsaDa: c.da,
+            corsaA: c.a,
+            pdfUrl: getCartellinoPdf(t.codice)
           };
         }
       }
@@ -427,7 +448,17 @@ function matchTurnoForTrip(line, depTime) {
   return null;
 }
 
+
+function isStopAChangeoverPoint(stopName) {
+  if (!stopName) return false;
+  const upper = stopName.toUpperCase();
+  if (upper.includes('(ARRIVO)') || upper.includes('(PARTENZA)')) return true;
+  if (upper.includes('PEROSA ARG') || upper.includes('MOVICENTRO') || upper.includes('CESANA') || upper.includes('SESTRIERE') || upper.includes('OULX FS') || upper.includes('OULX - STAZIONE')) return true;
+  return false;
+}
+
 function getCartellinoPdf(code) {
+
   if (!code || !cartelliniDb) return null;
   const clean = code.trim().toLowerCase();
   
@@ -897,8 +928,28 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
         });
       }
     });
-    return results;
+
+    // Deduplicate identical physical runs (e.g. line 275/282 and line 285 sharing the exact same departure/arrival times)
+    const dedupedDirectMap = new Map();
+    results.forEach(res => {
+      const depKey = String(res.departureTime || '').replace('.', ':');
+      const arrKey = String(res.arrivalTime || '').replace('.', ':');
+      const key = `${depKey}_${arrKey}`;
+      
+      if (!dedupedDirectMap.has(key)) {
+        dedupedDirectMap.set(key, res);
+      } else {
+        const existing = dedupedDirectMap.get(key);
+        // Keep the trip that has the most complete intermediate stops
+        if ((res.intermediateStops?.length || 0) > (existing.intermediateStops?.length || 0)) {
+          dedupedDirectMap.set(key, res);
+        }
+      }
+    });
+
+    return Array.from(dedupedDirectMap.values());
   }, [dayFilter]);
+
 
   // Combined Search: Direct + Multi-Leg Transfer Connections with Time Filtering & "Next Up" detection
   const searchResults = useMemo(() => {
@@ -1954,18 +2005,23 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
                                     </span>
                                   )}
 
-                                  {/* Assigned Turno Badge */}
-                                  {res.turnoAssigned && (
-                                    <span style={{
-                                      fontSize: '0.72rem', fontWeight: 'bold', padding: '2px 8px',
-                                      borderRadius: '6px', background: 'rgba(245, 166, 35, 0.15)',
-                                      color: 'var(--accent-orange)', border: '1px solid rgba(245, 166, 35, 0.35)',
-                                      display: 'flex', alignItems: 'center', gap: '4px'
-                                    }}>
-                                      <UserCheck size={12} />
-                                      <span>Turno {res.turnoAssigned.codice} ({res.turnoAssigned.deposito})</span>
-                                    </span>
-                                  )}
+                                  {/* Coincidenza / Cambio Intermedio Badge */}
+                                  {(() => {
+                                    const changeoverPoint = (res.intermediateStops || []).slice(1, -1).find((s) => isStopAChangeoverPoint(s.name));
+                                    if (!changeoverPoint) return null;
+                                    return (
+                                      <span style={{
+                                        fontSize: '0.72rem', fontWeight: '800', padding: '2px 8px',
+                                        borderRadius: '6px', background: 'rgba(245, 166, 35, 0.2)',
+                                        color: 'var(--accent-orange)', border: '1px solid rgba(245, 166, 35, 0.4)',
+                                        display: 'inline-flex', alignItems: 'center', gap: '4px'
+                                      }}>
+                                        <Shuffle size={12} />
+                                        <span>Coincidenza a {formatStopDisplayName(changeoverPoint.name)} (ore {changeoverPoint.time})</span>
+                                      </span>
+                                    );
+                                  })()}
+
 
                                   <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>
                                     {res.tripId}
@@ -2022,6 +2078,7 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
                                 </div>
                               </div>
 
+
                               {/* Ticket Details Box */}
                               {res.fare && (
                                 <div style={{
@@ -2041,6 +2098,7 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
 
                               {/* Actions */}
                               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '2px' }}>
+
                                 <button
                                   type="button"
                                   onClick={() => setExpandedTripId(isExpanded ? null : res.tripId)}
@@ -2169,35 +2227,62 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
                                         else if (sIdx === stopsToRender.length - 1) isDestStop = true;
                                       }
 
+                                      const isChangeover = isStopAChangeoverPoint(stop.name) && !isOriginStop && !isDestStop && !isOutsideSegment;
+
                                       return (
                                         <div key={sIdx} style={{ display: 'flex', flexDirection: 'column' }}>
+                                          {isChangeover && (
+                                            <div style={{
+                                              margin: '4px 0',
+                                              padding: '5px 10px',
+                                              background: 'linear-gradient(135deg, rgba(245, 166, 35, 0.22) 0%, rgba(217, 119, 6, 0.15) 100%)',
+                                              border: '1px solid #f5a623',
+                                              borderRadius: '6px',
+                                              display: 'flex',
+                                              alignItems: 'center',
+                                              justifyContent: 'space-between',
+                                              fontSize: '0.75rem',
+                                              fontWeight: '700',
+                                              color: 'var(--accent-orange)'
+                                            }}>
+                                              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                                                <Shuffle size={13} />
+                                                <span>COINCIDENZA / CAMBIO A {formatStopDisplayName(stop.name).toUpperCase()}</span>
+                                              </div>
+                                              <span style={{ background: '#f5a623', color: '#121214', padding: '1px 6px', borderRadius: '4px', fontWeight: '800' }}>
+                                                Ore {stop.time}
+                                              </span>
+                                            </div>
+                                          )}
+
                                           <div style={{
                                             display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.78rem',
                                             opacity: isOutsideSegment ? 0.5 : 1,
-                                            background: isOriginStop ? 'rgba(16, 185, 129, 0.12)' : isDestStop ? 'rgba(6, 182, 212, 0.12)' : 'transparent',
-                                            padding: (isOriginStop || isDestStop) ? '3px 8px' : '2px 0',
+                                            background: isOriginStop ? 'rgba(16, 185, 129, 0.12)' : isDestStop ? 'rgba(6, 182, 212, 0.12)' : isChangeover ? 'rgba(245, 166, 35, 0.08)' : 'transparent',
+                                            padding: (isOriginStop || isDestStop || isChangeover) ? '3px 8px' : '2px 0',
                                             borderRadius: '6px'
                                           }}>
                                             <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap' }}>
                                               <span style={{ fontSize: '0.75rem' }}>
-                                                {isOriginStop ? '🟢' : isDestStop ? '🏁' : isOutsideSegment ? '⚪' : '🔵'}
+                                                {isOriginStop ? '🟢' : isDestStop ? '🏁' : isChangeover ? '🔄' : isOutsideSegment ? '⚪' : '🔵'}
                                               </span>
                                               <span style={{
-                                                color: (isOriginStop || isDestStop) ? 'var(--text-main)' : isOutsideSegment ? 'var(--text-muted)' : 'var(--text-main)',
-                                                fontWeight: (isOriginStop || isDestStop) ? '700' : 'normal'
+                                                color: (isOriginStop || isDestStop) ? 'var(--text-main)' : isChangeover ? 'var(--accent-orange)' : isOutsideSegment ? 'var(--text-muted)' : 'var(--text-main)',
+                                                fontWeight: (isOriginStop || isDestStop || isChangeover) ? '700' : 'normal'
                                               }}>
                                                 {formatStopDisplayName(stop.name)}
                                               </span>
                                             </div>
                                             <span style={{
-                                              color: isOriginStop ? '#10b981' : isDestStop ? 'var(--accent-cyan)' : 'var(--text-muted)',
-                                              fontWeight: (isOriginStop || isDestStop) ? '700' : '500'
+                                              color: isOriginStop ? '#10b981' : isDestStop ? 'var(--accent-cyan)' : isChangeover ? 'var(--accent-orange)' : 'var(--text-muted)',
+                                              fontWeight: (isOriginStop || isDestStop || isChangeover) ? '700' : '500'
                                             }}>
                                               {stop.time}
                                             </span>
                                           </div>
                                         </div>
                                       );
+
                                     });
                                   })()}
 
@@ -2286,7 +2371,7 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
                             {/* Visual Step-by-Step Connection */}
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', background: 'rgba(0,0,0,0.25)', padding: '10px 12px', borderRadius: '10px' }}>
                               
-                              {/* Tratta 1 Header */}
+                              {/* 1. Tratta 1 (Partenza) */}
                               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                                   <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#10b981' }} />
@@ -2304,76 +2389,133 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
                                 </span>
                               </div>
 
-                              {/* Tratta 1 Toggle Fermate Button */}
-                              {res.leg1.intermediateStops && res.leg1.intermediateStops.length > 0 && (
-                                <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', margin: '2px 0 2px 14px' }}>
-
+                              {/* 2. AL CENTRO TRA PARTENZA ED ARRIVO: Interscambio + Pulsante Unico Tendina Fermate */}
+                              <div style={{
+                                margin: '4px 0',
+                                padding: '8px 10px',
+                                borderLeft: '2px dashed var(--accent-orange)',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                gap: '6px'
+                              }}>
+                                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '6px' }}>
+                                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.75rem', color: 'var(--accent-orange)' }}>
+                                    <Clock size={13} />
+                                    <span>Cambio a <strong>{formatStopDisplayName(res.hubName)}</strong> • Attesa {res.waitMins} min</span>
+                                  </div>
                                   <button
                                     type="button"
-                                    onClick={() => setExpandedTransferLegs(prev => ({ ...prev, [`${res.tripId}_1`]: !prev[`${res.tripId}_1`] }))}
+                                    onClick={() => setExpandedTransferLegs(prev => ({ ...prev, [res.tripId]: !prev[res.tripId] }))}
                                     style={{
-                                      background: 'transparent',
-                                      border: 'none',
-                                      color: 'var(--accent-cyan)',
+                                      background: expandedTransferLegs[res.tripId] ? 'rgba(245, 166, 35, 0.25)' : 'rgba(245, 166, 35, 0.12)',
+                                      border: '1px solid rgba(245, 166, 35, 0.4)',
+                                      borderRadius: '6px',
+                                      padding: '4px 10px',
+                                      color: 'var(--accent-orange)',
                                       fontSize: '0.73rem',
-                                      fontWeight: '600',
+                                      fontWeight: '700',
                                       cursor: 'pointer',
                                       display: 'inline-flex',
                                       alignItems: 'center',
-                                      gap: '4px',
-                                      padding: '2px 0',
-                                      width: 'fit-content'
+                                      gap: '5px'
                                     }}
                                   >
                                     <MapPin size={12} />
-                                    <span>{expandedTransferLegs[`${res.tripId}_1`] ? 'Chiudi fermate 1ª tratta' : `Vedi fermate 1ª tratta (${res.leg1.intermediateStops.length})`}</span>
-                                    <ChevronDown size={12} style={{ transform: expandedTransferLegs[`${res.tripId}_1`] ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }} />
+                                    <span>
+                                      {expandedTransferLegs[res.tripId]
+                                        ? 'Nascondi fermate'
+                                        : `Vedi tutte le fermate (${(res.leg1.intermediateStops?.length || 0) + (res.leg2.intermediateStops?.length || 0)} fermate con coincidenza)`}
+                                    </span>
+                                    <ChevronDown size={12} style={{ transform: expandedTransferLegs[res.tripId] ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }} />
                                   </button>
+                                </div>
 
-                                  {expandedTransferLegs[`${res.tripId}_1`] && (
+                                {/* Tendina Unificata con tutte le fermate del percorso */}
+                                {expandedTransferLegs[res.tripId] && (
+                                  <div style={{
+                                    marginTop: '4px',
+                                    padding: '10px 12px',
+                                    background: 'rgba(0,0,0,0.35)',
+                                    borderRadius: '10px',
+                                    borderLeft: '3px solid var(--accent-orange)',
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    gap: '4px'
+                                  }}>
+                                    {/* 1. Sezione 1ª Tratta */}
+                                    <div style={{ fontSize: '0.72rem', fontWeight: '800', color: '#10b981', display: 'flex', alignItems: 'center', gap: '5px', marginBottom: '2px' }}>
+                                      <span>1ª Tratta: Linea {res.leg1.line} (da {formatStopDisplayName(res.leg1.fromName)})</span>
+                                    </div>
+                                    {res.leg1.intermediateStops?.map((s, idx) => (
+                                      <div key={`l1_${idx}`} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.74rem' }}>
+                                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                                          <span style={{ fontSize: '0.68rem' }}>{idx === 0 ? '🟢' : '•'}</span>
+                                          <span style={{ color: idx === 0 ? 'var(--text-main)' : 'var(--text-muted)', fontWeight: idx === 0 ? '700' : 'normal' }}>
+                                            {formatStopDisplayName(s.name)}
+                                          </span>
+                                        </div>
+                                        <span style={{ color: idx === 0 ? '#10b981' : 'var(--text-muted)', fontWeight: '600' }}>
+                                          {s.time}
+                                        </span>
+                                      </div>
+                                    ))}
+
+                                    {/* 2. Coincidenza Evidenziata */}
                                     <div style={{
-                                      padding: '6px 10px',
-                                      background: 'rgba(0,0,0,0.25)',
+                                      margin: '8px 0',
+                                      padding: '8px 12px',
+                                      background: 'linear-gradient(135deg, rgba(245, 166, 35, 0.25) 0%, rgba(217, 119, 6, 0.2) 100%)',
+                                      border: '1.5px solid #f5a623',
                                       borderRadius: '8px',
-                                      borderLeft: '2px solid #10b981',
                                       display: 'flex',
                                       flexDirection: 'column',
-                                      gap: '3px'
+                                      gap: '3px',
+                                      boxShadow: '0 2px 10px rgba(245, 166, 35, 0.15)'
                                     }}>
-                                      {res.leg1.intermediateStops.map((s, idx) => (
-                                        <div key={idx} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.73rem' }}>
-                                          <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-                                            <span style={{ fontSize: '0.65rem' }}>{idx === 0 ? '🟢' : idx === res.leg1.intermediateStops.length - 1 ? '🏁' : '•'}</span>
-                                            <span style={{ color: idx === 0 || idx === res.leg1.intermediateStops.length - 1 ? 'var(--text-main)' : 'var(--text-muted)', fontWeight: idx === 0 || idx === res.leg1.intermediateStops.length - 1 ? '700' : 'normal' }}>
+                                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '4px' }}>
+                                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontWeight: '800', color: 'var(--accent-orange)', fontSize: '0.80rem' }}>
+                                          <Shuffle size={14} />
+                                          <span>CAMBIO BUS A {formatStopDisplayName(res.hubName).toUpperCase()}</span>
+                                        </div>
+                                        <span style={{
+                                          fontWeight: '800', fontSize: '0.74rem', color: '#121214', background: 'var(--accent-orange)',
+                                          padding: '2px 8px', borderRadius: '4px'
+                                        }}>
+                                          Attesa {res.waitMins} min
+                                        </span>
+                                      </div>
+                                      <div style={{ fontSize: '0.73rem', color: 'var(--text-main)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '2px', borderTop: '1px dashed rgba(245,166,35,0.3)', paddingTop: '4px' }}>
+                                        <span>Arrivo 1ª Tratta (L.{res.leg1.line}): <strong style={{ color: '#10b981' }}>{res.leg1.arrivalTime}</strong></span>
+                                        <span style={{ color: 'var(--text-muted)' }}>➔</span>
+                                        <span>Ripartenza 2ª Tratta (L.{res.leg2.line}): <strong style={{ color: 'var(--accent-cyan)' }}>{res.leg2.departureTime}</strong></span>
+                                      </div>
+                                    </div>
+
+                                    {/* 3. Sezione 2ª Tratta */}
+                                    <div style={{ fontSize: '0.72rem', fontWeight: '800', color: 'var(--accent-cyan)', display: 'flex', alignItems: 'center', gap: '5px', marginBottom: '2px' }}>
+                                      <span>2ª Tratta: Linea {res.leg2.line} (verso {formatStopDisplayName(res.leg2.toName)})</span>
+                                    </div>
+                                    {res.leg2.intermediateStops?.map((s, idx) => {
+                                      const isLast = idx === (res.leg2.intermediateStops.length - 1);
+                                      return (
+                                        <div key={`l2_${idx}`} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.74rem' }}>
+                                          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                                            <span style={{ fontSize: '0.68rem' }}>{isLast ? '🏁' : '•'}</span>
+                                            <span style={{ color: isLast ? 'var(--text-main)' : 'var(--text-muted)', fontWeight: isLast ? '700' : 'normal' }}>
                                               {formatStopDisplayName(s.name)}
                                             </span>
                                           </div>
-                                          <span style={{ color: idx === 0 || idx === res.leg1.intermediateStops.length - 1 ? '#10b981' : 'var(--text-muted)', fontWeight: '600' }}>
+                                          <span style={{ color: isLast ? 'var(--accent-cyan)' : 'var(--text-muted)', fontWeight: '600' }}>
                                             {s.time}
                                           </span>
                                         </div>
-                                      ))}
-                                    </div>
-                                  )}
-                                </div>
-                              )}
-
-                              {/* Interscambio Hub */}
-                              <div style={{
-                                margin: '2px 0 2px 4px',
-                                padding: '4px 10px',
-                                borderLeft: '2px dashed var(--accent-orange)',
-                                display: 'flex',
-                                alignItems: 'center',
-                                gap: '6px',
-                                fontSize: '0.75rem',
-                                color: 'var(--accent-orange)'
-                              }}>
-                                <Clock size={13} />
-                                <span>Cambio a <strong>{formatStopDisplayName(res.hubName)}</strong> • Attesa {res.waitMins} min</span>
+                                      );
+                                    })}
+                                  </div>
+                                )}
                               </div>
 
-                              {/* Tratta 2 Header */}
+                              {/* 3. Tratta 2 (Arrivo) */}
                               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                                   <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--accent-cyan)' }} />
@@ -2393,120 +2535,8 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
 
                             </div>
 
-                            {/* Unico Pulsante Tendina per tutte le fermate del percorso */}
-                            <button
-                              type="button"
-                              onClick={() => setExpandedTransferLegs(prev => ({ ...prev, [res.tripId]: !prev[res.tripId] }))}
-                              style={{
-                                background: expandedTransferLegs[res.tripId] ? 'rgba(245, 166, 35, 0.15)' : 'rgba(255,255,255,0.04)',
-                                border: expandedTransferLegs[res.tripId] ? '1px solid var(--accent-orange)' : '1px solid var(--border-color)',
-                                borderRadius: '8px',
-                                padding: '7px 12px',
-                                color: expandedTransferLegs[res.tripId] ? 'var(--accent-orange)' : 'var(--text-main)',
-                                fontSize: '0.78rem',
-                                fontWeight: '700',
-                                cursor: 'pointer',
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'space-between',
-                                width: '100%',
-                                marginTop: '4px'
-                              }}
-                            >
-                              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                                <MapPin size={14} style={{ color: 'var(--accent-orange)' }} />
-                                <span>
-                                  {expandedTransferLegs[res.tripId] 
-                                    ? 'Nascondi tutte le fermate del percorso' 
-                                    : `Vedi tutte le fermate (${(res.leg1.intermediateStops?.length || 0) + (res.leg2.intermediateStops?.length || 0)} fermate con coincidenza)`}
-                                </span>
-                              </div>
-                              <ChevronDown size={14} style={{ transform: expandedTransferLegs[res.tripId] ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }} />
-                            </button>
 
-                            {/* Unica Tendina con tutte le fermate e coincidenza evidenziata */}
-                            {expandedTransferLegs[res.tripId] && (
-                              <div style={{
-                                marginTop: '4px',
-                                padding: '10px 12px',
-                                background: 'rgba(0,0,0,0.3)',
-                                borderRadius: '10px',
-                                borderLeft: '3px solid var(--accent-orange)',
-                                display: 'flex',
-                                flexDirection: 'column',
-                                gap: '4px'
-                              }}>
-                                {/* 1. Sezione 1ª Tratta */}
-                                <div style={{ fontSize: '0.72rem', fontWeight: '800', color: '#10b981', display: 'flex', alignItems: 'center', gap: '5px', marginBottom: '2px' }}>
-                                  <span>1ª Tratta: Linea {res.leg1.line} (da {formatStopDisplayName(res.leg1.fromName)})</span>
-                                </div>
-                                {res.leg1.intermediateStops?.map((s, idx) => (
-                                  <div key={`l1_${idx}`} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.74rem' }}>
-                                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                                      <span style={{ fontSize: '0.68rem' }}>{idx === 0 ? '🟢' : '•'}</span>
-                                      <span style={{ color: idx === 0 ? 'var(--text-main)' : 'var(--text-muted)', fontWeight: idx === 0 ? '700' : 'normal' }}>
-                                        {formatStopDisplayName(s.name)}
-                                      </span>
-                                    </div>
-                                    <span style={{ color: idx === 0 ? '#10b981' : 'var(--text-muted)', fontWeight: '600' }}>
-                                      {s.time}
-                                    </span>
-                                  </div>
-                                ))}
 
-                                {/* 2. Coincidenza Evidenziata */}
-                                <div style={{
-                                  margin: '8px 0',
-                                  padding: '8px 12px',
-                                  background: 'linear-gradient(135deg, rgba(245, 166, 35, 0.22) 0%, rgba(217, 119, 6, 0.18) 100%)',
-                                  border: '1.5px solid #f5a623',
-                                  borderRadius: '8px',
-                                  display: 'flex',
-                                  flexDirection: 'column',
-                                  gap: '3px',
-                                  boxShadow: '0 2px 10px rgba(245, 166, 35, 0.15)'
-                                }}>
-                                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '4px' }}>
-                                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontWeight: '800', color: 'var(--accent-orange)', fontSize: '0.80rem' }}>
-                                      <Shuffle size={14} />
-                                      <span>CAMBIO BUS A {formatStopDisplayName(res.hubName).toUpperCase()}</span>
-                                    </div>
-                                    <span style={{
-                                      fontWeight: '800', fontSize: '0.74rem', color: '#121214', background: 'var(--accent-orange)',
-                                      padding: '2px 8px', borderRadius: '4px'
-                                    }}>
-                                      Attesa {res.waitMins} min
-                                    </span>
-                                  </div>
-                                  <div style={{ fontSize: '0.73rem', color: 'var(--text-main)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '2px', borderTop: '1px dashed rgba(245,166,35,0.3)', paddingTop: '4px' }}>
-                                    <span>Arrivo 1ª Tratta (L.{res.leg1.line}): <strong style={{ color: '#10b981' }}>{res.leg1.arrivalTime}</strong></span>
-                                    <span style={{ color: 'var(--text-muted)' }}>➔</span>
-                                    <span>Ripartenza 2ª Tratta (L.{res.leg2.line}): <strong style={{ color: 'var(--accent-cyan)' }}>{res.leg2.departureTime}</strong></span>
-                                  </div>
-                                </div>
-
-                                {/* 3. Sezione 2ª Tratta */}
-                                <div style={{ fontSize: '0.72rem', fontWeight: '800', color: 'var(--accent-cyan)', display: 'flex', alignItems: 'center', gap: '5px', marginBottom: '2px' }}>
-                                  <span>2ª Tratta: Linea {res.leg2.line} (verso {formatStopDisplayName(res.leg2.toName)})</span>
-                                </div>
-                                {res.leg2.intermediateStops?.map((s, idx) => {
-                                  const isLast = idx === (res.leg2.intermediateStops.length - 1);
-                                  return (
-                                    <div key={`l2_${idx}`} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.74rem' }}>
-                                      <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                                        <span style={{ fontSize: '0.68rem' }}>{isLast ? '🏁' : '•'}</span>
-                                        <span style={{ color: isLast ? 'var(--text-main)' : 'var(--text-muted)', fontWeight: isLast ? '700' : 'normal' }}>
-                                          {formatStopDisplayName(s.name)}
-                                        </span>
-                                      </div>
-                                      <span style={{ color: isLast ? 'var(--accent-cyan)' : 'var(--text-muted)', fontWeight: '600' }}>
-                                        {s.time}
-                                      </span>
-                                    </div>
-                                  );
-                                })}
-                              </div>
-                            )}
 
 
 
