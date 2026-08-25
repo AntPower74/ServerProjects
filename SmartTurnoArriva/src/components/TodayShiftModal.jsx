@@ -517,47 +517,39 @@ export default function TodayShiftModal({
             </div>
 
             {/* Timeline of Pre-Service, Corse, Deadheads, and Post-Service */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', borderLeft: '3px solid var(--accent-orange)', paddingLeft: '10px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
               
-              {/* 1. PRE-SERVIZIO CARD */}
+              {/* 1. PRE-SERVIZIO SINGLE ROW */}
               {preDiffM > 0 && (
                 <div style={{
-                  background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(6, 182, 212, 0.08))',
-                  border: '1px solid rgba(16, 185, 129, 0.35)',
-                  borderRadius: '10px', padding: '10px 12px', display: 'flex', flexDirection: 'column', gap: '6px'
+                  background: 'rgba(16, 185, 129, 0.08)',
+                  border: '1px solid rgba(16, 185, 129, 0.3)',
+                  borderRadius: '8px', padding: '6px 10px',
+                  display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                  fontSize: '0.78rem', flexWrap: 'wrap', gap: '6px'
                 }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                      <span style={{
-                        background: '#10b981', color: '#121214', fontWeight: '800',
-                        fontSize: '0.72rem', padding: '2px 7px', borderRadius: '4px'
-                      }}>
-                        PRE-SERVIZIO
-                      </span>
-                      <span style={{ color: 'var(--text-main)', fontWeight: '700', fontSize: '0.78rem' }}>
-                        Presa Servizio & Trasferimento di Andata
-                      </span>
-                    </div>
-                    <span style={{ fontSize: '0.72rem', fontWeight: 'bold', color: '#10b981' }}>
-                      ⏱️ {formatDuration(preDiffM)}
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap' }}>
+                    <span style={{
+                      background: '#10b981', color: '#121214', fontWeight: '800',
+                      fontSize: '0.68rem', padding: '2px 6px', borderRadius: '4px'
+                    }}>
+                      PRE-SERVIZIO
+                    </span>
+                    <span style={{ color: 'var(--text-main)' }}>
+                      Presa <strong style={{ color: '#10b981' }}>{activeTurno.inizio}</strong> (Dep. {activeTurno.deposito})
+                    </span>
+                    <ArrowRight size={12} style={{ color: 'var(--text-muted)' }} />
+                    <span style={{ color: 'var(--text-main)' }}>
+                      1ª Corsa <strong style={{ color: 'var(--accent-cyan)' }}>{firstCorsa.partenza}</strong> ({firstFromClean})
                     </span>
                   </div>
-
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'var(--bg-card)', border: '1px solid var(--border-color)', padding: '6px 10px', borderRadius: '8px', fontSize: '0.78rem' }}>
-                    <div style={{ display: 'flex', flexDirection: 'column' }}>
-                      <span style={{ fontSize: '0.68rem', color: 'var(--text-muted)' }}>Presa Servizio</span>
-                      <strong style={{ color: '#10b981' }}>{activeTurno.inizio} (Dep. {activeTurno.deposito})</strong>
-                    </div>
-                    <ArrowRight size={14} style={{ color: 'var(--text-muted)' }} />
-                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
-                      <span style={{ fontSize: '0.68rem', color: 'var(--text-muted)' }}>Inizio 1ª Corsa</span>
-                      <strong style={{ color: 'var(--accent-cyan)' }}>{firstCorsa.partenza} ({firstFromClean})</strong>
-                    </div>
-                  </div>
+                  <span style={{ fontSize: '0.72rem', fontWeight: 'bold', color: '#10b981' }}>
+                    ⏱️ {formatDuration(preDiffM)}
+                  </span>
                 </div>
               )}
 
-              {/* 2. CHRONOLOGICAL CORSE */}
+              {/* 2. CHRONOLOGICAL CORSE IN SINGLE ROWS: [N° Corsa] [Linea] [Partenza ➔ Arrivo] [Tratta Da ➔ A] */}
               {activeTurno.corse.map((c, cIdx) => {
                 const tratta = parseTratta(c.da);
                 const fromClean = formatStopDisplayName(tratta.from);
@@ -594,241 +586,201 @@ export default function TodayShiftModal({
 
                 return (
                   <React.Fragment key={cIdx}>
-                    {/* Corsa Card */}
-                    <div style={{
-                      background: 'var(--bg-card)', border: '1px solid var(--border-color)',
-                      borderRadius: '10px', padding: '10px 12px', display: 'flex', flexDirection: 'column', gap: '8px'
-                    }}>
-                      {/* Corsa Header */}
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                          <span style={{
-                            background: '#10b981', color: '#121214', fontWeight: '800',
-                            fontSize: '0.72rem', padding: '2px 7px', borderRadius: '4px'
-                          }}>
-                            {cIdx + 1}ª CORSA
-                          </span>
-                          <span style={{
-                            background: 'rgba(6, 182, 212, 0.15)', color: 'var(--accent-cyan)',
-                            fontWeight: '700', fontSize: '0.72rem', padding: '2px 7px', borderRadius: '4px',
-                            border: '1px solid rgba(6, 182, 212, 0.3)'
-                          }}>
-                            Linea {c.linea}
-                          </span>
-                        </div>
-
-                        {runDur && (
-                          <span style={{ fontSize: '0.72rem', fontWeight: 'bold', color: 'var(--accent-orange)' }}>
-                            ⏱️ {runDur}
-                          </span>
-                        )}
-                      </div>
-
-                      {/* Origin -> Destination Times Hero */}
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'var(--bg-card-hover)', padding: '6px 10px', borderRadius: '8px', border: '1px solid var(--border-color)' }}>
-                        <div style={{ display: 'flex', flexDirection: 'column', maxWidth: '42%' }}>
-                          <span style={{ fontSize: '0.68rem', color: 'var(--text-muted)' }}>Partenza</span>
-                          <span style={{ fontSize: '1.1rem', fontWeight: '800', color: '#10b981' }}>{c.partenza}</span>
-                          <span style={{ fontSize: '0.72rem', color: 'var(--text-main)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                            {fromClean}
-                          </span>
-                        </div>
-
-                        <ArrowRight size={16} style={{ color: 'var(--text-muted)' }} />
-
-                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', maxWidth: '42%' }}>
-                          <span style={{ fontSize: '0.68rem', color: 'var(--text-muted)' }}>Arrivo</span>
-                          <span style={{ fontSize: '1.1rem', fontWeight: '800', color: 'var(--accent-cyan)' }}>{c.arrivo}</span>
-                          <span style={{ fontSize: '0.72rem', color: 'var(--text-main)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', textAlign: 'right' }}>
-                            {toClean}
-                          </span>
-                        </div>
-                      </div>
-
-                      {/* Action / Expansion row */}
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '2px', flexWrap: 'wrap', gap: '6px' }}>
-                        {matchedTrip ? (
-                          <button
-                            type="button"
-                            onClick={() => setExpandedCorsaIdx(isCorsaOpen ? null : cIdx)}
-                            style={{
-                              background: 'transparent', border: 'none', color: 'var(--accent-orange)',
-                              fontSize: '0.73rem', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '4px', fontWeight: '600'
-                            }}
-                          >
-                            <span>{isCorsaOpen ? 'Nascondi fermate' : `Vedi ${matchedTrip.stops.filter(s => isValidTime(s.time)).length} fermate & coincidenze`}</span>
-                            <ChevronDown size={13} style={{ transform: isCorsaOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }} />
-                          </button>
-                        ) : (
-                          <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>
-                            Corsa Diretta Cartellino
-                          </span>
-                        )}
-
-                        <button
-                          type="button"
-                          onClick={() => handleLaunchApp(fromClean, toClean)}
-                          style={{
-                            background: 'var(--btn-bg)', border: '1px solid var(--border-color)',
-                            borderRadius: '6px', padding: '3px 8px', color: 'var(--text-main)',
-                            fontSize: '0.7rem', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '4px'
-                          }}
-                        >
-                          <Smartphone size={11} />
-                          <span>MyPay Tratta</span>
-                        </button>
-                      </div>
-
-                      {/* Expandable stops with coincidenze */}
-                      {isCorsaOpen && matchedTrip && (
-                        <div style={{
-                          marginTop: '4px', background: 'var(--bg-card-hover)', border: '1px solid var(--border-color)',
-                          borderRadius: '8px', padding: '8px 10px', display: 'flex', flexDirection: 'column', gap: '4px'
+                    {/* Corsa Single Row */}
+                    <div 
+                      onClick={() => matchedTrip && setExpandedCorsaIdx(isCorsaOpen ? null : cIdx)}
+                      style={{
+                        background: isCorsaOpen ? 'var(--bg-card-hover)' : 'var(--bg-card)',
+                        border: '1px solid var(--border-color)',
+                        borderRadius: '8px', padding: '8px 10px',
+                        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                        gap: '8px', flexWrap: 'wrap',
+                        cursor: matchedTrip ? 'pointer' : 'default',
+                        transition: 'background 0.15s ease'
+                      }}
+                    >
+                      {/* [N° Corsa] [Linea] */}
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '5px', minWidth: '95px' }}>
+                        <span style={{
+                          background: '#10b981', color: '#121214', fontWeight: '800',
+                          fontSize: '0.72rem', padding: '2px 6px', borderRadius: '4px'
                         }}>
-                          <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', fontWeight: 'bold', marginBottom: '2px' }}>
-                            Passi Orari Programmati Corsa {matchedTrip.id}:
-                          </div>
-                          {matchedTrip.stops.filter(s => isValidTime(s.time)).map((st, stIdx, arr) => {
-                            const isStart = stIdx === 0;
-                            const isEnd = stIdx === arr.length - 1;
-                            const connections = getStopConnections(st.name, st.time, matchedTrip.id, 'today', 25, c.linea);
-                            const stopConnKey = `today_${cIdx}_s${stIdx}`;
-                            const isStopConnOpen = expandedConnKey === stopConnKey;
+                          {cIdx + 1}ª
+                        </span>
+                        <span style={{
+                          background: 'rgba(6, 182, 212, 0.15)', color: 'var(--accent-cyan)',
+                          fontWeight: '700', fontSize: '0.72rem', padding: '2px 6px', borderRadius: '4px',
+                          border: '1px solid rgba(6, 182, 212, 0.3)'
+                        }}>
+                          L. {c.linea}
+                        </span>
+                      </div>
 
-                            return (
-                              <div key={stIdx} style={{ display: 'flex', flexDirection: 'column' }}>
-                                <div style={{
-                                  display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.75rem',
-                                  padding: (isStart || isEnd) ? '3px 6px' : '2px 0',
-                                  background: isStart ? 'rgba(16, 185, 129, 0.12)' : isEnd ? 'rgba(6, 182, 212, 0.12)' : 'transparent',
-                                  borderRadius: '4px'
-                                }}>
-                                  <div style={{ display: 'flex', alignItems: 'center', gap: '5px', flexWrap: 'wrap' }}>
-                                    <span style={{ fontSize: '0.7rem' }}>{isStart ? '🟢' : isEnd ? '🏁' : '🔵'}</span>
-                                    <span style={{ color: (isStart || isEnd) ? 'var(--text-main)' : 'var(--text-muted)', fontWeight: (isStart || isEnd) ? '700' : 'normal' }}>
-                                      {formatStopDisplayName(st.name)}
-                                    </span>
-                                    {connections.length > 0 && (
-                                      <button
-                                        type="button"
-                                        onClick={(e) => {
-                                          e.stopPropagation();
-                                          setExpandedConnKey(isStopConnOpen ? null : stopConnKey);
-                                        }}
-                                        style={{
-                                          background: isStopConnOpen ? 'rgba(245, 166, 35, 0.3)' : 'rgba(245, 166, 35, 0.12)',
-                                          border: '1px solid rgba(245, 166, 35, 0.4)',
-                                          borderRadius: '4px', padding: '1px 5px', fontSize: '0.62rem',
-                                          fontWeight: '700', color: 'var(--accent-orange)', cursor: 'pointer',
-                                          display: 'inline-flex', alignItems: 'center', gap: '2px'
-                                        }}
-                                      >
-                                        <Shuffle size={9} />
-                                        <span>{connections.length} coinc.</span>
-                                      </button>
-                                    )}
-                                  </div>
-                                  <span style={{ color: isStart ? '#10b981' : isEnd ? 'var(--accent-cyan)' : 'var(--text-muted)', fontWeight: (isStart || isEnd) ? '700' : '500' }}>
-                                    {st.time}
-                                  </span>
-                                </div>
+                      {/* [Partenza ➔ Arrivo] */}
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '5px', minWidth: '120px' }}>
+                        <strong style={{ fontSize: '0.92rem', color: '#10b981', fontFamily: 'monospace' }}>{c.partenza}</strong>
+                        <ArrowRight size={13} style={{ color: 'var(--text-muted)' }} />
+                        <strong style={{ fontSize: '0.92rem', color: 'var(--accent-cyan)', fontFamily: 'monospace' }}>{c.arrivo}</strong>
+                        {runDur && (
+                          <span style={{ fontSize: '0.68rem', color: 'var(--text-muted)' }}>
+                            ({runDur})
+                          </span>
+                        )}
+                      </div>
 
-                                {/* Active Connections Sub-Box */}
-                                {isStopConnOpen && (
-                                  <div style={{
-                                    margin: '2px 0 4px 14px', padding: '6px 8px',
-                                    background: 'rgba(245, 166, 35, 0.1)', borderLeft: '3px solid var(--accent-orange)',
-                                    borderRadius: '4px', fontSize: '0.7rem', display: 'flex', flexDirection: 'column', gap: '4px'
-                                  }}>
-                                    <span style={{ color: 'var(--accent-orange)', fontWeight: 'bold' }}>Coincidenze attive (entro 25 min):</span>
-                                    {connections.map((co, coIdx) => (
-                                      <div key={coIdx} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                        <span style={{ color: 'var(--text-main)' }}>L. {co.line} ➔ {co.directionTo} ({co.tripId})</span>
-                                        <strong style={{ color: '#10b981' }}>{co.departureTime} (+{co.waitMins}m)</strong>
-                                      </div>
-                                    ))}
-                                  </div>
-                                )}
-                              </div>
-                            );
-                          })}
+                      {/* [Tratta Da ➔ A] */}
+                      <div style={{
+                        flex: '1 1 180px',
+                        fontSize: '0.78rem',
+                        color: 'var(--text-main)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '5px',
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis',
+                        whiteSpace: 'nowrap'
+                      }}>
+                        <span style={{ fontWeight: '600', color: 'var(--text-main)' }}>{fromClean}</span>
+                        <span style={{ color: 'var(--text-muted)', fontSize: '0.7rem' }}>➔</span>
+                        <span style={{ fontWeight: '600', color: 'var(--text-main)' }}>{toClean}</span>
+                      </div>
+
+                      {/* Expand indicator if stops available */}
+                      {matchedTrip && (
+                        <div style={{ display: 'flex', alignItems: 'center', color: 'var(--text-muted)' }}>
+                          <ChevronDown size={14} style={{ transform: isCorsaOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }} />
                         </div>
                       )}
-
                     </div>
 
-                    {/* 3. INTERMEDIATE LAYOVER OR DEADHEAD TRANSFER */}
+                    {/* Expandable stops on tap */}
+                    {isCorsaOpen && matchedTrip && (
+                      <div style={{
+                        margin: '-2px 0 4px 12px', background: 'var(--bg-card-hover)', border: '1px solid var(--border-color)',
+                        borderRadius: '8px', padding: '6px 10px', display: 'flex', flexDirection: 'column', gap: '3px'
+                      }}>
+                        <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)', fontWeight: 'bold', marginBottom: '2px' }}>
+                          Fermate Programmate Corsa {matchedTrip.id}:
+                        </div>
+                        {matchedTrip.stops.filter(s => isValidTime(s.time)).map((st, stIdx, arr) => {
+                          const isStart = stIdx === 0;
+                          const isEnd = stIdx === arr.length - 1;
+                          const connections = getStopConnections(st.name, st.time, matchedTrip.id, 'today', 25, c.linea);
+                          const stopConnKey = `today_${cIdx}_s${stIdx}`;
+                          const isStopConnOpen = expandedConnKey === stopConnKey;
+
+                          return (
+                            <div key={stIdx} style={{ display: 'flex', flexDirection: 'column' }}>
+                              <div style={{
+                                display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.73rem',
+                                padding: (isStart || isEnd) ? '2px 4px' : '1px 0',
+                                background: isStart ? 'rgba(16, 185, 129, 0.12)' : isEnd ? 'rgba(6, 182, 212, 0.12)' : 'transparent',
+                                borderRadius: '4px'
+                              }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '5px', flexWrap: 'wrap' }}>
+                                  <span style={{ fontSize: '0.65rem' }}>{isStart ? '🟢' : isEnd ? '🏁' : '🔵'}</span>
+                                  <span style={{ color: (isStart || isEnd) ? 'var(--text-main)' : 'var(--text-muted)', fontWeight: (isStart || isEnd) ? '700' : 'normal' }}>
+                                    {formatStopDisplayName(st.name)}
+                                  </span>
+                                  {connections.length > 0 && (
+                                    <button
+                                      type="button"
+                                      onClick={(e) => {
+                                        e.stopPropagation();
+                                        setExpandedConnKey(isStopConnOpen ? null : stopConnKey);
+                                      }}
+                                      style={{
+                                        background: isStopConnOpen ? 'rgba(245, 166, 35, 0.3)' : 'rgba(245, 166, 35, 0.12)',
+                                        border: '1px solid rgba(245, 166, 35, 0.4)',
+                                        borderRadius: '4px', padding: '1px 4px', fontSize: '0.6rem',
+                                        fontWeight: '700', color: 'var(--accent-orange)', cursor: 'pointer',
+                                        display: 'inline-flex', alignItems: 'center', gap: '2px'
+                                      }}
+                                    >
+                                      <Shuffle size={8} />
+                                      <span>{connections.length} coinc.</span>
+                                    </button>
+                                  )}
+                                </div>
+                                <span style={{ color: isStart ? '#10b981' : isEnd ? 'var(--accent-cyan)' : 'var(--text-muted)', fontWeight: (isStart || isEnd) ? '700' : '500' }}>
+                                  {st.time}
+                                </span>
+                              </div>
+
+                              {/* Active Connections Sub-Box */}
+                              {isStopConnOpen && (
+                                <div style={{
+                                  margin: '2px 0 3px 12px', padding: '4px 8px',
+                                  background: 'rgba(245, 166, 35, 0.1)', borderLeft: '3px solid var(--accent-orange)',
+                                  borderRadius: '4px', fontSize: '0.68rem', display: 'flex', flexDirection: 'column', gap: '3px'
+                                }}>
+                                  <span style={{ color: 'var(--accent-orange)', fontWeight: 'bold' }}>Coincidenze attive (entro 25 min):</span>
+                                  {connections.map((co, coIdx) => (
+                                    <div key={coIdx} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                      <span style={{ color: 'var(--text-main)' }}>L. {co.line} ➔ {co.directionTo} ({co.tripId})</span>
+                                      <strong style={{ color: '#10b981' }}>{co.departureTime} (+{co.waitMins}m)</strong>
+                                    </div>
+                                  ))}
+                                </div>
+                              )}
+                            </div>
+                          );
+                        })}
+                      </div>
+                    )}
+
+                    {/* 3. INTERMEDIATE LAYOVER OR DEADHEAD TRANSFER SINGLE ROW */}
                     {intermediateStep && intermediateStep.mins > 0 && (
-                      intermediateStep.isDeadhead ? (
-                        <div style={{
-                          display: 'flex', alignItems: 'center', gap: '8px',
-                          background: 'linear-gradient(90deg, rgba(6, 182, 212, 0.15), rgba(6, 182, 212, 0.04))',
-                          border: '1px dashed rgba(6, 182, 212, 0.5)',
-                          borderRadius: '8px', padding: '7px 12px', fontSize: '0.75rem', color: 'var(--accent-cyan)'
-                        }}>
-                          <Truck size={15} />
-                          <span>
-                            <strong>Trasferimento a vuoto / Raccordo ({intermediateStep.formatted})</strong> da {intermediateStep.fromLoc} a {intermediateStep.toLoc} (dalle {intermediateStep.fromTime} alle {intermediateStep.toTime})
-                          </span>
-                        </div>
-                      ) : (
-                        <div style={{
-                          display: 'flex', alignItems: 'center', gap: '8px',
-                          background: 'linear-gradient(90deg, rgba(245, 166, 35, 0.12), rgba(245, 166, 35, 0.03))',
-                          border: '1px dashed rgba(245, 166, 35, 0.4)',
-                          borderRadius: '8px', padding: '6px 12px', fontSize: '0.75rem', color: 'var(--accent-orange)'
-                        }}>
-                          <Coffee size={14} />
-                          <span>
-                            <strong>Sosta al capolinea ({intermediateStep.formatted})</strong> dalle {intermediateStep.fromTime} alle {intermediateStep.toTime}
-                            {intermediateStep.fromLoc ? ` a ${intermediateStep.fromLoc}` : ''}
-                          </span>
-                        </div>
-                      )
+                      <div style={{
+                        display: 'flex', alignItems: 'center', gap: '6px',
+                        background: intermediateStep.isDeadhead ? 'rgba(6, 182, 212, 0.06)' : 'rgba(245, 166, 35, 0.06)',
+                        border: intermediateStep.isDeadhead ? '1px dashed rgba(6, 182, 212, 0.35)' : '1px dashed rgba(245, 166, 35, 0.3)',
+                        borderRadius: '6px', padding: '4px 10px', fontSize: '0.72rem',
+                        color: intermediateStep.isDeadhead ? 'var(--accent-cyan)' : 'var(--accent-orange)'
+                      }}>
+                        {intermediateStep.isDeadhead ? <Truck size={13} /> : <Coffee size={13} />}
+                        <span>
+                          <strong>{intermediateStep.isDeadhead ? 'Raccordo' : 'Sosta'} ({intermediateStep.formatted}):</strong> dalle {intermediateStep.fromTime} alle {intermediateStep.toTime}
+                          {intermediateStep.isDeadhead ? ` (da ${intermediateStep.fromLoc} a ${intermediateStep.toLoc})` : (intermediateStep.fromLoc ? ` a ${intermediateStep.fromLoc}` : '')}
+                        </span>
+                      </div>
                     )}
                   </React.Fragment>
                 );
               })}
 
-              {/* 4. POST-SERVIZIO CARD */}
+              {/* 4. POST-SERVIZIO SINGLE ROW */}
               {postDiffM > 0 && (
                 <div style={{
-                  background: 'linear-gradient(135deg, rgba(245, 166, 35, 0.15), rgba(239, 68, 68, 0.08))',
-                  border: '1px solid rgba(245, 166, 35, 0.35)',
-                  borderRadius: '10px', padding: '10px 12px', display: 'flex', flexDirection: 'column', gap: '6px'
+                  background: 'rgba(245, 166, 35, 0.08)',
+                  border: '1px solid rgba(245, 166, 35, 0.3)',
+                  borderRadius: '8px', padding: '6px 10px',
+                  display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                  fontSize: '0.78rem', flexWrap: 'wrap', gap: '6px'
                 }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                      <span style={{
-                        background: 'var(--accent-orange)', color: '#121214', fontWeight: '800',
-                        fontSize: '0.72rem', padding: '2px 7px', borderRadius: '4px'
-                      }}>
-                        POST-SERVIZIO
-                      </span>
-                      <span style={{ color: 'var(--text-main)', fontWeight: '700', fontSize: '0.78rem' }}>
-                        Rientro in Deposito, Rifornimento & Smonto
-                      </span>
-                    </div>
-                    <span style={{ fontSize: '0.72rem', fontWeight: 'bold', color: 'var(--accent-orange)' }}>
-                      ⏱️ {formatDuration(postDiffM)}
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap' }}>
+                    <span style={{
+                      background: 'var(--accent-orange)', color: '#121214', fontWeight: '800',
+                      fontSize: '0.68rem', padding: '2px 6px', borderRadius: '4px'
+                    }}>
+                      POST-SERVIZIO
+                    </span>
+                    <span style={{ color: 'var(--text-main)' }}>
+                      Arrivo Ultima Corsa <strong style={{ color: 'var(--accent-cyan)' }}>{lastCorsa.arrivo}</strong> ({lastToClean})
+                    </span>
+                    <ArrowRight size={12} style={{ color: 'var(--text-muted)' }} />
+                    <span style={{ color: 'var(--text-main)' }}>
+                      Smonto <strong style={{ color: 'var(--accent-orange)' }}>{activeTurno.fine}</strong> (Dep. {activeTurno.deposito})
                     </span>
                   </div>
-
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'var(--bg-card)', border: '1px solid var(--border-color)', padding: '6px 10px', borderRadius: '8px', fontSize: '0.78rem' }}>
-                    <div style={{ display: 'flex', flexDirection: 'column' }}>
-                      <span style={{ fontSize: '0.68rem', color: 'var(--text-muted)' }}>Arrivo Ultima Corsa</span>
-                      <strong style={{ color: 'var(--accent-cyan)' }}>{lastCorsa.arrivo} ({lastToClean})</strong>
-                    </div>
-                    <ArrowRight size={14} style={{ color: 'var(--text-muted)' }} />
-                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
-                      <span style={{ fontSize: '0.68rem', color: 'var(--text-muted)' }}>Smonto Servizio</span>
-                      <strong style={{ color: 'var(--accent-orange)' }}>{activeTurno.fine} (Dep. {activeTurno.deposito})</strong>
-                    </div>
-                  </div>
+                  <span style={{ fontSize: '0.72rem', fontWeight: 'bold', color: 'var(--accent-orange)' }}>
+                    ⏱️ {formatDuration(postDiffM)}
+                  </span>
                 </div>
               )}
 
             </div>
+
           </>
         ) : (
           <div style={{
