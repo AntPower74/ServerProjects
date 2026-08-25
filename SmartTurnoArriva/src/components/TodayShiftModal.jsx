@@ -54,10 +54,25 @@ const matchStop = (stopName, query) => {
   const s = normalizeStop(stopName);
   const q = normalizeStop(query);
   if (s === q || s.includes(q) || q.includes(s)) return true;
-  if ((q.includes('porta susa') || q.includes('bolzano')) && (s.includes('porta susa') || s.includes('bolzano'))) return true;
-  if ((q.includes('porta nuova') || q.includes('carlo felice')) && (s.includes('porta nuova') || s.includes('carlo felice'))) return true;
+  
+  // Riconoscimento Hub Aeroportuali (Malpensa T1 / T2 / Ovest / Nord / Est)
+  if (q.includes('malpensa') && s.includes('malpensa')) return true;
+  if ((q.includes('caselle') || q.includes('aeroporto')) && (s.includes('caselle') || s.includes('aeroporto'))) return true;
+  
+  // Hub Città di Torino
+  if ((q.includes('porta susa') || q.includes('bolzano') || q.includes('autostazione')) && (s.includes('porta susa') || s.includes('bolzano') || s.includes('autostazione'))) return true;
+  if ((q.includes('porta nuova') || q.includes('carlo felice') || q.includes('v emanuele')) && (s.includes('porta nuova') || s.includes('carlo felice') || s.includes('v emanuele'))) return true;
+  if (q.includes('torino') && s.includes('torino')) return true;
+
+  // Capolinea e Hub principali
+  const hubs = ['pinerolo', 'perosa', 'sestriere', 'bobbio', 'airasca', 'ivrea', 'oulx', 'barge', 'torre pellice', 'claviere', 'cesana', 'bardonecchia', 'susa', 'cumiana', 'giaveno', 'rivalta', 'orbassano', 'trana', 'avigliana'];
+  for (const h of hubs) {
+    if (q.includes(h) && s.includes(h)) return true;
+  }
+
   return false;
 };
+
 
 const formatStopDisplayName = (name) => {
   if (!name) return '';
@@ -190,20 +205,84 @@ const getCartellinoPdf = (code) => {
 const parseTratta = (str) => {
   if (!str) return { from: '', to: '' };
   const clean = str.trim();
-  const parts = clean.split(' - ');
+  const parts = clean.split(/\s*[-–—]\s*/).filter(Boolean);
+  
+  if (parts.length === 1) {
+    return { from: parts[0].trim(), to: '' };
+  }
   if (parts.length === 2) {
     return { from: parts[0].trim(), to: parts[1].trim() };
   }
-  for (let i = 1; i < parts.length; i++) {
-    const left = parts.slice(0, i).join(' - ');
-    const right = parts.slice(i).join(' - ');
-    const rightUpper = right.toUpperCase();
-    if (rightUpper.startsWith('TORINO') || rightUpper.startsWith('TO -') || rightUpper.startsWith('PINEROLO') || rightUpper.startsWith('PEROSA') || rightUpper.startsWith('AIRASCA') || rightUpper.startsWith('CASELLE') || rightUpper.startsWith('IVREA') || rightUpper.startsWith('OULX') || rightUpper.startsWith('SESTRIERE') || rightUpper.startsWith('BOBBIO') || rightUpper.startsWith('BARGE') || rightUpper.startsWith('VILLAR')) {
-      return { from: left.trim(), to: right.trim() };
+  if (parts.length >= 3) {
+    const p0_u = parts[0].toUpperCase();
+    const p1_u = parts[1].toUpperCase();
+    
+    // Se le prime due parti compongono il capolinea di origine (es. TORINO - Autostazione c.so Bolzano)
+    if (
+      p0_u.includes('TORINO') || p0_u.includes('TO') ||
+      p0_u.includes('PINEROLO') || p0_u.includes('PEROSA') ||
+      p0_u.includes('SESTRIERE') || p0_u.includes('CASELLE') ||
+      p0_u.includes('IVREA') || p0_u.includes('AIRASCA') ||
+      p0_u.includes('BOBBIO') || p0_u.includes('BARGE') ||
+      p0_u.includes('OULX') || p0_u.includes('SUSA')
+    ) {
+      if (
+        p1_u.includes('AUTOSTAZIONE') || p1_u.includes('BOLZANO') ||
+        p1_u.includes('STAZIONE') || p1_u.includes('FS') ||
+        p1_u.includes('PORTA') || p1_u.includes('CATTANEO') ||
+        p1_u.includes('GIULIO') || p1_u.includes('CARDUCCI') ||
+        p1_u.includes('MOMBARCARO') || p1_u.includes('SANTA RITA') ||
+        p1_u.includes('CAIO MARIO') || p1_u.includes('PIAZZA') ||
+        p1_u.includes('CORSO') || p1_u.includes('VIA') ||
+        p1_u.includes('V.') || p1_u.includes('CAPOL') || p1_u.includes('COLLE')
+      ) {
+        return {
+          from: `${parts[0]} - ${parts[1]}`,
+          to: parts.slice(2).join(' - ')
+        };
+      }
     }
+
+    // Se le ultime due parti compongono il capolinea di destinazione (es. MALPENSA OVEST - TORINO - Autostazione c.so Bolzano)
+    const pEnd1_u = parts[parts.length - 2].toUpperCase();
+    const pEnd2_u = parts[parts.length - 1].toUpperCase();
+    if (
+      pEnd1_u.includes('TORINO') || pEnd1_u.includes('TO') ||
+      pEnd1_u.includes('PINEROLO') || pEnd1_u.includes('PEROSA') ||
+      pEnd1_u.includes('SESTRIERE') || pEnd1_u.includes('CASELLE') ||
+      pEnd1_u.includes('IVREA') || pEnd1_u.includes('AIRASCA') ||
+      pEnd1_u.includes('BOBBIO') || pEnd1_u.includes('BARGE') ||
+      pEnd1_u.includes('OULX') || pEnd1_u.includes('SUSA')
+    ) {
+      return {
+        from: parts.slice(0, parts.length - 2).join(' - '),
+        to: `${parts[parts.length - 2]} - ${parts[parts.length - 1]}`
+      };
+    }
+
+    return {
+      from: parts[0].trim(),
+      to: parts.slice(1).join(' - ').trim()
+    };
   }
-  return { from: parts[0].trim(), to: parts.slice(1).join(' - ').trim() };
+  return { from: clean, to: '' };
 };
+
+const getCleanTratta = (c) => {
+  if (!c) return { fromClean: '', toClean: '' };
+  const parsedDa = parseTratta(c.da);
+  const parsedA = parseTratta(c.a);
+  
+  let from = parsedDa.from || c.da || '';
+  let to = parsedDa.to || parsedA.to || parsedA.from || c.a || '';
+  
+  return {
+    fromClean: formatStopDisplayName(from),
+    toClean: formatStopDisplayName(to)
+  };
+};
+
+
 
 const matchTripInDb = (c) => {
   if (!c || !databaseOrari || !databaseOrari.trips) return null;
@@ -314,13 +393,14 @@ export default function TodayShiftModal({
   const firstCorsa = activeTurno?.corse?.[0];
   const firstDepM = firstCorsa ? parseTimeToMinutes(firstCorsa.partenza) : null;
   const preDiffM = (startM !== null && firstDepM !== null) ? ((firstDepM - startM + 1440) % 1440) : 0;
-  const firstFromClean = firstCorsa ? formatStopDisplayName(parseTratta(firstCorsa.da).from) : '';
+  const firstFromClean = getCleanTratta(firstCorsa).fromClean;
 
   // Post-service calculation
   const lastCorsa = activeTurno?.corse?.[activeTurno.corse.length - 1];
   const lastArrM = lastCorsa ? parseTimeToMinutes(lastCorsa.arrivo) : null;
   const postDiffM = (endM !== null && lastArrM !== null) ? ((endM - lastArrM + 1440) % 1440) : 0;
-  const lastToClean = lastCorsa ? formatStopDisplayName(parseTratta(lastCorsa.da).to || lastCorsa.a) : '';
+  const lastToClean = getCleanTratta(lastCorsa).toClean;
+
 
   const renderContent = () => (
     <div style={{
@@ -551,9 +631,7 @@ export default function TodayShiftModal({
 
               {/* 2. CHRONOLOGICAL CORSE IN SINGLE ROWS: [N° Corsa] [Linea] [Partenza ➔ Arrivo] [Tratta Da ➔ A] */}
               {activeTurno.corse.map((c, cIdx) => {
-                const tratta = parseTratta(c.da);
-                const fromClean = formatStopDisplayName(tratta.from);
-                const toClean = formatStopDisplayName(tratta.to || c.a);
+                const { fromClean, toClean } = getCleanTratta(c);
                 const depM = parseTimeToMinutes(c.partenza);
                 const arrM = parseTimeToMinutes(c.arrivo);
                 const runDur = (depM !== null && arrM !== null) ? formatDuration((arrM - depM + 1440) % 1440) : '';
@@ -564,8 +642,8 @@ export default function TodayShiftModal({
                 let intermediateStep = null;
                 if (cIdx < activeTurno.corse.length - 1) {
                   const nextC = activeTurno.corse[cIdx + 1];
-                  const nextTratta = parseTratta(nextC.da);
-                  const nextFromClean = formatStopDisplayName(nextTratta.from);
+                  const nextTratta = getCleanTratta(nextC);
+                  const nextFromClean = nextTratta.fromClean;
                   const nextDepM = parseTimeToMinutes(nextC.partenza);
 
                   if (arrM !== null && nextDepM !== null) {
@@ -583,6 +661,7 @@ export default function TodayShiftModal({
                     };
                   }
                 }
+
 
                 return (
                   <React.Fragment key={cIdx}>

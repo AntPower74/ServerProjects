@@ -1418,7 +1418,17 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
                             onClick={() => {
                               setOrigin(stop);
                               setIsOriginOpen(false);
+                              if (!destination) {
+                                setTimeout(() => {
+                                  const destInput = destRef.current?.querySelector('input');
+                                  if (destInput) {
+                                    destInput.focus();
+                                    setIsDestOpen(true);
+                                  }
+                                }, 60);
+                              }
                             }}
+
                             style={{
                               padding: '8px 12px', fontSize: '0.85rem', cursor: 'pointer',
                               color: 'var(--text-main)', borderBottom: '1px solid rgba(255,255,255,0.04)',
@@ -1656,59 +1666,10 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
 
                 </div>
 
-                {/* Action Search CTA Button */}
-                <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-                  <button
-                    type="submit"
-                    style={{
-                      flex: '2 1 220px',
-                      background: 'linear-gradient(135deg, #0891b2 0%, #0284c7 100%)',
-                      border: 'none',
-                      borderRadius: '10px',
-                      padding: '12px',
-                      color: '#ffffff',
-                      fontWeight: '700',
-                      fontSize: '0.95rem',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      gap: '8px',
-                      cursor: 'pointer',
-                      boxShadow: '0 4px 14px rgba(8, 145, 178, 0.35)'
-                    }}
-                  >
-                    <Search size={18} />
-                    <span>Cerca Corse e Orari</span>
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={handleLaunchApp}
-                    style={{
-                      flex: '1 1 140px',
-                      background: 'linear-gradient(135deg, #f5a623 0%, #d97706 100%)',
-                      border: 'none',
-                      borderRadius: '10px',
-                      padding: '12px',
-                      color: '#121214',
-                      fontWeight: '700',
-                      fontSize: '0.88rem',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      gap: '6px',
-                      cursor: 'pointer',
-                      boxShadow: '0 4px 14px rgba(245, 166, 35, 0.25)'
-                    }}
-                  >
-                    <Smartphone size={16} />
-                    <span>Apri MyPay</span>
-                  </button>
-                </div>
-
-                {/* Results Section */}
+                {/* Results Section (Aggiornamento Istantaneo in Automatico) */}
                 {(origin || destination) && (
-                  <div style={{ marginTop: '0.5rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                  <div style={{ marginTop: '0.25rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+
                     
                     {/* Header Bar with quick summary & view mode indicator */}
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid rgba(255,255,255,0.06)', paddingBottom: '0.5rem', flexWrap: 'wrap', gap: '0.5rem' }}>
