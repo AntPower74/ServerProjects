@@ -449,15 +449,43 @@ function matchTurnoForTrip(line, depTime, dayFilter = 'feriale') {
 }
 
 
-function isStopAChangeoverPoint(stopName) {
-  if (!stopName) return false;
-  const upper = stopName.toUpperCase();
-  if (upper.includes('(ARRIVO)') || upper.includes('(PARTENZA)')) return true;
-  if (upper.includes('PEROSA ARG') || upper.includes('MOVICENTRO') || upper.includes('CESANA') || upper.includes('SESTRIERE') || upper.includes('OULX FS') || upper.includes('OULX - STAZIONE')) return true;
-  return false;
+function cleanAndMergeStops(rawStops) {
+  if (!rawStops || !rawStops.length) return [];
+  const valid = rawStops.filter(s => isValidTime(s.time));
+  const merged = [];
+  let i = 0;
+  while (i < valid.length) {
+    const curr = valid[i];
+    const currUpper = curr.name.toUpperCase();
+    const isArr = currUpper.includes('(ARRIVO)');
+    const isDep = currUpper.includes('(PARTENZA)');
+
+    if ((isArr || isDep) && i + 1 < valid.length) {
+      const next = valid[i + 1];
+      const nextUpper = next.name.toUpperCase();
+      if ((isArr && nextUpper.includes('(PARTENZA)')) || (isDep && nextUpper.includes('(ARRIVO)'))) {
+        merged.push({
+          ...curr,
+          name: curr.name.replace(/\s*\((Arrivo|Partenza)\)/gi, '').trim(),
+          isChangeover: true
+        });
+        i += 2;
+        continue;
+      }
+    }
+
+    merged.push({
+      ...curr,
+      name: curr.name.replace(/\s*\((Arrivo|Partenza)\)/gi, '').trim(),
+      isChangeover: (isArr || isDep)
+    });
+    i += 1;
+  }
+  return merged;
 }
 
 function getCartellinoPdf(code) {
+
 
   if (!code || !cartelliniDb) return null;
   const clean = code.trim().toLowerCase();
@@ -640,24 +668,27 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
       
       if (selectedTurnoGiorno !== 'all') {
         const tg = (t.giorno || '').toLowerCase();
-        if (selectedTurnoGiorno === 'fer' && !tg.includes('feriale') && !tg.includes('lun')) return false;
+        if (selectedTurnoGiorno === 'fer' && !tg.includes('feriale') && !tg.includes('lun') && !tg.includes('gioved')) return false;
         if (selectedTurnoGiorno === 'sab' && !tg.includes('sabato')) return false;
         if (selectedTurnoGiorno === 'dom' && !tg.includes('domenica') && !tg.includes('festivo')) return false;
       }
 
       if (!q) return true;
-      const matchCodice = t.codice.toLowerCase().includes(q);
-      const matchNome = t.nome.toLowerCase().includes(q);
-      const matchDep = t.deposito.toLowerCase().includes(q);
-      const matchCorsa = t.corse.some(c => 
-        (c.linea && c.linea.toLowerCase().includes(q)) || 
+      const matchCodice = (t.codice || '').toLowerCase().includes(q);
+      const matchNome = (t.nome || '').toLowerCase().includes(q);
+      const matchDep = (t.deposito || '').toLowerCase().includes(q);
+      const matchCorsa = (t.corse || []).some(c => 
+        (c.linea && String(c.linea).toLowerCase().includes(q)) || 
         (c.da && c.da.toLowerCase().includes(q)) ||
-        (c.partenza && c.partenza.includes(q))
+        (c.a && c.a.toLowerCase().includes(q)) ||
+        (c.partenza && c.partenza.includes(q)) ||
+        (c.arrivo && c.arrivo.includes(q))
       );
 
       return matchCodice || matchNome || matchDep || matchCorsa;
     });
   }, [turnoSearchTerm, selectedDeposito, selectedTurnoGiorno]);
+
 
   // Load notices
   const loadNotices = useCallback(async (area = selectedArea) => {
@@ -900,8 +931,9 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
           isTripExpress = hasExpressNote || (fullRunDuration !== null && fullRunDuration < 44 && skipsIntermediateTowns);
         }
 
-        const validAllStops = trip.stops.filter(s => isValidTime(s.time));
-        const validIntermediateStops = trip.stops.slice(origIdx, destIdx + 1).filter(s => isValidTime(s.time));
+        const validAllStops = cleanAndMergeStops(trip.stops);
+        const validIntermediateStops = cleanAndMergeStops(trip.stops.slice(origIdx, destIdx + 1));
+
 
         const fare = calculateFare(trip.line, origStop.name, destStop.name, durationMins, isTripExpress);
         const turnoAssigned = matchTurnoForTrip(trip.line, origStop.time);
@@ -2007,7 +2039,7 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
 
                                   {/* Coincidenza / Cambio Intermedio Badge */}
                                   {(() => {
-                                    const changeoverPoint = (res.intermediateStops || []).slice(1, -1).find((s) => isStopAChangeoverPoint(s.name));
+                                    const changeoverPoint = (res.intermediateStops || []).slice(1, -1).find((s) => s.isChangeover);
                                     if (!changeoverPoint) return null;
                                     return (
                                       <span style={{
@@ -2021,6 +2053,7 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
                                       </span>
                                     );
                                   })()}
+
 
 
                                   <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>
@@ -2227,7 +2260,7 @@ export default function ArrivaServices({ onNoticeCountUpdate }) {
                                         else if (sIdx === stopsToRender.length - 1) isDestStop = true;
                                       }
 
-                                      const isChangeover = isStopAChangeoverPoint(stop.name) && !isOriginStop && !isDestStop && !isOutsideSegment;
+                                      const isChangeover = stop.isChangeover && !isOriginStop && !isDestStop && !isOutsideSegment;
 
                                       return (
                                         <div key={sIdx} style={{ display: 'flex', flexDirection: 'column' }}>
