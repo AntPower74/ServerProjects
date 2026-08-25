@@ -38,12 +38,14 @@ import {
   Percent,
   Shield,
   Eye,
-  EyeOff
+  EyeOff,
+  ChevronDown,
+  ChevronUp
 } from 'lucide-react'
 import Tesseract from 'tesseract.js'
 import { preElaboraImmagineCanvas, pulisciTestoOcr } from '../utils/ocrOptimizer.js'
 import { valutaOggettoUniversale } from '../utils/aiEvaluator.js'
-import { analizzaAnnuncio, isAccessorio, isCategoriaDisallineata } from '../utils/filtroRumore.js'
+import { confrontaEAnalizzaLotto, isAccessorio, isCategoriaDisallineata } from '../utils/filtroRumore.js'
 
 function ricalcolaMediana(annunci, query = '') {
   const prezziValidi = (annunci || [])
@@ -91,6 +93,11 @@ const FlipRadarHub = forwardRef(function FlipRadarHub({ onSearchMarketplace, est
   const [filtroOpportunita, setFiltroOpportunita] = useState('tutti')
   const [filtraAccessori, setFiltraAccessori] = useState(true)
   const [copiatoOffertaId, setCopiatoOffertaId] = useState(null)
+  
+  // Accordion Dropdowns
+  const [mostraLiquidita, setMostraLiquidita] = useState(false)
+  const [mostraControlli, setMostraControlli] = useState(false)
+  const [mostraScript, setMostraScript] = useState(false)
 
   function copiaMessaggioOffertaRapida(ann, offertaConsigliata, id) {
     const titolo = ann?.titolo || analisiDettagliata?.titoloRilevato || 'questo articolo'
@@ -556,147 +563,189 @@ const FlipRadarHub = forwardRef(function FlipRadarHub({ onSearchMarketplace, est
 
                 <div className="space-y-2 text-xs divide-y divide-slate-800/80">
                   <div className="pt-1 flex flex-col gap-0.5">
-                    <span className="text-slate-400 font-medium">Tipologia:</span>
-                    <span className="text-slate-200 font-semibold">{analisiDettagliata.schedaOggetto?.tipologia}</span>
+                    <span className="text-slate-400 font-medium">Modello Rilevato:</span>
+                    <span className="text-slate-200 font-semibold">{analisiDettagliata.schedaOggetto?.tipologia || analisiDettagliata.titoloRilevato}</span>
                   </div>
 
                   <div className="pt-2 flex flex-col gap-0.5">
                     <span className="text-slate-400 font-medium">Fascia di Mercato:</span>
-                    <span className="text-slate-200 font-semibold">{analisiDettagliata.schedaOggetto?.fasciaMercato}</span>
+                    <span className="text-slate-200 font-semibold">{analisiDettagliata.schedaOggetto?.fasciaMercato || 'Smartphone Usato'}</span>
                   </div>
 
                   <div className="pt-2 flex justify-between items-center">
-                    <span className="text-slate-400 font-medium">Prezzo da Nuovo (Retail / Lancio):</span>
-                    <b className="font-mono text-slate-200">{analisiDettagliata.schedaOggetto?.prezzoNuovo}</b>
+                    <span className="text-slate-400 font-medium">Media Annunci Usato dal Vivo:</span>
+                    <b className="font-mono text-indigo-300">
+                      ~{medianaRealeLive || (analisiDettagliata?.valoreRivenditaUsato || 65)}€
+                    </b>
                   </div>
 
                   <div className="pt-2 flex justify-between items-center">
-                    <span className="text-slate-400 font-medium">Valore Reale Rivendita Usato:</span>
-                    <b className="font-mono text-emerald-400">{analisiDettagliata.schedaOggetto?.prezzoUsatoDettaglio}</b>
+                    <span className="text-slate-400 font-medium">Prezzo Consigliato Rivendita Rapida:</span>
+                    <b className="font-mono text-emerald-400">
+                      ~{medianaRealeLive || (analisiDettagliata?.valoreRivenditaUsato || 65)}€
+                    </b>
                   </div>
                 </div>
               </div>
 
 
 
-              {/* 3. SEZIONE GIUDIZIO LIQUIDITÀ & CONSIGLIO OPERATIVO */}
-              <div className="p-4 rounded-2xl border border-amber-500/30 bg-slate-900/90 space-y-3">
-                <div className="flex items-center justify-between">
+              {/* 3. TENDINA: GIUDIZIO LIQUIDITÀ & CONSIGLIO OPERATIVO */}
+              <div className="rounded-2xl border border-slate-800 bg-slate-900/90 overflow-hidden transition-all">
+                <button
+                  type="button"
+                  onClick={() => setMostraLiquidita(!mostraLiquidita)}
+                  className="w-full p-3.5 flex items-center justify-between gap-2 text-left hover:bg-slate-800/50 transition-colors"
+                >
                   <div className="flex items-center gap-2">
                     <span className="text-base">⚠️</span>
-                    <h3 className="text-sm font-bold text-slate-100">Giudizio sulla Liquidità (Vendibilità)</h3>
+                    <h3 className="text-xs sm:text-sm font-bold text-slate-200">Giudizio Liquidità & Consiglio Operativo</h3>
                   </div>
-                  <span className="text-[10px] font-extrabold bg-amber-500/20 text-amber-300 border border-amber-500/30 px-2 py-0.5 rounded">
-                    {analisiDettagliata?.liquidita?.livello || 'Media'}
-                  </span>
-                </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-[10px] font-extrabold bg-amber-500/20 text-amber-300 border border-amber-500/30 px-2 py-0.5 rounded">
+                      {analisiDettagliata?.liquidita?.livello || 'Media'}
+                    </span>
+                    {mostraLiquidita ? <ChevronUp className="w-4 h-4 text-slate-400" /> : <ChevronDown className="w-4 h-4 text-slate-400" />}
+                  </div>
+                </button>
 
-                <div className="space-y-2 text-xs">
-                  <p className="text-slate-300 leading-relaxed bg-slate-800/80 p-3 rounded-xl border border-slate-700">
-                    💡 <b>Consiglio Operativo:</b> {analisiDettagliata?.liquidita?.consiglioOperativo || 'Effettua una valutazione accurata sul posto.'}
-                  </p>
-                  
-                  {analisiDettagliata?.liquidita?.benchmark && (
-                    <div className="text-[11px] text-slate-400 pt-0.5">
-                      📊 <b>Benchmark di mercato:</b> {analisiDettagliata.liquidita.benchmark}
+                {mostraLiquidita && (
+                  <div className="p-4 pt-1 border-t border-slate-800/80 space-y-2 text-xs animate-in fade-in">
+                    <p className="text-slate-300 leading-relaxed bg-slate-950/80 p-3 rounded-xl border border-slate-800">
+                      💡 <b>Consiglio Operativo:</b> {analisiDettagliata?.liquidita?.consiglioOperativo || 'Effettua una valutazione accurata sul posto.'}
+                    </p>
+                    
+                    {analisiDettagliata?.liquidita?.benchmark && (
+                      <div className="text-[11px] text-slate-400 pt-0.5">
+                        📊 <b>Benchmark di mercato:</b> {analisiDettagliata.liquidita.benchmark}
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+
+              {/* 4. TENDINA: CONTROLLI ANTI-FREGATURA DAL VIVO */}
+              {Array.isArray(analisiDettagliata?.controlliDalVivo) && analisiDettagliata.controlliDalVivo.length > 0 && (
+                <div className="rounded-2xl border border-slate-800 bg-slate-900/90 overflow-hidden transition-all">
+                  <button
+                    type="button"
+                    onClick={() => setMostraControlli(!mostraControlli)}
+                    className="w-full p-3.5 flex items-center justify-between gap-2 text-left hover:bg-slate-800/50 transition-colors"
+                  >
+                    <div className="flex items-center gap-2">
+                      <span className="text-base">🛡️</span>
+                      <h3 className="text-xs sm:text-sm font-bold text-slate-200">Controlli Anti-Fregatura dal Vivo</h3>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-[10px] text-slate-400">
+                        {analisiDettagliata.controlliDalVivo.length} Verifiche
+                      </span>
+                      {mostraControlli ? <ChevronUp className="w-4 h-4 text-slate-400" /> : <ChevronDown className="w-4 h-4 text-slate-400" />}
+                    </div>
+                  </button>
+
+                  {mostraControlli && (
+                    <div className="p-4 pt-1 border-t border-slate-800/80 space-y-2 text-xs text-slate-300 animate-in fade-in">
+                      {analisiDettagliata.controlliDalVivo.map((tip, idx) => (
+                        <div key={idx} className="flex items-start gap-2 bg-slate-950/60 p-2.5 rounded-xl border border-slate-800/80">
+                          <Check className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                          <span>{tip}</span>
+                        </div>
+                      ))}
                     </div>
                   )}
                 </div>
-              </div>
-
-              {/* 4. SEZIONE CONTROLLI DAL VIVO */}
-              {Array.isArray(analisiDettagliata?.controlliDalVivo) && analisiDettagliata.controlliDalVivo.length > 0 && (
-                <div className="p-4 rounded-2xl border border-slate-800 bg-slate-900/90 space-y-2.5">
-                  <div className="flex items-center gap-2">
-                    <span className="text-base">🛡️</span>
-                    <h3 className="text-sm font-bold text-slate-100">Controlli Anti-Fregatura dal Vivo</h3>
-                  </div>
-
-                  <div className="space-y-2 text-xs text-slate-300">
-                    {analisiDettagliata.controlliDalVivo.map((tip, idx) => (
-                      <div key={idx} className="flex items-start gap-2 bg-slate-800/60 p-2.5 rounded-xl border border-slate-700/60">
-                        <Check className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                        <span>{tip}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
               )}
 
-              {/* 5. SEZIONE SCRIPT DI TRATTATIVA VELOCE */}
-              <div className="p-4 rounded-2xl border border-slate-800 bg-slate-900/90 space-y-3">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <span className="text-base">💬</span>
-                    <h3 className="text-sm font-bold text-slate-100">Script di Trattativa Veloce (1-Click Copy)</h3>
-                  </div>
-                </div>
-
-                <div className="flex gap-1.5 overflow-x-auto pb-1">
-                  <button
-                    type="button"
-                    onClick={() => setScriptSelezionato('subito')}
-                    className={`text-[11px] font-semibold px-2.5 py-1 rounded-lg transition-colors whitespace-nowrap ${
-                      scriptSelezionato === 'subito' ? 'bg-indigo-600 text-white' : 'bg-slate-800 text-slate-400'
-                    }`}
-                  >
-                    Subito / Ritiro a Mano
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setScriptSelezionato('whatsapp')}
-                    className={`text-[11px] font-semibold px-2.5 py-1 rounded-lg transition-colors whitespace-nowrap ${
-                      scriptSelezionato === 'whatsapp' ? 'bg-indigo-600 text-white' : 'bg-slate-800 text-slate-400'
-                    }`}
-                  >
-                    WhatsApp Diretto
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setScriptSelezionato('counter')}
-                    className={`text-[11px] font-semibold px-2.5 py-1 rounded-lg transition-colors whitespace-nowrap ${
-                      scriptSelezionato === 'counter' ? 'bg-indigo-600 text-white' : 'bg-slate-800 text-slate-400'
-                    }`}
-                  >
-                    Controproposta
-                  </button>
-                </div>
-
-                <div className="p-3.5 rounded-xl bg-slate-950/90 border border-slate-800 text-xs text-slate-200 leading-relaxed select-all whitespace-pre-wrap font-sans">
-                  {generaScript()}
-                </div>
-
+              {/* 5. TENDINA: SCRIPT DI TRATTATIVA VELOCE */}
+              <div className="rounded-2xl border border-slate-800 bg-slate-900/90 overflow-hidden transition-all">
                 <button
                   type="button"
-                  onClick={copiaScript}
-                  className={`w-full flex items-center justify-center gap-2 rounded-xl py-2.5 text-xs font-bold transition-all ${
-                    copiato ? 'bg-emerald-600 text-white' : 'bg-indigo-600 hover:bg-indigo-500 text-white shadow'
-                  }`}
+                  onClick={() => setMostraScript(!mostraScript)}
+                  className="w-full p-3.5 flex items-center justify-between gap-2 text-left hover:bg-slate-800/50 transition-colors"
                 >
-                  {copiato ? (
-                    <>
-                      <CheckCircle2 className="w-4 h-4" /> Messaggio Copiato negli Appunti!
-                    </>
-                  ) : (
-                    <>
-                      <Copy className="w-4 h-4" /> Copia Messaggio per il Venditore
-                    </>
-                  )}
+                  <div className="flex items-center gap-2">
+                    <span className="text-base">💬</span>
+                    <h3 className="text-xs sm:text-sm font-bold text-slate-200">Script di Trattativa per il Venditore</h3>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-[10px] text-indigo-400 font-bold bg-indigo-500/10 px-2 py-0.5 rounded border border-indigo-500/20">
+                      1-Click Copy
+                    </span>
+                    {mostraScript ? <ChevronUp className="w-4 h-4 text-slate-400" /> : <ChevronDown className="w-4 h-4 text-slate-400" />}
+                  </div>
                 </button>
+
+                {mostraScript && (
+                  <div className="p-4 pt-1 border-t border-slate-800/80 space-y-3 animate-in fade-in">
+                    <div className="flex gap-1.5 overflow-x-auto pb-1">
+                      <button
+                        type="button"
+                        onClick={() => setScriptSelezionato('subito')}
+                        className={`text-[11px] font-semibold px-2.5 py-1 rounded-lg transition-colors whitespace-nowrap ${
+                          scriptSelezionato === 'subito' ? 'bg-indigo-600 text-white' : 'bg-slate-800 text-slate-400'
+                        }`}
+                      >
+                        Subito / Ritiro a Mano
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setScriptSelezionato('whatsapp')}
+                        className={`text-[11px] font-semibold px-2.5 py-1 rounded-lg transition-colors whitespace-nowrap ${
+                          scriptSelezionato === 'whatsapp' ? 'bg-indigo-600 text-white' : 'bg-slate-800 text-slate-400'
+                        }`}
+                      >
+                        WhatsApp Diretto
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setScriptSelezionato('counter')}
+                        className={`text-[11px] font-semibold px-2.5 py-1 rounded-lg transition-colors whitespace-nowrap ${
+                          scriptSelezionato === 'counter' ? 'bg-indigo-600 text-white' : 'bg-slate-800 text-slate-400'
+                        }`}
+                      >
+                        Controproposta
+                      </button>
+                    </div>
+
+                    <div className="p-3.5 rounded-xl bg-slate-950/90 border border-slate-800 text-xs text-slate-200 leading-relaxed select-all whitespace-pre-wrap font-sans">
+                      {generaScript()}
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={copiaScript}
+                      className={`w-full flex items-center justify-center gap-2 rounded-xl py-2.5 text-xs font-bold transition-all ${
+                        copiato ? 'bg-emerald-600 text-white' : 'bg-indigo-600 hover:bg-indigo-500 text-white shadow'
+                      }`}
+                    >
+                      {copiato ? (
+                        <>
+                          <CheckCircle2 className="w-4 h-4" /> Messaggio Copiato negli Appunti!
+                        </>
+                      ) : (
+                        <>
+                          <Copy className="w-4 h-4" /> Copia Messaggio per il Venditore
+                        </>
+                      )}
+                    </button>
+                  </div>
+                )}
               </div>
 
               {/* 6. RADAR OPPORTUNITÀ & ANNUNCI SU CUI FARE OFFERTA */}
               {(() => {
                 const queryCorrente = analisiDettagliata?.titoloRilevato || oggettoManual?.nome || ''
-                const benchmarkVal = medianaRealeLive || (analisiDettagliata?.schedaOggetto?.prezzoUsatoDettaglio ? parseInt(analisiDettagliata.schedaOggetto.prezzoUsatoDettaglio.replace(/[^\d]/g, '') || '70', 10) : 70)
-
-                const annunciElaborati = (annunciRealiLive || []).map((ann, idx) => {
-                  const analizzato = analizzaAnnuncio(ann, queryCorrente, benchmarkVal)
-                  return {
-                    ...analizzato,
-                    idUnico: ann?.url || `ann_${idx}`
+                const benchmarkVal = medianaRealeLive || (() => {
+                  if (analisiDettagliata?.valoreRivenditaUsato) return analisiDettagliata.valoreRivenditaUsato
+                  if (analisiDettagliata?.schedaOggetto?.prezzoUsatoDettaglio) {
+                    const m = analisiDettagliata.schedaOggetto.prezzoUsatoDettaglio.match(/~(\d+)/) || analisiDettagliata.schedaOggetto.prezzoUsatoDettaglio.match(/(\d+)/)
+                    if (m) return parseInt(m[1], 10)
                   }
-                })
+                  return 65
+                })()
+
+                const annunciElaborati = confrontaEAnalizzaLotto(annunciRealiLive || [], queryCorrente, benchmarkVal)
 
                 const numeroScartati = annunciElaborati.filter(a => a.isScartabile).length
                 const annunciFiltratiRumore = filtraAccessori ? annunciElaborati.filter(a => !a.isScartabile) : annunciElaborati
@@ -877,6 +926,12 @@ const FlipRadarHub = forwardRef(function FlipRadarHub({ onSearchMarketplace, est
                                     {ann.descrizione && (
                                       <p className="text-[10px] text-slate-400 line-clamp-2 mt-1 italic bg-slate-950/60 px-2 py-0.5 rounded border border-slate-800/80">
                                         <span className="text-slate-500 font-medium not-italic">📝 Note:</span> {ann.descrizione}
+                                      </p>
+                                    )}
+
+                                    {ann.confrontoMercato && !ann.isScartabile && (
+                                      <p className="text-[10px] text-indigo-300 font-medium mt-1">
+                                        {ann.confrontoMercato}
                                       </p>
                                     )}
                                   </div>

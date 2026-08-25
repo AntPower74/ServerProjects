@@ -25,30 +25,40 @@ import {
 } from 'lucide-react'
 import { valutaOggettoUniversale } from '../utils/aiEvaluator.js'
 import { estraiRisultatiDaHtml } from '../utils/estraiRisultatiLens.js'
-import { analizzaAnnuncio, isAccessorio, isCategoriaDisallineata } from '../utils/filtroRumore.js'
+import { confrontaEAnalizzaLotto, isAccessorio, isCategoriaDisallineata } from '../utils/filtroRumore.js'
 
 function estraiPrezziDaTestoGrezzo(testo) {
   if (!testo) return []
   const linee = testo.split(/\r?\n/).map(l => l.trim()).filter(Boolean)
   const annunci = []
   
-  const regexRigaCompleta = /(.*?),\s*(?:Brand:\s*([^,]+),)?\s*(?:Modello:\s*([^,]+),)?\s*(?:Condizioni:\s*([^,]+),)?\s*(\d+(?:[.,]\d{1,2})?)\s*€/i
+  // 1. Regex Vinted (es. "Telefono Oppo, Brand: OPPO, Modello: Find X5, Condizioni: Ottime, 100.00 €")
+  const regexVinted = /(.*?),\s*(?:Brand:\s*([^,]+),)?\s*(?:Modello:\s*([^,]+),)?\s*(?:Condizioni:\s*([^,]+),)?\s*(\d+(?:[.,]\d{1,2})?)\s*€/i
+  
+  // 2. Regex Facebook Marketplace (es. "Smartphone Oppo A74, 55 €, San Giorgio di Piano, annuncio 1354061726834615")
+  const regexMarketplace = /^(.*?),\s*(\d+(?:[.,]\d{1,2})?)\s*€(?:,\s*([^,]+))?(?:,\s*(?:annuncio|id)\s*([a-z0-9_-]+))?$/i
+
+  // 3. Regex Subito / Generico a trattino (es. "Samsung Galaxy S8 64GB - 65 € - Torino")
+  const regexTrattino = /^(.*?)\s*[-–—|]\s*(\d+(?:[.,]\d{1,2})?)\s*€(?:\s*[-–—|]\s*(.*))?$/i
+
+  // 4. Prezzo isolato su una riga (es. "55 €")
   const regexPrezzoIsolato = /^(\d+(?:[.,]\d{1,2})?)\s*€$/
 
   for (let i = 0; i < linee.length; i++) {
     const linea = linee[i]
     
-    const matchRiga = linea.match(regexRigaCompleta)
-    if (matchRiga) {
-      const testoDesc = matchRiga[1]?.trim() || ''
-      const brand = matchRiga[2]?.trim() || ''
-      const modello = matchRiga[3]?.trim() || ''
-      const condizione = matchRiga[4]?.trim() || ''
-      const prezzo = parseFloat(matchRiga[5].replace(',', '.'))
+    // Test 1: Vinted
+    const matchVinted = linea.match(regexVinted)
+    if (matchVinted && (matchVinted[2] || matchVinted[3] || matchVinted[4])) {
+      const testoDesc = matchVinted[1]?.trim() || ''
+      const brand = matchVinted[2]?.trim() || ''
+      const modello = matchVinted[3]?.trim() || ''
+      const condizione = matchVinted[4]?.trim() || ''
+      const prezzo = parseFloat(matchVinted[5].replace(',', '.'))
       
       if (!isNaN(prezzo) && prezzo > 0) {
         annunci.push({
-          id: `vinted_txt_${annunci.length}_${Date.now()}`,
+          id: `vinted_${annunci.length}_${Date.now()}`,
           titolo: modello ? `${brand} ${modello}`.trim() : (testoDesc.length > 40 ? testoDesc.slice(0, 40) + '...' : testoDesc),
           descrizione: testoDesc,
           condizione,
@@ -59,6 +69,46 @@ function estraiPrezziDaTestoGrezzo(testo) {
       }
     }
 
+    // Test 2: Facebook Marketplace
+    const matchMarketplace = linea.match(regexMarketplace)
+    if (matchMarketplace) {
+      const titolo = matchMarketplace[1]?.trim() || 'Articolo Marketplace'
+      const prezzo = parseFloat(matchMarketplace[2].replace(',', '.'))
+      const luogo = matchMarketplace[3]?.trim() || ''
+      const idAnnuncio = matchMarketplace[4]?.trim() || ''
+
+      if (!isNaN(prezzo) && prezzo > 0) {
+        annunci.push({
+          id: idAnnuncio ? `fb_${idAnnuncio}` : `fb_${annunci.length}_${Date.now()}`,
+          titolo,
+          descrizione: [luogo, idAnnuncio ? `ID: ${idAnnuncio}` : ''].filter(Boolean).join(' • '),
+          prezzo,
+          fonte: 'Marketplace'
+        })
+        continue
+      }
+    }
+
+    // Test 3: Subito / Generico
+    const matchTrattino = linea.match(regexTrattino)
+    if (matchTrattino) {
+      const titolo = matchTrattino[1]?.trim() || 'Articolo'
+      const prezzo = parseFloat(matchTrattino[2].replace(',', '.'))
+      const extra = matchTrattino[3]?.trim() || ''
+
+      if (!isNaN(prezzo) && prezzo > 0) {
+        annunci.push({
+          id: `subito_${annunci.length}_${Date.now()}`,
+          titolo,
+          descrizione: extra,
+          prezzo,
+          fonte: 'Subito'
+        })
+        continue
+      }
+    }
+
+    // Test 4: Prezzo su riga singola isolata
     const matchPrezzo = linea.match(regexPrezzoIsolato)
     if (matchPrezzo && i >= 1) {
       const prezzo = parseFloat(matchPrezzo[1].replace(',', '.'))
@@ -67,11 +117,11 @@ function estraiPrezziDaTestoGrezzo(testo) {
       
       if (!annunci.some(a => a.prezzo === prezzo && a.titolo === possibileTitolo)) {
         annunci.push({
-          id: `vinted_multi_${annunci.length}_${Date.now()}`,
+          id: `multi_${annunci.length}_${Date.now()}`,
           titolo: possibileTitolo,
-          condizione: possibileCondizione !== possibileTitolo ? possibileCondizione : 'Usato',
+          descrizione: possibileCondizione !== possibileTitolo ? possibileCondizione : '',
           prezzo,
-          fonte: 'Vinted'
+          fonte: linea.toLowerCase().includes('facebook') ? 'Marketplace' : 'Vinted'
         })
       }
     }
@@ -99,33 +149,36 @@ export default function RadarOfferteView({ onCercaSitiEsterni, estensioneInstall
     return valutaOggettoUniversale(query)
   }, [query])
 
-  // Calcolo Benchmark su annunci puliti da filtro rumore
+  // Calcolo Benchmark: PRIORITÀ ASSOLUTA agli annunci reali dal vivo se presenti
   const benchmarkVal = useMemo(() => {
+    const annunciPuliti = (annunci || []).filter(a => !isAccessorio(a.titolo, a.prezzo) && !isCategoriaDisallineata(a.titolo, query))
+    const prezzi = annunciPuliti.map(a => parseFloat(a.prezzo)).filter(p => !isNaN(p) && p >= 15).sort((a, b) => a - b)
+    
+    // Se ci sono annunci reali, la mediana del mercato dal vivo determina il benchmark
+    if (prezzi.length >= 3) {
+      const mid = Math.floor(prezzi.length / 2)
+      return prezzi.length % 2 !== 0 ? prezzi[mid] : Math.round((prezzi[mid - 1] + prezzi[mid]) / 2)
+    }
+
+    // Altrimenti fallback su valutazione AI specifica del modello
     if (valutazioneAI?.schedaOggetto?.prezzoUsatoDettaglio) {
       const match = valutazioneAI.schedaOggetto.prezzoUsatoDettaglio.match(/~(\d+)/)
       if (match) return parseInt(match[1], 10)
     }
-    const annunciPuliti = (annunci || []).filter(a => !isAccessorio(a.titolo, a.prezzo) && !isCategoriaDisallineata(a.titolo, query))
-    const prezzi = annunciPuliti.map(a => parseFloat(a.prezzo)).filter(p => !isNaN(p) && p >= 15).sort((a, b) => a - b)
+
     if (prezzi.length > 0) {
-      const mid = Math.floor(prezzi.length / 2)
-      return prezzi.length % 2 !== 0 ? prezzi[mid] : Math.round((prezzi[mid - 1] + prezzi[mid]) / 2)
+      return prezzi[0]
     }
-    return 70
+
+    return 65
   }, [valutazioneAI, annunci, query])
 
   const targetAcquisto = useMemo(() => Math.round(benchmarkVal * 0.52), [benchmarkVal])
   const tettoMassimo = useMemo(() => Math.round(benchmarkVal * 0.70), [benchmarkVal])
 
-  // Analisi completa di ciascun annuncio
+  // Analisi comparativa dinamica di tutti gli annunci
   const annunciAnalizzati = useMemo(() => {
-    return (annunci || []).map((ann, idx) => {
-      const analizzato = analizzaAnnuncio(ann, query, benchmarkVal)
-      return {
-        ...analizzato,
-        id: ann.id || ann.url || `ann_${idx}`
-      }
-    })
+    return confrontaEAnalizzaLotto(annunci || [], query, benchmarkVal)
   }, [annunci, query, benchmarkVal])
 
   const numeroScartati = useMemo(() => {
@@ -524,6 +577,12 @@ export default function RadarOfferteView({ onCercaSitiEsterni, estensioneInstall
                       {ann.descrizione && (
                         <p className="text-[11px] text-slate-400 line-clamp-2 mt-1 italic bg-slate-950/60 px-2 py-1 rounded-lg border border-slate-800/80">
                           <span className="text-slate-500 font-medium not-italic">📝 Note:</span> {ann.descrizione}
+                        </p>
+                      )}
+
+                      {ann.confrontoMercato && !ann.isScartabile && (
+                        <p className="text-[11px] text-indigo-300 font-medium mt-1">
+                          {ann.confrontoMercato}
                         </p>
                       )}
                     </div>
