@@ -115,6 +115,25 @@ function trovaTitolo(ancora, contenitore) {
   return testoAncora ? testoAncora.slice(0, 120) : null
 }
 
+function trovaImmagine(ancora, contenitore) {
+  const imgAncora = ancora.querySelector('img')
+  const imgContenitore = contenitore?.querySelector('img')
+  const img = imgAncora || imgContenitore
+  
+  if (!img) return null
+  
+  const src = img.getAttribute('src') || img.getAttribute('data-src') || img.getAttribute('data-lazy-src')
+  if (src && !src.startsWith('data:image/svg') && src.startsWith('http')) return src
+
+  const srcset = img.getAttribute('srcset') || img.getAttribute('data-srcset')
+  if (srcset) {
+    const primoSrc = srcset.split(',')[0].trim().split(' ')[0]
+    if (primoSrc && primoSrc.startsWith('http')) return primoSrc
+  }
+
+  return src && src.startsWith('http') ? src : null
+}
+
 function trovaDisponibilita(testo) {
   if (/non\s+disponibile/i.test(testo)) return false
   if (/disponibile/i.test(testo)) return true
@@ -179,6 +198,7 @@ export function estraiRisultatiDaHtml(html, sito = 'lens') {
     if (prezzo === null) continue
 
     const titolo = trovaTitolo(ancora, contenitore)
+    const immagine = trovaImmagine(ancora, contenitore)
 
     trovati.set(href, {
       id: href,
@@ -188,6 +208,7 @@ export function estraiRisultatiDaHtml(html, sito = 'lens') {
       giorniFa: null,
       titolo: titolo || 'Articolo ' + (host || 'Vinted'),
       url: href,
+      immagine,
       disponibile: trovaDisponibilita(testoContenitore)
     })
   }

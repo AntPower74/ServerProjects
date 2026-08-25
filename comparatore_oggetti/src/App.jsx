@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { Camera, Images, Loader2, RotateCcw, Search, BookmarkCheck, ExternalLink, X, Sparkles, ClipboardPaste, Zap } from 'lucide-react'
+import { Camera, Images, Loader2, RotateCcw, Search, BookmarkCheck, ExternalLink, X, Sparkles, ClipboardPaste, Zap, Target } from 'lucide-react'
 import { caricaFoto, apriGoogleLens, apriFinestraVuota } from './services/uploadService.js'
 import { riconosciCategoriaGenerica } from './services/recognitionService.js'
 import { cercaAnnunciSimili } from './services/market.js'
@@ -10,6 +10,7 @@ import { estraiRisultatiDaHtml } from './utils/estraiRisultatiLens.js'
 import RisultatiPanel from './components/RisultatiPanel.jsx'
 import ArchivioRicerche from './components/ArchivioRicerche.jsx'
 import FlipRadarHub from './components/FlipRadarHub.jsx'
+import RadarOfferteView from './components/RadarOfferteView.jsx'
 
 const FASI = {
   INPUT: 'input',
@@ -42,7 +43,7 @@ export default function App() {
   const [prezzoRichiesto, setPrezzoRichiesto] = useState(null)
   const [testoIncollato, setTestoIncollato] = useState('')
   const [mostraIncolla, setMostraIncolla] = useState(false)
-  const [tabAttivo, setTabAttivo] = useState('flipping')
+  const [tabAttivo, setTabAttivo] = useState('radar')
   const [estensioneInstallata, setEstensioneInstallata] = useState(false)
   const inputFotoCameraRef = useRef(null)
   const inputFotoGalleriaRef = useRef(null)
@@ -345,14 +346,24 @@ export default function App() {
 
           <div className="flex bg-slate-900/60 p-1 rounded-xl gap-1">
             <button
-              onClick={() => setTabAttivo('flipping')}
-              className={`flex-1 py-2 text-xs font-bold rounded-lg transition-all flex items-center justify-center gap-1.5 ${
-                tabAttivo === 'flipping'
+              onClick={() => setTabAttivo('radar')}
+              className={`flex-1 py-2 text-xs font-bold rounded-lg transition-all flex items-center justify-center gap-1 ${
+                tabAttivo === 'radar'
                 ? 'bg-gradient-to-r from-indigo-600 to-emerald-600 text-white shadow-sm'
                 : 'text-slate-400 hover:text-slate-200'
               }`}
             >
-              <Zap className="w-3.5 h-3.5" /> Flipping
+              <Target className="w-3.5 h-3.5 text-indigo-300" /> Radar Offerte
+            </button>
+            <button
+              onClick={() => setTabAttivo('flipping')}
+              className={`flex-1 py-2 text-xs font-bold rounded-lg transition-all flex items-center justify-center gap-1 ${
+                tabAttivo === 'flipping'
+                ? 'bg-slate-800 text-white shadow-sm'
+                : 'text-slate-400 hover:text-slate-200'
+              }`}
+            >
+              <Zap className="w-3.5 h-3.5 text-amber-400" /> Flipping & OCR
             </button>
             <button
               onClick={() => setTabAttivo('ricerca')}
@@ -366,7 +377,7 @@ export default function App() {
             </button>
             <button
               onClick={() => setTabAttivo('archivio')}
-              className={`flex-1 py-2 text-xs font-semibold rounded-lg transition-all flex items-center justify-center gap-1.5 ${
+              className={`flex-1 py-2 text-xs font-semibold rounded-lg transition-all flex items-center justify-center gap-1 ${
                 tabAttivo === 'archivio'
                 ? 'bg-slate-800 text-white shadow-sm'
                 : 'text-slate-400 hover:text-slate-200'
@@ -377,7 +388,12 @@ export default function App() {
           </div>
         </header>
 
-        {tabAttivo === 'flipping' ? (
+        {tabAttivo === 'radar' ? (
+          <RadarOfferteView
+            estensioneInstallata={estensioneInstallata}
+            onCercaSitiEsterni={cercaSuSitiEsterni}
+          />
+        ) : tabAttivo === 'flipping' ? (
           <FlipRadarHub
             ref={flipHubRef}
             estensioneInstallata={estensioneInstallata}

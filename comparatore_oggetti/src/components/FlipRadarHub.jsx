@@ -30,20 +30,31 @@ import {
   Gauge,
   Tag,
   Layers,
-  HelpCircle
+  HelpCircle,
+  Target,
+  ExternalLink,
+  Send,
+  BookmarkPlus,
+  Percent,
+  Shield,
+  Eye,
+  EyeOff
 } from 'lucide-react'
 import Tesseract from 'tesseract.js'
 import { preElaboraImmagineCanvas, pulisciTestoOcr } from '../utils/ocrOptimizer.js'
 import { valutaOggettoUniversale } from '../utils/aiEvaluator.js'
+import { analizzaAnnuncio, isAccessorio, isCategoriaDisallineata } from '../utils/filtroRumore.js'
 
-function ricalcolaMediana(annunci) {
-  const prezziValidi = annunci
-    .map(a => parseFloat(a?.prezzo))
-    .filter(p => !isNaN(p) && p > 5)
+function ricalcolaMediana(annunci, query = '') {
+  const prezziValidi = (annunci || [])
+    .filter(a => !isAccessorio(a.titolo, a.prezzo) && !isCategoriaDisallineata(a.titolo, query))
+    .map((a) => parseFloat(a.prezzo))
+    .filter((p) => typeof p === 'number' && !isNaN(p) && p >= 15)
     .sort((a, b) => a - b)
   if (prezziValidi.length === 0) return null
-  const mid = Math.floor(prezziValidi.length / 2)
-  return prezziValidi.length % 2 !== 0 ? prezziValidi[mid] : Math.round((prezziValidi[mid - 1] + prezziValidi[mid]) / 2)
+  const meta = Math.floor(prezziValidi.length / 2)
+  if (prezziValidi.length % 2 !== 0) return Math.round(prezziValidi[meta])
+  return Math.round((prezziValidi[meta - 1] + prezziValidi[meta]) / 2)
 }
 
 const FlipRadarHub = forwardRef(function FlipRadarHub({ onSearchMarketplace, estensioneInstallata, onCercaSitiEsterni }, ref) {
@@ -77,6 +88,43 @@ const FlipRadarHub = forwardRef(function FlipRadarHub({ onSearchMarketplace, est
   const [annunciRealiLive, setAnnunciRealiLive] = useState([])
   const [caricandoAnnunciLive, setCaricandoAnnunciLive] = useState(false)
   const [medianaRealeLive, setMedianaRealeLive] = useState(null)
+  const [filtroOpportunita, setFiltroOpportunita] = useState('tutti')
+  const [copiatoOffertaId, setCopiatoOffertaId] = useState(null)
+
+  function copiaMessaggioOffertaRapida(ann, offertaConsigliata, id) {
+    const titolo = ann?.titolo || analisiDettagliata?.titoloRilevato || 'questo articolo'
+    const prezzo = offertaConsigliata || ann?.prezzo || 30
+    const testo = `Ciao! Sono interessato al tuo annuncio per "${titolo}". Se per te va bene, posso concludere subito e pagare a ${prezzo}€. Fammi sapere se possiamo accordarci, grazie!`
+    
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(testo).then(() => {
+        setCopiatoOffertaId(id)
+        setTimeout(() => setCopiatoOffertaId(null), 3000)
+      }).catch(() => {
+        prompt('Copia il messaggio di offerta:', testo)
+      })
+    } else {
+      prompt('Copia il messaggio di offerta:', testo)
+    }
+  }
+
+  function salvaAffareDaAnnuncio(ann, offertaConsigliata, benchmark, profitto) {
+    const nuovo = {
+      id: 'deal_' + Date.now(),
+      nome: ann?.titolo || analisiDettagliata?.titoloRilevato || 'Annuncio',
+      prezzoRichiesto: ann?.prezzo != null ? `${ann.prezzo}€` : 'N/D',
+      targetAcquisto: `${offertaConsigliata}€`,
+      rivenditaStimata: `${benchmark}€`,
+      profittoStimato: profitto ? `+${profitto}€` : 'N/D',
+      stato: 'in_trattativa',
+      data: new Date().toLocaleDateString('it-IT'),
+      url: ann?.url || null,
+      fonte: ann?.fonte || 'Mercato'
+    }
+    setAffariSalvati([nuovo, ...affariSalvati])
+    setCopiatoOffertaId(`salvato_${ann?.url || ann?.id}`)
+    setTimeout(() => setCopiatoOffertaId(null), 2500)
+  }
   
   const primoMontRef = useRef(true)
   const textareaRef = useRef(null)
@@ -678,66 +726,270 @@ const FlipRadarHub = forwardRef(function FlipRadarHub({ onSearchMarketplace, est
                 </button>
               </div>
 
-              {/* 6. RISULTATI REALI DAL VIVO DAL WEB (eBay & Marketplace) */}
-              <div className="p-4 rounded-2xl border border-slate-800 bg-slate-900/90 space-y-3">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <span className="text-base">🌐</span>
-                    <div>
-                      <h3 className="text-sm font-bold text-slate-100">Risultati Reali dal Vivo sul Web</h3>
-                      <p className="text-[10px] text-slate-400">Annunci reali attualmente attivi sul mercato</p>
-                    </div>
-                  </div>
-                  {medianaRealeLive && (
-                    <span className="text-[11px] font-mono font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded">
-                      Mediana: ~{medianaRealeLive}€
-                    </span>
-                  )}
-                </div>
+              {/* 6. RADAR OPPORTUNITÀ & ANNUNCI SU CUI FARE OFFERTA */}
+              {(() => {
+                const benchmarkVal = medianaRealeLive || (analisiDettagliata?.schedaOggetto?.prezzoUsatoDettaglio ? parseInt(analisiDettagliata.schedaOggetto.prezzoUsatoDettaglio.replace(/[^\d]/g, '') || '65', 10) : 65)
+                const targetVal = Math.round(benchmarkVal * 0.52)
+                const tettoVal = Math.round(benchmarkVal * 0.70)
 
-                {caricandoAnnunciLive ? (
-                  <div className="flex items-center justify-center gap-2 py-4 text-xs text-slate-400">
-                    <Loader2 className="w-4 h-4 animate-spin text-indigo-400" />
-                    <span>Scansione prezzi di mercato in tempo reale...</span>
-                  </div>
-                ) : Array.isArray(annunciRealiLive) && annunciRealiLive.length > 0 ? (
-                  <div className="space-y-2">
-                    <div className="flex gap-2.5 overflow-x-auto pb-2 scrollbar-thin">
-                      {annunciRealiLive.slice(0, 6).map((ann, i) => (
-                        <a
-                          key={i}
-                          href={ann?.url || '#'}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="shrink-0 w-44 p-2.5 rounded-xl bg-slate-950 border border-slate-800 hover:border-slate-700 transition-all flex flex-col justify-between group"
-                        >
-                          <div className="space-y-1">
-                            <span className="text-[10px] font-bold text-indigo-400 bg-indigo-500/10 px-1.5 py-0.5 rounded">
-                              {String(ann?.fonte || 'Mercato')}
-                            </span>
-                            <h4 className="text-xs font-semibold text-slate-200 line-clamp-2 group-hover:text-white">
-                              {String(ann?.titolo || 'Articolo')}
-                            </h4>
-                          </div>
-                          <div className="mt-2 flex items-baseline justify-between pt-1 border-t border-slate-800/80">
-                            <span className="text-[10px] text-slate-400">Prezzo:</span>
-                            <b className="text-sm font-extrabold text-emerald-400 font-mono">
-                              {ann?.prezzo != null ? `${ann.prezzo}€` : 'N/D'}
-                            </b>
-                          </div>
-                        </a>
-                      ))}
+                const annunciElaborati = (annunciRealiLive || []).map((ann, idx) => {
+                  const p = parseFloat(ann?.prezzo)
+                  const prezzoNum = !isNaN(p) && p > 0 ? p : null
+                  const idUnico = ann?.url || `ann_${idx}`
+                  let tipo = 'mercato'
+                  let offerta = targetVal
+                  let profitto = null
+                  let sconto = 0
+
+                  if (prezzoNum !== null) {
+                    if (prezzoNum <= targetVal) {
+                      tipo = 'super_deal'
+                      profitto = Math.max(10, Math.round(benchmarkVal - prezzoNum))
+                      offerta = prezzoNum
+                    } else if (prezzoNum <= tettoVal || prezzoNum <= benchmarkVal * 0.85) {
+                      tipo = 'da_trattare'
+                      sconto = Math.max(5, Math.round(((prezzoNum - targetVal) / prezzoNum) * 100))
+                      profitto = Math.round(benchmarkVal - targetVal)
+                      offerta = targetVal
+                    }
+                  }
+
+                  return {
+                    ...ann,
+                    idUnico,
+                    prezzoNum,
+                    tipo,
+                    offerta,
+                    profitto,
+                    sconto
+                  }
+                })
+
+                const superDeals = annunciElaborati.filter(a => a.tipo === 'super_deal')
+                const trattabili = annunciElaborati.filter(a => a.tipo === 'da_trattare')
+                const listaMostrata = annunciElaborati.filter(a => {
+                  if (filtroOpportunita === 'affari') return a.tipo === 'super_deal'
+                  if (filtroOpportunita === 'trattabili') return a.tipo === 'super_deal' || a.tipo === 'da_trattare'
+                  return true
+                })
+
+                return (
+                  <div className="p-4 rounded-2xl border border-slate-800 bg-slate-900/90 space-y-3.5">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800/80 pb-3">
+                      <div className="flex items-center gap-2">
+                        <div className="p-2 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400">
+                          <Target className="w-5 h-5" />
+                        </div>
+                        <div>
+                          <h3 className="text-sm font-bold text-slate-100 flex items-center gap-2">
+                            Annunci su cui fare Offerta
+                            {superDeals.length > 0 && (
+                              <span className="text-[10px] font-extrabold bg-emerald-500 text-slate-950 px-2 py-0.5 rounded-full animate-pulse">
+                                {superDeals.length} SUPER AFFARI
+                              </span>
+                            )}
+                          </h3>
+                          <p className="text-[11px] text-slate-400">Radar annunci dal vivo con proposta di trattativa immediata</p>
+                        </div>
+                      </div>
+
+                      {benchmarkVal && (
+                        <div className="flex items-center gap-1.5 self-start sm:self-auto">
+                          <span className="text-[10px] text-slate-400 font-medium">Valore Riferimento:</span>
+                          <span className="text-xs font-mono font-extrabold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded">
+                            ~{benchmarkVal}€
+                          </span>
+                        </div>
+                      )}
                     </div>
-                    <p className="text-[10px] text-slate-400 text-center">
-                      Trovati <b className="text-slate-200">{annunciRealiLive.length}</b> annunci reali per questo modello.
-                    </p>
+
+                    {caricandoAnnunciLive ? (
+                      <div className="flex items-center justify-center gap-2 py-6 text-xs text-slate-400">
+                        <Loader2 className="w-4 h-4 animate-spin text-indigo-400" />
+                        <span>Scansione e calcolo offerte in tempo reale da Vinted, Subito ed eBay...</span>
+                      </div>
+                    ) : annunciElaborati.length > 0 ? (
+                      <div className="space-y-3">
+                        {/* Filtri Rapidi */}
+                        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none">
+                          <button
+                            type="button"
+                            onClick={() => setFiltroOpportunita('tutti')}
+                            className={`text-[11px] font-bold px-3 py-1.5 rounded-lg border transition-all whitespace-nowrap ${
+                              filtroOpportunita === 'tutti'
+                                ? 'bg-indigo-600 text-white border-indigo-500 shadow-sm'
+                                : 'bg-slate-950 text-slate-400 border-slate-800 hover:text-slate-200'
+                            }`}
+                          >
+                            Tutti ({annunciElaborati.length})
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => setFiltroOpportunita('affari')}
+                            className={`text-[11px] font-bold px-3 py-1.5 rounded-lg border transition-all whitespace-nowrap flex items-center gap-1 ${
+                              filtroOpportunita === 'affari'
+                                ? 'bg-emerald-600 text-white border-emerald-500 shadow-sm'
+                                : 'bg-slate-950 text-emerald-400/90 border-emerald-500/30 hover:bg-emerald-500/10'
+                            }`}
+                          >
+                            🔥 Super Affari ({superDeals.length})
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => setFiltroOpportunita('trattabili')}
+                            className={`text-[11px] font-bold px-3 py-1.5 rounded-lg border transition-all whitespace-nowrap flex items-center gap-1 ${
+                              filtroOpportunita === 'trattabili'
+                                ? 'bg-amber-600 text-white border-amber-500 shadow-sm'
+                                : 'bg-slate-950 text-amber-400/90 border-amber-500/30 hover:bg-amber-500/10'
+                            }`}
+                          >
+                            💬 Da Trattare ({trattabili.length})
+                          </button>
+                        </div>
+
+                        {/* Griglia / Lista Annunci */}
+                        <div className="space-y-2.5">
+                          {listaMostrata.map((ann, i) => {
+                            const isCopiato = copiatoOffertaId === ann.idUnico
+                            const isSalvato = copiatoOffertaId === `salvato_${ann.idUnico}`
+                            const fonte = String(ann?.fonte || 'Mercato')
+
+                            let iconaFonte = '🌐'
+                            let badgeColoreFonte = 'text-slate-300 bg-slate-800'
+                            if (fonte.includes('Vinted')) { iconaFonte = '👗'; badgeColoreFonte = 'text-teal-300 bg-teal-500/10 border-teal-500/20' }
+                            else if (fonte.includes('Subito')) { iconaFonte = '🟧'; badgeColoreFonte = 'text-amber-300 bg-amber-500/10 border-amber-500/20' }
+                            else if (fonte.includes('eBay')) { iconaFonte = '🔵'; badgeColoreFonte = 'text-blue-300 bg-blue-500/10 border-blue-500/20' }
+                            else if (fonte.includes('Marketplace')) { iconaFonte = '👥'; badgeColoreFonte = 'text-sky-300 bg-sky-500/10 border-sky-500/20' }
+
+                            return (
+                              <div
+                                key={ann.idUnico || i}
+                                className={`p-3 rounded-xl border transition-all ${
+                                  ann.tipo === 'super_deal'
+                                    ? 'bg-emerald-950/20 border-emerald-500/40 hover:border-emerald-500/70 shadow-sm'
+                                    : ann.tipo === 'da_trattare'
+                                    ? 'bg-slate-950/80 border-amber-500/30 hover:border-amber-500/60'
+                                    : 'bg-slate-950/60 border-slate-800/80'
+                                }`}
+                              >
+                                <div className="flex items-start justify-between gap-2">
+                                  <div className="space-y-1 flex-1 min-w-0">
+                                    <div className="flex items-center gap-1.5 flex-wrap">
+                                      <span className={`text-[10px] font-bold px-2 py-0.5 rounded border inline-flex items-center gap-1 ${badgeColoreFonte}`}>
+                                        <span>{iconaFonte}</span> {fonte}
+                                      </span>
+
+                                      {ann.tipo === 'super_deal' && (
+                                        <span className="text-[10px] font-extrabold text-emerald-400 bg-emerald-500/20 border border-emerald-500/40 px-2 py-0.5 rounded-full inline-flex items-center gap-1">
+                                          <Flame className="w-3 h-3 text-emerald-400" /> SUPER DEAL (Compra Subito)
+                                        </span>
+                                      )}
+
+                                      {ann.tipo === 'da_trattare' && (
+                                        <span className="text-[10px] font-bold text-amber-400 bg-amber-500/10 border border-amber-500/30 px-2 py-0.5 rounded-full inline-flex items-center gap-1">
+                                          <MessageSquareText className="w-3 h-3 text-amber-400" /> DA TRATTARE (-{ann.sconto}%)
+                                        </span>
+                                      )}
+                                    </div>
+
+                                    <h4 className="text-xs font-semibold text-slate-200 line-clamp-2 mt-1">
+                                      {String(ann?.titolo || 'Articolo')}
+                                    </h4>
+                                  </div>
+
+                                  <div className="text-right shrink-0">
+                                    <span className="text-[10px] text-slate-400 block">Prezzo Richiesto:</span>
+                                    <b className="text-base font-extrabold text-slate-100 font-mono">
+                                      {ann.prezzoNum != null ? `${ann.prezzoNum}€` : 'N/D'}
+                                    </b>
+                                  </div>
+                                </div>
+
+                                {/* Banner Proposta Offerta e Margine */}
+                                <div className="mt-2.5 pt-2 border-t border-slate-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                                  <div className="text-[11px]">
+                                    {ann.tipo === 'super_deal' ? (
+                                      <span className="text-emerald-400 font-bold flex items-center gap-1">
+                                        <CheckCircle2 className="w-3.5 h-3.5" /> Margine netto stimato: +{ann.profitto}€
+                                      </span>
+                                    ) : ann.tipo === 'da_trattare' ? (
+                                      <span className="text-amber-300 font-medium flex items-center gap-1">
+                                        <span>💡 Offerta consigliata:</span> <b className="text-amber-400 font-bold font-mono text-xs">{ann.offerta}€</b>
+                                        <span className="text-[10px] text-slate-400">(Margine target: +{ann.profitto}€)</span>
+                                      </span>
+                                    ) : (
+                                      <span className="text-slate-400">
+                                        In linea con il valore mediano di mercato (~{benchmarkVal}€)
+                                      </span>
+                                    )}
+                                  </div>
+
+                                  {/* Bottoni Azione Rapida */}
+                                  <div className="flex items-center gap-1.5 self-end sm:self-auto">
+                                    <button
+                                      type="button"
+                                      onClick={() => copiaMessaggioOffertaRapida(ann, ann.offerta, ann.idUnico)}
+                                      className={`text-[11px] font-bold px-2.5 py-1 rounded-lg border transition-all flex items-center gap-1 ${
+                                        isCopiato
+                                          ? 'bg-emerald-600 text-white border-emerald-500'
+                                          : 'bg-indigo-600/20 hover:bg-indigo-600/30 text-indigo-300 border-indigo-500/30 active:scale-95'
+                                      }`}
+                                      title="Copia messaggio di offerta e trattativa"
+                                    >
+                                      {isCopiato ? (
+                                        <>
+                                          <Check className="w-3 h-3" /> Offerta Copiata!
+                                        </>
+                                      ) : (
+                                        <>
+                                          <Copy className="w-3 h-3" /> Copia Offerta ({ann.offerta}€)
+                                        </>
+                                      )}
+                                    </button>
+
+                                    <button
+                                      type="button"
+                                      onClick={() => salvaAffareDaAnnuncio(ann, ann.offerta, benchmarkVal, ann.profitto)}
+                                      className={`text-[11px] font-bold p-1 rounded-lg border transition-all ${
+                                        isSalvato
+                                          ? 'bg-emerald-600 text-white border-emerald-500'
+                                          : 'bg-slate-800 hover:bg-slate-700 text-slate-300 border-slate-700'
+                                      }`}
+                                      title="Salva nei miei affari"
+                                    >
+                                      {isSalvato ? <Check className="w-3.5 h-3.5" /> : <PlusCircle className="w-3.5 h-3.5" />}
+                                    </button>
+
+                                    {ann.url && (
+                                      <a
+                                        href={ann.url}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        className="text-[11px] font-bold p-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition-colors inline-flex items-center"
+                                        title="Apri annuncio sul portale"
+                                      >
+                                        <ExternalLink className="w-3.5 h-3.5" />
+                                      </a>
+                                    )}
+                                  </div>
+                                </div>
+                              </div>
+                            )
+                          })}
+                        </div>
+
+                        <p className="text-[10px] text-slate-400 text-center pt-1">
+                          Trovati <b className="text-slate-200">{annunciElaborati.length}</b> annunci reali. Clicca <b>"Copia Offerta"</b> per incollare subito la proposta al venditore.
+                        </p>
+                      </div>
+                    ) : (
+                      <p className="text-xs text-slate-400 text-center py-4 bg-slate-950/60 rounded-xl border border-slate-800">
+                        Nessun annuncio attivo trovato al momento su eBay per questa dicitura esatta. Usa i link diretti sotto per cercare su Subito e Vinted!
+                      </p>
+                    )}
                   </div>
-                ) : (
-                  <p className="text-xs text-slate-400 text-center py-2 bg-slate-950/60 rounded-xl border border-slate-800">
-                    Nessun annuncio attivo trovato al momento su eBay per questa dicitura esatta. Usa i link diretti sotto per cercare su Subito e Vinted!
-                  </p>
-                )}
-              </div>
+                )
+              })()}
 
               {/* 7. RICERCA LIVE SUI PORTALI */}
               <div className="p-3.5 rounded-2xl border border-slate-800 bg-slate-900/60 space-y-2.5">

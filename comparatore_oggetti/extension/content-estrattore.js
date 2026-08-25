@@ -28,8 +28,14 @@ const SELETTORE_PRONTO = {
   await chrome.storage.local.set({ [chiaveArmato]: false })
 
   const selettorePronto = SELETTORE_PRONTO[sito]
-  const elemento = selettorePronto ? await aspettaElemento(selettorePronto, 10000) : await attesaGenerica(2000)
-  const html = (elemento || document.body).outerHTML
+  if (selettorePronto) {
+    await aspettaElemento(selettorePronto, 10000)
+  } else {
+    await attesaGenerica(2000)
+  }
+  // Attesa breve per assicurare che tutti gli elementi della griglia siano renderizzati
+  await new Promise(r => setTimeout(r, 1200))
+  const html = document.body ? document.body.outerHTML : document.documentElement.outerHTML
 
   chrome.runtime.sendMessage({ type: 'prezzly:estratto', site: sito, html })
 
@@ -37,7 +43,7 @@ const SELETTORE_PRONTO = {
     const host = hostname.replace(/^www\./, '')
     if (host === 'lens.google.com') return 'lens'
     if (host.endsWith('subito.it')) return 'subito'
-    if (host.endsWith('vinted.it')) return 'vinted'
+    if (host.includes('vinted.')) return 'vinted'
     if (host === 'facebook.com' || host.endsWith('.facebook.com')) return 'marketplace'
     return null
   }
