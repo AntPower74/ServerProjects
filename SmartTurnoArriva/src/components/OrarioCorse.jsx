@@ -8,18 +8,17 @@ import turniCorseData from '../data/turni_corse_db.json';
 const AVAILABLE_LINES = [
   { id: '268', code: '268', name: 'Linea 268', route: 'Torino ↔ Caselle Aeroporto', count: 144 },
   { id: '275/282', code: '275/282', name: 'Linea 275/282', route: 'Torino ↔ Pinerolo ↔ Perosa ↔ Sestriere ↔ Oulx', count: 156 },
-  { id: '901', code: '901', name: 'Linea 901', route: 'Avigliana ↔ Giaveno ↔ Coazze', count: 115 },
-  { id: '285', code: '285', name: 'Linea 285', route: 'Pinerolo ↔ Luserna ↔ Torre Pellice ↔ Bobbio', count: 111 },
-  { id: '267', code: '267', name: 'Linea 267', route: 'Torino ↔ Orbassano ↔ Piossasco', count: 107 },
-  { id: '265', code: '265', name: 'Linea 265', route: 'Torino ↔ Rivoli ↔ Giaveno', count: 75 },
-  { id: '283', code: '283', name: 'Linea 283', route: 'Pinerolo ↔ Cavour ↔ Saluzzo', count: 55 },
-  { id: '303', code: '303', name: 'Linea 303', route: 'Pinerolo ↔ Frossasco ↔ Cumiana', count: 55 },
-  { id: '278', code: '278', name: 'Linea 278', route: 'Pinerolo ↔ Luserna ↔ Rorà', count: 40 },
-  { id: '274', code: '274', name: 'Linea 274', route: 'Pinerolo ↔ Roletto ↔ Cantalupa', count: 33 },
-  { id: '20 (Malpensa Express)', code: '20', name: 'Linea 20 Malpensa', route: 'Torino ↔ Milano Malpensa', count: 30 },
-  { id: '101 (Torino - Aosta / SAVDA)', code: '101', name: 'Linea 101 SAVDA', route: 'Torino ↔ Ivrea ↔ Aosta', count: 14 },
-  { id: 'SAVDA (Aosta ↔ Milano Malpensa)', code: 'SAVDA-MXP', name: 'SAVDA Aosta ↔ Malpensa', route: 'Aosta ↔ Châtillon ↔ Verrès ↔ Pont ↔ Malpensa', count: 5 },
-  { id: 'SAVDA (Milano Malpensa ↔ Aosta)', code: 'SAVDA-AOS', name: 'SAVDA Malpensa ↔ Aosta', route: 'Malpensa ↔ Pont ↔ Verrès ↔ Châtillon ↔ Aosta', count: 5 },
+  { id: '901', code: '901', name: 'Linea 901 (Val Pellice)', route: 'Bobbio ↔ Torre Pellice ↔ Luserna ↔ Pinerolo ↔ Torino', count: 115 },
+  { id: '285', code: '285', name: 'Linea 285 (Alta Val Susa)', route: 'Oulx FS ↔ Sauze d\'Oulx ↔ Cesana ↔ Claviere ↔ Sestriere', count: 111 },
+  { id: '267', code: '267', name: 'Linea 267', route: 'Torino ↔ Nichelino ↔ Vinovo ↔ Piobesi Torinese', count: 107 },
+  { id: '265', code: '265', name: 'Linea 265 (Canavese)', route: 'Torino ↔ Chivasso ↔ Caluso ↔ Ivrea ↔ Pont-St-Martin', count: 75 },
+  { id: '283', code: '283', name: 'Linea 283', route: 'Pinerolo ↔ Roletto ↔ Frossasco ↔ Cantalupa', count: 55 },
+  { id: '303', code: '303', name: 'Linea 303 (Val Germanasca)', route: 'Torino / Pinerolo ↔ Perosa ↔ Perrero ↔ Prali', count: 55 },
+  { id: '278', code: '278', name: 'Linea 278', route: 'Pinerolo ↔ Buriasco ↔ Cercenasco ↔ Vigone ↔ Pancalieri', count: 40 },
+  { id: '274', code: '274', name: 'Linea 274 (Val Susa)', route: 'Avigliana ↔ S.Ambrogio ↔ Sant\'Antonino ↔ Bruzolo ↔ Susa', count: 33 },
+  { id: '20 (Malpensa Express)', code: '20', name: 'Linea 20 Malpensa', route: 'Torino ↔ Chivasso ↔ Carisio ↔ Milano Malpensa', count: 30 },
+  { id: '101 (Torino - Aosta / SAVDA)', code: '101', name: 'Linea 101 SAVDA', route: 'Torino ↔ Chivasso ↔ Ivrea ↔ Pont ↔ Verrès ↔ Aosta', count: 14 },
+  { id: 'SAVDA (Aosta ↔ Malpensa)', code: 'SAVDA-MXP', name: 'SAVDA Aosta ↔ Malpensa', route: 'Aosta ↔ Châtillon ↔ Verrès ↔ Pont ↔ Malpensa', count: 10 }
 ];
 
 // Configurazioni fermate canoniche ordinate per corridoio geografico (Andata)
@@ -29,10 +28,10 @@ const CANONICAL_LINE_STOPS = {
     { key: 'to_ps', full: 'Torino Porta Susa', short: 'TO - Porta Susa', patterns: ['PORTA SUSA'] },
     { key: 'to_umb', full: 'Torino Umbria/Livorno', short: 'TO - Umbria/Liv.', patterns: ['UMBRIA', 'LIVORNO'] },
     { key: 'to_stra', full: 'Torino Stradella', short: 'TO - Stradella', patterns: ['STRADELLA'] },
-    { key: 'to_ver', full: 'Torino Veronese', short: 'TO - Veronese', patterns: ['VERONESE'] },
+    { key: 'to_ver', full: 'Torino Veronese', short: 'TO - Veronese', patterns: ['VERONESE', 'STAMPINI'] },
     { key: 'borgaro', full: 'Borgaro Torinese', short: 'Borgaro T.se', patterns: ['BORGARO'] },
     { key: 'caselle_vt', full: 'Caselle Via Torino', short: 'Caselle V. Torino', patterns: ['VIA TORINO', 'CASELLE V. TORINO'] },
-    { key: 'caselle_sa', full: 'Caselle Strada Aeroporto', short: 'Caselle Str. Aeroporto', patterns: ['STRADA AEROPORTO', 'STR. AEROPORTO'] },
+    { key: 'caselle_sa', full: 'Caselle Strada Aeroporto', short: 'Caselle Str. Aeroporto', patterns: ['STRADA AEROPORTO', 'STR. AEROPORTO', 'STR.AEROP'] },
     { key: 'caselle_aero', full: 'Caselle Aeroporto', short: 'Caselle Aeroporto', patterns: ['AEROPORTO', 'CASELLE AEROPORTO'] }
   ],
   '275/282': [
@@ -71,104 +70,212 @@ const CANONICAL_LINE_STOPS = {
     { key: 'oulx', full: 'Oulx (Stazione FS / Garambois)', short: 'Oulx FS', patterns: ['OULX'] }
   ],
   '901': [
-    { key: 'avig_fs', full: 'Avigliana Stazione FS', short: 'Avigliana FS', patterns: ['AVIGLIANA', 'STAZIONE FS'] },
-    { key: 'avig_laghi', full: 'Avigliana Laghi / Centro', short: 'Avigliana Laghi', patterns: ['LAGHI', 'CENTRO'] },
-    { key: 'trana', full: 'Trana', short: 'Trana', patterns: ['TRANA'] },
-    { key: 'giaveno_auto', full: 'Giaveno Autostazione', short: 'Giaveno Auto.', patterns: ['GIAVENO', 'AUTOSTAZIONE'] },
-    { key: 'giaveno_sm', full: 'Giaveno S. Martino', short: 'Giaveno S.Martino', patterns: ['MARTINO'] },
-    { key: 'coazze_cen', full: 'Coazze Centro', short: 'Coazze Centro', patterns: ['COAZZE', 'PIAZZA'] },
-    { key: 'coazze_forno', full: 'Coazze Forno / Sangonetto', short: 'Coazze Forno', patterns: ['FORNO', 'SANGONETTO'] }
+    { key: 'bobbio', full: 'Bobbio Pellice', short: 'Bobbio Pellice', patterns: ['BOBBIO'] },
+    { key: 'villar_p', full: 'Villar Pellice', short: 'Villar Pellice', patterns: ['VILLAR PELLICE', 'CHABRIOLS'] },
+    { key: 's_margh', full: 'Santa Margherita', short: 'S. Margherita', patterns: ['MARGHERITA', 'VANDALINO'] },
+    { key: 'torre_p', full: 'Torre Pellice', short: 'Torre Pellice', patterns: ['TORRE PELLICE'] },
+    { key: 'luserna', full: 'Luserna p.zza Partigiani', short: 'Luserna', patterns: ['LUSERNA', 'PARTIGIANI'] },
+    { key: 'bibiana', full: 'Ponte Bibiana / FS', short: 'Bibiana FS', patterns: ['BIBIANA'] },
+    { key: 'bricherasio', full: 'Bricherasio', short: 'Bricherasio', patterns: ['BRICHERASIO'] },
+    { key: 'moreri', full: 'Cappella Moreri', short: 'Cap. Moreri', patterns: ['MORERI'] },
+    { key: 's_secondo', full: 'San Secondo (Cantine/Bima)', short: 'San Secondo', patterns: ['SAN SECONDO'] },
+    { key: 'pin_cav', full: 'Pinerolo p.zza Cavour', short: 'PIN. - Cavour', patterns: ['CAVOUR'] },
+    { key: 'pin_mov', full: 'Pinerolo - Movicentro', short: 'Pinerolo-Movicentro', patterns: ['MOVICENTRO', 'PINEROLO MOVICENTRO', 'PIN. - MOVICENTRO'], excludes: ['RIVA DI PINEROLO', 'SAN SECONDO'] },
+    { key: 'pin_studi', full: 'Pinerolo Centro Studi', short: 'PIN. - Centro Studi', patterns: ['CENTRO STUDI', 'IMMACOLATA'] },
+    { key: 'to_airasca', full: 'Airasca / None Bivio', short: 'Airasca/None', patterns: ['AIRASCA', 'NONE BIVIO', 'BOTTEGHE'] },
+    { key: 'to_candiolo', full: 'Candiolo IRCCS', short: 'Candiolo IRCCS', patterns: ['CANDIOLO'] },
+    { key: 'to_stup', full: 'Stupinigi', short: 'Stupinigi', patterns: ['STUPINIGI'] },
+    { key: 'to_drosso', full: 'Torino Strada Drosso', short: 'TO - Drosso', patterns: ['DROSSO'] },
+    { key: 'to_caio', full: 'Torino Caio Mario', short: 'TO - Caio Mario', patterns: ['CAIO MARIO', 'POVERI VECCHI'] },
+    { key: 'to_pn', full: 'Torino Porta Nuova', short: 'TO - Porta Nuova', patterns: ['PORTA NUOVA', 'V.EMAN', 'BOLZANO'] },
+    { key: 'to_ps', full: 'Torino Porta Susa', short: 'TO - Porta Susa', patterns: ['PORTA SUSA'] }
   ],
   '285': [
-    { key: 'pin_fs', full: 'Pinerolo - Movicentro / Cavour', short: 'Pinerolo-Movicentro', patterns: ['PINEROLO -', 'PINEROLO CAVOUR', 'PINEROLO MOV', 'MOVICENTRO'], excludes: ['RIVA DI PINEROLO'] },
-    { key: 'riva_pin', full: 'Riva di Pinerolo', short: 'Riva di Pin.', patterns: ['RIVA'] },
-    { key: 'bricherasio', full: 'Bricherasio', short: 'Bricherasio', patterns: ['BRICHERASIO', 'MORERI'] },
-    { key: 'bibiana', full: 'Bibiana', short: 'Bibiana', patterns: ['BIBIANA'] },
-    { key: 'luserna_part', full: 'Luserna p.zza Partigiani', short: 'Luserna Partigiani', patterns: ['LUSERNA', 'PARTIGIANI'] },
-    { key: 'torre_pellice', full: 'Torre Pellice', short: 'Torre Pellice', patterns: ['TORRE PELLICE'] },
-    { key: 'villar_pellice', full: 'Villar Pellice', short: 'Villar Pellice', patterns: ['VILLAR PELLICE'] },
-    { key: 'bobbio_pellice', full: 'Bobbio Pellice', short: 'Bobbio Pellice', patterns: ['BOBBIO'] }
+    { key: 'oulx_fs', full: 'Oulx Stazione FS', short: 'Oulx FS', patterns: ['OULX - STAZIONE FS', 'OULX FS', 'OULX -SCUOLE'] },
+    { key: 'oulx_gar', full: 'Oulx p.zza Garambois', short: 'Oulx Garambois', patterns: ['GARAMBOIS'] },
+    { key: 'sauze_oulx', full: "Sauze d'Oulx", short: "Sauze d'Oulx", patterns: ["SAUZE D'OULX", 'SAN MARCO'] },
+    { key: 'fenils', full: 'Fenils / Amazas', short: 'Fenils / Amazas', patterns: ['FENILS', 'AMAZAS', 'SEGUIN'] },
+    { key: 'cesana', full: 'Cesana Torinese', short: 'Cesana T.se', patterns: ['CESANA'] },
+    { key: 'sauze_ces', full: 'Sauze di Cesana', short: 'Sauze di Ces.', patterns: ['SAUZE DI CESANA'] },
+    { key: 'claviere', full: 'Claviere', short: 'Claviere', patterns: ['CLAVIERE'] },
+    { key: 'sestriere', full: 'Sestriere', short: 'Sestriere', patterns: ['SESTRIERE'] }
   ],
   '267': [
-    { key: 'to_pn', full: 'Torino Porta Nuova', short: 'TO - Porta Nuova', patterns: ['PORTA NUOVA'] },
-    { key: 'to_caio', full: 'Torino Caio Mario', short: 'TO - Caio Mario', patterns: ['CAIO MARIO'] },
-    { key: 'to_drosso', full: 'Torino Strada Drosso', short: 'TO - Drosso', patterns: ['DROSSO'] },
-    { key: 'beinasco', full: 'Beinasco', short: 'Beinasco', patterns: ['BEINASCO', 'FORNACI'] },
-    { key: 'orbassano', full: 'Orbassano Centro', short: 'Orbassano', patterns: ['ORBASSANO'] },
-    { key: 'volvera_biv', full: 'Volvera Bivio', short: 'Volvera', patterns: ['VOLVERA'] },
-    { key: 'piossasco', full: 'Piossasco', short: 'Piossasco', patterns: ['PIOSSASCO'] }
+    { key: 'to_bolz', full: 'Torino C.so Bolzano / De Cristoforis', short: 'TO - Bolzano', patterns: ['BOLZANO', 'CRISTOFORIS'] },
+    { key: 'to_ling', full: 'Torino Lingotto / Nizza', short: 'TO - Lingotto', patterns: ['LINGOTTO', 'NIZZA', 'BENGASI'] },
+    { key: 'to_caio', full: 'Torino Caio Mario / Drosso', short: 'TO - Caio Mario', patterns: ['CAIO MARIO', 'DROSSO', 'POVERIVECCHI'] },
+    { key: 'nich_mun', full: 'Nichelino Municipio', short: 'Nichelino Mun.', patterns: ['NICHELINO - MUNICIPIO', 'DEBOUCH'] },
+    { key: 'nich_fs', full: 'Nichelino Stazione FS', short: 'Nichelino FS', patterns: ['NICHELINO - STAZIONE FS'] },
+    { key: 'garino', full: 'Garino', short: 'Garino', patterns: ['GARINO'] },
+    { key: 'vinovo', full: 'Vinovo (Tetti Rosa / Torrette)', short: 'Vinovo', patterns: ['VINOVO', 'TETTI ROSA', 'TORRETTE'] },
+    { key: 'carignano', full: 'Carignano (Donatori Avis)', short: 'Carignano', patterns: ['CARIGNANO'] },
+    { key: 'candiolo', full: 'Candiolo', short: 'Candiolo', patterns: ['CANDIOLO'] },
+    { key: 'piobesi', full: 'Piobesi Torinese (Municipio/Capolinea)', short: 'Piobesi T.se', patterns: ['PIOBESI'] }
   ],
   '265': [
-    { key: 'to_pn', full: 'Torino Porta Nuova', short: 'TO - Porta Nuova', patterns: ['PORTA NUOVA'] },
-    { key: 'to_ps', full: 'Torino Porta Susa', short: 'TO - Porta Susa', patterns: ['PORTA SUSA'] },
-    { key: 'rivoli', full: 'Rivoli', short: 'Rivoli', patterns: ['RIVOLI', 'CASCINE'] },
-    { key: 'rosta', full: 'Rosta', short: 'Rosta', patterns: ['ROSTA'] },
-    { key: 'buttigliera', full: 'Buttigliera Alta', short: 'Buttigliera', patterns: ['BUTTIGLIERA'] },
-    { key: 'trana', full: 'Trana', short: 'Trana', patterns: ['TRANA'] },
-    { key: 'giaveno', full: 'Giaveno', short: 'Giaveno', patterns: ['GIAVENO'] }
+    { key: 'to_bolz', full: 'Torino Autostazione c.so Bolzano', short: 'TO - Bolzano', patterns: ['BOLZANO', 'CATTANEO', 'SETTEMBRINI'] },
+    { key: 'to_cesare', full: 'Torino C.so Giulio Cesare', short: 'TO - G. Cesare', patterns: ['GIULIO CESARE', 'G.CESARE', 'G. CESARE', 'IVECO', 'CONAD'] },
+    { key: 'settimo', full: 'Settimo Torinese Casello A4', short: 'Settimo A4', patterns: ['SETTIMO'] },
+    { key: 'chivasso', full: 'Chivasso (Bivio Mosche / Boschetto)', short: 'Chivasso Bivio', patterns: ['CHIVASSO', 'MOSCHE', 'BOSCHETTO'] },
+    { key: 'montanaro', full: 'Montanaro Stazione FS', short: 'Montanaro FS', patterns: ['MONTANARO'] },
+    { key: 'candia', full: 'Candia Canavese', short: 'Candia Can.', patterns: ['CANDIA'] },
+    { key: 'mercenasco', full: 'Mercenasco Stazione FS', short: 'Mercenasco FS', patterns: ['MERCENASCO'] },
+    { key: 'caluso', full: 'Caluso Stazione FS', short: 'Caluso FS', patterns: ['CALUSO'] },
+    { key: 'ivrea_p_aosta', full: 'Ivrea Porta Aosta', short: 'Ivrea P. Aosta', patterns: ['PORTA AOSTA', 'DI VITTORIO'] },
+    { key: 'ivrea_fs', full: 'Ivrea Stazione FS', short: 'Ivrea FS', patterns: ['IVREA - STAZIONE FS', 'IVREA - MOVICENTRO'] },
+    { key: 'pont_sm', full: 'Pont Saint Martin Stazione FS', short: 'Pont-St-Martin', patterns: ['PONT'] }
   ],
   '283': [
-    { key: 'pin_fs', full: 'Pinerolo - Movicentro / Cavour', short: 'Pinerolo-Movicentro', patterns: ['PINEROLO -', 'PINEROLO CAVOUR', 'PINEROLO MOV', 'MOVICENTRO'], excludes: ['RIVA DI PINEROLO'] },
-    { key: 'osasco', full: 'Osasco', short: 'Osasco', patterns: ['OSASCO'] },
-    { key: 'garzigliana', full: 'Garzigliana', short: 'Garzigliana', patterns: ['GARZIGLIANA'] },
-    { key: 'cavour', full: 'Cavour', short: 'Cavour', patterns: ['CAVOUR'] },
-    { key: 'campiglione', full: 'Campiglione Fenile', short: 'Campiglione', patterns: ['CAMPIGLIONE'] },
-    { key: 'saluzzo', full: 'Saluzzo', short: 'Saluzzo', patterns: ['SALUZZO'] }
-  ],
-  '303': [
-    { key: 'pin_fs', full: 'Pinerolo - Movicentro / Cavour', short: 'Pinerolo-Movicentro', patterns: ['PINEROLO -', 'PINEROLO CAVOUR', 'PINEROLO MOV', 'MOVICENTRO'], excludes: ['RIVA DI PINEROLO'] },
-    { key: 'piscina', full: 'Piscina', short: 'Piscina', patterns: ['PISCINA'] },
-    { key: 'frossasco', full: 'Frossasco', short: 'Frossasco', patterns: ['FROSSASCO'] },
-    { key: 'cumiana_biv', full: 'Cumiana Bivio', short: 'Cumiana Bivio', patterns: ['BIVIO CUMIANA'] },
-    { key: 'cumiana_cen', full: 'Cumiana Centro', short: 'Cumiana Centro', patterns: ['CUMIANA'] },
-    { key: 'cumiana_tav', full: 'Cumiana Tavernette', short: 'Cumiana Tavernette', patterns: ['TAVERNETTE'] }
-  ],
-  '278': [
-    { key: 'pin_fs', full: 'Pinerolo - Movicentro', short: 'Pinerolo-Movicentro', patterns: ['PINEROLO -', 'PINEROLO CAVOUR', 'MOVICENTRO'], excludes: ['RIVA DI PINEROLO', 'SAN SECONDO DI PINEROLO'] },
-    { key: 's_secondo', full: 'San Secondo di Pinerolo', short: 'San Secondo', patterns: ['SAN SECONDO'] },
-    { key: 'bricherasio', full: 'Bricherasio', short: 'Bricherasio', patterns: ['BRICHERASIO'] },
-    { key: 'luserna', full: 'Luserna San Giovanni', short: 'Luserna', patterns: ['LUSERNA'] },
-    { key: 'rora', full: 'Rorà', short: 'Rorà', patterns: ['RORA', 'RORÀ'] }
-  ],
-  '274': [
-    { key: 'pin_fs', full: 'Pinerolo - Movicentro', short: 'Pinerolo-Movicentro', patterns: ['PINEROLO -', 'PINEROLO CAVOUR', 'MOVICENTRO'], excludes: ['RIVA DI PINEROLO'] },
+    { key: 'pin_cav', full: 'Pinerolo p.zza Cavour', short: 'PIN. - Cavour', patterns: ['CAVOUR'] },
+    { key: 'pin_mov', full: 'Pinerolo - Movicentro', short: 'Pinerolo-Movicentro', patterns: ['MOVICENTRO', 'PINEROLO MOVICENTRO', 'PIN. - MOVICENTRO'], excludes: ['RIVA DI PINEROLO'] },
+    { key: 'pin_martiri', full: 'Pinerolo via Martiri XXI', short: 'PIN. - Martiri XXI', patterns: ['MARTIRI XXI'] },
+    { key: 'pin_immac', full: 'Pinerolo Ist. Immacolata', short: 'PIN. - Immacolata', patterns: ['IMMACOLATA'] },
+    { key: 'roncaglia', full: 'Frazione Roncaglia', short: 'Roncaglia', patterns: ['RONCAGLIA'] },
     { key: 'roletto', full: 'Roletto', short: 'Roletto', patterns: ['ROLETTO'] },
-    { key: 'frossasco', full: 'Frossasco', short: 'Frossasco', patterns: ['FROSSASCO'] },
+    { key: 'frossasco', full: 'Frossasco Bivio', short: 'Frossasco Biv.', patterns: ['FROSSASCO'] },
     { key: 'cantalupa', full: 'Cantalupa', short: 'Cantalupa', patterns: ['CANTALUPA'] }
   ],
-  '20 (Malpensa Express)': [
-    { key: 'to_ps', full: 'Torino Porta Susa', short: 'TO - Porta Susa', patterns: ['PORTA SUSA'] },
-    { key: 'chivasso', full: 'Chivasso Centro', short: 'Chivasso', patterns: ['CHIVASSO'] },
-    { key: 'santhia', full: 'Santhià', short: 'Santhià', patterns: ['SANTHIA', 'SANTHIÀ'] },
-    { key: 'novara', full: 'Novara Centro', short: 'Novara', patterns: ['NOVARA'] },
-    { key: 'mxp_t2', full: 'Milano Malpensa Terminal 2', short: 'Malpensa T2', patterns: ['TERMINAL 2', 'T2'] },
-    { key: 'mxp_t1', full: 'Milano Malpensa Terminal 1', short: 'Malpensa T1', patterns: ['TERMINAL 1', 'T1', 'MALPENSA'] }
+  '303': [
+    { key: 'to_auto', full: 'Torino Autostazione', short: 'TO - Autostaz.', patterns: ['TORINO AUTOSTAZIONE', 'TORINO'] },
+    { key: 'pinerolo', full: 'Pinerolo', short: 'Pinerolo', patterns: ['PINEROLO'] },
+    { key: 'perosa_arg', full: 'Perosa Argentina', short: 'Perosa Arg.', patterns: ['PEROSA ARGENTINA', 'PEROSA'] },
+    { key: 'pomaretto', full: 'Pomaretto (Ospedale/P.Lausa)', short: 'Pomaretto', patterns: ['POMARETTO'] },
+    { key: 'p_rabbioso', 'full': 'Ponte Rabbioso', short: 'P.te Rabbioso', patterns: ['RABBIOSO'] },
+    { key: 'chiotti', full: 'Chiotti / Pomeyfre', short: 'Chiotti', patterns: ['CHIOTTI', 'POMEYFRE'] },
+    { key: 'trossieri', full: 'Trossieri / Gianna', short: 'Trossieri', patterns: ['TROSSIERI', 'GIANNA'] },
+    { key: 'perrero', full: 'Perrero', short: 'Perrero', patterns: ['PERRERO'] },
+    { key: 'rodoretto', full: 'Rodoretto Bivio', short: 'Rodoretto Biv.', patterns: ['RODORETTO'] },
+    { key: 'prali_v', full: 'Villa di Prali', short: 'Villa di Prali', patterns: ['VILLA DI PRALI'] },
+    { key: 'prali_ghigo', full: 'Prali Ghigo', short: 'Prali Ghigo', patterns: ['PRALI GHIGO', 'PRALI'] },
+    { key: 'prali_segg', full: 'Prali Seggiovie', short: 'Prali Seggiovie', patterns: ['SEGGIOVIE'] }
+  ],
+  '278': [
+    { key: 'pin_cav', full: 'Pinerolo p.zza Cavour', short: 'PIN. - Cavour', patterns: ['CAVOUR'] },
+    { key: 'pin_mov', full: 'Pinerolo - Movicentro', short: 'Pinerolo-Movicentro', patterns: ['MOVICENTRO', 'PINEROLO MOVICENTRO', 'PIN. - MOVICENTRO'], excludes: ['RIVA DI PINEROLO'] },
+    { key: 'pin_fs', full: 'Pinerolo Stazione FS / Olimpica', short: 'PIN. - Staz. FS', patterns: ['STAZIONE FS', 'OLIMPICA'] },
+    { key: 'pin_studi', full: 'Pinerolo Centro Studi / Bignone', short: 'PIN. - Centro Studi', patterns: ['CENTRO STUDI', 'BIGNONE', 'IMMACOLATA', 'SALUZZO', 'COTTOLENGO', 'S. CROCE'] },
+    { key: 'riva', full: 'Riva di Pinerolo', short: 'Riva di Pin.', patterns: ['RIVA DI PINEROLO', 'MACUMBA'] },
+    { key: 'baudenasca', full: 'Baudenasca', short: 'Baudenasca', patterns: ['BAUDENASCA'] },
+    { key: 'buriasco', full: 'Buriasco / Stella', short: 'Buriasco', patterns: ['BURIASCO', 'STELLA'] },
+    { key: 'macello', full: 'Macello', short: 'Macello', patterns: ['MACELLO'] },
+    { key: 'cercenasco', full: 'Cercenasco', short: 'Cercenasco', patterns: ['CERCENASCO'] },
+    { key: 'vigone', full: 'Vigone', short: 'Vigone', patterns: ['VIGONE', 'MURISENGHI'] },
+    { key: 'virle', full: 'Virle Piemonte / Osasio', short: 'Virle Piem.', patterns: ['VIRLE', 'OSASIO', 'APPENDINI', 'SCALENGHE'] },
+    { key: 'pancalieri', full: 'Pancalieri', short: 'Pancalieri', patterns: ['PANCALIERI'] }
+  ],
+  '274': [
+    { key: 'avig_fs', full: 'Avigliana Stazione FS', short: 'Avigliana FS', patterns: ['AVIGLIANA'] },
+    { key: 's_ambrogio', full: 'Sant\'Ambrogio', short: 'S. Ambrogio', patterns: ['AMBROGIO'] },
+    { key: 'condove', full: 'Condove Bivio', short: 'Condove Biv.', patterns: ['CONDOVE'] },
+    { key: 'vaie', full: 'Vaie Bivio', short: 'Vaie Bivio', patterns: ['VAIE'] },
+    { key: 's_antonino', full: 'Sant\'Antonino Stazione FS', short: 'S. Antonino FS', patterns: ['ANTONINO'] },
+    { key: 'bruzolo', full: 'Bruzolo', short: 'Bruzolo', patterns: ['BRUZOLO'] },
+    { key: 'villar_foc', full: 'Villar Focchiardo Bivio', short: 'Villar Foc. Biv.', patterns: ['VILLAR FOCCHIARDO', 'TEKFOR', 'LUTHER KING'] },
+    { key: 's_didero', full: 'San Didero Bivio', short: 'S. Didero Biv.', patterns: ['DIDERO'] },
+    { key: 's_giorio', full: 'San Giorio Bivio', short: 'S. Giorio Biv.', patterns: ['GIORIO'] },
+    { key: 'foresto', full: 'Foresto Bivio', short: 'Foresto Biv.', patterns: ['FORESTO', 'CASCINE VICA'] },
+    { key: 'susa_fs', full: 'Susa Stazione FS', short: 'Susa FS', patterns: ['SUSA'] }
   ],
   '101 (Torino - Aosta / SAVDA)': [
-    { key: 'to_pn', full: 'Torino Porta Nuova', short: 'TO - Porta Nuova', patterns: ['PORTA NUOVA'] },
-    { key: 'to_ps', full: 'Torino Porta Susa', short: 'TO - Porta Susa', patterns: ['PORTA SUSA'] },
-    { key: 'ivrea', full: 'Ivrea Autostazione', short: 'Ivrea', patterns: ['IVREA'] },
-    { key: 'pont', full: 'Pont-Saint-Martin', short: 'Pont-St-Martin', patterns: ['PONT'] },
-    { key: 'verres', full: 'Verrès', short: 'Verrès', patterns: ['VERRES', 'VERRÈS'] },
-    { key: 'chatillon', full: 'Châtillon - Saint-Vincent', short: 'Châtillon', patterns: ['CHATILLON', 'CHÂTILLON', 'SAINT-VINCENT'] },
-    { key: 'aosta', full: 'Aosta Autostazione', short: 'Aosta', patterns: ['AOSTA'] }
+    { key: 'to_bolz', full: 'Torino Autostazione corso Bolzano', short: 'TO - Bolzano', patterns: ['BOLZANO'] },
+    { key: 'to_cesare', full: 'Torino Corso Giulio Cesare 426', short: 'TO - G. Cesare', patterns: ['GIULIO CESARE'] },
+    { key: 'chivasso', full: 'Chivasso Centro Casello A4', short: 'Chivasso A4', patterns: ['CHIVASSO'] },
+    { key: 'ivrea', full: 'Ivrea Movicentro / Stazione FS', short: 'Ivrea FS', patterns: ['IVREA'] },
+    { key: 'pont', full: 'Pont-Saint-Martin (Piazza I Maggio)', short: 'Pont-St-Martin', patterns: ['PONT'] },
+    { key: 'verres', full: 'Verrès Autostazione', short: 'Verrès', patterns: ['VERRES', 'VERRÈS'] },
+    { key: 'chatillon', full: 'Châtillon Autostazione FS', short: 'Châtillon', patterns: ['CHATILLON', 'CHÂTILLON'] },
+    { key: 'aosta', full: 'Aosta Autostazione (Piazza Manzetti)', short: 'Aosta', patterns: ['AOSTA'] }
   ],
-  'SAVDA (Aosta ↔ Milano Malpensa)': [
-    { key: 'aosta', full: 'Aosta Autostazione', short: 'Aosta', patterns: ['AOSTA'] },
-    { key: 'chatillon', full: 'Châtillon - Saint-Vincent', short: 'Châtillon', patterns: ['CHATILLON', 'CHÂTILLON'] },
-    { key: 'verres', full: 'Verrès', short: 'Verrès', patterns: ['VERRES', 'VERRÈS'] },
-    { key: 'pont', full: 'Pont-Saint-Martin', short: 'Pont-St-Martin', patterns: ['PONT'] },
-    { key: 'mxp_t1', full: 'Milano Malpensa Terminal 1', short: 'Malpensa T1', patterns: ['TERMINAL 1', 'T1', 'OVEST'] },
-    { key: 'mxp_t2', full: 'Milano Malpensa Terminal 2', short: 'Malpensa T2', patterns: ['TERMINAL 2', 'T2', 'NORD'] }
+  '20 (Malpensa Express)': [
+    { key: 'to_catt', full: 'Torino Piazza Cattaneo', short: 'TO - Cattaneo', patterns: ['CATTANEO'] },
+    { key: 'to_srita', full: 'Torino Mombarcaro (Santa Rita)', short: 'TO - Santa Rita', patterns: ['MOMBARCARO', 'SANTA RITA'] },
+    { key: 'to_bolz', full: 'Torino Autostazione corso Bolzano', short: 'TO - Bolzano', patterns: ['BOLZANO'] },
+    { key: 'to_cesare', full: 'Torino Corso Giulio Cesare 426', short: 'TO - G. Cesare', patterns: ['GIULIO CESARE'] },
+    { key: 'chivasso', full: 'Chivasso Centro Casello A4', short: 'Chivasso A4', patterns: ['CHIVASSO'] },
+    { key: 'carisio', full: 'Carisio Casello A4', short: 'Carisio A4', patterns: ['CARISIO'] },
+    { key: 'mxp_t1', full: 'Milano Malpensa Terminal 1 (Ovest)', short: 'Malpensa T1', patterns: ['TERMINAL 1', 'T1', 'OVEST'] },
+    { key: 'mxp_t2', full: 'Milano Malpensa Terminal 2 (Nord)', short: 'Malpensa T2', patterns: ['TERMINAL 2', 'T2', 'NORD'] }
   ],
-  'SAVDA (Milano Malpensa ↔ Aosta)': [
-    { key: 'mxp_t1', full: 'Milano Malpensa Terminal 1', short: 'Malpensa T1', patterns: ['TERMINAL 1', 'T1', 'OVEST'] },
-    { key: 'mxp_t2', full: 'Milano Malpensa Terminal 2', short: 'Malpensa T2', patterns: ['TERMINAL 2', 'T2', 'NORD'] },
-    { key: 'pont', full: 'Pont-Saint-Martin', short: 'Pont-St-Martin', patterns: ['PONT'] },
-    { key: 'verres', full: 'Verrès', short: 'Verrès', patterns: ['VERRES', 'VERRÈS'] },
-    { key: 'chatillon', full: 'Châtillon - Saint-Vincent', short: 'Châtillon', patterns: ['CHATILLON', 'CHÂTILLON'] },
-    { key: 'aosta', full: 'Aosta Autostazione', short: 'Aosta', patterns: ['AOSTA'] }
+  'SAVDA (Aosta ↔ Malpensa)': [
+    { key: 'aosta', full: 'Aosta Autostazione (Piazza Manzetti)', short: 'Aosta', patterns: ['AOSTA'] },
+    { key: 'chatillon', full: 'Châtillon Autostazione FS', short: 'Châtillon', patterns: ['CHATILLON', 'CHÂTILLON'] },
+    { key: 'verres', full: 'Verrès Autostazione', short: 'Verrès', patterns: ['VERRES', 'VERRÈS'] },
+    { key: 'pont', full: 'Pont-Saint-Martin (Piazza I Maggio)', short: 'Pont-St-Martin', patterns: ['PONT'] },
+    { key: 'mxp_t1', full: 'Milano Malpensa Terminal 1 (Ovest)', short: 'Malpensa T1', patterns: ['TERMINAL 1', 'T1', 'OVEST'] },
+    { key: 'mxp_t2', full: 'Milano Malpensa Terminal 2 (Nord)', short: 'Malpensa T2', patterns: ['TERMINAL 2', 'T2', 'NORD'] }
   ]
+};
+
+// Determina con precisione se una corsa è di Ritorno
+const isTripReturn = (trip, lineId) => {
+  const stops = trip.stops || [];
+  if (stops.length === 0) return false;
+  
+  const realStops = stops.filter(s => s.time && !['A', 'F', 'S', '—', '-'].includes(s.time.trim()));
+  const activeStops = realStops.length > 0 ? realStops : stops;
+  
+  const firstStop = (activeStops[0]?.name || '').toUpperCase();
+  const lastStop = (activeStops[activeStops.length - 1]?.name || '').toUpperCase();
+  
+  if (lineId === '275/282') {
+    if (lastStop.includes('TORINO') || lastStop.includes('TO -') || lastStop.includes('TO-') || lastStop.includes('PORTA NUOVA') || lastStop.includes('PORTA SUSA')) {
+      return true;
+    }
+    if (firstStop.includes('TORINO') || firstStop.includes('TO -') || firstStop.includes('TO-') || firstStop.includes('PORTA NUOVA') || firstStop.includes('PORTA SUSA')) {
+      return false;
+    }
+    if (firstStop.includes('SESTRIERE') || firstStop.includes('OULX') || firstStop.includes('CESANA') || firstStop.includes('FENESTRELLE') || firstStop.includes('PEROSA')) {
+      return true;
+    }
+    return false;
+  }
+  
+  if (lineId === '901') {
+    if (lastStop.includes('TORINO') || lastStop.includes('PINEROLO') || lastStop.includes('PIN.')) return true;
+    return false;
+  }
+  
+  if (lineId === '267') {
+    if (lastStop.includes('TORINO') || lastStop.includes('BOLZANO') || lastStop.includes('LINGOTTO')) return true;
+    return false;
+  }
+  
+  if (lineId === '265') {
+    if (lastStop.includes('TORINO') || lastStop.includes('BOLZANO') || lastStop.includes('SETTEMBRINI')) return true;
+    return false;
+  }
+  
+  if (lineId === '278' || lineId === '283') {
+    if (lastStop.includes('PINEROLO') || lastStop.includes('PIN.')) return true;
+    return false;
+  }
+  
+  if (lineId === '303') {
+    if (lastStop.includes('TORINO') || lastStop.includes('PINEROLO') || lastStop.includes('PEROSA')) return true;
+    return false;
+  }
+  
+  if (lineId === '274') {
+    if (lastStop.includes('AVIGLIANA')) return true;
+    return false;
+  }
+  
+  if (lineId === '285') {
+    if (lastStop.includes('OULX')) return true;
+    return false;
+  }
+  
+  if (lineId.includes('Malpensa') || lineId === 'SAVDA (Aosta ↔ Malpensa)') {
+    if (firstStop.includes('MALPENSA') || lastStop.includes('AOSTA') || lastStop.includes('TORINO')) return true;
+    return false;
+  }
+  
+  if (lineId === '101 (Torino - Aosta / SAVDA)') {
+    if (lastStop.includes('TORINO') || lastStop.includes('BOLZANO')) return true;
+    return false;
+  }
+  
+  return false;
 };
 
 // Helper per ripulire e formattare orari HH:MM
@@ -226,7 +333,7 @@ const resolveTurnoForTrip = (trip) => {
 const OrarioCorse = () => {
   const [selectedLineId, setSelectedLineId] = useState('268');
   const [searchTerm, setSearchTerm] = useState('');
-  const [directionFilter, setDirectionFilter] = useState('all'); // 'all' | 'outbound' | 'inbound'
+  const [directionFilter, setDirectionFilter] = useState('outbound'); // 'outbound' | 'inbound'
   const tableContainerRef = useRef(null);
 
   const scrollTable = (offset) => {
@@ -251,7 +358,7 @@ const OrarioCorse = () => {
   }, [selectedLineId]);
 
   // Dati calcolati per la linea selezionata
-  const { headers, rows } = useMemo(() => {
+  const { headers, rows, outboundCount, inboundCount } = useMemo(() => {
     // 1. Caso speciale Linea 268 (dataset manuale 144 corse)
     if (selectedLineId === '268') {
       const isReturnRow268 = (idx) => idx >= 66;
@@ -287,39 +394,37 @@ const OrarioCorse = () => {
           { full: 'TURNO', short: 'TURNO', isTurno: true },
           ...headers268
         ],
-        rows: list
+        rows: list,
+        outboundCount: 66,
+        inboundCount: 78
       };
     }
 
     // 2. Tutte le altre linee da database_orari.json con mapping canonico ordinato
-    const allTrips = (databaseOrari.trips || []).filter(t => t.line === selectedLineId);
+    const allTrips = (databaseOrari.trips || []).filter(t => {
+      if (selectedLineId === 'SAVDA (Aosta ↔ Malpensa)') {
+        return String(t.line || '').includes('SAVDA') && String(t.line || '').includes('Malpensa');
+      }
+      return t.line === selectedLineId;
+    });
     const lineConfig = CANONICAL_LINE_STOPS[selectedLineId] || [];
 
-    // Classifica andata / ritorno per ogni corsa
+    // Classifica andata / ritorno per ogni corsa in modo esatto
     const classifiedTrips = allTrips.map((trip, idx) => {
-      const stops = trip.stops || [];
-      const firstStop = (stops[0]?.name || '').toUpperCase();
-      const lastStop = (stops[stops.length - 1]?.name || '').toUpperCase();
-
-      let isReturn = false;
-      if (lastStop.includes('TORINO') || lastStop.includes('AVIGLIANA') || lastStop.includes('CHIVASSO') || lastStop.includes('PINEROLO')) {
-        isReturn = true;
-      } else if (firstStop.includes('TORINO') || firstStop.includes('AVIGLIANA') || firstStop.includes('CHIVASSO')) {
-        isReturn = false;
-      } else if (firstStop.includes('SESTRIERE') || firstStop.includes('PEROSA') || firstStop.includes('BOBBIO') || firstStop.includes('COAZZE') || firstStop.includes('AOSTA')) {
-        isReturn = true;
-      }
-
+      const isReturn = isTripReturn(trip, selectedLineId);
       const turno = resolveTurnoForTrip(trip);
 
       return {
         trip,
         turno,
         isReturn,
-        stops,
+        stops: trip.stops || [],
         originalIndex: idx
       };
     });
+
+    const totalOutbound = classifiedTrips.filter(t => !t.isReturn).length;
+    const totalInbound = classifiedTrips.filter(t => t.isReturn).length;
 
     // Filtra per direzione
     let filteredTrips = classifiedTrips;
@@ -398,7 +503,9 @@ const OrarioCorse = () => {
 
     return {
       headers: finalHeaders,
-      rows: dynamicRows
+      rows: dynamicRows,
+      outboundCount: totalOutbound,
+      inboundCount: totalInbound
     };
   }, [selectedLineId, directionFilter, searchTerm]);
 
@@ -518,7 +625,7 @@ const OrarioCorse = () => {
         })}
       </div>
 
-      {/* Barra Filtri: Direzione & Ricerca */}
+      {/* Barra Filtri: 2 Grandi Schede (Andata e Ritorno) & Ricerca */}
       <div style={{
         background: 'var(--bg-card)',
         border: '1px solid var(--border-color)',
@@ -534,68 +641,72 @@ const OrarioCorse = () => {
           justifyContent: 'space-between',
           alignItems: 'center',
           flexWrap: 'wrap',
-          gap: '0.4rem'
+          gap: '0.5rem'
         }}>
-          {/* Selettore Direzione Compatto */}
-          <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap' }}>
-            <button
-              type="button"
-              onClick={() => setDirectionFilter('all')}
-              style={{
-                padding: '4px 9px',
-                borderRadius: '6px',
-                border: directionFilter === 'all' ? '1px solid var(--accent-orange)' : '1px solid var(--border-color)',
-                background: directionFilter === 'all' ? 'var(--accent-orange)' : 'rgba(255,255,255,0.03)',
-                color: directionFilter === 'all' ? '#121214' : 'var(--text-main)',
-                fontWeight: directionFilter === 'all' ? '700' : '500',
-                fontSize: '0.75rem',
-                cursor: 'pointer',
-                transition: 'all 0.15s'
-              }}
-            >
-              Tutte ({rows.length})
-            </button>
-
+          {/* Selettore Direzione a 2 Schede: Andata e Ritorno */}
+          <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
             <button
               type="button"
               onClick={() => setDirectionFilter('outbound')}
               style={{
-                padding: '4px 9px',
-                borderRadius: '6px',
-                border: directionFilter === 'outbound' ? '1px solid var(--accent-cyan)' : '1px solid var(--border-color)',
-                background: directionFilter === 'outbound' ? 'rgba(8, 145, 178, 0.25)' : 'rgba(255,255,255,0.03)',
-                color: directionFilter === 'outbound' ? 'var(--accent-cyan)' : 'var(--text-main)',
-                fontWeight: directionFilter === 'outbound' ? '700' : '500',
-                fontSize: '0.75rem',
+                padding: '6px 13px',
+                borderRadius: '8px',
+                border: directionFilter === 'outbound' ? '1.5px solid #38bdf8' : '1px solid var(--border-color)',
+                background: directionFilter === 'outbound' ? 'rgba(56, 189, 248, 0.25)' : 'rgba(255,255,255,0.03)',
+                color: directionFilter === 'outbound' ? '#38bdf8' : 'var(--text-main)',
+                fontWeight: '800',
+                fontSize: '0.78rem',
                 cursor: 'pointer',
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '3px',
+                gap: '6px',
+                boxShadow: directionFilter === 'outbound' ? '0 0 10px rgba(56, 189, 248, 0.3)' : 'none',
                 transition: 'all 0.15s'
               }}
             >
               <span>Andata ➔</span>
+              <span style={{
+                background: directionFilter === 'outbound' ? '#38bdf8' : 'rgba(255,255,255,0.12)',
+                color: directionFilter === 'outbound' ? '#0f172a' : 'var(--text-muted)',
+                borderRadius: '10px',
+                padding: '1px 6px',
+                fontSize: '0.68rem',
+                fontWeight: '900'
+              }}>
+                {outboundCount}
+              </span>
             </button>
 
             <button
               type="button"
               onClick={() => setDirectionFilter('inbound')}
               style={{
-                padding: '4px 9px',
-                borderRadius: '6px',
-                border: directionFilter === 'inbound' ? '1px solid #10b981' : '1px solid var(--border-color)',
+                padding: '6px 13px',
+                borderRadius: '8px',
+                border: directionFilter === 'inbound' ? '1.5px solid #10b981' : '1px solid var(--border-color)',
                 background: directionFilter === 'inbound' ? 'rgba(16, 185, 129, 0.25)' : 'rgba(255,255,255,0.03)',
                 color: directionFilter === 'inbound' ? '#10b981' : 'var(--text-main)',
-                fontWeight: directionFilter === 'inbound' ? '700' : '500',
-                fontSize: '0.75rem',
+                fontWeight: '800',
+                fontSize: '0.78rem',
                 cursor: 'pointer',
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '3px',
+                gap: '6px',
+                boxShadow: directionFilter === 'inbound' ? '0 0 10px rgba(16, 185, 129, 0.3)' : 'none',
                 transition: 'all 0.15s'
               }}
             >
               <span>⬅ Ritorno</span>
+              <span style={{
+                background: directionFilter === 'inbound' ? '#10b981' : 'rgba(255,255,255,0.12)',
+                color: directionFilter === 'inbound' ? '#0f172a' : 'var(--text-muted)',
+                borderRadius: '10px',
+                padding: '1px 6px',
+                fontSize: '0.68rem',
+                fontWeight: '900'
+              }}>
+                {inboundCount}
+              </span>
             </button>
           </div>
 
@@ -606,7 +717,7 @@ const OrarioCorse = () => {
               type="text"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              placeholder="Cerca fermata (es. Perosa, Caio Mario) o turno..."
+              placeholder="Cerca fermata o turno..."
               style={{
                 width: '100%',
                 background: 'rgba(255,255,255,0.04)',
@@ -629,7 +740,7 @@ const OrarioCorse = () => {
         </div>
 
         <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>
-          Mostrate <strong>{rows.length}</strong> corse su {currentLineInfo.name}
+          Mostrate <strong>{rows.length}</strong> corse di {directionFilter === 'outbound' ? 'Andata' : 'Ritorno'} su {currentLineInfo.name}
           {searchTerm.trim() && (
             <span style={{ marginLeft: '6px', color: 'var(--accent-orange)', fontWeight: '700' }}>
               • Evidenziazione colonna attiva
@@ -770,7 +881,6 @@ const OrarioCorse = () => {
         >
           <table style={{
             width: 'max-content',
-            minWidth: '100%',
             borderCollapse: 'collapse',
             fontSize: '0.74rem',
             tableLayout: 'fixed'
@@ -807,14 +917,15 @@ const OrarioCorse = () => {
                         borderRight: isTurno ? '2px solid rgba(245, 166, 35, 0.5)' : isMatched ? '2px solid #f5a623' : '1px solid rgba(255,255,255,0.15)',
                         borderLeft: isMatched ? '2px solid #f5a623' : 'none',
                         verticalAlign: 'bottom',
-                        width: isTurno ? '56px' : isMatched ? '48px' : '44px',
-                        minWidth: isTurno ? '56px' : isMatched ? '48px' : '44px',
-                        maxWidth: isTurno ? '60px' : isMatched ? '50px' : '46px',
+                        width: isTurno ? '56px' : '44px',
+                        minWidth: isTurno ? '56px' : '44px',
+                        maxWidth: isTurno ? '56px' : '44px',
                         position: isTurno ? 'sticky' : 'static',
                         left: 0,
                         zIndex: isTurno ? 30 : isMatched ? 25 : 20,
                         height: isTurno ? 'auto' : '122px',
-                        boxShadow: isMatched ? 'inset 0 0 10px rgba(245, 166, 35, 0.3)' : 'none'
+                        boxShadow: isMatched ? 'inset 0 0 10px rgba(245, 166, 35, 0.3)' : 'none',
+                        boxSizing: 'border-box'
                       }}
                       title={h.full}
                     >
@@ -886,9 +997,13 @@ const OrarioCorse = () => {
                         left: 0,
                         background: stickyBg,
                         zIndex: 5,
+                        width: '56px',
+                        minWidth: '56px',
+                        maxWidth: '56px',
                         borderRight: '2px solid rgba(245, 166, 35, 0.4)',
                         borderBottom: '1px solid rgba(255,255,255,0.12)',
                         fontWeight: '800',
+                        boxSizing: 'border-box',
                         transition: 'background 0.1s'
                       }}>
                         {hasTurno ? (
@@ -913,7 +1028,7 @@ const OrarioCorse = () => {
                         )}
                       </td>
 
-                      {/* Colonne Fermate a Griglia con Spazio e Contrasto */}
+                      {/* Colonne Fermate a Griglia con Spazio e Contrasto (Stessa identica dimensione su tutte le linee) */}
                       {rowItem.cells.map((cellVal, j) => {
                         const val = cleanDisplayTime(cellVal);
                         const isStopValid = val !== '' && val !== '—' && val !== '-';
@@ -926,6 +1041,10 @@ const OrarioCorse = () => {
                             style={{
                               padding: '2px 4px',
                               textAlign: 'center',
+                              width: '44px',
+                              minWidth: '44px',
+                              maxWidth: '44px',
+                              boxSizing: 'border-box',
                               background: isColMatched 
                                 ? (isStopValid ? 'rgba(245, 166, 35, 0.26)' : 'rgba(245, 166, 35, 0.12)')
                                 : 'transparent',
